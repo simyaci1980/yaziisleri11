@@ -1,0 +1,50 @@
+{% extends  'layout.html'%}             <!-- ŞABLONU LAYOUT HTML YAP  -->
+{% load static %}
+
+{% block content %}
+ 
+ <style>
+	@media screen and (max-width: 480px) {
+		/* 480 pikselden küçük ekranlar için özel ayarlar */
+img {
+			max-width: 100%; /* Resmi ekran genişliği kadar genişlet */
+			height: auto; /* Oranları koru */
+		}
+	}
+	.kim{color: aqua; background-color: brown; font-size: larger; }
+	.ark{background-color:black; font-size: larger; border-radius: 20px; color: white; }
+	.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+	h1{
+	color:black;
+	}
+	p{
+	color: black;
+	}
+ </style>
+
+
+<div class="jumbotron jumbotron-fluid bg-warning text-left ">
+	
+	  <h1  class="display-4 text-left ml-5 ">PROGRAM TANITIMI</h1>
+	  <img class="ml-3" width="1200px" src="static/img/tanımla.PNG" > <br><br>
+	  <span  class="bg-success ml-3"> NOTLARIN FORMATI BU ARKADAŞLAR: </span>
+	  <p class="ml-3"> * Geri planı<span class="kim"> kırmızı </span>olan demek bunu açıklayorum hazır ol <br>
+	  * Geri planı<span class="ark"> siyah</span> olanlar madde madde ayrılanlar yani şöyle <span class="ark">üst </span> kanardan 1,5 cm veya <span class="ark">sol </span>kenardan 1,5 cm gibi ayrılabilen <br> - öğeleri geri planı siyah olanlar temsil ediyor tabi her zaman öğeler bir den çok olmuyor bir tanede olabiliyor <br>
+	  * Geri planı <span class="mavi">mavi </span> olanlar ise bir yargı bildiriyor yani yüklem <br>
+	  * Mavinin içindeki<span class="dik"> kırmızı </span> ise sayı ile belirtilen  veya daha önemli şeyleri bildiriyor <br> 
+	  * Hemen hemen tüm notlar bu düzene göre hazırlandı <strong> tabi uygulamaya girildiğinde sayfa arka planı değişince bu renklerde değişecek</strong> <br> * Sadece işaretli yerler okunduğunda anlamlı bir cümle çıkması hususuna mümkün olduğunca dikkat edildi  <br>* Tabi başka renklerde kullanıldı ama ana hatları bu şekilde olan programın hızlı tekrar için çok zaman kazandırdığını düşünüyorum <br>*  Ayrıca çıkmış soruların hemen o konunun içinde olması soruların nasıl sorulduğu ile ilgili bir bilgi sağlamaktadır <br>* Bazı konularda hazırlanan süre tabloları da hız ve hızlı tekrar açısından muhakkak yararlı olacaktır <br> AŞAĞIDA ÖRNEK SAYFALARIMIZA BAKABİLİRSİNİZ  </p> <div class="kutu bg-primary "> <strong> ÖRNEK SAYFALAR </strong> <button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="ornek1" class="nav-link" style="color:black">ÖRNEK SAYFALARIMIZ 1 </a>  </button><br><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="darisüreler" class="nav-link" style="color:black">ÖRNEK SAYFALARIMIZ 2 </a> </button> <br><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="bim5mad" class="nav-link" style="color:black">ÖRNEK SAYFALARIMIZ 3 </a> </button> </div><div class="kutu bg-danger "><strong> BAZI LİNKLER</strong></button> <br><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="https://www.adalet.gov.tr/" class="nav-link" style="color:black">ADALET BAKANLIĞI </a> </button><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="https://pgm.adalet.gov.tr/" class="nav-link" style="color:black">ADALET BAKANLIĞI PERSONEL GENEL MÜDÜRLÜĞÜ  </a> </button><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="https://izmir.adalet.gov.tr/" class="nav-link" style="color:black">İZMİR ADLİYESİ  </a> </button><button style="background-color:rgba(241, 91, 3, 0.966); margin: 25px; box-shadow: 20px 10px 10px rgb(32, 32, 30) ; "    > <a href="https://odsgm.meb.gov.tr/www/19-agustos-2023-tarihinde-yapilan-adalet-bakanligi-gorevde-yukselme-ve-unvan-degisikligi-sinavlarinin-soru-kitapciklari-ve-cevap-anahtarlari/icerik/999" class="nav-link" style="color:black">MİLLİ EĞİTİM BAKANLIĞI  </a> </button></div>
+	  <div class="kutu bg-dark "></div></div>
+	  
+	
+
+	
+	 
+	 
+	 
+	 
+ 
+
+
+</div>
+{% endblock%}

@@ -1,0 +1,47 @@
+/* Mevcut basit başlık rengi */
+h1 {
+        color: red;
+}
+
+/* İki yana yaslama (justify) ve taşmayı önleme için yardımcı sınıflar */
+.justified {
+    text-align: justify;
+    text-justify: inter-word;
+    -webkit-text-size-adjust: 100%;
+    hyphens: auto; /* kelime bölme */
+}
+
+/* İçerik öğeleri için kelime kırma/ sarma davranışı */
+.justified p,
+.justified div,
+.justified li,
+.justified span {
+    overflow-wrap: anywhere; /* gerektiğinde kelime içinden kır */
+    word-break: break-word;
+}
+
+/* Kod blokları için sarma / kaydırma seçenekleri */
+pre, code, kbd, samp {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+}
+
+/* Uzun ve geniş içerikler (görseller, tablolar) için duyarlı davranış */
+img, table, .responsive-embed {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Kod bloklarını gerektiğinde yatay kaydırma ile sarmak için */
+.code-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Küçük metin alanlarında sarma zorlamak için */
+.text-wrap {
+    white-space: normal;
+    overflow-wrap: break-word;
+}

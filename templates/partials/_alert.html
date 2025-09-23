@@ -1,0 +1,15 @@
+
+<style>
+	h1{
+	text-align: center;
+	}
+</style>
+{% if messages %}
+      {% for message  in messages %}
+       <h1> <span class="conteiner ">
+			<span class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+				 {{ message }}
+	</span> 	
+		</span></h1>
+	  {% endfor %}
+{% endif %}
