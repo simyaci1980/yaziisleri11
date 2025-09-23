@@ -1,0 +1,1382 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ; 
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+a{color: white}
+
+ul li {	float: left;margin-right: 20px;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}	
+
+.span{color: chocolate;}
+
+.ark{background-color:black; border-radius: 10px; }
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white; }
+.kim{color:aqua; font-size: larger; background-color:mediumseagreen;}
+
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }	
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}	  
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+	
+	}	
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+	
+	
+
+
+	
+.asi{
+		background-color: rgba(1, 53, 37,0.1); 
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+		
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;	
+	top: 5;
+	width: 100%;
+	position: fixed; 
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{	
+	background-color: rgb(173, 24, 44);
+	background-position: center;	
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}		
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;	
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}	
+.soru{
+	cursor: pointer;	
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}	
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}	
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}	
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}	
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;		
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+	
+</style>
+<title>Bilgi Edin</title>
+
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ; 
+		} }
+	     
+	
+	
+	
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon 
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için 		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için 
+		
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ() 
+		metınKim() 	}
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function kimmorlasss(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }  
+		
+	function kimuyp(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function kimdahe(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} } 
+		
+	function kimyes(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} } 	
+		
+	function metınArk(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function metınDık(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınEDİ(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınYes(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function metındmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }	
+	
+	function metınkır(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }	
+
+	function morlas(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikcho(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function dikuyp(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }		
+
+	function dikkırmızı(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }			
+	
+	function morlasss(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }				
+	
+	function arkuyp(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function arkdahe(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }	
+
+	function metınmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikles(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }			
+		
+	function chola(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }			
+	
+	function dahadayeni(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }	
+	 
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor 
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))	
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')		 
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık 
+			} 
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+	
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+	
+	
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+	
+	}	
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor 
+		element.style.color="red";
+		element.style.fontWeight="bold"}	 
+	 
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative" 	
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+	
+	   function DivResetle(){
+		
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ; 
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  } 
+	
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">		
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button> 
+	</div> 
+	
+	<br><br><br>
+<div id="kal" class="kal"> ADALET BAKANLIĞI PERSONELİ GÖREVDE YÜKSELME VE UNVAN DEĞİŞİKLİĞİ YÖNETMELİĞİ(1) </div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+		
+	<p> 
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>	
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+	  
+	<script>			
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};}); 		
+	  </script> 
+	  
+  
+	  
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>	
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br> <hr>
+	   
+  
+
+
+
+ 
+
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam, Dayanak, Tanımlar br
+
+<div>
+Amaç
+<div>
+Madde 1 — (Değişik:RG-29/12/2005-26038)
+
+Bu Yönetmeliğin amacı, liyakat ve kariyer ilkeleri çerçevesinde, hizmet gerekleri ve personel planlaması esas alınarak Adalet Bakanlığı personelinin görevde yükselme ve unvan değişikliklerine ilişkin usul ve esasları belirlemektir.
+</div></div>
+
+<div>
+Kapsam
+<div>
+Madde 2 — (Değişik:RG-29/12/2005-26038)
+
+Bu Yönetmelik, Adalet Bakanlığı merkez ve taşra teşkilâtında, 657 sayılı Devlet Memurları Kanununa tabi olarak görev yapan personelden 5 inci maddede belirtilen görevlere görevde  yükselme ve unvan değişikliği suretiyle atanacakları kapsar.
+
+(Değişik fıkra:RG-19/6/2025-32931)  Bu Yönetmelik, Türkiye Adalet Akademisi, Adlî Tıp Kurumu Başkanlığı, Ceza İnfaz Kurumları ve Tutukevleri, Denetimli Serbestlik Müdürlükleri, Ceza İnfaz Kurumları ve Tutukevleri Personeli Eğitim Merkezleri ile icra personelini kapsamaz.
+</div></div>
+
+<div>
+Dayanak <div>
+
+Madde 3 — (Değişik:RG-1/2/2020-31026)
+
+Bu Yönetmelik, 14/7/1965 tarihli ve 657 sayılı Devlet Memurları Kanunu, 26/9/2004 tarihli ve 5235 sayılı Adlî Yargı İlk Derece Mahkemeleri ile Bölge Adliye Mahkemelerinin Kuruluş, Görev ve Yetkileri Hakkında Kanun, 6/1/1982 tarihli ve 2576 sayılı Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin Kuruluşu ve Görevleri Hakkında Kanun, 24/2/1983 tarihli ve 2802 sayılı Hakimler ve Savcılar Kanununun 114 üncü maddesi, 10/7/2018 tarihli ve 30474 sayılı Resmî Gazete’de yayımlanan 1 sayılı Cumhurbaşkanlığı Teşkilatı Hakkında Cumhurbaşkanlığı Kararnamesi ile 15/3/1999 tarihli ve 99/12647 sayılı Bakanlar Kurulu Kararı ile yürürlüğe konulan Kamu Kurum ve Kuruluşlarında Görevde Yükselme ve Unvan Değişikliği Esaslarına Dair Genel Yönetmelik hükümlerine dayanılarak hazırlanmıştır.
+</div></div>
+
+<div>
+Tanımlar
+<div>
+Madde 4 — Bu Yönetmelikte geçen;
+ <div>
+a) Bakanlık: Adalet Bakanlığını, <br>
+
+b) Merkez teşkilâtı personeli: Bakanlık merkez teşkilâtı kadrolarında çalışanları, <br>
+
+c) Taşra teşkilâtı personeli: Taşra teşkilâtı kadrolarında çalışanları, <br>
+
+d) Görevde yükselme: 657 sayılı Devlet Memurları Kanununa tabi görevlerden, bu Yönetmelikte belirlenen üst görevlere, aynı veya farklı hizmet sınıflarından yapılacak atamaları,
+<br>
+e) Aynı düzey görev: Hiyerarşi, görev, yetki ve sorumluluk açısından, aynı ya da farklı hizmet sınıfları içerisinde aynı düzeyde kabul edilen görevleri,
+<br>
+f) (Değişik:RG-1/2/2020-31026) Üst görev: 1 sayılı Cumhurbaşkanlığı Teşkilatı Hakkında Cumhurbaşkanlığı Kararnamesinin 509 uncu maddesinde yer alan hiyerarşik kademeler çerçevesinde daha üst hiyerarşi içindeki görevleri,
+<br>
+g) (Değişik:RG-1/2/2020-31026) Alt görev: 1 sayılı Cumhurbaşkanlığı Teşkilatı Hakkında Cumhurbaşkanlığı Kararnamesinin 509 uncu maddesinde yer alan hiyerarşik kademeler çerçevesinde daha alt hiyerarşi içindeki görevleri,
+<br>
+h) (Mülga:RG-13/4/2014-28971)
+<br>
+ı) (Değişik:RG-1/2/2017-29966) Görevde yükselme sınavı: Bu Yönetmelik hükümlerine göre görevde yükselme suretiyle yapılacak atamalarda yapılması gereken yazılı ve sözlü sınavı,
+<br>
+i) Hizmet süresi: Aylıksız izinli olarak geçen süreler hariç, muvazzaf askerlikte geçen süreler dahil olmak üzere, Adalet Bakanlığı merkez ve taşra teşkilâtı, bağlı ve ilgili kuruluşları ile 657 sayılı Kanunun 68 inci maddesinin (B) bendinde belirtilen kamu kurum ve kuruluşlarında fiilen çalışılan süreleri,
+<br>
+j) (Ek:RG-17/4/2008-26850) (Değişik:RG-1/2/2020-31026) Adalet komisyonu: Adli yargı ilk derece mahkemesi adalet komisyonu, bölge adliye mahkemesi adalet komisyonu, bölge idare mahkemesi adalet komisyonunu,
+<br>
+k) (Ek:RG-9/1/2011-27810) (Değişik:RG-1/2/2017-29966)  Unvan değişikliği sınavı: En az ortaöğretim düzeyinde meslekî veya teknik eğitim sonucu ihraz edilen unvanlara ilişkin görevlere atanabilmek için yapılan yazılı ve sözlü sınavı,
+<br>
+l) (Ek:RG-9/1/2011-27810) İş günü: Ulusal bayram ile genel ve hafta sonu tatil günleri hariç, diğer günleri,
+<br>
+m) (Ek:RG-7/4/2023-32156) YDS/e-YDS: 4/1/2013 tarihli ve 28518 sayılı Resmî Gazete’de yayımlanan Yabancı Dil Bilgisi Seviye Belirleme Usul ve Esasları Hakkında Yönetmelik uyarınca yapılan Yabancı Dil Bilgisi Seviye Tespit Sınavını/Elektronik Yabancı Dil Sınavını,
+</div>
+ifade eder.</div></div>
+
+ 
+
+İKİNCİ BÖLÜM <br>
+
+Görevde Yükselme ve Atanmaya İlişkin Esaslar(3)brown
+
+<div>
+Hizmet grupları
+<div>
+Madde 5 — (Değişik:RG-19/6/2025-32931)
+
+Bu Yönetmelik kapsamında görevde yükselmeye tabi kadrolar aşağıda belirtilmiştir:
+<div>
+a) Yönetim Hizmetleri Grubu;
+<div>
+
+1) Bilgi İşlem Müdürü, Şube Müdürü, Yazı İşleri Müdürü, İdari İşler Müdürü, Adli Destek ve Mağdur Hizmetleri Müdürü.
+<br>
+2) Adli Destek ve Mağdur Hizmetleri Müdür Yardımcısı.
+<br>
+3) Koruma ve Güvenlik Şefi, Koruma ve Güvenlik Amiri, Şef. </div>
+
+b) Araştırma ve Plânlama Hizmetleri Grubu; <br>
+<div>
+1) Eğitim Uzmanı, Araştırmacı, Uzman. <br>
+</div>
+c) Sivil Savunma Hizmetleri Grubu; <br>
+ <div>
+1) Sivil Savunma Uzmanı. <br>
+</div>
+
+ç) Bilgi İşlem Hizmetleri Grubu; <br>
+<div>
+1) Çözümleyici. <br>
+</div>
+d) İdarî Hizmetler Grubu; <br>
+ <div>
+1) Sayman. <br>
+
+2) Bilgisayar İşletmeni, Veri Hazırlama ve Kontrol İşletmeni, Zabıt Kâtibi, Memur, Satınalma Memuru, Veznedar, Emanet Memuru, Tebligat Memuru, Santral Memuru, Sekreter, Koruma ve Güvenlik Görevlisi, Şoför, Mübaşir, İşaret Dili Tercümanı.
+<br></div>
+e) Yardımcı Hizmetler Grubu; <br>
+ <div>
+1) Teknisyen Yardımcısı, Hizmetli, Aşçı, Kaloriferci, Bekçi, Dağıtıcı.</div></div>
+
+Bu Yönetmelik kapsamında unvan değişikliğine tâbi kadrolar aşağıda belirtilmiştir: <br>
+
+a) Kütüphaneci, Mütercim, Mühendis, Mimar, İstatistikçi, Öğretmen, Eğitim Rehberi, Biyolog, Sosyal Çalışmacı, Psikolog, Pedagog, Sosyolog, Hemşire, Sağlık Memuru, Laborant, Tekniker, Teknik Ressam, Teknisyen, Avukat, Programcı.
+</div></div>
+
+<div>
+Gruplar arası geçişler ve unvan değişikliği
+<div>
+Madde 6 — (Başlığıyla birlikte değişik:RG-29/12/2005-26038)
+
+Bu Yönetmeliğin 5 inci maddesinde düzenlenmiş olan görev grupları arasındaki geçişler aşağıdaki esaslar çerçevesinde yapılır:
+<div>
+a) (Değişik:RG-4/4/2015-29316) Aynı ana görev grubundaki alt görev grubunun kendi içinde kalmak kaydıyla, sınav yapılmaksızın ilgili personelin isteği veya hizmet gereği olarak ve atanılacak kadronun gerektirdiği özellikleri taşımak şartıyla diğer görevlere atama yapılabilir.
+<br>
+b) Ana gruplar arası görevde yükselme niteliğindeki geçişler ve alt gruptan üst gruplara geçişler, görevde yükselme (Mülga ibare:RG-13/4/2014-28971) (…)  sınavına tâbidir. Ancak, Bakanlıkta veya diğer kamu kurum ve kuruluşlarında daha önce bulunulan görevler ile bu görevlerle aynı düzeydeki  görevlere veya alt görevlere, görevde yükselme (Mülga ibare:RG-13/4/2014-28971) (…) sınavına tâbi tutulmadan atama yapılabilir.
+<br>
+c) Unvan değişikliğine tâbi kadrolara geçişler, ilgili kadro için düzenlenen unvan değişikliği sınavı sonucuna göre yapılır.
+<br>
+d) (Ek:RG-9/1/2011-27810) Bu Yönetmelik kapsamında bulunan ve doktora öğrenimini bitiren personel, atanılacak görev için aranan toplam hizmet süresine sahip olmaları ve mevzuatla aranan öğrenim şartını taşımaları kaydı ile uzman veya aynı düzeydeki görevler ile daha alt görevlere atanabilirler.
+</div>
+Atamaları, adalet komisyonunca teklif edilenlerin atama işlemleri Bakanlık onayı ile tamamlanır.
+
+(Ek fıkra:RG-13/4/2014-28971) (Mülga fıkra:RG-3/9/2024-32651)</div></div>
+
+<div>
+Naklen atama
+<div>
+Madde 7 — (Değişik:RG-3/9/2024-32651)
+
+Diğer kamu kurum ve kuruluşlarında görev yapanlardan, bu Yönetmelikte belirtilen aynı unvana, bu unvanla aynı düzeydeki veya daha alt düzeydeki diğer unvanlara, söz konusu unvanlar için mevzuatla aranan öğrenim ve sertifika gibi belgelere sahip olma şartlarını taşımaları kaydıyla genel hükümlere göre naklen atama yapılabilir.
+
+Diğer personel mevzuatına tabi olanların bu Yönetmelik kapsamındaki görevlere atanmalarında ihraz ettikleri unvanlar, aynı unvanın bulunmaması hâlinde öğrenim durumu, ihraz ettikleri unvanla birlikte ilgili mevzuatı dikkate alınır.
+</div></div>
+
+<div>
+Görevde yükselme sınavına başvuru ve atanma şartları (Değişik başlık:RG-13/4/2014-28971)
+<div>
+Madde 8 — (Değişik:RG-19/6/2025-32931) <br>
+
+Görevde yükselme suretiyle atanmada aşağıdaki genel ve özel şartlar aranır:
+<br>
+A) Genel şartlar şunlardır:
+ <div>
+1) Görevde yükselme yazılı sınavının son başvuru tarihinden önceki son üç yıl içerisinde denetim elemanlarınca hakkında zayıf rapor düzenlenmemiş olmak.
+<br>
+2) İlan edilen kadro için bu şartı sağlayan personel bulunmaması durumu hariç olmak üzere Bakanlıkta en az iki yıl çalışmış olmak.
+<br>
+3) 10/7/2003 tarihli ve 25164 sayılı Resmî Gazete’de yayımlanan Adalet Bakanlığı Memur Sınav, Atama ve Nakil Yönetmeliğinde belirtilen diğer şartları taşımak.
+<br>
+4) Görevde yükselme suretiyle atanacaklar için yazılı ve sözlü sınavda başarılı olmak.</div></div>
+
+<div>
+B) Özel şartlar şunlardır:
+<div>
+1) Bilgi işlem müdürü ve mahalli adli sicilde bulunan taşra şube müdürü kadrolarına atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul veya fakültelerin; bilgisayar, yazılım, elektrik, elektronik, elektrik-elektronik, elektronik ve haberleşme, endüstri, fizik, matematik mühendislikleri ile matematik, fizik veya istatistik bölümlerinden mezun olmak.
+<br>
+b) Adli destek ve mağdur hizmetleri müdür yardımcısı, araştırmacı, eğitim uzmanı, sivil savunma uzmanı ve uzman kadrolarında ayrı ayrı veya birlikte en az üç yıl; mühendis, çözümleyici, istatistikçi, programcı, sayman, koruma ve güvenlik şefi, koruma ve güvenlik amiri veya şef kadrolarında ayrı ayrı veya birlikte en az beş yıl; bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni, zabıt kâtibi, memur, satınalma memuru, veznedar, emanet memuru, tebligat memuru, santral memuru, sekreter, koruma ve güvenlik görevlisi, şoför, mübaşir, kütüphaneci, mütercim, mimar, öğretmen, eğitim rehberi, biyolog, sosyal çalışmacı, psikolog, pedagog, sosyolog, hemşire, sağlık memuru, laborant, tekniker, teknisyen, teknik ressam, işaret dili tercümanı ve avukat kadrolarında ayrı ayrı veya birlikte en az yedi yıl olmak üzere toplam en az on yıl hizmeti bulunmak.
+</div></div>
+<div>
+2) Şube müdürü kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul, fakülte veya adalet yüksekokulu, meslek yüksekokullarının adalet bölümü veya adalet meslek eğitimi ön lisans programı mezunu olmak.
+<br>
+b) Adli destek ve mağdur hizmetleri müdür yardımcısı, araştırmacı, eğitim uzmanı, sivil savunma uzmanı ve uzman kadrolarında ayrı ayrı veya birlikte en az üç yıl; mühendis, çözümleyici, istatistikçi, programcı, sayman, koruma ve güvenlik şefi, koruma ve güvenlik amiri veya şef kadrolarında ayrı ayrı veya birlikte en az beş yıl; bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni, zabıt kâtibi, memur, satınalma memuru, veznedar, emanet memuru, tebligat memuru, santral memuru, sekreter, koruma ve güvenlik görevlisi, şoför, mübaşir, kütüphaneci, mütercim, mimar, öğretmen, eğitim rehberi, biyolog, sosyal çalışmacı, psikolog, pedagog, sosyolog, hemşire, sağlık memuru, laborant, tekniker, teknisyen, teknik ressam, işaret dili tercümanı ve avukat kadrolarında ayrı ayrı veya birlikte en az yedi yıl olmak üzere toplam en az on yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+3) Yazı işleri müdürü kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul, fakülte veya adalet yüksekokulu, meslek yüksekokullarının adalet bölümü veya adalet meslek eğitimi ön lisans programı mezunu olmak.
+<br>
+b) En az yedi yılı zabıt kâtibi kadrosunda olmak üzere toplam en az on yıl hizmeti bulunmak.
+</div></div>
+<div>
+4) İdari işler müdürü kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul, fakülte veya adalet yüksekokulu, meslek yüksekokullarının adalet bölümü veya adalet meslek eğitimi ön lisans programı mezunu olmak.
+<br>
+b) Adli destek ve mağdur hizmetleri müdür yardımcısı, araştırmacı, eğitim uzmanı, sivil savunma uzmanı ve uzman kadrolarında ayrı ayrı veya birlikte en az üç yıl; mühendis, çözümleyici, istatistikçi, programcı, sayman, koruma ve güvenlik şefi, koruma ve güvenlik amiri veya şef kadrolarında ayrı ayrı veya birlikte en az beş yıl; bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni, zabıt kâtibi, memur, satınalma memuru, veznedar, emanet memuru, tebligat memuru, santral memuru, sekreter, koruma ve güvenlik görevlisi, şoför, mübaşir, kütüphaneci, mütercim, mimar, öğretmen, eğitim rehberi, biyolog, sosyal çalışmacı, psikolog, pedagog, sosyolog, hemşire, sağlık memuru, laborant, tekniker, teknisyen, teknik ressam, işaret dili tercümanı ve avukat kadrolarında ayrı ayrı veya birlikte en az yedi yıl olmak üzere toplam en az on yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+5) Adli destek ve mağdur hizmetleri müdürü kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul ve fakültelerin psikoloji, psikolojik danışmanlık ve rehberlik, eğitim programları ve öğretim, sosyal hizmet bölümlerinden veya eğitim fakültelerinden mezun olmak.
+<br>
+b) Adli destek ve mağdur hizmetleri müdür yardımcısı kadrosunda toplam en az iki yıl veya psikolog, pedagog veya sosyal çalışmacı kadrolarında ayrı ayrı veya birlikte en az yedi yıl olmak üzere toplam en az on yıl hizmeti bulunmak.
+</div></div>
+<div>
+6) Adli destek ve mağdur hizmetleri müdür yardımcısı kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul veya fakültelerin; psikoloji, psikolojik danışmanlık ve rehberlik, eğitim programları ve öğretim, sosyal hizmet bölümlerinden veya eğitim fakültelerinden mezun olmak.
+<br>
+b) Psikolog, pedagog veya sosyal çalışmacı kadrolarında ayrı ayrı veya birlikte en az dört yıl olmak üzere toplam en az altı yıl hizmeti bulunmak.
+</div></div>
+<div>
+7) Uzman, sivil savunma uzmanı, eğitim uzmanı ve araştırmacı kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yükseköğrenim mezunu olmak.
+<br>
+b) Mühendis, çözümleyici, istatistikçi, programcı, sayman, koruma ve güvenlik şefi, koruma ve güvenlik amiri veya şef kadrolarında ayrı ayrı veya birlikte en az üç yıl; bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni, zabıt kâtibi, memur, satınalma memuru, veznedar, emanet memuru, tebligat memuru, santral memuru, sekreter, koruma ve güvenlik görevlisi, şoför, mübaşir, kütüphaneci, mütercim, mimar, öğretmen, eğitim rehberi, biyolog, sosyal çalışmacı, psikolog, pedagog, sosyolog, hemşire, sağlık memuru, laborant, tekniker, teknisyen, teknik ressam, işaret dili tercümanı ve avukat kadrolarında ayrı ayrı veya birlikte en az beş yıl olmak üzere toplam en az sekiz yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+8) Şef kadrosuna atanabilmek için;
+<div>
+a) En az iki yıllık yükseköğrenim mezunu olmak.
+<br>
+b) Bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni, zabıt kâtibi, memur, satınalma memuru, veznedar, emanet memuru, tebligat memuru, santral memuru, sekreter, koruma ve güvenlik görevlisi, şoför, mübaşir, kütüphaneci, mütercim, mimar, öğretmen, istatistikçi, programcı, eğitim rehberi, biyolog, sosyal çalışmacı, psikolog, pedagog, sosyolog, hemşire, sağlık memuru, laborant, tekniker, teknisyen, teknik ressam, işaret dili tercümanı ve avukat kadrolarında ayrı ayrı veya birlikte en az üç yıl olmak üzere toplam en az beş yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+9) Çözümleyici kadrosuna atanabilmek için;
+<div>
+a) En az dört yıllık yüksekokul veya fakültelerin; bilgisayar, yazılım, elektrik, elektronik, elektrik-elektronik, elektronik ve haberleşme, endüstri, fizik, matematik mühendislikleri ile matematik, fizik veya istatistik bölümlerinden mezun olmak.
+<br>
+b) Programcı veya istatistikçi kadrolarında ayrı ayrı veya birlikte en az iki yıl olmak üzere toplam en az üç yıl hizmeti bulunmak.
+<br>
+c) En az iki programlama dilini bildiğini belgelemek.
+</div></div>
+
+<div>
+10) Koruma ve güvenlik şefi ve koruma ve güvenlik amiri kadrosuna atanabilmek için;
+<div>
+a) En az iki yıllık yükseköğrenim mezunu olmak.
+<br>
+b) Koruma ve güvenlik görevlisi kadrosunda en az üç yıl olmak üzere toplam en az beş yıl hizmeti bulunmak.
+<br>
+c) 10/6/2004 tarihli ve 5188 sayılı Özel Güvenlik Hizmetlerine Dair Kanunda belirtilen şartları taşımak.
+</div></div>
+
+<div>
+11) Bilgisayar işletmeni, veri hazırlama ve kontrol işletmeni kadrolarına atanabilmek için;
+<div>
+a) Fakülte veya yüksekokulların bilgisayar bölümü, adalet yüksekokulu, meslek yüksekokullarının adalet bölümü, adalet meslek lisesi veya diğer lise ve dengi okulların ticaret veya bilgisayar bölümlerinden mezun olmak.
+<br>
+b) En az lise veya dengi okul mezunu olup, başvuru tarihinde Millî Eğitim Bakanlığınca onaylı veya kamu kurumu ve kuruluşlarınca düzenlenen kurslar sonucu verilen bilgisayar sertifikasına sahip bulunmak.
+<br>
+c) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+12) Şoför kadrosuna atanabilmek için;
+<div>
+a) En az lise veya dengi okul mezunu olmak.
+<br>
+b) Hizmetin özelliğine göre 1 Ocak 2016 tarihi öncesi itibarıyla en az (B) sınıfı, 1 Ocak 2016 tarihi sonrası itibarıyla ise en az (D1) sınıfı sürücü belgesine sahip olmak.
+<br>
+c) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+13) Zabıt kâtibi kadrosuna atanabilmek için;
+<div>
+a) En az lise veya dengi okul mezunu olmak.
+<br>
+b) Adalet Bakanlığı Memur Sınav, Atama ve Nakil Yönetmeliği uyarınca yapılacak uygulamalı sınavda başarılı olmak.
+<br>
+c) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+14) Memur, sekreter, satınalma memuru, emanet memuru, tebligat memuru, veznedar, mübaşir ve santral memuru kadrosuna atanabilmek için;
+<div>
+a) En az lise veya dengi okul mezunu olmak.
+<br>
+b) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+15) Koruma ve güvenlik görevlisi kadrosuna atanabilmek için;
+<div>
+a) En az lise veya dengi okul mezunu olmak.
+<br>
+b) 5188 sayılı Kanunda belirtilen şartları taşımak.
+<br>
+c) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div></div>
+
+<div>
+16) İşaret dili tercümanı kadrosuna atanabilmek için;
+<div>
+a) En az lise veya dengi okul mezunu olmak.
+<br>
+b) Millî Eğitim Bakanlığı tarafından geçerliliği kabul edilmiş olan Türk İşaret Dili Yeterlilik Sınavından en az 70 puan almış olmak veya Millî Eğitim Bakanlığı izinli kurslar ile Millî Eğitim Bakanlığı tarafından düzenlenen işaret dili öğretici ve tercüman eğitimi programlarına katılarak kurs bitirme belgesi almış olmak veya Türk İşaret Dili Tercümanlık Sertifikasına sahip olmak.
+<br>
+c) Teknisyen yardımcısı, hizmetli, aşçı, kaloriferci, bekçi ve dağıtıcı kadrolarında ayrı ayrı veya birlikte en az bir yıl olmak üzere toplam en az iki yıl hizmeti bulunmak.
+</div> </div></div></div>
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Görevde Yükselme Sınavının İlanı ve Başvuru(4)
+
+ <div>
+
+Atama yapılacak kadroların belirlenmesi, duyuru ve başvuru
+<div>
+Madde 9 – (Başlığı ile birlikte değişik:RG-13/4/2014-28971)
+
+Görevde yükselme suretiyle atama yapılacak yerlerdeki kadroların sınıfı, unvanı, derecesi ve sayısı Bakanlıkça belirlenir.
+
+(Değişik fıkra:RG-7/4/2023-32156) Atama yapılacak boş kadroların ili, sınıfı, unvanı, derecesi, sayısı yazılı sınav tarihinden en az kırk beş gün önce duyurulur. Başvuru süresi en az beş iş günü olarak belirlenir.
+</div>
+
+Bu ilânda;
+ <div>
+1) Atama yapılacak kadroların (Ek ibare:RG-7/4/2023-32156) ili, sınıfı, unvanı, derecesi ve sayısı,
+<br>
+2) Başvuruda aranacak şartlar,
+<br>
+3) Başvuru yeri ve şekli,
+<br>
+4) Başvurunun başlangıç ve bitiş tarihleri,
+<br>
+5) Yazılı sınav konu başlıkları ve ilgili diğer hususlar,
+<br>
+gösterilir.</div>
+ <div>
+(Değişik fıkra:RG-7/4/2023-32156) İlan edilen kadrolar için belirlenen başvuru tarihinin son günü itibarıyla aranan nitelikleri taşıyan personel, başvuru şartlarını taşıdığı farklı unvanlı kadrolardan sadece biri için duyuruda belirtilen şekilde başvuruda bulunabilir.
+
+(Değişik fıkra:RG-7/4/2023-32156) Başvurular, adli destek ve mağdur hizmetleri müdür ve müdür yardımcısı kadroları ile merkez teşkilat kadroları için unvan; taşra kadroları için il ve unvan belirtilmek suretiyle yapılır.
+
+(Değişik fıkra:RG-7/4/2023-32156) Merkez teşkilat ve taşra kadrolarında görev yapan personel adli destek ve mağdur hizmetleri müdür ve müdür yardımcısı kadroları için yapılacak görevde yükselme sınavına başvurabilir.
+
+(Değişik fıkra:RG-7/4/2023-32156) Adli destek ve mağdur hizmetleri müdür ve müdür yardımcısı kadroları için yapılacak başvurular hariç olmak üzere;
+ <div>
+a) Taşra kadrolarında görev yapan personel, kadrolarının bulunduğu il taşra kadroları veya merkez teşkilat kadroları için,
+<br>
+b) Merkez teşkilat kadrolarında görev yapan personel ise merkez teşkilat kadroları veya taşra kadroları için,
+<br>
+yapılacak görevde yükselme sınavına başvurabilir.</div>
+
+(Ek fıkra:RG-7/4/2023-32156) Birden fazla unvana veya aynı unvan için birden fazla yere yapılan başvurular geçersiz sayılır.
+
+Aylıksız izinde bulunanlar ile ilgili mevzuat uyarınca verilmesi zorunlu olan izinleri kullanmakta olanların da sınava katılmaları mümkündür.
+
+Başvuruda bulunanların gerekli şartları taşıyıp taşımadıkları sınav kurulunca incelenir. Aranan şartları taşıyanlar Bakanlığın resmi internet sitesinde ilan edilir.
+</div></div>
+
+<div>
+Görevde yükselme eğitimi ve eğitime çağrılacak personelin seçimi
+<div>
+Madde 10 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Görevde yükselme eğitim programlarının hazırlanması
+<div>
+Madde 11 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Görevde yükselme eğitiminin konuları
+<div>
+Madde 12 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Görevde yükselme eğitimi
+<div>x
+Madde 13 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Görevde yükselme sınavına katılma
+<div>
+Madde 14 — (Mülga:RG-13/4/2014-28971)
+
+ </div></div>
+
+DÖRDÜNCÜ BÖLÜM <br>
+
+Görevde Yükselme Sınav Esasları
+<div>
+Yazılı sınav
+<div>
+Madde 15 – (Başlığı ile birlikte değişik:RG-13/4/2014-28971)
+
+(Değişik fıkra:RG-1/2/2020-31026) Yazılı sınav, duyuruda belirtilen konu başlıklarını kapsayacak biçimde Bakanlık tarafından yapılabileceği gibi, Ölçme, Seçme ve Yerleştirme Merkezi Başkanlığı, Milli Eğitim Bakanlığı veya yükseköğretim kurumlarından birine de yaptırılabilir. (Ek cümle:RG-7/4/2023-32156) Yazılı sınavın bahsi geçen kurum veya kuruluşlardan birine yaptırılması halinde, sınava ilişkin hususlar sınavın yaptırılacağı kurum veya kuruluş ile yapılacak protokolde düzenlenir. Sınav yüz tam puan üzerinden değerlendirilir ve en az altmış puan alanlar başarılı sayılır.
+<br>
+Yazılı sınav soruları aşağıdaki konulardan hazırlanır: 
+<div>
+a) T.C. Anayasası;
+ <div>
+1) Genel esaslar,
+<br>
+2) Temel hak ve ödevler,
+<br>
+3) Devletin temel organları,
+</div></div>
+
+<div>
+b) Atatürk ilkeleri ve inkılâp tarihi, ulusal güvenlik,
+</div>
+
+<div>
+c) Devlet teşkilâtı ile ilgili mevzuat,
+</div>
+
+<div>
+ç) 657 sayılı Devlet Memurları Kanunu ve ilgili mevzuat,
+</div>
+<div>
+d) Türkçe dil bilgisi ve yazışma ile ilgili kurallar,
+</div>
+
+<div>
+e) Halkla ilişkiler,
+</div>
+
+<div>
+f) Etik davranış ilkeleri,
+</div>
+
+<div>
+g) Bakanlık merkez teşkilâtı, adalet komisyonlarının yapısı ve görevleri ile yargı örgütü, Ulusal Yargı Ağı Bilişim Sistemi, 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanunu ve atanılacak görevin niteliği ile ilgili diğer konular.
+</div>
+Sınav sonuçları, görevde yükselme veya unvan değişikliği sınavından itibaren bir yıllık süreyi aşmamak üzere aynı unvanlı kadrolar için yapılacak müteakip sınava kadar geçerlidir.
+</div></div>
+
+<div>
+Sözlü sınav
+<div>
+Madde 15/A – (Ek:RG-13/4/2014-28971)
+
+(Değişik fıkra:RG-3/9/2024-32651) Yazılı sınavda en yüksek puan alan adaydan başlamak üzere ilan edilen kadro sayısının bir buçuk katı aday sözlü sınava alınır. İlan edilen kadro sayısının bir buçuk katının tam sayıyı sağlamaması durumunda yukarı tamamlamak suretiyle son adayla aynı puana sahip olan personelin tamamı sözlü sınava alınır.
+<br>
+İlgili personel, sınav kurulunun her bir üyesi tarafından;
+<div>
+a) Sınav konularına ilişkin bilgi düzeyi (Değişik ibare:RG-7/4/2023-32156) (20 puan),
+<br>
+b) Bir konuyu kavrayıp özetleme, ifade yeteneği ve muhakeme gücü (Değişik ibare:RG-7/4/2023-32156) (20 puan),
+<br>
+c) Liyakati, temsil kabiliyeti, tutum ve davranışlarının göreve uygunluğu (Değişik ibare:RG-7/4/2023-32156) (20 puan),
+<br>
+ç) Özgüveni, ikna kabiliyeti ve inandırıcılığı (15 puan),
+<br>
+d) Genel kültürü ve genel yeteneği (15 puan),
+<br>
+e) Bilimsel ve teknolojik gelişmelere açıklığı (Değişik ibare:RG-7/4/2023-32156) (10 puan),</div>
+<br>
+esas alınarak yüz tam puan üzerinden değerlendirilir. Her üyenin vermiş olduğu puanların aritmetik ortalaması alınarak personelin sözlü sınav puanı tespit edilir. Sözlü sınavda yüz üzerinden yetmiş ve üzeri puan alanlar başarılı sayılır.
+</div></div>
+
+<div>
+Başarı sıralaması
+<div>
+Madde 15/B – (Ek:RG-13/4/2014-28971) (Değişik:RG-4/4/2015-29316)
+
+Görevde yükselme suretiyle ilan edilen boş kadro sayısı kadar atama yapılmasında başarı puanı esas alınır. (Değişik cümle:RG-1/2/2017-29966) Başarı puanı yazılı ve sözlü sınav puanlarının aritmetik ortalaması esas alınmak suretiyle tespit edilir ve Bakanlığın resmi internet sitesinde ilan edilir.
+<br>
+Başarı puanlarının eşit olması hâlinde, sırasıyla;
+ <div>
+a) Hizmet süresi fazla olanlara,
+<br>
+b) Daha üst öğrenimi bitirmiş olanlara,
+<br>
+c) Üst öğrenim mezuniyet notu yüksek olanlara,</div>
+
+öncelik verilmek suretiyle, en yüksek puandan başlamak üzere başarı sıralaması belirlenir.
+
+(Ek fıkra:RG-7/4/2023-32156) Görevde yükselme sınavında başarılı olmalarına rağmen, ilan edilen kadro sayısı nedeniyle ataması yapılamayacak personelden asıl aday sayısını geçmeyecek sayıda personel, başarı sıralaması listesinde yedek olarak belirlenebilir.
+</div></div>
+
+<div>
+Sınav kurulları
+<div>
+Madde 16- (Başlığı İle Birlikte Değişik:RG-7/4/2023-32156) <br>
+
+Sınav kurulları Bakanlıkça belirlenir. <br>
+
+Yazılı sınav kurulu; Personel Genel Müdürü veya Personel Genel Müdür Yardımcılarından birinin başkanlığında, Bakanlıkta görevli hâkim ve savcı sınıfından dört üyenin katılımıyla toplam beş asıl üyeden oluşur. Aynı usulle yedek üyeler de belirlenir.
+<br>
+Sözlü sınav kurulu; Personel Genel Müdür Yardımcılarından birinin başkanlığında, Bakanlıkta görevli hâkim ve savcı sınıfından dört üyenin katılımıyla toplam beş asıl üyeden oluşur. Aynı usulle yedek üyeler de belirlenir. Gerektiğinde aynı usulle birden fazla sözlü sınav kurulu oluşturulabilir.
+<br>
+Sınav kurulları kurul üye tam sayısı ile toplanır ve oy çokluğuyla karar alır. Sınav kurullarının sekretarya hizmetleri Personel Genel Müdürlüğünce yürütülür.
+<br>
+Sınav kurulunun başkan ve üyeleri, kendilerinin veya eşlerinin ikinci dereceye kadar (bu derece dâhil) kan veya kayın hısımlarının katıldıkları görevde yükselme sınavının sınav kurullarında görev alamazlar. Bu durumda sınav kuruluna Bakanlık tarafından belirlenecek üye veya üyeler katılır.
+</div></div>
+
+<div>
+Sınav kurullarının görevleri
+<div>
+Madde 17 — (Değişik:RG-13/4/2014-28971) <br>
+
+Yazılı sınav kurulunun görevleri; görevde yükselme ve unvan değişikliği yoluyla yapılacak atamalar için görevde yükselme ve unvan değişikliği sınavının hangi kurum tarafından yapılacağını ve sınav tarihini belirlemek, yazılı sınav sorularını hazırlamak veya hazırlatmak, yazılı sınavların yapılmasını ve değerlendirilmesini sağlamak, yazılı sınav sonuçlarının ve başarılı olanların duyurulmasını sağlamak, yazılı sınava ilişkin diğer iş ve işlemleri yürütmektir.
+<br>
+Yazılı sınav kurulu, (Değişik ibare:RG-7/4/2023-32156) taşra kadroları için yapılacak yazılı sınavlarda sınav başvurularının alınması, evrakların incelenmesi ve Bakanlığa gönderilmesi gibi duyuruda belirtilen bir kısım görevlerini ilgili adalet komisyonları aracılığıyla yürütebilir.
+<br>
+Sözlü sınav kurulunun görevleri; (Değişik ibare:RG-1/2/2017-29966) sözlü sınava katılmaya hak kazananları belirlemek ve duyurmak, sözlü sınav tarihini belirlemek, sözlü sınav sorularını hazırlamak veya hazırlatmak, sözlü sınavları yapmak ve değerlendirmek, sözlü sınav sonucuna göre başarı listesinin düzenlenmesini ve ilanını sağlamak, sözlü sınava ilişkin itirazları sonuçlandırmak, sözlü sınava ilişkin diğer iş ve işlemleri yürütmektir.
+</div></div>
+
+<div>
+Sınav şekli
+<div>
+Madde 18 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Sınavda başarı puanı
+<div>
+Madde 19 — (Mülga:RG-13/4/2014-28971)
+</div></div>
+
+<div>
+Sınav sonuçlarının açıklanması ve itiraz
+<div>
+Madde 20 — (Değişik:RG-13/4/2014-28971)
+
+Yazılı sınav sonuçları, (Mülga ibare:RG-14/5/2016-29712) (...) Bakanlık internet sitesinde ilan edilir. Sınav sonuçlarının ilanından itibaren beş iş günü içerisinde sınavı yapan kuruma itiraz edilebilir. İtiraz sonuçları sınavı yapan kurum tarafından itiraz sahiplerine ve gerektiğinde Bakanlığa bildirilir.
+
+(Değişik:RG-4/4/2015-29316) Sözlü sınav sonuçları, (Mülga ibare:RG-1/2/2017-29966) (…)Bakanlık internet sitesinde ilan edilir. Sınav sonuçlarının ilanından itibaren beş iş günü içerisinde sınav kuruluna itiraz edilebilir. İtiraz başvuruları on iş günü içerisinde sınav kurulunca incelenerek kesin olarak karara bağlanır ve sonuçları Personel Genel Müdürlüğü tarafından itiraz sahiplerine bildirilir.
+
+(Değişik fıkra:RG-1/2/2020-31026) Yazılı sınav sorularından hatalı olduğu kabul edilenler, değerlendirme dışı bırakılarak geçerli soruların puan değerinin yeniden saptanması suretiyle puanlama yapılır.
+</div></div>
+
+<div>
+Sınav belgeleri
+<div>
+Madde 21 — (Değişik:RG-1/2/2020-31026)
+
+Görevde yükselme ve unvan değişikliği sınavına ilişkin belgelerin saklanması ve imhası, 16/7/2018 tarihli ve 30480 sayılı Resmî Gazete’de yayımlanan 11 sayılı Devlet Arşivleri Başkanlığı Hakkında Cumhurbaşkanlığı Kararnamesi ile 18/10/2019 tarihli ve 30922 sayılı Resmî Gazete’de yayımlanan Devlet Arşiv Hizmetleri Hakkında Yönetmelik hükümlerine tabidir.
+</div></div>
+
+<div>
+Atama
+<div>
+Madde 22- (Başlığı İle Birlikte Değişik:RG-7/4/2023-32156)
+
+Görevde yükselme sınavında başarılı olanlardan; taşra kadrolarına atanacaklar başarı sıralaması ve tercihlerine göre, merkez teşkilat kadrolarına atanacaklar ise başarı sıralamasına göre, ilan edilen boş kadro sayısını geçmeyecek şekilde, kadro ve ihtiyaç durumu dikkate alınarak atanırlar.
+
+Tercihte bulunmayanlar ile ilan edilen mahal sayısı kadar tercihte bulunmaması sebebiyle atanamayanlar, atanma haklarından vazgeçmiş sayılırlar.
+
+Atanmaya hak kazandıkları kadroya ilişkin görevlere mevzuatla öngörülen süre içinde başlamayanların söz konusu atanma hakları sona erer.
+
+Haklarında atama şartlarının kaybedilmesini gerektirecek nitelikteki eylemlerinden dolayı adlî veya idarî bir kovuşturma veya soruşturma bulunanların atamaları kovuşturma ve soruşturma sonuçlanıncaya kadar bekletilir.
+
+Duyurulan kadrolardan; <br>
+<div>
+a) Atanma şartlarını taşımadıkları için sınavların geçersiz sayılması veya bu sebeple atamaların iptal edilmesi, atanılan göreve geçerli bir mazeret olmaksızın süresi içinde başlanılmaması ya da atanma hakkından vazgeçilmesi,
+<br>
+b) Emeklilik, ölüm, memurluktan çekilme veya çıkarılma, başka unvanlı kadro veya pozisyonlara ya da başka bir kuruma naklen atanma,
+
+sebepleriyle boş kalan veya boşalanlara, başarı sıralamasının kesinleştiği tarihten itibaren altı aylık süreyi aşmamak üzere aynı unvanlı kadrolar için yapılacak müteakip sınava ilişkin duyuruya kadar, belirlenmiş ise; taşra kadroları için başvurulan ildeki yedekler arasından, adli destek ve mağdur hizmetleri müdür ve müdür yardımcısı kadroları ile merkez teşkilat kadroları için belirlenen yedekler arasından başarı listesindeki sıralamaya göre atama yapılabilir.
+
+Atama öncesi veya sonrası herhangi bir nedenle görevi kabul etmekten vazgeçenlerin aynı sınava dayalı olarak atamaları yapılamaz.</div>
+
+Görevde yükselme sınavına herhangi bir sebeple katılmayanlar ile başarısız olan veya yedeklerden altı ay içindeki müteakip sınava ilişkin duyuruya kadar atanmamış olanlar ya da atanma haklarından herhangi bir sebeple feragat edenler, aynı unvanlı kadrolara yapılacak atamalar için bu Yönetmelikte öngörülen bütün usul ve esaslara tabidir.
+
+(Mülga sekizinci fıkra: RG-19/6/2025-32931)</div></div>
+
+
+<div>
+Engellilerin sınavları (Değişik başlık:RG-13/4/2014-28971)
+<div>
+Madde 23 — Bakanlık, gerekli şartları taşıyan ve atanılacak görevi yapabilecek durumda bulunan (Değişik ibare:RG-13/4/2014-28971) engellilerin sınavlarının yapılabilmesi için gerekli tedbirleri alır.
+</div></div>
+
+<div>
+Yönetmeliğin uygulanmayacağı durumlar
+<div>
+Madde 24 — Bu Yönetmelik hükümleri; ilk defa açıktan atama ile 24/11/1994 tarihli ve 4046 sayılı Kanun hükümlerine göre özelleştirilen kuruluşlardan yapılacak ilk atamalarda uygulanmaz.
+</div></div>
+
+<div>
+Unvan değişikliği sınavı ve atanma şartları(2)
+<div>
+Madde 25- (Değişik:RG-7/4/2023-32156)
+
+5 inci maddede belirtilen unvan değişikliğine tâbi kadrolara personelin atanması görevde yükselme sınavına ilişkin usul ve esaslar çerçevesinde yapılacak unvan değişikliği sınavı sonucundaki başarısına göre gerçekleştirilir.
+
+Başvurular unvan belirtilmek suretiyle yapılır. Birden fazla unvan için yapılan başvurular geçersiz sayılır.
+
+Unvan değişikliği sınavında başarılı olanlar başarı sıralaması ve tercihlerine göre, ilan edilen boş kadro sayısını geçmeyecek şekilde, kadro ve ihtiyaç durumu dikkate alınarak atanırlar.
+
+Tercihte bulunmayanlar ile ilan edilen mahal sayısı kadar tercihte bulunmaması sebebiyle atanamayanlar, atanma haklarından vazgeçmiş sayılırlar.
+<br>
+Duyurulan kadrolardan; 
+<div>
+a) Atanma şartlarını taşımadıkları için sınavların geçersiz sayılması veya bu sebeple atamaların iptal edilmesi, atanılan göreve geçerli bir mazeret olmaksızın süresi içinde başlanılmaması ya da atanma hakkından vazgeçilmesi,
+<br>
+b) Emeklilik, ölüm, memurluktan çekilme veya çıkarılma, başka unvanlı kadrolara veya pozisyonlara ya da başka bir kuruma naklen atanma,
+
+sebepleriyle boş kalan veya boşalanlara, başarı sıralamasının kesinleştiği tarihten itibaren altı aylık süreyi aşmamak üzere aynı unvanlı kadrolar için yapılacak müteakip sınava ilişkin duyuruya kadar, belirlenmiş ise yedekler arasından başarı sırasına göre atama yapılabilir.
+
+Unvan değişikliği yazılı sınavları, görev alanları ve atama yapılacak görevin niteliğine ilişkin konularda yaptırılır.
+
+Bu sınava katılacaklarda Bakanlıkta veya öğrenim durumlarıyla ilgisi olmayan görevlerde belirli bir süre hizmet yapmış olma şartı aranmaz.
+
+Bu Yönetmelik kapsamındaki personelden doktora öğrenimini bitirmiş olanlar, unvan değişikliği sınavına katılmaksızın öğrenimle ihraz edilen görevlere atanabilirler.
+
+(Ek fıkra:RG-19/6/2025-32931) Atama öncesi veya sonrası herhangi bir nedenle görevi kabul etmekten vazgeçenlerin aynı sınava dayalı olarak atamaları yapılamaz.
+
+(Ek fıkra:RG-19/6/2025-32931) Unvan değişikliği sınavına herhangi bir sebeple katılmayanlar ile başarısız olan veya yedeklerden altı ay içindeki müteakip sınava ilişkin duyuruya kadar atanmamış olanlar ya da atanma haklarından herhangi bir sebeple feragat edenler, aynı unvanlı kadrolara yapılacak atamalar için bu Yönetmelikte öngörülen bütün usul ve esaslara tabidir.
+</div>
+
+
+Unvan değişikliği suretiyle atanacaklarda aranacak şartlar şunlardır: 
+<div>
+
+a) Kütüphaneci, Mühendis, Mimar, İstatistikçi, Öğretmen, Çocuk Eğitimcisi, Eğitim Rehberi, Biyolog, Sosyal Çalışmacı, Psikolog, Pedagog, Sosyolog kadrolarına atanabilmek için;
+ <div>
+1) En az fakülte veya dört yıllık yüksekokulların ilgili bölümlerinden mezun olmak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+<div>
+b) Mütercim kadrosuna atanabilmek için;
+<div>
+1) Fakülte veya dört yıllık yüksekokulların filoloji, mütercim ve tercümanlık bölümlerinden veya ilgili diğer bölümlerden mezun olmak,
+<br>
+2) Yapılacak sınavın son başvuru tarihi itibarıyla 5 yıl içerisinde alınmış, YDS/e-YDS’den en az (B) düzeyinde ya da dil yeterliği bakımından buna denkliği ÖSYM tarafından kabul edilen ve uluslararası geçerliliği bulunan başka bir belgeye sahip olmak,
+<br>
+3) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+<div>
+
+c) Hemşire, Sağlık Memuru, Laborant kadrosuna atanabilmek için;
+<div>
+1) Bu unvanları veren fakültelerin, yüksekokulların veya meslek liselerinin ilgili bölümlerinden mezun olmak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+<div>
+ç) Teknik Ressam kadrolarına atanabilmek için;
+<div>
+1) Bu unvanları veren yüksekokul, meslek liseleri veya teknik liselerin ilgili bölümlerinden mezun olmak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+<div>
+d) Teknisyen kadrosuna atanabilmek için;
+<div>
+1) 29/4/1992 tarihli ve 3795 sayılı Bazı Lise, Okul ve Fakülte Mezunlarına Unvan Verilmesi Hakkında Kanunda teknisyen için belirtilen öğrenim şartını taşımak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,
+</div></div>
+
+<div>
+e) Tekniker kadrosuna atanabilmek için;
+<div>
+1) 3795 sayılı Kanunda tekniker ve yüksek tekniker için belirtilen öğrenim şartını taşımak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,
+</div></div>
+
+<div>
+f) Avukat kadrosuna atanabilmek için;
+<div>
+1) Avukatlık ruhsatına sahip olmak,
+<br>
+2) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+<div>
+g) Programcı kadrosuna atanabilmek için;
+<div>
+1) En az iki yıllık yüksekokulların bilgisayar programcılığı bölümünden mezun olmak,
+<br>
+2) En az bir programlama dili bildiğini belgelemek,
+<br>
+3) Yapılan unvan değişikliği sınavında başarılı olmak,</div></div>
+
+gerekir.</div></div>
+
+
+
+BEŞİNCİ BÖLÜM <br>
+
+Çeşitli Hükümler
+<div>
+Bu yönetmelikte hüküm bulunmayan haller
+<div>
+Madde 26 — Bu Yönetmelikte hüküm bulunmayan hallerde (Değişik ibare:RG-9/1/2011-27810) Kamu Kurum ve Kuruluşlarında Görevde Yükselme ve Unvan Değişikliği Esaslarına Dair Genel Yönetmelik hükümleri uygulanır.
+</div></div>
+
+</div>
+Yürürlükten kaldırma
+<div>
+Madde 27 — 11/2/2000 tarihli ve 23961 sayılı Resmî Gazete’de yayımlanarak yürürlüğe giren Adalet Bakanlığı Görevde Yükselme Yönetmeliği yürürlükten kaldırılmıştır.
+</div></div>
+
+<div>
+Geçici Madde 1 — Bu Yönetmelik kapsamına giren unvanları, ilgili mevzuatları uyarınca kazananların hakları saklıdır. (Değişik cümle:RG-9/1/2011-27810) 18/4/1999 tarihinde görevde bulunan ve aynı tarih itibarıyla iki yıllık yükseköğrenim mezunu olanlar, diğer koşullara sahip oldukları takdirde, 8 inci maddenin uygulanması bakımından dört yıllık yükseköğrenim mezunu kabul edilirler.
+</div>
+
+<div>
+Geçici Madde 2 — (Ek:RG-29/12/2005-26038)</div>
+
+
+<div>
+Bu Yönetmeliğin yayımı tarihinde devam eden görevde yükselme sınavları ile sınavları kazanmış ancak henüz atamaları gerçekleştirilmemiş personele ilişkin işlemler bu Yönetmelikten önceki hükümlere göre sonuçlandırılır.
+</div>
+
+<div>
+Geçici Madde 3 – (Ek:RG-7/4/2023-32156)
+</div>
+
+<div>
+Bu maddeyi ihdas eden Yönetmeliğin yürürlüğe girdiği tarihten önce duyurusu yapılmış görevde yükselme ve unvan değişikliğine ilişkin iş ve işlemler, duyurunun yapıldığı tarihte yürürlükte bulunan hükümlere göre tamamlanır.
+</div>
+
+<div>
+Geçici Madde 4- (Ek:RG-3/9/2024-32651)
+</div>
+
+<div>
+Bu maddenin yürürlüğe girdiği tarihten önce duyurusu yapılmış personel alımına ilişkin işlemler, duyurunun yapıldığı tarihte yürürlükte bulunan hükümlere göre tamamlanır.
+</div>
+
+<div>
+Geçici Madde 5- (Ek:RG-19/6/2025-32931)
+</div>
+
+<div>
+Bu maddenin yürürlüğe girdiği tarihten önce duyurusu yapılmış görevde yükselme ve unvan değişikliğine ilişkin iş ve işlemler, duyurunun yapıldığı tarihte yürürlükte bulunan hükümlere göre tamamlanır.
+</div>
+
+<div>
+Yürürlük
+<div>
+Madde 28 — Bu Yönetmelik yayımı tarihinde yürürlüğe girer.
+</div></div>
+
+<div>
+	Yürütme
+<div>
+Madde 29 — Bu Yönetmelik hükümlerini Adalet Bakanı yürütür.
+</div></div>
+ 
+ 
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button> 
+</div>
+
+<script>				
+var surukleniyor = false;
+var offsetX, offsetY;
+	
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+	
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+	
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+	
+	document.addEventListener('mouseup', function() { surukleniyor = false;	}); 
+</script>
+
+</body>
+</html>
+{% endblock%}	

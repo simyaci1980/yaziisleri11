@@ -1,0 +1,993 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ; 
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+a{color: white}
+
+ul li {	float: left;margin-right: 20px;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}	
+
+.span{color: chocolate;}
+
+.ark{background-color:black; border-radius: 10px; }
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white; }
+.kim{color:aqua; font-size: larger; background-color:mediumseagreen;}
+
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }	
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}	  
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+	
+	}	
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+	
+	
+
+
+	
+.asi{
+		background-color: rgba(1, 53, 37,0.1); 
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+		
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;	
+	top: 5;
+	width: 100%;
+	position: fixed; 
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{	
+	background-color: rgb(173, 24, 44);
+	background-position: center;	
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}		
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;	
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}	
+.soru{
+	cursor: pointer;	
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}	
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}	
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}	
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}	
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;		
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+	
+</style>
+<title>Bilgi Edin</title>
+
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ; 
+		} }
+	     
+	
+	
+	
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon 
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için 		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için 
+		
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ() 
+		metınKim() 	}
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function kimmorlasss(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }  
+		
+	function kimuyp(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function kimdahe(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} } 
+		
+	function kimyes(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} } 	
+		
+	function metınArk(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function metınDık(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınEDİ(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınYes(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function metındmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }	
+	
+	function metınkır(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }	
+
+	function morlas(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikcho(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function dikuyp(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }		
+
+	function dikkırmızı(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }			
+	
+	function morlasss(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }				
+	
+	function arkuyp(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function arkdahe(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }	
+
+	function metınmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikles(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }			
+		
+	function chola(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }			
+	
+	function dahadayeni(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }	
+	 
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor 
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))	
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')		 
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık 
+			} 
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+	
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+	
+	
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+	
+	}	
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor 
+		element.style.color="red";
+		element.style.fontWeight="bold"}	 
+	 
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative" 	
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+	
+	   function DivResetle(){
+		
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ; 
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  } 
+	
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">		
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button> 
+	</div> 
+	
+	<br><br><br>
+<div id="kal" class="kal"> BİLGİ EDİNME HAKKI KANUNU
+</div> 
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+		
+	<p> 
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>	
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+	  
+	<script>			
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};}); 		
+	  </script> 
+	  
+  
+	  
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>	
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br> <hr>
+	   
+  
+
+Kanun Numarası : 4982<br>
+Kabul Tarihi : 9/10/2003<br>
+Yayımlandığı Resmî Gazete : Tarih : 24/10/2003 Sayı : 25269<br>
+Yayımlandığı Düstur : Tertip : 5 Cilt : 42<br><br>
+
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam ve Tanımlar<br>
+<div>
+Amaç
+<div>
+Madde 1- Bu Kanunun amacı; demokratik ve şeffaf yönetimin gereği olan eşitlik,
+tarafsızlık ve açıklık ilkelerine uygun olarak kişilerin bilgi edinme hakkını kullanmalarına
+ilişkin esas ve usulleri düzenlemektir.</div></div>
+<div>
+Kapsam <div>
+Madde 2- Bu Kanun; kamu kurum ve kuruluşları ile kamu kurumu niteliğindeki
+meslek kuruluşlarının faaliyetlerinde uygulanır.
+1.11.1984 tarihli ve 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun hükümleri
+saklıdır.
+(Ek fıkra: 12/7/2013-6495/33 md.; İptal fıkra: Anayasa Mahkemesi’nin 4/12/2014
+tarihli ve E.:2013/114, K.:2014/184 sayılı Kararı ile.)</div></div>
+<div>
+	
+	Tanımlar <div>
+Madde 3- Bu Kanunda geçen; <div>
+a) Kurum ve kuruluş: Bu Kanunun 2 nci maddesinde geçen ve kapsama dahil olan
+bilgi edinme başvurusu yapılacak bütün makam ve mercileri,
+b) Başvuru sahibi: Bu Kanun kapsamında bilgi edinme hakkını kullanarak kurum ve
+kuruluşlara başvuran gerçek ve tüzel kişileri,
+c) Bilgi: Kurum ve kuruluşların sahip oldukları kayıtlarda yer alan bu Kanun
+kapsamındaki her türlü veriyi,
+d) Belge: Kurum ve kuruluşların sahip oldukları bu Kanun kapsamındaki yazılı, basılı
+veya çoğaltılmış dosya, evrak, kitap, dergi, broşür, etüt, mektup, program, talimat, kroki, plân,
+film, fotoğraf, teyp ve video kaseti, harita, elektronik ortamda kaydedilen her türlü bilgi,
+haber ve veri taşıyıcılarını,
+e) Bilgi veya belgeye erişim: İstenen bilgi veya belgenin niteliğine göre, kurum ve
+kuruluşlarca, başvuru sahibine söz konusu bilgi veya belgenin bir kopyasının verilmesini,
+kopya verilmesinin mümkün olmadığı hâllerde, başvuru sahibinin bilgi veya belgenin aslını
+inceleyerek not almasına veya içeriğini görmesine veya işitmesine izin verilmesini,
+f) Kurul: Bilgi Edinme Değerlendirme Kurulunu,
+ifade eder.</div></div></div>
+<div>
+	
+	İKİNCİ BÖLÜM <div>
+Bilgi Edinme Hakkı ve Bilgi Verme Yükümlülüğü</div></div>
+<div>
+Bilgi edinme hakkı <div>
+	Madde 4- Herkes bilgi edinme hakkına sahiptir.
+Türkiye'de ikamet eden yabancılar ile Türkiye'de faaliyette bulunan yabancı tüzel
+kişiler, isteyecekleri bilgi kendileriyle veya faaliyet alanlarıyla ilgili olmak kaydıyla ve
+karşılıklılık ilkesi çerçevesinde, bu Kanun hükümlerinden yararlanırlar.
+Türkiye'nin taraf olduğu uluslararası sözleşmelerden doğan hak ve yükümlülükleri saklıdır.</div></div>
+
+<div>
+Bilgi verme yükümlülüğü <div>
+	Madde 5- Kurum ve kuruluşlar, bu Kanunda yer alan istisnalar dışındaki her türlü bilgi
+veya belgeyi başvuranların yararlanmasına sunmak ve bilgi edinme başvurularını etkin, süratli
+ve doğru sonuçlandırmak üzere, gerekli idarî ve teknik tedbirleri almakla yükümlüdürler.
+Bu Kanun yürürlüğe girdiği tarihten itibaren diğer kanunların bu Kanuna aykırı
+hükümleri uygulanmaz.</div></div>
+
+<div>
+	
+	ÜÇÜNCÜ BÖLÜM <div>
+		Bilgi Edinme Başvurusu</div></div>
+
+		<div>
+Başvuru usulü  <div>
+Madde 6- Bilgi edinme başvurusu, başvuru sahibinin adı ve soyadı, imzası, oturma
+yeri veya iş adresini, başvuru sahibi tüzel kişi ise tüzel kişinin unvanı ve adresi ile yetkili
+kişinin imzasını ve yetki belgesini içeren dilekçe ile istenen bilgi veya belgenin bulunduğu
+kurum veya kuruluşa yapılır. Bu başvuru, kişinin kimliğinin ve imzasının veya yazının
+kimden neşet ettiğinin tespitine yarayacak başka bilgilerin yasal olarak belirlenebilir olması
+kaydıyla elektronik ortamda veya diğer iletişim araçlarıyla da yapılabilir.
+Dilekçede, istenen bilgi veya belgeler açıkça belirtilir.</div></div>
+
+<div>
+İstenecek bilgi veya belgenin niteliği <div>
+Madde 7- Bilgi edinme başvurusu, başvurulan kurum ve kuruluşların ellerinde
+bulunan veya görevleri gereği bulunması gereken bilgi veya belgelere ilişkin olmalıdır.
+Kurum ve kuruluşlar, ayrı veya özel bir çalışma, araştırma, inceleme ya da analiz
+neticesinde oluşturulabilecek türden bir bilgi veya belge için yapılacak başvurulara olumsuz
+cevap verebilirler. <br>
+İstenen bilgi veya belge, başvurulan kurum ve kuruluştan başka bir yerde bulunuyorsa,
+başvuru dilekçesi bu kurum ve kuruluşa gönderilir ve durum ilgiliye yazılı olarak bildirilir.</div></div>
+
+<div>Yayımlanmış veya kamuya açıklanmış bilgi veya belgeler <div>
+Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri
+yollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.
+Ancak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve
+nerede yayımlandığı veya açıklandığı başvurana bildirilir.</div></div>
+<div>
+Gizli bilgileri ayırarak bilgi veya belge verme <div>
+Madde 9- İstenen bilgi veya belgelerde, gizlilik dereceli veya açıklanması yasaklanan
+bilgiler ile açıklanabilir nitelikte olanlar birlikte bulunuyor ve bunlar birbirlerinden
+ayrılabiliyorsa, söz konusu bilgi veya belge, gizlilik dereceli veya açıklanması yasaklanan
+bilgiler çıkarıldıktan sonra başvuranın bilgisine sunulur. Ayırma gerekçesi başvurana yazılı
+olarak bildirilir.</div></div>
+<div>
+Bilgi veya belgeye erişim <div>
+Madde 10- Kurum ve kuruluşlar, başvuru sahibine istenen belgenin onaylı bir
+kopyasını verirler. <div>
+Bilgi veya belgenin niteliği gereği kopyasının verilmesinin mümkün olmadığı veya
+kopya çıkarılmasının aslına zarar vereceği hâllerde, kurum ve kuruluşlar ilgilinin;</div> <div>
+a) Yazılı veya basılı belgeler için, söz konusu belgenin aslını incelemesi ve not
+alabilmesini,  <br>
+b) Ses kaydı şeklindeki bilgi veya belgelerde bunları dinleyebilmesini,<br>
+c) Görüntü kaydı şeklindeki bilgi veya belgelerde bunları izleyebilmesini,
+sağlarlar.</div>
+Bilgi veya belgenin yukarıda belirtilenlerden farklı bir şekilde elde edilmesi mümkün
+ise, belgeye zarar vermemek koşuluyla bu olanak sağlanır.
+Başvurunun yapıldığı kurum ve kuruluş, erişimine olanak sağladığı bilgi veya belgeler
+için başvuru sahibinden erişimin gerektirdiği maliyet tutarı kadar bir ücreti bütçeye gelir </div></div>
+<div>
+Bilgi veya belgeye erişim süreleri <div>
+Madde 11- Kurum ve kuruluşlar, başvuru üzerine istenen bilgi veya belgeye erişimi
+onbeş iş günü içinde sağlarlar. Ancak istenen bilgi veya belgenin, başvurulan kurum ve
+kuruluş içindeki başka bir birimden sağlanması; başvuru ile ilgili olarak bir başka kurum ve
+kuruluşun görüşünün alınmasının gerekmesi veya başvuru içeriğinin birden fazla kurum ve
+kuruluşu ilgilendirmesi durumlarında bilgi veya belgeye erişim otuz iş günü içinde sağlanır.
+Bu durumda, sürenin uzatılması ve bunun gerekçesi başvuru sahibine yazılı olarak ve onbeş iş
+günlük sürenin bitiminden önce bildirilir. <br>
+10 uncu maddede belirtilen bilgi veya belgelere erişim için gereken maliyet tutarının
+idare tarafından başvuru sahibine bildirilmesiyle onbeş iş günlük süre kesilir. Başvuru sahibi
+onbeş iş günü içinde ücreti ödemezse talebinden vazgeçmiş sayılır. </div></div>
+
+<div>
+Başvuruların cevaplandırılması <div>
+Madde 12- Kurum ve kuruluşlar, bilgi edinme başvurularıyla ilgili cevaplarını yazılı
+olarak veya elektronik ortamda başvuru sahibine bildirirler. Başvurunun reddedilmesi hâlinde
+bu kararın gerekçesi ve buna karşı başvuru yolları belirtilir.</div></div>
+<div>
+İtiraz usulü <div>
+Madde 13- Bilgi edinme istemi (…)1
+reddedilen başvuru sahibi, yargı yoluna
+başvurmadan önce kararın tebliğinden itibaren onbeş gün içinde Kurula itiraz edebilir. Kurul,
+bu konudaki kararını otuz iş günü içinde verir. Kurum ve kuruluşlar, Kurulun istediği her
+türlü bilgi veya belgeyi onbeş iş günü içinde vermekle yükümlüdürler.
+Kurula itiraz, başvuru sahibinin idarî yargıya başvurma süresini durdurur. </div></div>
+<div>
+Bilgi Edinme Değerlendirme Kurulu23 <div>
+Madde 14- Bilgi edinme başvurusuyla ilgili yapılacak itirazlar üzerine, (…)3
+verilen kararları incelemek ve kurum ve kuruluşlar için bilgi edinme hakkının kullanılmasına ilişkin
+olarak kararlar vermek üzere; Bilgi Edinme Değerlendirme Kurulu oluşturulmuştur.
+Kurul; birer üyesi Yargıtay ve Danıştay genel kurullarının kendi kurumları içinden
+önerecekleri ikişer aday, birer üyesi ceza hukuku, idare hukuku ve anayasa hukuku
+alanlarında profesör veya doçent unvanına sahip kişiler, bir üyesi Türkiye Barolar Birliğinin
+baro başkanı seçilme yeterliliğine sahip kişiler içinden göstereceği iki aday, iki üyesi en az
+genel müdür düzeyinde görev yapmakta olanlar ve bir üyesi de Adalet Bakanının önerisi
+üzerine bu Bakanlıkta idarî görevlerde çalışan hâkimler arasından Cumhurbaşkanınca
+seçilecek dokuz üyeden oluşur. <br>
+Kurul üyeliğine önerilen adayların muvafakatları aranır. <br>
+Kurul Başkanı, kurul üyelerince kendi aralarından seçilir. <br>
+Kurul, en az ayda bir defa veya ihtiyaç duyulduğu her zaman Başkanın çağrısı üzerine
+toplanır. <br>
+Kurul üyelerinin görev süreleri dört yıldır. Görev süresi sona erenler yeniden
+seçilebilirler. Görev süresi dolmadan görevinden ayrılan üyenin yerine aynı usule göre seçilen
+üye, yerine seçildiği üyenin görev süresini tamamlar. Yeni seçilen Kurul göreve başlayıncaya
+kadar önceki Kurul görevine devam eder. <br>
+Kurul üyelerine 10.2.1954 tarihli ve 6245 sayılı Harcırah Kanunu hükümleri saklı
+kalmak kaydıyla fiilen görev yaptıkları her gün için (3000) gösterge rakamının memur aylık
+katsayısı ile çarpımı sonucu bulunacak miktarda huzur hakkı ödenir. Bu ödemelerde damga
+vergisi hariç herhangi bir kesinti yapılmaz. (Ek cümle: 17/11/2005-5432/2 md.) Bir ayda
+fiilen görev yapılan gün sayısının dördü aşması halinde, aşan günler için huzur hakkı
+ödenmez. <br>
+Kurul, belirleyeceği konularda komisyonlar ve çalışma grupları kurabilir; ayrıca
+gerekli gördüğü takdirde, ilgili bakanlık ile diğer kurum ve kuruluşların ve sivil toplum
+örgütlerinin temsilcilerini bilgi almak üzere toplantılarına katılmaya davet edebilir.
+Kurulun sekretarya hizmetleri Adalet Bakanlığı tarafından yerine getirilir.
+Kurulun görev ve çalışmalarına ilişkin esas ve usuller Cumhurbaşkanlığınca
+hazırlanarak yürürlüğe konulacak bir yönetmelikle düzenlenir.</div></div>
+
+
+DÖRDÜNCÜ BÖLÜM
+<div>
+Bilgi Edinme Hakkının Sınırları
+Yargı denetimi dışında kalan işlemler <div>
+Madde 15- Yargı denetimi dışında kalan idarî işlemlerden kişinin çalışma hayatını ve
+mesleki onurunu etkileyecek nitelikte olanlar, bu Kanun kapsamına dahildir. Bu şekilde
+sağlanan bilgi edinme hakkı işlemin yargı denetimine açılması sonucunu doğurmaz. </div></div>
+<div>
+Devlet sırrına ilişkin bilgi veya belgeler <div>
+Madde 16- Açıklanması hâlinde Devletin emniyetine, dış ilişkilerine, millî
+savunmasına ve millî güvenliğine açıkça zarar verecek ve niteliği itibarıyla Devlet sırrı olan
+gizlilik dereceli bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır.</div></div>
+
+<div>
+Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler <div>
+Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin
+ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya
+belgeler, bu Kanun kapsamı dışındadır.</div></div>
+
+<div>
+İstihbarata ilişkin bilgi veya belgeler <div>
+Madde 18- Sivil ve askerî istihbarat birimlerinin görev ve faaliyetlerine ilişkin bilgi
+veya belgeler, bu Kanun kapsamı dışındadır.
+Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek
+nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir. </div></div>
+
+ <div>
+İdarî soruşturmaya ilişkin bilgi veya belgeler <div>
+Madde 19- Kurum ve kuruluşların yetkili birimlerince yürütülen idarî soruşturmalarla
+ilgili olup, açıklanması veya zamanından önce açıklanması hâlinde; <div>
+a) Kişilerin özel hayatına açıkça haksız müdahale sonucunu doğuracak, <br>
+b) Kişilerin veya soruşturmayı yürüten görevlilerin hayatını ya da güvenliğini tehlikeye
+sokacak,<br>
+c) Soruşturmanın güvenliğini tehlikeye düşürecek, <br>
+d) Gizli kalması gereken bilgi kaynağının açığa çıkmasına neden olacak veya
+soruşturma ile ilgili benzeri bilgi ve bilgi kaynaklarının temin edilmesini güçleştirecek,
+bilgi veya belgeler, bu Kanun kapsamı dışındadır.</div></div></div>
+
+<div>
+Adlî soruşturma ve kovuşturmaya ilişkin bilgi veya belgeler <div>
+Madde 20- Açıklanması veya zamanından önce açıklanması hâlinde; <div>
+a) Suç işlenmesine yol açacak, <br>
+b) Suçların önlenmesi ve soruşturulması ya da suçluların kanunî yollarla yakalanıp
+kovuşturulmasını tehlikeye düşürecek, <br>
+
+c) Yargılama görevinin gereğince yerine getirilmesini engelleyecek, <br>
+d) Hakkında dava açılmış bir kişinin adil yargılanma hakkını ihlâl edecek,
+Nitelikteki bilgi veya belgeler, bu Kanun kapsamı dışındadır. <br>
+4.4.1929 tarihli ve 1412 sayılı Ceza Muhakemeleri Usulü Kanunu, 18.6.1927 tarihli ve
+1086 sayılı Hukuk Usulü Muhakemeleri Kanunu, 6.1.1982 tarihli ve 2577 sayılı İdari
+Yargılama Usulü Kanunu ve diğer özel kanun hükümleri saklıdır.</div></div></div>
+
+<div>
+Özel hayatın gizliliği <div>
+Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği
+kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve
+haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler,
+bilgi edinme hakkı kapsamı dışındadır. <br>
+Kamu yararının gerektirdiği hâllerde, kişisel bilgi veya belgeler, kurum ve kuruluşlar
+tarafından, ilgili kişiye en az yedi gün önceden haber verilerek yazılı rızası alınmak koşuluyla
+açıklanabilir. </div></div>
+
+<div>
+Haberleşmenin gizliliği <div>
+Madde 22- Haberleşmenin gizliliği esasını ihlâl edecek bilgi veya belgeler, bu Kanun
+kapsamı dışındadır. </div></div>
+
+<div>
+Ticarî sır <div>
+Madde 23- Kanunlarda ticarî sır olarak nitelenen bilgi veya belgeler ile, kurum ve
+kuruluşlar tarafından gerçek veya tüzel kişilerden gizli kalması kaydıyla sağlanan ticarî ve
+malî bilgiler, bu Kanun kapsamı dışındadır.</div></div>
+
+<div>
+Fikir ve sanat eserleri <div>
+Madde 24- Fikir ve sanat eserlerine ilişkin olarak yapılacak bilgi edinme başvuruları
+hakkında ilgili kanun hükümleri uygulanır.</div></div>
+<div> 
+Kurum içi düzenlemeler <div>
+Madde 25- Kurum ve kuruluşların, kamuoyunu ilgilendirmeyen ve sadece kendi
+personeli ile kurum içi uygulamalarına ilişkin düzenlemeler hakkındaki bilgi veya belgeler,
+bilgi edinme hakkının kapsamı dışındadır. Ancak, söz konusu düzenlemeden etkilenen kurum
+çalışanlarının bilgi edinme hakları saklıdır.</div></div>
+
+<div>
+Kurum içi görüş, bilgi notu ve tavsiyeler <div>
+Madde 26- Kurum ve kuruluşların faaliyetlerini yürütmek üzere, elde ettikleri görüş,
+bilgi notu, teklif ve tavsiye niteliğindeki bilgi veya belgeler, kurum ve kuruluş tarafından aksi
+kararlaştırılmadıkça bilgi edinme hakkı kapsamındadır. <br>
+Bilimsel, kültürel, istatistik, teknik, tıbbî, malî, hukukî ve benzeri uzmanlık alanlarında
+yasal olarak görüş verme yükümlülüğü bulunan kişi, birim ya da kurumların görüşleri, kurum
+ve kuruluşların alacakları kararlara esas teşkil etmesi kaydıyla bilgi edinme istemlerine açıktır.</div></div>
+
+<div>
+Tavsiye ve mütalaa talepleri <div>
+Madde 27- Tavsiye ve mütalaa talepleri bu Kanun kapsamı dışındadır.</div></div>
+<div>
+Gizliliği kaldırılan bilgi veya belgeler <div>
+Madde 28- Gizliliği kaldırılmış olan bilgi veya belgeler, bu Kanunda belirtilen diğer
+istisnalar kapsamına girmiyor ise, bilgi edinme başvurularına açık hâle gelir.</div></div>
+
+
+BEŞİNCİ BÖLÜM
+<div>
+Çeşitli ve Son Hükümler <br>
+Ceza hükümleri  <div>
+Madde 29- Bu Kanunun uygulanmasında ihmâli, kusuru veya kastı bulunan memurlar
+ve diğer kamu görevlileri hakkında, işledikleri fiillerin genel hükümler çerçevesinde ceza
+kovuşturması gerektirmesi hususu saklı kalmak kaydıyla, tâbi oldukları mevzuatta yer alan
+disiplin cezaları uygulanır. <br>
+Bu Kanunla erişilen bilgi ve belgeler ticarî amaçla çoğaltılamaz ve kullanılamaz.</div></div>
+
+<div>
+Rapor düzenlenmesi <div>
+Madde 30- Kurum ve kuruluşlar, bir önceki yıla ait olmak üzere; <div>
+a) Kendilerine yapılan bilgi edinme başvurularının sayısını, <br>
+b) Olumlu cevaplanarak bilgi veya belgelere erişim sağlanan başvuru sayısını, <br>
+c) Reddedilen başvuru sayısı ve bunların dağılımını gösterir istatistik bilgileri, <br>
+d) Gizli ya da sır niteliğindeki bilgiler çıkarılarak ya da bu nitelikteki bilgiler ayrılarak
+bilgi veya belgelere erişim sağlanan başvuru sayısını, <br>
+e) Başvurunun reddedilmesi üzerine itiraz edilen başvuru sayısı ile bunların sonuçlarını,
+Gösterir bir rapor hazırlayarak, bu raporları her yıl Şubat ayının sonuna kadar Bilgi
+Edinme Değerlendirme Kuruluna gönderirler. Bağlı, ilgili ve ilişkili kamu kurum ve
+kuruluşları raporlarını bağlı, ilgili ya da ilişkili oldukları bakanlık vasıtasıyla iletirler. Kurul,
+hazırlayacağı genel raporu, söz konusu kurum ve kuruluşların raporları ile birlikte her yıl
+Nisan ayının sonuna kadar Türkiye Büyük Millet Meclisine gönderir. Bu raporlar takip eden
+iki ay içinde Türkiye Büyük Millet Meclisi Başkanlığınca kamuoyuna açıklanır.</div></div></div>
+
+<div>
+Yönetmelik4 <div>
+Madde 31- Bu Kanunun uygulanması ile ilgili esas ve usullerin belirlenmesine ilişkin
+yönetmelik, Kanunun yayımını takip eden altı ay içinde Cumhurbaşkanlığı tarafından
+hazırlanarak (…)4
+yürürlüğe konulur.</div></div>
+
+<div>
+Yürürlük <div>
+Madde 32- Bu Kanun yayımı tarihinden itibaren altı ay sonra yürürlüğe girer.</div></div>
+
+<div>
+Yürütme5 <div>
+	Madde 33- Bu Kanun hükümlerini Cumhurbaşkanı yürütür. </div></div>
+
+	
+4982 SAYILI KANUNA EK VE DEĞİŞİKLİK GETİREN MEVZUATIN VEYA
+ANAYASA MAHKEMESİ TARAFINDAN İPTAL EDİLEN HÜKÜMLERİN
+YÜRÜRLÜĞE GİRİŞ TARİHİNİ GÖSTERİR LİSTE
+Değiştiren Kanunun/
+KHK’nin/ İptal Eden
+Anayasa Mahkemesi
+Kararının Numarası
+4982 Sayılı Kanunun Değişen
+veya İptal Edilen Maddeleri Yürürlüğe Giriş Tarihi
+5432 13, 14 22/11/2005
+6495 2 2/8/2013
+Anayasa Mahkemesi’nin
+4/12/2014 tarihli ve E.:
+2013/114, K.: 2014/22
+(Yürürlüğü Durdurma) Kararı
+2 6/12/2014
+Anayasa Mahkemesi’nin
+4/12/2014 tarihli ve E.:
+2013/114, K.: 2014/184 sayılı
+Kararı
+2 16/7/2015
+KHK/703 14, 31, 33
+24/6/2018 tarihinde birlikte
+yapılan Türkiye Büyük Millet
+Meclisi ve Cumhurbaşkanlığı
+seçimleri sonucunda
+Cumhurbaşkanının andiçerek
+göreve başladığı tarihte
+(9/7/2018)
+
+4
+2/7/2018 tarihli ve 703 sayılı KHK’nin 35 inci maddesiyle, bu maddede yer alan “Başbakanlık” ibaresi
+“Cumhurbaşkanlığı” şeklinde değiştirilmiş ve “Bakanlar Kurulunca” ibaresi madde metninden
+çıkarılmıştır.
+5
+2/7/2018 tarihli ve 703 sayılı KHK’nin 35 inci maddesiyle, bu maddede yer alan “Bakanlar Kurulu”
+ibaresi “Cumhurbaşkanı” şeklinde değiştirilmiştir.
+
+ 
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button> 
+</div>
+
+<script>				
+var surukleniyor = false;
+var offsetX, offsetY;
+	
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+	
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+	
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+	
+	document.addEventListener('mouseup', function() { surukleniyor = false;	}); 
+</script>
+
+</body>
+</html>
+{% endblock%}	
