@@ -544,4 +544,9 @@ def denebakem(request):
 		return render(request,'onsayfa/yetki.html')			
 
 
-
+def hukukdurus(request): 
+	user_groups = request.user.groups.all()
+	if Group.objects.get(name='asiluyelik') in user_groups:
+		return render (request, 'onsayfa/hukukdurus.html')
+	else:
+		return render(request,'onsayfa/yetki.html')

@@ -83,6 +83,6 @@ urlpatterns = [
 	path('bim5mad',  views.bim5mad, name='bim5mad'),
     path('denebakem',  views.denebakem, name='denebakem'),
     path('sorular',  views.sorular, name='sorular'),
-    
+    path('hukukdurus',  views.hukukdurus, name='hukukdurus'),
 
 ]
