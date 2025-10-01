@@ -21,6 +21,7 @@
                         <div class="input-group mt-2 mb-2">
                             <input type="text" id="ibanInput" class="form-control" 
                                    value="TRXX XXXX XXXX XXXX XXXX XXXX XX" readonly>
+                                   
                             <button class="btn btn-outline-secondary" type="button" onclick="copyIBAN()">
                                 Kopyala
                             </button>
@@ -35,10 +36,7 @@
                 {% if user.is_authenticated %}
                 <form method="post" action="{% url 'odeme_bildirim' %}" class="mt-3">
                     {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="telefon" class="form-label">TELEFON NUMARANIZ </label>
-                        <input type="text" name="telefon" id="telefon" class="form-control" placeholder="0xxxxxxxxx" required>
-                    </div>
+                    
                     <button type="submit" class="btn btn-success btn-lg w-100">
                         Ödeme Bildirimi Gönder
                     </button>

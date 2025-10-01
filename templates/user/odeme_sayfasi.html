@@ -17,8 +17,13 @@
                         Aşağıdaki <b>IBAN</b> numarasına havale / EFT yapın:
                         <div class="input-group mt-2">
                             <input type="text" id="ibanInput" class="form-control" 
-                                   value="TRXX XXXX XXXX XXXX XXXX XXXX XX" readonly>
+                                   value="TR090006701000000024652195" readonly>                                  
                             <button class="btn btn-outline-secondary" type="button" onclick="copyIBAN()">
+                                Kopyala
+                            </button>
+                            <input type="text" id="isimInput" class="form-control" 
+                                   value="Ceyhan ALTINSOY" readonly>
+                                   <button class="btn btn-outline-secondary" type="button" onclick="copyIsim()">
                                 Kopyala
                             </button>
                         </div>
@@ -46,6 +51,13 @@ function copyIBAN() {
     copyText.setSelectionRange(0, 99999); // mobil uyumluluk için
     navigator.clipboard.writeText(copyText.value);
     alert("IBAN kopyalandı: " + copyText.value);
+}
+function copyIsim() {
+    var copyText = document.getElementById("isimInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // mobil uyumluluk için
+    navigator.clipboard.writeText(copyText.value);
+    alert("İsim kopyalandı: " + copyText.value);
 }
 </script>
 {% endblock %}

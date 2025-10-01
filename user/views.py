@@ -28,51 +28,51 @@ def register(request):
         email = request.POST['email'].strip()
         password = request.POST['password']
         repassword = request.POST['repassword']
+        telefon = request.POST['telefon'].strip()
 
         context = {
             'username': username,
             'email': email,
+            'telefon': telefon,
         }
 
-        # Kullanıcı adı boşluk içeremez
         if " " in username:
             messages.warning(request, "Kullanıcı adında boşluk olamaz.")
             return render(request, 'user/register.html', context)
 
-        # Şifre en az 6 karakter
         if len(password) < 6:
             messages.warning(request, "Şifreniz en az 6 karakter olmalı.")
             return render(request, 'user/register.html', context)
 
-        # Şifreler eşleşmeli
         if password != repassword:
             messages.warning(request, "Parolalar eşleşmiyor.")
             return render(request, 'user/register.html', context)
 
-        # E-mail geçerli formatta mı?
         try:
             validate_email(email)
         except ValidationError:
             messages.warning(request, "Geçerli bir e-mail adresi giriniz.")
             return render(request, 'user/register.html', context)
 
-        # Kullanıcı adı benzersiz mi?
         if User.objects.filter(username=username).exists():
             messages.warning(request, "Bu kullanıcı adı daha önce alınmış.")
             return render(request, 'user/register.html', context)
 
-        # E-mail benzersiz mi?
         if User.objects.filter(email=email).exists():
             messages.warning(request, "Bu e-mail adresi ile daha önce kayıt olunmuş.")
             return render(request, 'user/register.html', context)
 
-        # Her şey tamam, kullanıcı oluştur
+        # Kullanıcı oluştur (sinyal Profile'ı otomatik oluşturacak)
         user = User.objects.create_user(username=username, password=password, email=email)
         user.save()
+
+        # Telefonu profile'a kaydet (sinyal ile zaten profile var)
+        user.profile.telefon = telefon
+        user.profile.save()
+
         messages.success(request, "Hesabınız başarıyla oluşturuldu.")
         return redirect('login')
 
-    # GET isteği ise formu göster
     return render(request, 'user/register.html')
 
 
@@ -101,13 +101,21 @@ CHAT_ID = "1551759004"  # Senin kullanıcı/chat id
 @login_required
 def odeme_bildirim(request):
     if request.method == "POST":
-        telefon = request.POST.get("telefon")
+        # 🔹 Telefonu artık kullanıcı profilinden alıyoruz
+        telefon = request.user.profile.telefon  
 
         if not telefon:
-            messages.error(request, "Lütfen telefon numaranızı girin.")
+            messages.error(request, "Telefon numaranız sistemde kayıtlı değil. Lütfen profilinizi güncelleyin.")
             return redirect("odeme_bildirim")
 
-        mesaj = f"💳 Yeni Ödeme Bildirimi\n\nKullanıcı: {request.user.username}\nTutar: 1000 TL\nTelefon: {telefon}"
+        mesaj = (
+    f"💳 Yeni Ödeme Bildirimi\n\n"
+    f"Kullanıcı: {request.user.username}\n"
+    f"Tutar: 1000 TL\n"
+    f"Telefon: {telefon}\n"
+    f"Admin paneli: https://gorevdeyukselmeyaziislerimudur.pythonanywhere.com/admin/"
+)
+
 
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
         data = {"chat_id": CHAT_ID, "text": mesaj}
@@ -119,5 +127,5 @@ def odeme_bildirim(request):
             messages.error(request, "Bildirim gönderilirken hata oluştu ❌")
 
         return redirect("odeme_bildirim")
-    
+
     return render(request, "user/odeme.html")
