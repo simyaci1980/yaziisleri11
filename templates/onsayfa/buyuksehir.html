@@ -1,0 +1,826 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size:larger; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>BÜYÜKŞEHİR BELEDİYESİ KANUNU[1]</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+	function sadeceişaretli(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "black";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınEDİ()	}
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button><button  onclick="sadeceişaretli()" name="butt" value="butt" class="butt" > SADECE İŞARETLİ</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+	<br><br><br>
+<div class="kal">
+	BÜYÜKŞEHİR BELEDİYESİ KANUNU[1] <br>
+
+
+
+Kanun Numarası                    : 5216 <br>
+
+Kabul Tarihi                           : 10/7/2004 <br>
+
+Yayımlandığı Resmî Gazete   : Tarih  : 23/7/2004        Sayı  : 25531 <br>
+
+Yayımlandığı Düstur              : Tertip : 5                      Cilt   : 43</div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br>
+
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam ve Tanımlar <br>
+<br>
+
+
+<div>
+Amaç
+<div>
+Madde 1- Bu Kanunun amacı, büyükşehir belediyesi yönetiminin hukukî statüsünü düzenlemek, hizmetlerin plânlı, programlı, etkin, verimli ve uyum içinde yürütülmesini sağlamaktır.</div></div>
+
+
+<div>
+Kapsam
+<div>
+Madde 2- Bu Kanun, <span class="mavi"> büyükşehir belediyesiyle büyükşehir sınırları içindeki belediyeleri kapsar.</span></div></div>
+
+
+<div>
+Tanımlar
+<div>
+Madde 3- Bu Kanunun uygulanmasında;
+<div>
+a) (Değişik: 12/11/2012-6360/4 md.) Büyükşehir belediyesi: Sınırları il mülki sınırı olan ve sınırları içerisindeki ilçe belediyeleri arasında koordinasyonu sağlayan; idarî ve malî özerkliğe sahip olarak kanunlarla verilen görev ve sorumlulukları yerine getiren, yetkileri kullanan; <span class="mavi"> karar organı seçmenler tarafından seçilerek oluşturulan kamu tüzel kişisini,</span> <br>
+
+b) <span class="kim"> Büyükşehir belediyesinin organları:</span>  <span class="ark"> Büyükşehir belediye meclisi</span>, <span class="ark"> büyükşehir belediye encümeni</span> ve <span class="ark"> büyükşehir belediye başkanını</span>, <br>
+
+c) <span class="kim"> İlçe belediyesi:</span> <span class="mavi"> Büyükşehir belediyesi sınırları içinde kalan ilçe belediyesini</span>, <br>
+
+d) (Mülga: 12/11/2012-6360/4 md.)</div>
+<span class="mavi">
+ifade eder</span>.</div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Büyükşehir Belediyesinin Kuruluşu ve Sınırları
+<div>
+Kuruluş
+<div>
+Madde 4- (Değişik: 12/11/2012-6360/5 md.) <br>
+
+Toplam nüfusu <span class="ark"> 750.000’den fazla olan illerin il belediyeleri</span> <span class="mavi"> <span class="dik"> kanunla</span> büyükşehir belediyesine dönüştürülebilir</span>.</div></div>
+
+<div>
+
+Büyükşehir belediyesinin sınırları
+<div>
+Madde 5- (Değişik: 12/11/2012-6360/6 md.) <br>
+<span class="kim">
+Büyükşehir belediyelerinin sınırları</span>, <span class="mavi"> il mülki sınırlarıdır</span>. <br>
+<span class="kim">
+İlçe belediyelerinin sınırları,</span> <span class="mavi"> bu ilçelerin mülki sınırlarıdır</span>.</div></div>
+
+
+<div>
+Büyükşehir belediyesine katılma
+<div>
+Madde 6- (Mülga: 12/11/2012-6360/13 md.)</div></div>
+
+<hr>
+ÖRDÜNCÜ BÖLÜM <br>
+
+Büyükşehir Belediyesinin Organları
+<div>
+Büyükşehir belediye meclisi
+<div>
+Madde 12- <span class="kim"> Büyükşehir belediye meclisi,</span> <span class="mavi"> büyükşehir belediyesinin karar organıdır</span>  ve ilgili kanunda gösterilen esas ve usullere göre <span class="mavi"> seçilen üyelerden oluşur.</span>  <br>
+<span class="kim">
+Büyükşehir belediye başkanı</span> <span class="mavi"> büyükşehir belediye meclisinin başkanı olup,  <span class="dik">büyükşehir</span> içindeki <span class="dik"> diğer belediyelerin başkanları</span> , büyükşehir belediye meclisinin doğal üyesidir.</span>  <br>
+
+<span class="kim"> Büyükşehir ilçe (…)[19] belediye meclisleri ile bunların çalışma usul ve esaslarına ilişkin</span> <span class="mavi">  diğer hususlarda Belediye Kanunu hükümleri uygulanır</span>.(19)</div></div>
+
+
+<div>
+Meclis toplantısı[20]
+<div>
+Madde 13- Büyükşehir belediye meclisi, <span class="mavi"> her ayın ikinci haftası önceden meclis tarafından belirlenen günde mutat toplantı yerinde toplanır</span>  (...)(20). Bütçe görüşmesine rastlayan <span class="mavi"> toplantı süresi en çok <span class="dik"> yirmi</span>, diğer toplantıların süresi en çok <span class="dik"> beş</span>  gündür.</span>  (Ek cümle: 3/7/2005 - 5393/85 md.) <span class="mavi"> Meclis kendi belirleyeceği <span class="dik"> bir ay</span>  tatil yapabilir.</span>  <br>
+
+Mutat toplantı yeri dışında toplanılmasının zorunlu olduğu durumda üyelere önceden bilgi vermek kaydıyla belediye hudutları dahilinde <span class="mavi"> meclis başkanının belirlediği yerde toplantı yapılır.</span>  Ayrıca, toplantının yeri ve zamanı mutat usullerle <span class="mavi"> belde halkına duyurulur.</span>  <br>
+
+(Ek fıkra: 30/5/2007-5675/1 md.) Büyükşehir belediye başkanı, acil durumlarda lüzum görmesi halinde belediye meclisini <span class="mavi"> bir yılda üç defadan fazla olmamak ve her toplantı bir birleşimi geçmemek üzere toplantıya çağırır.</span>  Olağanüstü toplantı çağrısı ve gündem en az üç gün önceden meclis üyelerine yazılı olarak duyurulur ve ayrıca mutat usûllerle ilan edilir. Olağanüstü toplantılarda çağrıyı gerektiren konuların dışında hiçbir konu görüşülemez.</div></div>
+
+
+<div>
+Meclis kararlarının kesinleşmesi
+<div>
+Madde 14- Büyükşehir belediye başkanı, hukuka aykırı gördüğü belediye meclisi kararlarını, <span class="mavi"> yedi gün içinde gerekçesini de belirterek yeniden görüşülmek üzere belediye meclisine iade edebilir</span>. <br>
+
+Yeniden görüşülmesi istenilmeyen kararlar ile yeniden görüşülmesi istenip de büyükşehir belediye meclisi <span class="mavi"> üye tam sayısının salt çoğunluğuyla ısrar edilen kararlar kesinleşir.</span>  <br>
+
+<span class="kim">
+Büyükşehir belediye başkanı,</span>  meclisin ısrarı ile kesinleşen kararlar aleyhine (...)(20) <span class="mavi"> idarî yargıya başvurabilir.</span>  <br>
+
+(Değişik dördüncü fıkra: 6/3/2008-5747/3 md.) Büyükşehir belediye meclisi ve ilçe belediye meclisi kararları, <span class="mavi"> kesinleştiği tarihten itibaren en geç yedi gün içinde mahallin en büyük mülkî idare amirine gönderilir.</span>  <span class="mavi"> Mülkî idare amirine gönderilmeyen kararlar yürürlüğe girmez.</span>  <br>
+
+
+Büyükşehir kapsamındaki ilçe (…)(19) belediye meclisleri tarafından alınan imara ilişkin kararlar, kararın gelişinden itibaren üç ay içinde büyükşehir belediye meclisi tarafından nazım imar plânına uygunluğu yönünden incelenerek aynen veya değiştirilerek kabul edildikten sonra büyükşehir belediye başkanına gönderilir. (Ek cümle: 6/3/2008-5747/3 md.) Üç ay içinde büyükşehir belediye meclisinde görüşülmeyen kararlar onaylanmış sayılır.(19) </div></div>
+
+
+<div>
+İhtisas komisyonları
+<div>
+Madde 15- Büyükşehir belediye meclisi, (...)(20) üyeleri arasından seçilecek en az beş, en çok dokuz kişiden oluşan ihtisas komisyonları kurabilir. <br>
+
+İhtisas komisyonları, her siyasî parti grubunun ve bağımsız üyelerin büyükşehir belediye meclisindeki üye sayısının meclis üye tam sayısına oranlanması suretiyle oluşur. İmar ve bayındırlık komisyonu, çevre ve sağlık komisyonu, plân ve bütçe komisyonu, eğitim, kültür, gençlik ve spor komisyonu ile ulaşım komisyonunun kurulması zorunludur. <br>
+
+Meclis toplantısını müteakip imar komisyonu en fazla on işgünü, diğer komisyonlar ise beş iş günü toplanarak kendisine havale edilen işleri sonuçlandırır. Komisyon bu sürenin sonunda raporunu meclise sunmadığı takdirde, konu meclis başkanlığı tarafından doğrudan meclis gündemine alınır. <br>
+
+Komisyon çalışmalarında uzman kişilerden yararlanılabilir. Gündemdeki konularla ilgili olmak üzere; kurum temsilcileri, kamu kurumu niteliğindeki meslek kuruluşları, üniversitelerin ilgili bölümlerinin, sendikalar (oda üst kuruluşu bulunan yerlerde üst kuruluşun, sendika konfederasyonunun bulunduğu yerde konfederasyonun) ve uzmanlaşmış sivil toplum örgütlerinin temsilcileri ile davet edilen uzman kişiler, oy hakkı olmaksızın ihtisas komisyonu toplantılarına katılabilir ve görüş bildirebilir. <br>
+
+İhtisas komisyonlarının görev alanına giren işler bu komisyonlarda görüşüldükten sonra büyükşehir belediye meclisinde karara bağlanır. <br>
+
+Komisyon raporları alenîdir, çeşitli yollarla halka duyurulur ve isteyenlere büyükşehir belediye meclisi tarafından belirlenecek maliyet bedeli karşılığında verilir.</div></div>
+
+
+<div>
+Büyükşehir belediye encümeni
+<div>
+Madde 16- Büyükşehir belediye encümeni, belediye başkanının başkanlığında, <span > belediye meclisinin</span> (...)[21] kendi üyeleri arasından bir yıl için gizli oyla <span class="ark"> seçeceği beş üye</span> ile biri <span class="ark"> genel sekreter</span>, biri malî hizmetler birim amiri olmak üzere <span class="span"> belediye başkanının</span> her yıl birim amirleri arasından <span class="ark"> seçeceği beş üyeden</span> <span class="mavi"> oluşur.</span>  <br>
+
+Belediye başkanının <span class="ark"> katılamadığı toplantılarda</span>, encümen toplantılarına <span class="mavi"> genel sekreter başkanlık eder</span>. <br>
+
+Büyükşehir belediye encümeninin başkanı ve seçilmiş üyelerine, <span class="ark"> (12.000) gösterge</span>  rakamının Devlet memur aylıkları için belirlenen katsayı ile çarpımı sonucu bulunacak miktarda aylık brüt ödenek verilir. Encümenin memur üyelerine bu miktarın yarısı ödenir.</div></div>
+
+
+<div>
+Büyükşehir belediye başkanı
+<div>
+Madde 17- <span class="kim"> Büyükşehir belediye başkanı,</span> <span class="mavi"> büyükşehir belediye idaresinin başı ve tüzel kişiliğinin temsilcisidir.</span>  Büyükşehir belediye başkanı, ilgili kanunda gösterilen esas ve usullere göre büyükşehir belediyesi sınırları içindeki <span class="mavi"> seçmenler tarafından doğrudan seçilir.</span>  <br>
+
+Büyükşehir belediye başkan vekili, Belediye Kanunundaki usullere göre belirlenir. Ancak, büyükşehir kapsamındaki <span class="mavi"> ilçe  belediye başkanları büyükşehir belediye başkan vekili olamaz</span> <br>
+
+Büyükşehir ve ilçe belediye başkanları görevlerinin devamı süresince <span class="ark"> siyasi partilerin </span>  <span class="mavi">yönetim ve denetim organlarında görev alamaz;</span>  profesyonel <span class="mavi"> spor klüplerinin başkanlığını yapamaz</span>  ve yönetiminde bulunamaz.[23]</div></div>
+
+
+<div>
+Büyükşehir belediye başkanının görev ve yetkileri
+<div>
+Madde 18- Büyükşehir belediye başkanının görev ve yetkileri şunlardır:
+<div>
+a) Belediye teşkilatının en üst amiri olarak belediye teşkilâtını sevk ve idare etmek, beldenin ve belediyenin hak ve menfaatlerini korumak. <br>
+
+b) Belediyeyi stratejik plâna uygun olarak yönetmek, belediye idaresinin kurumsal stratejilerini oluşturmak, bu stratejilere uygun olarak bütçeyi hazırlamak ve uygulamak, belediye faaliyetlerinin ve personelinin performans ölçütlerini belirlemek, izlemek ve değerlendirmek, bunlarla ilgili raporları meclise sunmak. <br>
+
+c) <span class="mavi"> Büyükşehir belediye meclisi ve encümenine başkanlık etmek</span> , bu organların kararlarını uygulamak. <br>
+
+d) Bu Kanunla büyükşehir belediyesine verilen görev ve hizmetlerin etkin ve verimli bir şekilde uygulanabilmesi için gerekli önlemleri almak. <br>
+
+e) Büyükşehir belediyesinin ve bağlı kuruluşları ile işletmelerinin etkin ve verimli yönetilmesini sağlamak, büyükşehir belediyesi ve bağlı kuruluşları ile işletmelerinin bütçe tasarılarını, <span class="mavi"> bütçe üzerindeki değişiklik önerilerini ve bütçe kesin hesap cetvellerini hazırlamak.</span>  <br>
+
+f) Büyükşehir belediyesinin hak ve menfaatlerini izlemek, alacak ve gelirlerinin tahsilini sağlamak. <br>
+
+g) Yetkili organların kararını almak şartıyla, büyükşehir belediyesi adına sözleşme yapmak, karşılıksız bağışları kabul etmek ve gerekli tasarruflarda bulunmak. <br>
+
+h) Mahkemelerde davacı veya davalı sıfatıyla ve resmî mercilerde büyükşehir belediyesini temsil etmek, belediye ve bağlı kuruluş avukatlarına veya özel avukatlara temsil ettirmek. <br>
+
+i) Belediye personelini atamak, belediye ve bağlı kuruluşlarını denetlemek. <br>
+
+j) <span class="mavi"> Gerektiğinde bizzat nikâh kıymak.</span>  <br>
+
+k) Diğer kanunların belediye başkanlarına verdiği görev ve yetkilerden büyükşehir belediyesi görevlerine ilişkin olan hizmetleri yerine getirmek ve yetkileri kullanmak. <br>
+
+l) (İptal: Anayasa Mahkemesi’nin 25/1/2007 tarihli ve E.: 2004/79, K.: 2007/6 sayılı Kararı ile.) <br>
+
+m) Bütçede yoksul ve muhtaçlar için ayrılan ödeneği kullanmak, engellilerle ilgili faaliyetlere destek olmak üzere engelli merkezleri oluşturmak.[24] <br>
+
+(Mülga son fıkra: 12/11/2012-6360/13 md.)</div></div></div>
+
+
+<div>
+Belediye başkanlığının sona ermesi
+<div>
+Madde 19- Belediye Kanunundaki hükümler saklı kalmak kaydıyla büyükşehir belediye meclisinin <span class="ark"> feshine neden olan eylem ve işlemlere katılan büyükşehir ve ilçe belediye başkanlarının görevlerine</span> <span class="mavi"> Danıştay kararıyla son verilir</span>.[25]</div></div>
+
+
+<div>
+Danışmanlar
+<div>
+Madde 20- <span class="kim"> Nüfusu ikimilyonu aşan büyükşehir belediyelerinde</span> <span class="mavi"> on,</span> <span class="kim"> diğer büyükşehir belediyelerinde</span> <span class="mavi"> beşi geçmemek üzere başkan danışmanı görevlendirilebilir.</span>  Danışman olarak görevlendirileceklerin en az dört yıllık yüksek öğrenim kurumlarından mezun olması şarttır. Danışman olarak görevlendirilme, memuriyete geçiş, sözleşmeli veya işçi statüsünde çalışma dahil, ilgililer açısından herhangi bir hak teşkil etmez. Danışmanların görev süreleri sözleşme süresi ile sınırlıdır. Ancak bu süre <span class="mavi"> belediye başkanının görev süresini aşamaz.</span>  <br>
+
+Danışmanlara, her türlü ödemeler dâhil, büyükşehir belediyesi genel sekreterine ödenen brüt aylık miktarının % 75'ini aşmamak üzere belediye meclisinin belirlediği miktarda brüt ücret ödenir.</div></div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body></html>
+{% endblock%}

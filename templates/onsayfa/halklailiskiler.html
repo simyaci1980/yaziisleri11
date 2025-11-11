@@ -1,0 +1,852 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<style>.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+		body{background-color: rgb(1, 53, 37); color: white ; font-size: large; padding: 7px;}
+		a{color: white;}
+		h1{color: brown; background-color: azure;}
+		h2{color: blue; background-color:black}
+		h3{border-style: double; border-color: red; border-radius: 10px; }
+		h4{ border-style: groove; border-color: rgb(20, 39, 2); border-radius: 10px;}
+		h5{ border-style: dashed; border-color: coral;}
+		.özel{color:chocolate; font-style: italic; font-weight: 1000;}
+		.kimler{color:black;}
+		.siyah{color:rgb(51, 26, 8) ; font-family: Arial, Helvetica, sans-serif;}
+		.kenarlık{border-style: groove; border-color:black;}
+		span{color: rgb(226, 93, 40);}
+		div{color: white;}
+		.altıçizili{ border-style: dashed ; border-color: black;  }
+		.parantez{ color: black; font-family: Arial, Helvetica}
+		.geriplan{background-color:black;}
+		.genişlik{width: 200px; background-color: rgb(1, 36, 36);}
+		.genişlik2{width: 400px; background-color: rgb(1, 36, 36);}
+		.renki{color: rgb(202, 150, 221);}
+
+		div {color: white; padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white;}
+.kim{background-color: chocolate ; color: azure; font-size: larger;}
+		ul li {
+			float: left;
+			margin-right: 20px;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+	</style>
+	<title>halkla ilişkiler </title>
+	<script>
+		function kapat() {
+			if (balon.style.display === "block") {
+				balon.style.display = "none"; cevaps.style.display="none" ;
+			} }
+
+
+
+
+		function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+			var panDivs= document.querySelectorAll(".span");
+			for(var i =0 ; i<panDivs.length; i++) {
+			//panDivs[i].style.backgroundColor="darkred";
+			panDivs[i].style.color="red"}}
+
+		function metinSifirla(){ // editör görünümü için
+			var panDivs= document.querySelectorAll(".span");
+			for(var i =0 ; i<panDivs.length; i++) {
+			//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metinSıfırla(){  // spanlar için
+
+			document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+			document.getElementById("bady").style.color="white"
+			metinSifirla()
+			metınArk()
+			metınDık()
+			metınEDİ()
+			metınKim() 	}
+
+		function metınKim(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function kimmorlasss(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="purple";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function kimuyp(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+			panDivs[i].style.color="black"} }
+
+		function kimdahe(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+			panDivs[i].style.color="white"} }
+
+		function kimyes(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="green";
+			panDivs[i].style.color="white"} }
+
+		function metınArk(){
+			var panDivs= document.querySelectorAll(".ark");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metınKim(){
+			var panDivs= document.querySelectorAll(".kim");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metınDık(){
+			var panDivs= document.querySelectorAll(".dik");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metınEDİ(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metınYes(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="green";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function metındmavi(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="darkblue";
+			panDivs[i].style.color="white"} }
+
+		function metınkır(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="red";
+			panDivs[i].style.color="white"} }
+
+		function morlas(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="purple";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function dikcho(){
+			var panDivs= document.querySelectorAll(".dik");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="chocolate";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function dikuyp(){
+			var panDivs= document.querySelectorAll(".dik");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+			panDivs[i].style.color="black"} }
+
+		function dikkırmızı(){
+			var panDivs= document.querySelectorAll(".dik");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="red";
+			panDivs[i].style.color="white"} }
+
+		function morlasss(){
+			var panDivs= document.querySelectorAll(".ark");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="purple";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function arkuyp(){
+			var panDivs= document.querySelectorAll(".ark");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+			panDivs[i].style.color="black"} }
+
+		function arkdahe(){
+			var panDivs= document.querySelectorAll(".ark");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+			panDivs[i].style.color="white"} }
+
+		function metınmavi(){
+			var panDivs= document.querySelectorAll(".mavi");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="darkcyan";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function dikles(){
+			var panDivs= document.querySelectorAll(".dik");
+			for(var i =0 ; i<panDivs.length; i++) {
+			panDivs[i].style.backgroundColor="darkred";
+			panDivs[i].style.color="whitesmoke"} }
+
+		function chola(){
+			var panDivs= document.querySelectorAll(".span");
+			for(var i =0 ; i<panDivs.length; i++) {
+			//panDivs[i].style.backgroundColor="purple";
+			panDivs[i].style.color="chocolate"} }
+
+		function dahadayeni(){
+			var panDivs= document.querySelectorAll(".span");
+			for(var i =0 ; i<panDivs.length; i++) {
+			//panDivs[i].style.backgroundColor="purple";
+			panDivs[i].style.color="rgb(212, 12, 126"} }
+
+		setInterval(tarıh, 1000);
+		function tarıh(){
+				 var an = new Date()
+				 var yıl= Number( an.getFullYear() )
+				 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+				 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+				 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+				 var dk=  an.getMinutes().toString(). padStart(2,'0')
+				document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+				}
+		function badyMavi(){
+			document.getElementById("bady").style.backgroundColor = "darkblue"
+			document.getElementById("bady").style.color = "white"
+			sınıf()
+			arkuyp()
+			dikcho()
+			metınkır()
+			kimdahe()	}
+		function badyEditör(){
+			document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+			document.getElementById("bady").style.color = "white"
+			chola()
+			arkuyp()
+			dikkırmızı()
+			morlas()
+			kimuyp()}
+
+		function badysiyah(){
+			document.getElementById("bady").style.backgroundColor = "black"
+			document.getElementById("bady").style.color = "whitesmoke";
+			chola()
+			arkdahe()
+			dikuyp()
+			metınYes()
+			kimmorlasss()	}
+
+		function beyaz(){
+		    document.getElementById("bady").style.color = "black";
+			document.getElementById("bady").style.backgroundColor = "white"
+
+			sınıf()
+			morlasss()
+			metınDık()
+			metındmavi()
+			kimyes()	}
+
+
+		function uyap(){
+			document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+			document.getElementById("bady").style.color = "black"
+			sınıf()
+			morlasss()
+			metınDık()
+			metınmavi()
+			kimdahe()	}
+
+		function yeni(){
+			document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+			document.getElementById("bady").style.color = "black"
+			sınıf()
+			arkdahe()
+			metınDık()
+			metınmavi()
+			kimyes()	}
+
+		function dahayeni(){
+			document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+			document.getElementById("bady").style.color = "black"
+			dahadayeni()
+			morlasss()
+			dikles()
+			metınEDİ()
+			kimyes()}
+
+		function soruGetır(){
+
+		}
+
+		function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+			element.style.color="red";
+			element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+
+		   window.print()
+			   }
+
+		   function DivResetle(){
+
+			const allDivs=document.querySelectorAll('div')
+			allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+			div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+			//div.style.borderStyle="none"
+			})  }
+
+	</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br>
+	<div id="kal" class="kal"></div>
+
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+		<p>
+		  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+		  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+		  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+		</p></div>
+
+		<script>
+		  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+		  </script>
+
+
+
+		  <div id="soruContainer" class="soruContainer">
+			  <div id="soruDiv">
+				  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+			  </div>
+			  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+			  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+		  </div>
+		  <script src="static/js/script.js"></script> <br>  <hr>
+
+
+	<hr><br>
+
+	<div> <button  onclick="soruyuGoster(202)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(203)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(204)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(205)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(206)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(34)" class="soru" >2023 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(35)" class="soru" >2023 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(36)" class="soru" >2023 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(37)" class="soru" >2023 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(242)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(243)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(244)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(245)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(246)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div></div><button  onclick="soruyuGoster(317)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+	<div></div><button  onclick="soruyuGoster(318)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+	<div></div><button  onclick="soruyuGoster(319)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+	<div></div><button  onclick="soruyuGoster(320)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+
+<div id="div">
+	HALKLA İLİŞKİLER
+</div>
+<div> <div>
+1. Dünyada Halkla İlişkilerin Gelişimi:</div>
+<div>
+Halkla ilişkiler bir görüşe göre insanlık tarihi kadar eskidir. Örneğin; büyük İskender (M.Ö. 356-358), İran’da Kral Dârâ’nın kızıyla evlenmiş, Pers giysileri ile halkın karşısına çıkmış, ordusundaki Makedonyalı subaylarında kendisini örnek almalarını istemiştir. Bu davranış Persler arasında ilgi uyandırmıştır.
+Daha sonra tek tanrılı semavi dinler getirdikleri emir ve yasaklar sistemiyle kitlelere yön vermişler, <span class="mavi"> böylece kendi üyelerine bağımsızlık anlamında ümmet sıfatı kazandırarak halkla ilişkilerin ilk örneklerini vermişlerdir.</span> Hz. Musa’nın On Emre dayanan Tevrat’ı, insanları dünya için teşkilatlanmaya yöneltirken, Hz. İsa’nın Hıristiyanlığı ahiret korkusu ile insanları kaynaştırmaya çağırmıştır. <span class="kim"> Hz. Muhammet (s.a.v.)</span> ise İslam dini ile dünya ile ahireti dengelerken, cinsiyet ayırımına dayalı ve kadına hiçbir hak tanımayan cahil bir toplumdan <span class="mavi"> modern toplumun temelini atarak yöneticiliğe dair en önemli örneği göstermiştir.</span></div></div>
+
+<div> <div>
+2. Yirminci Yüzyılda Halkla İlişkiler:</div>
+Halkla ilişkilerin gerçek öncüsü 1900’lü yılların başında gazeteci <span class="kim"> Ivy LEE </span> olmuştur. 1916 yılında ilk halkla ilişkiler bürosunu kurmuştur. Ivy,  <span class="ark">basın ile iş çevresini</span> birbirine yaklaştırmaya çalışmış, hazırlanan bültenler ile iş çevreleri ilk kez kamuoyuna seslenme fırsatı bulmuşlardır. Kamuoyu, ücret politikası, arz-talep ve tekeller konusunda aydınlatılmaya başlanmıştır.</div>
+<div>
+Ivy Lee, halkla ilişkiler konusunda ünlü “İlkeler Bildirisini” yayınlarken özellikle <span class="kim"> şu konulara değiniyordu:</span> <br>
+- Gizliliğe yer yok. <br>
+- Reklamla karıştırılmamak. <br>
+- Gerçek bilgileri elde etmek. <br>
+Burada Lee’nin ortaya koymaya çalıştığı <span class="kim"> iki yenilik söz konusudur:</span> <br>
+* İnsan unsurunun göz önüne alınarak işletmelerin <span> insanlaştırılması.</span> <br>
+* <span> En iyi bilginin doğru bilgi olduğu.</span></div>
+<div>
+Halkla ilişkiler konusunda <span class="kim"> ABD Başkanı Thodore Roosevelt’in</span>  de büyük hizmetleri olmuştur. Beyaz sarayda gazeteciler için açtığı büro sayesinde basının desteğini sağlamıştır. Uyguladığı şeffaflık politikası ve basın ile kurduğu iyi ilişkiler sayesinde, kapitalist bir sistemde bile iş adamları ile yaptığı savaşları kazanmıştır.  <span class="mavi"> Çünkü basının sevgisi ve saygısı sayesinde icraatlarına olumlu bir kamuoyu desteği sağlayabilmiştir.</span></div>
+<div>
+1929-1930’un iktisadı krizi, Halkla İlişkiler alanında da etkilerini göstermiş ve değer yargılarında değişmelere yol açmıştır. Kriz ve Roosevelt’in yeni iktisadi programı New Deal kamusal ve özel kuruluşların Halkla İlişkilere daha fazla önem vermesine, halk desteğine duyulan ihtiyacın artmasına sebep olmuştur. <span class="kim"> Franklin Roosevelt,</span>  Halkla İlişkiler programı içinde <span class="mavi"> radyodan da geniş ölçüde faydalanarak bu haberleşme aracının da tanıtma ve halkla ilişkiler alanında kullanılmasına öncülük etmiştir.</span></div>
+
+<div>
+İkinci Dünya Savaşından sonra önemi daha iyi anlaşılan Halkla İlişkiler A.B.D.’de büsbütün yaygınlaştı. Harpten kısa bir süre sonra 5000 kadar ticaret ve sanayi kuruluşunun önemli birer Halkla İlişkiler servisine sahip olduğu sanılıyordu. Bunun dışında 1200 den fazla özel Halkla İlişkiler Bürosu kurulmuştu. 1940 yılında A.B.D.’den Kanada’ya geçen Halkla İlişkiler olgusu, orada hızla gelişerek Fransa, İngiltere, Hollanda, Norveç, İtalya, Belçika, İsveç, Finlandiya ve diğer <span class="mavi"> Batı Avrupa Ülkelerine 1950’li yıllarda yayılmaya başladı.</span> </div>
+
+<div>
+Halkla ilişkilerde en önemli isimlerden biri de <span class="kim"> Sigmund Freud’un yeğeni olan Edward L.Bernays’tır.</span> Küçük bir gazetede çalışmaya başlayan Bernays, cinsel hastalıklarla ilgili müstehcen bir piyesi tartışmaya açmak için desteklemek kararı oldu. Konuyla ilgili doktorlarla görüştü ve onların desteğini alarak gazetede yayınladıktan sonra büyük bir ün kazandı.</div>
+<div>
+Çalışmalar sırasında değişik kesimlerden insanlarla karşılaşan Bernays, insanları tanıma fırsatı buldu. <span class="mavi"> Sonunda halkı anlamak için ona yaklaşmak ve aydınlatmak gerektiği kanaatine vardı .</span> </div>
+<div>
+Ünlü Halkla İlişkilerci Bernays’ın deyimlerine dayanarak aşağıdaki Halkla İlişkiler kuralları çıkarılabilir: <br>
+* Halkı anlamak için kişisel ilişki ilk koşuldur. Masa başında oturmakla kamuoyu veya ilgilendiğiniz kitleyi anlayamazsınız. <br>
+* Hangi kitle ile uğraşacaksanız onu iyice incelemeli ve anlamaya çalışmalısınız. Kendinizi onların yerine koymaya çabalamalısınız. <br>
+* Hedef kitleyi iyice inceledikten sonra onu daha ayrıntılı sonuçlarıyla birlikte düşünürüz. <br>
+* Müşterilerinizle ustaca bir ilişki kurunuz. Duygularınızın kararlarınızı etkilemesine izin vermeyiniz. <br>
+* Olanaklar elverdikçe kişisel ziyaretleri telefon konuşmalarına yeğleyiniz. <br>
+* Halkla İlişkiler çabası dolaysız olarak meydana gelmeli ve yaratılan etkiye göre değerlendirilmelidir.</div>
+<div>
+Halkla İlişkiler tarihine imzasını atan bu büyük uzmanın deneyimlerinden alınacak çok önemli dersler vardır.</div>
+<div> <div>
+3. Türkiye de Halkla İlişkilerin Gelişimi:</div>
+<div>
+Türkiye’de 1920 yılında <span class="ark"> Anadolu Ajansı kurulmuş,</span>  reformların halka tanıtımı doğrudan Büyük Atatürk tarafından yapılmıştır. 1919 da  <span class="ark">İrade-i Milliye gazetesi</span>  yayınlandı ve 1920 yılında yine şimdiki <span class="ark"> Basın Yayın ve Enformasyon Genel Müdürlüğü</span> , Atatürk’ün öncülüğünde kuruldu. 1935’de <span class="ark"> I. Basın Kurultayı toplandı.</span>  1961 yılında Devlet Planlama Teşkilatı içinde <span class="ark"> Yayın ve Temsil Şubesi kuruldu,</span>  daha sonra Dış İşleri Bakanlığı Enformasyon Dairesi, çeşitli bakanlıklarda Basın ve Halkla İlişkiler Daire Başkanlıkları oluşturmaya başlandı.</div>
+<div>
+<span class="kim">Çağdaş anlamda </span> yurdumuzdaki ilk Halkla İlişkiler çalışması, 1961’de kurulan Devlet Planlama Teşkilatı (D.P.T.)’nın kuruluş <span class="mavi"> Şemasında, Koordinasyon Dairesi içinde Yayın ve Temsil Şubesinin yer alması ile başlamıştır.</span>  Türkiye için çok yeni bir konu olan plân fikrinin yerleştirilmesi için, çeşitli kuruluşlardan alınarak bu örgütte bir araya getirilen uzmanlar gerçekten başarılı bir çalışma yapmışlar ve konunun politikacılar, basın ve dolayısıyla genel kamuoyu tarafından bir yıl içinde tanınıp kabul görmesini sağlamışlardır.</div>
+<div> <span class="mavi">
+Bunu, 1964’de yürürlüğe giren Nüfus Plânlaması (Doğum Kontrolü) yasasının halka tanıtılması</span> ve -plânlı çocuk sayısı- fikrinin ailelere benimsetilmesi için Nüfus Plânlaması Genel Müdürlüğü kuruluş şemasında yer alan Tanıtma ve Halk Eğitimi Şubesinin çalışmaya başlaması izlemiş ve bu örgüt, iki yıl içinde Türkiye’deki ailelerin dörtte birinin aile plânlaması fikrini kabul etmelerini, ülkedeki tüm doktorların bu konuda eğitilmelerini, politikacıların ilgili yasaları çıkararak konuya yardımcı olmalarını sağlamıştır.</div>
+<div>
+Bu iki kuruluşun önemli başarılar sağlaması sırasında başka kamu kuruluşlarında da Halkla İlişkiler örgütleri kurulmaya başlamış, <span class="mavi"> 1966 yılında ise konu ilk kez üniversite ders programlarına alınmıştır.</span></div>
+<div> <span class="mavi">
+Ankara Üniversitesi Siyasal Bilgiler Fakültesine bağlı Basın Yayın Yüksek Okulunun üçüncü ve dördüncü sınıf uzmanlık bölümleri Gazetecilik-Halkla İlişkiler ve Radyo-Televizyon olarak saptanmış,</span>  böylece Halkla İlişkiler konusunda uzmanlık eğitimi verilmeye başlanmıştır. Basın Yayın Yüksek Okulunu, İstanbul Üniversitesi İktisat Fakültesi Gazetecilik Enstitüsü, Ankara Özel Başkent, İstanbul Özel Aksaray Gazetecilik Yüksek Okulları izlemiş, Özel Okulların devletleştirilmesinden sonra Ankara, İstanbul ve İzmir İktisadi ve Ticari İlimler Akademileri bünyelerinde dört yıllık Gazetecilik ve Halkla İlişkiler Yüksek Okulları faaliyete geçmiştir. Ortadoğu Amme İdaresi Enstitüsü, Bankalar birliği Ankara ve İstanbul Eğitim merkezi, Ankara hukuk Fakültesi Bankacılık Enstitüsü öğretim programlarına <span class="mavi">Halkla İlişkiler dersleri konmuştur.</span> </div>
+<div>
+Üniversiteler Halkla İlişkiler alanında her yıl çok sayıda mezun vermektedir. Bunların içinde yetenekli gençler bulunmaktadır. Kendilerini uzmanlığa hazırlayan bu mezunların bilgilerini kullanarak onları büyük sorumluluklar için yetiştirmek hem kuruluşlara, hem genç aydınlara hem de halkla İlişkiler mesleğine büyük yararlar sağlayacaktır.</div>
+</div>
+<div> <div>
+Halkla İlişkiler Kavramı</div>
+<div>
+Halka İlişkiler; kuruluşun çevresiyle ilişkilerini, çevrenin kuruluş amaçları, işlevleri ve örgütsel davranış üzerindeki etkilerini öğrenmesiyle, kuruluşun çevresini etkilemesiyle ilgili anlayış, davranış ve yöntemleri içeren bir kavramdır.</div>
+<div>
+Halkla İlişkiler, bir örgütle kamu kuruluşu arasında karşılıklı anlayışın kurulması amacını taşıyan, <span class="mavi"> önceden düşünülüp tasarlanmış planlı ve sürekli çabadır.</span> </div>
+<div>
+Halka İlişkiler, bir işletmenin ya da özel ve kamu kuruluşunun bağlantı kurduğu, kurabileceği kimselerin anlayışı, <span class="mavi"> sempati ve desteğini sağlamak amacı ile yönetici ve girişimcilerin başvurduğu yöntemlerin tümüdür.</span></div>
+<div>
+Halkla İlişkiler, <span class="mavi"> kuruluşu halka tanıtmak ve halkı tanıma sanatıdır.</span>
+Halkla İlişkiler aynı zamanda kuruluşun amaç, politika ve etkinliklerinin çevreye anlatılması ve benimsetilmesinde önemli bir role sahip bulunmaktadır. </div>
+<div> <span class="mavi">
+Kurum içi halka ilişkilere tüm personelin katılması gerekir.</span>  Kuruluşta çalışanlar, o kuruluş ile ilgili bilgileri ve haberleri zamanında öğrenmeli ve yöneticiden, en alt düzeydeki görevliye kadar faaliyetin bir bölümüne fiilen veya dolaylı olarak katılmalıdır.</div>
+
+<div>
+Halkla İlişkiler, <span class="mavi"> varlık nedeni kamu yararı olan kamu kuruluşlarının halkla olumlu ilişkiler kurması,</span>  işlerin hızlı yürümesi, halkın belli konularda bilgi sahibi olması ya da kuruluşu etkilemesini sağlamak amaçlarına sahiptir.</div>
+<div>
+Halkla İlişkiler etkinlikleri iki yönlü ve karşılıklı olmalıdır. Tek yönlü olan <span class="mavi"> Reklam ve Propagandan ayrılan en önemli yanı karşılıklı olmasıdır.</span> </div></div>
+
+<div> <div>
+Halkla İlişkilerin Amacı</div>
+<div> <div>
+A-Halkla İlişkilerde Genel Amaçlar</div>
+<div>
+-Kamuoyunun kuruluşa ilişkin eğilimlerini, tutum ve beklentilerini saptayarak, kuruluşta uygun iyileştirmelerin yapılması için önerilerde bulunmak, <br>
+-İnsan davranış ve tutumlarının gerçek nedenlerini anlamak, <br>
+-Örgüte ilişkin olarak, kamuoyunda ortaya çıkmış olan yanlış anlamaları önlemek, <br>
+-Kuruluşla halk arasında karşılıklı saygı ve toplumsal sorumluluk duygularını geliştirmek, <br> <span class="mavi">
+-Özel çıkarlarla, kamusal çıkarlar arasında uyum sağlamak,</span> <br>
+-Mal ve hizmetlerin niteliklerinin geliştirilmesine katkıda bulunmak, <br>
+-Örgütün kurumsal kimliğinin oluşturulması ve benimsetilmesine yardımcı olmak, <br>
+-Demokratik değerlerin gelişmesine katkıda bulunmak,</div></div>
+
+<div> <div>
+B-Kamu Yönetiminde Halkla İlişkilerin Amaçları</div>
+-Kamuoyunu aydınlatmak, örgütü, onun izlediği hizmet politikasını benimsetmek, <br>
+<span class="mavi"> -Halkta yönetime karşı daha olumlu tutumlar oluşturmak,</span> <br>
+-Yönetimle olan ilişkilerde halkın işini kolaylaştırmak, <br>
+-Alınacak kararların daha yerinde olmasını sağlayacak bilgileri halktan elde etmek, <br>
+-Yasaklar üzerinde aydınlatıcı bilgiler vererek, yurttaşların yasaklara uymasını sağlamak, <br>
+-Hizmetlerin görülmesinde halkın işbirliğini sağlamak, <br>
+-Yasalardaki, yönetsel yöntemlerdeki aksaklıkların saptanmasında, giderilmesinde halkın dileklerinden, örgütlenmelerinden, yakınmalarından yararlanmak. </div>
+
+<div> <div>
+C-Yerel Yönetimlerde Halka İlişkilerin Amaçları</div>
+-Vatandaşlara, yerel yönetim kuruluşunun hizmet politikaları ve uygulamalarına ilişkin olarak bilgi vermek, <br>
+-Yerel yönetim kuruluşlarınca kesin kararlar alınmadan önce, önemli yeni projeler hakkında vatandaşlara görüşlerini belirtme fırsatı vermek, <br>
+-Yerel yönetimlerin sistemi ve işleyişi ile kendi hak ve sorumlulukları konularında vatandaşları aydınlatmak, <br> <span class="mavi">
+-Vatandaşlık gururunu aşılamak ve geliştirmek.</span> <br>
+Kısaca ifade etmek gerekirse halkla ilişkilerin amacı bir kuruluş ile ilgili olduğu hedef kitle arasında karşılıklı anlayış, uyum ve iyi niyeti gerçekleştirme, kuruluş amaçları ile toplumun gereksinme tutum ve davranışlarını kamu yararı etrafında bütünleştirme ve böylece toplumda görüş birliğini sağlamaktır.</div></div>
+
+<div>
+<div>
+Halkla İlişkilerin Temel İlkeleri</div> <div>
+Halkla İlişkilerin Temel İlkeleri <span class="kim"> önem sırasına göre;</span> <br>
+-Dürüstlük <br>
+-İnandırıcılık <br>
+-Yineleme (Tekrar) <br>
+-Bütçe</div></div>
+
+<div> <div>
+Halkla İlişkiler Çalışmalarının Aşamaları  <br>
+-Bilgi Toplama <br>
+-Planlama <br>
+-Uygulama (İletişim) <br>
+-Değenlendirme</div>
+<div> <span class="kim">
+A-Bilgi Toplama:</span>  Hedef kitle hakkında hiçbir şey bilmeden çalışmalara başlanırsa kampanya dağınık ve yararsız bir görünüm içinde olur ve istenilen sonuca varılamaz. Kitlenin özellikleri, eğilimleri, düşünceleri, toplumsal ve kültürel yapıları bilinmedikçe halkla ilişkiler çalışmalarının <span class="mavi"> amacına ulaşması mümkün değildir.</span>  Bilgi toplamak için kullanılacak araç ve yöntemler <span class="ark"> yazılı cevaplanacak anketler</span>, <span class="ark"> soru-cevap görüşmeleri,</span> <span class="ark"> telefonla ya da yüz yüze yapılacak soruşturmalar gibi yöntemlerdir.</span> Bunun dışında hedef olarak alınan toplumun özellikleri, o toplumun hakkında yayınlanmış kitap, makale, inceleme gibi yayınlardan veya  <span class="mavi"> o toplumun içinde uzun süre yaşamış kişilerden bilgi elde edilebilir.</span>  Kuruluşa gelen mektuplar ve başvurular, hedef kitleleri temsil edebilecek kişilerle yapılan görüşmeler, <span class="mavi">çeşitli danışmaların görüşleri</span>  gibi veriler incelenerek de bilgi toplama işlemi yerine getirilebilir. Daha ayrıntılı ve güvenilir sonuçlar almak için kişisel soruşturma yöntemi de kullanılabilir, ancak hedef kitlenin tümü yerine örnekleme metodunu kullanmak daha iyidir. </div>
+<div> <span class="kim">
+B-Planlama:</span>  Belirlenen amaçları gerçekleştirmek için gerekli olan araçların saptanması ile ilgili bir kavramdır. <span class="mavi"> Amaçların ve bu amaçlara ulaşmak için nelerin, <br> ne zaman, <br> nerede, <br> neyle ve kiminle, <br> nasıl <br> yapılacağının belirlenmesi olarak tanımlanabilir.</span>  Planlamayı uzun, orta ve kısa dönemli olarak ayırabiliriz. Uzun ve orta dönemli planlar daha çok bir örgütün halkla ilişkiler politikasının gerçekleşmesine ilişkin, kısa dönemli planlar ise daha güncel konulara yoğunlaşan, genel planlama amaçlarının ayrıntılarının belirlendiği ve bunlara ulaşma yöntemlerinin tespit edildiği planlamadır.</div>
+<div> <span class="kim">
+C-Uygulama (İletişim):</span> <span class="mavi"> Ortak semboller yoluyla anlamların, duygu, düşünce ve davranışların aktarılması süreci olarak tanımlanır.</span>  Yazılı ya da sözlü sözcükler, resimler, davranışlar ortak sembolleri oluşturur. <span class="mavi"> Her iletişim sürecinde, <br> kaynak, <br>ileti (mesaj), <br> alıcı <br> olmak üzere üç temel öğe bulunur.</span>  <span class="kim"> Bunlara bir de iletinin aktarıldığı araç ya da kanal eklenir</span>.</div>
+<div> <span class="kim">
+Ç-Değerlendirme:</span>  Uygulanan programın etkilerinin ölçülmesi ve <span class="mavi"> programın amacına ulaşma derecesi saptanır.</span>  Değerlendirme, sonraki programın da bilgi toplama aşamasını oluşturur.</div></div>
+
+<div>
+Halka İlişkilerde Kullanılan Araçlar
+<div>
+A-Yazılı ve Basılı Araçlar <br>
+-Gazeteler <br>
+-Dergiler<br>
+-Broşürler<br>
+-El Kitapları veya Kılavuzlar<br>
+-Bültenler<br>
+-Yıllıklar<br>
+-Mektuplar<br>
+-Afişler (Posterler)<br>
+-Pankartlar<br>
+-El İlanları<br>
+-Yönlendirici ve Yol Göstericiler (Yol gösterici işaret ve levhalar gibi…)</div>
+<div>
+B-Yayım ve Görsel-İşitsel Araçlar <br>
+-Radyo ve Televizyon <br>
+-Sergiler</div>
+
+<div>
+C-Sosyal ve Kültürel Etkinlikler <br>
+-Yarışmalar <br>
+-Geziler <br>
+-Destek Verme (Sponsorluk)</div>
+<div>
+Ç-Eğitim
+Çalışanlar ve Halkla İlişkiler <br>
+Her kuruluşta çalışanlar halkla ilişkiler açısından o kuruluşun iç kamularını oluştururlar.</div></div>
+
+<div> <span class="kim">
+A-Kurum İçi İlişkiler:</span>  Halkla ilişkilerde iç ilişkiler, dış ilişkiler kadar önemlidir ve birlikte sürdürülmesi gerekir. Haberleşme, personel ile yönetim arasında karşılıklı diyalogun bulunması demektir. Çalışmaların niçin, nasıl, hangi amaçla yapıldığı bütün personel tarafından iyice anlaşılmalıdır. Çalışanlar kuruluşun dış kamularla ilişkileri üzerinde belirleyici bir etkiye sahiptir. Hemen her ülkede kamu kuruluşlarında işlerin yeterli biçimde yapılmaması, gecikmeler, kırtasiyecilik, memurların ilgisizliği, özensizliği ya da tarafsız olmayışları ortak yakınmalar arasında yer alır. Yakınmaların bir bölümü kuruluşta işlerin yürütülmesindeki biçimsel aksamalara dayansa da çoğunda temel nedenin çalışanların işe ve iş sahiplerine yönelik tutum ve davranışları olduğu söylenebilir. <span class="mavi">  Bu nedenle çalışanların davranışlarında özenli olmaları önemli bir noktadır</span>. <br>
+Kuruluşları işlerin kolay ve hızlı yürümesi için kamuları ile aralarında ortak anlayış ve davranış geliştirme gereksinmesindedir. Belirli bir iş için hangi belgenin gerektiği, kime, nasıl başvurulacağı gibi konularda kuruluş tarafından bilgi verilmesi aslında bu amaca yöneliktir. <br>
+Kuruluşun ve büroların genel olarak temizliği, çalışanların temiz ve düzenli olması, genel davranışı, kuruluş hakkında varılan yargıda etkili olur.</div>
+
+<div>
+B-Personelde Aranacak Nitelikler <div>
+	<span class="kim">
+1-Görünüş:</span>  Giyime özen gösterilmesi ve giyeceklerin daima sade, rahat, temiz, ütülü, düzenli olması zorunludur. Ayrıca ayakkabıların boyalı, saçların temiz ve düzenli, ellerin bakımlı ve temiz olmasına da dikkat edilmelidir. Ek olarak terleme veya kirlilik sebebiyle oluşabilecek her türlü vücut kokusunun mutlak surette giderilmesi için sık sık banyo yapılması veya mümkün değilse vücudun zaman zaman silinmesi, kokuyu önleyici ve giderici malzemenin kullanılması, erkek, kadın herkes tarafından alışkanlık haline getirilmelidir. Gerek diş sağlığı ve gerekse olabilecek ağız kokularının önlenmesi bakımından da ağız sağlığına önem verilmesi ve dişlerin fırçalanması gerekir.  <br>
+Personelin iş hayatı dışındaki hayatında da sağlık kurallarına uyması gerekir. Görünüşü etkileyen bir diğer husus da kendine güven, dengeli davranış ve kontrollü duruştur.</div>
+<div> <span class="kim">
+2-Kişilik:</span> İşbirliği anlayışı içinde çalışabilme, yerinde hareket edebilme, teşebbüs kabiliyeti, görgü ve tolerans gibi hususlardır. İş hayatında çevresi ile iyi geçinen, yardımlaşma ve arkadaşlığa önem veren, iş hayatı ile özel hayatı ayırabilen, anlayışlı, hoşgörülü ve nazik davranabilen, güler yüzlü kişiler daha başarılı olabilirler. Bu konuda, konuşma tarzı ile ses tonunun etkisi de unutulmamalıdır.  Konuşmalar, terbiye ve nezaket kurallarına uygun, kendine güvenen bir insanın ses tonu ile yapılmalıdır. İyi, güzel ve nazik davranışlardan herkesin etkileneceği unutulmamalı; içten gelen, yapmacık olmayan bu tür tavır ve davranışlar edinilmeye çalışılmalıdır. <br>
+İş hayatında görevin iyi, doğru ve zamanında bitirilmesi büyük önem taşır. Bu bakımdan memur, her türlü yazılı ve sözlü talimatı dikkatle almalı, anlayamadığı konularda konuyu aydınlatabilecek soruları mutlaka sorabilmelidir. <br>
+Memur eleştiriye açık olmalı, gerek yaptığı işle ve gerekse beğenilmeyen bir davranışı sebebiyle, kendisine açık ve ima yoluyla ikaz edilen hususlarda hoşgörülü olmalı ve bu tenkitlerin kendisini daha iyi olmaya sevk edeceğini düşünebilmeli, hatasını anladığında özür dileyebilmeli, telafi etmeye çalışmalı ve bir daha o türden yanlışlığa yol açmamaya gayret sarf etmelidir.</div>
+<div> <span class="kim">
+3-Güvenilirlik: </span> Çalışma saatlerine uygun olarak işe gelip gitme, bu sürede görev dışı işlerle meşgul olmama, görevi istekle yapma, görevin gerektirdiği gizliliğe riayet etme, sadakat ve yaptığı işe saygı duyma gibi hususları kapsar. </div></div>
+
+	<script>
+	var surukleniyor = false;
+	var offsetX, offsetY;
+
+	// Tüm soru göster butonlarını seç
+	const soruGosterButtons = document.querySelectorAll('.soru');
+
+	// Her bir buton için event listener ekle
+	soruGosterButtons.forEach(function (button, index) {
+	button.addEventListener('click', function() {
+	const soruContainer = document.querySelector('.soruContainer');
+
+	// Eğer gösteriliyorsa gizle, gizliyse göster
+		if (soruContainer.style.display === "none") {
+		  soruContainer.style.display = "block";
+		} else {
+		  soruContainer.style.display = "none";
+	}
+	});
+	});
+
+
+	soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+	document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+			soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+		document.addEventListener('mouseup', function() { surukleniyor = false;	});
+	</script>
+
+</body>
+</html>
+{% endblock%}

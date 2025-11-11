@@ -1,0 +1,779 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>özel
+<html>
+<head>
+	<style>
+
+	.solbos{
+	margin-left: 20px;
+	}
+		.navbar {
+			margin-left: 0 !important;
+		}
+
+
+		header{
+			display:run-in ;
+			width: 100%;
+			margin: 0;
+		top: 0;
+		position: fixed;
+		border-radius: 10px;
+
+			}
+		body{background-color: rgb(1, 53, 37); color: aliceblue; font-size: large; padding: 5px;}
+		a{color: white;}
+
+		.dik{background-color: darkred; border-radius: 10px; color: white; }
+		.kim{color:black; background-color: green;}
+
+
+		.span{color: rgb(226, 93, 40);}
+
+
+		.mavi{ background-color: burlywood; color: black; font-family: Arial, Helvetica }
+		.ark{background-color:black; border-radius: 10px; }
+		.genişlik{width: 200px; }
+		.genişlik2{width: 400px; }
+
+	ul li {
+			float: left;
+			margin-right: 20px;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+
+	</style>
+	 <title class="siyah" >T.C.CADALET BAKANLIĞI
+		İdari ve Mali İşler Dairesi BaşkanlığıSayı:
+		Konu : Arşiv HizmetleriGENELGE No: 128/1</title> <script>
+			function kapat() {
+				if (balon.style.display === "block") {
+					balon.style.display = "none"; cevaps.style.display="none" ;
+				} }
+
+
+
+
+			function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+				var panDivs= document.querySelectorAll(".span");
+				for(var i =0 ; i<panDivs.length; i++) {
+				//panDivs[i].style.backgroundColor="darkred";
+				panDivs[i].style.color="red"}}
+
+			function metinSifirla(){ // editör görünümü için
+				var panDivs= document.querySelectorAll(".span");
+				for(var i =0 ; i<panDivs.length; i++) {
+				//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metinSıfırla(){  // spanlar için
+
+				document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+				document.getElementById("bady").style.color="white"
+				metinSifirla()
+				metınArk()
+				metınDık()
+				metınEDİ()
+				metınKim() 	}
+
+			function metınKim(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function kimmorlasss(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="purple";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function kimuyp(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+				panDivs[i].style.color="black"} }
+
+			function kimdahe(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+				panDivs[i].style.color="white"} }
+
+			function kimyes(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="green";
+				panDivs[i].style.color="white"} }
+
+			function metınArk(){
+				var panDivs= document.querySelectorAll(".ark");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metınKim(){
+				var panDivs= document.querySelectorAll(".kim");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metınDık(){
+				var panDivs= document.querySelectorAll(".dik");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metınEDİ(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metınYes(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="green";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function metındmavi(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="darkblue";
+				panDivs[i].style.color="white"} }
+
+			function metınkır(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="red";
+				panDivs[i].style.color="white"} }
+
+			function morlas(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="purple";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function dikcho(){
+				var panDivs= document.querySelectorAll(".dik");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="chocolate";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function dikuyp(){
+				var panDivs= document.querySelectorAll(".dik");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+				panDivs[i].style.color="black"} }
+
+			function dikkırmızı(){
+				var panDivs= document.querySelectorAll(".dik");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="red";
+				panDivs[i].style.color="white"} }
+
+			function morlasss(){
+				var panDivs= document.querySelectorAll(".ark");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="purple";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function arkuyp(){
+				var panDivs= document.querySelectorAll(".ark");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+				panDivs[i].style.color="black"} }
+
+			function arkdahe(){
+				var panDivs= document.querySelectorAll(".ark");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+				panDivs[i].style.color="white"} }
+
+			function metınmavi(){
+				var panDivs= document.querySelectorAll(".mavi");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="darkcyan";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function dikles(){
+				var panDivs= document.querySelectorAll(".dik");
+				for(var i =0 ; i<panDivs.length; i++) {
+				panDivs[i].style.backgroundColor="darkred";
+				panDivs[i].style.color="whitesmoke"} }
+
+			function chola(){
+				var panDivs= document.querySelectorAll(".span");
+				for(var i =0 ; i<panDivs.length; i++) {
+				//panDivs[i].style.backgroundColor="purple";
+				panDivs[i].style.color="chocolate"} }
+
+			function dahadayeni(){
+				var panDivs= document.querySelectorAll(".span");
+				for(var i =0 ; i<panDivs.length; i++) {
+				//panDivs[i].style.backgroundColor="purple";
+				panDivs[i].style.color="rgb(212, 12, 126"} }
+
+			setInterval(tarıh, 1000);
+			function tarıh(){
+					 var an = new Date()
+					 var yıl= Number( an.getFullYear() )
+					 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+					 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+					 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+					 var dk=  an.getMinutes().toString(). padStart(2,'0')
+					document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+					}
+			function badyMavi(){
+				document.getElementById("bady").style.backgroundColor = "darkblue"
+				document.getElementById("bady").style.color = "white"
+				sınıf()
+				arkuyp()
+				dikcho()
+				metınkır()
+				kimdahe()	}
+			function badyEditör(){
+				document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+				document.getElementById("bady").style.color = "white"
+				chola()
+				arkuyp()
+				dikkırmızı()
+				morlas()
+				kimuyp()}
+
+			function badysiyah(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "whitesmoke";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınYes()
+				kimmorlasss()	}
+
+			function beyaz(){
+				document.getElementById("bady").style.backgroundColor = " white"
+				document.getElementById("bady").style.color = "black"
+				sınıf()
+				morlasss()
+				metınDık()
+				metındmavi()
+				kimyes()	}
+
+
+			function uyap(){
+				document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+				document.getElementById("bady").style.color = "black"
+				sınıf()
+				morlasss()
+				metınDık()
+				metınmavi()
+				kimdahe()	}
+
+			function yeni(){
+				document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+				document.getElementById("bady").style.color = "black"
+				sınıf()
+				arkdahe()
+				metınDık()
+				metınmavi()
+				kimyes()	}
+
+			function dahayeni(){
+				document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+				document.getElementById("bady").style.color = "black"
+				dahadayeni()
+				morlasss()
+				dikles()
+				metınEDİ()
+				kimyes()}
+
+			function soruGetır(){
+
+			}
+
+			function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+				element.style.color="red";
+				element.style.fontWeight="bold"}
+
+				function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+			   function DivResetle(){
+
+				const allDivs=document.querySelectorAll('div')
+				allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+				div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+				//div.style.borderStyle="none"
+				})  }
+
+		</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" margin-left="20px" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>  <br><br><br>
+<div id="kal" class="kal">
+	T.C.ADALET BAKANLIĞI 	<br>
+	İdari ve Mali İşler Dairesi BaşkanlığıSayı:<br>
+	 Konu : Arşiv Hizmetleri <br>
+	GENELGE No: 128/1  </div>
+
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+		<p>
+		  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+		  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+		  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+		</p></div>
+
+		<script>
+		  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+		  </script>
+
+
+
+		  <div id="soruContainer" class="soruContainer">
+			  <div id="soruDiv">
+				  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+			  </div>
+			  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+			  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+		  </div>
+		  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+	<div class="solbos" >
+			Bakanlık merkez, adlî ve idarî yargı birimleri ile taşra teşkilatındaki arşiv hizmetlerinin 3473 sayılı Muhafazasına
+			Lüzum Kalmayan Evrak ve Malzemenin Yok Edilmesi Hakkında Kanun Hükmünde Kararnamenin Değiştirilerek Kabulü Hakkında
+			Kanun ve Başbakanlık Devlet Arşiv Hizmetleri Hakkında Yönetmelik çerçevesinde aşağıdaki esaslara göre yürütülmesi
+			gerekmektedir.
+	</div>
+
+	<div> Bu itibarla;</div>
+	 <h3 class="solbos" >1- Arşivlerin teşkili;</h3> </span>
+	<h4 class="solbos">A.Ünite arşivleri: </h4>
+	 <div class="solbos">Bakanlık Merkez Teşkilatı birimlerinde bulunan şube müdürlüklerinin, </div>
+     <div class="solbos">Cumhuriyet başsavcılıklarının ,</div>
+	 <div class="solbos">mahkemelerin  ,</div>
+	 <div class="solbos">adlî ve idarî yargı adalet komisyonlarının, ceza infaz kurumları ve tutukevlerinin, denetimli serbestlik şube müdürlüklerinin, ceza infaz kurumları personel eğitim merkezlerinin, icra ve iflas <span class="span">'müdürlüklerinin faaliyetleri sonucu oluşan ve aktif olarak işi biten' </span>  dosya, evrak ve defterler ile tüm dokümanların düzenli bir şekilde yerleştirildiği evrak dolabı veya raflarla donatılmış yerlerdir. </div class="solbos"> </h5>
+	<h4 class="solbos" > B.Birim arşivleri: </h4>
+	<span class="span"> 'Ünite arşivlerinde bekleme süresi dolan arşivlik malzemenin belirli bir süre saklandığı yerlerdir'</span> <div class="kim"> Bu arşivler, Bakanlık Merkez Teşkilatı birimlerinde, Cumhuriyet başsavcılıklarında, bölge idare mahkemelerinde, ceza infaz kurumları personel eğitim merkezlerinde, müdürlük teşkilatı olan ceza infaz kurumları ve tutukevlerinde kurulur.</div> <div>Cumhuriyet başsavcılığı, bölge idare mahkemesi ve taşradaki birim arşivleri </div> <span class="span">"kurum arşivi" </span>  gibi çalışır .
+
+	<div class="solbos">
+	<h4 > C.Kurum arşivi:</h4> <span class="span"> "Bakanlık merkezindeki birimlerinin" günlük iş akışı içerisinde kullanmadığı ve aynı zamanda Merkez birim arşivlerinde bekleme süresini dolduran malzemenin saklandığı yerdir </span> <br>
+	<div class="kim"></div> <br>
+
+	<div class="solbos">
+	2-Merkez Teşkilatı ve ceza infaz kurumları personel eğitim merkezlerinin birim  arşivlerinde <span class="dik">şube müdürü'</span>', Cumhuriyet başsavcılıkları ile bölge idare mahkemelerinin birim arşivlerinde <span class="dik">müdür'</span>' , müdürlük teşkilatı olan ceza ve tutukevleri birim arşivlerinde ise <span class="dik">'ikinci müdür'</span>' birim arşiv sorumlusu olarak görevlendirilir.</div> <br>
+
+
+<div class="solbos">  3- <span class="dik"> 'Her yılın Ocak ayı'</span> içerisinde önceki {yıla ait arşivlik malzeme}, merkezde birim amirlerinin, Cumhuriyet başsavcılıkları, mahkemeler ve taşra teşkilatında ise ünite amiri gözetim ve sorumluluğunda, tüm ilgili ünite personeli tarafından işbirliği içinde gözden geçirilerek işlemi tamamlananlar,
+<span class="dik ">"işlemi devam edenler ve işlemi tamamlanmış
+	olmasına rağmen elde bulundurulması gerekli olanlar şeklinde ayırıma tabi tutulur"</span>	 . Ayırım sonucu, işlemi tamamlanmış ve
+birim arşivine devredilecek malzeme, ilgili ünite personeli ile birim arşivi sorumlusu tarafından müştereken uygunluk
+kontrolünden geçirilir ve arşivlik malzeme, kayıt defterleri veya föyleri ile birim arşivine devredilir.Merkezdeki birim
+arşivinde saklama süresini tamamlayan arşivlik malzeme de, <span class="dik">kayıt defterleri veya föyleri ile birlikte kurum arşivine
+	devredilir.</span> </div> <br>
+
+<div class="solbos">
+<h3 class="solbos"> 4- Arşiv ayıklama ve imha komisyonlarının oluşumu;</h3> </div>
+
+<div class="solbos"> <h4 class="solbos" >A.Kurum Arşivi Ayıklama ve Îmha Komisyonu,</h4>  Îdarî ve Malî Îşler Dairesi Başkanlığı Kurum Arşivi Şube Müdürünün
+başkanlığında, bu müdürlükte görevli iki memur ile malzemeleri ayıklanacak ve imha edilecek Merkez Teşkilatı ilgili
+biriminin birim <span class="dik">arşiv sorumlusu ve bu birimin bir memurundan oluşur </span> ve işlemler Îdarî ve Malî Îşler Dairesi Başkanlığının gözetim, denetim ve sorumluluğunda yürütülür.</div> <br>
+
+<div class="solbos"> <h4 class="solbos" >B.Birim arşivi ayıklama ve imha komisyonları,</h4> <hr>
+	a) Cumhuriyet <span class="mavi">(başsavcılık)l</span> arının evrakı ile ilgili olarak; <span class="ark"> Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet 	başsavcı vekilinin başkanlığında, </span> <span class="“bir Cumhuriyet savcısı”"> </span> , Cumhuriyet başsavcılığı birim arşivi sorumlusu ile savcılık 	yazı işleri müdürü ve kâtibinden, <br> <hr>
+
+	b) <span class="mavi">(Mahkemeler) </span> in evrakı ile ilgili olarak; <span class="ark ">Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet başsavcı vekilinin başkanlığında, Cumhuriyet başsavcılığı birim arşivi sorumlusu</span> , <span class="dik">“mahkeme hâkimi”,</span>  <span class="mavi">(heyet halinde çalışan mahkemelerde ise
+		başkan veya görevlendireceği bir üye ile)</span>  mahkemenin yazı işleri müdürü ve kâtibinden, <br> <hr>
+	c) Adlî yargı adalet <span class="mavi	">(komisyonlarının) </span> evrakı ile ilgili olarak; <span class="ark">Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet başsavcı vekilinin başkanlığında, Cumhuriyet başsavcılığı birim arşivi sorumlusu,</span>  <span class="dik">"komisyon başkanı veya
+		görevlendireceği komisyon üyesi hâkim"</span>   ile komisyon yazı işleri müdürü ve kâtibinden,<br> <hr>
+	ç) <span class="mavi">(Îcra ve iflas)</span>  müdürlüklerinin evrakı ile ilgili olarak; <span class="ark">Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet başsavcı vekilinin başkanlığında, Cumhuriyet başsavcılığı birim arşivi sorumlusu</span> , <span class="dik">"icra hâkimi ile icra müdürü ve
+		kâtibinden",</span>  <br> <hr>
+	d) <span class="mavi"> (Denetimli serbestlik)</span> şube müdürlüklerinin evrakı ile ilgili olarak; <span class="ark">Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet başsavcı vekilinin başkanlığında, Cumhuriyet başsavcılığı birim arşivi sorumlusu,</span> <span class="dik">"denetimli serbestlikle 	ilgili Cumhuriyet savcısı ile şube müdürü ve bir memurdan,"</span>  <br> <hr>
+	e) <span class="mavi">(Müdürlük teşkilatı olmayan ceza infaz kurumları)</span>  ve tutukevlerinin evrakı ile ilgili olarak; <span class="ark">Cumhuriyet başsavcısı veya görevlendireceği Cumhuriyet başsavcı vekilinin başkanlığında, Cumhuriyet başsavcılığı birim arşivi sorumlusu</span> , <span class="dik">"ceza ve tutukevinin yönetimiyle görevli Cumhuriyet savcısı ile varsa idare memuru ve saymandan, yoksa Cumhuriyet başsavcısının belirleyeceği iki memurdan",</span> <br> <hr>
+
+	f) <span class="mavi	">(Müdürlük teşkilatı olan ceza infaz kurumları</span>  ve tutukevlerinin evrakı ile ilgili olarak; cezaevi müdürünün 	başkanlığında, <span class="dik">birim arşivi sorumlusu ile müdürün belirleyeceği 3 memurdan,)</span> <div> <button  onclick="soruyuGoster(254)" class="soru" >2017 yılı çıkmış soru</button> </div><br> <hr>
+
+	g) <span class="mavi">(Îdarî yargı adalet komisyonlarının evrakı ile ilgili olarak); </span>  <span class="ark">bölge idare mahkemesi başkanının başkanlığında, bölge idare mahkemesi birim arşivi sorumlusu,</span>  başkanın görevlendireceği <span class="dik">"bir komisyon üyesi ile komisyon yazı işleri müdürü ve
+		bir kâtibinden",</span> <br> <hr>
+
+	ğ) <span class="mavi">(Bölge idare mahkemelerinin evrakı ile ilgili olarak);</span> <span class="ark"> bölge idare mahkemesi başkanının başkanlığında,</span> başkanın	görevlendireceği bir üye, <span class="ark"> bölge idare mahkemesi birim arşivi sorumlusu</span> ile mahkeme yazı işleri müdürü ve bir kâtibinden ,<br> <hr>
+	h) <span class="mavi">Îdare ve vergi mahkemelerinin evrakı ile ilgili olarak;</span> <span class="ark">bölge idare mahkemesi başkanının başkanlığında, bölge idare mahkemesi birim arşivi sorumlusu</span> , mahkeme başkanı veya görevlendireceği bir üye ile mahkeme yazı işleri müdürü ve bir	kâtibinden,<br> <hr>
+	ı) <span class="mavi">Ceza infaz kurumları personel eğitim merkezlerinde;</span>  eğitim merkezi müdürünün başkanlığında, müdür yardımcısı, birim 	arşiv sorumlusu ile müdürüngörevlendireceği iki memurdan,	teşekkül eder. <br>
+		Yeterli personelin olmaması halinde, <strong> bu komisyon en az üç kişiden oluşturulur.</strong> <br>
+
+	Merkez Teşkilatı birim arşivlerinde ayıklama ve imha işlemi yapılmaz.
+	<br> Ayıklama ve imha işlemi Kurum Arşivince yapılır. <br> <span class="dik">Ünite arşivlerinde ayıklama ve imha işlemi yapılmayacağından, ayıklama ve imha komisyonu kurulmaz.</span>	</div> <br><hr>
+
+<div class="solbos"> <h4 class="solbos" >5- Îmha listelerinin kesinleştirilmesi;</h4>
+	A.Bakanlık Merkez Teşkilatında Kurum Arşiv Ayıklama ve Îmha Komisyonlarının hazırladığı <span class="ark">imha listeleri</span> <span class="kim"> Devlet Arşivleri	Genel Müdürlüğünün uygun görüşü alındıktan sonra</span> Bakanlığın, <br> <br>
+
+	B.Cumhuriyet başsavcılıkları, mahkemeler ceza infaz kurumları ve tutukevleri ile ceza infaz kurumları personel eğitim	merkezleri birim arşiv ayıklama ve imha komisyonlarının hazırladığı imha listeleri; <br> <hr>
+	a) Cumhuriyet başsavcılıkları, denetimli serbestlik şube müdürlükleri, müdürlük teşkilatı olmayan ceza infaz kurumları	ile tutukevlerinde; <span class="kim"> Cumhuriyet başsavcısının,</span> <br> <hr>
+	b) Mahkemelerde; <span class="kim"> hâkim veya başkanın,</span> <br> <hr>
+	c) Adlî ya da idarî yargı adalet komisyonlarında; <span class="kim"> komisyon başkanının</span>, <br> <hr>
+	ç) Îcra ve iflas müdürlüklerinde; <span class="kim"> icra hâkiminin</span>, <br> <hr>
+	d) Müdürlük teşkilatı olan ceza infaz kurumları ile tutukevlerinde; <span class="kim"> kurum müdürününe</span> <br><hr>
+	e) Ceza infaz kurumları personel eğitim merkezlerinde; <span class="kim"> eğitim merkezi müdürünün onayı</span> alındıktan sonra kesinleşir.</div> <br> <hr>
+
+<div class="solbos">6- İmhalık evrak, Başbakanlık Ergazi Kâğıt Paralama, Parçalama ve Balyalama Tesisine teslim edilerek kıydırılabileceği  <span class="kim">	gibi, kendi imkanlarıyla okunamayacak şekilde kıyılmak şartıyla</span> ihale yoluyla satılarak geliri hazineye irat kaydedilebilir.</div> <br>
+
+<div class="solbos">7- Devlet Arşiv Hizmetleri Hakkında Yönetmeğin 42. maddesi gereğince <span class="ark"> imha listeleri <strong> kesinleşme tarihinden</strong> itibaren</span> <span class="kim">	ünite, birim ve kurum arşivlerinde <strong> on yıl süre ile</strong> muhafaza edilir.</span> </div> <br>
+
+<div class="solbos">8- Devlet Arşivleri Genel Müdürlüğü ile koordineli şekilde yeniden düzenlenen Adalet Bakanlığı Merkez Teşkilatı,
+	Cumhuriyet başsavcılıkları, mahkemeler ve taşra teşkilatında bulunan arşivlik malzeme ile bunların ünite, birim ve kurum
+	arşivlerinde saklama sürelerini gösterir Tespit ve Değerlendirme Formu ekte gösterilmiştir.
+ <span class="kim">	Arşivlerdeki saklama müddeti, evrakın işlemi tamamlanıp, kesin sonucu alındıktan sonra başlayan sürelerdir.</span></div> <br>
+
+<div class="solbos">9- 13/02/2006 tarihli ve 128 numaralı Arşiv hizmetleri genelgesi yürürlükten kaldırılmıştır.
+	Bilgi edinilmesini ve arşiv hizmetlerinin yürütülmesi ile ilgili olarak yukarıda belirtilen hususlarda,
+	Gereken dikkat ve özenin gösterilmesini rica ederim.</div> <br>
+
+<span class="span"> Cemil ÇİÇEK Bakan</span>  <br><br>
+
+ADLİ SİCİL VE İSTATİSTİK GENEL MÜDÜRLÜĞÜ , AVRUPA BİRLİĞİ  GENEL MÜDÜRLÜĞÜ , CEZA İŞLERİ GENEL MÜDÜRLÜĞÜ , : CEZA VE TEVKİFEVLERİ GENEL MÜDÜRLÜĞÜ, Çocuk ve Genç Denetimli Serbestlik şube Müdürlüğü, HUKUK İŞLERİ GENEL MÜDÜRLÜĞÜ , KANUNLAR GENEL MÜDÜRLÜĞÜ   , ULUSLARARASI HUKUK VE DIŞ İLİŞKİLER GENEL MÜDÜRLÜĞÜ ,CEZA İNFAZ KURUMLARI VE TUTUKEVLERİ , CTEGM EĞİTİM MERKEZLERİ  GİBİ KURUMLARIN ARŞİVLERİNDEKİ SÜRELERİ GÖSTEREN 128/1 SAYILI GENELGENİN EKLERİ UZAYIP GİDİYOR AMA ÇIKAN SORULAR SADECE  MERKEZDEKİ BİRİMLER İÇİN ORTAK OLANLAR DAN  BEN BUNU HAZIRLADIM AMA DİĞERLERİNEDE BİR GÖZ ATSANIZ İYİ OLUR DERİM BİR BAKMAK İYİDİR.
+
+
+<tr><th>BRM : MERKEZDEKİ BİRİMLER İÇİN ORTAK OLANLAR</th></tr>
+<table border="2">
+		<tr><td>sıra no</td> <td>Malzemenin Adı ve Konusu Birim</td><td>birim arşivinde</td> <td>kurum arşivinde</td><td>DÜŞÜNCELER</td></tr>
+
+
+
+<tr><td>1</td> <td> Evrak kayıt defterleri</td> <td> 5 yıl</td> <td> 25 yıl </td> <td>Devlet Arivine gönderilmez</td></tr>
+ <tr> <td>2</td> <td> Posta zimmet dosyaları</td> <td> 1 yıl</td> <td> 4 yıl</td> <td> Devlet Arivine gönderilmez</td></tr>
+
+<tr> <td>3</td> <td>Cumhuriyet savcılıklarıyla hatalı evrakla ilgili yapılan yazımalar</td> <td>
+1 yıl</td> <td> -</td> <td>Devlet Arivine gönderilmez</td></tr>
+
+<tr> <td>4</td> <td> Birimler arası yazışmalar</td> <td> 2 yıl</td> <td> -</td> <td> Devlet Arivine gönderilmez</td></tr>
+<tr> <td>5</td> <td> Kurumlar arası yazışmalar</td> <td> 5 yıl</td> <td> -</td> <td> Devlet Arivine gönderilmez</td> </tr>
+<tr> <td>6</td> <td> İhale ve sözlemelerle ilgili yazımalar <td> 5 yıl</td> <td> 10 yıl</td> <td> Ayıklama ve imha komisyonunca
+değerlendirilir</td></tr>
+<tr>
+<td>7</td> <td> Bakanlıklar veya diıer kurumlardan gelen genelge, tamim, tebliı vb.(Yürürlükten kalkanlar)</td> <td>2 yıl</td> <td> -</td> <td> Devlet Arivine gönderilmez</td></tr>
+<tr>
+<td>8</td> <td> Birimden çıkan genelgeler</td> <td> 2 yıl</td> <td> 13 yıl</td> <td> Çıkaran birim tarafından Devlet Arivine gönderilir</td></tr>
+<tr>
+<td>9</td> <td> Bütçe ve yatırım bütçesi taslak dosyaları </td>  <td> 5 yıl</td>  <td> 5 yıl</td> <td> Devlet Arivine gönderilmez</td></tr>
+<tr>
+<td>10</td>  <td> Kanun, tüzük ve yönetmeliklerle ilgili görüş dosyaları</td>  <td> 5 yıl</td> <td> 10 yıl</td> <td> Devlet Arivine gönderilmez</td> </tr>
+<tr>
+<td>11</td> <td> Kanun, tüzük ve yönetmelik dosyaları <td> Süresiz</td> <td> Süresiz</td><td> Kurumunda saklanır</td></tr>
+<tr><td>12</td> <td> Birimde görev yapan personelin görev süresince adlarına açılan personel dosyaları (Gölge dosyalar) </td> <td>Personel birimden ayrıldıktan sonra 5 yıl</td> <td>
+_ </td>  <td> Devlet Arivine gönderilmez</td></tr>
+<tr><td> 13</td> <td> Müteferrik yazışmalar </td> <td> 5 yıl</td> <td> 5 yıl </td> <td> Devlet Arivine gönderilmez</td></tr>
+<tr><td>14</td> <td> Faaliyet raporları </td> <td>5 yıl</td> <td> 10 yıl</td> <td> Birimin çıkartmı olduğu rapor Devlet Arivine gönderilir</td></tr>
+<tr><td>15</td> <td> Bilgi edinme dilekçeleri ile bunlara verilen cevaplar</td> <td> 3 yıl</td> <td> 12 yıl</td> <td> Ayıklama ve imha komisyonunca
+değerlendirilir</td></tr> </table>
+<div> <button  onclick="soruyuGoster(51)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<div> <button  onclick="soruyuGoster(52)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<div> <button  onclick="soruyuGoster(379)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}
+

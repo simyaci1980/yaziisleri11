@@ -1,0 +1,228 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<head>
+   <style>
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; /* Konum ayarı */
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .tooltip .tooltiptext img {
+        width: 100px;
+        height: auto;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+      .kutu{border-style:none ;
+				position: relative;
+
+				border-width: 5px;
+				width: 200px;
+				height: 100px;
+				float: left;  /* left dediğimiz anda sola 1. kutu sola yaslanır 2. kutu da bir önceki kutunun soluna 3. kutuda bir önceki kutunun ya yaslanır */ /*sola yaslansada web sayfası küçültülürse  alta ata geçerler */ /*rigth te tam tesi sağa yaslanarak gelirler */ /*float komutu sayesinde artık aside bölümünü oluşturabiliriz */
+				margin: 20px;
+				}
+
+        .tooltip {
+      width: 100px;
+      height: 75px;
+      opacity: 0.5; /* İlk açıldığında soluk */
+      transition: opacity 0.3s ease; /* Geçiş animasyonu */
+    }
+
+    .tooltip:hover {
+      opacity: 1; /* Fareyle üzerine gelindiğinde tam opak (aktif) */
+    }
+    .kutu .tooltiptext {
+      visibility: hidden;
+      width: 150px;
+      background-color: black; /* Arka plan rengi */
+      color: #fff; /* Yazı rengi */
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Konum ayarı */
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .kutu:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    div{display: table;}
+    h1{margin-left: 20px;}
+    h3{margin-left: 20px;}
+    </style>
+</head>
+<body style="background-color: green;">
+    <H1  >DEVLET TEŞKİLATI </H1>
+    <H3>CUMHURBAŞKANLIĞI</H3>
+  <div  > <img  src="static/img/cb-arma-min.png" alt="CUMHURBAŞKANLIĞI" title="CUMHURBAŞKANLIĞI" style="width: 400px; height: 400px;"> </div> <br>
+   <div class="kutu">
+    <img   class="tooltip" src="static/img/cb-kirmizi-min.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <span class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>CUMHURBAŞKANI YARDIMCISI</span> </div>
+    <div class="kutu">
+      <img   class="tooltip" src="static/img/cb-yesil-min.png" alt="cbs"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>CUMHURBAŞKANLIĞI İDARİ İŞLER BAŞKANLIĞI</div> KAPATILMIŞTIR  </div>
+      <div class="kutu">
+        <img   class="tooltip" src="static/img/cb-yesil-min.png" alt="cbs"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>CUMHURBAŞKANLIĞI ÖZEL KALEM MÜDÜRLÜĞÜ</div> </div>
+
+   <h3 style="margin-top: 200px;">CUMHURBAŞKANLIĞI OFİSLERİ</h3>
+   <div class="kutu">
+    <img   class="tooltip" src="static/img/yesil.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/dijital.png" alt="Logo" style="width: 50px; height: 50px;"><br>DİJİTAL DÖNÜŞÜM OFİSİ BAŞKANLIĞI </div> </div>
+    <div class="kutu">
+      <img   class="tooltip" src="static/img/yesil.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/finans.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>FİNANS OFİSİ BAŞKANLIĞI </div> </div>
+      <div class="kutu">
+        <img   class="tooltip" src="static/img/yesil.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/insan.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>İNSAN KAYNAKLARI OFİSİ BAŞKANLIĞI </div> </div>
+        <div class="kutu">
+          <img   class="tooltip" src="static/img/yesil.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/yatırım.png" alt="Logo" style="width: 50px; height: 50px;"><br>YATIRIM OFİSİ BAŞKANLIĞI </div> </div>
+
+          <h3 style="margin-top: 200px;">CUMHURBAŞKANLIĞI POLİTİKA KURULLARI</h3>
+      <div class="kutu">
+        <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>BİLGİ, TEKNOLOJİ YENİLİK POLİTİKALARI KURULU </div> </div>
+          <div class="kutu">
+     <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>EĞİTİM VE ÖĞRETİM POLİTİKALARI KURULU </div> </div>
+     <div class="kutu">
+      <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br> EKONOMİ POLİTİKALARI KURULU </div> </div>
+    <div class="kutu">
+   <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br> GÜVENLİK VE DIŞ  POLİTİKALARI KURULU </div> </div>
+     <div class="kutu">
+    <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br> HUKUK  POLİTİKALARI KURULU </div> </div>
+  <div class="kutu">
+    <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br> KÜLTÜR VE SANAT POLİTİKALARI KURULU </div> </div>
+   <div class="kutu">
+    <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>SAĞLIK VE GIDA POLİTİKALARI KURULU </div> </div>
+      <div class="kutu">
+    <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>SOSYAL POLİTİKALARI KURULU </div> </div>
+     <div class="kutu">
+      <img   class="tooltip" src="static/img/sari.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/cb-arma-min.png" alt="Logo" style="width: 50px; height: 50px;"><br>YEREL POLİTİKALARI KURULU </div> </div>
+
+
+
+
+  <h3 style="margin-top: 300px;">BAKANLIKLAR </h3>
+
+  <div class="kutu">
+   <img   class="tooltip" src="static/img/mavi.png" alt="ADALET BAKANLIĞI"  style="width: 100px; height: 75px;" > <div class="tooltiptext"> <img src="static/img/image.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>ADALET BAKANLIĞI</div> </div>
+
+   <div class="kutu">
+    <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/aile-ve-sosyal.png" alt="Logo" style="width: 50px; height: 50px;"><br>AİLE VE SOSYAL HİZMETLER BAKANLIĞI</div> </div>
+
+ <div class="kutu">
+    <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/çalışma.png" alt="Logo" style="width: 50px; height: 50px;"><br>ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI</div> </div>
+
+<div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/çevre.png" alt="Logo" style="width: 50px; height: 50px;"><br>ÇEVRE, ŞEHİRCİLİK VE İKLİM DEĞİŞİKLİĞİ BAKANLIĞI</div> </div>
+
+ <div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/dıs.png" alt="Logo" style="width: 50px; height: 50px;"><br>DIŞİŞLERİ BAKANLIĞI</div> </div>
+
+  <div class="kutu">
+   <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/enerji.png" alt="Logo" style="width: 50px; height: 50px;"><br>ENERJİ VE TABİİ KAYNAKLAR BAKANLIĞI</div> </div>
+
+  <div class="kutu">
+ <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/gençlik.png" alt="Logo" style="width: 50px; height: 50px;"><br>GENÇLİK VE SPOR BAKANLIĞI</div> </div>
+  <div class="kutu">
+   <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/hazine.png" alt="Logo" style="width: 50px; height: 50px;"><br>HAZİNE VE MALİYE BAKANLIĞI</div> </div>
+
+   <div class="kutu">
+    <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/icisleri.png" alt="Logo" style="width: 50px; height: 50px;"><br>İÇİŞLERİ BAKANLIĞI</div> </div>
+
+<div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/kültür.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>KÜLTÜR VE TURİZM BAKANLIĞI</div> </div>
+<div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/milli.png" alt="Logo" style="width: 50px; height: 50px;"><br>MİLLİ EĞİTİM  BAKANLIĞI</div> </div>
+ <div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/savunma.png" alt="Logo" style="width: 50px; height: 50px;"><br>MİLLİ SAVUNMA BAKANLIĞI</div> </div>
+ <div class="kutu">
+    <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/sağlık.png" alt="Logo" style="width: 50px; height: 50px;"><br>SAĞLIK BAKANLIĞI</div> </div>
+  <div class="kutu">
+   <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/sanayi.png" alt="Logo" style="width: 50px; height: 50px;"><br>SANAYİ VE TEKNOLOJİ BAKANLIĞI</div> </div>
+
+ <div class="kutu">
+  <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/tarım.png" alt="Logo" style="width: 50px; height: 50px;"><br>TARIM VE ORMAN BAKANLIĞI</div> </div>
+
+ <div class="kutu">
+ <img  class="tooltip" src="static/img/mavi.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/ticaret.png" alt="Logo" style="width: 50px; height: 50px;"><br>TİCARET BAKANLIĞI</div> </div>
+
+<div class="kutu" >
+   <img  class="tooltip" src="static/img/mavi.png" alt="asd"  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/ulaşım.jpg" alt="Logo" style="width: 50px; height: 50px; padding-bottom: 500px;"><br>ULAŞIM VE ALTYAPI BAKANLIĞI</div> </div> <br>
+
+ <h3 style="margin-top: 500px;" style="padding-bottom: 500px;">BAĞLI KURULUŞLAR  </h3>
+<div class="kutu">
+<img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/arşiv.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>DEVLET ARŞİVLERİ BAŞKANLIĞI</div> </div>
+
+<div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/denetleme.png" alt="Logo" style="width: 50px; height: 50px;"><br>DEVLET DENETLEME KURULU BAŞKANLIĞI </div> </div>
+
+<div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/diyanet.png" alt="Logo" style="width: 50px; height: 50px;"><br>DİYANET İŞLERİ BAŞKANLIĞI </div> </div>
+
+  <div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/iletişim.png" alt="Logo" style="width: 50px; height: 50px;"><br>İLETİŞİM BAŞKANLIĞI </div> </div>
+
+  <div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/milligüvenlik.png" alt="Logo" style="width: 50px; height: 50px;"><br>MİLLİ GÜVENLİK KURULU GENEL SEKRETERLİĞİ </div> </div>
+
+ <div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/istihbarat.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>MİLLİ İSTİHBARET TEŞKİLATI </div> </div>
+
+ <div class="kutu">
+  <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/saraylar.png" alt="Logo" style="width: 50px; height: 50px;"><br>MİLLİ SARAYLAR İDARESİ BAŞKANLIĞI </div> </div>
+
+  <div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/savunmasanayi.png" alt="Logo" style="width: 50px; height: 50px;"><br>SAVUNMA SANAYİ BAŞKANLIĞI </div> </div>
+
+ <div class="kutu">
+ <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/strateji.png" alt="Logo" style="width: 50px; height: 50px;"><br>STRATEJİ VE BÜTÇE BAŞKANLIĞI </div> </div>
+
+  <div class="kutu">
+  <img  class="tooltip" src="static/img/b-gri-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/varlık.png" alt="Logo" style="width: 50px; height: 50px;"><br>TÜRKİYE VARLIK FONU YÖNETİM ANONİM ŞİRKETİ GENEL MÜDÜRLÜĞÜ </div> </div>
+
+  <h3 style="margin-top: 300px;">KOORDİNE  KURULUŞLAR  </h3>
+  <div class="kutu">
+    <img  class="tooltip" src="static/img/b-siyah-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/tasarruf.png" alt="Logo" style="width: 50px; height: 50px;"><br>TASARRUF MEVDUATI SİGORTA FONU BAŞKANLIĞI </div> </div>
+
+    <div class="kutu">
+      <img  class="tooltip" src="static/img/b-siyah-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/güçlendirme.jpg" alt="Logo" style="width: 50px; height: 50px;"><br>TÜRK SİLAHLI KUVVETLERİNİ GÜÇLENDİRME VAKFI GENEL MÜDÜRLÜĞÜ </div> </div>
+
+ <h3 style="margin-top: 300px;">DİĞER  KURULUŞLAR  </h3>
+  <div class="kutu">
+        <img  class="tooltip" src="static/img/b-turuncu-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/türk.png" alt="Logo" style="width: 50px; height: 50px;"><br>BAĞIMSIZ/DÜZENLEYİCİ DENETLEYİCİ KURUM VE KURULUŞLAR  </div> </div>
+
+ <div class="kutu">
+  <img  class="tooltip" src="static/img/b-turuncu-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/türk.png" alt="Logo" style="width: 50px; height: 50px;"><br>KAMU KURUMU NİTELİĞİNDEKİ MESLEK KURULUŞLARI  </div> </div>
+
+ <div class="kutu">
+ <img  class="tooltip" src="static/img/b-turuncu-min.png" alt=""  style="width: 100px; height: 75px;" ><div class="tooltiptext"> <img src="static/img/türk.png" alt="Logo" style="width: 50px; height: 50px;"><br>YEREL YÖNETİM KURULUŞLARI  </div> </div>
+
+</body>
+</html>
+{% endblock %}

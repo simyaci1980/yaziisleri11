@@ -1,0 +1,983 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; }
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title> Medeni Kanun Kişiler Hukuku </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+<div id="kal" class="kal"> 4721 sayılı Türk Medeni Kanununun (1. kitap 1. kısım 1. Bölüm 2. Bölüm)</div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br> <hr>
+
+<div>
+BİRİNCİ KİTAP <br>
+
+KİŞİLER HUKUKU <br></div>
+
+
+<div>
+BİRİNCİ KISIM
+
+GERÇEK KİŞİLER</div>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+KİŞİLİK <br>
+
+A. Genel olarak <br>
+
+I. Hak ehliyeti <br>
+<div>
+Madde 8 - <span class="kim"> Her insanın</span> <span class="mavi"> hak ehliyeti vardır</span>. <br>
+
+Buna göre <span class="ark"> bütün insanlar</span>, hukuk düzeninin sınırları içinde, <span class="mavi"> haklara ve borçlara ehil olmada eşittirler</span>.</div>
+
+
+
+II. Fiil ehliyeti
+<div>
+1. Kapsamı <br>
+
+Madde 9 - Fiil ehliyetine <span class="ark"> sahip olan kimse</span>, <span class="mavi"> kendi fiilleriyle hak edinebilir ve borç altına girebilir</span>.</div>
+
+
+<div>
+2. Koşulları <br>
+<div>
+a. Genel olarak <br>
+
+Madde 10 - <span class="ark"> Ayırt etme gücüne sahip</span> ve <span class="ark"> kısıtlı olmayan</span> <span class="dik"> her ergin kişinin</span> <span class="mavi"> fiil ehliyeti vardır</span>.</div>
+
+
+<div>
+b. Erginlik <br>
+
+Madde 11 - Erginlik <span class="mavi"> <span class="dik"> onsekiz </span> yaşın doldurulmasıyla başlar</span>. <br>
+
+<span class="mavi"> <span class="dik"> Evlenme</span> kişiyi ergin kılar</span>.</div>
+
+
+<div>
+c. Ergin kılınma
+
+Madde 12 - <span class="mavi"> <span class="dik"> Onbeş </span> yaşını dolduran küçük</span>, <span class="ark"> kendi isteği</span> ve <span class="ark"> velisinin rızasıyla</span> <span class="mavi"> mahkemece ergin kılınabilir</span>.</div>
+
+
+<div>
+d. Ayırt etme gücü
+
+Madde 13- <span class="ark">  Yaşının küçüklüğü yüzünden</span> veya <span class="ark"> akıl hastalığı</span>, akıl zayıflığı, <span class="ark"> sarhoşluk</span>  ya da  <span class="ark">bunlara benzer</span>  sebeplerden biriyle akla uygun biçimde davranma yeteneğinden <span class="dik"> yoksun ol<span class="ark"> ma</span>yan herkes</span>, bu Kanuna göre <span class="mavi"> ayırt etme gücüne sahiptir</span>.</div></div>
+
+
+
+III. Fiil ehliyetsizliği
+<div>
+1. Genel olarak <br>
+
+Madde 14- <span class="ark"> Ayırt etme gücü bulunmayanların</span>, <span class="ark"> küçüklerin </span> ve <span class="ark"> kısıtlıların</span> <span class="mavi"> fiil ehliyeti yoktur</span>.</div>
+
+
+<div>
+2. Ayırt etme gücünün bulunmaması <br>
+
+Madde 15- Kanunda gösterilen ayrık durumlar saklı kalmak üzere, ayırt etme gücü bulunmayan kimsenin <span class="mavi"> fiilleri hukukî sonuç doğurmaz</span>.</div>
+
+
+<div>
+3. Ayırt etme gücüne sahip küçükler ve kısıtlılar <br>
+
+Madde 16- Ayırt etme gücüne sahip küçükler ve kısıtlılar, <span class="mavi"> yasal temsilcilerinin rızası olmadıkça, kendi işlemleriyle borç altına giremezler</span>. <span class="ark"> Karşılıksız  kazanmada</span> ve <span class="ark"> kişiye sıkı sıkıya bağlı hakları</span>  <span class="mavi"> kullanmada bu rıza gerekli değildir</span>. <br>
+
+Ayırt etme gücüne sahip küçükler ve kısıtlılar <span class="mavi"> haksız fiillerinden sorumludurlar</span>.</div>
+<div> <button  onclick="soruyuGoster(274)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+
+IV. Hısımlık
+<div>
+1. Kan hısımlığı <br>
+
+Madde 17- Kan hısımlığının <span class="kim">  derecesi</span>, hısımları <span class="mavi"> birbirine bağlayan doğum sayısıyla belli olur</span>. <br>
+
+<span class="kim"> Biri diğerinden gelen kişiler arasında</span> <span class="mavi"> üstsoy-altsoy hısımlığı</span>; <span class="kim"> biri diğerinden gelmeyip de</span>,<span class="span"> ortak bir kökten gelen kişiler arasında</span> <span class="mavi"> yansoy hısımlığı vardır</span>.</div>
+
+
+<div>
+2. Kayın hısımlığı <br>
+
+Madde 18- <span class="kim"> Eşlerden biri ile diğer eşin kan hısımları</span>, <span class="mavi"> aynı tür ve dereceden kayın hısımları olur</span>. <br>
+
+Kayın hısımlığı, kendisini meydana getiren <span class="mavi"> evliliğin sona ermesiyle ortadan kalkmaz</span>.</div>
+
+
+
+V. Yerleşim yeri
+<div>
+1. Tanım <br>
+
+Madde 19- Yerleşim yeri bir kimsenin <span class="mavi"> sürekli kalma niyetiyle oturduğu yerdir</span>. <br>
+
+Bir kimsenin aynı zamanda <span class="mavi"> birden çok yerleşim yeri olamaz</span>. <br>
+
+<span class="mavi"> Bu kural <span class="dik"> ticarî ve sınaî kuruluşlar</span> hakkında uygulanmaz</span>.</div>
+
+
+<div>
+2. Yerleşim yerinin değiştirilmesi ve oturma yeri <br>
+
+Madde 20- Bir yerleşim yerinin değiştirilmesi <span class="mavi"> yenisinin edinilmesine bağlıdır</span>. <br>
+
+Önceki yerleşim yeri <span class="span"> belli olmayan</span> veya yabancı ülkedeki yerleşim yerini bıraktığı hâlde <span class="span"> Türkiye'de henüz bir yerleşim yeri edinmemiş</span>  olan kimsenin <span class="mavi"> hâlen oturduğu yer, yerleşim yeri sayılır</span>.
+</div>
+
+<div>
+3. Yasal yerleşim yeri <br>
+
+Madde 21- <span class="kim"> Velâyet altında bulunan çocuğun yerleşim yeri</span>, <span class="dik"> ana ve babasının</span>; ana ve babanın <span class="ark"> ortak yerleşim yeri yoksa</span>, çocuğun <span class="dik"> kendisine bırakıldığı ana veya babanın</span> yerleşim yeridir. <span class="mavi"> Diğer hâllerde çocuğun oturma yeri, onun yerleşim yeri sayılır</span>. <br>
+
+<span class="kim"> Vesayet altındaki</span> kişilerin yerleşim yeri, <span class="mavi"> bağlı oldukları vesayet makamının bulunduğu yerdir</span>.</div>
+
+
+<div>
+4. Kurumlarda bulunma <br>
+
+Madde 22- Bir <span class="span"> öğretim kurumuna devam</span> etmek için bir yerde bulunma ya da eğitim,<span class="span"> sağlık, bakım veya ceza kurumu</span>na konulma, <span class="mavi"> yeni yerleşim yeri edinme sonucunu doğurmaz</span>.</div>
+
+
+
+B. Kişiliğin korunması <br>
+
+I. Vazgeçme ve aşırı sınırlamaya karşı <br>
+<div>
+Madde 23- <span class="mavi">  Kimse, <span class="ark"> hak</span> ve <span class="ark"> fiil ehliyetlerinden</span>  kısmen de olsa vazgeçemez</span>. <br>
+
+Kimse <span class="ark"> özgürlüklerinden vazgeçemez</span> veya onları <span class="ark"> hukuka ya da ahlâka aykırı olarak sınırlayamaz</span>. <br>
+
+<span class="kim"><span class="dik"> Yazılı rıza üzerine</span> insan kökenli</span> <span class="ark"> biyolojik maddelerin alınması</span>, <span class="ark"> aşılanması</span> ve <span class="ark"> nakli</span> <span class="mavi"> mümkündür</span>. Ancak, biyolojik madde verme <span class="span"> borcu altına girmiş olandan</span> <span class="dik"> edimini yerine getirmesi istenemez</span>; <span class="mavi"> maddî ve manevî tazminat isteminde bulunulamaz</span>.</div>
+
+
+
+II. Saldırıya karşı
+<div>
+1. İlke <br>
+
+Madde 24- Hukuka aykırı olarak kişilik hakkına saldırılan kimse, <span class="mavi"> <span class="dik"> hâkimden</span>, saldırıda bulunanlara karşı korunmasını isteyebilir</span>. <br>
+
+Kişilik hakkı zedelenen kimsenin rızası, daha üstün nitelikte özel veya kamusal yarar ya da <span class="ark"> kanunun verdiği yetkinin kullanılması</span>  sebeplerinden biriyle <span class="span"> haklı kılınmadıkça,</span> <span class="mavi"> kişilik haklarına yapılan her saldırı hukuka aykırıdır</span>.</div>
+
+
+<div>
+2. Davalar <br>
+
+Madde 25- Davacı, hâkimden saldırı tehlikesinin <span class="ark"> önlenmesini</span>, sürmekte olan saldırıya <span class="ark"> son verilmesini</span> , sona ermiş olsa bile etkileri devam eden saldırının <span class="ark"> hukuka aykırılığının tespitini</span> <span class="mavi">isteyebilir</span>. <br>
+
+Davacı bunlarla birlikte, <span class="ark"> düzeltmenin</span> veya kararın <span class="ark"> üçüncü kişilere bildirilmesi</span>  ya da <span class="ark"> yayımlanması</span> <span class="mavi"> isteminde de bulunabilir</span>. <br>
+
+Davacının, maddî ve manevî tazminat istemleri ile <span class="kim"> hukuka aykırı saldırı dolayısıyla elde edilmiş olan kazancın</span> <span class="dik"> vekâletsiz iş görme hükümlerine göre</span> <span class="mavi"> kendisine verilmesine ilişkin istemde bulunma hakkı saklıdır.</span> <br>
+
+<span class="kim"> Manevî tazminat istemi</span>, <span class="mavi"> <span class="dik"> karşı tarafça kabul edilmiş olmadıkça</span> devredilemez;</span> miras <span class="span"> bırakan tarafından ileri sürülmüş olmadıkça</span> <span class="mavi"> mirasçılara geçmez</span>. <br>
+
+Davacı, kişilik haklarının korunması için <span class="ark"> kendi yerleşim yeri</span> veya <span class="ark"> davalının yerleşim yeri</span>  mahkemesinde <span class="mavi"> dava açabilir</span>.</div>
+
+
+
+III. Ad üzerindeki hak
+<div>
+1. Adın korunması <br>
+
+Madde 26- Adının kullanılması çekişmeli olan kişi, <span class="mavi"> hakkının tespitini dava edebilir</span>. <br>
+
+Adı haksız olarak kullanılan kişi buna <span class="ark"> son verilmesini</span>; haksız kullanan kusurlu ise ayrıca <span class="ark"> maddî zararının giderilmesini</span> ve uğradığı haksızlığın niteliği <span class="ark"> gerektiriyorsa manevî tazminat ödenmesini</span> <span class="mavi"> isteyebilir</span>.</div>
+
+
+<div>
+2. Adın değiştirilmesi <br>
+
+Madde 27- Adın değiştirilmesi, <span class="mavi"> ancak haklı sebeplere dayanılarak hâkimden istenebilir.</span> <br>
+
+Adın değiştirildiği <span class="mavi"> nüfus siciline kayıt ve ilân olunur</span>. <br>
+
+Ad değişmekle <span class="mavi"> kişisel durum değişmez</span>. <br>
+
+Adın değiştirilmesinden zarar gören kimse, <span class="mavi"> bunu öğrendiği günden başlayarak <span class="dik"> bir yıl içinde</span> değiştirme kararının kaldırılmasını dava edebilir</span>.</div>
+
+
+
+C. Kişiliğin başlangıcı ve sonu <br>
+
+I. Doğum ve ölüm <br>
+<div>
+Madde 28- <span class="kim"> Kişilik</span>, <span class="mavi"> çocuğun <span class="ark"> sağ</span> olarak <span class="ark"> tamamıyla</span> <span class="dik"> doğduğu anda</span> başlar</span> ve <span class="mavi"> ölümle sona erer</span>. <br>
+
+<span class="kim"> Çocuk hak ehliyetini</span>, <span class="dik"> sağ doğmak koşuluyla</span>, <span class="mavi"> ana rahmine düştüğü andan başlayarak elde eder</span>.</div>
+
+
+
+II. Sağ olmanın ve ölümün ispatı
+<div>
+1. İspat yükü <br>
+
+Madde 29- Bir hakkın kullanılması için bir kimsenin <span class="ark"> sağ veya ölü olduğunu</span> veya belirli bir zamanda ya da başka bir kimsenin <span class="ark"> ölümünde sağ bulunduğunu</span> <span class="kim"> ileri süren kimse</span>, <span class="mavi"> iddiasını ispat etmek zorundadır</span>. <br>
+
+<span class="kim"> Birden fazla kişiden hangisinin önce veya sonra öldüğü</span> <span class="ark"> ispat edilemezse,</span> <span class="mavi"> hepsi aynı anda ölmüş sayılır</span>.</div>
+
+
+<div>
+2. İspat araçları <br>
+
+a. Genel olarak
+<div>
+Madde 30- <span class="kim"> Doğum ve ölüm</span>,<span class="mavi"> nüfus sicilindeki kayıtlarla ispat olunur</span>.
+
+Nüfus sicilinde bir kayıt <span class="ark"> yoksa</span> veya bulunan kaydın <span class="ark"> doğru olmadığı anlaşılırsa</span>, <span class="mavi"> gerçek durum her türlü kanıtla ispat edilebilir</span>.</div>
+
+
+
+b. Ölüm karinesi
+<div>
+Madde 31- Bir kimse, <span class="kim"> <span class="dik"> ölümüne kesin gözle bakılmayı gerektiren durumlar içinde</span> kaybolursa</span>, <span class="mavi"> cesedi bulunamamış olsa bile gerçekten ölmüş sayılır</span>.</div></div>
+
+
+
+III. Gaiplik kararı
+<div>
+1. Genel olarak <br>
+
+Madde 32- <span class="kim"> <span class="dik"> Ölüm tehlikesi içinde kaybolan</span> veya kendisinden uzun zamandan beri haber alınamayan bir kimsenin ölümü hakkında kuvvetli olasılık varsa</span>, <span class="kim"> hakları </span> <span class="span">bu ölüme bağlı olanların başvurusu üzerine</span>  mahkeme bu kişinin <span class="mavi"> gaipliğine karar verebilir</span>. <br>
+
+<span class="kim"> Yetkili mahkeme</span>, kişinin Türkiye'deki <span class="ark"> son yerleşim yeri</span>; eğer Türkiye'de hiç yerleşmemişse <span class="ark"> nüfus sicilinde kayıtlı olduğu yer</span>; böyle bir kayıt da yoksa <span class="ark"> anasının veya babasının kayıtlı bulunduğu yer</span>  mahkemesidir.</div>
+
+
+<div>
+2. Yargılama usulü <br>
+
+Madde 33- <span class="kim"> Gaiplik kararının istenebilmesi için</span>,<span class="mavi"> <span class="ark"> ölüm tehlikesinin</span> üzerinden en az <span class="dik"> bir yıl</span></span>  veya <span class="mavi"> <span class="ark"> son haber tarihinin üzerinden</span>  en az <span class="dik"> beş yıl</span> geçmiş olması gerekir</span>. <br>
+ <span class="kim">
+Mahkeme, </span> gaipliğine karar verilecek kişi hakkında <span class="span"> bilgisi bulunan kimseleri</span>, belirli bir sürede bilgi vermeleri için <span class="mavi"> usulüne göre yapılan <span class="dik"> ilânla</span> çağırır</span>. <br>
+
+<span class="mavi"> Bu süre, ilk ilânın yapıldığı günden başlayarak en az <span class="dik"> altı aydır</span></span>.</div>
+
+
+<div>
+3. İstemin düşmesi
+
+Madde 34- Gaipliğine karar verilecek kişi, ilân süresi dolmadan <span class="ark"> ortaya çıkar</span> veya kendisinden <span class="ark"> haber alınırsa</span>  ya da <span class="ark"> öldüğü tarih tespit edilirse</span>  <span class="mavi">gaiplik istemi düşer</span>.</div>
+
+
+<div>
+4. Hükmü <br>
+
+Madde 35- İlândan sonuç alınamazsa, mahkeme gaipliğe karar verir ve <span class="mavi"> ölüme bağlı haklar, aynen gaibin ölümü ispatlanmış gibi kullanılır</span>. <br>
+
+<span class="kim"> Gaiplik kararı</span> <span class="ark"> ölüm tehlikesinin gerçekleştiği</span> veya <span class="ark"> son haberin alındığı günden</span> <span class="mavi"> başlayarak hüküm doğurur</span>.</div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+KİŞİSEL DURUM SİCİLİ <br>
+
+A. Genel olarak <br>
+
+I. Sicil <br>
+<div>
+Madde 36- <span class="kim"> Kişisel durum</span>, <span class="mavi"> bu amaçla tutulan resmî sicille belirlenir</span>. <br>
+
+Bu sicilin tutulmasına ve zorunlu bildirimlerin yapılmasına ilişkin esaslar, <span class="mavi">  ilgili kanunda gösterilir</span>.</div>
+
+
+
+II. Görevliler <br>
+<div>
+Madde 37- Kişisel durum sicili, <span class="mavi"> Devletçe atanan memurlar tarafından tutulur</span>. Sicil kayıtlarını tutmak ve örnek vermek bu memurların görevidir. <br>
+
+<span class="kim"> Yabancı memleketlerdeki Türkiye temsilcilerine</span>, <span class="mavi"> <span class="dik"> Cumhurbaşkanlığının onayı</span> ile <span class="dik"> nüfus memurluğu yetkisi</span> verilebilir</span>.[1]</div>
+
+
+
+III. Sorumluluk <br>
+<div>
+Madde 38- Kişisel durum sicilinin tutulmasından <span class="mavi"> doğan zararlar, kusurlu memura rücu edilmek kaydıyla, Devletçe tazmin edilir</span>. <br>
+<div> <button  onclick="soruyuGoster(80)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<span class="kim"> Tazminat ve rücu davaları</span>, <span class="mavi"> kişisel durum sicilinin tutulduğu yer mahkemesinde açılır</span>.</div>
+
+
+
+IV. Düzeltme <br>
+<div>
+1. Genel olarak <br>
+
+Madde 39- <span class="kim"> Mahkeme kararı olmadıkça</span>, kişisel durum sicilinin hiçbir kaydında <span class="mavi"> düzeltme yapılamaz</span>.</div>
+
+
+<div>
+2. Cinsiyet değişikliğinde[2] <br>
+
+Madde 40- Cinsiyetini değiştirmek isteyen kimse, şahsen başvuruda bulunarak mahkemece cinsiyet değişikliğine izin verilmesini isteyebilir. Ancak, iznin verilebilmesi için, <span class="mavi"> istem sahibinin <span class="dik"> onsekiz yaşını</span> doldurmuş bulunması</span> ve <span class="mavi"> evli olmaması</span>; ayrıca transseksüel yapıda olup, cinsiyet değişikliğinin ruh sağlığı açısından zorunluluğunu (…)(2) <span class="mavi"> bir <span class="dik"> eğitim ve araştırma hastanesinden</span> alınacak resmî sağlık kurulu raporuyla belgelemesi şarttır</span>.(2) <br>
+
+Verilen izne bağlı olarak amaç ve tıbbî yöntemlere uygun bir cinsiyet değiştirme <span class="ark"> ameliyatı gerçekleştirildiğinin resmî sağlık kurulu raporuyla doğrulanması hâlinde</span> , <span class="mavi"> mahkemece nüfus sicilinde gerekli düzeltmenin yapılmasına karar verilir</span>.</div>
+
+
+
+B. Doğum kütüğü <br>
+
+I. Bildirme <br>
+<div>
+Madde 41- Doğumlara ilişkin bildirimler ve kimliği bilinmeyen bulunmuş çocuklar hakkındaki işlemler ilgili kanun hükümlerine göre yapılır.</div>
+
+
+
+II. Doğum kütüğünde değişiklikler <br>
+<div>
+Madde 42- Kişisel durumdaki değişiklikler, özellikle <span class="ark"> evlilik dışı bir çocuğun tanınması</span> veya <span class="ark"> hâkimin babalığa karar vermesi</span>, <span class="ark"> soybağının düzeltilmesi</span>, <span class="ark"> evlât edinme</span> ya da <span class="ark"> bulunmuş bir çocuğun soybağının belli olması</span>, ilgili kanun hükümlerine göre kütüğe işlenir.</div>
+
+
+
+C. Ölüm kütüğü <br>
+
+I. Ölümün bildirilmesi <br>
+<div>
+Madde 43- Ölümlere ilişkin bildirimler ilgili kanun hükümlerine göre yapılır.</div>
+
+
+
+II. Cesedi bulunamayan kişi <br>
+<div>
+Madde 44- <span class="kim"> Bir kimse, ölümüne kesin gözle bakılmayı gerektiren durumlar içinde ortadan kaybolursa cesedi bulunamamış olsa bile</span> , <span class="mavi"> o yerin <span class="dik"> en büyük mülkî amirinin emriyle</span> kütüğe ölü kaydı düşürülür</span>. <br>
+
+Bununla birlikte her ilgili, bu kişinin ölü veya sağ olduğunun mahkemece tespitini dava edebilir.</div>
+
+
+III. Gaiplik kararı <br>
+<div>
+Madde 45- Gaiplik kararı, <span class="mavi"> <span class="dik"> hâkimin bildirmesi üzerine</span>, ölüm kütüğüne kaydolunur</span>.</div>
+
+
+
+IV. Değişikliklerin kütüğe geçirilmesi <br>
+<div>
+Madde 46- <span class="ark"> Tescile esas olan bir bildirimin  doğru olmadığının tespit edilmesi</span>  veya  kime ait olduğu bilinmeyen <span class="ark"> cesedin kimliğinin belli olması</span>  ya da <span class="ark"> gaiplik kararının kaldırılması </span> sebepleriyle zorunlu olan değişiklikler, <span class="mavi"> ilgilinin kütükteki kaydının düşünceler sütununa yazılarak yapılır</span>. </div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}

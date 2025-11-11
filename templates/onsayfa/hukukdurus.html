@@ -1,0 +1,885 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ; 
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+a{color: white}
+
+ul li {	float: left;margin-right: 20px;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}	
+
+.span{color: chocolate;}
+
+.ark{background-color:black; border-radius: 10px; }
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white; }
+.kim{color:aqua; font-size: larger; background-color:mediumseagreen;}
+
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }	
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}	  
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+	
+	}	
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+	
+	
+
+
+	
+.asi{
+		background-color: rgba(1, 53, 37,0.1); 
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+		
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;	
+	top: 5;
+	width: 100%;
+	position: fixed; 
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{	
+	background-color: rgb(173, 24, 44);
+	background-position: center;	
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}		
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;	
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}	
+.soru{
+	cursor: pointer;	
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}	
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}	
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}	
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}	
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;		
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+	
+</style>
+<title>Bilgi Edin</title>
+
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ; 
+		} }
+	     
+	
+	
+	
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon 
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için 		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için 
+		
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ() 
+		metınKim() 	}
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function kimmorlasss(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }  
+		
+	function kimuyp(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function kimdahe(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} } 
+		
+	function kimyes(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} } 	
+		
+	function metınArk(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function metınDık(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınEDİ(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınYes(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function metındmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }	
+	
+	function metınkır(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }	
+
+	function morlas(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikcho(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function dikuyp(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }		
+
+	function dikkırmızı(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }			
+	
+	function morlasss(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }				
+	
+	function arkuyp(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function arkdahe(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }	
+
+	function metınmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikles(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }			
+		
+	function chola(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }			
+	
+	function dahadayeni(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }	
+	 
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor 
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))	
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')		 
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık 
+			} 
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+	
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+	
+	
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+	
+	}	
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor 
+		element.style.color="red";
+		element.style.fontWeight="bold"}	 
+	 
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative" 	
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+	
+	   function DivResetle(){
+		
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ; 
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  } 
+	
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">		
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button> 
+	</div> 
+	
+	<br><br><br>
+<div id="kal" class="kal"> 
+ADALET BAKANLIĞI MEMUR SINAV, ATAMA VE NAKİL YÖNETMELİĞİ
+</div> 
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+		
+	<p> 
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>	
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+	  
+	<script>			
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};}); 		
+	  </script> 
+	  
+  
+	  
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>	
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br> <hr>
+	   
+  
+HUKUK MUHAKEMELERİNDE SES VE GÖRÜNTÜ NAKLEDİLMESİ 
+<br>
+YOLUYLA DURUŞMA İCRASI HAKKINDA YÖNETMELİK
+<br>
+BİRİNCİ BÖLÜM
+<br>
+Amaç, Kapsam, Dayanak, Tanımlar, İlkeler ve Standartlar
+<br>
+<div>
+Amaç ve kapsam
+<div>
+MADDE 1 – (1) Bu Yönetmeliğin amacı, hukuk yargılamalarında aynı anda ses ve görüntü nakledilmesi yoluyla bulundukları yerden, tarafın veya vekilinin duruşmaya katılmalarına ve usul işlemleri yapabilmelerine; tanığın, bilirkişinin, uzmanın ve diğer ilgililerin dinlenilmelerine ilişkin usul ve esasları düzenlemektir.
+<br>
+(2) Bu Yönetmelik, hukuk yargılamalarında aynı anda ses ve görüntü nakledilmesi yoluyla duruşma ve usul işlemleri yapılmasına ilişkin hususları kapsar.
+</div></div>
+
+<div>
+Dayanak
+<div>
+MADDE 2 – (1) Bu Yönetmelik, 12/1/2011 tarihli ve 6100 sayılı Hukuk Muhakemeleri Kanununun 149 uncu maddesinin beşinci fıkrasına dayanılarak hazırlanmıştır.
+</div></div>
+
+<div>
+Tanımlar
+<div>
+MADDE 3 – (1) Bu Yönetmelikte geçen;
+<div>
+a) Bakanlık: Adalet Bakanlığını,
+<br>
+b) e-Duruşma: Hukuk yargılamalarında aynı anda ses ve görüntü nakledilmesi yoluyla bulundukları yerden, tarafın veya vekilinin duruşmaya katılmalarını ve usul işlemleri yapabilmelerini; tanığın, bilirkişinin, uzmanın ve diğer ilgililerin dinlenilmelerini,
+<br>
+c) e-Duruşma Sistemi: Aynı anda ses ve görüntü nakledilmesi yoluyla duruşma işlemlerini yürütmek amacıyla Bakanlık tarafından Ulusal Yargı Ağı Bilişim Sistemine entegre olarak kurulan ve güvenliği sağlanan sistemi,
+<br>
+ç) Kanun: 12/1/2011 tarihli ve 6100 sayılı Hukuk Muhakemeleri Kanununu,
+<br>
+d) Merkezi Kayıt Sistemi: Mahkemece yargılamanın zorunlu kıldığı hâllerde e-Duruşmanın kaydedilip belirli süre ile saklandığı sistemi,
+<br>
+e) UYAP: Ulusal Yargı Ağı Bilişim Sistemini,
+</div>
+ifade eder.
+</div></div>
+
+<div>
+İlkeler
+<div>
+MADDE 4 – (1) Bu Yönetmeliğin uygulanmasında hukuk yargılamasına hâkim olan tasarruf, taraflarca getirilme, taleple bağlılık, aleniyet ve usul ekonomisi ilkeleri, dürüst davranma ve doğruyu söyleme yükümlülüğü, hukuki dinlenilme hakkı, Türk Hukukunun resen uygulanması, hâkimin davayı aydınlatma ödevi ile yargılamanın sevk ve idaresine ilişkin ilkelerin yanı sıra aşağıdaki ilkeler göz önüne alınır:
+<div>
+a) Bilgi güvenliğinin sağlanması.
+<br>
+b) Kişisel verilerin korunması.
+<br>
+c) Hizmet kalitesinin sağlanması.
+<br>
+ç) Ulusal ve uluslararası standartların sağlanması.
+</div></div></div>
+
+<div>
+e-Duruşma Sisteminin standartları
+<div>
+MADDE 5 – (1) e-Duruşmada görüntü ile ses aynı anda güvenli bir şekilde nakledilir.
+<br>
+(2) Görüntü, ilgilinin yüz ifadelerini, vücut hareketlerini, tavır ve davranışlarını gözlemlemeye; ses, ilgilinin duygularını anlamaya, söylediklerini anlaşılır ve net şekilde dinlemeye imkân verecek nitelikte olur.
+<br>
+(3) e-Duruşma sırasında, bilgi, belge ve deliller UYAP üzerinden anında iletilebilir.
+</div></div>
+
+
+İKİNCİ BÖLÜM
+<br>
+e-Duruşma, Talep ve Değerlendirilmesi
+<br>
+<div>
+e-Duruşma
+<div>
+MADDE 6 – (1) Hukuk yargılamalarında aynı anda ses ve görüntü nakledilmesi yoluyla, taraf veya vekili bu Yönetmelikte belirlenen yerden duruşmaya katılabilir ve usul işlemleri yapabilir; tanık, bilirkişi, uzman ve diğer ilgililer dinlenilebilir.
+</div></div>
+
+<div>
+Talep üzerine e-Duruşma
+<div>
+MADDE 7 – (1) Taraflardan birinin talebi üzerine; mahkeme, talep eden tarafın veya vekilinin, bu Yönetmelikte belirlenen yerden duruşmaya e-Duruşma Sistemi yoluyla katılmalarına ve usul işlemleri yapabilmelerine karar verebilir.
+<br>
+(2) Taraflardan birinin talebi üzerine; mahkeme tanığın, bilirkişinin veya uzmanın bu Yönetmelikte belirlenen yerden e-Duruşma Sistemi yoluyla dinlenilmesine karar verebilir.
+</div></div>
+
+<div>
+e-Duruşma talep ve usulü
+<div>
+MADDE 8 – (1) Taraflardan biri veya vekili, duruşmaya e-Duruşma Sistemi yoluyla katılmayı, usul işlemleri yapmayı ya da tanığın, bilirkişinin veya uzmanın e-Duruşma Sistemi yoluyla dinlenilmesini gerekçesiyle birlikte mahkemeden talep edebilir.
+<br>
+(2) e-Duruşma, UYAP mobil uygulamaları, avukat veya vatandaş portalı üzerinden duruşma gününden en az iki iş günü önce mahkemesinden talep edilir.
+</div></div>
+
+<div>
+e-Duruşma talebinin değerlendirilmesi
+<div>
+MADDE 9 – (1) e-Duruşma talebi hakkında hâkim, duruşma gününden en az bir iş günü önce kabul veya ret hususunda karar verir. Bu karar kesindir.
+<br>
+(2) Aşağıdaki sebeplerden birinin bulunması durumunda e-Duruşma talebi gerekçesi gösterilmek suretiyle reddedilebilir:
+<div>
+a) Talebin süresinde yapılmaması.
+<br>
+b) Talebin hakkın kötüye kullanılması veya yargılamayı sürüncemede bırakma amacı taşıması.
+<br>
+c) e-Duruşma yapılmasını zorlaştıran hukuki, fiilî veya teknik engellerin bulunması.
+</div>
+(3) Hastalığı, yaşlılığı veya engelliliği sebebiyle mahkemeye bizzat gelmesi durumunda zorluk yaşaması muhtemel olan taraf, tanık, bilirkişi, uzman ve diğer ilgililerin talepleri hâlinde öncelikle e-Duruşma Sistemi yoluyla dinlenilmelerine karar verilir.
+<br>
+(4) e-Duruşma talebinin kabulüne veya reddine ilişkin karar, UYAP üzerinden veya diğer usullerle talepte bulunana bildirilir.
+</div></div>
+
+<div>
+Resen e-Duruşma
+<div>
+MADDE 10 – (1) Mahkeme; tanığın, bilirkişinin veya uzmanın e-Duruşma Sistemi yoluyla dinlenilmesine resen karar verebilir.
+<br>
+(2) Mahkeme; tarafların üzerinde serbestçe tasarruf edemeyecekleri dava ve işlerde ilgililerin, e-Duruşma Sistemi yoluyla dinlenilmesine resen karar verebilir.
+<br>
+(3) İsticvap olunacak veya yemin edecek taraf, mahkemenin bulunduğu il dışında oturuyor ve mahkemeye bizzat gelemiyor ise öncelikle e-Duruşma Sistemi yoluyla isticvap olunur veya yemin ettirilir.
+<br>
+(4) Mahkemece, e-Duruşma Sistemi yoluyla dinlenilmesine karar verilen kişiye gönderilecek meşruhatlı davetiyeye ayrıca e-Duruşmaya ne şekilde katılacağı da yazılır.
+</div></div>
+
+
+ÜÇÜNCÜ BÖLÜM
+<br>
+e-Duruşmaya Katılma, e-Duruşmanın İcrası, Düzeni ve Kayıt
+<br>
+
+<div>
+e-Duruşmaya katılımın sağlanabileceği yer
+<div>
+MADDE 11 – (1) e-Duruşma talep eden taraf vekili, avukatlık bürosundan, baro tarafından bu amaç için belirlenen bölümden, adliyede bu amaca tahsis edilen yerden veya beşinci fıkradaki şartları taşıyan başkaca uygun bir yerden duruşmaya katılabilir.
+<br>
+(2) e-Duruşma talep eden veya e-Duruşma Sistemi yoluyla isticvap olunacak ya da yemin edecek taraf ile mahkemece e-Duruşma Sistemi yoluyla dinlenilmesine karar verilen tanık, bilirkişi, uzman ve diğer ilgililer bulundukları yerdeki adliye veya ceza infaz kurumlarında bu amaca tahsis edilen yerden duruşmaya katılabilir.
+<br>
+(3) İsticvap olunacak veya yemin edecek olan hariç, taraf, vekili ile birlikte birinci fıkrada belirtilen yerlerden duruşmaya katılabilir.
+<br>
+(4) Hastalığı, yaşlılığı veya engelliliği sebebiyle; e-Duruşma Sistemi yoluyla duruşmaya katılmasına ve usul işlemleri yapabilmesine karar verilen taraf ile e-Duruşma Sistemi yoluyla dinlenilmesine karar verilen tanık, bilirkişi, uzman veya diğer ilgililer bulundukları mesken ya da kurumdan duruşmaya katılabilir.
+<br>
+(5) e-Duruşmaya katılımın sağlanacağı yerin, her türlü etki ve yönlendirmeden uzak, ilgilinin yüz ifadelerini, vücut hareketlerini, tavır ve davranışlarını gözlemlemeye, duygularını anlamaya ve söylediklerini net bir şekilde dinlemeye imkân sağlayacak nitelikte olması gerekir.
+</div></div>
+
+<div>
+e-Duruşmaya katılacakların kimlik tespiti
+<div>
+MADDE 12 – (1) e-Duruşmaya katılan taraf vekilinin kimlik tespiti; güvenli elektronik imza veya mobil imza ile UYAP kayıtları ve benzeri yöntemler kullanılarak mahkemece yapılır.
+<br>
+(2) Mahkemece e-Duruşmaya katılmasına karar verilen taraf, tanık, bilirkişi, uzman ve diğer ilgililerin kimlik tespiti; bulundukları yerdeki adliye veya ceza infaz kurumunda e-Duruşma için tahsis edilen yerde görevlendirilecek yazı işleri müdürü, zabıt kâtibi veya ceza infaz kurumu görevlisi tarafından yapılır ve bu hususta bir tutanak düzenlenir.
+<br>
+(3) Vekili ile birlikte 11 inci maddenin birinci fıkrasında belirtilen yerlerden e-Duruşmaya katılan tarafın kimlik tespiti, UYAP kayıtları incelenerek veya benzeri yöntemler kullanılarak mahkemece yapılır.
+<br>
+(4) Hastalığı, yaşlılığı veya engelliliği sebebiyle bulunduğu mesken veya kurumdan e-Duruşmaya katılan taraf,  tanık, bilirkişi, uzman ve diğer ilgililerin kimlik tespiti, güvenli elektronik imza veya mobil imza kullanılarak yapılır.
+</div></div>
+
+<div>
+e-Duruşma icrası
+<div>
+MADDE 13 – (1) e-Duruşma, mahkeme huzurunda yapılan duruşma ile aynı hukuki sonuçları doğurur.
+<br>
+(2) Birden fazla vekil ile takip edilen dosyalarda e-Duruşmaya, ancak talepte bulunan ve talebi kabul edilen vekiller katılabilir.
+<br>
+(3) e-Duruşma Sistemi yoluyla beyanda bulunan tarafın, vekilin ve diğer ilgililerin sözlü açıklamaları, Kanunun 154 üncü maddesinde belirtilen usul ve esaslara göre zabıt kâtibi aracılığıyla tutanağa yazdırılır.
+<br>
+(4) e-Duruşma Sistemi yoluyla duruşmaya katılan taraf veya vekilince davaya son veren feragat, kabul ve sulhe ilişkin beyanda bulunulması hâlinde, mahkemece yeni bir duruşma günü tayin edilir ve tayin edilen günde feragat, kabul ve sulhe ilişkin bu işlem mahkeme huzurunda yenilenerek, duruşma tutanağı beyanda bulunan tarafından imza edilirse geçerli hâle gelir.
+<br>
+(5) e-Duruşma Sistemi yoluyla beyanda bulunan tarafın, vekilin veya ilgililerin imzasının alınması gereken diğer durumlarda, mahkemece düzenlenen ve güvenli elektronik imza ile imzalanan duruşma tutanağı, e-Duruşmanın yapıldığı adliyeye elektronik ortamda gönderilir. e-Duruşmaya tahsis edilen yerde görevlendirilen yazı işleri müdürü veya zabıt kâtibi elektronik ortamda gelen duruşma tutanağının ilgili kısmına beyanda bulunanın imzasını alır ve evrakı tarayarak sistem üzerinden mahkemesine geri gönderir. Ayrıca el yazısıyla imzalanmış tutanak aslı da dosyasına, masrafı talep edenin yatırmış olduğu avanstan karşılanarak posta yoluyla gönderilir.
+<br>
+(6) e-Duruşma Sistemi yoluyla beyanda bulunan tarafın, vekilin veya ilgililerin imzası, UYAP’a entegre olmuş güvenli elektronik imza ile alınabilir.
+<br>
+(7) e-Duruşmaya katılan taraf veya vekili ile dinlenilen bilirkişi, uzman ve diğer ilgililer, UYAP üzerinden belge iletebilir.
+<br>
+(8) e-Duruşma esnasında ses ve görüntü naklinin aynı anda sağlanamaması veya yaşanan kesintinin beyanların anlaşılmasını güçleştirmesi durumunda e-Duruşma yeniden açılır. Söz konusu aksaklığın devam etmesi hâlinde gerekçesi belirtilerek e-Duruşma sonlandırılır ve bu husus tutanağa geçirilir. 
+<br>
+(9) Taraf veya vekilin kusuru olmaksızın teknik sebeplerden dolayı e-Duruşmanın yapılamaması hâlinde, ilgili taraf veya vekil yönünden Kanunun 150 nci maddesinin birinci fıkrası uygulanmaz.
+<br>
+(10) e-Duruşma öncesinde veya e-Duruşma sırasında ortaya çıkan teknik sorunlar ve bu sorunların kaynağı, istem hâlinde Bakanlık tarafından mahkemeye bildirilir.
+</div></div>
+
+<div>
+e-Duruşma düzeni
+<div>
+MADDE 14 – (1) e-Duruşma düzeni, mahkeme huzurunda yapılan duruşma düzeniyle aynı usul ve esaslara tabidir.
+<br>
+(2) e-Duruşma sırasında fotoğraf çekilemez ve hiçbir şekilde ses ve görüntü kaydı yapılamaz. Ancak, yargılamanın zorunlu kıldığı hâllerde, mahkemece kayıt yapılabilir. Kayıt ve yayın yasağına aykırı davranan kişi hakkında 26/9/2004 tarihli ve 5237 sayılı Türk Ceza Kanununun 286 ncı maddesi hükümleri uygulanır.</div></div>
+
+<div>
+
+Kayıt alınması ve saklanması
+<div>
+MADDE 15 – (1) Mahkeme, yargılamanın zorunlu kıldığı hâllerde, gerekçesini belirterek e-Duruşmanın kayıt altına alınmasına karar verebilir.
+<br>
+(2) e-Duruşma Sistemi ile elde edilen kayıtlar, mahkemece e-Duruşmanın yönetildiği bilgisayarda veya veri depolayabilen aygıta aktarılarak dosyasında saklanmak üzere Merkezi Kayıt Sisteminde iki hafta süre ile muhafaza edilir. Süre sonunda Merkezi Kayıt Sistemindeki bu veriler geri döndürülemeyecek şekilde silinir.
+<br>
+(3) Bu şekilde alınan kayıtlar mahkemenin ve ilgili kişilerin açık izni olmadıkça hiçbir yerde yayımlanamaz.</div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM
+<br>
+Çeşitli ve Son Hükümler
+<br>
+<div>
+e-Duruşma Sisteminin kurulması ve idamesi
+<div>
+MADDE 16 – (1) Bakanlık, e-Duruşma Sistemini kurar, geliştirir, sistemin güvenliğini, bakım ve idamesini sağlar.
+<br>
+(2) e-Duruşma Sisteminin etkin, verimli ve güvenli bir şekilde yürütülmesi için kullanılacak sistemler ve cihazlar hakkındaki teknik kriterlere ilişkin usul ve esaslar Bakanlık tarafından belirlenir.
+<br>
+(3) Bakanlık, önceden bildirim yapmak koşuluyla, e-Duruşma Sisteminin idamesi, güncellenmesi ve bakımına ilişkin işlemleri yerine getirmek için süreli veya süresiz kesinti yapabilir.
+<br>
+(4) Bakanlık, e-Duruşma Sisteminin kurulması, idamesi ve geliştirilmesinde kamu veya özel kurum ya da kuruluşlarla iş birliği yapabilir.
+</div></div>
+
+<div>
+e-Duruşmaya katılanın yükümlülükleri
+<div>
+MADDE 17 – (1) e-Duruşmaya katılanın yükümlülükleri şunlardır:
+<div>
+a) Bakanlık tarafından belirlenen teknik kriterleri sağlamak.
+<br>
+b) Bulunduğu yerin e-Duruşma Sistemi ile dinlenilmeye elverişli ve güvenli olmasını sağlamak.
+<br>
+c) Mahkemece belirlenen gün ve saatte, e-Duruşmaya katılacağı yer ve e-Duruşma Sisteminde hazır bulunmak.
+</div></div></div>
+
+<div>
+Geçiş hükmü
+<div>
+GEÇİCİ MADDE 1 – (1) Bu Yönetmelikte düzenlenen ve elektronik ortamda yapılması gerekmekle birlikte henüz UYAP’ta bulunmayan işlemlere ilişkin hükümler, gerekli yazılım çalışması tamamlandıktan sonra uygulanır.
+</div></div>
+
+<div>
+Yürürlük
+<div>
+MADDE 18 – (1) Bu Yönetmelik yayımı tarihinde yürürlüğe girer.
+</div></div>
+
+<div>
+Yürütme
+<div>
+MADDE 19 – (1) Bu Yönetmelik hükümlerini Adalet Bakanı yürütür.
+</div></div>
+ 
+
+ 
+
+
+ 
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button> 
+</div>
+
+<script>				
+var surukleniyor = false;
+var offsetX, offsetY;
+	
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+	
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+	
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+	
+	document.addEventListener('mouseup', function() { surukleniyor = false;	}); 
+</script>
+
+</body>
+</html>
+{% endblock%}	

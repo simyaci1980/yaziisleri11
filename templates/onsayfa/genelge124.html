@@ -1,0 +1,710 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; border-radius: 10px;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.arkpspanBLACK{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.yuvarla{border-radius: 10px; background-color: black;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>124/1 sayılı BİGM Genelgesi-UYAP uygulamaları</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+<div id="kal" class="kal">
+T.C. <br>
+ADALET BAKANLIĞI<br>
+Bilgi İşlem Dairesi Başkanlığı<br>
+Sayı : B.03.0.BİD.0.00.00.08-10.06/940 10/11/2011<br>
+Konu : UYAP uygulamaları<br>
+GENELGE No : 124/1<br> </div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+
+<div >
+Yargı birimlerinde, Bakanlığımız merkez ve taşra teşkilatında, bağlı ve ilgili
+kuruluşlarında UYAP Bilişim Sisteminin etkin ve verimli şekilde kullanılmasını sağlamak, iş süreçlerini <span class="dik"> hızlandırmak ve elektronik arşivin oluşturulmasını gerçekleştirmek</span> üzere Bakanlığımızın 09/02/2006 tarih ve 124 sayılı Genelgesi tüm teşkilata duyurulmuştu. <br><br>
+
+<div>  Günümüzde, bilişim ve iletişim teknolojileri, hayatın birçok alanına girmiş bulunmaktadır. Öte yandan, çağdaş devletlerde katılımcı demokrasi ve yönetim, saydamlık, hesap verebilirlik, açıklık, etkinlik, basitlik, az bürokrasi, kaynakların etkin kullanımı, kamu mal ve hizmet sunumlarında hız ve verimliliğin sağlanması gibi amaç ve ilkeler vazgeçilmez esaslar olarak benimsenmiştir. Bilişim ve iletişim teknolojileri de, bu esasların hayata geçirilmesinde en etkili araç olarak görülmüştür. Bütün bunların bir sonucu olarak, Avrupa Birliği tarafından aday ülkeleri de kapsayan <span class="mavi"> "e-Avrupa"</span> projesi çalışmaları yürütülürken, Ülkemizde de,<span class="mavi"> "e-Devlet"</span> uygulamaları hayata geçirilmiş; <span class="span"> Kalkınma Plânı, Ulusal Program ve Hükûmet Programlarında kamu kurum ve kuruluşlarında bilgi sistemlerinin kurulmasını hedefleyen "e-Devlet" çalışmalarına özel önem atfedilmiştirv.</div>
+
+<div> Bunların yanında, <span class="span"> e-Dönüşüm Türkiye ve e-Devlet kapsamında, UYAP Bilişim Sistemi uygulamaya geçirilmiştir.</span> 2709 sayılı Türkiye Cumhuriyeti Anayasasının 141 inci maddesinin son fıkrasında yer alan "Davaların en az giderle ve mümkün olan süratle sonuçlandırılması, yargının görevidir." hükmü gereğince, UYAP ile hızlı, etkin, güvenilir, verimli, şeffaf ve etik değerlere uygun bir yargılama mekanizmasının oluşturulması, kurum, avukat ve vatandaşlara İnternet üzerinden yargı hizmeti sunulması hedeflenmiştir.</div> </div>
+
+<div>
+Konuyla ilgili olarak, 5941 sayılı Çek Kanununun 5 inci maddesinin sekizinci fıkrası,<br>
+ 6100 sayılı Hukuk Muhakemeleri Kanununun 445 inci maddesi,<br>
+ İcra ve İflas Kanunu Yönetmeliğinin 115 inci maddesi,<br>
+  Cumhuriyet Başsavcılıkları ile Adli Yargı İlk Derece Ceza Mahkemeleri Kalem Hizmetlerinin Yürütülmesine Dair Yönetmeliğin 88 inci maddesi,<br>
+   Hukuk ve Ticaret Mahkemelerinin Yazı İşleri Yönetmeliğinin 13/a ve 18/A maddeleri, <br>
+   Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin İdari İşleri ile Kalem Hizmetlerinin Yürütülmesi Usul ve Esaslarına İlişkin Yönetmeliğin 46/a maddesi ve Hâkimler ve Savcılar Yüksek Kurulu Teftiş Kurulu Yönetmeliğinin 51 inci maddesi ile bazı maddelerinde UYAP'ın kullanımı ile ilgili çeşitli düzenlemeler yer almaktadır. <br>
+   Ayrıca, UYAP'ın işletim ve idamesinden sorumlu Adalet Bakanlığı Bilgi İşlem Dairesi Başkanlığının görevleri, 2992 sayılı Adalet Bakanlığının Teşkilat ve Görevleri Hakkında Kanun Hükmünde Kararnamenin Değiştirilerek Kabulü Hakkında Kanunun 22/A maddesinde düzenlenmiştir.</div>
+<div>
+5070 sayılı Elektronik İmza Kanununun "Güvenli elektronik imzanın hukukî sonucu ve uygulama alanı" kenar başlıklı 5 inci maddesinde de; <span class="mavi"> "Güvenli elektronik imza, elle atılan imza ile aynı hukukî sonucu doğurur</span>. Kanunların <span class="dik"> resmî şekle</span> veya <span class="dik">özel bir merasime tâbi tuttuğu</span> hukukî işlemler ile <span class="dik"> teminat sözleşmeleri</span> <span class="mavi"> güvenli elektronik imza ile gerçekleştirilemez."</span> denilmek suretiyle elektronik imza ile elle atılan imza eş değer hâle getirilmiş, gerek kurum içi ve gerek kurum dışı yazışmaların e-imza ile yapılabilmesine imkân sağlanmıştır. Söz konusu Kanunun Genel Gerekçesinde; bu Kanunun, elektronik ticaret ve kamu alanında yürütülecek "e-Devlet" olarak adlandırılan yapının aslî unsuru olan elektronik imzanın hukukî ve teknik yapısını, elektronik imzayla ilgili işlemler ile elektronik sertifika hizmet sağlayıcılarının faaliyetlerini düzenlemek amacıyla hazırlandığı belirtilmiştir. Bunun yanında, Resmî Yazışmalarda Uygulanacak Usul ve Esaslar Hakkında Yönetmelikte de elektronik ortamda yazışmaya ilişkin düzenlemelere yer verilmiştir.</div>
+<div> </div>
+Yukarıda sayılan hususlar karşısında, Bakanlığımız tarafından çıkartılan 09/02/2006 tarihli 124 sayılı Genelgenin, günümüzün değişen koşullarına uygun olarak güncellenmesine ihtiyaç duyulmuştur. </div>
+
+<div>
+Bu itibarla;
+<div>
+UYAP Bilişim Sistemi kullanılarak soruşturma ve kovuşturma işlemleri ile diğer adlî ve idarî işlemlerin etkin, verimli, hızlı, düzenli, şeffaf ve usul ekonomisine uygun biçimde yürütülmesi amacıyla; <br>
+
+1- <span class="span"> Her türlü işlem ve faaliyetin</span>, UYAP üzerinden gerçekleştirilmesine imkân bulunmayan istisnai hâller saklı olmak koşuluyla, UYAP ortamında, zamanında, eksiksiz ve doğru bir biçimde  gerçekleştirilmesi, <br>
+2- Her türlü kalem hizmetlerinin <span class="span"> UYAP üzerinden yürütülmesi</span>,<br>
+3- Tüm birimlerde her türlü veri girişinin eksiksiz ve doğru biçimde yapılması,<br>
+4- Her adliyede ihtiyacı karşılayacak nispette <span class="span"> tarama biriminin oluşturulması</span>,<br>
+5- Zorunluluk sebebiyle haricen oluşturulan belgeler ile <span class="span"> Sistem haricinde gelen belgelerin ekleriyle birlikte taranarak UYAP ortamına aktarılması</span>,<br>
+6- Kamu kurum ve kuruluşlarından intikal eden bilgi ve belgelerin mümkün olduğu
+nispette elektronik ortamda istenilmesi,<br>
+7- UYAP üzerinden sağlanan, nüfus, adres, tapu, sabıka kaydı, yurt dışı adres bilgisi gibi, bilgi ve belgelerin temini için <span class="span"> ayrıca fizikî yazışma yapılmaması</span>,<br>
+8- <span class="dik"> Araç şerhi</span>, <span class="dik">kayıp veya çalıntı telefonların kullanıma açılıp kapatılması</span>, <span class="dik">çek
+düzenleme ve çek hesabı açma yasağı</span> gibi kanunen ilgili mercilere bildirim yapılması gereken işlemlerin <span class="mavi"> ayrıca fizikî yazışma yapılmaksızın UYAP üzerinden gerçekleştirilmesi</span>,<br>
+9- UYAP kapsamındaki bilgiler ile fizikî ortamdaki bilgiler arasında çelişkiye mahal verilmemesi, <span class="mavi"> bir çelişki olması hâlinde UYAP kayıtlarına itibar edilmesi</span>,<div> <button  onclick="soruyuGoster(378)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div><br>
+10- UYAP ortamında düzenlenen her türlü belge ve kararın güvenli elektronik imza kullanılmak suretiyle imzalanması,<br>
+11- Elektronik ortamdan fizikî örnek çıkartılması gereken hâllerde, belgenin çıktısı
+üzerine <span class="mavi"> "Elektronik imzalı aslı ile aynıdır"</span> <span class="span"> kaşesi vurulduktan sonra ilgisine göre hâkim, savcı veya görevlendirdiği yazı işleri müdürü tarafından imzalanarak mühürlenmesi</span>,<br>
+12- UYAP kapsamında güvenli elektronik imzalı belge ile aynı konuda elle atılan imzalı belge arasında <span class="span"> çelişki olması</span> durumunda 6100 sayılı Hukuk Muhakemeleri Kanununun 205 inci maddesi uyarınca <span class="span"> güvenli elektronik imzalı belgeye itibar edilmesi</span>,<br>
+13- Güvenli elektronik imza ile imzalanarak UYAP üzerinden gönderilen belgelerin <span class="span"> ayrıca elle atılan imza ile imzalanmış aslının istenmemesi</span>,<br>
+14- <span class="span"> Elektronik imza sertifikalarının geçerlilik süresinin takibinin yapılarak</span> süresinde temin edilmesi için önceden <span class="span"> gerekli başvurularda bulunulması</span>,<br>
+15- Bilgi güvenliği, elektronik imza ve kişisel verilerin korunmasına ilişkin mevzuat hükümlerine azamî dikkat gösterilmesi, <span class="mavi"> özellikle elektronik imza cihazı veya erişim kodu ile her türlü kullanıcı adı ve parolasının başkalarına verilmemesi</span>,<br>
+16- UYAP üzerinde iş listelerinin kontrol edilerek teraküme sebebiyet verilmemesi,
+varsa biriken işlerin ivedilikle yerine getirilmesi,<br> <div> <button  onclick="soruyuGoster(252)" class="soru" >2017 yılı çıkmış soru</button> </div>
+17- Görevi veya görev yeri değişen, emekli olan veya diğer sebeplerle meslekle ilişiği kesilen kullanıcıların <span class="mavi"> biriminden ayrılmadan önce iş listelerindeki işlerini bitirmeleri</span>,<br>
+18- Yargı birimleri tarafından yapılan <span class="mavi"> ilânların ayrıca UYAP sisteminde yer alan elektronik ilan sistemine aktarılması</span>,<br>
+19- Her türlü bilirkişilik işlemlerinin, <span class="mavi">  UYAP Bilirkişi Bilgi Sistemi üzerinden yapılması</span><br>
+20- Kurumlar ile avukat ve vatandaşların adalete erişimini kolaylaştırma çerçevesinde UYAP kapsamında hazırlanmış uygulamaların <span class="span"> ilgililere tanıtımlarının yapılması ve kullanılmasının teşvik edilmesi</span>,<br>
+21- UYAP Sisteminin etkin ve verimli bir şekilde kullanılabilmesi için tüm hâkim ve Cumhuriyet savcıları ile personelin, <span class="span"> kendi alanlarına göre atanan uzaktan eğitimlerini takip ederek tamamlaması</span>,<br>
+
+22- Yargının şeffaflığı ile vatandaşların adalete erişmesinde kolaylık ve kendileriyle
+ilgili yargılama faaliyetlerinden haberdar edilmesine olanak sağlayan <span class="span"> UYAP SMS sisteminin
+etkin bir şekilde kullanılmasının sağlanması</span>,<br>
+
+23- UYAP uygulamalarının etkin ve verimli kullanımını sağlamak, UYAP'la ilgili teknik işlemleri takip etmek ve ilgili birimlerle işbirliği ve koordinasyonu sağlamak üzere o yerin iş durumu ve yoğunluğuna göre <span class="mavi"> yeteri kadar</span>;<br>
+<div>
+	a) <span class="span"> Bölge adliye</span> mahkemesi Cumhuriyet <span class="span"> başsavcılıkları </span> ile <span class="span"> ağır ceza </span> merkezi <span class="mavi"> Cumhuriyet başsavcılıklarında Cumhuriyet savcısının</span>; <br>
+	b) <span class="span"> Bölge idare </span> mahkemesi başkanlıklarında, <span class="mavi"> idarî yargı hâkiminin</span>; <span class="dik"> "UYAP Birim Sorumlusu" olarak görevlendirilmesi</span>, sorumluların iş durumlarının buna göre düzenlenmesi, yokluklarında aksamalara meydan verilmemesi bakımından <span class="dik" > birim sorumlusu yardımcılarının da belirlenmesi</span> ,<br></div>
+24- UYAP'ın geliştirilmesi ve uygulama birliğinin sağlanması açısından öneri ve değişiklik taleplerinin <span class="mavi"> UYAP birim sorumluları vasıtasıyla Adalet Bakanlığı Bilgi İşlem Dairesi Başkanlığına bildirilmesi</span>, Konularında gereken dikkat ve özenin gösterilmesini rica ederim.</div> <br><div> <button  onclick="soruyuGoster(54)" class="soru" >2023 yılı çıkmış soru</button> </div>
+									Sadullah ERGİN <br>
+																		Bakan  <br>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+
+{% endblock%}

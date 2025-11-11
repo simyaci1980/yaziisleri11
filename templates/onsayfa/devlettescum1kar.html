@@ -1,0 +1,2549 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; }
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size:larger}
+
+.ark{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px;}
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>Devlet Teşkilatı için 1 Nolu Kararnamenin ilgili kısmı </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+    function sadeceişaretli(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "black";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınEDİ()	}
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button><button  onclick="sadeceişaretli()" name="butt" value="butt" class="butt" > SADECE İŞARETLİ</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+  <div class="kal">Devlet Teşkilatı için 1 Nolu Kararnamenin ilgili kısmı</div>	<br><br><br> <br><br>
+
+ <div > BİRİNCİ KISIM <br>
+CUMHURBAŞKANLIĞI MAKAMI </div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script>
+
+
+<div>
+Cumhurbaşkanı
+<div>
+MADDE 1- <div> (1) Cumhurbaşkanı Devletin başıdır. Yürütme yetkisi Cumhurbaşkanına aittir. <br>
+
+(2) Cumhurbaşkanı, Devlet başkanı sıfatıyla <span class="mavi">  Türkiye Cumhuriyetini ve Türk Milletinin birliğini temsil eder;</span> Anayasanın uygulanmasını, Devlet organlarının düzenli ve uyumlu çalışmasını temin eder. <br>
+
+(3) Cumhurbaşkanı, yetkilerinden bir kısmını gerektiğinde sınırlarını yazılı olarak belirterek <span class="span"> astlarına devredebilir. </span> Ancak devrettiği yetkiyi, gerek gördüğünde <span class="span">  kendisi de doğrudan kullanabilir.</span></div></div></div>
+
+
+<div>
+Cumhurbaşkanı Özel Kalem Müdürlüğü
+<div>
+MADDE 2- <div> (1) Cumhurbaşkanı Özel Kalem Müdürlüğünün görevleri şunlardır:
+	<div>
+a) Cumhurbaşkanı makamına ilişkin hizmetleri yürütmek, <br>
+
+b) Cumhurbaşkanının <span class="span">  resmi ve özel yazışmalarını yürütmek,</span>
+ <br>
+c) Cumhurbaşkanının tören, yurtiçi ve yurtdışı <span class="span">  gezi işlerini </span> düzenlemek ve yürütmek, <br>
+
+ç) Cumhurbaşkanlığı <span class="span">  makamının protokol, </span>halkla ilişkiler ve kurumsal iletişim hizmetlerini bünyesindeki birimler aracılığıyla yürütmek, <br>
+
+d) Cumhurbaşkanının <span class="span">  Milli Saraylar ve Devlet Arşivlerine ilişkin talimat,</span> iş ve işlemlerini yürütmek, <br>
+
+e) Cumhurbaşkanı tarafından verilen diğer görevleri yapmak.</div>
+
+(2) Cumhurbaşkanı Özel Kalem Müdürüne yardımcı olmak üzere Cumhurbaşkanı Özel Kalem Müdür <span class="span">  Yardımcıları görevlendirilebilir.</span>  Bunlar Cumhurbaşkanı Özel Kalem <span class="span">  Müdürü tarafından verilen görevleri yaparlar.</span> <br>
+
+(3) İhtiyaç duyulan yerlerde Cumhurbaşkanlığı çalışma <span class="span">  büroları açılabilir.</span> Bu büroların faaliyetleri Cumhurbaşkanı <span class="span">  Özel Kalem Müdürünün sorumluluğu altında yürütülür.</span> <br>
+
+(4) <span class="mavi">  Cumhurbaşkanı Özel Kalem Müdürüne büyükelçi unvanı verilir.</span></div></div></div>
+
+
+
+<div>
+Cumhurbaşkanı Başdanışmanı ve Danışmanı
+<div>
+MADDE 3- (1) Cumhurbaşkanı, kendisine danışmanlık ve verdiği diğer görevleri yapmak üzere Cumhurbaşkanı Başdanışmanı ve Cumhurbaşkanı Danışmanı atayabilir.</div></div>
+
+
+<div>
+Özel temsilci
+<div>
+MADDE 4-<div>  (1) Cumhurbaşkanı, özel bilgi ve uzmanlık gerektiren konularda, dış ülkelerde veya uluslararası kuruluşlar nezdinde özel bir görevi ifa etmek üzere <span class="span">  özel temsilci görevlendirebilir. Bu şekilde görevlendirileceklere Büyükelçi unvanı verilebilir.</span> <span class="dik">  Büyükelçilik unvanı özel temsilcilik görevi müddetince devam eder.</span> <br>
+
+(2) Özel temsilcilerin giderleri Cumhurbaşkanlığı bütçesinden karşılanır. Bunlara ödenecek harcırah hakkında <span class="dik">  Cumhurbaşkanı Başdanışmanlarına ilişkin hükümler uygulanır.</span></div></div></div>
+
+
+<div>
+Cumhurbaşkanlığı Yüksek İstişare Kurulu
+<div>
+MADDE 4/A- (Ek:RG-15/5/2019-30775- CK- 36 / 1 md.) <br>
+
+(1) Millete ve devlete hizmeti geçmiş, bilgi ve birikim sahibi kişilerin bu kazanımlarından istifade edilebilmesi amacıyla Cumhurbaşkanlığı Yüksek İstişare Kurulu oluşturulmuştur. <span class="mavi">  Kurul üyeleri Cumhurbaşkanınca belirlenir.</span> Kurulun çalışma usul ve esasları ile Kurul üyelerine yapılabilecek <span class="span">  ödemeler Cumhurbaşkanınca belirlenir.</span></div></div>
+
+
+
+İKİNCİ KISIM <br>
+
+CUMHURBAŞKANLIĞI İDARİ İŞLER BAŞKANLIĞI <br>
+
+
+<div>
+İdari İşler Başkanı
+<div>
+MADDE 5 - <div> (1) <span class="mavi">  En yüksek Devlet memuru olan İdari İşler Başkanı, Cumhurbaşkanlığı İdari İşler Başkanlığının en üst amiridir.</span> <br>
+
+(2) İdari İşler Başkanlığının görevleri şunlardır:
+<div>
+a) Mevzuatla verilen görevleri yapmak, <br>
+
+b) Cumhurbaşkanı tarafından verilen diğer görevleri yapmak. <br>
+
+(3) İdari İşler Başkanı <span class="mavi">  bütün birimlerin faaliyetlerini,</span> işlemlerini ve hesaplarını denetlemekle görevli ve yetkili olup yukarıda belirtilen hizmetlerin mevzuata, Cumhurbaşkanının politika ve talimatlarına uygun olarak yürütülmesinde <span class="span">  Cumhurbaşkanına karşı sorumludur.</span></div></div></div></div>
+
+
+<div>
+Görevler ve birimler
+<div>
+MADDE 6 -<div>  (1) İdari İşler Başkanı Cumhurbaşkanı adına aşağıdaki görevleri yapar.
+	<div>
+a) <span class="span">  Anayasada belirtilen</span>  görevlerinin yerine getirilmesinde ve yetkilerinin kullanılmasında <span class="span">  Cumhurbaşkanına gerekli olan hizmetleri sunmak.</span> <br>
+
+b) Türkiye Büyük Millet Meclisi ile olan münasebetlerin yürütülmesi ve kamu kurum ve kuruluşları <span class="dik">  arasında koordinasyonun sağlanması için gerekli çalışmaları yapmak.</span> <br>
+
+c) Devlet Teşkilatının düzenli ve etkin bir şekilde işlemesini temin edecek prensiplerin tespiti için gerekli çalışmaları yapmak. <br>
+
+ç) İç güvenlik, dış güvenlik ve terörle mücadele konusunda koordinasyonun sağlanması için gerekli çalışmaları yapmak. <br>
+
+d) Yapılan çalışmaların kamuoyundaki tesirlerini izleme ve değerlendirme çalışmalarını yapmak.</div>
+ <span class="mavi">
+(2) İdari İşler Başkanlığının birimleri aşağıda gösterilmiştir.</span>
+<div>
+a) <span class="span">  Hukuk </span>ve Mevzuat Genel Müdürlüğü <br>
+
+b) <span class="span">  Personel</span>  ve Prensipler Genel Müdürlüğü <br>
+
+c) <span class="span">  Güvenlik </span> İşleri Genel Müdürlüğü <br>
+
+ç) <span class="span">  Destek </span> ve Mali Hizmetler Genel Müdürlüğü <br>
+
+d) <span class="span"> Koruma </span> Hizmetleri Genel Müdürlüğü </div></div></div></div>
+
+
+<div>
+Hukuk ve Mevzuat Genel Müdürlüğü
+<div>
+MADDE 7 -<div>  (1) Hukuk ve Mevzuat Genel Müdürlüğünün görevleri şunlardır:
+	<div>
+a) <span class="span"> TBMM</span> tarafından kabul edilen <span class="span"> kanunların </span> şekil ve esas bakımından Anayasa ve hukukun genel ilkelerine <span class="mavi"> uygunluğunu incelemek,</span> verilecek talimata göre onaya hazırlanması veya bir daha görüşülmek üzere Türkiye Büyük Millet Meclisine geri gönderilmesi için gerekli çalışmaları yapmak, <br>
+
+b) <span class="ark"> Kanunların,</span>  <span class="ark"> TBMM İçtüzüğünün</span>  tümünün veya belirli hükümlerinin Anayasaya şekil ve esas bakımından aykırı olmaları durumunda, bunlarla ilgili olarak <span class="mavi"> Anayasa Mahkemesi nezdinde açılacak iptal davası hazırlıklarını yapmak,</span> <br>
+
+c) Anayasa değişikliğine ilişkin kanunların, <span class="span"> Cumhurbaşkanınca halkoyuna sunulmasına </span> ilişkin işlemlerin yapılmasını sağlamak, <br>
+
+ç) <span class="ark"> Kanun</span>  ve <span class="ark"> Cumhurbaşkanlığı kararnamelerinin</span> <span class="mavi">  yayımlanmasına </span> ilişkin işlemleri yapmak, <br>
+
+d) <span class="span"> Milletlerarası anlaşmaların kanunla uygun bulunması</span> için <span class="mavi"> TBMM Başkanlığına gönderilmesine ilişkin işlemleri yapmak</span>, <br>
+
+e) <span class="ark"> Bakanlıklar</span> ile kamu kurum ve <span class="ark"> kuruluşlarınca </span> <span class="dik">hazırlanan  mevzuat taslaklarını</span>; Anayasaya, kanunlara, Cumhurbaşkanlığı kararnamelerine, genel hukuk kurallarına, <span class="mavi"> Cumhurbaşkanı Programına uygunluğu açısından incelemek,</span>  <br>
+
+f) <span class="span"> Mevzuat hazırlama</span> usul ve esaslarının belirlenmesi için gerekli çalışmaları yapmak, <br>
+
+g) <span class="span"> Mevzuatı <span class="dik"> bilgi işlem sistemi içinde</span> takip etmek</span>, <br>
+
+ğ) <span class="mavi"> Resmi Gazete'nin yayımlanmasını sağlamak,</span> <br>
+
+h) Türk Ceza Kanununun 299 uncu maddesi kapsamına girmeyen ancak yargı mercilerince Cumhurbaşkanlığına gönderilen ve <span class="mavi"> Cumhurbaşkanının taraf olarak gösterildiği evraka ilişkin işlemleri takip etmek,</span> <br>
+
+ı) <span class="span"> Hükümlülerin sürekli hastalık, sakatlık ve kocama</span> sebebiyle cezalarının <span class="ark"> Cumhurbaşkanınca hafifletilmesi veya kaldırılmasına</span> ilişkin işlemleri  <span class="mavi"> yürütmek ve alınan kararları Adalet Bakanlığına bildirmek,</span> <br>
+
+i) 26/9/2011 tarihli ve 659 sayılı <span class="ark"> Genel Bütçe</span> Kapsamındaki Kamu İdareleri ve <span class="ark"> Özel Bütçeli</span> İdarelerde Hukuk Hizmetlerinin Yürütülmesine İlişkin Kanun Hükmünde Kararname hükümlerine göre <span class="mavi"> hukuk birimlerine verilen diğer görevleri yapmak,</span> <br>
+
+j) Cumhurbaşkanınca çıkarılan Cumhurbaşkanlığı <span class="mavi"> kararnameleri, kararları ile yönetmelik taslaklarını hazırlamak.</span> <br>
+
+k) Makam tarafından verilen benzeri görevleri yapmak.</div>
+
+(2) (Mülga:RG-24/10/2019-30928-CK-48/1 md.)</div></div></div></div>
+
+<div>
+Personel ve Prensipler Genel Müdürlüğü
+<div>
+MADDE 8 -<div>  (1) Personel ve Prensipler Genel Müdürlüğünün görevleri şunlardır:[1]
+	<div>
+a) Devlet Teşkilatının düzenli ve etkin bir şekilde <span class="ark"> işlemesini sağlayıcı prensiplerin tespit edilmesi</span>, direktiflerin verilmesi, önlemler alınması ve koordinasyonun sağlanması için gerekli işlemleri yapmak, <br>
+
+b) <span class="ark"> Cumhurbaşkanına vekâlet </span> işlemlerini yapmak, <br>
+
+c) Cumhurbaşkanı <span class="ark"> yardımcıları ile bakan atanmaları</span> ve görevden alınma işlemleri ile vekâlet işlemlerini yapmak, <br>
+
+ç) <span class="ark"> Türkiye Büyük Millet Meclisi üyelerinin dokunulmazlıklarının</span> kaldırılmasına ait işlemleri yapmak, <br>
+
+d) <span class="ark"> TBMM seçimlerinin yenilenmesine</span> ilişkin işlemleri yürütmek, <br>
+
+e) <span class="ark"> Üst kademe kamu yöneticilerinin atamaları</span>  ile Cumhurbaşkanınca yapılacak <span class="ark"> diğer atama ve seçme işlemlerini</span>  Anayasa, kanunlar, Cumhurbaşkanlığı kararnameleri ve hukukun genel ilkeleri açısından <span class="mavi"> inceleyerek gerekli işlemleri yapmak,</span> <br>
+
+f) Devletin sevk ve idaresinde <span class="ark"> görevli üst kademe yöneticileri hakkında</span> <span class="mavi"> bilgi toplamak, sicil özetlerini ve biyografilerini tutmak,</span> <br>
+
+g) <span class="ark">Üst kademe yöneticilerinin hizmet içi eğitimiyle</span>  ilgili işlemleri yapmak, <br>
+
+ğ) <span class="ark"> Kamu yönetiminin geliştirilmesi </span> ile ilgili hedeflerin, politikaların ve tedbirlerin tespiti için inceleme ve araştırmalar yapmak, yaptırmak ve bunları değerlendirme <span class="mavi"> amacıyla gerekli çalışmaları yapmak,</span>  <br>
+
+h) <span class="ark"> Bağlı, ilgili ve ilişkili kuruluşların</span>  Cumhurbaşkanlığı veya bakanlıklarla <span class="mavi"> ilgilendirilmelerine dair işlemleri yapmak,</span> <br><div> <button  onclick="soruyuGoster(218)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+ı) <span class="ark"> Kamu personeli ile ilgili mevzuat çalışmalarının koordinasyonunu sağlamak</span>, <br>
+
+i) (Ek:RG-21/4/2021-31461-CK-73/1 md.) Cumhurbaşkanı tarafından belirlenen temel hedef ve amaçlar çerçevesinde; memur ve diğer kamu görevlilerinin tabi olacakları <span class="ark"> personel rejimlerinin temel ilke ve esaslarının belirlenmesine</span> , hukuki ve mali statülerinin ve uygulama esaslarının tespit edilmesine, düzenlenmesine, geliştirilmesine, personel rejimleri arasında uyum, denge ve koordinasyonun sağlanmasına ilişkin iş ve işlemleri ilgili mevzuat çerçevesinde yürütmek, <br>
+
+j) (Ek:RG-21/4/2021-31461-CK-73/1 md.) <span class="ark"> Memur ve diğer kamu görevlilerine ilişkin mevzuat hükümlerinin uygulanmasını izlemek</span>, uygulama birliğini sağlayıcı tedbirleri almak, uygulamayı yönlendirmek ve ortaya çıkacak tereddütleri gidermek, <br>
+
+k) (Ek:RG-21/4/2021-31461-CK-73/1 md.) Kamu personel <span class="ark"> istihdam planlaması ile personel alım ve yerleştirilmesinde</span>  uygulanacak usul ve esasların belirlenmesine ilişkin iş ve işlemleri yürütmek, <br>
+
+l) (Ek:RG-21/4/2021-31461-CK-73/1 md.) 2 sayılı Genel Kadro ve Usulü Hakkında Cumhurbaşkanlığı Kararnamesinde  <span class="ark"> kamu kurum ve kuruluşlarının kadro, pozisyon, atama izni ve açıktan alım izinlerine ilişkin</span>  olarak öngörülen iş ve işlemleri yapmak, uygulamaları izlemek ve yönlendirmek, <br>
+
+
+m) (Ek:RG-21/4/2021-31461-CK-73/1 md.) <span class="ark"> Kamu iktisadi teşebbüsleri</span>  ve  <span class="ark"> bağlı ortaklıklarının </span> personeli ile kadro ve pozisyonlarına ilişkin iş ve işlemleri yapmak, <span class="mavi"> uygulamaları izlemek ve yönlendirmek,</span> <br>
+
+n) (Ek:RG-21/4/2021-31461-CK-73/1 md.) Kamu kurum ve kuruluşlarının <span class="ark"> kadro ve unvan standardizasyonu,</span>  iş analizleri ve görev tanımları ile ilgili çalışmalar yapmak ve bu konularda gerekli koordinasyonu sağlamak, <br>
+
+o) (Ek:RG-21/4/2021-31461-CK-73/1 md.) <span class="ark"> Kamu personelinin yurtiçinde ve yurtdışında eğitim</span>  ve yetiştirilmeleri ile ilgili çalışmaları yapmak, uygulamayı izlemek, değerlendirmek ve denetlemek, <br>
+
+ö) (Ek:RG-21/4/2021-31461-CK-73/1 md.) İç ve dış seyahat yevmiyeleriyle sürekli görevle <span class="ark"> yabancı memleketlerde bulunan memurların maaşlarına tatbik edilecek ödeme</span>  misillerinin tespitine ilişkin iş ve işlemleri ilgili mevzuat çerçevesinde yürütmek, <br>
+
+p) <span class="mavi"> Cumhurbaşkanının özlük işlerini yürütmek,</span>  Cumhurbaşkanlığı merkez teşkilatının <span class="ark"> personel politikasına yönelik önerilerde bulunmak </span> ve tespit edilen politikaları uygulamak, personelin tayin, nakil, özlük ve emeklilikleriyle ilgili işleri yapmak ve personelin yetiştirilmesi için gerekli çalışmaları yapmak, <br>
+
+r) <span class="ark"> Devlet protokolünün belirlenmesi için</span> gerekli iş ve işlemleri yapmak, <br>
+
+s) Makamca verilen benzeri görevleri yapmak.</div></div></div></div>
+
+<div>
+
+Güvenlik İşleri Genel Müdürlüğü
+<div>
+MADDE 9 - <div> (1) Güvenlik İşleri Genel Müdürlüğünün görevleri şunlardır:
+	<div>
+a) <span class="ark"> Devletin güvenlik politika ve stratejileri</span> ile ilgili kamu kurum ve kuruluşları ile koordinasyonu sağlamak, belirlenen politikaların uygulamasını izlemek, değerlendirmek ve raporlamak, <br>
+
+b) <span class="ark"> Olağanüstü hâl</span> ilan edilen bölgelerde, <span class="ark"> olağanüstü hâl</span> ilanına esas olan konularda bilgileri derlemek, değerlendirmek ve bu hususlarda koordinasyonu sağlamak, <br>
+
+c) <span class="ark"> 3713 sayılı Terörle Mücadele Kanununun</span> 20 nci maddesinin üçüncü fıkrası çerçevesinde Cumhurbaşkanlığınca tahsis edilecek kamu kurum ve kuruluşlarına ait konutları belirlemek, gerektiğinde bu amaçla taşınmaz kiralanması ve edinimine ilişkin işlemleri yürütmek ve bu işlemlere ilişkin usul ve esasları belirlemek, <br>
+
+ç) Görevleri ile ilgili konularda kamuoyunu bilgilendirici çalışmalar yapmak, <br>
+
+d) Makamca verilen benzeri görevleri yapmak. </div>
+
+(2) (Mülga:RG-24/10/2019-30928-CK-48/1 md.)</div></div></div>
+<div>
+Destek ve Mali Hizmetler Genel Müdürlüğü
+<div>
+MADDE 10 - <div> (1) Destek ve Mali Hizmetler Genel Müdürlüğünün görevleri şunlardır:
+	<div>
+a) <span class="ark">5018 sayılı Kanun hükümleri çerçevesinde</span> , Cumhurbaşkanlığının kiralama ve satın alma işlerini yürütmek, <span class="span"> temizlik, aydınlatma, ısıtma, onarım, taşıma ve benzeri</span> hizmetleri yapmak veya yaptırmak, <br>
+
+b) <span class="ark"> 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanunu</span>, 22/12/2005 tarihli ve 5436 sayılı Kanunun 15 inci maddesi ve diğer mevzuatla strateji geliştirme ve malî hizmetler birimlerine  verilen görevleri yapmak, <br>
+
+c) Cumhurbaşkanlığı Merkez Teşkilatı <span class="ark"> taşınır ve taşınmazlarına</span>  ilişkin işlemleri ilgili mevzuat çerçevesinde yürütmek, <br>
+
+ç)  <span class="ark"> Cumhurbaşkanlığı Merkez Teşkilatına ait her türlü kara, deniz ve hava taşıtlarına</span>  ilişkin kiralama, satın alma, bakım, onarım ve yenileme hizmetlerini yürütmek, <br>
+
+d) Cumhurbaşkanlığı yerleşkelerinin <span class="ark"> bilişim altyapısının kurulumu, bakımı, ikmali, geliştirilmesi ve güncellenmesi</span>  ile ilgili işleri yapmak ve haberleşme güvenliğini sağlamak, <br>
+
+e) Cumhurbaşkanlığı tarafından sunulan <span class="ark"> hizmetlerin e-Devlet kapsamında verilmesine yönelik altyapı çalışmaları yapmak</span>, kamu ve sivil toplum kuruluşlarına ait projelerde koordinasyon sağlamak, <br>
+
+f) <span class="ark"> Bilişim hizmetleriyle ilgili bilgileri toplamak</span> ve veri tabanları oluşturmak, <br>
+
+g) Genel evrak ve <span class="ark"> arşiv faaliyetlerini düzenlemek </span> ve yürütmek,<br>
+
+ğ) Makamca verilen benzeri görevleri yapmak.</div></div></div></div>
+
+
+<div>
+Koruma Hizmetleri Genel Müdürlüğü
+<div>
+MADDE 10/A- (Ek:RG-10/1/2019-30651-CK-27/2 md.)
+<div>
+(1) Koruma Hizmetleri Genel Müdürlüğünün görevleri şunlardır:
+<div>
+a) <span class="ark"> Cumhurbaşkanı</span> ve <span class="ark">aile fertleri</span>  ile Cumhurbaşkanı <span class="ark"> Yardımcıları, Bakanlar, Cumhurbaşkanlığı İdari İşler Başkanı,</span>  Cumhurbaşkanının korunması talimatı verdiği kişilerin maddi ve manevi şahsiyetlerine yönelik her türlü saldırıya karşı, Cumhurbaşkanlığı hizmet mahallerinde ve ikametleri ile her türlü ulaşım aracında, yurtiçi ve yurtdışında gerçekleştireceği toplantı, gezi, tören veya açılış gibi faaliyetlerde <span class="mavi"> gerekli koruma tertip ve tedbirlerini almak veya aldırmak,</span>  <br>
+
+b) <span class="ark"> Koruma görevi ile ilgili olarak</span>  yurtiçi ve yurtdışında ilgili makam, kurum, kuruluş ve güvenlik birimleri yetkilileri ile koordinasyonu sağlamak, gerekli <span class="mavi"> koruma tedbirlerini almak veya aldırmak,</span>  <br>
+
+c) Cumhurbaşkanı ve diğer devlet erkânının katılımıyla gerçekleştirilen programlarda alınacak olan güvenlik tedbirleri ile <span class="ark"> koruma hizmetlerini diğer devlet erkânını kapsayacak şekilde planlamak ve koordine etmek</span>, gerektiğinde yakın koruma hizmetlerini Cumhurbaşkanının programda bulunduğu sürece kendi uhdesine almak, <br>
+
+ç) Cumhurbaşkanlığı hizmet mahallerinde, ikamet veya Cumhurbaşkanının ve aile fertlerinin bulunduğu bina ve tesislerin girişlerinde ve yakın çevresinde ortaya çıkabilecek tehlikelere karşı <span class="ark"> gerekli önleyici ve koruyucu koruma tedbirlerini almak,</span>  bu yerlere girecek personel, ziyaretçi veya görevliler ile taşıt ve eşyaların güvenlik kontrolünü yapmak veya yaptırmak, <br>
+
+d) <span class="ark"> Cumhurbaşkanının ikametgâhı, makam, özel ve çalışma odaları ile seyahat araçlarında gerekli teknik taramayı yapmak,</span>  bu yerler ile Cumhurbaşkanlığı hizmet mahallerindeki giriş kapılarında ve bina girişlerinde fiziki ve elektronik her türlü güvenlik tertip ve tedbirlerini almak veya aldırmak, <br>
+
+e) Cumhurbaşkanlığı hizmet mahalleri ile Cumhurbaşkanının <span class="ark"> katıldığı program yerlerinde taşıt ve yaya trafiği ile park düzenini almak</span>
+ veya aldırmak, <br>
+
+f) <span class="ark"> Genel Müdürlük personelinin atama, yer değiştirme, görevlendirme, eğitim, disiplin, performans değerlendirme ve benzeri tüm özlük</span>  ve idari işlemlerinin yürütülmesi için ilgili birimlerle gerekli <span class="mavi">koordinasyonu sağlamak,</span> <br>
+
+g) <span class="ark"> Koruma hizmetleri ile ilgili taşıt, araç, gereç, malzeme ve benzeri ihtiyaçları planlayarak temini</span>  için ilgili birimlerle gerekli koordinasyonu sağlamak, <br>
+
+ğ) Konuk devlet başkanları ile hükümet başkanları veya eşdeğer devlet büyükleri ile eşlerinin <span class="ark"> Türkiye’ye gelişlerinde yakın koruma ve güvenlik tedbirlerini almak veya aldırmak,</span>  gelen heyetle bu amaçla işbirliği yapmak, ilgili birimler ile gerekli koordinasyonu sağlamak, <br>
+
+h) Koruma hizmetlerinin etkin ve verimli yürütülebilmesi amacıyla <span class="ark"> koruma personelinin her türlü eğitim ihtiyacını belirlemek,</span>  hizmetin özelliklerine göre personelin bilgi ve becerilerinin geliştirilmesi amacıyla gerekli kısa ve uzun vadeli eğitim programları hazırlamak, bu eğitim programlarını uygulayarak başarılı olanları sertifikalandırmak, <br>
+
+ı) Cumhurbaşkanlığı hizmet mahallerindeki kamera ve kayıt sistemleri ile Cumhurbaşkanının çalışma ofisi, ikameti veya bulunduğu bina, tesis ve program yerlerinde <span class="ark"> telsiz ve role istasyonları ihtiyaçlarını tespit etmek,</span>  temin etmek, kurulumlarını ve çalışır durumda bulunmalarını ilgili birimlerle koordineli olarak sağlamak, <br>
+
+i) Cumhurbaşkanlığı hizmet mahallerindeki <span class="ark"> elektronik güvenlik sistemleri ihtiyaçlarını tespit etmek</span>, planlamak, ilgili birimlerle koordineli olarak temin edilmesini sağlamak ve işletmek, <br>
+
+j) Cumhurbaşkanının yurtiçi ve yurtdışı seyahatlerinde kullandığı <span class="ark"> ulaşım araçlarının fiziki ve teknik koruma tedbirlerini almak,</span> <br>
+
+k) Makamca verilen benzeri görevleri yapmak. </div>
+
+(2) <span class="kim"> Genel Müdür</span> <span class="ark"> hizmet yönünden</span> <span class="mavi"> Cumhurbaşkanına,</span> <span class="ark"> idari yönden</span> <span class="mavi"> İdari İşler Başkanına bağlıdır.</span>  Koruma hizmetlerinin yerine getirilmesinde <span class="mavi"> İçişleri Bakanlığından görevlendirilen personel</span> <span class="ark"> Emniyet Genel Müdürlüğü Cumhurbaşkanlığı Koruma Daire Başkanlığı görev ve çalışma</span>  mevzuatı ile belirlenen görev, yetki ve sorumluluklarını <span class="mavi"> Genel Müdür emri ve gözetiminde yerine getirir.</span>  <span class="kim"> Genel Müdür,</span>  koruma personeli ile ilgili olarak bu <span class="ark"> personelin kadrosunun bulunduğu teşkilatın </span> <span class="mavi"> en üst amirine mevzuat ile verilen yetkileri haizdir.</span> </div></div></div>
+
+
+<div>
+Kadrolar
+<div>
+MADDE 11 -<div>  (1) (Değişik:RG-10/1/2019-30651-CK-27/3 md.) <br> Cumhurbaşkanlığı Makamı, <br> Cumhurbaşkanlığı İdari İşler Başkanlığı, <br> Cumhurbaşkanı Yardımcılıkları ve Cumhurbaşkanlığı Politika Kurullarından <br> oluşan <span class="mavi"> Cumhurbaşkanlığı Merkez Teşkilatının kadroları, Cumhurbaşkanı kararıyla belirlenir.</span> <br>
+
+(2) <span class="kim"> İdari İşler Başkanı,</span> <span class="ark"> dolu kadrolarda</span> <span class="mavi"> derece değişikliğine,</span> <br> <span class="ark"> boş kadrolarda</span>  ise <span class="mavi"> sınıf, <br> unvan ve  <br> derece  <br> değişikliğine yetkilidir.</span> </div></div></div>
+
+
+<div>
+Atama ve görevlendirmeler
+<div>
+MADDE 12 - <div> (1) <span class="ark"> İdari İşler Başkanı</span>, Cumhurbaşkanlığı <span class="ark"> Özel Kalem Müdürü</span> , <span class="ark"> Başdanışmanlar, Danışmanlar ve Genel Müdürler</span> <span class="mavi"> Cumhurbaşkanı tarafından;</span>  <span class="kim"> diğer personel ise</span> <span class="mavi"> İdari İşler Başkanı tarafından atanır veya görevlendirilir.</span>  (Ek cümle:RG-10/1/2019-30651-CK-27/4 md.) <span class="kim"> Koruma Hizmetleri Genel Müdürlüğü personeli</span>, <span class="ark"> İdari İşler Başkanlığının talebi üzerine</span> <span class="span"> Emniyet, Jandarma veya Sahil Güvenlik</span> Hizmetleri sınıflarına mensup olanlar <span class="mavi"> arasından İçişleri Bakanlığınca görevlendirilir</span> <br>
+
+(2) Birinci fıkrada belirtilen personelden <span class="kim"> Cumhurbaşkanı tarafından atananlar,</span> dış ülkelerde veya uluslararası kuruluşlar nezdinde, büyükelçi gibi akredite edilmeksizin, <span class="mavi"> özel bir misyonla görevlendirilebilir.</span> Bu şekilde görevlendirileceklere Cumhurbaşkanının onayı ile <span class="mavi"> büyükelçi unvanı verilebilir.</span> (Değişik cümle:RG-10/1/2019-30651-CK-27/4 md.) <span class="mavi"> Büyükelçilik unvanı Cumhurbaşkanınca geri alınmadığı müddetçe devam eder.</span> <br>
+
+(3) <span class="kim"> Üniversite öğretim elemanları,</span> 4/11/1981 tarihli ve 2547 sayılı Yükseköğretim Kanununun 38 inci maddesine göre <span class="mavi"> görevlendirilebilir.</span> <br>
+
+(4) Hizmetine ihtiyaç kalmayan kadrolu personelden <span class="ark"> emeklilik statüsünde olmayanlar,</span>  diğer kamu kurum ve kuruluşlarına <span class="mavi"> naklen atanır.</span> (Mülga ikinci cümle:RG-21/4/2021-31461-CK-73/2 md.) İlgili kuruluşlar atamaya ilişkin işlemleri genel hükümler çerçevesinde en kısa sürede yerine getirirler.[3] <br>
+
+(5) Hizmetine gerek kalmayan süreli personel, süresinin bitiminden önce de kurumlarına geri gönderilebilir veya görevlerine son verilebilir. <span class="mavi"> Süreli personelden isteyenler, süreleri bitmeden kurumlarına dönebilirler veya görevlerini bırakabilirler.</span> </div></div></div>
+
+<div>
+
+Personelin statüsü
+<div>
+MADDE 13 -<div>  (1) Merkez Teşkilatında;
+	<div>
+a) <span class="span"> Kadrolu </span> personel, <br>
+
+b) <span class="span"> Kadroya <span class="dik"> bağlı</span> süreli</span> personel, <br>
+
+c) <span class="span"> Kadroya <span class="dik"> bağlı olmayan</span></span> süreli personel, <br>
+
+ç) <span class="span"> Kısmi zamanlı</span>  personel, <br>
+
+d) <span class="span"> Sözleşmeli</span>  personel,</div>
+
+görev yapar. <br>
+
+(2) <span class="kim"> Kadrolu personel,</span>  istisnai memuriyet statüsünde 14/7/1965 tarihli ve 657 sayılı Devlet Memurları Kanununa tâbi <span class="mavi"> <strong> İdari İşler Başkanlığı kadrolarına</strong> naklen veya açıktan atanan personeldir.</span> Cumhurbaşkanı tarafından atananlar <span class="kim"> hariç</span> olmak üzere, herhangi bir sosyal güvenlik kurumundan emeklilik veya <span class="ark"> yaşlılık aylığı alanlar</span> <span class="mavi"> kadrolu olarak atanamazlar.</span> <span class="kim"> Cumhurbaşkanınca atananların</span> sosyal güvenlik kurumlarından bağlanmış <span class="mavi"> aylıkları kesilmez.</span> <br>
+
+(3) Kamu kurum ve kuruluşlarında, mevzuatın verdiği yetkiye dayanılarak kurulan banka ve kuruluşlarda, bunların sermayelerinin yarısından fazlasına katılması suretiyle kurulan kuruluşlarda çalışanlar ile adli ve idari yargı mensupları, hizmetlerine ihtiyaç duyulması sebebiyle ve <span class="mavi"> üç yıl <span class="kim"> süreyle</span> İdari İşler Başkanlığının talebi üzerine İdari İşler Başkanlığı kadrolarında süreli olarak görevlendirilebilir.</span>  Süresi bitenlerin aynı usulle yeniden görevlendirilmeleri mümkündür. Bu personel kendi kurum veya <span class="mavi"> kuruluşundan izinli sayılır</span>  ve İdari İşler Başkanlığında geçen süreleri, mensubu oldukları kurum veya kuruluşta geçmiş kabul edilir; her türlü özlük hakları kendi kurum veya kuruluşunda saklı kalır; izin, disiplin ve sağlık hak ve işlemleri yönünden bu Kararname hükümlerine tâbidir. İdari İşler Başkanının uygun görüşü alınmadan, kendi kurum veya kuruluşundaki işlem ve eylemi sebebiyle, adlî yönden ve disiplin yönünden verilen bir ceza kararı olmadıkça veya yaş haddine ulaşmadıkça, özelleştirme kapsamına alınan kuruluş personeli hariç olmak üzere, emekli edilemez, kendi kurumunda kurum içi görev değişikliği yapılamaz, varsa sözleşmesi feshedilemez, özlük, malî ve sosyal hakları ve yardımları kısıntıya uğratılamaz; bu Kararnamede yer verilen hükümler saklı kalmak şartıyla, <span class="mavi"> kendi kurum ve kuruluş çalışanlarının bağlı olduğu mevzuata tâbidir.</span> <br>
+
+
+(4) <span class="kim"> Kadroya bağlı olmayan süreli personel</span>, kadroları ve kadroya bağlı bütün özlük hak ve işlemleri kendi kurum veya kuruluşlarında olan, personel <span class="mavi"> İdari İşler Başkanlığındaki hizmetlerini bir kadroya bağlı olmaksızın yürüten personeldir.</span>  <br>
+
+(5) <span class="span"> Doktor, mühendis ve mimarlar</span>  ile diğer sağlık personeli ve teknik personel İdari İşler Başkanlığında <span class="ark"> haftanın belirli günlerinde veya günün belirli saatlerinde</span> <span class="mavi"> <span class="kim"> kısmî</span> zamanlı olarak çalıştırılabilir.</span> <br>
+
+(6) İdari İşler Başkanlığı birinci fıkrada belirtilen istihdam şekilleriyle bağlı olmaksızın, gerekli gördüğü konularda araştırma, inceleme ve çalışma yaptırmak amacıyla kamu kurum ve kuruluşlarında çalışan <span class="ark"> uzman personelden oluşan komisyonlar</span>, <span class="ark"> danışma kurulları</span>  ve <span class="ark"> çalışma grupları</span> <span class="mavi"> kurmaya yetkilidir.</span>  Serbest veya özel sektörde çalışan uzman kişilere de bu komisyonlarda görev verilebilir. Komisyonlarda görevlendirilenler çalışmaları ile ilgili <span class="mavi"> gizli bilgileri açıklayamazlar.</span> <br>
+
+(7) <span class="kim"> Sözleşmeli personel,</span> 657 sayılı Kanun ile diğer Kanunların sözleşmeli personel çalıştırılmasına dair hükümlerine bağlı kalınmaksızın, bu Kararname hükümlerine ve <span class="mavi"> akdedilecek sözleşmeye göre istihdam edilen personeldir.</span> </div></div></div>
+
+
+<div>
+Sözleşmeli personele ilişkin hükümler
+<div>
+MADDE 14 - <div> (1) İdari İşler Başkanlığında, 657 sayılı Kanunun ve <span class="ark"> diğer kanunların sözleşmeli personele ilişkin hükümlerine bağlı kalınmaksızın</span> <span class="mavi"> sözleşmeli personel çalıştırılabilir.</span> Sözleşmeli personel hakkında, bu Kararnamede düzenlenmeyen ve <span class="ark"> sözleşmede yer almayan hususlarda</span> <span class="mavi"> sözleşmeli personel çalıştırılmasına ilişkin mevzuat hükümleri uygulanır.</span> <br>
+
+(2) <span class="mavi"> Sözleşme yapmaya İdari İşler Başkanı yetkilidir.</span> <br>
+
+(3) Sözleşmeli olarak çalıştırılacaklara ödenecek ücret 657 sayılı Kanunun 4 üncü maddesinin <span class="ark"> (B) fıkrasına göre çalıştırılanlar</span> için uygulanmakta olan sözleşme ücreti tavanının <span class="mavi"> üç katını geçmemek üzere görevin mahiyeti</span>  ve çalıştırılacak kişinin vasfı gibi kriterler gözetilerek İdari İşler <span class="mavi"> Başkanı tarafından belirlenir.</span>  Geçici olarak ve/veya haftanın belirli günlerinde ya da günün belirli saatlerinde sözleşmeli statüde çalıştırılanlara, çalıştırılan <span class="mavi"> günlerle veya saatlerle orantılı olarak ödeme yapılır.</span>  <br>
+
+(4) Bu madde kapsamında istihdam edilecek bilişim personeline ödenecek ücret tavanı, <span class="mavi"> en fazla on kişi için,</span>  657 sayılı Kanunun 4 üncü maddesinin (B) fıkrasına göre çalıştırılanlar için uygulanmakta olan sözleşme ücreti tavanının <span class="mavi"> beş katına kadar belirlenebilir.</span> <span class="kim"> Bu şekilde istihdam edileceklerin;</span>
+<div>
+a) Fakültelerin <span class="ark"> dört yıllık bilgisayar</span>  mühendisliği, yazılım mühendisliği, elektrik mühendisliği, elektronik mühendisliği, elektrik ve elektronik mühendisliği ve endüstri mühendisliği bölümlerinden veya bunların dışında kalan dört yıllık eğitim veren fakültelerin mühendislik bölümlerinden, fen edebiyat, eğitim ve eğitim bilimleri fakültelerinin, bilgisayar ve teknoloji üzerine eğitim veren bölümleri ile istatistik, matematik ve fizik bölümlerinden ya da bunlara denkliği Yükseköğretim Kurulunca kabul edilmiş yurt dışındaki yükseköğretim kurumlarından <span class="mavi"> mezun olması,</span> <br>
+
+b) Yazılım, yazılım tasarımı ve geliştirilmesi ile bu sürecin yönetimi konusunda veya büyük ölçekli ağ sistemlerinin kurulumu ve yönetimi konusunda <span class="mavi"> en az 5 yıllık mesleki tecrübeye sahip bulunmaları,</span> <br>
+
+c) Bilgisayar çevre birimlerinin donanımı ve kurulan ağ yönetimi güvenliği hakkında bilgi sahibi olmaları kaydıyla, <span class="mavi"> güncel programlama dillerinden en az birini bilmesi,</span> </div>
+
+zorunludur. Bu kriterlere göre istihdam edilenler İdari İşler Başkanınca oluşturulan bir komisyon tarafından verilen karar üzerine İdari İşler Başkanı onayı ile belirlenir.</div></div></div>
+<div>
+Hizmetine ihtiyaç kalmayan sözleşmeli personel
+<div>
+MADDE 14/A- (Ek:RG-24/10/2019-30928-CK-48/2 md.)
+<div>
+(1) İdari İşler Başkanlığında bu Cumhurbaşkanlığı Kararnamesinin 14 üncü maddesine göre istihdam edilen sözleşmeli personelden hizmetine ihtiyaç kalmayanlar uygun görülmesi halinde diğer kamu kurum ve kuruluşlarında 657 sayılı Kanunun 4 üncü maddesinin (B) fıkrası kapsamındaki <span class="mavi"> durumlarına uygun pozisyonlara atanabilir.</span> <br>
+
+(2) Bunların atama teklifi İdari İşler Başkanlığınca yapılır. Atama teklifi yapılan kurum veya kuruluşça personelin <span class="mavi"> atama işlemleri onbeş gün içinde sonuçlandırılır.</span>  Bunlar, atama işlemi <span class="ark"> tamamlanıncaya kadar</span>, mevcut pozisyonlarına ait sözleşme ücretleri ile diğer mali haklarını Cumhurbaşkanlığı bütçesinden <span class="mavi"> almaya devam eder.</span> <br>
+
+(3) Bu madde kapsamında atanacakların pozisyonları, atama teklifinde belirtilen unvan, sayı, nitelik, sözleşme ücreti ve süreleri itibarıyla atama işleminin yapıldığı tarihte başka bir işleme gerek kalmaksızın ihdas edilmiş ve 2 sayılı Genel Kadro ve Usulü Hakkında Cumhurbaşkanlığı Kararnamesinin eki (IV) sayılı cetvelin ilgili kurum veya kuruluşa ait bölümüne eklenmiş sayılır. Doğum, evlat edinme veya askerlik sebebiyle hizmet sözleşmesi feshedilen sözleşmeli personelin pozisyonları hariç olmak üzere, bu madde kapsamında ihdas edilen pozisyonlar, herhangi bir şekilde boşalmaları halinde hiçbir işleme gerek kalmaksızın iptal edilmiş ve 2 sayılı Cumhurbaşkanlığı Kararnamesinin eki (IV) sayılı cetvelin ilgili kurum ve kuruluşa ait bölümünden çıkarılmış sayılır. <br>
+
+(4) Bunlardan birinci fıkra kapsamında en az bir yıl çalışmış olanların yeni pozisyonlarına atandıkları tarih itibarıyla eski pozisyonlarına ilişkin olarak en son ayda aldıkları sözleşme ücreti, ücret, tazminat, aylık, ikramiye (bir aya isabet eden net tutarı) ve benzeri adlarla yapılan her türlü ödemelerin (ilgili mevzuatı uyarınca fiili çalışmaya bağlı fazla mesai ücreti ve ek ders ücreti hariç) toplam net tutarının; atandıkları yeni pozisyonlara ilişkin belirlenen ücret, tazminat, aylık, ek ödeme ve benzeri adlarla yapılan her türlü ödemelerin (ilgili mevzuatı uyarınca fiili çalışmaya bağlı fazla mesai ücreti ve ek ders ücreti hariç) toplam net tutarından fazla olması halinde üçüncü fıkraya göre belirlenen sözleşme ücretleri, yeni pozisyonlarına atandıkları tarihten itibaren iki yıl süreyle, eski pozisyonlarına ilişkin olarak atama tarihinden önceki en son ayda aldıkları sözleşme ücreti, ücret, tazminat, aylık, ikramiye (bir aya isabet eden net tutarı) ve benzeri adlarla yapılan her türlü ödemelerin (ilgili mevzuatı uyarınca fiili çalışmaya bağlı fazla mesai ücreti ve ek ders ücreti hariç) toplamından yeni pozisyonlarında durumlarına göre alabilecekleri ek ödeme tutarı düşülmek suretiyle bulunacak tutar olarak uygulanır. Atandıkları pozisyon unvanlarında isteğe bağlı olarak herhangi bir değişiklik olanlarla kendi istekleriyle başka kurumlara atananlara bu fıkra kapsamında uygulama yapılmasına son verilir. <br>
+
+(5) Bu madde kapsamında nakledilenlere iş sonu tazminatı ödenmez. Bu personelin önceden iş sonu tazminatı ödenmiş süreleri hariç, iş sonu tazminatına esas olan toplam hizmet süreleri, yeni pozisyonlarında iş sonu tazminatına esas toplam hizmet süresi ile ücret ve izin sürelerinin hesabında dikkate alınır. <br>
+
+(6) Bu maddenin uygulanmasında 657 sayılı Kanunun 4 üncü maddesinin (B) fıkrası kapsamında yürürlüğe konulan mevzuatın bu maddeye aykırı hükümleri uygulanmaz. <br>
+
+(7) <span class="mavi"> Bu maddenin uygulanmasında ortaya çıkabilecek tereddütleri gidermeye ve uygulamayı yönlendirmeye Cumhurbaşkanlığı yetkilidir.</span> </div></div></div>
+
+
+<div>
+Personele ilişkin diğer işlemler
+<div>
+MADDE 15 - <div> (1) İdari İşler Başkanlığında görevli personelin mali ve sosyal hak ve yardımları, izinleri, bilgi sistemi ve özlük dosyası ile disiplin suç ve cezaları hakkında <span class="mavi"> 657 sayılı Kanun ve ilgili diğer mevzuat uygulanır.</span> <br>
+
+(2) Süreli personelden <span class="ark"> hâkim ve savcı sınıfından olanların</span>  terfileri mümtazen, diğer kamu kurum ve kuruluşları personelinin terfileri de başkaca bir işleme gerek duyulmadan <span class="mavi"> kendi kurumunca süresinde yapılır.</span> </div></div></div>
+
+
+<div>
+Yöneticilerin sorumlulukları ve yetki devri
+<div>
+MADDE 16 - <div> (1) İdari İşler Başkanlığının her kademesindeki yöneticileri, yapmakla yükümlü bulundukları hizmet veya görevleri verilecek emir ve direktifler doğrultusunda mevzuata, plan ve programlara uygun olarak yerine getirmek ve yürütmekten <span class="mavi"> bir üst yöneticiye karşı sorumludur.</span> <br>
+
+(2) İdari İşler Başkanlığının her kademedeki yöneticileri, gerektiğinde sınırlarını yazılı olarak açıkça belirtmek şartıyla <span class="mavi"> yetkilerinden bir kısmını astlarına devredebilirler.</span>  <br>
+
+(3) Yetki devri, yetki devreden <span class="mavi"> amirin sorumluluğunu kaldırmaz.</span></div></div></div>
+
+<div>
+	<div>
+GEÇİCİ MADDE 1- (Ek:RG-24/10/2019-30928-CK-48/3 md.) <br>
+
+(1) Bu maddenin yayımı tarihinden itibaren iki ay süreyle, mülga Cumhurbaşkanlığı Genel Sekreterliği Halkla İlişkiler Başkanlığında Cumhurbaşkanlığı İletişim Merkezi (CİMER) faaliyetleri kapsamında istihdam edilmekte iken İdari İşler Başkanlığına devredilen sözleşmeli personelin bu Cumhurbaşkanlığı Kararnamesinin 14/A maddesi hükümlerine göre yapılacak atama teklifleri İletişim Başkanlığı bünyesinde mezkûr maddenin üçüncü fıkrasına göre ihdas edilecek iletişim görevlisi unvanlı pozisyonlara da yapılabilir.</div></div>
+
+
+
+ÜÇÜNCÜ KISIM <br>
+
+CUMHURBAŞKANI YARDIMCILARI VE CUMHURBAŞKANINA VEKÂLET
+
+
+<div>
+Cumhurbaşkanı Yardımcıları
+<div>
+MADDE 17 - <div> (1) Cumhurbaşkanı yardımcıları, <span class="ark"> Cumhurbaşkanı tarafından verilen görevleri yaparlar.</span> <br>
+
+(2) Cumhurbaşkanı yardımcıları, <span class="mavi"> Cumhurbaşkanına karşı sorumludur.</span></div></div></div>
+
+
+<div>
+Cumhurbaşkanına vekâlet
+<div>
+MADDE 18 - <div> (1) Cumhurbaşkanlığı makamının <span class="ark"> herhangi bir nedenle boşalması halinde,</span>  yenisi seçilene kadar <span class="mavi"> en yaşlı Cumhurbaşkanı yardımcısı Cumhurbaşkanlığına vekâlet eder</span> ve Cumhurbaşkanına ait yetkileri kullanır. <br>
+
+(2) Cumhurbaşkanının <span class="ark"> hastalık ve yurtdışına çıkma gibi sebeplerle geçici olarak görevinden ayrılması hallerinde</span> , <span class="mavi"> Cumhurbaşkanının görevlendirdiği yardımcısı</span>  Cumhurbaşkanına vekâlet eder ve Cumhurbaşkanına ait yetkileri kullanır.</div></div></div>
+
+
+<div>
+Cumhurbaşkanı Yardımcıları Özel Kalem Müdürlükleri
+<div>
+MADDE 19 -<div>  (1) Cumhurbaşkanı Yardımcıları özel kalem müdürlerinin görevleri şunlardır:
+	<div>
+a) Cumhurbaşkanı Yardımcılarının <span class="span"> resmi ve özel yazışmalarını</span> yürütmek, <br>
+
+b) Cumhurbaşkanı Yardımcılarının her türlü <span class="span"> protokol, tören, yurtiçi ve yurtdışı gezi işlerini</span>  düzenlemek ve yürütmek. <br>
+
+c) Cumhurbaşkanı Yardımcıları tarafından verilen görevleri yapmak. </div>
+
+(2) Cumhurbaşkanı Yardımcılarının danışma ve büro hizmetlerini yürütecek personele ait <span class="span"> kadrolar Cumhurbaşkanlığı merkez teşkilatı kadro cetvelinde gösterilir.</span>[4]</div></div></div>
+
+
+
+DÖRDÜNCÜ KISIM <br>
+
+CUMHURBAŞKANLIĞI POLİTİKA KURULLARI <br><br>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Kurulların Oluşumu
+
+<div>
+
+Kuruluş
+<div>
+MADDE 20- <div> (1) Cumhurbaşkanlığı bünyesinde aşağıda yer alan kurullar kurulmuştur.
+	<div>
+a) <span class="span"> Bilim</span>, <span class="span">Teknoloji ve Yenilik</span> Politikaları Kurulu. <br>
+
+b) <span class="span"> Eğitim ve Öğretim</span> Politikaları Kurulu. <br>
+
+c) <span class="span"> Ekonomi</span> Politikaları Kurulu. <br>
+
+ç) <span class="span"> Güvenlik ve Dış</span> Politikalar Kurulu. <br>
+
+d) <span class="span"> Hukuk</span> Politikaları Kurulu. <br>
+
+e) <span class="span"> Kültür ve Sanat</span> Politikaları Kurulu. <br>
+
+f) <span class="span"> Sağlık ve Gıda</span> Politikaları Kurulu. <br>
+
+g) <span class="span"> Sosyal </span> Politikalar Kurulu. <br>
+
+ğ) <span class="span"> Yerel Yönetim</span> Politikaları Kurulu.</div></div></div></div>
+
+
+<div>
+Kurul Başkanı, başkanvekilleri ve üyeleri
+<div>
+MADDE 21- <div> (1) <span class="mavi"> Cumhurbaşkanı, kurulların başkanıdır.</span> <br>
+
+(2) <span class="mavi"> Kurullar en az üç üyeden oluşur</span>. <span class="mavi">Kurul üyeleri Cumhurbaşkanınca atanır.</span>  Cumhurbaşkanı kurul üyelerinden <span class="mavi"> birini başkanvekili olarak görevlendirir.</span></div></div></div>
+
+
+<div>
+Kurulların genel görev ve yetkileri
+<div>
+MADDE 22-<div>  (1) Kurulların genel görev ve yetkileri şunlardır:
+	<div>
+a) Cumhurbaşkanınca alınacak kararlar ve oluşturulacak politikalarla ilgili <span class="ark">öneriler geliştirmek.</span> <br>
+
+b) Geliştirilen politika ve strateji önerilerinden Cumhurbaşkanınca <span class="ark"> uygun görülenler hakkında gerekli çalışmaları yapmak.</span> <br>
+
+c) Küresel rekabetin getirdiği <span class="ark"> ani değişimlere karşı strateji ve politika önerileri geliştirmek,</span>  <br>
+
+ç) Görev alanlarına giren konularda kamu kurum ve <span class="ark"> kuruluşlarına görüş vermek.</span> <br>
+
+d) Görev alanlarına giren konularda Bakanlıklar, kurum ve kuruluşlar, sivil toplum ve sektör temsilcileri, alanında uzman kişiler ve ilgili diğer ilgililerin <span class="ark"> görüşünü alarak</span>  uygulanan politikaları ve gelişmeleri izlemek, yapılan çalışmalarla ilgili <span class="mavi"> Cumhurbaşkanına rapor sunmak.</span> <br>
+
+
+e) Cumhurbaşkanı <span class="ark"> programına uygunluk açısından</span>, bakanlıklar ile kurum ve kuruluşların uygulamalarını izlemek ve Cumhurbaşkanına <span class="mavi"> rapor sunmak.</span> <br>
+
+f) Bakanlıklar, kurum ve kuruluşlar, sivil toplum ve sektör temsilcileri, alanında uzman kişiler ve ilgili diğer <span class="ark"> ilgililerin davet edilmesi suretiyle</span> <span class="mavi"> genişletilmiş kurul toplantıları yapmak.</span> <br>
+
+g) Görev alanlarına giren konularda <span class="ark"> talep, ihtiyaç ve etki analizi yapmak</span> ve/veya yaptırtmak. <br>
+
+ğ) Cumhurbaşkanınca verilen diğer görevleri yapmak.</div></div></div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Kurullar
+
+
+<div>
+Bilim, Teknoloji ve Yenilik Politikaları Kurulu
+<div>
+MADDE 23- <div> (1) Bilim, Teknoloji ve Yenilik Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) Bölgesel ve küresel rekabette mukayeseli <span class="ark"> üstünlük kazandıracak alanları tespit</span>  edip bu alanlara yönelik tavsiyelerde bulunmak, <br>
+
+b) Türkiye’nin hedefleri doğrultusunda <span class="ark"> bilim ve teknoloji alanında politika</span> önerilerinde bulunmak, <br>
+
+c) Bilgi toplumuna ilişkin <span class="ark"> hedef ve strateji tavsiyelerinde bulunmak,</span> <br>
+
+ç) <span class="ark"> Ar-Ge çalışmalarının özendirilmesi</span>, teşvik edilmesi ve sonuçların ürünleştirilmesi için politika önerilerinde bulunmak, <br>
+
+d) <span class="ark"> Bilim ve teknoloji alanındaki araştırma ve geliştirme</span> politikalarının ekonomik kalkınma, sosyal gelişme ve milli güvenlik hedefleri doğrultusunda tespit edilmesi, yönlendirilmesi ve koordinasyonunun sağlanması amacıyla altyapı, insan kaynağı ve diğer tüm kaynakların geliştirilmesine yönelik araştırmalar yaparak öneriler oluşturmak, <br>
+
+e) <span class="ark"> Stratejik önemi haiz teknoloji alanlarını belirlemek</span> için araştırmalar yapmak ve bu alanlara ilişkin öneriler oluşturmak, <br>
+
+f) <span class="ark"> Teknolojik dönüşüm alanlarını tespit ederek</span> orta ve uzun vadeli milli teknoloji politika önerileri oluşturmak, <br>
+
+g) <span class="ark"> Girişimcilik kültürünün yaygınlaştırılması için</span> araştırmalar yapmak ve öneriler oluşturmak <br>
+
+ğ) Sanayimizin <span class="ark"> ithalat bağımlılığını azaltacak</span>, rekabet gücünü artıracak programların hayata geçirilmesi ile sanayi ürünleri güvenliği ve denetimi politikasının ve <span class="ark"> endüstri bölgeleri kurulacak alanların belirlenmesi amacıyla</span> <span class="mavi"> çalışmalar yürütmek,</span> <br>
+
+h) <span class="ark"> Serbest bölgelerde yapılan faaliyetleri değerlendirmek</span>, bu bölgelerin geliştirilmesine ve sorunların çözümüne ilişkin stratejileri belirlemek ve önerilerde bulunmak, <br>
+
+ı) <span class="ark"> Araştırma altyapılarıyla ilgili</span> genel strateji çalışmaları yapmak ve bu konuda öncelikleri değerlendirmek, <br>
+
+i) <span class="ark"> İnternet ortamının</span>  ekonomik, ticari ve sosyal hayat ile bilim, eğitim ve kültür alanında etkin, yaygın, kolay erişilebilir olarak kullanımını <span class="mavi"> teşvik edecek politika ve strateji önerileri hazırlamak</span>.</div></div></div></div>
+
+
+<div>
+Eğitim ve Öğretim Politikaları Kurulu
+<div>
+MADDE 24-<div>  (1) Eğitim ve Öğretim Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) Türkiye’nin hedefleri doğrultusunda eğitim ve öğretim faaliyetleri ile ilgili <span class="ark"> politika önerilerinde bulunmak,</span> <br>
+
+b) <span class="ark"> Yükseköğretim strateji </span> ve amaçlarının belirlenmesi ve geliştirilmesi ile ilgili politika önerilerinde bulunmak, <br>
+
+c) Eğitim ve öğretim faaliyetlerinin <span class="ark"> uygulanmasına yönelik çalışmaları izlemek,</span>  ihtiyaç analizi geliştirerek faaliyetlerin geliştirilmesi için politika önerileri oluşturmak, <br>
+
+ç) Kalite, eşitlik ve etkililik ilkeleri ile <span class="ark"> millî ve toplumsal değerlere dayalı bir eğitim sistemi</span>  oluşturmak amacıyla politika önerileri geliştirmek, <br>
+
+d) Üniversitelerde <span class="ark"> açılacak fakülte ve bölümlerle ilgili ihtiyaç analizi</span>  yaparak stratejik planlamayla ilgili öneriler sunmak, <br>
+
+e) Ülkenin <span class="ark"> işgücü planlamasını dikkate alarak</span> eğitim ve öğretim konusunda politika önerileri oluşturmak, <br>
+
+f) <span class="ark"> Avrupa Birliği eğitim ve gençlik programlarının</span>  uygulanması ile ilgili genel politikaların belirlenmesi, izlenmesi ve değerlendirilmesi amacıyla çalışmalar yapmak, <br>
+
+g) Mesleki ve teknik eğitim programlarının uygulandığı her tür ve derecedeki örgün, yaygın ve çıraklık eğitimi, mesleki ve teknik eğitim okul ve kurumları ile işletmelerde yapılacak <span class="ark"> mesleki eğitimin; planlanması,</span>  geliştirilmesi ve değerlendirilmesi konularında politika önerileri geliştirmek.</div></div></div></div>
+
+
+<div>
+Ekonomi Politikaları Kurulu
+<div>
+MADDE 25- <div> (1) Ekonomi Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) <span class="ark"> Ekonomik istikrarla ilgili gelişmeleri</span> izlemek ve <span class="mavi"> değerlendirmek,</span> <br>
+
+b) <span class="ark"> Ekonomik konularda araştırmalar</span> yapmak, <br>
+
+c) <span class="ark"> Küresel ve ulusal ekonomi ve kalkınma</span>  konuları ile ilgili gelişmeleri izlemek, değerlendirmek, gerektiğinde araştırmalar yapmak, <br>
+
+ç) <span class="ark"> Ekonomik güvenlik ve ekonomik savunmaya</span>  ilişkin ilke ve esasların tespitine, güncelleştirilmesine yönelik politika önerileri oluşturmak, <br>
+
+d) Gerektiğinde <span class="ark"> gelir azaltıcı veya harcama artırıcı önerileri izlemek ve değerlendirmek,</span>  uygun görülenler hakkında etki analizlerini yapmak, <br>
+
+e) Bölgesel gelişme alanında <span class="ark"> ulusal düzeyde genel politikaların ve önceliklerin belirlenmesi</span>  amacıyla çalışmalar yapmak, önerilerde bulunmak, <br>
+
+f) <span class="ark"> Kamu ve özel sektör tarafından yapılan yatırımların</span> <span class="mavi"> süreçlerini hızlandırma amacıyla öneriler geliştirmek</span>, <br>
+
+g) İhracata dönük <span class="ark"> üretim stratejilerine yönelik politika</span> önerileri geliştirmek, <br>
+
+ğ) <span class="ark"> Ticaretin kolaylaştırılmasına yönelik </span> stratejilerin ve eylem planlarının oluşumuna katkıda bulunmak, <br>
+
+h) <span class="ark"> Faizsiz finans sisteminin</span> daha hızlı ve sağlıklı geliştirilmesi ile ülkemizin uluslararası finans merkezi vizyonuna katkı sağlanması amacıyla politika önerileri geliştirmek, <br>
+
+ı) <span class="ark"> Finansal sistemin bütününe</span> sirayet edebilecek sistemik risklerin belirlenmesi, izlenmesi ve bu tür risklerin azaltılması için gerekli tedbir ve politika önerilerini tespit etmek,
+ <br>
+i) <span class="ark"> Gümrük ve iç ticaret politikalarının oluşturulması</span> ve uygulanması ile ilgili olarak görüş bildirmek ve bu konularda araştırma ve çalışmalar yapmak, <br>
+
+j) <span class="ark"> Devlet desteklerinin ilke ve esaslarının belirlenmesi</span> amacıyla politika önerileri geliştirmek.</div></div></div></div>
+
+
+
+<div>
+Güvenlik ve Dış Politikalar Kurulu
+<div>
+MADDE 26- <div> (1)Güvenlik ve Dış Politikalar Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) Türkiye’nin <span class="ark"> uluslararası ilişkilerine yönelik</span> politika önerileri oluşturmak, <br>
+
+b) <span class="ark"> Bölgesel etkinliği artırmaya yönelik</span> politika önerileri oluşturmak, <br>
+
+c) <span class="ark"> Bölgesel sorunlara çözüm</span> önerileri geliştirmek, <br>
+
+ç) <span class="ark"> Küresel gelişmeleri analiz</span> ederek raporlamak, <br>
+
+d) <span class="ark"> Değişen güvenlik ortamını analiz ederek</span>, tehditlere, Türkiye Cumhuriyeti sınırlarının yasadışı faaliyetlere karşı korunması, güvenliğinin sağlanması, ülke içinde ve uluslararası alanda işbirliğinin geliştirilmesi ile <span class="mavi"> sınır yönetimine ilişkin güvenlik politika önerileri geliştirmek,</span> <br>
+
+e) <span class="ark"> Türkiye’nin göç politika ve stratejilerini belirlemek,</span> uygulanmasını takip etmek, Göç uygulamalarını izlemek ve önerilerde bulunmak, göç alanında yapılması planlanan yeni düzenlemeleri değerlendirmek, göç politikaları ve hukuku alanında bölgesel ve uluslararası gelişmeleri takip etmek ve bu gelişmelerin Türkiye’ye yansımalarını değerlendirerek raporlamak, <br>
+
+f) <span class="ark"> Afet ve acil durum halleri ile ilgili önleme, müdahale</span>  ve iyileştirme konularında politika önerileri geliştirmek, <br>
+
+g) <span class="ark"> Sivil havacılık güvenliği</span>  ile ilgili politikaların belirlenmesi amacıyla çalışmalar yapmak, <br>
+
+ğ) <span class="ark"> Siber güvenlik ile ilgili politika</span> ve strateji önerileri geliştirmek, <br>
+
+h) <span class="ark"> Karayolu, demiryolu ve havayolu trafik güvenliği</span> ile ilgili politika önerileri geliştirmek.</div></div></div></div>
+
+
+<div>
+Hukuk Politikaları Kurulu
+<div>
+MADDE 27- <div> (1) Hukuk Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) Adalet, hak ve özgürlükler, eşitlik ilkesi, hukukun üstünlüğü ve çoğulcu demokrasinin geliştirilmesine yönelik <span class="ark"> politika önerileri oluşturmak,</span> <br>
+
+b) <span class="ark"> Yargı sisteminin adil, hızlı ve etkin şekilde işlemesi için</span>  politika önerileri oluşturmak, <br>
+
+c) Ulusal ihtiyaçlar ve evrensel ilkeler gözönünde tutularak <span class="ark"> hukuk sisteminin iyileştirilmesi</span>  ve mevzuatın güncellenmesine yönelik reform önerilerinde bulunmak, <br>
+
+ç) <span class="ark"> Haklar ve hak ihlalleri ile ilgili araştırmalarda bulunmak</span>  ve ihlallerin önlenmesine yönelik çözüm yolları aramak ve önerilerde bulunmak. <br>
+
+d) <span class="ark"> Suç oranlarının azaltılmasına yönelik</span> araştırmalar yapmak, <br>
+
+e) <span class="ark"> Kadınlara ve çocuklara karşı şiddet, aile içi şiddet ve çocuk istismarını önlemek</span>  amacıyla araştırma ve çalışmalar yapmak,</div></div></div></div>
+
+
+<div>
+Kültür ve Sanat Politikaları Kurulu
+<div>
+MADDE 28-<div>  (1) Kültür ve Sanat Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) <span class="ark"> Kültür ve sanatın toplumun her kesimine yayılması</span>, kültürel ve tarihi mirasımızın korunması ve kültür turizminin geliştirilmesi amacıyla politika önerileri oluşturmak, <br>
+
+b) <span class="mavi"> Yurtdışında yaşayan Türk vatandaşlarının sorunlarının tespiti, soydaş ve akraba topluluklarla sosyal, kültürel, iktisadî ve diğer alanlarda ilişkilerin korunup geliştirilmesine yönelik stratejilerin belirlenmesine yardımcı olmak</span>.</div></div></div></div>
+
+
+
+<div>
+Sağlık ve Gıda Politikaları Kurulu
+<div>
+MADDE 29- <div> (1) Sağlık ve Gıda Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) <span class="ark"> Sağlık sisteminin geliştirilmesi </span> amacıyla politika önerileri geliştirmek, gıda sağlığı ve güvenliği konusunda araştırmalar yapmak, risk analizi yaparak gıda sağlığının korunması için politika önerileri geliştirmek, <br>
+
+b) <span class="ark"> Bitkisel ve hayvansal ürün arzının, ürün kalitesinin artırılmasına</span>  yönelik politika önerileri geliştirmek, <br>
+
+c) <span class="ark"> Su kaynaklarının etkin kullanılması</span>, su israfının önlenmesine yönelik araştırmalar yaparak politika önerilerinde bulunmak,
+ <br>
+ç) <span class="ark"> Sağlık ve gıdayla ilgili olarak üretim ve tüketim</span> alışkanlıklarını iyileştirmek için araştırmalar yapmak, <br>
+
+d) <span class="ark"> Tarım ve hayvancılıkta yerli gen kaynaklarımızın korunması,</span>  ıslahı ve çeşitlendirilmesi için araştırmalar yapmak ve politika önerileri oluşturmak, destekleme politikaları geliştirmek, <br>
+
+e) <span class="ark"> Önleyici sağlık hizmetlerinin artırılarak </span> sağlık hizmeti veren kuruluşların yüklerinin azaltılması ve etkinliklerinin artırılmasına yönelik araştırmalar yapmak ve önerilerde bulunmak, <br>
+
+f) <span class="ark"> Tıbbi teknolojiler ve ilaç sanayinin yerlileştirilmesi</span>  için politika önerileri oluşturmak, <br>
+
+g) Sağlık hizmetleri ve teknolojilerinde <span class="ark"> uluslararası gelişmeleri takip ederek, sonuçları raporlamak</span> , <br>
+
+ğ) Toplumda artan <span class="ark"> hastalıkların önlenmesi ve azaltılmasına yönelik politika</span>  önerileri oluşturmak, <br>
+
+h) <span class="ark"> Biyogüvenlik alanında politika ve stratejilerin geliştirilmesini,</span>  uygulamanın izlenmesini sağlamak. <br>
+
+ı) <span class="ark"> Bağımlılıkla mücadele</span>  konusunda politika önerileri ve stratejiler geliştirmek,</div></div></div></div>
+
+
+<div>
+Sosyal Politikalar Kurulu
+<div>
+MADDE 30 -<div>  (1) Sosyal Politikalar Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) Toplumun <span class="ark"> ihtiyaç sahibi kesimlerine yönelik</span>  yapılan çalışmaların etkinliği için politika önerileri oluşturmak, <br>
+
+b) <span class="ark"> Aile kurumunun korunması,</span>  güçlendirilmesi; iş ve aile hayatı uyumunun sağlanması için politika önerileri oluşturmak, <br>
+
+c) <span class="ark"> Çalışma şartlarının iyileştirilmesine yönelik</span>  politika önerileri geliştirmek, <br>
+
+ç) <span class="ark"> Gelir güvencesi ve gelir adaleti</span> sağlamaya yönelik politika önerileri geliştirmek, <br>
+
+d) <span class="ark"> Sosyal refahın oluşturulmasına</span>  yönelik politika önerileri geliştirmek, <br>
+
+e) <span class="ark"> Dezavantajlı gruplara yönelik</span>  politika önerileri oluşturmak, <br>
+
+f) <span class="ark"> Göç ve göçmen sorunlarının çözümüne</span>  ilişkin politika önerileri geliştirmek. </div></div></div></div>
+
+
+<div>
+Yerel Yönetim Politikaları Kurulu
+<div>
+MADDE 31-<div>  (1) Yerel Yönetim Politikaları Kurulunun görev ve yetkileri şunlardır:
+	<div>
+a) <span class="ark"> Kentleşme ve yerel yönetim alanında</span> politika ve strateji önerileri geliştirmek, <br>
+
+b) Türkiye’nin <span class="ark"> toplumsal, ekonomik ve siyasal gerçekliklerine uygun olarak</span> yerel yönetim politikalarına ilişkin strateji önerileri sunmak, <br>
+
+c) <span class="ark"> Göç ve iskan konularında</span>  politika önerileri geliştirmek, <br>
+
+ç) <span class="ark"> Çevre, orman, su ve benzeri alanlarda</span>  koruyucu ve geliştirici politika önerileri geliştirmek, <br>
+
+d) Türkiye’nin kültürel mirasından beslenerek <span class="ark"> kentleşme politika önerileri geliştirmek,</span> <br>
+
+e) <span class="ark"> Akıllı şehircilikle ilgili araştırmalar</span> yaparak strateji önerilerinde bulunmak, <br>
+
+f) <span class="ark"> Boğaziçi imar uygulama programları</span> gereği kamu yatırımlarının planlanmasına ilişkin çalışmalar yapmak, <br>
+
+g) <span class="ark"> Etkin bir çevre yönetiminin sağlanması</span> için politika ve strateji önerileri geliştirmek. </div></div></div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Koordinasyon Toplantıları
+
+
+<div>
+Bakanlıklar ile kurum ve kuruluşlarla koordinasyon toplantıları
+<div>
+MADDE 32- <div> (1) Müşterek alanlardaki görev ve faaliyetlere ilişkin koordinasyonu sağlamak üzere ilgili bakanlar, kurum ve kuruluşların üst yöneticileri ile ilgili <span class="mavi"> politika kurulunun başkanvekilinin katılımıyla koordinasyon toplantıları yapılabilir.</span>  Bu toplantılarda tespit edilen esaslar Cumhurbaşkanına sunulur. <br>
+
+(2) Koordinasyon toplantılarına <span class="mavi"> Cumhurbaşkanı veya görevlendireceği politika kurulu başkanvekili ya da bakan başkanlık eder.</span> <br>
+
+(3) Koordinasyon toplantılarına ilişkin bütün iş ve işlemler ilgili politika kurulu tarafından yerine getirilir. </div></div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM <br>
+
+Çalışma Usul ve Esasları ile Mali Hükümler
+
+
+<div>
+Kurulların çalışma usul ve esasları
+<div>
+MADDE 33-<div>  (1) Kurullar, alanlarında <span class="mavi"> doğrudan Cumhurbaşkanı ile çalışır</span>  ve Cumhurbaşkanının talimatlarını yerine getirir. <br>
+
+(2) Kurullar, görev alanına giren konularda bakanlıklar, kamu kurum ve kuruluşları, kamu iktisadi teşebbüsleri ve kamu kurumu niteliğindeki <span class="mavi"> kuruluşlar ile yakın işbirliği içinde bulunur.</span> <br>
+
+(3) Kurullar, kendi görev alanlarıyla ilgili olarak her türlü bilgi ve belgeyi ilgili bakanlıklar ile kamu kurum ve kuruluşlarından <span class="mavi"> talep edebilir. Söz konusu talepler kurum ve kuruluşlarca öncelikle değerlendirilir.</span>  <br>
+
+(4) Kurulların görev alanlarıyla ilgili toplantı ve çalışmalara; bakanlıklar, kamu kurum ve kuruluşları, sivil toplum ile özel sektör temsilcileri, akademisyenler ve <span class="mavi"> yerli veya yabancı uzmanlar davet edilebilir.</span> <br>
+
+(5) Kurullar, görev alanlarına giren konularla ilgili olarak <span class="mavi"> çalışma grupları oluşturabilir.</span>
+ <br>
+(6) <span class="ark"> Birden fazla kurulun görev alanına giren hususlar genişletilmiş kurul toplantılarında ilgili kurullar tarafından müştereken çalışılır</span>  ve görüşler müştereken oluşturulur.</div></div></div>
+
+
+<div>
+Personel ve sekretarya
+<div>
+MADDE 34- <div> (1) Kurullarda yeteri kadar personel bulunur. Kurulda görevlendirilen her türlü personele yapılacak <span class="mavi"> ödemeler Cumhurbaşkanlığı bütçesinden karşılanır</span> . Personel görevlendirme yazıları bilgi ve gereği için Cumhurbaşkanlığı İdari İşler Başkanlığına gönderilir. <br>
+
+(2) Her Kurulun sekretarya hizmetleri <span class="mavi"> Cumhurbaşkanlığı İdari İşler Başkanlığı tarafından yerine getirilir.</span> <br>
+
+(3) Kurul personelinin <span class="ark"> özlük işlemleri Cumhurbaşkanlığı İdari İşler Başkanlığınca</span>  yürütülür.</div></div></div>
+
+
+<div>
+Mali hükümler
+<div>
+MADDE 35-<div>  (1) Kurulların giderleri için her yıl Cumhurbaşkanlığı bütçesine yeterli ödenek konulur. <br>
+
+(2) Cumhurbaşkanlığına bağlı kurulların üyelerine, <span class="ark"> (100.000) gösterge</span>  rakamının memur maaş katsayısı ile çarpımı sonucu bulunacak tutarda her ay ek ödeme yapılabilir. Bu ek ödeme, yapılacak işin niteliği, çalışma süresi ve üstlenilen görev dikkate alınarak her bir üye için farklı tutarlar belirlenebilir. Bu ödemeler hakkında aylıklara ilişkin hükümler uygulanır ve damga vergisi hariç herhangi bir vergi ve kesintiye tabi tutulmaz. Bu ödeme, ilgili mevzuatı uyarınca ödenmekte olan zam, tazminat, ödenek, döner sermaye ödemesi, ikramiye, ücret ve her ne ad altında olursa olsun yapılan benzeri ödemelerin hesabında dikkate alınmaz.</div></div></div>
+
+
+<div>
+Bilgi toplama ve sır saklama yükümlülüğü
+<div>
+MADDE 36 – <div> (1) Kurullar, görevleri ile ilgili olarak gerekli olan bilgileri bütün kamu kurum ve kuruluşlarından istemeye yetkilidir. Kendilerinden bilgi istenen bütün kamu kurum ve kuruluşları <span class="mavi"> bu bilgileri vermekle yükümlüdürler.</span>  <br>
+
+(2) Bu şekilde elde edilen bilgilerden <span class="mavi"> ticari sır niteliğinde olanların gizliliğine uyulur.</span> <br>
+
+(3) Kurulların başkan ve üyeleri ile personeli, görevlerini yerine getirmeleri sırasında edindikleri, kamuya, ilgililere ve üçüncü kişilere ait gizlilik taşıyan bilgileri, kişisel verileri, gizlilik taşıyan bilgileri, ticari sırları ve bunlara ait belgeleri, bu konuda mevzuat gereği yetkili kılınan mercilerden başkasına açıklayamaz, <span class="mavi"> kendilerinin veya üçüncü kişilerin yararına kullanamaz. Bu yükümlülük görevden ayrılmalarından sonra da devam eder.</span> </div></div></div>
+
+BEŞİNCİ KISIM <br>
+
+
+<div>
+CUMHURBAŞKANLIĞINA BAĞLI KURUM VE KURULUŞLAR
+<div>
+MADDE 37– <div> (1) Aşağıda yer alan kurum ve kuruluşlar Cumhurbaşkanlığına bağlı olup, kanunları ve/veya Cumhurbaşkanlığı kararnamelerindeki hükümlere tabidir.
+	<div>
+a) <span class="span"> Devlet Arşivleri</span> Başkanlığı <br>
+
+b) <span class="span"> Devlet Denetleme Kurulu</span> <br>
+
+c) <span class="span"> Diyanet İşleri</span> Başkanlığı <br>
+
+ç) (Mülga: RG-15/7/2018-30479 - CK-4/799 md.) <br>
+
+d) <span class="span"> İletişim</span> Başkanlığı <br>
+
+e) <span class="span"> Milli Güvenlik Kurulu</span> Genel Sekreterliği <br>
+
+f) <span class="span"> Milli İstihbarat Teşkilatı</span> Başkanlığı <br>
+
+g) <span class="span"> Milli Saraylar</span> İdaresi Başkanlığı <br>
+
+ğ) <span class="span"> Savunma Sanayi</span> Başkanlığı <br>
+
+h) <span class="span"> Strateji ve Bütçe</span> Başkanlığı <br>
+
+ı) Türkiye <span class="span"> Varlık Fonu</span><div> <button  onclick="soruyuGoster(23)" class="soru" >2023 yılı çıkmış soru</button> </div></div></div></div></div>
+
+<hr>
+
+ONSEKİZİNCİ BÖLÜM <br>
+
+Ortak Hükümler
+
+
+<div>
+Bakanlar
+<div>
+MADDE 503 - <div> (1) Bakan, bakanlık kuruluşunun en üst amiri olup, bakanlık icraatından ve emri altındakilerin faaliyet ve işlemlerinden sorumlu, bakanlık merkez, taşra ve yurtdışı teşkilatı ile bağlı, ilgili ve ilişkili <span class="mavi"> kuruluşların faaliyetlerini, işlemlerini ve hesaplarını denetlemekle görevli ve yetkilidir.</span> <br>
+
+(2) Bakanlar, kamu kaynaklarının etkili, ekonomik ve verimli kullanımı amacıyla, bakanlık hizmetlerini mevzuata, <span class="ark"> Cumhurbaşkanının genel siyasetine</span>, Cumhurbaşkanı karar ve talimatlarına, kalkınma planlarına ve yıllık programlara uygun olarak yürütmekle, bakanlığın faaliyet alanına giren konularda diğer bakanlıklarla <span class="ark"> işbirliği ve koordinasyonu sağlamakla</span> görevli ve <span class="mavi"> Cumhurbaşkanına karşı sorumludur.</span> <br>
+
+(3) (Ek:RG-28/12/2018-30639-C.K.-24/1 md.) Cumhurbaşkanı Yardımcılığı ve Bakanlığa atananların varsa emeklilik veya <span class="mavi"> yaşlılık aylıkları kesilmez.</span> Ayrıca bu görevlere atanmadan önce veya atandıktan sonra emeklilik ya da yaşlılık aylığına hak kazananlara, talep etmeleri halinde mevcut görevleriyle  <span class="mavi">ilişikleri kesilmeden emeklilik veya yaşlılık aylığı bağlanır.</span>[136]</div></div></div>
+
+
+<div>
+Bakan Yardımcıları
+<div>
+MADDE 504 -<div>  (1) Bakan Yardımcıları, bakanın emrinde ve onun yardımcısı olup bakanlık hizmetlerini bakan adına ve bakanın direktif ve emirleri yönünde, bakanlığın amaç ve politikalarına, kalkınma planlarına ve yıllık programlara, stratejik plan ve performans hedefleri ile hizmet gereklerine, mevzuat hükümlerine uygun olarak düzenler ve yürütür. Bu amaçla bakanlık <span class="kim"> teftiş kurulu hariç </span> <span class="mavi"> bakanlık kuruluşlarına gereken emirleri verir ve bunların uygulanmasını gözetir ve sağlar.</span> <br>
+
+(2) Bakan Yardımcıları yukarıda belirtilen hizmetlerin yürütülmesinden <span class="mavi"> Bakana karşı sorumludur.</span> <br>
+
+
+(3) <span class="ark"> Bakan yardımcısı kadroları atama işlemi yapıldığı anda</span> herhangi bir işleme gerek kalmaksızın ihdas edilerek Genel Kadro ve Usulü Hakkında Cumhurbaşkanlığı Kararnamesinin <span class="mavi"> ilgili bölümlerine eklenmiş sayılır.</span> <br>
+
+(4) (Ek: RG-13/9/2018-30534 - CK-17/1 md.) Bakan Yardımcısı kadrosuna atananların varsa emeklilik veya <span class="mavi"> yaşlılık aylıkları kesilmez.</span> (Ek cümle:RG-28/12/2018-30639-C.K.-24/2 md.) Ayrıca bu kadroya atanmadan önce veya atandıktan sonra emeklilik ya da yaşlılık aylığına hak kazananlara, talep etmeleri halinde mevcut görevleriyle <span class="mavi"> ilişikleri kesilmeden emeklilik veya yaşlılık aylığı bağlanır.</span> [137]</div></div></div>
+
+
+<div>
+Bakan Müşavirliği
+<div>
+MADDE 505 - (1) <span class="mavi"> Bakanlıklarda sayısı <span class="dik"> onbeşi </span>geçmemek üzere Bakan Müşaviri istihdam edilebilir.</span> (Ek cümle: RG-15/7/2018-30479 - CK-4/799 md.) Bakan Müşavirlerinin kadroları atama işlemi gerçekleşince hiçbir işleme gerek kalmaksızın ihdas edilmiş ve ilgili bakanlığa ait kadro cetvelinin ilgili bölümüne eklenmiş sayılır.</div></div>
+
+
+<div>
+Yetki devri
+<div>
+MADDE 506 - (1) Bakan ve her kademedeki Bakanlık yöneticileri sınırlarını açıkça belirtmek ve yazılı olmak kaydıyla, <span class="mavi"> yetkilerinden bir kısmını alt kademelere devredebilir.</span> <span class="kim"> Yetki devri</span>, <span class="mavi"> uygun araçlarla ilgililere duyurulur</span> .</div></div>
+
+
+<div>
+Koordinasyon ve işbirliği
+<div>
+MADDE 507 -<div>  (1) Bakanlık, hizmet ve görevleriyle ilgili konularda, diğer bakanlıkların ve kamu kurum ve kuruluşlarının uyacakları esasları mevzuata uygun olarak belirlemekle, kaynak israfını önleyecek ve koordinasyonu sağlayacak tedbirleri almakla görevli ve yetkilidir. <br>
+
+(2) Bakanlık, diğer bakanlıkların hizmet alanına giren konulara ilişkin faaliyetlerinde, ilgili bakanlıklara danışmak ve gerekli işbirliği ve koordinasyonu sağlamaktan sorumludur.</div></div></div>
+
+
+<div>
+Düzenleme görev ve yetkisi
+<div>
+MADDE 508 - (1) Bakanlık görev, yetki ve sorumluluk alanına giren konularda <span class="mavi"> idari düzenlemeler yapabilir</span>.</div></div>
+
+<div>
+
+Bakanlıkların temel kuruluşları ve hiyerarşik kademeler
+<div>
+MADDE 509 -<div>  (1) <span class="kim"> Bakanlıklar</span>, <span class="ark">  merkez teşkilatı ile <br> ihtiyaca göre kurulan taşra ve yurtdışı teşkilatından ve <br> bağlı, ilgili ve ilişkili kuruluşlardan</span> <span class="mavi"> meydana gelir.</span> <br>
+
+(2) <span class="kim"> Bakanlık merkez teşkilatı</span>, bakanlığın sorumlu olduğu hizmetlerin yürütülmesi, bu hizmetlerle ilgili amaç ve politika tayini, planlama, kaynakları düzenleme ve sağlama, koordinasyon, gözetim ve takip, idareyi geliştirme ve denetim gibi görevleri yerine getirmek üzere <span class="mavi"> gerekli birimlerden meydana gelir.</span> <br>
+
+(3) Bakanlığın kuruluş amaçlarını gerçekleştirmek ve yürütmekte oldukları hizmetleri vatandaşlara sunmakla görevli <span class="kim"> bakanlık taşra teşkilatı</span>, ihtiyaca göre aşağıdaki <span class="mavi"> kuruluşların tamamından veya birkaçından meydana gelecek şekilde düzenlenir.</span>
+<div>
+a) <span class="span"> İl valisine bağlı il</span> kuruluşları, <br>
+
+b) <span class="span"> Kaymakama bağlı ilçe</span> kuruluşları, <br>
+
+c) <span class="span"> Doğrudan merkeze bağlı taşra</span> kuruluşları. </div>
+
+(4) <span class="kim"> Bakanlık merkez, taşra teşkilatları ile bağlı ve ilgili kuruluşların hiyerarşik kademeleri;</span>  hizmetin özelliklerinden kaynaklanan farklılıklar dikkate alınmak kaydıyla aşağıdaki şekilde düzenlenir.
+<div>
+a) Bakanlık <span class="kim"> merkez</span> teşkilatında:
+<div>
+1) <span class="ark"> Bakan Yardımcılığı,</span> <br>
+
+2) Bakan Yardımcılığına <span class="ark"> bağlı Genel Müdürlük</span>, <span class="ark"> Kurul Başkanlığı</span> veya <span class="ark"> Daire Başkanlığı</span> , <br>
+
+3) Genel Müdürlük veya Kurul Başkanlığına <span class="ark"> bağlı Daire Başkanlığı</span>, </div>
+
+b) <span class="kim"> Bağlı</span> kuruluşlarda:
+<div>
+1) <span class="ark"> Genel Müdürlük</span>, <br>
+
+2) <span class="ark"> Daire Başkanlığı</span>, <br>
+
+3) <span class="ark"> İhtiyaca göre kurulacak Şube</span> Müdürlüğü, </div>
+
+c) <span class="kim"> Taşra teşkilatı bölge</span>  kuruluşlarında:
+<div>
+1) <span class="ark"> Bölge Müdürlüğü</span>, <br>
+
+2) <span class="ark"> Şube Müdürlüğü</span> veya <span class="ark"> Başmühendislik</span>, <br>
+
+3) <span class="ark"> Şeflik veya Mühendislik</span>,</div>
+
+ç) <span class="kim"> Taşra teşkilatı il</span> kuruluşlarında:
+<div>
+1) <span class="ark"> Vali</span>, <br>
+
+2) <span class="ark"> İl Müdürlüğü</span>, <br>
+
+3) <span class="ark"> Şube Müdürlüğü</span>, <br>
+
+4) <span class="ark"> Şeflik</span>,</div>
+
+d) <span class="kim"> Taşra teşkilatı ilçe</span> kuruluşlarında:
+<div>
+1) <span class="ark"> Kaymakam</span>, <br>
+
+2) <span class="ark"> İlçe Müdürlüğü</span>, <br>
+
+3) <span class="ark"> İhtiyaç bulunan ilçelerde Şube Müdürlüğü</span>, <br>
+
+4) <span class="ark"> Şeflik</span>.</div></div></div></div></div>
+<div> <button  onclick="soruyuGoster(219)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+<div>
+Yurtdışı teşkilatı
+<div>
+MADDE 510 - <div> (1) Yurtdışı Teşkilatı; kamu kurum ve kuruluşlarının yurtdışında devamlı veya geçici görev yapan, <span class="mavi"> dış temsilcilik niteliği taşıyan veya taşımayan bütün kuruluşlarıdır.</span> <br>
+
+(2) <span class="kim"> Dış temsilcilik</span>; <span class="ark"> diplomatik temsilcilik</span>lerle <span class="ark"> konsolosluk</span>lardır. <br>
+
+(3) <span class="kim"> Diplomatik temsilcilik;</span> <span class="ark"> büyükelçilik</span> , <span class="ark"> daimi</span> temsilcilik, temsilcilik, <span class="ark"> elçilik</span>, <span class="ark"> ortaelçilik</span>, büyükelçilik ve elçilik büroları ve <span class="ark"> daimi maslahatgüzarlık</span><span class="mavi"> larıdır.</span> <br>
+
+(4) <span class="kim"> Konsolosluk;</span> <span class="ark"> başkonsolosluk, konsolosluk</span>, <span class="ark"> muavin konsolosluk</span>, <span class="ark"> konsolosluk ajanlığı</span> ve büyükelçilik konsolosluk şubeleri ile <span class="ark"> fahri başkonsolosluk</span> ve fahri  konsolosluk<span class="mavi">lardır.</span> <br>
+
+(5) <span class="kim"> İhtisas birimleri;</span> <span class="ark"> dış temsilciliklerin bünyesinde çalışan</span>  ve <span class="kim"> Dışişleri Bakanlığı dışındaki</span> kamu kurum ve kuruluşlarına <span class="mavi"> mensup memur ve diğer görevlilerden meydana gelen birimlerdir.</span> <br>
+
+(6) <span class="kim"> Dış temsilcilik niteliği taşımayan yurtdışı teşkilatı;</span>  kamu kurum ve kuruluşlarının dış temsilcilik veya <span class="mavi"> ihtisas birimi niteliğini taşımayan yurtdışı teşkilatıdır.</span> <br>
+
+(7) <span class="kim"> Misyon şefi;</span> <span class="ark"> diplomatik temsilcilik</span>lerin, <span class="ark"> büyükelçi</span>, daimi temsilci, <span class="ark"> temsilci</span>, elçi, <span class="ark"> ortaelçi</span>, <span class="ark"> maslahatgüzar</span> <span class="mavi"> unvanlarından birini taşıyan en üst yöneticisidir.</span> <br>
+
+(8) <span class="kim"> Konsolosluk şefi</span>; <span class="ark"> konsolosluk</span>ın, <span class="ark"> başkonsolos</span>, konsolos, <span class="ark"> muavin konsolos</span>, konsolosluk <span class="ark"> ajanı</span>, <span class="ark"> fahri başkonsolos</span>, fahri konsolos <span class="mavi"> unvanlarından birini taşıyan en üst yöneticisidir</span>.</div></div></div>
+
+
+<div>
+Geçici yurtdışı teşkilatı
+<div>
+MADDE 510/A- (Ek:RG-10/1/2019-30651-CK-27/103 md.)
+<div>
+(1) Geçici özel diplomatik temsilcilikler, geçici ihtisas birimleri ve dış temsilcilik niteliği taşımayan geçici yurtdışı teşkilatı kurulması ile yabancı bir ülkede Türkiye’nin menfaatlerini koruyan bir devletin o ülkedeki temsilciliğinde <span class="mavi">geçici olarak temsilci görevlendirilmesi Cumhurbaşkanı kararı ile olur.</span> <br>
+
+(2) Geçici yurtdışı teşkilatı, görev veya <span class="mavi"> hizmet süresi bitince kaldırılır.</span> <br>
+
+(3) Geçici yurtdışı teşkilatının görev veya hizmet sürelerinin <span class="mavi"> uzatılması birinci fıkrada belirtilen usule tabidir.</span> </div></div></div>
+
+
+<div>
+Yurtdışı teşkilatı kurulma usulü
+<div>
+MADDE 510/B- (Ek:RG-10/1/2019-30651-CK-27/103 md.) <br>
+
+(1) Yurtdışı teşkilatı kurulurken <span class="ark"> niteliği</span>, <span class="ark"> kurulacağı yer</span>, <span class="ark"> görevleri</span>,  <span class="ark">yer itibarıyla görev alanı</span>, <span class="ark"> bağlı veya ilgili olacağı misyon</span>, konsolosluk şefliği ve geçici olanların süresi, <span class="mavi"> Cumhurbaşkanı kararında belirtilir</span>.</div></div>
+
+
+<div>
+Dış Temsilciliklerin görevleri
+<div>
+MADDE 511 - <div> (1) Yurtdışı teşkilatından;
+	<div>
+a) Elçilik niteliğindeki dış temsilciliklerin görevleri şunlardır:
+<div>
+1) Kuruldukları veya akredite edildikleri Devlet nezdinde <span class="mavi"> Türkiye Cumhuriyetini temsil etmek</span>, <br>
+
+2) Türkiye Cumhuriyetinin ve <span class="ark"> vatandaşlarının, hak ve menfaatlerini korumak</span> ve takip etmek, <br>
+
+3) Nezdinde bulundukları veya akredite edildikleri <span class="ark"> Devletlerin hükümetleri ve ilgili kuruluşları ile gerekli temas</span> ve görüşmeleri yapmak,
+ <br>
+4) Görevleri ile ilgili <span class="ark"> bilgileri toplamak,</span> değerlendirmek ve sonuçları ile birlikte merkeze iletmek, <br>
+
+5) Türkiye Cumhuriyeti ile nezdinde bulundukları veya akredite edildikleri Devlet arasında <span class="ark"> dostluk ilişkileri kurulmasına</span> ve siyasi, askeri, ekonomik, kültürel, ilmi ve diğer alanlardaki ilişkilerin geliştirilmesine çalışmak, <br>
+
+6) Cumhurbaşkanı, Cumhurbaşkanı yardımcıları, Dışişleri Bakanlığı ve ilgili bakanlıklar tarafından verilecek diğer görevleri yerine getirmek. </div>
+
+b) Daimi temsilciliklerin ve temsilciliklerin görevleri şunlardır:
+<div>
+1) <span class="ark"> Milletlerarası kuruluşlarda Türkiye Cumhuriyetini temsil etmek</span>, Devletin menfaatlerini korumak ve takip etmek, <br>
+
+2) Bu kuruluşlar ile temas ve görüşmeler yapmak, kuruluşlardaki <span class="ark"> gelişme ve eğilimler hakkında bilgi toplamak</span>, değerlendirmek ve sonuçları ile birlikte merkeze iletmek, <br>
+
+3) Kuruluşlar ile Türkiye Cumhuriyeti arasındaki <span class="ark"> münasebetleri geliştirmek,</span> <br>
+
+4) Cumhurbaşkanı, Cumhurbaşkanı yardımcıları, Dışişleri Bakanlığı ve ilgili bakanlıklar tarafından verilen diğer görevleri yerine getirmek, </div>
+
+c) <span class="kim"> Konsolosluklar</span>, bulundukları ülkelerde Türkiye Cumhuriyetinin ve vatandaşlarının <span class="ark"> hak ve menfaatlerini korurlar </span> ve bunlarla ilgili idari, ticari ve hukuki işlemleri yürütürler. <br>
+
+ç) <span class="kim"> İhtisas birimleri</span>, kendi alanlarındaki görevlerle, bağlı oldukları kamu kurum ve kuruluşları misyon ve konsolosluk şeflerince <span class="mavi"> kendilerine verilen görevleri yerine getirirler</span>. <br>
+
+d) <span class="kim"> Dış temsilcilik niteliğini taşımayan yurtdışı teşkilatı</span>; kuruluş amaçlarına uygun olarak, bağlı oldukları <span class="mavi"> kurum ve kuruluşlarca verilen görevleri yaparlar</span>.</div></div></div></div>
+
+
+<div>
+Dış Temsilciliklerdeki memur ve diğer görevliler
+<div>
+MADDE 512 -<div>  (1) Diplomatik temsilciliklerdeki memur ve diğer görevliler aşağıda gösterilen unvan veya nitelikleri taşıyan personelden meydana gelir:
+	<div>
+a) <span class="ark"> Dışişleri Bakanlığına mensup diplomatik statüye haiz büyükelçi, <br> daimi temsilci, <br> daimi temsilci yardımcısı,<br> temsilci, <br>elçi,<br> ortaelçi,<br> maslahatgüzar,<br> elçi müsteşar,<br> birinci müsteşar,<br> müsteşar,<br> hukuk müşaviri,<br> başkatip,<br> ikinci katip,<br> üçüncü katip,<br> ataşe ve<br> ataşe yardımcıları,</span> <br>
+
+b) <span class="ark"> Diğer kamu kurum ve kuruluşlarına mensup diplomatik statüye haiz daimi temsilci yardımcısı,<br> müşavir, <br> müşavir yardımcısı, <br> ataşe ve <br> ataşe yardımcıları,</span> <br>
+
+c) <span class="ark"> Diplomatik statüye haiz olmayan idari teknik ve hizmetli personel</span>.</div>
+
+(2) Konsolosluktaki memur ve diğer görevliler aşağıda gösterilen unvan veya nitelikleri taşıyan personelden meydana gelir.
+<div>
+a) <span class="ark"> Konsolosluk memuru statüsündeki başkonsolos, <br> başkonsolos yardımcısı, <br>konsolos, <br> muavin konsolos,<br> konsolosluk ajanı, <br> ataşeler,</span> <br>
+
+b) <span class="ark"> Diğer kamu kurum ve kuruluşlarına mensup konsolosluk memuru statüsündeki ataşeler ve ataşe yardımcıları,</span> <br>
+
+c) <span class="ark"> Konsolosluk memuru statüsünde olmayan idari, teknik ve hizmetli personel.</span></div></div></div></div>
+
+<div>
+
+Dış Temsilcilik niteliği taşımayan yurtdışı teşkilatındaki memur ve diğer görevliler
+<div>
+MADDE 513- (1) Dış temsilcilik niteliği taşımayan yurtdışı teşkilatının memur ve diğer görevlileri, kadrolarında gösterilen unvanları taşıyan memurlarla diğer görevlilerden meydana gelir.</div></div>
+
+
+<div>
+Yurtdışı görevlere atanacaklarda aranacak nitelikler
+<div>
+MADDE 514 -<div>  (1) Yurtdışı teşkilatında bir göreve atanacak memurların <span class="mavi"> gerekli ve yeterli mesleki bilgi, yabancı dil bilgisi ve temsil yeteneğine sahip olmaları gereklidir</span>. <br>
+
+(2) Bu nitelikler ve bunların tespiti ile ilgili hususlar <span class="mavi"> Cumhurbaşkanlığınca yürürlüğe konulacak yönetmelikle düzenlenir</span>.</div></div></div>
+
+
+<div>
+Yurtdışı teşkilatı arasındaki ilişkiler
+<div>
+MADDE 515 - <div> (1) <span class="ark"> Misyon ve konsolosluk şefleri</span> kendilerine bağlı olarak kurulan yurtdışı teşkilatındaki memur ve <span class="mavi"> diğer görevlilerin amiridir</span>; bu sıfatla söz konusu memur ve diğer görevliler üzerinde amirin sahip bulunduğu bütün yetkileri kullanırlar. <br>
+
+(2) Misyon ve konsolosluk şefleri, dış temsilcilik <span class="kim"> niteliği taşımayan yurtdışı teşkilatı üzerinde</span> aşağıdaki yetkilere sahiptir:
+<div>
+a) Bu teşkilatın teftiş veya denetlemelerini yetkili makam ve mercilerden ister , <span class="mavi"> denetler veya denetlettirebilir.</span> <br>
+
+b) Bu teşkilatın yöneticilerinden <span class="mavi"> bilgi ve görüş ister</span>. <br>
+
+c) İhtiyaç duyulması halinde, bu teşkilatın <span class="mavi"> yöneticilerini toplantıya çağırır</span>.</div></div></div></div>
+
+
+
+<div>
+İhtisas birimleri ve dış temsilcilik niteliği taşımayan yurtdışı teşkilatının yöneticileri
+<div>
+MADDE 516 - <div> (1) Bir dış temsilcilik bünyesinde aynı kamu kurum veya kuruluşuna bağlı birden fazla görevli bulunması halinde, <span class="ark"> bunlardan hangisinin ihtisas biriminin yöneticisi olacağı ilgili kamu kurum veya kuruluşunca</span>  belirlenir. <br>
+
+(2) Bir kamu kurum ve kuruluşunun aynı coğrafi görev alanı içinde dış temsilcilik <span class="ark"> niteliği taşımayan birden fazla yurtdışı teşkilatı bulunması halinde</span> , <span class="span"> bunlardan birisi</span>, ilgili oldukları misyon veya <span class="mavi"> konsolosluk şefine muhatap olacak şekilde görevlendirilir</span>.</div></div></div>
+
+
+<div>
+Misyon ve konsolosluk şefliklerine vekalet
+<div>
+MADDE 517 - (1) Bir misyon veya konsolosluk şefinin görevinden geçici veya sürekli olarak ayrılması halinde misyon veya konsolosluk şefliğine <span class="mavi"> Dışişleri Bakanlığınca belirlenecek bir görevli vekalet eder</span>.</div></div>
+
+
+<div>
+Yurtdışı teşkilatında protokolle ilgili esaslar
+<div>
+MADDE 518 - (1) Diplomatik temsilciliklerde diplomatik statüyü; konsolosluklarda konsolosluk memuru statüsünü haiz personel ile ilgili protokol esasları <span class="mavi"> Dışişleri Bakanlığınca hazırlanacak bir yönetmelikle düzenlenir</span>.</div></div>
+
+<div>
+
+Yurtdışı teşkilatı ile merkez arasındaki yazışmalar
+<div>
+MADDE 519 - <div> (1) Yurtdışı teşkilatı ile merkez arasındaki yazışmalarda aşağıdaki esaslar uygulanır:
+	<div>
+a) Bir misyon veya konsolosluk şefine bağlı yurtdışı teşkilatı ile merkez arasındaki yazışmalar, ilgili <span class="mavi"> misyon veya konsolosluk şefi aracılığı ile yapılır</span> . <span class="ark"> Askeri ataşeler ile özel görevlilere dair düzenlemeler saklıdır</span>. <br>
+
+b) Dışişleri Bakanlığına doğrudan bağlı bulunan dış temsilciliklerin misyon ve konsolosluk şefleri, ihtisas birimlerinin kendileri aracılığı ile gönderecekleri yazıları, ilgili kamu kurum veya kuruluşlarına intikal ettirirler. Ancak, bunlardan <span class="mavi"> gerekli gördüklerinin bir örneğini Dışişleri Bakanlığına da gönderebilirler</span>. <br>
+
+c) Dış temsilcilik niteliği taşımayan yurtdışı teşkilatı merkezde bağlı bulundukları kamu kurum ve kuruluşları ile <span class="ark"> doğrudan yazışabilirler.</span> <span class="kim"> Ancak</span> bunlar, irtibatlı olduğu misyon ve konsolosluk şeflerini <span class="mavi"> ilgilendiren yazıların birer suretini kendilerine göndermek veya vermekle yükümlüdürler</span>. <br>
+
+ç) Yurtdışı teşkilatı ile merkez arasındaki haberleşme ve yazışmalara ilişkin diğer hususlar <span class="mavi">Cumhurbaşkanlığınca hazırlanacak bir yönetmelikle düzenlenir</span>.</div></div></div></div>
+
+<div>
+
+Bütçe türü
+<div>
+MADDE 520 - (1) Bakanlıklar 10/12/2013 tarihli ve 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanununun eki (I) sayılı cetvelde yer alır.</div></div>
+
+
+
+
+ONDOKUZUNCU BÖLÜM <br>
+
+İdari Kurul, Konsey ve Komisyonlar
+
+
+<div>
+Amaç ve kapsam
+<div>
+MADDE 521- (1) Bu Bölümün amacı, çeşitli kanunlarla görev verilmiş olan Malvarlığının Dondurulmasını Değerlendirme Komisyonu, Kültür Varlıklarını Koruma Yüksek Kurulu, Ekonomik İşler Olağanüstü Hal Koordinasyon Kurulu, 4/6/1985 tarihli ve 3213 sayılı Maden Kanununun 7 nci maddesinde belirtilen Kurul, İthalatta Haksız Rekabeti Değerlendirme Kurulu, Bireysel Emeklilik Danışma Kurulu, Asgari Ücret Tespit Komisyonu, 4/12/2003 tarihli ve 5015 sayılı Petrol Piyasası Kanununun 16 ncı maddesinde belirtilen Komisyon, Toptancı Hal Konseyi, Göç Kurulu ile Afet ve Acil Durum Kurulunun kuruluşunu düzenlemektir.[138][139]</div></div>
+
+
+<div>
+Kurulların oluşumu
+<div>
+MADDE 522- <div> (1) 521 inci maddede adı geçen kurulların oluşumu aşağıdaki şekildedir;[140][141][142][143] <br>
+
+a) <span class="kim"> Malvarlığının Dondurulmasını Değerlendirme Komisyonu;</span> Hazine ve Maliye Bakanlığı <span class="ark"> Mali Suçları Araştırma Kurulu Başkanının başkanlığında,</span> Cumhurbaşkanlığından görevlendirilecek bir üye, Millî İstihbarat Teşkilâtından görevlendirilecek bir üye, Adalet Bakanlığı Ceza İşleri Genel Müdürü, Dışişleri Bakanlığı Araştırma ve Güvenlik İşleri Genel Müdürü, Hazine ve Maliye Bakanlığı Finansal Piyasalar ve Kambiyo Genel Müdürü ve İçişleri Bakanlığı Strateji Geliştirme Başkanından oluşur.[144] [145]
+ <br>
+b) <span class="kim"> Kültür Varlıklarını Koruma Yüksek Kurulu;</span> <span class="ark"> Kültür ve Turizm Bakanlığı Bakan Yardımcısının Başkanlığında</span>, Kültür ve Turizm Bakanınca Bakanlıktan görevlendirilecek üç üye, Cumhurbaşkanınca Cumhurbaşkanlığından görevlendirilecek bir üye, Çevre, Şehircilik ve İklim Değişikliği Bakanlığının ilgili genel müdürü, Orman Genel Müdürü veya yardımcısı, Vakıflar Genel Müdürü veya yardımcısı, Koruma bölge kurulları üyelerinden Kültür ve Turizm Bakanlığınca seçilecek altı üye, Maden ve Petrol İşleri Genel Müdürü veya yardımcısı, Doğa Koruma ve Milli Parklar Genel Müdürü veya yardımcısından oluşur. Bakan, gerekli gördüğü takdirde Kurula başkanlık eder, ancak oy kullanmaz. <br>
+
+c) <span class="kim"> Ekonomik İşler Olağanüstü Hal Koordinasyon Kurulu;</span> <span class="mavi"> Cumhurbaşkanının başkanlığında,</span> Cumhurbaşkanınca belirlenen Bakanlardan oluşur. <br>
+
+
+ç) <span class="kim"> 3213 sayılı Kanunun 7 nci maddesinde belirtilen Kurul;</span> <span class="ark"> Kurul, Cumhurbaşkanınca görevlendirilecek Bakanın başkanlığında </span> Enerji ve Tabii Kaynaklar Bakanı, diğer yatırımcı kurum ya da kuruluşun bağlı olduğu bakan/bakanlar ve yatırım kararına onay veren kurumun ilgili olduğu bakan olmak üzere asgari üç kişiden oluşur. Ancak, yatırımcı kuruluşun Cumhurbaşkanınca görevlendirilmiş olan Bakanlığa veya Enerji ve Tabii Kaynaklar Bakanlığına bağlı, ilgili veya ilişkili bir kurum ve katılımcı sayısının üçün altında olması halinde, Sanayi ve Teknoloji Bakanı Kurula katılır. Kurul, Enerji ve Tabii Kaynaklar Bakanı veya ilgili taraf bakanlardan herhangi birinin daveti üzerine toplanır ve kararlarını üye tamsayısının salt çoğunluğuyla alır. Kurul tarafından alınan karar, kamu yararı kararı yerine geçer. Kurulun sekretaryası, Maden ve Petrol İşleri Genel Müdürlüğü tarafından yürütülür. <br>
+
+d) <span class="kim"> İthalatta Haksız Rekabeti Değerlendirme Kurulu;</span> <span class="ark"> İthalat Genel Müdürünün veya görevlendireceği genel müdür yardımcısının başkanlığında</span>, Türkiye Odalar ve Borsalar Birliğinin ve Türkiye Ziraat Odaları Birliğinin birer temsilcisi, Ticaret Bakanlığı tarafından belirlenecek ilgili kamu kurum ve kuruluşlarının temsilcileri ile İthalat Genel Müdürlüğünün ilgili daire başkanından oluşur. Kurul, gerekirse, üniversitelerden ve diğer kurum ve kuruluşlardan bilgi alabilir. <br>
+
+e) <span class="kim"> Bireysel Emeklilik Danışma Kurulu;</span> <span class="ark"> Hazine ve Maliye bakan yardımcısının başkanlığında</span>, Hazine ve Maliye Bakanınca belirlenecek kamu kurum ve kuruluşlarından görevlendirilecek en az genel müdür düzeyinde birer temsilciden oluşur. Kurulu en az üç ayda bir Hazine ve Maliye Bakanlığınca önerilen tarih ve gündemle toplanır. <br>
+
+f) <span class="kim"> Asgari Ücret Tespit Komisyonu</span>; <span class="ark"> Çalışma ve Sosyal Güvenlik Bakanlığının tespit edeceği üyelerden birinin başkanlığında</span>  Çalışma ve Sosyal Güvenlik Bakanlığı Çalışma Genel Müdürü veya yardımcısı, İş Sağlığı ve Güvenliği Genel Müdürü veya yardımcısı, Türkiye İstatistik Kurumu temsilcisi, Hazine ve Maliye Bakanlığı temsilcisi, Ticaret Bakanlığı temsilcisi ile bünyesinde en çok işçiyi bulunduran en üst işçi kuruluşundan değişik işkolları için seçecekleri beş, bünyesinde en çok işvereni bulunduran işveren kuruluşundan değişik işkolları için seçeceği beş temsilciden kurulur. Asgari Ücret Tespit Komisyonu en az on üyesinin katılmasıyla toplanır. Kurul, üye oylarının çoğunluğu ile karar verir. Oyların eşitliği halinde, Başkanın bulunduğu taraf çoğunluğu sağlamış sayılır. <br>
+
+g) <span class="kim"> 5015 sayılı Kanunun 16 ncı maddesinde belirtilen Komisyon;</span> <span class="ark"> Enerji ve Tabiî Kaynaklar Bakanlığı bakan yardımcısının başkanlığında</span>, Millî Savunma Bakanlığı, İçişleri Bakanlığı, Hazine ve Maliye Bakanlığı, Dışişleri Bakanlığı, Maden ve Petrol İşleri Genel Müdürlüğü ve Enerji Piyasası Düzenleme Kurumu temsilcilerinden oluşur. Komisyonca alınan kararların uygulanması ile sekretarya işleri Enerji ve Tabii Kaynaklar Bakanlığı tarafından yürütülür. Komisyonun kararlarına karşı yürütülecek hukukî işlemlerde muhatap Enerji ve Tabii Kaynaklar Bakanlığıdır. [146] <br>
+
+ğ) <span class="kim"> Toptancı Hal Konseyi</span>; <span class="ark"> Ticaret Bakanlığı bakan yardımcısının başkanlığında,</span> Ticaret, İçişleri, Hazine ve Maliye ile Tarım ve Orman bakanlıklarının en az genel müdür seviyesindeki temsilcileri ile Türkiye İstatistik Kurumu, Türk Akreditasyon Kurumu, Türkiye Odalar ve Borsalar Birliği, Türkiye Esnaf ve Sanatkârları Konfederasyonu, Türkiye Ziraat Odaları Birliği, Türkiye Belediyeler Birliği, komisyoncu ve/veya tüccar derneklerinin mensup olduğu en fazla üyeye sahip federasyon ve tüketici derneklerinin mensup olduğu en fazla üyeye sahip federasyon ile en fazla üyeye sahip üretici örgütünün yetkili temsilcilerinden oluşur. <br>
+
+h) (Ek: RG-13/9/2018-30534 - CK-17/1 md.) <span class="kim"> Göç Kurulu;</span> Türkiye’nin yabancılarla ilgili göç stratejilerini belirlemek, koordinasyonunu ve uygulanmasını takip etmekle görevli olup <span class="ark"> İçişleri Bakanının başkanlığında,</span> İçişleri Bakanlığınca belirlenecek bakanlık ve kurum ve kuruluşların temsilcilerinden oluşur. Kurul, İçişleri Bakanının çağrısı üzerine toplanır. <br>
+
+ı) (Ek:RG-18/9/2020-31248-C.K.-67/4 md.) <span class="kim"> Afet ve Acil Durum Kurulu;</span> yaşanabilecek afet ve acil durumlara yönelik risk faktörlerini belirleyerek öncesinde yapılması gereken koruyucu ve önleyici faaliyetler ile afet ve acil durum sonrasında yapılması gereken çalışmalar hakkında öneriler sunmak ve kurumlara rehberlik yapmak, afet ve acil durumlara ilişkin politika ve öncelik tekliflerini belirlemek amacıyla, <span class="ark"> İçişleri Bakanının başkanlığında,</span> Aile ve Sosyal Hizmetler Bakanlığı, Çevre, Şehircilik ve İklim Değişikliği Bakanlığı, Enerji ve Tabii Kaynaklar Bakanlığı, Hazine ve Maliye Bakanlığı, Sağlık Bakanlığı, Tarım ve Orman Bakanlığı ile Ulaştırma ve Altyapı Bakanlığının ilgili bakan yardımcıları, Afet ve Acil Durum Yönetimi Başkanı ve Türkiye Kızılay Derneği ile Boğaziçi Üniversitesi Kandilli Rasathanesi ve Deprem Araştırma Enstitüsü temsilcilerinden oluşur. Kurul toplantılarına, İçişleri Bakanı tarafından gerekli görülmesi halinde diğer bakanlık, kamu kurum ve kuruluşu, üniversite ve sivil toplum kuruluşlarının temsilcileri ve konu ile ilgili uzmanlar çağrılabilir. Kurul, yılda iki kez toplanır. Ayrıca ihtiyaç halinde Kurul, İçişleri Bakanının çağrısı üzerine olağanüstü toplanabilir. Kurulun sekretaryasını Afet ve Acil Durum Yönetimi Başkanlığı yürütür.[147]</div></div></div>
+
+
+<div>
+Kurulların görevleri
+<div>
+MADDE 523- (1) Kurullar, ilgili kanunlarla kendilerine verilen görevlerin yanı sıra, Cumhurbaşkanınca verilen görevleri de yerine getirir.</div></div>
+
+
+
+YİRMİNCİ BÖLÜM <br>
+<div>
+Bakanlıklara Bağlı, İlgili ve İlişkili Kuruluşlar
+<div>
+MADDE 524 – (1) Bakanlıklara bağlı, ilgili ve ilişkili kurum ve kuruluşlar kendi kanunları ve Cumhurbaşkanlığı Kararnamelerindeki hükümlere tabidir.</div></div>
+
+
+
+YEDİNCİ KISIM <br>
+
+CUMHURBAŞKANLIĞI OFİSLERİ <br><br>
+
+
+
+BİRİNCİ BÖLÜM[148] <br>
+
+Kuruluş ve Tanımlar
+
+
+<div>
+Kuruluş
+<div>
+MADDE 525 – <div> (1) Cumhurbaşkanlığı Kararnamesinin bu kısmında; verilen görevleri yerine getirmek üzere Cumhurbaşkanlığına bağlı, <span class="ark"> özel bütçeli</span>, <span class="ark"> kamu tüzel kişiliğini haiz</span>, idarî ve malî özerkliğe sahip, <br> <span class="span"> Dijital Dönüşüm Ofisi, <br> Finans Ofisi, <br> İnsan Kaynakları Ofisi ve <br> Yatırım Ofisi</span> <br> <span class="mavi"> kurulmuştur.</span> <br>
+
+
+(2) (Ek:RG-24/10/2019-30928-CK-48/7 md.) <span class="mavi"> Ofislerin merkezi Ankara’dadır.</span>  Ofisler gerekli görmesi halinde yurtiçinde ve yurtdışında çalışma bürosu açabilir.</div></div></div>
+
+<div>
+
+Tanımlar
+<div>
+MADDE 526 – <div> (1) Bu Bölümde geçen;
+	<div>
+a) <span class="span"> Başkan:</span> Dijital Dönüşüm Ofisi, Finans Ofisi, İnsan Kaynakları Ofisi ve Yatırım Ofisinin Başkanını, <br>
+
+b) <span class="span"> Başkanlık:</span> Dijital Dönüşüm Ofisi, Finans Ofisi, İnsan Kaynakları Ofisi ve Yatırım Ofisinin Başkanlığını, <br>
+
+c) (Ek:RG-24/10/2019-30928-CK-48/8 md.) <span class="kim"> Dijital dönüşüm:</span>  Dijital teknolojilerin kullanımı ve geliştirilmesi yoluyla ekonomik ve sosyal refahın artırılmasına yönelik insan, iş süreçleri ve <span class="mavi"> teknoloji unsurlarında gerçekleştirilen bütüncül dönüşümü</span> ,</div>
+<span class="mavi">
+ifade eder</span>.</div></div></div>
+
+
+
+İKİNCİ BÖLÜM[149] <br>
+
+Dijital Dönüşüm Ofisi
+
+<div>
+
+Dijital Dönüşüm Ofisinin görevleri
+<div>
+MADDE 527- (Başlığı ile Birlikte Değişik:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Dijital Dönüşüm Ofisinin görevleri şunlardır:
+<div>
+a) Cumhurbaşkanı tarafından belirlenen amaç, politika ve stratejilere uygun olarak <span class="ark"> kamunun dijital dönüşümüne öncülük etmek</span> , Dijital Türkiye (e-devlet) hizmetlerinin sunumuna aracılık etmek, kurumlar arası işbirliğini artırmak ve bu alanlarda koordinasyonu sağlamak. <br>
+
+b) Kamu dijital <span class="ark"> dönüşüm yol haritasını</span> hazırlamak. <br>
+
+c) Dijital dönüşüm ekosistemini oluşturmak amacıyla kamu, özel sektör, üniversiteler ve sivil toplum kuruluşları arasındaki işbirliğini geliştirerek <span class="mavi"> bunların dijital kamu hizmetlerinin tasarım ve sunum sürecine katılımını teşvik etmek</span>. <br>
+
+ç) Görev alanına giren hususlarda kamu kurum ve kuruluşlarınca hazırlanan yatırım projesi tekliflerine ilişkin Strateji ve Bütçe Başkanlığına görüş vermek ve uygulamaya konan projelerle ilgili gelişmeleri takip edip gerektiğinde yönlendirmek. <br>
+
+d) Bilgi güvenliğini ve <span class="ark"> siber güvenliği artırıcı projeler</span> geliştirmek. <br>
+
+e) <span class="ark"> Kamuda büyük veri ve gelişmiş analiz çözümlerinin etkin kullanımına yönelik</span> stratejiler geliştirmek, uygulamalara öncülük etmek ve koordinasyonu sağlamak. <br>
+
+f) Kamuda öncelikli proje alanlarında <span class="ark"> yapay zekâ uygulamalarına öncülük etmek</span> ve koordinasyonu sağlamak.  <br>
+
+g) <span class="ark"> Yerli ve milli dijital teknolojilerin kamuda</span>  kullanımının artırılması yoluyla geliştirilmesi ve bu kapsamda farkındalık oluşturulması amacıyla projeler geliştirmek. <br>
+
+ğ) Kamu kurum ve kuruluşlarının dijital teknoloji <span class="ark"> ürün ve hizmetlerini maliyet etkin şekilde tedarik</span>  etmesine yönelik strateji belirlemek. <br>
+
+h) Görev alanına ilişkin proje ve uygulamalara gerektiğinde destek sağlamak. <br>
+
+ı) Devlet teşkilatı içerisinde yer alan kurum ve kuruluşların merkez, taşra ve yurtdışı teşkilat <span class="ark"> birimlerinin elektronik ortamda tanımlanmasına ve paylaşılmasına yönelik çalışmaları koordine</span>  etmek. <br>
+
+i) Görev alanına giren konularda politika ve strateji önerilerinde bulunmak. <br>
+
+j) Cumhurbaşkanınca verilen diğer görevleri yapmak.</div></div></div></div>
+
+
+<div>
+Kamu Dijital Dönüşüm Lideri
+<div>
+MADDE 527/A- (Ek:RG-24/10/2019-30928-CK-48/9 md.) <br>
+
+(1) <span class="kim"> Dijital Dönüşüm Ofisi Başkanı,</span> <span class="mavi"> Kamu Dijital Dönüşüm Lideridir.</span> </div></div>
+
+
+<div>
+Dijital Dönüşüm Ofisinin hizmet birimleri ve görevleri
+<div>
+MADDE 527/B- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Dijital Dönüşüm Ofisinin hizmet birimleri ve görevleri şunlardır:
+<div>
+a) Dijital Dönüşüm Koordinasyon Dairesi Başkanlığı:
+<div>
+1) Kamunun dijital dönüşümüne yönelik Cumhurbaşkanınca belirlenen politikalar kapsamında <span class="mavi"> strateji geliştirmek ve koordinasyonu sağlamak</span>. <br>
+
+2) Kamuda dijital <span class="ark"> dönüşüm yol haritasını hazırlamak</span> ve dijital dönüşüm ekosistemini oluşturmak. <br>
+
+3) Dijital dönüşüm alanında <span class="ark"> kamuda teknik ve idari kapasiteyi</span> geliştirmek. <br>
+
+4) Dünyadaki teknolojik ve yapısal değişimi takip ederek ülkemizde <span class="ark"> dijital dönüşüm alanındaki reform</span> çalışmalarına katkı sağlamak. <br>
+
+5) Kamuda dijital dönüşüm alanındaki <span class="ark"> kurumsal mimari çalışmaları koordine etmek</span>  ve bu çalışmaların sürekliliğini sağlamak. <br>
+
+6) Kamu kurumlarının hizmet ve süreç envanterleri ile <span class="ark"> dijital ortamda sundukları hizmetlere yönelik envanterlerin oluşturulması ve güncel tutulmasına</span>  yönelik çalışmaları koordine etmek. <br>
+
+7) Kamu kurumlarının bilgi teknolojileri proje yönetimi yetkinliklerini <span class="ark"> geliştirmeye ve süreç iyileştirme faaliyetlerine yönelik</span>  çalışmaları yürütmek. <br>
+
+8) Kamuda ihtiyaç duyulan dijital dönüşüm projelerini tespit etmek, bu projeleri hayata geçirmek üzere ilgili kamu kurum ve kuruluşlarını koordine etmek. <br>
+
+9) Dijital dönüşüm alanında kurumlarla işbirliği içerisinde toplumsal yetkinlik ve farkındalığı artırmak. <br>
+
+10) (Değişik:RG-14/4/2020-31099-CK-59/22 md.) Bireylerin ve firmaların dijital yetkinlikleri ile dijital teknoloji ürün ve hizmetlerine erişim ve kullanım imkânlarının geliştirilmesine katkı sağlamak. <br>
+
+11) Meslekler, istihdam piyasası, işgücü nitelikleri ve sosyal yardım mekanizmalarının <span class="ark"> dijital ekonominin gerektirdiği şekilde dönüştürülmesine</span> yönelik çalışmalara katkı sağlamak. <br>
+
+12) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+b) Dijital Teknolojiler, Tedarik ve Kaynak Yönetimi Dairesi Başkanlığı:
+<div>
+1) Dijital dönüşüm alanında milli teknolojilerin ve <span class="ark"> yenilikçi çözümlerin geliştirilmesine</span>  ve kullanılmasına yönelik Cumhurbaşkanınca belirlenen politikalar kapsamında strateji geliştirmek ve koordinasyonu sağlamak. <br>
+
+
+2) Kamunun dijital dönüşümünde <span class="ark"> öncelikli sektörleri ve alanları belirlemek</span>, teknoloji yol haritalarını oluşturmak ve kurumlar arası koordinasyonu sağlamak. <br>
+
+3) Dijital dönüşüm <span class="ark"> ekosisteminde yer alan yerli firma</span> ve ürün envanterini oluşturmaya yönelik ilgili kurumlarla işbirliği yapmak. <br>
+
+4) Dijital dönüşüm hizmetlerinin etkin şekilde sunulması ve <span class="ark"> farkındalık oluşturulması amacıyla</span>  kamu kurumlarının ortak ihtiyacı olan teknolojik çözüm ve projeleri geliştirmek. <br>
+
+5) Kamu hizmetlerinde dijital teknoloji destekli  <span class="ark"> yenilikçi çözümlerin kullanımına yönelik çalışmalar</span> yürütmek. <br>
+
+6) Bilgi ve iletişim teknolojileri sektörünün <span class="ark"> rekabetçi bir yapıda gelişimine ilişkin çalışmalara katkı</span>  sağlamak. <br>
+
+7) Kamudaki <span class="ark"> uygulama deneyimleri ile başarılı olmuş ilgili ürünler için</span> bölgesel ve uluslararası yaygınlaştırma stratejilerini belirlemek ve uygulanmasını takip etmek. <br>
+
+8) Kamu kurumlarının bilgi ve iletişim teknolojileri ürün ve <span class="ark"> hizmet maliyetlerini düşürmeye ve ulusal güvenliğin sağlanmasına yönelik</span>  alternatif teknolojileri ve etkin temin modellerini geliştirmek. <br>
+
+9) Kamu kurumlarının bilgi ve iletişim teknolojileri ürün ve hizmetlerinin maliyet etkinliği ve teknolojik uyumunu sağlamak amacıyla, <span class="ark"> toplu şekilde tedarik</span>  edilmesine yönelik proje geliştirmek. <br>
+
+10) Dijital dönüşüm alanındaki projeleri planlamak, kamunun mükerrerlik arz eden veya örtüşen ilgili projelerini bütünleştirmek ve yatırımcı kamu kuruluşları arasında gerekli koordinasyonu sağlamak. <br>
+
+11) Kamuda yürütülen dijital dönüşüm projelerinde sistem tasarımı, projelerde kullanılacak yazılım ve donanım unsurları ile proje yönetim metodolojisi açısından uyulması gereken hususlarda kamu kurum ve kuruluşlarını yönlendirmek. <br>
+
+12) Kamu kurum ve kuruluşlarındaki <span class="ark"> donanım ve yazılım envanterini oluşturmak</span> ve güncel tutmak. <br>
+
+13) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+c) Dijital Uzmanlık, İzleme ve Değerlendirme Dairesi Başkanlığı:
+<div>
+1) Kamu kurum ve kuruluşlarının bilgi ve iletişim teknolojileri projelerinin Ofisin belirlediği strateji ve standartlar doğrultusunda planlanması ve yürütülmesine teknik destek sağlamak, proje süreçlerini sürekli ve düzenli olarak izlemek. <br>
+
+2) Görev alanı kapsamında kamu kurum ve kuruluşlarının uyması gereken ulusal ve uluslararası standartları belirlemek ve uygulanmasını koordine etmek. <br>
+
+3) Ofis bünyesindeki birimlerin yürüttükleri projelere ilişkin olarak üst seviye uygulama adımları ve performans göstergelerini ilgili paydaşlarla birlikte belirlemek ve bu kriterler çerçevesinde projelerin ilerlemesini izleyerek Başkana raporlamak. <br>
+
+4) Ofisin görev alanına giren konularla ilgili istatistikleri temin etmek, derlemek, dönemsel olarak yayımlamak ve ihtiyaç duyulan istatistiklerin üretilmesi ile ulusal ve uluslararası endeks çalışmalarında gerekli koordinasyonu sağlamak. <br>
+
+5) Ofisin görev alanıyla ilgili konularda teknik incelemeler, akademik çalışmalar, saha çalışmaları ve benzeri faaliyetleri kapsayan Dijital Dönüşüm Araştırmaları Programını yürütmek. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+ç) Siber Güvenlik Dairesi Başkanlığı:
+<div>
+
+1) Cumhurbaşkanınca belirlenen politikalar kapsamında kamu kurumları ve kritik altyapılara yönelik <span class="mavi"> siber güvenlik stratejileri geliştirmek.</span> <br>
+
+2) Ulusal siber güvenlik ve <span class="ark"> bilgi güvenliğini destekleyici projeler</span> geliştirmek. <br>
+
+3) Siber güvenlik ile ilgili politika, strateji ve eylem planlarının ülke çapında etkin şekilde uygulanmasına yönelik gelişmeleri takip etmek. <br>
+
+4) <span class="ark"> Kritik altyapıların belirlenmesine</span> yönelik çalışmalar yapmak. <br>
+
+5) Siber güvenlikle ilgili hükümlerin tamamından veya bir kısmından <span class="ark"> istisna tutulacak kurum ve kuruluşlar konusunda ilgili kurumlara önerilerde</span> bulunmak. <br>
+
+6) Kamu, özel sektör ve üniversiteler <span class="ark"> arasındaki işbirliğinin artırılması suretiyle ulusal siber güvenlik ekosisteminin oluşturulmasına</span>  katkı sağlamak. <br>
+
+7) Özel sektörün kapasitesinin kritik alanlara yönlendirilmesi ve mükerrer yatırımların önlenmesi için <span class="ark"> öncelikli siber güvenlik alanlarını belirlemek</span>. <br>
+
+8) Kritik altyapılar başta olmak üzere her alanda, yerli ve milli siber güvenlik ürünlerinin geliştirilmesine ve bu çözümlerin kullanımının kamuda yaygınlaştırılmasına yönelik çalışmalar yapmak. <br>
+
+9) Kritik teknoloji ve bilgi varlıklarını korumak amacıyla önleyici ve koruyucu faaliyetler konusunda çalışmalar yürütmek. <br>
+
+10) Kamu kurumlarında ve kritik altyapı işleten kuruluşlarda bilgi güvenliği yönetim sisteminin kurulup işletilmesi, teknik standartlar ile usul ve esasların belirlenmesi, uygulamanın izlenmesi ve yönlendirilmesi konularında çalışmalar yürütmek. <br>
+
+11) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+d) Büyük Veri ve Yapay Zekâ Uygulamaları Dairesi Başkanlığı:
+<div>
+1) Kamuda büyük veri ve yapay zekâ uygulamalarının etkin olarak kullanımını sağlamaya yönelik Cumhurbaşkanınca belirlenen politikalar kapsamında strateji geliştirmek ve koordinasyonu sağlamak. <br>
+
+2) Kamuda büyük veri teknolojilerinin geliştirilmesi kapsamında gerekli proje ve faaliyetleri desteklemek. <br>
+
+3) Öncelikli proje alanlarında yapay zekâ uygulamalarına öncülük etmek. <br>
+
+4) Büyük veri analitiği, güvenliği ve mahremiyeti çalışmalarını yürütmek. <br>
+
+5) Kurumlar arası işbirliğini geliştirmek ve kamuda veriye dayalı etkin karar alma süreçlerini oluşturmak amacıyla kamu veri sözlüğü hazırlık çalışmalarını koordine etmek. <br>
+
+6) Ulusal düzeyde açık veri konusunda strateji geliştirmek ve koordinasyonu sağlamak. <br>
+
+7) Kamu verisinin paylaşılması amacıyla ulusal Açık Veri Portalini kurmak ve işletmek, kamu kurumlarının Portale veri aktarımına ilişkin usul, esas ve standartları belirlemek. <br>
+
+8) Türkiye’nin veri depolama, işleme ve iletimi faaliyetleri için bölgesel bir merkez olarak konumlandırılmasına yönelik politika ve strateji önerilerinde bulunmak. <br>
+
+9) Başkan tarafından verilen diğer görevleri yapmak. </div>
+
+e) Uluslararası İlişkiler Dairesi Başkanlığı:
+<div>
+1) Ofisin görev alanına giren konularda uluslararası kuruluşlar ve ülkelerle ilişkileri yürütmek, ülkemizi temsil etmek ve koordinasyonu sağlamak. <br>
+
+2) Uluslararası kuruluşların çalışmalarına katılmak, alınan kararların uygulanmasını takip etmek ve gerekli koordinasyonu sağlamak. <br>
+
+3) Ofisin yurtdışındaki tanıtım etkinliklerinin organizasyonu konusunda çalışmalar yürütmek. <br>
+
+4) Ofisin görev ve sorumluluk alanına giren konulardaki uluslararası anlaşma, sözleşme ve diğer hukuki metinlerin imzalanması ve/veya onaylanmasına yönelik süreci ilgili kurum ve kuruluşlar nezdinde takip etmek. <br>
+
+5) Ofisin yurtdışı temsilcilikleri ile ilgili iş ve işlemleri yürütmek. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak. </div>
+
+f) Bilgi Teknolojileri Dairesi Başkanlığı:
+<div>
+1) Ofisin bilgi ve iletişim teknolojileri ve siber güvenliğinin sağlanmasıyla ilgili hizmetlerini yürütmek. <br>
+
+2) Ofisin internet sayfaları, <span class="ark"> elektronik imza ve elektronik belge uygulamaları ile ilgili teknik çalışmaları yapmak</span>. <br>
+
+3) Ofisin görev alanıyla ilgili bilgi bankalarının oluşturulmasına yönelik teknik çalışmaları yürütmek ve ilgili sistemleri yönetmek. <br>
+
+4) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+g) Yönetim Hizmetleri Dairesi Başkanlığı:
+<div>
+1) Ofisin insan kaynağı politikası ve planlaması konusunda çalışmalar yapmak, tekliflerde bulunmak, personel istihdamını sağlamak ve personelin özlük işlemlerini yürütmek. <br>
+
+2) Ofis personelinin yetiştirilmesi için gerekli eğitim faaliyetlerini yürütmek. <br>
+
+3) Ofisin mali işlerle ilgili hizmetlerini yürütmek. <br>
+
+4) Ofisin yapım, <span class="ark"> satın alma, kiralama, bakım ve onarım,</span>  sağlık ile diğer idari hizmetlerini yürütmek, taşınır ve taşınmaz kayıtlarını tutmak. <br>
+
+5) Ofisin kurumsal iletişim süreçlerini yürütmek. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak. </div>
+
+ğ) Hukuk Müşavirliği:
+<div>
+1) 26/9/2011 tarihli ve 659 sayılı Kanun Hükmünde Kararname hükümlerine göre hukuk birimlerine verilen görevleri yapmak. <br>
+2) Dijital dönüşüm alanında <span class="ark"> ihtiyaç duyulan düzenlemeler veya ulusal mevzuatın uluslararası düzenlemelere uyumlaştırılması</span>  kapsamındaki mevzuat çalışmalarının koordinasyonunu sağlamak. <br>
+
+3) Başkan tarafından verilen diğer görevleri yapmak.</div></div></div></div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM[150] <br>
+
+Finans Ofisi
+
+<div>
+
+Finans Ofisinin görevleri
+<div>
+MADDE 527/C- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Finans Ofisinin görevleri şunlardır:
+<div>
+a) Ulusal ve uluslararası <span class="ark"> bankacılık ve finans sektörünü izlemek</span> ve analizler yaparak raporlamak. <br>
+
+b) Türkiye’nin <span class="ark"> finans piyasaları</span> içindeki konumunu raporlamak. <br>
+
+c) Finansal kaynakların çeşitlendirilmesi ve uluslararası <span class="ark"> fonların Türkiye’ye gelmesini sağlayıcı</span> çalışmalar yapmak. <br>
+
+ç) <span class="ark"> İstanbul Finans Merkezi</span> projesini yürütmek ve gelişmeleri takip etmek. <br>
+
+d) Cumhurbaşkanınca verilen diğer görevleri yapmak.</div></div></div></div>
+
+
+<div>
+Finans Ofisinin hizmet birimleri ve görevleri
+<div>
+MADDE 527/Ç- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Finans Ofisinin hizmet birimleri ve görevleri şunlardır:
+<div>
+a) (Değişik:RG-6/2/2021-31387-CK-70/23 md.) Finansal Stratejiler ve Analiz Dairesi Başkanlığı:
+<div>
+1) Bankacılık sektörü ile bankacılık dışı finansal sektör verilerini temin etmek ve bu verileri farklı periyotlar için analiz ederek elde edilen sonuçları Cumhurbaşkanına raporlamak. <br>
+
+2) Türkiye’de <span class="ark"> finansal sektörün genel durumu</span> ile ilgili raporlar hazırlamak ve Cumhurbaşkanına sunmak. <br>
+
+3) <span class="ark"> Ulusal ve uluslararası finansal hareketleri izlemek</span> ve bunların etkilerini analiz etmek, güncel ekonomik ve finansal gelişmeleri Cumhurbaşkanına raporlamak. <br>
+
+4) Türkiye’nin <span class="ark"> finansal yapısı ile ilgili analizler yapmak</span> , stratejiler geliştirmek ve finansal yapının geliştirilmesine yönelik çalışmalar yapmak. <br>
+
+5) Türkiye’nin uluslararası <span class="ark"> finansal piyasalardaki </span> konumunu tespit etmek, raporlamak ve güçlendirmeye yönelik stratejiler geliştirmek. <br>
+
+6) Yeni finansal araçların sisteme kazandırılması,<span class="ark"> finansal ürün geliştirilmesi</span> ve çeşitliliğin artırılması yönünde çalışmalar yapmak. <br>
+
+7) <span class="ark"> Finansal teknolojiler alanının geliştirilmesi</span> yönünde stratejiler belirlemek, bu stratejiler kapsamında alınan kararların ilgili kamu kurum ve kuruluşları nezdinde uygulanmasını takip etmek ve sonuçlarını Cumhurbaşkanına raporlamak. <br>
+
+8) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+b) (Değişik:RG-6/2/2021-31387-CK-70/23 md.) Katılım Finans Dairesi Başkanlığı:
+<div>
+1) Cumhurbaşkanı tarafından belirlenen politikalar doğrultusunda, <span class="ark"> katılım finans alanında</span> stratejiler geliştirmek, bu stratejiler kapsamında alınan kararların ilgili kamu kurum ve kuruluşları nezdinde uygulanmasını takip etmek ve sonuçlarını Cumhurbaşkanına raporlamak. <br>
+
+2) <span class="ark"> Katılım finansın geliştirilmesi</span> amacıyla kamu kurum ve kuruluşları, özel sektör, üniversiteler ve sivil toplum kuruluşları arasında işbirliğini artırmak ve bu alanda koordinasyonu sağlamak. <br>
+
+3) Katılım finansın geliştirilmesi ve <span class="ark"> katılım finansa yönelik farkındalığın artırılması</span> amacıyla ulusal ve uluslararası faaliyetler gerçekleştirmek, bu tür faaliyetlerde yer almak ve bu faaliyetleri desteklemek. <br>
+
+4) <span class="ark"> Katılım finans alanında Türkiye’nin</span> uluslararası finansal piyasalardaki konumunu güçlendirmeye yönelik araştırmalar yapmak. <br>
+
+5) <span class="ark"> Katılım finans alanında yeni finansal araçların</span> sisteme kazandırılması, finansal ürün geliştirilmesi ve çeşitliliğin artırılmasına yönelik çalışmalar yapmak. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+c) İstanbul Finans Merkezi Dairesi Başkanlığı:
+
+<div>
+1) (Değişik:RG-6/2/2021-31387-CK-70/23 md.) İstanbul’un küresel bir finans merkezi olmasını sağlayacak strateji ve politikalar geliştirmek, bu kapsamda ilgili kamu kurum ve kuruluşlarını koordine ederek strateji ve politikaların uygulanmasını takip etmek. <br>
+
+2) (Değişik:RG-6/2/2021-31387-CK-70/23 md.) <span class="ark"> İstanbul Finans Merkezi projesinin tamamlanmasını, faaliyete geçmesini ve Cumhurbaşkanının belirlediği hedefler doğrultusunda gelişmesini sağlamak</span>  üzere yürütme ve koordinasyon görevini yerine getirmek. <br>
+
+3) İstanbul Finans Merkezi projesi ile ilgili farklı kurum ve kuruluşlar tarafından geliştirilen tüm mevzuat çalışmalarının uyumlaştırılması ve ilgili mevzuatın hazırlanması hususunda koordinasyonu sağlamak. <br>
+
+4) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+ç) Yurtdışı Faaliyetler Dairesi Başkanlığı:
+<div>
+1) Ofis ile uluslararası kuruluşlar ve diğer ülkelerin ilgili kurumları arasında bilgi alışverişi sağlamak, ikili ya da çok taraflı işbirliği faaliyetleri gerçekleştirmek, bu kapsamda ilgili mevzuatı çerçevesinde protokoller hazırlamak ve yürütmek. <br>
+
+2) <span class="ark"> Uluslararası kuruluşların çalışmalarına katılmak</span>, alınan kararların uygulanmasını takip etmek ve gerekli koordinasyonu sağlamak. <br>
+
+3) <span class="ark"> Yurtdışındaki tanıtım etkinliklerinin</span> organizasyonu ve koordinasyonunu ilgili birimle birlikte gerçekleştirmek. <br>
+
+4) Ofisin görev ve sorumluluk alanına giren konulardaki <span class="ark"> uluslararası anlaşma, sözleşme ve diğer hukuki metinlerin imzalanması ve/veya onaylanmasına yönelik</span> süreci ilgili kamu kurum ve kuruluşları nezdinde takip etmek. <br>
+
+5) Ofisin yurtdışı temsilcilikleri ile ilgili iş ve işlemleri yürütmek. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+d) Yönetim Hizmetleri Dairesi Başkanlığı:
+<div>
+1) Ofisin insan kaynağı politikası ve planlaması konusunda çalışmalar yapmak, tekliflerde bulunmak, personel istihdamını sağlamak ve personelin özlük işlemlerini yürütmek. <br>
+
+2) Ofis personelinin yetiştirilmesi için gerekli eğitim faaliyetlerini yürütmek. <br>
+
+3) Ofisin bilgi teknolojileri altyapısını kurmak, işletmek ve geliştirmek. <br>
+
+4) Ofisin mali işlerle ilgili hizmetlerini yürütmek. <br>
+
+5) Ofisin yapım, <span class="ark"> satın alma, kiralama, bakım ve onarım,</span> sağlık ile diğer idari hizmetlerini yürütmek, taşınır ve taşınmaz kayıtlarını tutmak. <br>
+
+6) Ofisin kurumsal iletişim süreçlerini yürütmek. <br>
+
+7) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+e) Hukuk Müşavirliği:
+<div>
+1) 26/9/2011 tarihli ve 659 sayılı Kanun Hükmünde Kararname hükümlerine göre hukuk birimlerine verilen görevleri yapmak. <br>
+
+2) Başkan tarafından verilen diğer görevleri yapmak.</div></div></div></div></div>
+
+
+
+
+DÖRDÜNCÜ BÖLÜM[151] <br>
+
+İnsan Kaynakları Ofisi
+
+
+<div>
+İnsan Kaynakları Ofisinin görevleri
+<div>
+MADDE 527/D- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) İnsan Kaynakları Ofisinin görevleri şunlardır:
+<div>
+a) <span class="mavi"> Türkiye’nin insan kaynakları envanterini çıkarmak ve ihtiyaç duyulan alanlarda yetenek gelişim faaliyetlerini yürütmek</span>. <br>
+
+b) Türkiye’nin vizyonu, hedefleri ve öncelikleri doğrultusunda <span class="mavi"> insan kaynağının geliştirilmesini sağlamaya yönelik projeler üretmek.</span> <br>
+
+c) <span class="ark"> Özel yeteneklerin keşfini sağlamak </span> ve yetenek yönetimi projelerini yürütmek. <br>
+
+ç) Politika kurullarının öncelediği alanlarda küresel düzeyde <span class="ark"> insan kaynağının tespitini</span> yaparak milli projelere kazandırılmasını sağlamak. <br>
+
+d) Kamuda kariyer yönetimi, performans yönetimi ve diğer modern <span class="ark"> insan kaynağı yönetim</span> modellemelerinin hayata geçirilmesi için projeler geliştirmek. <br>
+
+e) <span class="ark"> Kamu istihdamında liyakat</span> ve yetkinliğin artırılması için gerekli projeleri üretmek ve çalışmalar yapmak. <br>
+
+f) Verimliliğin artırılması için  <span class="ark"> insan kaynakları planlamasına</span> yönelik çalışmalar yapmak. <br>
+
+g) Cumhurbaşkanınca verilen diğer görevleri yapmak.</div></div></div></div>
+
+
+<div>
+İnsan Kaynakları Ofisinin hizmet birimleri ve görevleri
+<div>
+MADDE 527/E- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) İnsan Kaynakları Ofisinin hizmet birimleri ve görevleri şunlardır:
+<div>
+a) İnsan Kaynağı ve Kariyer Planlama Dairesi Başkanlığı:
+
+<div>
+1) Türkiye’nin insan kaynakları envanterinin çıkarılması çalışmalarını yürütmek. <br>
+
+2) Okul öncesi, ilköğretim, ortaöğretim, yükseköğretim çağındaki aday insan kaynağını, özel sektör, kamu kurum ve kuruluşlarındaki insan kaynağını, yurtdışında ikamet eden insan kaynağını insan kaynakları envanterini çıkarmak üzere mikro ve makro düzeyde analiz etmek, kısa, orta ve uzun vadede ihtiyaç duyulan insan kaynağını planlamak. <br>
+
+3) Kamu kurum ve kuruluşlarının stratejik insan kaynağı planlaması yapmalarını teşvik etmek ve bu alanda yapılacak çalışmalara destek olmak. <br>
+
+4) Kamu ve özel sektörde kariyer planlaması süreçlerinin takibini ve desteklenmesini sağlamak, standartlaştırılması ve geliştirilmesi konusunda yardımcı olmak, ihtiyaç duyulan alanlarda kurumların çalışmalarını değerlendirmek ve yönderlik etmek. <br>
+
+5) Kamu kurum ve kuruluşlarında seçme, yerleştirme, atama ve terfiler için yetkinlik ve ölçütlerinin analizine ve geliştirilmesine, <span class="ark"> liyakat temelli ölçümlere göre atama ve terfilerin gerçekleştirilmesine,</span>  ikame personel planlaması dahil kamu çalışanlarının kariyer planlarının oluşturulmasına destek olmak, uygulamaları takip etmek ve değerlendirmek. <br>
+
+6) Kamu kurum ve kuruluşlarında çalışanlara yönelik <span class="ark"> performans değerleme ve ödüllendirme sistemi</span> kurulmasına ve etkin bir şekilde uygulanmasına destek olmak. <br>
+
+
+7) Kamu kurum ve kuruluşlarının <span class="ark"> kadro verimliliği konusunda çalışmalar</span> yapmasını teşvik etmek ve izlemek. <br>
+
+8) Öğrenim amacıyla yurtdışına gönderilecek <span class="ark"> yetenekli öğrencilerin ve yetiştirilmek</span>, eğitilmek, bilgileri artırılmak, staj, burs, öğrenim veya ihtisas yaptırılmak üzere yurtdışına ve/veya Dışişleri Bakanlığınca bildirilen uluslararası kurum ve kuruluşlara gönderilecek kamu çalışanlarının; gönderilmeden önce seçilmesi, yurtdışı eğitime hazırlanması, üniversite seçiminde ihtimam gösterilmesi, yurtdışında bulundukları süre boyunca ülkemiz için stratejik önemi haiz konu ve alanlarda uzmanlaşmaları ve performanslarının ölçülmesi konusunda ilgili kurum ve kuruluşların çalışmalarını izlemek ve ilgili kurum ve kuruluşlarla koordinasyon sağlamak. <br>
+
+9) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+b) Yetenek Kazanımı ve Organizasyon Dairesi Başkanlığı:
+<div>
+1) Kamu ve özel sektörde yetenek yönetimi süreçlerinin uygulanmasına yönelik çalışmalar yapılmasını teşvik ve takip etmek, Türkiye’nin vizyonu, hedef ve öncelikleri doğrultusunda özel yeteneklerin tespiti ve geliştirilmesi için ilgili kurumlarla işbirliği halinde çalışmak. <br>
+
+2) Bilim, kültür, sanat, spor, girişimcilik gibi alanlardaki nitelikli insan kaynağının tespiti amacıyla yurtiçinde ve yurtdışında çalışmalar yaparak yetenek havuzu oluşturmak, havuzda yer alan adaylardan uygun görülenlerin geliştirilmesi için Ofis tarafından belirlenecek ihtiyaç ve şartlara göre bizzat veya ilgili kurumlarla işbirliği yaparak eğitim ve başarı bursu vermek ve destek sağlamak, yurtdışındaki uygun adayların ülkemizde değerlendirilmesi için projeler geliştirmek ve bu kapsamda faaliyetler yürütmek. <br>
+
+3) Milli projeler için ihtiyaç duyulan yetenek ve liyakatteki insan kaynağının yetenek havuzundan teminini sağlamak. <br>
+
+4) Yetenekli çocuk ve gençlerin okul öncesi, ilköğretim, ortaöğretim ve yükseköğretim döneminde keşfedilerek yetenek ve kişiliklerine uygun meslek seçimi yapmalarının sağlanması için ilgili kurumları teşvik etmek, uygun görülen projelerde işbirliği içinde çalışmak veya desteklemek. <br>
+
+5) Yetenek havuzunda yer alanların yetkinlik kazanmasına ve gelişimine yönelik eğitimler düzenlemek, diğer kurum ve kuruluşlardaki çalışmaları desteklemek, koordine etmek ve takip etmek. <br>
+
+6) Yetenek yönetimi çalışmaları için kamuda ve özel sektörde analizler yaparak yetenek yönetimi süreçlerini geliştirmeye yönelik projeler önermek, kurum ve kuruluşları koordine etmek ve yönlendirmek. <br>
+
+7) Yükseköğretim Kurulu, Milli Eğitim Bakanlığı ve üniversitelerin kariyer birimleri vasıtasıyla projeler yaparak öğrencileri kamu ve özel sektör kurum ve kuruluşları ile bir araya getirmek ve istihdam imkânlarını artırmak amacıyla ulusal ve uluslararası düzeyde çalışmalar yapmak. <br>
+
+8) Türkiye’nin, kamu kurum ve kuruluşları ile özel sektör kuruluşlarının marka değerini artırmak amacıyla insan kaynaklarına yönelik ulusal ve uluslararası düzeyde organizasyonlar düzenlemek. <br>
+
+9) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+c) Ölçme ve Değerleme Dairesi Başkanlığı:
+<div>
+1) Türkiye’de eğitim ve öğretimin her aşamasındaki aday <span class="ark"> insan kaynağına yönelik ölçme ve değerleme sistemlerinin verimliliği hakkında inceleme ve analizler yapmak</span> , ihtiyaç duyulan durum ve konularda ilgili kurum ve kuruluşları ya da kamuoyunu bilgilendirmek. <br>
+
+2) Türkiye’de iş hayatında olan veya aday insan kaynağına yönelik istihdam, memnuniyet, sadakat, liyakat, fırsat eşitliği, şeffaflık, yenilikçilik, verimlilik ve performans gibi konularda ihtiyaca göre ölçüm ve analizler yapmak, sonuçlar hakkında ilgili kurum ve kuruluşları ya da kamuoyunu bilgilendirmek. <br>
+
+3) Kamu kurum ve kuruluşlarındaki yönetici kadro ve pozisyonları için ilgili kurumlarla özel nitelikleri belirlemeye yönelik çalışmalar yapmak. <br>
+
+4) Cumhurbaşkanınca talep edilmesi halinde üst kademe kamu yöneticileri kadro ve pozisyonları için adaylara yönelik değerleme raporu hazırlamak. <br>
+
+5) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+ç) İnsan Kaynağı Eğitim ve Geliştirme Dairesi Başkanlığı:
+<div>
+1) Kamu ve özel sektörde insan kaynağının eğitim ve gelişim planlarının hazırlanması, uygulanması ve eğitim performanslarının ölçülmesine yönelik çalışmaları desteklemek, çalışma sonuçlarını takip etmek. <br>
+
+2) İnsan kaynağını geliştirmeye ve her kademede yetkinliği artırmaya yönelik başta öğretim kurumları olmak üzere; ilgili kurum, kuruluş ve sivil toplum kuruluşları ile ortak projeler üretmek, önerilerde bulunmak ve desteklemek. <br>
+
+3) Kamu ve özel sektörde insan kaynakları alanında çalışanların eğitimi ve geliştirilmesi amacıyla tek başına veya ilgili kurum, kuruluş ve sivil toplum kuruluşları ile birlikte organizasyonlar yapmak, uygun görülen etkinlikleri ve projeleri desteklemek. <br>
+
+4) Yönderlik sistemi kurmak ve yönetmek, kamu kurum ve kuruluşlarına bu konuda yol göstermek, ihtiyaç duyulan alanlarda yönderlik yapmak. <br>
+
+5) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+d) Projeler ve Bilişim Teknolojileri Dairesi Başkanlığı:
+<div>
+1) Kamu ve özel sektörde insan kaynakları uygulamaları konusunda <span class="ark"> analizler yapmak veya yaptırmak, projeler önermek, bu konuda kurum ve kuruluşlar arasında koordinasyonu sağlayarak</span> kurum ve kuruluşları insan kaynakları süreçlerinin geliştirilmesi için yönlendirmek ve desteklemek. <br>
+
+2) Araştırma, geliştirme, girişimcilik, yenilikçilik ve verimlilik ile ilgili projeler yapmak, gerekli görülen projelerde ilgili kurum ve kuruluşlarla işbirliği kurmak veya desteklemek. <br>
+
+3) Kamu kurum ve kuruluşlarının işveren marka değerini artırmaya yönelik hizmetleri için Ofisin diğer dairelerinin <span class="ark"> ihtiyaç duyduğu bilişim teknolojileri araç ve sistemlerini geliştirmek,</span>  ihtiyaca göre temin edilmesini sağlamak ve ilgili birimlerin kullanımına destek olmak. <br>
+
+4) Kamu kurum ve kuruluşlarındaki istihdam ilanlarının kamuoyu ile daha etkin ve şeffaf biçimde paylaşılması için <span class="ark"> sistemler geliştirmek,</span>  mevcut kurum ve kuruluşların bu konudaki faaliyetlerini izlemek. <br>
+
+5) İnsan kaynaklarına yönelik kamu ve özel sektörde analiz ve araştırmalar yapılması ve elde edilen bilginin raporlanması için gerekli veriyi ilgili kurum ve kuruluşlardan temin etmek. <br>
+
+6) Kamu kurum ve kuruluşlarında insan kaynakları süreçlerinin çevrimiçi olarak izlenebildiği bir sistem kurulması için gerekli analizleri yapmak, bu sistemi kurmak ve kurum ve kuruluşların sistemde yer alan verilerinin güncelliğini denetlemek. <br>
+
+7) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+e) Yönetim Hizmetleri Dairesi Başkanlığı:
+<div>
+
+1) Ofisin insan kaynağı politikası ve planlaması konusunda çalışmalar yapmak, tekliflerde bulunmak, personel istihdamını sağlamak ve personelin özlük işlemlerini yürütmek. <br>
+
+2) Ofis personelinin yetiştirilmesi için gerekli eğitim faaliyetlerini yürütmek. <br>
+
+3) Ofisin bilgi teknolojileri alanındaki ihtiyaçlarını karşılamak. <br>
+
+4) Ofisin mali işlerle ilgili hizmetlerini yürütmek. <br>
+
+5) Ofisin yapım, <span class="ark"> satın alma, kiralama, bakım ve onarım, sağlık ile</span>  diğer idari hizmetlerini yürütmek, taşınır ve taşınmaz kayıtlarını tutmak. <br>
+
+6) Ofisin kurumsal iletişim süreçlerini yürütmek. <br>
+
+7) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+f) Hukuk Müşavirliği:
+<div>
+1) 26/9/2011 tarihli ve 659 sayılı Kanun Hükmünde Kararname hükümlerine göre hukuk birimlerine verilen görevleri yapmak. <br>
+
+2) Başkan tarafından verilen diğer görevleri yapmak.</div></div></div></div></div>
+
+
+
+BEŞİNCİ BÖLÜM[152] <br>
+
+Yatırım Ofisi
+
+<div>
+
+Yatırım Ofisinin görevleri
+<div>
+MADDE 527/F- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Yatırım Ofisinin görevleri şunlardır:
+<div>
+a) Ülkenin ekonomik kalkınmasında ihtiyaç duyulan yatırımların artırılması için <span class="ark"> Türkiye’de yatırım yapılmasını</span> özendirmeye yönelik çalışmalar yapmak. <br>
+
+b) Kamu kurum ve kuruluşları ve özel sektör kuruluşlarınca yürütülen uluslararası düzeydeki yatırım ortamı tanıtım faaliyetleri kapsamında kurum ve kuruluşlar arasında koordinasyon sağlamak. <br>
+
+c) <span class="ark"> Yatırımcıların karşılaşabilecekleri engel</span> ve sorunları tespit ederek sorunların çözümü konusunda ilgili merciler nezdinde girişimde bulunmak. <br>
+
+ç) Türkiye’de <span class="ark"> yatırımların artırılmasına katkı</span> sağlayacak her türlü bilgi ve veriyi oluşturmak veya ilgili kurum ve kuruluşlardan toplamak, güncellemek ve dağıtmak, ulusal ve uluslararası kuruluşlarla bu konuda işbirliği yapmak. <br>
+
+d) <span class="ark"> Yatırım ortamının iyileştirilmesine</span> ilişkin reform sürecine katkı sağlamak, bu kapsamda öneriler geliştirmek. <br>
+
+e) Bakanlık, kamu kurum ve kuruluşlarından yatırımlara ilişkin herhangi bir başvuru almaya yetkili olanlara <span class="ark"> yatırımcı tarafından yapılabilecek başvuruları</span> Cumhurbaşkanı tarafından çıkarılacak yönetmelik çerçevesinde almak ve alınan başvuruyu yatırımcı adına ilgili bakanlık, kamu kurum ve kuruluşlarına iletmek. <br>
+
+f) Görev alanına giren konularda ulusal ve uluslararası kongre, seminer ve benzeri toplantılara teknik ve maddi katkı sağlamak, desteklemek, düzenlemek ve bunlara katılmak. <br>
+
+g) <span class="ark"> Ulusal düzeyde yatırım destek</span> ve tanıtım stratejisini belirlemek ve uygulanmasını takip etmek. <br>
+
+
+ğ) <span class="ark"> Yatırımlara ilişkin izin ve onay işlemlerinin tamamlanmasında destek</span> sağlamak üzere ilgili kurum ve kuruluşlar nezdinde bu işlemleri takip etmek. <br>
+
+h) Cumhurbaşkanınca verilen diğer görevleri yapmak.</div></div></div></div>
+
+
+<div>
+Yatırım Ofisinin hizmet birimleri ve görevleri
+<div>
+MADDE 527/G- (Ek:RG-24/10/2019-30928-CK-48/9 md.)
+<div>
+(1) Yatırım Ofisinin hizmet birimleri ve görevleri şunlardır:
+<div>
+a) İletişim Dairesi Başkanlığı:
+<div>
+1) Ofisin kurumsal iletişim süreçlerini yürütmek. <br>
+
+2) Ofis stratejisi doğrultusunda geleneksel ve dijital <span class="ark"> tanıtım faaliyetlerini</span> yönetmek. <br>
+
+3) Yurtiçi ve yurtdışındaki <span class="ark"> tanıtım etkinliklerinin </span>organizasyonu ve koordinasyonunu gerçekleştirmek. <br>
+
+4) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+b) Kamu-Özel Sektör İşbirliği Dairesi Başkanlığı:
+<div>
+1) <span class="ark"> Kamu-özel sektör işbirliği</span> ile gerçekleştirilen altyapı projeleri ile özelleştirme kapsamındaki projelere yönelik Ofisin yürüteceği tanıtım faaliyetlerine katkı sağlamak. <br>
+
+2) <span class="ark"> Kamu-özel sektör işbirliği projeleri ile özelleştirme</span> programı kapsamındaki projeler için destek talebinde bulunan yatırımcıların destek süreçlerini yönetmek. <br>
+
+3) <span class="ark"> Kamu-özel sektör işbirliğinin geliştirilmesine</span> yönelik öneriler geliştirerek ilgili merciler nezdinde girişimde bulunmak. <br>
+
+4) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+c) Strateji Dairesi Başkanlığı:
+<div>
+1) Ulusal düzeyde yatırım destek ve tanıtım stratejisini belirlemek ve uygulanmasını takip etmek. <br>
+
+2) Ofisin tanıtım ve destek faaliyetlerinde izleyeceği stratejileri belirlemek. <br>
+
+3) Ofisin ihtiyaç duyacağı ekonomik analiz faaliyetlerini yürütmek. <br>
+
+4) Ofisin tanıtım faaliyetlerinde kullanılacak içerikleri üretmek. <br>
+
+5) Ofisin destekleyeceği yatırım projeleri ile potansiyel yatırımlar için gerekli bilgi ve verileri yönetmek. <br>
+
+6) Yatırım ortamının iyileştirilmesine ilişkin reform sürecine katkı sağlamak, bu kapsamda öneriler geliştirmek. <br>
+
+7) Uluslararası kurum ve kuruluşlarla işbirliği yapmak. <br>
+
+8) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+ç) Yatırımcı Hizmetleri Dairesi Başkanlığı:
+<div>
+1) Yatırımcıların yatırım aşamasında ve yatırımlarını yaptıktan sonra ihtiyaç duyabilecekleri destek hizmetlerini tasarlamak ve yürütmek. <br>
+
+2) Ofis tarafından desteklenen yatırım projelerini ilgili kamu kurum ve kuruluşları nezdinde takip etmek. <br>
+
+3) Başkan tarafından verilen diğer görevleri yapmak. </div>
+
+d) Yurtdışı Faaliyetler Dairesi Başkanlığı:
+<div>
+1) Ofis stratejisi doğrultusunda ülkedeki yatırım ortamı ve yatırım imkânları hakkında yabancı yatırımcıları bilgilendirici faaliyetlerde bulunmak. <br>
+
+2) Ofisin yurtdışındaki faaliyetlerini yürütmek. <br>
+
+3) Yabancı kurum ve kuruluşlarla işbirliği yapmak. <br>
+
+4) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+e) Yönetim Hizmetleri Dairesi Başkanlığı:
+<div>
+1) Ofisin insan kaynağı politikası ve planlaması konusunda çalışmalar yapmak, tekliflerde bulunmak, personel istihdamını sağlamak ve personelin özlük işlemlerini yürütmek. <br>
+
+2) Ofis personelinin yetiştirilmesi için gerekli eğitim faaliyetlerini yürütmek. <br>
+
+3) Ofisin bilgi teknolojileri altyapısını kurmak, işletmek ve geliştirmek. <br>
+
+4) Ofisin mali işlerle ilgili hizmetlerini yürütmek. <br>
+
+5) Ofisin yapım, <span class="ark"> satın alma, kiralama, bakım ve onarım, sağlık ile</span>  diğer idari hizmetlerini yürütmek, taşınır ve taşınmaz kayıtlarını tutmak. <br>
+
+6) Başkan tarafından verilen diğer görevleri yapmak.</div>
+
+f) Hukuk Müşavirliği:
+<div>
+1) 26/9/2011 tarihli ve 659 sayılı Kanun Hükmünde Kararname hükümlerine göre hukuk birimlerine verilen görevleri yapmak. <br>
+
+2) Başkan tarafından verilen diğer görevleri yapmak.</div></div></div></div></div>
+
+
+
+ALTINCI BÖLÜM[153] <br>
+
+Ortak hükümler
+
+
+<div>
+Sorumluluk ve koordinasyon
+<div>
+MADDE 528 – <div> (1) <span class="kim"> Başkan</span>, ofisin en üst amiri olup ofisin genel yönetim ve temsilinden <span class="mavi"> Cumhurbaşkanına karşı sorumludur</span>. <br>
+
+(2) Başkan, Cumhurbaşkanı tarafından belirlenen amaç, politika ve stratejilere uygun olarak yönetir. <br>
+
+(3) Başkan, Ofisin bütçe teklifini hazırlar, belirlenen amaç, politika, strateji ve performans hedef ve ölçütleri doğrultusunda uygulamayı yürütür, izler ve raporlar. <br>
+
+(4) Başkan, Ofisin yönetim sistemlerini gözden geçirir, kurumsal yapı ile yönetim süreçlerinin etkililiğini gözetir ve yönetimin geliştirilmesini sağlar. <br>
+
+(5) Başkan, faaliyet alanına giren konularda kamu kurum ve kuruluşları ve sivil toplum kuruluşları ile işbirliği ve koordinasyonu sağlar. <br>
+
+(6) (Değişik:RG-24/10/2019-30928-CK-48/10 md.) <span class="ark"> Ofislerde Başkana yardımcı olmak üzere başkan yardımcısı görevlendirilebilir</span>. <br>
+
+(7) (Değişik:RG-24/10/2019-30928-CK-48/10 md.) Ofis, görev alanına giren hususlarda tüm kamu kurum ve kuruluşlarını koordine etmek, bakanlıklar, kamu kurum ve kuruluşları, kamu iktisadi teşebbüsleri ve kamu kurumu niteliğindeki kuruluşlarla yakın işbirliği içinde çalışmak, bunun için gerekli toplantı veya diğer organizasyonları yapmak, uluslararası alanda yapılan çalışmalara iştirak etmek ve ülkemizi temsil etmekle görevli ve yetkilidir. <br>
+
+
+(8) <span class="kim"> Ofis Başkanlıkları</span>, görevleri ile ilgili olarak ihtiyaç duyduğu konularda araştırma, etüt ve proje ile uluslararası ikili ve çok taraflı temas ve toplantılar düzenleme ve bunlarla ilgili her türlü mal ve hizmetlerin sağlanması gibi işleri yerli ve yabancı gerçek ve tüzel kişilere <span class="mavi"> sözleşme veya pazarlık suretiyle yaptırabilir ve bu konularla ilgili mal ve hizmet satın alabilir.</span> <br>
+
+(9) Bu kapsamdaki faaliyetler ile Başkanlığa teklif edilen projelerin değerlendirilmesi ve desteklenen projelerin izlenmesine ilişkin hizmet alımlarında görev alan kamu görevlileri ve hizmetinden yararlanılacak diğer kişiler için ilgili mevzuat hükümleri çerçevesinde yapılacak harcamalar Başkanlık bütçesinden karşılanır. Başkanlıkça desteklenen araştırma-geliştirme projelerinde proje süresi ile sınırlı olmak kaydıyla proje kapsamında görev yapan öğretim elemanlarına onaylanan projede belirlenen tutarlar üzerinden ödeme yapılabilir. Projede görev yapan ve kamu görevlisi olmayan diğer personele onaylanan projede belirlenen tutarlar üzerinden hizmet bedeli ödenebilir. <br>
+
+(10) (Ek:RG-24/10/2019-30928-CK-48/10 md.) Ofis, görev alanına ilişkin hukuki, idari ve teknik anlamdaki ihtiyaçları değerlendirmek ve görev alanına giren hususlarda mevzuat önerileri geliştirmekle görevli ve yetkilidir.</div></div></div>
+
+<div>
+
+Personel istihdamı, çalıştırılması ve görevlendirme
+<div>
+MADDE 529 – <div> (1) Ofislerde, 21/6/2006 tarihli ve 5523 sayılı Kanunun 10 uncu maddesi hükümlerine göre personel istihdam edilir. Ayrıca ilgisine göre 27/6/1989 tarihli ve 375 sayılı Kanun Hükmünde Kararnamenin ek 25 inci ve ek 26 ncı maddesine göre <span class="ark"> geçici veya sözleşmeli olarak personel istihdam edilebilir.</span> Bu suretle çalıştırılacakların sözleşme usul ve esasları ile ücret miktarı ve her çeşit <span class="mavi"> ödemeleri Cumhurbaşkanınca tespit edilir.</span>  <br>
+
+(2) <span class="kim"> Uzman personel</span> , <span class="ark"> en az dört yıllık</span> eğitim veren yükseköğretim kurumlarından veya bunlara denkliği Yükseköğretim Kurulunca kabul edilen yurtdışındaki yükseköğretim kurumlarından mezun olmuş <span class="mavi"> adaylar arasından istihdam edilir.</span>  <br>
+
+(3) Özel bilgi ve uzmanlık gerektiren geçici mahiyetteki işlerde, hizmetin özelliği veya devamlılığı gözetilerek vekâlet, istisna veya hizmet akdi <span class="mavi"> bir yıl veya bir yıldan uzun süreyle, yerli ve yabancı danışman ve uzmanlar istihdam edilebilir.</span>  <br>
+
+(4) Personelin istihdamı ile başkan ve diğer personelin görevlerinin ifası sırasında yaptıkları faaliyet giderlerinin hangilerinin Ofis bütçesinden karşılanabileceğine dair usûl ve esaslar yönetmelikle belirlenir. <br>
+
+(5) 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanununda belirtilen nitelikleri haiz <span class="mavi"> bir iç denetçi istihdam edilebilir</span>.</div></div></div>
+
+
+<div>
+Eğitim ve mecburi hizmet
+<div>
+MADDE 529/A- (Ek:RG-24/10/2019-30928-CK-48/11 md.)
+<div>
+(1) Ofis personeli mesleklerine ait hizmetlerde yetiştirilmek, eğitilmek, bilgilerini artırmak veya staj yapmak üzere yurtdışına gönderilebilir. Bu kapsamda yurtdışına gönderilecek personelin seçilme usul ve şartları, çalışmalarının nasıl izlenip denetleneceği, geri çağrılmalarını gerektirecek haller, mecburi hizmet, masrafların tahsili ile diğer hususlarda 657 sayılı Kanunun 78 inci, 79 uncu, 80 inci ve ek 34 üncü maddeleri ile bunlara dayanılarak yürürlüğe konulan mevzuat hükümleri kıyasen uygulanır. Ancak, 657 sayılı Kanunun 79 uncu maddesinin birinci ve ikinci fıkralarında belirtilen oranları geçmemek üzere ödenecek tutarları belirlemeye Başkan yetkilidir. <br>
+
+(2) Başkan tarafından uygun görülmesi halinde personel, Ofis hizmetlerinde kullanacağı yabancı dili daha etkin öğrenmesi için yurtiçi dil eğitim programlarına Ofis hizmetlerini aksatmamak kaydıyla gönderilebilir. Bu durumda Ofis, personelin eğitim amaçlı dil masraflarının %50’si kadarını karşılayabilir.</div></div></div>
+
+
+<div>
+Bütçe ve denetim
+<div>
+MADDE 530 – <div> (1) Ofisin bütçesi aşağıdaki kaynaklardan oluşur:
+	<div>
+a) Genel bütçeden <span class="span"> Cumhurbaşkanlığı bütçesine konulacak ödenek</span>, <br>
+
+b) Ofis tarafından <span class="span"> ücret karşılığı sağlanabilecek çeşitli hizmetler</span> karşılığında elde edilecek gelirler, <br>
+
+c) Gerçek ve tüzel kişilerden sağlanan <span class="span"> yardım ve bağışlar</span>. </div>
+
+(2) Ofislerin bütçelerinin gelir, gider ve muhasebesine ve denetimine ilişkin usul ve esaslar  <span class="mavi">Cumhurbaşkanınca çıkarılacak yönetmelikle düzenlenir</span></div></div></div>
+
+
+<div>
+Bilgi isteme ve gizliliğe uyma
+<div>
+MADDE 531 – (1) Ofisler, görev alanlarıyla ilgili araştırma ve inceleme ve diğer çalışmaları yapabilmek için gerekli olan bilgi ve belgeyi kamu kurum ve kuruluşlarından isteyebilir. Ofisin her türlü personeli, bu yoldan sağlanan bilgilerden <span class="mavi"> sır mahiyetinde olanları açıklayamaz, kendilerinin veya başkalarının menfaatine kullanamaz</span>.</div></div>
+
+
+<div>
+Kadrolar
+<div>
+MADDE 532– (Değişik:RG-24/10/2019-30928-CK-48/12 md.) <br>
+
+(1) <span class="mavi"> Ofisin kadroları Cumhurbaşkanı kararı ile belirlenir</span>.</div></div>
+
+
+<div>
+Yöneticilerin sorumluluğu
+<div>
+MADDE 533 – (1) Ofiste görev yapan her kademedeki yöneticiler yapmakla yükümlü bulundukları hizmet veya görevleri, Cumhurbaşkanı tarafından verilecek emir ve direktifler ile sıralı yöneticiler tarafından verilecek emir ve talimatları yönünde mevzuata uygun olarak düzenlemek ve yürütmekten <span class="mavi"> bir üst kademeye karşı sorumludur</span>.</div></div>
+
+
+<div>
+Yetki devri
+<div>
+MADDE 533/A- (Ek:RG-24/10/2019-30928-CK-48/13 md.) <br>
+
+(1) Başkan ve her kademedeki birim yöneticileri, sınırlarını açıkça belirtmek ve yazılı olmak şartıyla yetkilerinden <span class="mavi"> bir kısmını alt kademelere devredebilir.</span> Yetki devri uygun araçlarla ilgililere duyurulur. Yetki devri, yetki devreden yöneticinin <span class="mavi"> sorumluluğunu ortadan kaldırmaz.</span> </div></div>
+
+
+<div>
+Düzenleme görev ve yetkisi
+<div>
+MADDE 534 – (1) <span class="kim"> Ofis Başkanlığı;</span> görev, yetki ve sorumluluk alanına giren konularda <span class="mavi"> idarî düzenlemeler yapabilir</span>.</div></div>
+
+
+<div>
+Yurtdışı teşkilatı
+<div>
+MADDE 535 – (1) Başkanlık yurtdışı teşkilatı ile ilgili <span class="mavi"> Cumhurbaşkanlığı kararnamesi doğrultusunda yurtdışı teşkilatı kurabilir</span>.</div></div>
+
+
+<div>
+Atıflar
+<div>
+MADDE 536 – (1) Başkanlığın görev alanına giren konulara ilişkin olmak kaydıyla mevzuatta <span class="ark"> Türkiye Yatırım Destek ve Tanıtım Ajansına yapılan atıflar</span> <span class="mavi"> Cumhurbaşkanlığı Yatırım Ofisi Başkanlığına yapılmış sayılır</span>.</div></div>
+
+<div> <div>
+
+GEÇİCİ MADDE 1 - (1) 2/7/2018 tarihli ve 703 sayılı Kanun Hükmünde Kararname ile teşkilatlarına ilişkin kanun veya kanun hükmünde kararnameleri yürürlükten kaldırılan kamu kurum ve kuruluşlarından münhasıran devir ve geçiş hükümleri düzenlenenler dışında kalanlar hakkında ilgili Cumhurbaşkanlığı kararnamesiyle düzenleme yapılıncaya kadar yürürlükten kaldırılan hükümlerin uygulanmasına devam olunur. Milletlerarası andlaşmaların onaylanma usulüne ilişkin ilgili Cumhurbaşkanlığı Kararnamesiyle düzenleme yapılıncaya kadar 244 sayılı Kanunun uygulanmasına devam olunur.</div></div>
+
+<div>
+
+Yönetmelikler
+<div>
+MADDE 537 – (1) Bu Cumhurbaşkanlığı Kararnamesinin uygulanmasına ilişkin usûl ve esaslar  <span class="mavi">Cumhurbaşkanınca çıkarılacak yönetmeliklerle düzenlenir</span>.</div></div>
+
+
+<div>
+Yürürlük
+<div>
+MADDE 538 – (1) Bu Cumhurbaşkanlığı Kararnamesi yayımı tarihinde yürürlüğe girer.</div></div>
+
+
+<div>
+Yürütme
+<div>
+MADDE 539 – (1) Bu Cumhurbaşkanlığı Kararnamesi hükümlerini <span class="mavi"> Cumhurbaşkanı yürütür</span>.</div></div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}

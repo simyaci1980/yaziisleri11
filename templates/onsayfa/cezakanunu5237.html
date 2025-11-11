@@ -1,0 +1,1647 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{ color: white;
+}
+
+div {padding-left: 10px; padding-right: 3px ; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; }
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title> TÜRK CEZA KANUNU 1. kitap </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+<div class="kal"> 	TÜRK CEZA KANUNU[1] <br>
+
+
+
+Kanun Numarası                    : 5237 <br>
+
+Kabul Tarihi                           : 26/9/2004 <br>
+
+Yayımlandığı Resmî Gazete   : Tarih  : 12/10/2004      Sayı  : 25611 <br>
+
+Yayımlandığı Düstur              : Tertip : 5                      Cilt   : 43</div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br>
+
+BİRİNCİ KİTAP <br>
+
+Genel Hükümler <br>
+
+
+
+BİRİNCİ KISIM <br>
+
+Temel İlkeler, Tanımlar ve Uygulama Alanı <br>
+
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Temel İlkeler ve Tanımlar <br>
+<div>
+Ceza Kanununun amacı
+<div>
+Madde 1- (1) <span class="kim"> Ceza Kanununun amacı;</span> kişi hak ve özgürlüklerini, kamu düzen ve güvenliğini, hukuk devletini, kamu sağlığını ve çevreyi, <span class="ark"> toplum barışını korumak</span>, <span class="ark"> suç işlenmesini önlemektir</span> . Kanunda, bu amacın gerçekleştirilmesi için ceza sorumluluğunun temel esasları ile <span class="ark"> suçlar, ceza ve güvenlik tedbirlerinin</span>  <span class="mavi"> türleri düzenlenmiştir.</span> </div></div>
+
+
+<div>
+Suçta ve cezada kanunîlik ilkesi
+<div>
+Madde 2- (1) Kanunun açıkça suç saymadığı bir fiil için kimseye ceza verilemez ve güvenlik tedbiri uygulanamaz. <span class="mavi"> Kanunda yazılı cezalardan ve güvenlik tedbirlerinden başka bir ceza ve güvenlik tedbirine hükmolunamaz.</span>  <br>
+
+(2) <span class="ark"> İdarenin düzenleyici işlemleriyle </span> <span class="mavi"> suç ve ceza konulamaz.</span> <br>
+
+(3) Kanunların suç ve ceza içeren hükümlerinin uygulanmasında <span class="mavi"> kıyas yapılamaz.</span> Suç ve ceza içeren hükümler, <span class="mavi"> kıyasa yol açacak biçimde geniş yorumlanamaz.</span> </div></div>
+
+
+<div>
+Adalet ve kanun önünde eşitlik ilkesi
+<div>
+Madde 3- (1) Suç işleyen kişi hakkında <span class="ark"> işlenen fiilin ağırlığıyla orantılı</span> <span class="mavi"> ceza ve güvenlik tedbirine hükmolunur.</span>  <br>
+
+(2) Ceza Kanununun uygulamasında kişiler arasında ırk, dil, din, mezhep, milliyet, renk, cinsiyet, siyasal veya diğer fikir yahut düşünceleri, felsefi inanç, milli veya sosyal köken, doğum, ekonomik ve diğer toplumsal konumları yönünden <span class="mavi"> ayrım yapılamaz ve hiçbir kimseye ayrıcalık tanınamaz.</span> </div></div>
+
+
+<div>
+Kanunun bağlayıcılığı
+<div>
+Madde 4- (1) <span class="mavi"> Ceza kanunlarını <span class="dik"> bilmemek</span> mazeret sayılmaz.</span> <br>
+
+(2) (Mülga : 29/6/2005 – 5377/1 md.)</div></div>
+
+
+<div>
+Özel kanunlarla ilişki
+<div>
+Madde 5- (1) Bu Kanunun genel hükümleri, özel ceza kanunları ve ceza içeren kanunlardaki suçlar hakkında da uygulanır.</div></div>
+
+
+<div>
+Tanımlar
+<div>
+Madde 6- <div> (1) Ceza kanunlarının uygulanmasında;
+	<div>
+a) <span class="kim"> Vatandaş deyiminden;</span> <span class="ark"> fiili işlediği sırada</span> <span class="mavi"> Türk vatandaşı olan kişi,</span> <br>
+
+b) <span class="kim"> Çocuk deyiminden;</span> henüz <span class="mavi"> onsekiz yaşını doldurmamış kişi,</span> <br>
+
+c) <span class="kim"> Kamu görevlisi deyiminden;</span>  kamusal faaliyetin yürütülmesine <span class="ark"> atama veya seçilme yoluyla</span> ya da herhangi bir surette sürekli, <span class="mavi"> süreli veya geçici olarak katılan kişi,</span>  <br>
+
+d) <span class="kim"> Yargı görevi yapan deyiminden;</span>  yüksek mahkemeler, adlî ve idarî mahkemeler üye ve <span class="mavi"> hakimleri ile Cumhuriyet savcısı ve avukatlar,</span> [2] <br>
+
+e) <span class="kim"> Gece vakti deyiminden;</span>  <span class="mavi"> güneşin batmasından <span class="dik"> bir saat sonra başlayan</span>  ve doğmasından <span class="dik"> bir saat evvele</span> kadar devam eden zaman süresi,</span> <br>
+
+f) <span class="kim"> Silah deyiminden;</span>
+<div>
+1. <span class="span"> Ateşli </span>silahlar, <br>
+
+2. <span class="span"> Patlayıcı</span> maddeler, <br>
+
+3. Saldırı ve savunmada kullanılmak üzere yapılmış her türlü <span class="span"> kesici, delici veya bereleyici</span> alet, <br>
+
+4. Saldırı ve savunma amacıyla yapılmış olmasa bile fiilen saldırı ve savunmada <span class="span"> kullanılmaya elverişli diğer şeyler</span>, <br>
+
+5. <span class="span"> Yakıcı, aşındırıcı, yaralayıcı, boğucu, zehirleyici</span>, sürekli hastalığa yol açıcı nükleer, radyoaktif, kimyasal, biyolojik maddeler,</div>
+
+g) <span class="kim"> Basın ve yayın yolu ile deyiminden;</span>  her türlü yazılı, görsel, işitsel ve elektronik <span class="mavi"> kitle iletişim aracıyla yapılan yayınlar,</span> <br>
+
+h) <span class="kim"> İtiyadi suçlu deyiminden;</span>  <span class="ark"> kasıtlı bir suçun</span> temel şeklini ya da daha ağır veya daha az cezayı gerektiren  <span class="ark">nitelikli şekillerini</span> <span class="mavi"> <span class="dik"> bir yıl</span> içinde ve farklı zamanlarda <span class="dik"> ikiden fazla</span>  işleyen kişi,</span>  <br>
+
+i) <span class="kim"> Suçu meslek edinen kişi deyiminden;</span>  kısmen de olsa <span class="mavi"> geçimini suçtan elde ettiği kazançla sağlamaya <span class="dik"> alışmış</span>  kişi</span>, <br>
+
+j) <span class="kim"> Örgüt mensubu suçlu deyiminden;</span>  bir suç örgütünü kuran, yöneten, örgüte katılan veya <span class="mavi"> örgüt adına diğerleriyle birlikte veya tek başına suç işleyen kişi</span> ,</div>
+<span class="mavi">
+anlaşılır.</span> </div></div></div>
+
+
+İKİNCİ BÖLÜM
+
+Kanunun Uygulama Alanı
+<div>
+Zaman bakımından uygulama
+<div>
+Madde 7- <div> (1) <span class="mavi"> İşlendiği zaman yürürlükte bulunan kanuna göre suç sayılmayan bir fiilden dolayı kimseye ceza verilemez ve güvenlik tedbiri uygulanamaz.</span>  <span class="ark"> İşlendikten sonra yürürlüğe giren</span> kanuna göre suç sayılmayan bir fiilden dolayı <span class="ark"> da</span> <span class="mavi"> kimse cezalandırılamaz ve hakkında güvenlik tedbiri uygulanamaz.</span>  Böyle bir ceza veya güvenlik tedbiri hükmolunmuşsa infazı ve kanuni neticeleri kendiliğinden kalkar. <br>
+
+(2) Suçun işlendiği zaman yürürlükte <span class="ark"> bulunan kanun ile</span> sonradan yürürlüğe <span class="ark"> giren kanunların</span>  hükümleri <span class="ark"> farklı ise</span>, <span class="mavi"> failin lehine olan kanun uygulanır ve infaz olunur.</span> <br>
+
+(3) (Değişik: 29/6/2005 – 5377/2 md.) Hapis cezasının ertelenmesi, koşullu salıverilme ve tekerrürle ilgili olanlar hariç; infaz rejimine ilişkin hükümler, derhal uygulanır. <br>
+
+(4) Geçici veya süreli kanunların, yürürlükte bulundukları süre içinde işlenmiş olan suçlar hakkında uygulanmasına devam edilir.</div></div></div>
+
+
+<div>
+Yer bakımından uygulama
+<div>
+Madde 8- <div> (1) <span class="mavi"> Türkiye'de işlenen suçlar hakkında Türk kanunları uygulanır.</span>  Fiilin kısmen veya tamamen Türkiye'de işlenmesi veya <span class="ark"> neticenin Türkiye'de gerçekleşmesi halinde suç</span>,<span class="mavi"> Türkiye'de işlenmiş sayılır</span>. <br>
+
+(2) Suç;
+<div>
+a) Türk <span class="ark"> kara</span> ve <span class="ark"> hava</span> sahaları ile Türk <span class="ark"> karasularında,</span> <br>
+
+b) Açık denizde ve bunun üzerindeki hava sahasında, Türk deniz ve hava <span class="ark"> araçlarında veya bu araçlarla</span>, <br>
+
+c) Türk deniz ve hava savaş araçlarında veya bu araçlarla, <br>
+
+d) Türkiye'nin <span class="ark"> kıt'a sahanlığında</span> veya münhasır ekonomik bölgesinde tesis edilmiş <span class="ark"> sabit platformlarda</span> veya bunlara karşı,</div>
+
+<span class="mavi">
+işlendiğinde Türkiye'de işlenmiş sayılır.</span> </div></div></div>
+
+
+<div>
+Yabancı ülkede hüküm verilmesi
+<div>
+Madde 9- (1) Türkiye'de işlediği suçtan dolayı yabancı ülkede hakkında hüküm verilmiş olan kimse, <span class="mavi">  Türkiye'de yeniden yargılanır.</span></div></div>
+
+
+<div>
+Görev suçları
+<div>
+Madde 10- (1) Yabancı ülkede Türkiye namına memuriyet veya görev üstlenmiş olup da bundan dolayı bir suç işleyen kimse, bu fiile ilişkin olarak yabancı ülkede hakkında <span class="ark"> mahkûmiyet hükmü verilmiş bulunsa bile</span>, <span class="mavi"> Türkiye'de yeniden yargılanır.</span> </div></div>
+
+
+<div>
+Vatandaş tarafından işlenen suç
+<div>
+Madde 11- (1) Bir Türk vatandaşı, 13 üncü maddede yazılı suçlar dışında, Türk kanunlarına göre aşağı sınırı <span class="ark"> bir yıldan az olmayan hapis cezasını</span>  gerektiren bir suçu yabancı ülkede işlediği ve kendisi <span class="span"> Türkiye'de bulunduğu</span>  takdirde, bu suçtan dolayı yabancı ülkede <span class="span"> hüküm verilmemiş</span>  olması ve <span class="span"> Türkiye'de kovuşturulabilirliğin</span>  bulunması <span class="ark"> koşulu ile</span> <span class="mavi"> Türk kanunlarına göre cezalandırılır.</span>  <br>
+
+(2) Suç, aşağı sınırı <span class="ark"> bir yıldan az hapis</span> cezasını gerektirdiğinde yargılama yapılması <span class="ark"> zarar görenin</span> veya yabancı hükûmetin <span class="mavi"> şikayetine bağlıdır.</span>  <span class="kim"> Bu durumda şikayet,</span>  vatandaşın Türkiye'ye girdiği tarihten itibaren <span class="mavi"> altı ay içinde yapılmalıdır.</span> </div></div>
+
+
+<div>
+Yabancı tarafından işlenen suç
+<div>
+Madde 12- <div> (1) Bir yabancı, 13 üncü maddede yazılı suçlar dışında, Türk kanunlarına göre aşağı sınırı <span class="ark"> en az bir yıl</span> hapis cezasını gerektiren bir suçu yabancı ülkede <span class="ark"> Türkiye'nin zararına</span> işlediği ve kendisi <span class="ark"> Türkiye'de bulunduğu takdirde,</span><span class="mavi"> Türk kanunlarına göre cezalandırılır.</span> <span class="mavi"> Yargılama yapılması Adalet Bakanının istemine bağlıdır.</span>  <br>
+
+(2) Yukarıdaki fıkrada belirtilen suçun bir <span class="ark"> Türk vatandaşının</span> veya Türk kanunlarına göre kurulmuş özel hukuk tüzel kişisinin <span class="ark"> zararına işlenmesi</span> ve failin <span class="ark"> Türkiye'de bulunması halinde</span>, bu suçtan dolayı yabancı ülkede <span class="span"> hüküm verilmemiş olması koşulu ile</span> suçtan zarar görenin şikayeti üzerine fail, <span class="mavi"> Türk kanunlarına göre cezalandırılır.</span>  <br>
+
+(3) <span class="kim"> Mağdur yabancı ise</span>, aşağıdaki koşulların varlığı halinde fail, <span class="mavi"> Adalet Bakanının istemi ile yargılanır</span> :
+<div>
+a) Suçun, Türk kanunlarına göre aşağı sınırı <span class="span"> üç yıldan az olmayan</span> hapis cezasını gerektirmesi. <br>
+
+b) Suçluların geri verilmesi <span class="span"> anlaşmasının bulunmaması</span> veya geri verilme isteminin suçun işlendiği ülkenin veya failin uyruğunda bulunduğu devletin hükûmeti tarafından kabul edilmemiş olması.</div>
+
+(4) Birinci fıkra kapsamına giren suçtan dolayı yabancı mahkemece mahkûm edilen veya herhangi bir nedenle davası veya cezası düşen veya beraat eden yahut suçu kovuşturulabilir olmaktan çıkan yabancı hakkında Adalet Bakanının istemi üzerine Türkiye'de yeniden yargılama yapılır. <br>
+
+(5) (Ek: 18/6/2014-6545/56 md.) Birinci fıkra kapsamına giren hâllerde <span class="ark"> rüşvet ve nüfuz ticareti</span> suçlarından dolayı yargılama yapılması <span class="mavi"> Adalet Bakanının istemine bağlı değildir</span>.</div></div></div>
+
+
+<div>
+Diğer suçlar
+<div>
+Madde 13-<div>  (1) Aşağıdaki suçların, vatandaş veya yabancı tarafından, yabancı ülkede işlenmesi halinde, Türk kanunları uygulanır:
+	<div>
+a) İkinci Kitap, Birinci Kısım altında yer alan suçlar. <br>
+
+b) İkinci Kitap, Dördüncü Kısım altındaki Üçüncü, Dördüncü, Beşinci, Altıncı, Yedinci ve Sekizinci Bölümlerde yer alan suçlar. <br>
+
+c) İşkence (madde 94, 95). <br>
+
+d) Çevrenin kasten kirletilmesi (madde 181). <br>
+
+e) Uyuşturucu veya uyarıcı madde imal ve ticareti (madde 188), uyuşturucu veya uyarıcı madde kullanılmasını kolaylaştırma (madde 190). <br>
+
+f) Parada sahtecilik (madde 197), para ve kıymetli damgaları imale yarayan araçların üretimi ve ticareti (madde 200), mühürde sahtecilik (madde 202). <br>
+
+g) Fuhuş (madde 227). <br>
+
+h) (Mülga : 26/6/2009 – 5918/1 md.) <br>
+
+i) Deniz, demiryolu veya havayolu ulaşım araçlarının kaçırılması veya alıkonulması (madde 223, fıkra 2, </div>
+ 3) ya da bu araçlara karşı işlenen zarar verme (madde 152) suçları. <br>
+
+(2) (Ek ikinci fıkra: 29/6/2005 – 5377/3 md.) İkinci Kitap, Dördüncü Kısım altındaki Üçüncü, Dördüncü, Beşinci, Altıncı ve Yedinci Bölümlerde yer alanlar hariç; birinci fıkra kapsamına giren suçlardan dolayı Türkiye'de yargılama yapılması, Adalet Bakanının talebine bağlıdır <br>
+
+(3) Birinci fıkranın (a) ve (b) bentlerinde yazılı suçlar dolayısıyla yabancı bir ülkede mahkûmiyet veya beraat kararı verilmiş olsa bile, Adalet Bakanının talebi üzerine Türkiye'de yargılama yapılır.[3]</div></div></div>
+
+
+<div>
+Seçimlik cezalarda soruşturma
+<div>
+Madde 14- (1) 11 ve 12 nci maddelerde belirtilen hallerde, soruşturma konusu suçun yer aldığı kanun maddesinde hapis cezası ile adli para cezasından birinin uygulanması seçimlik sayılmış ise soruşturma veya kovuşturma açılmaz.</div></div>
+
+
+<div>
+Soruşturma koşulu olan cezanın hesaplanması
+<div>
+Madde 15- (1) Miktarının soruşturma koşulu oluşturduğu hallerde ceza, soruşturma evresinde ileri sürülen <span class="ark"> kanuni ağırlaştırıcı nedenlerin</span> <span class="mavi"> aşağı sınırı</span> ve <span class="ark"> kanuni hafifletici nedenlerin</span> <span class="mavi"> yukarı sınırı göz önünde bulundurularak hesaplanır.</span> </div></div>
+
+
+<div>
+Cezadan mahsup
+<div>
+Madde 16- (1) Nerede işlenmiş olursa olsun bir suçtan dolayı, <span class="ark"> yabancı ülkede</span> gözaltında, gözlem altında, tutuklulukta veya hükümlülükte <span class="ark">geçen süre</span>, <span class="mavi"> aynı suçtan dolayı Türkiye'de verilecek cezadan mahsup edilir</span>.</div></div>
+
+
+<div>
+Hak yoksunlukları
+<div>
+Madde 17- (1) Yukarıdaki maddelerde açıklanan hallerde mahkeme, yabancı mahkemelerden verilen ve Türk hukuk düzenine aykırı düşmeyen hükmün, Türk kanunlarına göre bir haktan yoksunluğu gerektirmesi halinde, Cumhuriyet savcısının istemi üzerine Türk kanunlarındaki sonuçlarının geçerli olmasına karar verir.</div></div>
+
+
+<div>
+Geri verme
+<div>
+Madde 18- (Mülga: 23/4/2016-6706/36 md.)</div></div>
+
+
+<div>
+Yabancı kanunun göz önünde bulundurulması
+<div>
+Madde 19-<div>  (1) Türkiye'nin egemenlik alanı dışında işlenen suçlar dolayısıyla Türkiye'de yargılama yapılırken, Türk kanununa göre verilecek olan <span class="kim"> ceza,</span> <span class="mavi"> suçun işlendiği ülke kanununda öngörülen cezanın <span class="dik"> üst sınırından</span>  fazla olamaz.</span>  <br>
+
+(2) Ancak suçun;
+<div>
+a) Türkiye'nin güvenliğine karşı veya zararına olarak, <br>
+
+b) Türk vatandaşına karşı ya da Türk kanunlarına göre kurulmuş özel hukuk tüzel kişisi zararına olarak,</div>
+
+İşlenmesi durumunda, yukarıdaki fıkra hükmü uygulanmaz.</div></div></div>
+
+
+
+İKİNCİ KISIM <br>
+
+Ceza Sorumluluğunun Esasları <br>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Ceza Sorumluluğunun Şahsiliği, Kast ve Taksir <br>
+<div>
+Ceza sorumluluğunun şahsiliği
+<div>
+Madde 20- <div> (1) Ceza sorumluluğu şahsidir. <span class="mavi"> Kimse başkasının fiilinden dolayı sorumlu tutulamaz.</span> <br>
+
+(2) <span class="ark"> Tüzel kişiler hakkında ceza yaptırımı uygulanamaz</span>. Ancak, suç dolayısıyla kanunda öngörülen <span class="mavi"> güvenlik tedbiri niteliğindeki yaptırımlar saklıdır</span>.</div></div></div>
+
+
+<div>
+Kast
+<div>
+Madde 21- <div> (1) <span class="mavi"> Suçun oluşması kastın varlığına bağlıdır.</span>  Kast, suçun kanuni tanımındaki unsurların <span class="mavi"> bilerek ve istenerek gerçekleştirilmesidir.</span>
+
+(2) Kişinin, suçun kanuni tanımındaki unsurların gerçekleşebileceğini <span class="ark"> öngörmesine rağmen</span>, <span class="mavi"> fiili işlemesi halinde <span class="dik"> olası</span>  kast vardır.</span> Bu halde, ağırlaştırılmış müebbet hapis cezasını gerektiren suçlarda müebbet hapis cezasına, müebbet hapis cezasını gerektiren suçlarda yirmi yıldan yirmibeş yıla kadar hapis cezasına hükmolunur; diğer suçlarda ise temel ceza üçte birden yarısına kadar indirilir.</div></div></div>
+
+
+<div>
+Taksir
+<div>
+Madde 22- <div> (1) Taksirle işlenen fiiller, kanunun açıkça belirttiği hallerde cezalandırılır. <br>
+
+(2) Taksir, <span class="ark"> dikkat ve özen yükümlülüğüne aykırılık</span> dolayısıyla, bir davranışın suçun kanuni tanımında belirtilen <span class="mavi"> neticesi öngörülmeyerek gerçekleştirilmesidir.</span>  <br>
+
+(3) <span class="kim"> Kişinin öngördüğü neticeyi iste<span class="ark">meme</span>sine karşın,</span> <span class="ark"> neticenin meydana gelmesi halinde</span> <span class="mavi"> bilinçli taksir vardır;</span>  bu halde taksirli suça ilişkin ceza <span class="mavi"> üçte birden yarısına kadar  artırılır.</span>  <br>
+
+(4) Taksirle işlenen suçtan dolayı verilecek olan ceza failin kusuruna göre belirlenir. <br>
+
+(5) Birden fazla kişinin taksirle işlediği suçlarda, herkes kendi kusurundan dolayı sorumlu olur. Her failin cezası kusuruna göre ayrı ayrı belirlenir. <br>
+
+(6) Taksirli hareket sonucu neden olunan netice, münhasıran <span class="ark"> failin kişisel ve ailevi durumu bakımından</span> , artık bir cezanın hükmedilmesini gereksiz kılacak derecede <span class="mavi"> mağdur olmasına yol açmışsa ceza verilmez;</span>  bilinçli taksir halinde verilecek ceza yarıdan altıda bire kadar indirilebilir.</div></div></div>
+
+
+<div>
+Netice sebebiyle ağırlaşmış suç
+<div>
+Madde 23- (1) Bir fiilin, kastedilenden daha ağır veya başka bir neticenin oluşumuna sebebiyet vermesi halinde, kişinin bundan dolayı sorumlu tutulabilmesi için bu netice bakımından en azından taksirle hareket etmesi gerekir.</div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Ceza Sorumluluğunu Kaldıran veya Azaltan Nedenler <br>
+<div>
+Kanunun hükmü ve amirin emri
+<div>
+Madde 24- <div> (1) <span class="mavi"> Kanunun hükmünü yerine getiren kimseye ceza verilmez.</span>  <br>
+
+(2) Yetkili bir merciden verilip, yerine getirilmesi görev gereği zorunlu olan <span class="mavi"> bir emri uygulayan sorumlu olmaz</span>. <br>
+
+(3) <span class="kim"> Konusu suç teşkil eden emir</span> <span class="mavi"> hiçbir surette yerine getirilemez.</span>  Aksi takdirde <span class="mavi"> yerine getiren ile emri veren sorumlu olur</span>. <br>
+
+(4) Emrin, hukuka uygunluğunun denetlenmesinin <span class="ark"> kanun tarafından engellendiği hallerde</span>, <span class="mavi"> yerine getirilmesinden emri veren sorumlu olur</span>.</div></div></div>
+
+
+<div>
+Meşru savunma ve zorunluluk hali
+<div>
+Madde 25-<div>  (1) Gerek kendisine ve gerek başkasına ait bir hakka yönelmiş, gerçekleşen, gerçekleşmesi veya tekrarı muhakkak olan haksız bir saldırıyı o anda hal ve koşullara göre <span class="ark"> saldırı ile orantılı biçimde</span> <span class="mavi"> defetmek zorunluluğu ile işlenen fiillerden dolayı faile ceza verilmez.</span>  <br>
+
+(2) Gerek kendisine gerek başkasına ait bir hakka yönelik olup, bilerek neden olmadığı ve başka suretle korunmak olanağı bulunmayan ağır ve muhakkak bir tehlikeden kurtulmak veya başkasını kurtarmak zorunluluğu ile ve tehlikenin ağırlığı ile konu ve kullanılan vasıta arasında orantı bulunmak koşulu ile işlenen fiillerden dolayı faile ceza verilmez.</div></div></div>
+
+
+<div>
+Hakkın kullanılması ve ilgilinin rızası
+<div>
+Madde 26-<div>  (1) <span class="mavi"> Hakkını kullanan kimseye ceza verilmez.</span>  <br>
+
+(2) Kişinin üzerinde mutlak surette tasarruf edebileceği bir hakkına ilişkin olmak üzere, açıkladığı rızası çerçevesinde işlenen fiilden dolayı kimseye ceza verilmez.</div></div></div>
+
+
+<div>
+Sınırın aşılması
+<div>
+Madde 27-<div>  (1) Ceza sorumluluğunu kaldıran nedenlerde sınırın kast olmaksızın aşılması halinde, fiil taksirle işlendiğinde de cezalandırılıyorsa, taksirli suç için kanunda yazılı cezanın altıda birinden üçte birine kadarı indirilerek hükmolunur. <br>
+
+(2) Meşru savunmada sınırın aşılması <span class="mavi"> mazur görülebilecek bir heyecan, korku veya telaştan ileri gelmiş ise faile ceza verilmez.</span> </div></div></div>
+
+
+<div>
+Cebir ve şiddet, korkutma ve tehdit
+<div>
+Madde 28- (1) Karşı koyamayacağı veya kurtulamayacağı cebir ve şiddet veya muhakkak ve ağır bir korkutma veya tehdit sonucu suç işleyen kimseye <span class="mavi"> ceza verilmez.</span> <span class="mavi"> Bu gibi hallerde cebir ve şiddet, korkutma ve tehdidi kullanan kişi suçun faili sayılır</span>.</div></div>
+
+
+<div>
+Haksız tahrik
+<div>
+Madde 29- (1) Haksız bir fiilin meydana getirdiği hiddet veya şiddetli elemin etkisi altında suç işleyen kimseye, ağırlaştırılmış müebbet hapis cezası yerine onsekiz yıldan yirmidört yıla ve müebbet hapis cezası yerine oniki yıldan onsekiz yıla kadar hapis cezası verilir. Diğer hallerde verilecek cezanın dörtte birinden dörtte üçüne kadarı indirilir.</div></div>
+
+
+<div>
+Hata
+<div>
+Madde 30- <div> (1) <span class="mavi"> Fiilin icrası sırasında suçun kanuni tanımındaki maddi unsurları bilmeyen bir kimse, kasten hareket etmiş olmaz.</span>  Bu hata dolayısıyla taksirli sorumluluk hali saklıdır. <br>
+
+(2) Bir suçun daha ağır veya daha az cezayı gerektiren nitelikli hallerinin gerçekleştiği hususunda <span class="mavi"> hataya düşen kişi, bu hatasından yararlanır.</span>  <br>
+
+(3) Ceza sorumluluğunu kaldıran veya azaltan nedenlere ait koşulların gerçekleştiği hususunda kaçınılmaz bir <span class="mavi"> hataya düşen kişi, bu hatasından yararlanır.</span>  <br>
+
+(4) (Ek fıkra: 29/6/2005 – 5377/4 md.) İşlediği fiilin haksızlık oluşturduğu hususunda kaçınılmaz bir <span class="mavi"> hataya düşen kişi, cezalandırılmaz</span>.</div></div></div>
+
+
+<div>
+Yaş küçüklüğü
+<div>
+Madde 31- <div> (1) <span class="mavi"> Fiili işlediği sırada <span class="dik"> oniki </span> yaşını doldurmamış olan çocukların ceza sorumluluğu yoktur.</span>  Bu kişiler hakkında, ceza kovuşturması yapılamaz; ancak, <span class="mavi"> çocuklara özgü güvenlik tedbirleri uygulanabilir.</span>  <br>
+
+(2) (Değişik: 29/6/2005 – 5377/5 md.) <span class="kim"> Fiili işlediği sırada <span class="dik"> oniki </span>yaşını doldurmuş olup da <span class="dik"> onbeş</span> yaşını doldurmamış olanların</span>  işlediği fiilin hukukî anlam ve sonuçlarını algılayamaması veya davranışlarını yönlendirme yeteneğinin yeterince <span class="ark">gelişmemiş olması hâlinde</span> <span class="mavi"> ceza sorumluluğu yoktur.</span>  Ancak bu kişiler hakkında çocuklara özgü güvenlik tedbirlerine hükmolunur. İşlediği fiilin hukukî anlam ve sonuçlarını algılama ve bu fiille ilgili olarak davranışlarını yönlendirme yeteneğinin varlığı hâlinde, bu kişiler hakkında suç, ağırlaştırılmış müebbet hapis cezasını gerektirdiği takdirde oniki yıldan onbeş yıla; müebbet hapis cezasını gerektirdiği takdirde dokuz yıldan onbir yıla kadar hapis cezasına hükmolunur. Diğer cezaların yarısı indirilir ve bu hâlde her fiil için verilecek hapis cezası yedi yıldan fazla olamaz. <br>
+
+(3) (Değişik: 29/6/2005 – 5377/5 md.) <span class="kim"> Fiili işlediği sırada <span class="dik"> onbeş</span> yaşını doldurmuş olup da <span class="dik"> onsekiz</span>  yaşını doldurmamış olan</span> kişiler hakkında suç, ağırlaştırılmış müebbet hapis cezasını gerektirdiği takdirde onsekiz yıldan yirmidört yıla; müebbet hapis cezasını gerektirdiği takdirde oniki yıldan onbeş yıla kadar hapis cezasına hükmolunur. Diğer cezaların üçte biri indirilir ve bu hâlde her fiil için verilecek hapis cezası <span class="mavi"> oniki yıldan fazla olamaz.</span></div></div></div>
+<div> <button  onclick="soruyuGoster(135)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+<div>
+Akıl hastalığı
+<div>
+Madde 32- <div> (1) Akıl hastalığı nedeniyle, işlediği fiilin hukuki anlam ve sonuçlarını algılayamayan veya bu fiille ilgili olarak davranışlarını yönlendirme yeteneği önemli derecede azalmış olan kişiye <span class="mavi"> ceza verilmez.</span>  Ancak, bu kişiler hakkında <span class="mavi"> güvenlik tedbirine hükmolunur</span>. <br>
+
+(2) Birinci fıkrada yazılı derecede olmamakla birlikte işlediği fiille ilgili olarak davranışlarını yönlendirme yeteneği azalmış olan kişiye, ağırlaştırılmış müebbet hapis cezası yerine yirmibeş yıl, müebbet hapis cezası yerine yirmi yıl hapis cezası verilir. Diğer hallerde verilecek ceza, altıda birden fazla olmamak üzere indirilebilir. Mahkûm olunan ceza, süresi aynı olmak koşuluyla, kısmen veya tamamen, akıl hastalarına özgü güvenlik tedbiri olarak da uygulanabilir.</div></div></div>
+
+
+<div>
+Sağır ve dilsizlik
+<div>
+Madde 33- (1) Bu Kanunun, fiili işlediği sırada oniki yaşını doldurmamış olan çocuklara ilişkin hükümleri, onbeş yaşını doldurmamış olan sağır ve dilsizler hakkında; oniki yaşını doldurmuş olup da onbeş yaşını doldurmamış olanlara ilişkin hükümleri, onbeş yaşını doldurmuş olup da onsekiz yaşını doldurmamış olan sağır ve dilsizler hakkında; onbeş yaşını doldurmuş olup da onsekiz yaşını doldurmamış olanlara ilişkin hükümleri, onsekiz yaşını doldurmuş olup da yirmibir yaşını doldurmamış olan sağır ve dilsizler hakkında da uygulanır.</div></div>
+
+
+<div>
+Geçici nedenler, alkol veya uyuşturucu madde etkisinde olma
+<div>
+Madde 34- <div> (1) Geçici bir nedenle ya da irade dışı alınan alkol veya uyuşturucu madde etkisiyle, işlediği fiilin hukuki anlam ve sonuçlarını algılayamayan veya bu fiille ilgili olarak davranışlarını yönlendirme yeteneği önemli derecede azalmış olan <span class="mavi"> kişiye ceza verilmez.</span>  <br>
+
+(2) <span class="mavi"> <span class="dik"> İradi olarak alınan</span>  alkol veya uyuşturucu madde etkisinde suç işleyen kişi hakkında birinci fıkra hükmü uygulanmaz.</span> </div></div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Suça Teşebbüs <br>
+<div>
+Suça teşebbüs
+<div>
+Madde 35- <div> (1) Kişi, işlemeyi kastettiği bir suçu elverişli hareketlerle doğrudan doğruya icraya başlayıp da elinde olmayan nedenlerle <span class="mavi"> tamamlayamaz ise teşebbüsten dolayı sorumlu tutulur.</span>  <br>
+
+(2) Suça teşebbüs halinde fail, meydana gelen zarar veya tehlikenin ağırlığına göre, ağırlaştırılmış müebbet hapis cezası yerine onüç yıldan yirmi yıla kadar, müebbet hapis cezası yerine dokuz yıldan onbeş yıla kadar hapis cezası ile cezalandırılır. Diğer hallerde verilecek cezanın dörtte birinden dörtte üçüne kadarı indirilir.</div></div></div>
+
+
+<div>
+Gönüllü vazgeçme
+<div>
+Madde 36- (1) Fail, suçun icra hareketlerinden gönüllü vazgeçer veya kendi çabalarıyla suçun tamamlanmasını veya neticenin gerçekleşmesini <span class="mavi"> önlerse, teşebbüsten dolayı cezalandırılmaz;</span>  fakat tamam olan kısım esasen bir suç oluşturduğu takdirde, sadece o suça ait ceza ile cezalandırılır.</div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM <br>
+
+Suça İştirak <br>
+<div>
+Faillik
+<div>
+Madde 37- <div> (1) Suçun kanuni tanımında yer alan fiili birlikte gerçekleştiren  <span class="mavi">kişilerden her biri, fail olarak sorumlu olur</span> . <br>
+
+(2) Suçun işlenmesinde bir başkasını araç olarak kullanan kişi de fail olarak sorumlu tutulur. Kusur yeteneği olmayanları suçun işlenmesinde araç olarak kullanan kişinin cezası, üçte birden yarısına kadar artırılır.</div></div></div>
+
+
+<div>
+Azmettirme
+<div>
+Madde 38- <div> (1) Başkasını suç işlemeye azmettiren kişi, <span class="mavi"> işlenen suçun cezası ile cezalandırılır.</span>  <br>
+
+(2) Üstsoy ve altsoy ilişkisinden doğan nüfuz kullanılmak suretiyle suça azmettirme halinde, azmettirenin cezası üçte birden yarısına kadar artırılır. Çocukların suça azmettirilmesi halinde, bu fıkra hükmüne göre cezanın artırılabilmesi için üstsoy ve altsoy ilişkisinin varlığı aranmaz. <br>
+
+(3) Azmettirenin belli olmaması halinde, kim olduğunun ortaya çıkmasını sağlayan fail veya diğer suç ortağı hakkında ağırlaştırılmış müebbet hapis cezası yerine yirmi yıldan yirmibeş yıla kadar, müebbet hapis cezası yerine onbeş yıldan yirmi yıla kadar hapis cezasına hükmolunabilir. Diğer hallerde verilecek cezada, üçte bir oranında indirim yapılabilir.</div></div></div>
+
+
+<div>
+Yardım etme
+<div>
+Madde 39- <div> (1) Suçun işlenmesine yardım eden kişiye, işlenen suçun ağırlaştırılmış müebbet hapis cezasını gerektirmesi halinde, onbeş yıldan yirmi yıla; müebbet hapis cezasını gerektirmesi halinde, on yıldan onbeş yıla kadar hapis cezası verilir. Diğer hallerde cezanın yarısı indirilir. Ancak, bu durumda verilecek ceza sekiz yılı geçemez. <br>
+
+(2) <span class="kim"> Aşağıdaki hallerde kişi işlenen suçtan dolayı yardım eden sıfatıyla sorumlu olur:</span>
+<div>
+a) Suç işlemeye teşvik etmek veya suç işleme <span class="ark"> kararını kuvvetlendirmek </span> veya fiilin işlenmesinden sonra yardımda bulunacağını vaat etmek.
+
+b) Suçun nasıl işleneceği hususunda <span class="ark"> yol göstermek</span>  veya fiilin işlenmesinde kullanılan <span class="ark"> araçları sağlamak</span>.
+
+c) Suçun işlenmesinden <span class="ark"> önce veya işlenmesi sırasında yardımda</span>  bulunarak icrasını kolaylaştırmak.</div></div></div></div>
+
+<div>
+
+Bağlılık kuralı
+<div>
+Madde 40-<div>  (1) Suça iştirak için kasten ve hukuka aykırı işlenmiş bir fiilin varlığı yeterlidir. Suçun işlenişine iştirak eden her kişi, diğerinin cezalandırılmasını önleyen kişisel nedenler göz önünde bulundurulmaksızın <span class="mavi"> kendi kusurlu fiiline göre cezalandırılır.</span>  <br>
+
+(2) Özgü suçlarda, ancak özel faillik niteliğini taşıyan kişi fail olabilir. Bu suçların işlenişine iştirak eden diğer kişiler ise azmettiren veya yardım eden olarak sorumlu tutulur. <br>
+
+(3) <span class="kim"> Suça iştirakten dolayı sorumlu tutulabilmek için</span> <span class="mavi"> ilgili suçun en azından teşebbüs aşamasına varmış olması gerekir</span>.</div></div></div>
+
+
+<div>
+İştirak hâlinde işlenen suçlarda gönüllü vazgeçme
+<div>
+Madde 41- <div> (1) İştirak halinde işlenen suçlarda, sadece gönüllü vazgeçen suç ortağı, <span class="mavi"> gönüllü vazgeçme hükümlerinden yararlanır.</span>  <br>
+
+(2) Suçun;
+<div>
+a) Gönüllü vazgeçenin gösterdiği gayreti dışında başka bir sebeple işlenmemiş olması, <br>
+
+b) Gönüllü vazgeçenin bütün gayretine rağmen işlenmiş olması,</div>
+
+Hallerinde de gönüllü vazgeçme hükümleri uygulanır.</div></div></div>
+
+
+
+BEŞİNCİ BÖLÜM <br>
+
+Suçların İçtimaı <br>
+<div>
+Bileşik suç
+<div>
+Madde 42- (1) <span class="ark"> Biri diğerinin unsurunu</span> veya <span class="ark"> ağırlaştırıcı nedenini</span> oluşturması dolayısıyla tek fiil sayılan suça <span class="mavi"> bileşik suç denir.</span>  Bu tür suçlarda içtima hükümleri uygulanmaz.</div></div>
+
+
+<div>
+Zincirleme suç
+<div>
+Madde 43- <div> (1) Bir suç işleme kararının icrası kapsamında, <span class="ark"> değişik zamanlarda</span> <span class="span"> bir kişiye karşı</span> <span class="ark"> aynı suçun birden fazla işlenmesi durumunda</span> , <span class="mavi"> bir cezaya hükmedilir.</span>  Ancak bu ceza, dörtte birinden dörtte üçüne kadar <span class="mavi"> artırılır.</span>  Bir suçun temel şekli ile daha ağır veya daha az cezayı gerektiren <span class="mavi"> nitelikli şekilleri, aynı suç sayılır.</span>  (Ek cümle: 29/6/2005 – 5377/6 md.) <span class="mavi"> Mağduru belli bir kişi olmayan suçlarda da bu fıkra hükmü uygulanır.</span>  <br>
+
+(2) <span class="ark"> Aynı suçun birden fazla kişiye karşı</span> <span class="span"> tek bir fiille işlenmesi durumunda da</span>, <span class="mavi"> birinci fıkra hükmü uygulanır.</span>  <br>
+
+(3) <span class="ark"> Kasten öldürme</span>, <span class="ark">kasten yaralama</span>, <span class="ark"> işkence</span> ve  <span class="ark">yağma</span> suçlarında bu madde hükümleri <span class="mavi"> uygulanmaz</span> .[4]</div></div></div>
+
+<div>
+Fikri içtima
+<div>
+Madde 44- (1) <span class="ark"> İşlediği bir fiil ile</span> <span class="span"> birden fazla farklı suçun oluşmasına sebebiyet veren kişi</span>, <span class="mavi"> bunlardan <span class="dik">en ağır cezayı</span>  gerektiren suçtan dolayı cezalandırılır</span>.</div></div>
+
+
+
+ÜÇÜNCÜ KISIM <br>
+
+Yaptırımlar <br>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Cezalar <br>
+<div>
+Cezalar
+<div>
+Madde 45- (1) Suç karşılığında uygulanan yaptırım olarak cezalar, <span class="mavi"> hapis ve adlî para cezalarıdır</span>.</div></div>
+
+
+<div>
+Hapis cezaları
+<div>
+ Madde 46- (1) Hapis cezaları şunlardır:
+ <div>
+a) <span class="span"> Ağırlaştırılmış müebbet</span> hapis cezası. <br>
+
+b) <span class="span"> Müebbet</span> hapis cezası. <br>
+
+c) <span class="span"> Süreli hapis</span> cezası.</div></div></div>
+
+
+<div>
+Ağırlaştırılmış müebbet hapis cezası[5]
+<div>
+Madde 47- (1) Ağırlaştırılmış müebbet hapis cezası hükümlünün <span class="mavi"> hayatı boyunca devam eder,</span>  kanun ve Cumhurbaşkanınca çıkarılan yönetmelikte belirtilen <span class="mavi"> sıkı güvenlik rejimine göre çektirilir.</span> </div></div>
+
+
+<div>
+Müebbet hapis cezası
+<div>
+Madde 48- (1) Müebbet hapis cezası, <span class="mavi"> hükümlünün hayatı boyunca devam eder.</span></div></div>
+
+
+<div>
+Süreli hapis cezası
+<div>
+Madde 49-<div>  (1) Süreli hapis cezası, kanunda aksi belirtilmeyen hallerde <span class="ark"> bir aydan az</span>, <span class="ark"> yirmi yıldan fazla</span> <span class="mavi"> olamaz.</span><div> <button  onclick="soruyuGoster(399)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div> <br>
+
+(2) Hükmedilen <span class="kim"> bir yıl veya daha az süreli hapis cezası,</span> <span class="mavi"> kısa süreli hapis cezasıdır.</span> </div></div></div>
+
+
+<div>
+Kısa süreli hapis cezasına seçenek yaptırımlar
+<div>
+Madde 50- <div> (1) Kısa süreli hapis cezası, suçlunun kişiliğine, sosyal ve ekonomik durumuna, yargılama sürecinde duyduğu pişmanlığa ve suçun işlenmesindeki özelliklere göre;
+	<div>
+a) <span class="span"> Adlî para</span> cezasına, <br>
+
+b) Mağdurun veya kamunun uğradığı zararın <span class="span"> aynen iade,</span>  suçtan önceki hale getirme veya tazmin suretiyle, tamamen giderilmesine, <br>
+
+c) <span class="ark"> En  az iki yıl</span> süreyle, bir meslek veya sanat edinmeyi sağlamak amacıyla, gerektiğinde barınma imkanı da bulunan <span class="span"> bir eğitim kurumuna devam etmeye</span>, <br>
+
+d) Mahkûm olunan cezanın yarısından bir katına kadar süreyle, belirli yerlere gitmekten veya belirli etkinlikleri yapmaktan yasaklanmaya, <br>
+
+e) Sağladığı hak ve yetkiler kötüye kullanılmak suretiyle veya gerektirdiği dikkat ve özen yükümlülüğüne aykırı davranılarak suç işlenmiş olması durumunda; mahkûm olunan cezanın yarısından bir katına kadar süreyle, <span class="span"> ilgili ehliyet ve ruhsat belgelerinin geri alınmasına</span> , belli bir <span class="span"> meslek ve sanatı yapmaktan yasaklanmaya,</span> <br>
+
+f) Mahkûm olunan cezanın yarısından bir katına kadar süreyle ve gönüllü olmak koşuluyla <span class="span"> kamuya yararlı bir işte çalıştırılmaya</span>,</div>
+<span class="mavi">
+çevrilebilir. </span> <br>
+
+(2) Suç tanımında hapis cezası ile adlî para cezasının <span class="kim"> seçenek olarak öngörüldüğü hallerde,</span> <span class="ark"> hapis cezasına hükmedilmişse;</span> <span class="mavi"> bu ceza artık adlî para cezasına çevrilmez.</span>  <br>
+
+(3) Daha önce hapis cezasına mahkûm edilmemiş olmak koşuluyla, mahkûm olunan otuz gün ve daha az süreli hapis cezası ile fiili işlediği tarihte onsekiz yaşını doldurmamış veya altmışbeş yaşını bitirmiş bulunanların mahkûm edildiği bir yıl veya daha az süreli hapis cezası, birinci fıkrada yazılı seçenek yaptırımlardan birine çevrilir. <br>
+
+(4) <span class="kim"> Taksirli suçlardan dolayı hükmolunan hapis cezası uzun süreli de olsa;</span> bu ceza, diğer koşulların varlığı halinde, birinci fıkranın (a) bendine göre <span class="mavi"> adlî para cezasına çevrilebilir.</span>  Ancak, bu hüküm, <span class="mavi"> bilinçli taksir halinde uygulanmaz.</span>  <br>
+
+(5) Uygulamada asıl mahkûmiyet, bu madde hükümlerine göre çevrilen adlî para cezası veya tedbirdir. <br>
+
+(6) Hüküm kesinleştikten sonra Cumhuriyet savcılığınca yapılan <span class="ark"> tebligata rağmen otuz gün içinde</span>  seçenek tedbirin gereklerinin yerine getirilmesine <span class="ark"> başlanmaması</span> veya başlanıp da devam edilmemesi <span class="ark"> halinde,</span> infaz hâkimliği kısa süreli hapis cezasının tamamen veya kısmen infazına karar verir ve bu <span class="mavi"> karar derhal infaz edilir.</span>  Bu durumda, beşinci fıkra hükmü uygulanmaz.[6][7] <br>
+
+(7) Hükmedilen seçenek tedbirin hükümlünün elinde olmayan nedenlerle yerine getirilememesi durumunda, infaz hâkimliğince tedbir değiştirilir.(7)</div></div></div>
+
+
+<div>
+Hapis cezasının ertelenmesi
+<div>
+Madde 51- <div> (1) <span class="kim"> İşlediği suçtan dolayı iki yıl veya daha az süreyle hapis cezasına mahkûm edilen kişinin</span> <span class="mavi"> cezası ertelenebilir.</span>  Bu sürenin üst sınırı, fiili işlediği sırada <span class="ark"> onsekiz yaşını doldurmamış</span> veya <span class="ark"> altmışbeş yaşını bitirmiş</span> olan kişiler <span class="mavi"> bakımından  üç yıldır.</span>  Ancak, erteleme kararının verilebilmesi için kişinin;
+	<div>
+a) Daha önce kasıtlı bir suçtan dolayı üç aydan fazla hapis cezasına mahkûm edilmemiş olması, <br>
+
+b) Suçu işledikten sonra yargılama sürecinde gösterdiği pişmanlık dolayısıyla tekrar suç işlemeyeceği konusunda mahkemede bir kanaatin oluşması,</div>
+
+gerekir. <br>
+
+(2) Cezanın ertelenmesi, mağdurun veya kamunun uğradığı zararın aynen iade, suçtan önceki hale getirme veya tazmin suretiyle tamamen giderilmesi koşuluna bağlı tutulabilir. Bu durumda, koşul gerçekleşinceye kadar cezanın infaz kurumunda çektirilmesine devam edilir. Koşulun yerine getirilmesi halinde, infaz hâkimi kararıyla hükümlü infaz kurumundan derhal salıverilir.[8] <br>
+
+(3) Cezası ertelenen hükümlü hakkında, bir yıldan az, üç yıldan fazla olmamak üzere, bir denetim süresi belirlenir. Bu sürenin alt sınırı, mahkûm olunan ceza süresinden az olamaz. <br>
+
+(4) Denetim süresi içinde;
+<div>
+a) Bir meslek veya sanat sahibi olmayan hükümlünün, bu amaçla bir eğitim programına devam etmesine, <br>
+
+b) Bir meslek veya sanat sahibi hükümlünün, bir kamu kurumunda veya özel olarak aynı meslek veya sanatı icra eden bir başkasının gözetimi altında ücret karşılığında çalıştırılmasına, <br>
+
+c) Onsekiz yaşından küçük olan hükümlülerin, bir meslek veya sanat edinmelerini sağlamak amacıyla, gerektiğinde barınma imkanı da bulunan bir eğitim kurumuna devam etmesine,</div>
+
+mahkemece karar verilebilir. <br>
+
+(5) Mahkeme, denetim süresi içinde hükümlüye rehberlik edecek bir uzman kişiyi görevlendirebilir. Bu kişi, kötü alışkanlıklardan kurtulmasını ve sorumluluk bilinciyle iyi bir hayat sürmesini temin hususunda hükümlüye öğütte bulunur; eğitim gördüğü kurum yetkilileri veya nezdinde çalıştığı kişilerle görüşerek, istişarelerde bulunur; hükümlünün davranışları, sosyal uyumu ve sorumluluk bilincindeki gelişme hakkında üçer aylık sürelerle rapor düzenleyerek infaz hâkimine verir.(8) <br>
+
+(6) Mahkeme, hükümlünün kişiliğini ve sosyal durumunu göz önünde bulundurarak, denetim süresinin herhangi bir yükümlülük belirlemeden veya uzman kişi görevlendirmeden geçirilmesine de karar verebilir. <br>
+
+(7) Hükümlünün denetim süresi içinde kasıtlı bir suç işlemesi veya kendisine yüklenen yükümlülüklere, infaz hâkiminin uyarısına rağmen, uymamakta ısrar etmesi halinde; ertelenen cezanın kısmen veya tamamen infaz kurumunda çektirilmesine infaz hâkimliğince karar verilir.[9] <br>
+
+(8) Denetim süresi yükümlülüklere uygun veya iyi halli olarak geçirildiği takdirde, ceza infaz edilmiş sayılır.</div></div></div>
+
+<div>
+Adlî para cezası
+<div>
+Madde 52- <div> (1) Adlî para cezası, <span class="mavi"> <span class="dik"> beş günden</span> az ve kanunda aksine hüküm bulunmayan hallerde <span class="dik"> yediyüzotuz günden </span> fazla olmamak üzere belirlenen tam gün sayısının, bir gün karşılığı olarak takdir edilen miktar ile çarpılması suretiyle hesaplanan meblağın hükümlü tarafından Devlet Hazinesine ödenmesinden ibarettir.</span> <div> <button  onclick="soruyuGoster(400)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div> <br>
+
+(2) <span class="ark"> En az yirmi</span> ve <span class="ark"> en fazla yüz</span> Türk Lirası olan <span class="mavi"> bir gün karşılığı</span> adlî para cezasının miktarı, kişinin ekonomik ve diğer şahsi halleri göz önünde bulundurularak <span class="mavi"> takdir edilir.</span>
+
+(3) Kararda, adlî para cezasının belirlenmesinde esas alınan tam gün sayısı ile bir gün karşılığı olarak takdir edilen miktar ayrı ayrı gösterilir. <br>
+
+(4) Hakim, ekonomik ve şahsi hallerini göz önünde bulundurarak, kişiye adlî para cezasını ödemesi için hükmün kesinleşme tarihinden itibaren bir yıldan fazla olmamak üzere mehil verebileceği gibi, bu cezanın belirli taksitler halinde ödenmesine de karar verebilir. <span class="mavi"> Taksit süresi iki yılı geçemez ve taksit miktarı dörtten az olamaz.</span>  Kararda, taksitlerden birinin zamanında ödenmemesi halinde geri kalan kısmın tamamının tahsil edileceği ve ödenmeyen adlî para cezasının hapse çevrileceği belirtilir.</div></div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Güvenlik Tedbirleri <br>
+<div>
+Belli hakları kullanmaktan yoksun bırakılma[10][11]
+<div>
+Madde 53- <div> (1) Kişi, kasten işlemiş olduğu suçtan dolayı hapis cezasına mahkûmiyetin kanuni sonucu olarak;
+<div>
+a) Sürekli, süreli veya geçici bir kamu görevinin üstlenilmesinden; bu kapsamda, Türkiye Büyük Millet Meclisi üyeliğinden veya Devlet, il, belediye, köy veya bunların denetim ve gözetimi altında bulunan kurum ve kuruluşlarca verilen, atamaya veya seçime tabi bütün memuriyet ve hizmetlerde <span class="ark"> istihdam edilmekten,</span>  <br>
+
+b) <span class="ark"> Seçme ve seçilme</span> ehliyetinden (…)(11), <br>
+
+c) <span class="ark"> Velayet hakkından;</span> vesayet veya  kayyımlığa ait bir hizmette bulunmaktan, <br>
+
+d) Vakıf, dernek, sendika, şirket, kooperatif ve siyasi parti tüzel kişiliklerinin <span class="ark"> yöneticisi veya denetçisi olmaktan</span>, <br>
+
+e) Bir kamu kurumunun veya kamu kurumu niteliğindeki meslek kuruluşunun iznine tabi bir meslek veya sanatı, kendi sorumluluğu altında <span class="ark"> serbest meslek erbabı veya tacir olarak icra etmekten,</span> </div>
+<span class="mavi">
+yoksun bırakılır.</span>  <br>
+
+(2) Kişi, işlemiş bulunduğu suç dolayısıyla mahkûm olduğu <span class="mavi"> <span class="dik"> hapis cezasının</span>  infazı tamamlanıncaya kadar bu hakları kullanamaz.</span>  <br>
+
+(3) Mahkûm olduğu hapis cezası ertelenen veya denetimli serbestlik tedbiri uygulanarak cezası infaz edilen ya da koşullu salıverilen hükümlünün kendi altsoyu üzerindeki velayet, vesayet ve kayyımlık yetkileri açısından yukarıdaki fıkralar hükümleri uygulanmaz. Mahkûm olduğu hapis cezası <span class="ark"> ertelenen</span> veya denetimli serbestlik tedbiri uygulanarak cezası infaz edilen ya da koşullu salıverilen hükümlü hakkında birinci fıkranın (e) bendinde söz konusu edilen <span class="mavi"> hak yoksunluğunun uygulanmamasına karar verilebilir.</span>[12] <br>
+
+(4) <span class="ark"> Kısa süreli hapis cezası ertelenmiş</span> veya fiili işlediği sırada <span class="ark"> onsekiz yaşını doldurmamış</span> olan kişiler hakkında <span class="mavi"> birinci fıkra hükmü uygulanmaz</span>.[13] <br>
+
+(5) Birinci fıkrada sayılan hak ve yetkilerden birinin kötüye kullanılması suretiyle işlenen suçlar dolayısıyla hapis cezasına mahkûmiyet halinde, ayrıca, cezanın infazından sonra işlemek üzere, hükmolunan cezanın yarısından bir katına kadar bu hak ve yetkinin kullanılmasının yasaklanmasına karar verilir. Bu hak ve yetkilerden birinin kötüye kullanılması suretiyle işlenen suçlar dolayısıyla sadece adlî para cezasına mahkûmiyet halinde, hükümde belirtilen gün sayısının yarısından bir katına kadar bu hak ve yetkinin kullanılmasının yasaklanmasına karar verilir. Hükmün kesinleşmesiyle icraya konan yasaklama ile ilgili süre, adlî para cezasının tamamen infazından itibaren işlemeye başlar. <br>
+
+(6) Belli bir meslek veya sanatın ya da trafik düzeninin gerektirdiği dikkat ve özen yükümlülüğüne aykırılık dolayısıyla işlenen taksirli suçtan mahkûmiyet halinde, üç aydan az ve üç yıldan fazla olmamak üzere, bu meslek veya sanatın icrasının yasaklanmasına ya da sürücü belgesinin geri alınmasına karar verilebilir. Yasaklama ve geri alma hükmün kesinleşmesiyle yürürlüğe girer ve süre, cezanın tümüyle infazından itibaren işlemeye başlar.</div></div></div>
+
+
+<div>
+Eşya müsaderesi
+<div>
+Madde 54-<div>  (1) İyiniyetli üçüncü kişilere ait olmamak koşuluyla, kasıtlı bir suçun işlenmesinde kullanılan veya suçun işlenmesine tahsis edilen ya da suçtan meydana gelen eşyanın müsaderesine hükmolunur. Suçun işlenmesinde kullanılmak üzere hazırlanan eşya, kamu güvenliği, kamu sağlığı veya genel ahlak açısından tehlikeli olması durumunda müsadere edilir. (Ek cümle: 24/11/2016-6763/11 md.) Eşyanın üzerinde iyiniyetli üçüncü kişiler lehine tesis edilmiş sınırlı ayni hakkın bulunması hâlinde müsadere kararı, bu hak saklı kalmak şartıyla verilir. <br>
+
+(2) Birinci fıkra kapsamına giren eşyanın, ortadan kaldırılması, elden çıkarılması, tüketilmesi veya <span class="mavi"> müsaderesinin başka bir surette imkansız kılınması halinde; bu eşyanın değeri kadar para tutarının müsaderesine karar verilir.</span>  <br>
+
+(3) Suçta kullanılan eşyanın müsadere edilmesinin işlenen suça nazaran daha ağır sonuçlar doğuracağı ve bu nedenle hakkaniyete aykırı olacağı anlaşıldığında, müsaderesine hükmedilmeyebilir. <br>
+
+(4) Üretimi, bulundurulması, kullanılması, taşınması, alım ve satımı <span class="mavi"> suç oluşturan eşya, müsadere edilir.</span>  <br>
+
+(5) Bir şeyin sadece bazı kısımlarının müsaderesi gerektiğinde, tümüne zarar verilmeksizin bu kısmı ayırmak <span class="mavi"> olanaklı ise, sadece bu kısmın müsaderesine karar verilir.</span>  <br>
+
+(6) Birden fazla kişinin paydaş olduğu eşya ile ilgili olarak, sadece suça <span class="mavi"> iştirak eden kişinin payının müsaderesine hükmolunur.</span> </div></div></div>
+
+
+<div>
+Kazanç müsaderesi
+<div>
+Madde 55- <div> (1) Suçun işlenmesi ile elde edilen veya suçun konusunu oluşturan ya da suçun işlenmesi için sağlanan maddi menfaatler ile bunların değerlendirilmesi veya dönüştürülmesi sonucu ortaya çıkan ekonomik kazançların müsaderesine karar verilir. Bu fıkra hükmüne göre müsadere kararı verilebilmesi için maddi menfaatin suçun mağduruna iade edilememesi gerekir. <br>
+
+(2) Müsadere konusu eşya veya maddi menfaatlere elkonulamadığı veya bunların merciine teslim edilmediği hallerde, bunların karşılığını oluşturan değerlerin müsaderesine hükmedilir. <br>
+
+(3) (Ek: 26/6/2009 – 5918/2 md.) Bu madde kapsamına giren eşyanın müsadere edilebilmesi için, eşyayı sonradan iktisap eden kişinin 22/11/2001 tarihli ve 4721 sayılı Türk Medenî Kanununun iyiniyetin korunmasına ilişkin hükümlerinden yararlanamıyor olması gerekir.</div></div></div>
+
+
+<div>
+Çocuklara özgü güvenlik tedbirleri
+<div>
+Madde 56- (1) Çocuklara özgü güvenlik tedbirlerinin neler olduğu ve ne suretle uygulanacakları <span class="mavi"> ilgili kanunda gösterilir.</span> </div></div>
+
+
+<div>
+Akıl hastalarına özgü güvenlik tedbirleri
+<div>
+Madde 57- <div> (1) Fiili işlediği sırada akıl hastası olan kişi hakkında, koruma ve tedavi amaçlı olarak <span class="mavi"> güvenlik tedbirine hükmedilir.</span>  Hakkında güvenlik tedbirine hükmedilen akıl hastaları, <span class="ark"> yüksek güvenlikli <span class="dik"> sağlık</span> kurumlarında</span>  <span class="mavi"> koruma ve tedavi altına alınırlar.</span> <br>
+
+(2) Hakkında güvenlik tedbirine hükmedilmiş olan akıl hastası, yerleştirildiği kurumun sağlık kurulunca düzenlenen raporda toplum açısından tehlikeliliğinin ortadan kalktığının veya <span class="mavi"> önemli ölçüde azaldığının belirtilmesi üzerine <span class="dik"> infaz hâkimi</span>  kararıyla serbest bırakılabilir</span>.[14] <br>
+
+(3) Sağlık kurulu raporunda, akıl hastalığının ve işlenen fiilin niteliğine göre, güvenlik bakımından kişinin tıbbi kontrol ve takibinin gerekip gerekmediği, gerekiyor ise, bunun süre ve aralıkları belirtilir. <br>
+
+(4) Tıbbi kontrol ve takip, raporda gösterilen süre ve aralıklarla, Cumhuriyet savcılığınca bu kişilerin teknik donanımı ve yetkili uzmanı olan sağlık kuruluşuna gönderilmeleri ile sağlanır. <br>
+
+(5) Tıbbi kontrol ve takipte, kişinin akıl hastalığı itibarıyla toplum açısından tehlikeliliğinin  <span class="ark"> arttığı anlaşıldığında</span>, hazırlanan rapora dayanılarak, infaz hâkimliğince <span class="ark"> yeniden</span> koruma ve tedavi amaçlı olarak <span class="mavi"> güvenlik tedbirine hükmedilir</span> . Bu durumda, bir ve devamı fıkralarda belirlenen işlemler tekrarlanır.(14) <br>
+
+(6) İşlediği fiille ilgili olarak hastalığı yüzünden davranışlarını yönlendirme yeteneği azalmış olan kişi hakkında birinci ve ikinci fıkra hükümlerine göre yerleştirildiği yüksek güvenlikli sağlık kuruluşunda düzenlenen kurul raporu üzerine, mahkûm olduğu hapis cezası, süresi aynı kalmak koşuluyla, kısmen veya tamamen, infaz hâkimi kararıyla akıl hastalarına özgü güvenlik tedbiri olarak da uygulanabilir.(14) <br>
+
+(7) Suç işleyen alkol ya da uyuşturucu veya uyarıcı madde bağımlısı kişilerin, güvenlik tedbiri olarak, alkol ya da uyuşturucu veya uyarıcı madde bağımlılarına özgü sağlık kuruluşunda tedavi altına alınmasına karar verilir. Bu kişilerin tedavisi, <span class="mavi">  alkol ya da uyuşturucu veya uyarıcı madde bağımlılığından kurtulmalarına kadar devam eder.</span>  Bu kişiler, yerleştirildiği kurumun sağlık kurulunca bu yönde düzenlenecek rapor üzerine infaz hâkimi kararıyla serbest bırakılabilir.(14)</div></div></div>
+
+
+<div>
+Suçta tekerrür ve özel tehlikeli suçlular
+<div>
+Madde 58- <div> (1) <span class="kim"> Önceden işlenen suçtan dolayı verilen hüküm kesinleştikten sonra</span> <span class="ark"> yeni bir suçun işlenmesi halinde,</span> <span class="mavi"> tekerrür hükümleri uygulanır.</span>  Bunun için cezanın infaz edilmiş olması gerekmez. <br>
+
+(2) Tekerrür hükümleri, önceden işlenen suçtan dolayı;
+<div>
+a) Beş yıldan fazla süreyle hapis cezasına mahkûmiyet halinde, bu cezanın infaz edildiği tarihten itibaren beş yıl, <br>
+
+b) Beş yıl veya daha az süreli hapis ya da adlî para cezasına mahkûmiyet halinde, bu cezanın infaz edildiği tarihten itibaren üç yıl,</div>
+
+geçtikten sonra işlenen suçlar dolayısıyla uygulanmaz. <br>
+
+(3) <span class="kim"> Tekerrür halinde,</span> sonraki suça ilişkin kanun maddesinde <span class="ark"> seçimlik olarak</span> hapis cezası ile adlî para cezası öngörülmüşse, <span class="mavi"> hapis cezasına hükmolunur.</span>  <br>
+
+(4) <span class="span"> Kasıtlı suçlarla</span> <span class="ark"> taksirli suçlar</span> ve <span class="span"> sırf askerî suçlarla</span> <span class="ark"> diğer suçlar arasında</span> <span class="mavi"> tekerrür hükümleri uygulanmaz.</span>  Kasten öldürme, kasten yaralama, yağma, dolandırıcılık, uyuşturucu veya uyarıcı madde imal ve ticareti ile parada veya kıymetli damgada sahtecilik suçları <span class="mavi"> hariç olmak üzere; yabancı ülke mahkemelerinden verilen hükümler tekerrüre esas olmaz.</span>  <br>
+
+(5) Fiili işlediği sırada <span class="ark"> onsekiz yaşını doldurmamış</span> olan kişilerin işlediği suçlar dolayısıyla <span class="mavi"> tekerrür hükümleri uygulanmaz.</span>  <br>
+
+(6) Tekerrür halinde hükmolunan ceza, <span class="mavi"> mükerrirlere özgü infaz rejimine göre çektirilir.</span>  Ayrıca, mükerrir hakkında cezanın infazından sonra denetimli serbestlik tedbiri uygulanır. <br>
+
+(7) Mahkûmiyet kararında, hükümlü hakkında mükerrirlere özgü infaz rejiminin ve cezanın infazından sonra denetimli serbestlik tedbirinin uygulanacağı belirtilir. <br>
+
+(8) Mükerrirlerin mahkûm olduğu cezanın infazı ile denetimli serbestlik tedbirinin uygulanması, kanunda gösterilen şekilde yapılır. <br>
+
+(9) Mükerrirlere özgü infaz rejiminin ve cezanın infazından sonra denetimli serbestlik tedbirinin, itiyadi suçlu, suçu meslek edinen kişi veya örgüt mensubu suçlu hakkında da uygulanmasına hükmedilir.</div></div></div>
+
+
+<div>
+Sınır dışı edilme
+<div>
+Madde 59- (Değişik: 31/3/2005 – 5328/1 md.) <br>
+
+(1) İşlediği suç nedeniyle hapis cezasına mahkûm edilen yabancı, denetimli serbestlik tedbiri uygulanarak cezasının infazına veya koşullu salıverilmesine karar verildikten ve her halde cezasının infazı tamamlandıktan <span class="dik"> sonra,</span>  durumu, sınır dışı işlemleriyle ilgili olarak <span class="mavi"> değerlendirilmek üzere derhal İçişleri Bakanlığına bildirilir.</span> [15]</div></div>
+
+
+<div>
+Tüzel kişiler hakkında güvenlik tedbirleri
+<div>
+Madde 60- <div> (1) Bir kamu kurumunun verdiği izne dayalı olarak faaliyette bulunan özel hukuk tüzel kişisinin organ veya temsilcilerinin iştirakiyle ve bu iznin verdiği yetkinin kötüye kullanılması suretiyle tüzel kişi yararına <span class="mavi"> işlenen kasıtlı suçlardan mahkûmiyet halinde, iznin iptaline karar verilir.</span> <br>
+
+(2) Müsadere hükümleri, yararına işlenen suçlarda özel hukuk tüzel kişileri hakkında da uygulanır. <br>
+
+(3) Yukarıdaki fıkralar hükümlerinin uygulanmasının işlenen fiile nazaran daha ağır sonuçlar ortaya çıkarabileceği durumlarda, hakim bu tedbirlere hükmetmeyebilir. <br>
+
+(4) Bu madde hükümleri kanunun ayrıca belirttiği hallerde uygulanır.</div></div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Cezanın Belirlenmesi ve Bireyselleştirilmesi <br>
+<div>
+Cezanın belirlenmesi
+<div>
+MADDE 61. - <div> (1) Hakim, somut olayda;
+	<div>
+a) Suçun işleniş <span class="span"> biçimini,</span> <br>
+
+b) Suçun işlenmesinde <span class="span"> kullanılan araçları</span>, <br>
+
+c) Suçun işlendiği <span class="span"> zaman ve yeri</span>, <br>
+
+d) <span class="span"> Suçun konusunun önem ve değerini</span>, <br>
+
+e) Meydana gelen <span class="span"> zarar veya tehlikenin ağırlığını</span>, <br>
+
+f) Failin <span class="span"> kast veya taksire dayalı</span> kusurunun ağırlığını, <br>
+
+g) Failin <span class="span"> güttüğü amaç ve saiki</span>,</div>
+<span class="ark">
+Göz önünde bulundurarak,</span> işlenen suçun kanuni tanımında öngörülen cezanın alt ve üst sınırı arasında <span class="mavi"> temel cezayı belirler.</span>  <br>
+
+(2) Suçun olası kastla ya da bilinçli taksirle işlenmesi nedeniyle indirim veya artırım, birinci fıkra hükmüne göre belirlenen ceza üzerinden yapılır. <br>
+
+(3) Birinci fıkrada belirtilen hususların suçun unsurunu oluşturduğu hallerde, bunlar temel cezanın belirlenmesinde ayrıca göz önünde bulundurulmaz. <br>
+
+(4) Bir suçun temel şekline nazaran daha ağır veya daha az cezayı gerektiren birden fazla nitelikli hallerin gerçekleşmesi durumunda; temel cezada önce artırma sonra indirme yapılır. <br>
+
+(5) Yukarıdaki fıkralara göre <span class="mavi"> belirlenen ceza üzerinden <span class="dik"> sırasıyla </span> teşebbüs, iştirak, zincirleme suç, haksız tahrik, yaş küçüklüğü, akıl hastalığı ve cezada indirim yapılmasını gerektiren şahsi sebeplere ilişkin hükümler ile takdiri indirim nedenleri uygulanarak sonuç <span class="dik"> ceza belirlenir</span> .</span>  <br>
+
+(6) Hapis cezasının süresi gün, ay ve yıl hesabıyla belirlenir. <span class="ark"> Bir gün</span>, <span class="mavi"> yirmidört saat</span>; <span class="ark"> bir ay,</span> <span class="mavi"> otuz gündür</span>. <span class="mavi"> Yıl, resmi takvime göre hesap edilir.</span>  Hapis cezası için bir günün, adlî para cezası için <span class="ark"> bir Türk Lirasının artakalanı</span> <span class="mavi"> hesaba katılmaz ve bu cezalar infaz edilmez.</span>  <br>
+
+(7) (Ek: 29/6/2005 – 5377/7 md.) <span class="kim"> Süreli hapis cezasını gerektiren</span>  bir suçtan dolayı bu madde hükümlerine göre belirlenen <span class="mavi"> sonuç ceza, otuz yıldan fazla olamaz.</span>  <br>
+
+(8) (Ek: 29/6/2005 – 5377/7 md.) <span class="kim"> Adlî para cezası hesaplanırken</span>, bu madde hükmüne göre cezanın belirlenmesi ve bireyselleştirilmesine yönelik <span class="ark"> artırma ve indirimler,</span> <span class="mavi"> gün üzerinden yapılır.</span>  Adlî para cezası, belirlenen sonuç gün ile kişinin bir gün karşılığı ödeyebileceği miktarın çarpılması suretiyle bulunur. <br>
+
+(9) (Ek: 6/12/2006 – 5560/1 md.) <span class="kim"> Adlî para cezasının seçimlik ceza olarak öngörüldüğü suçlarda</span>  bu cezaya ilişkin gün biriminin <span class="span"> alt sınırı</span>, o suç tanımındaki <span class="ark"> hapis cezasının alt sınırından az</span>;  <span class="span"> üst sınırı da</span> , <span class="ark"> hapis cezasının üst sınırından</span> <span class="mavi"> fazla olamaz.</span>  <br>
+
+(10) Kanunda açıkça yazılmış olmadıkça cezalar ne artırılabilir, ne eksiltilebilir, ne de değiştirilebilir.[16][17]</div></div></div>
+
+
+<div>
+Takdiri indirim nedenleri
+<div>
+Madde 62- <div> (1) Fail yararına cezayı hafifletecek takdiri nedenlerin varlığı halinde, ağırlaştırılmış müebbet hapis cezası yerine, müebbet hapis; müebbet hapis cezası yerine, yirmibeş yıl hapis cezası verilir. Diğer cezaların altıda birine kadarı indirilir.[18] <br>
+
+(2) Takdiri indirim nedeni olarak, failin geçmişi, sosyal ilişkileri, fiilden sonraki ve yargılama sürecindeki pişmanlığını gösteren davranışları veya cezanın failin geleceği üzerindeki olası etkileri (…)[19] göz önünde bulundurulabilir. (Ek cümle:12/5/2022-7406/1 md.) <span class="ark"> Ancak failin duruşmadaki mahkemeyi etkilemeye yönelik şeklî tutum ve davranışları</span>, <span class="mavi"> takdiri indirim nedeni olarak dikkate alınmaz.</span>  Takdiri indirim nedenleri kararda gerekçeleriyle gösterilir.(19)</div></div></div>
+
+
+<div>
+Mahsup
+<div>
+Madde 63- (1) Hüküm kesinleşmeden önce gerçekleşen ve şahsi hürriyeti sınırlama sonucunu doğuran bütün haller nedeniyle geçirilmiş süreler, <span class="mavi"> hükmolunan hapis cezasından indirilir.</span> <span class="kim"> Adlî para cezasına hükmedilmesi durumunda,</span> <span class="mavi"> bir gün <span class="dik"> yüz Türk Lirası</span>  sayılmak üzere, bu cezadan indirim yapılır</span> .</div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM <br>
+
+Dava ve Cezanın Düşürülmesi <br>
+<div>
+Sanığın veya hükümlünün ölümü
+<div>
+Madde 64-<div>  (1) Sanığın ölümü halinde kamu davasının <span class="mavi"> düşürülmesine karar verilir.</span> Ancak, niteliği itibarıyla müsadereye tabi eşya ve maddi menfaatler hakkında davaya devam olunarak bunların müsaderesine hükmolunabilir. <br>
+
+(2) Hükümlünün ölümü, hapis ve henüz infaz edilmemiş adlî para cezalarını ortadan kaldırır. Ancak, müsadereye ve yargılama giderlerine ilişkin olup ölümden önce kesinleşmiş bulunan hüküm, infaz olunur.</div></div></div>
+
+<div>
+
+Af
+<div>
+Madde 65-<div> (1) <span class="kim"> Genel af halinde,</span> <span class="mavi"> kamu davası düşer,</span>  hükmolunan cezalar <span class="mavi"> bütün neticeleri ile birlikte ortadan kalkar.</span>  <br>
+
+(2) <span class="kim"> Özel af ile hapis cezasının</span>  infaz kurumunda çektirilmesine <span class="mavi"> son verilebilir</span> veya infaz kurumunda çektirilecek süresi <span class="mavi"> kısaltılabilir </span> ya da <span class="mavi"> adlî para cezasına çevrilebilir.</span>  <br>
+
+(3) Cezaya bağlı olan veya hükümde belirtilen <span class="mavi"> hak yoksunlukları, <span class="dik"> özel affa</span>  rağmen etkisini devam ettirir</span> .</div></div></body>
+
+
+<div>
+Dava zamanaşımı
+<div>
+Madde 66- <div> (1) Kanunda başka türlü yazılmış olan haller dışında kamu davası;
+	<div>
+a) <span class="ark"> Ağırlaştırılmış müebbet</span> hapis cezasını gerektiren suçlarda <span class="mavi"> otuz yıl</span>, <br>
+<div> <button  onclick="soruyuGoster(81)" class="soru" >2023 yılı çıkmış soru</button> </div><div> <button  onclick="soruyuGoster(276)" class="soru" >2017 yılı çıkmış soru</button> </div>
+b) <span class="ark"> Müebbet</span> hapis cezasını gerektiren suçlarda <span class="mavi"> yirmibeş yıl</span>, <br>
+
+c) <span class="ark"> Yirmi yıldan aşağı</span> olmamak üzere hapis cezasını gerektiren suçlarda <span class="mavi"> yirmi yıl</span>, <br>
+
+d) <span class="ark"> Beş yıldan fazla ve yirmi yıldan az hapis cezasını</span> gerektiren suçlarda <span class="mavi"> onbeş yıl</span>, <br>
+
+e) <span class="ark"> Beş yıldan fazla olmamak üzere hapis veya adlî para cezasını gerektiren</span>  suçlarda <span class="mavi"> sekiz yıl</span>,</div>
+<span class="mavi">
+geçmesiyle düşer.</span>  <br>
+
+(2) Fiili işlediği sırada <span class="kim"> oniki yaşını doldurmuş olup da onbeş yaşını doldurmamış olanlar hakkında,</span> <span class="mavi"> bu sürelerin yarısının;</span> <span class="kim"> onbeş yaşını doldurmuş olup da onsekiz yaşını doldurmamış olan kişiler hakkında ise,</span> <span class="mavi"> üçte ikisinin geçmesiyle kamu davası düşer.</span>  <br>
+
+(3) Dava zamanaşımı süresinin belirlenmesinde dosyadaki mevcut deliller itibarıyla suçun daha ağır cezayı gerektiren nitelikli halleri de göz önünde bulundurulur. <br>
+
+(4) Yukarıdaki fıkralarda yer alan sürelerin belirlenmesinde suçun kanunda yer alan cezasının yukarı sınırı göz önünde bulundurulur; <span class="kim"> seçimlik cezaları gerektiren suçlarda zamanaşımı bakımından</span> <span class="mavi"> hapis cezası esas alınır.</span>  <br>
+
+(5) (Değişik: 29/6/2005 – 5377/8 md.) Aynı fiilden dolayı tekrar yargılamayı gerektiren hallerde, mahkemece bu husustaki talebin kabul edildiği tarihten itibaren fiile ilişkin zamanaşımı süresi yeni baştan işlemeye başlar. <br>
+
+(6) <span class="kim"> Zamanaşımı,</span> tamamlanmış suçlarda <span class="mavi"> suçun işlendiği günden,</span> <span class="ark"> teşebbüs halinde kalan suçlarda</span> <span class="mavi"> son hareketin yapıldığı günden,</span> <span class="ark"> kesintisiz suçlarda</span> <span class="mavi"> kesintinin gerçekleştiği </span> ve <span class="ark"> zincirleme suçlarda</span> <span class="mavi"> son suçun işlendiği günden</span> , <span class="ark"> çocuklara karşı üstsoy veya bunlar üzerinde hüküm ve nüfuzu olan kimseler tarafından işlenen suçlarda</span> <span class="mavi"> çocuğun onsekiz yaşını bitirdiği günden itibaren işlemeye başlar.</span>  <br>
+
+(7) Bu Kanunun İkinci Kitabının Dördüncü Kısmında yazılı ağırlaştırılmış müebbet veya müebbet veya on yıldan fazla hapis cezalarını gerektiren suçların yurt dışında işlenmesi halinde dava zamanaşımı uygulanmaz.</div></div></div>
+
+
+<div>
+Dava zamanaşımı süresinin durması veya kesilmesi
+<div>
+Madde 67- <div> (1) Soruşturma ve kovuşturma yapılmasının, <span class="span"> izin veya karar alınması</span> veya diğer bir mercide çözülmesi gereken bir meselenin sonucuna bağlı bulunduğu hallerde; izin veya kararın alınmasına veya meselenin çözümüne veya kanun gereğince hakkında kaçak olduğu hususunda karar verilmiş olan suç faili hakkında bu karar kaldırılıncaya <span class="mavi"> kadar dava zamanaşımı durur.</span>  <br>
+
+(2) Bir suçla ilgili olarak;
+<div>
+a) Şüpheli veya sanıklardan birinin <span class="span"> savcı huzurunda ifadesinin alınması</span> veya sorguya çekilmesi, <br>
+
+b) Şüpheli veya sanıklardan biri hakkında <span class="span"> tutuklama kararının verilmesi,</span> <br>
+
+c) Suçla ilgili olarak <span class="span"> iddianame düzenlenmesi,</span> <br>
+
+d) Sanıklardan bir kısmı hakkında da olsa, <span class="span"> mahkûmiyet kararı verilmesi</span>,</div>
+<span class="mavi">
+halinde, dava zamanaşımı kesilir.</span>  <br>
+
+(3) Dava zamanaşımı kesildiğinde, zamanaşımı süresi yeniden işlemeye başlar. Dava zamanaşımını kesen birden fazla nedenin bulunması halinde, zamanaşımı süresi son kesme nedeninin gerçekleştiği tarihten itibaren yeniden işlemeye başlar. <br>
+
+(4) <span class="kim"> Kesilme halinde,</span> zamanaşımı süresi ilgili suça ilişkin olarak Kanunda belirlenen sürenin <span class="mavi"> en fazla yarısına kadar uzar</span> .</div></div></div>
+
+
+<div>
+Ceza zamanaşımı
+<div>
+Madde 68- <div> (1) Bu maddede yazılı cezalar aşağıdaki sürelerin geçmesiyle infaz edilmez:
+	<div>
+a) <span class="ark"> Ağırlaştırılmış müebbet</span> hapis cezalarında <span class="mavi"> kırk yıl.</span> <br>
+
+b) <span class="ark"> Müebbet</span> hapis cezalarında <span class="mavi"> otuz yıl</span>. <br>
+
+c) <span class="ark"> Yirmi yıl ve daha fazla süreli </span> hapis cezalarında <span class="mavi"> yirmidört yıl</span>. <br>
+
+d) <span class="ark"> Beş yıldan fazla</span> hapis cezalarında <span class="mavi"> yirmi yıl</span>. <br>
+
+e) <span class="ark"> Beş yıla kadar hapis ve adlî para cezalarında</span> <span class="mavi"> on yıl</span>.</div>
+
+(2) Fiili işlediği sırada <span class="kim"> oniki yaşını doldurmuş olup da onbeş yaşını doldurmamış olanlar hakkında</span>,<span class="mavi"> bu sürelerin yarısının;</span> <span class="kim"> onbeş yaşını doldurmuş olup da onsekiz yaşını doldurmamış olan kişiler hakkında ise,</span> <span class="mavi"> üçte ikisinin geçmesiyle ceza infaz edilmez.</span>  <br>
+
+(3) Bu Kanunun İkinci Kitabının Dördüncü Kısmında yazılı yurt dışında işlenmiş suçlar dolayısıyla verilmiş ağırlaştırılmış müebbet hapis veya müebbet hapis veya on yıldan fazla hapis cezalarında zamanaşımı uygulanmaz. <br>
+
+(4) Türleri başka başka cezaları içeren hükümler, en ağır ceza için konulan sürenin geçmesiyle infaz edilmez <br>
+
+(5) Ceza zamanaşımı, hükmün kesinleştiği veya infazın herhangi bir suretle kesintiye uğradığı günden itibaren işlemeye başlar ve kalan ceza miktarı esas alınarak süre hesaplanır.</div></div></div>
+
+
+<div>
+Ceza zamanaşımı ve hak yoksunlukları
+<div>
+Madde 69- (1) Cezaya bağlı olan veya hükümde belirtilen hak yoksunluklarının süresi <span class="mavi"> ceza zamanaşımı doluncaya kadar devam eder</span>.</div></div>
+
+
+<div>
+Müsaderede zamanaşımı
+<div>
+Madde 70- (1) Müsadereye ilişkin hüküm, <span class="mavi"> kesinleşmeden itibaren yirmi yıl geçtikten sonra infaz edilmez</span>.</div></div>
+
+
+<div>
+Ceza zamanaşımının kesilmesi
+<div>
+Madde 71-<div>  (1) Mahkûmiyet hükmünün infazı için yetkili merci tarafından hükümlüye kanuna göre yapılan tebligat veya bu maksatla <span class="mavi"> hükümlünün yakalanması ceza zamanaşımını keser.</span>  <br>
+
+(2) Bir suçtan dolayı mahkûm olan kimse üst sınırı iki yıldan fazla hapis cezasını gerektiren kasıtlı bir suç işlediği takdirde, ceza zamanaşımı kesilir.</div></div></div>
+
+
+<div>
+Zamanaşımının hesabı ve uygulanması
+<div>
+Madde 72-<div>  (1) Dava ve ceza zamanaşımı süreleri gün, ay ve yıl hesabıyla belirlenir. <span class="ark"> Bir gün</span> , <span class="mavi"> yirmidört saat</span>; <span class="ark"> bir ay,</span> <span class="mavi"> otuz gündür.</span> <span class="ark"> Yıl,</span> <span class="mavi"> resmi takvime göre hesap edilir.</span>  <br>
+
+(2) Dava ve ceza zamanaşımı re'sen uygulanır ve <span class="mavi"> bundan şüpheli, sanık ve hükümlü vazgeçemezler.</span> </div></div></div>
+
+
+<div>
+Soruşturulması ve kovuşturulması şikayete bağlı suçlar[20]
+<div>
+Madde 73- <div> (1) Soruşturulması ve kovuşturulması şikayete bağlı olan suç hakkında yetkili kimse <span class="mavi"> <span class="dik"> altı ay içinde</span> şikayette bulunmadığı takdirde soruşturma ve kovuşturma yapılamaz.</span> <br>
+
+(2) Zamanaşımı süresini geçmemek koşuluyla bu süre, şikayet hakkı olan kişinin fiili ve <span class="mavi"> failin kim olduğunu bildiği veya öğrendiği günden başlar.</span>  <br>
+
+<br> (9. yargı paketi ile 07/11/2024 tarihinde eklendi) “Ancak, soruşturulması ve kovuşturulması şikâyete bağlı olan hakaret suçu bakımından şikâyet süresi, her ne suretle olursa olsun fiilin gerçekleştiği tarihten itibaren <span class="mavi"> iki yılı geçemez.</span>” <br>
+
+(3) Şikayet hakkı olan birkaç kişiden birisi altı aylık süreyi geçirirse bundan dolayı <span class="mavi"> diğerlerinin hakları düşmez.</span>  <br>
+
+(4) Kovuşturma yapılabilmesi şikayete bağlı suçlarda kanunda aksi yazılı olmadıkça suçtan zarar gören kişinin vazgeçmesi davayı düşürür ve hükmün kesinleşmesinden sonraki vazgeçme cezanın infazına engel olmaz. <br>
+
+(5) <span class="kim"> İştirak halinde suç işlemiş sanıklardan</span>   <span class="mavi"> biri hakkındaki şikayetten vazgeçme, diğerlerini de kapsar.</span>  <br>
+
+(6) Kanunda aksi yazılı olmadıkça, <span class="mavi"> vazgeçme onu kabul etmeyen sanığı etkilemez.</span>  <br>
+
+(7) Kamu davasının düşmesi, suçtan zarar gören kişinin şikayetten vazgeçmiş olmasından ileri gelmiş ve vazgeçtiği sırada şahsi haklarından da vazgeçtiğini ayrıca açıklamış ise artık hukuk mahkemesinde de dava açamaz. <br>
+
+(8) (Mülga: 6/12/2006 – 5560/45 md.)</div></div></div>
+
+
+<div>
+Dava veya cezanın düşmesinin etkisi
+<div>
+Madde 74- <div> (1) Genel af, özel af ve şikayetten vazgeçme, müsadere olunan şeylerin veya <span class="mavi"> ödenen adlî para cezasının geri alınmasını gerektirmez.</span>  <br>
+
+(2) Kamu davasının düşmesi, malların geri alınması ve uğranılan zararın tazmini için açılan şahsi hak davasını etkilemez. <br>
+
+(3) Cezanın düşmesi şahsi haklar, tazminat ve yargılama giderlerine ilişkin hükümleri etkilemez. Ancak, <span class="mavi"> genel af halinde yargılama giderleri de istenemez</span> .</div></div></div>
+
+
+<div>
+Önödeme[21]
+<div>
+Madde 75- <div> (1) <span class="ark"> Uzlaşma kapsamındaki suçlar hariç</span> olmak üzere, <span class="ark"> yalnız adlî para cezasını</span> gerektiren veya kanun maddesinde öngörülen hapis cezasının <span class="ark"> yukarı sınırı altı ayı aşmayan</span> <span class="kim"> suçların faili;</span>
+	<div>
+a) Adlî para cezası maktu ise bu miktarı, <span class="span"> değilse aşağı sınırını</span>, <br>
+
+b) Hapis cezasının aşağı sınırının karşılığı olarak her gün için <span class="span"> otuz Türk Lirası üzerinden bulunacak miktarı</span>, <br>
+
+c) Hapis cezası ile birlikte adlî para cezası da öngörülmüş ise, hapis cezası için bu fıkranın (b) bendine göre belirlenecek miktar ile <span class="span"> adlî para cezasının aşağı sınırını</span> ,</div>
+
+Soruşturma giderleri ile birlikte, Cumhuriyet savcılığınca yapılacak tebliğ üzerine <span class="mavi"> on gün içinde ödediği takdirde hakkında kamu davası açılmaz.</span>  (Ek cümleler:17/10/2019-7188/16 md.) Failin on gün içinde talep etmesi koşuluyla bu miktarın birer ay ara ile üç eşit taksit hâlinde ödenmesine Cumhuriyet savcısı tarafından karar verilir. Taksitlerin süresinde ödenmemesi hâlinde önödeme hükümsüz kalır ve soruşturmaya devam edilir. (Ek cümle: 24/11/2016-6763/12 md.) Taksirli suçlar hariç olmak üzere, önödemeye bağlı olarak kovuşturmaya yer olmadığına veya kamu davasının düşmesine karar verildiği tarihten itibaren beş yıl içinde önödemeye tabi bir suçu işleyen faile bu fıkra uyarınca teklif edilecek önödeme miktarı yarı oranında artırılır. <br>
+
+(2) Özel kanun hükümleri gereğince işin doğrudan mahkemeye intikal etmesi halinde de fail, hakim tarafından yapılacak bildirim üzerine birinci fıkra hükümlerine göre saptanacak miktardaki parayı yargılama giderleriyle birlikte ödediğinde kamu davası düşer. <br>
+
+(3) Cumhuriyet savcılığınca madde kapsamına giren suç nedeniyle önödeme işlemi yapılmadan dava açılması veya dava konusu fiilin niteliğinin değişmesi suretiyle madde kapsamına giren bir suça dönüşmesi halinde de yukarıdaki fıkra uygulanır. <br>
+
+(4) Suçla ilgili kanun maddesinde yukarı sınırı altı ayı aşmayan hapis cezası veya adlî para cezasından yalnız <span class="ark"> birinin uygulanabileceği hallerde</span> ödenmesi gereken miktar, yukarıdaki fıkralara göre <span class="mavi"> adlî para cezası esas alınarak belirlenir</span>.[22] <br>
+
+(5) Bu madde gereğince kamu davasının açılmaması veya ortadan kaldırılması, kişisel hakkın istenmesine, malın geri alınmasına ve müsadereye ilişkin hükümleri etkilemez. <br>
+
+(6) (Ek: 24/11/2016-6763/12 md.) Bu madde hükümleri;
+<div>
+a) Bu Kanunda yer alan;
+<div>
+1. Yardım veya bildirim yükümlülüğünün yerine getirilmemesi (98 inci maddenin birinci fıkrası), <br>
+
+2. Genel güvenliğin taksirle tehlikeye sokulması (madde 171), <br>
+
+3. Çevrenin taksirle kirletilmesi (182 nci maddenin birinci fıkrası), <br>
+
+4. Özel işaret ve kıyafetleri usulsüz kullanma (264 üncü maddenin birinci fıkrası), <br>
+
+5. Suçu bildirmeme (278 inci maddenin birinci ve ikinci fıkraları),</div>
+
+suçları, <br>
+
+b) 31/8/1956 tarihli ve 6831 sayılı Orman Kanununun 108 inci maddesinin birinci fıkrasında yer alan suç, <br>
+
+c) (Ek:17/10/2019-7188/16 md.) 21/7/1983 tarihli ve 2863 sayılı Kültür ve Tabiat Varlıklarını Koruma Kanununun 74 üncü maddesinin ikinci fıkrasının birinci cümlesinde yer alan suç, <br>
+
+d) (Ek:17/10/2019-7188/16 md.) 4/11/2004 tarihli ve 5253 sayılı Dernekler Kanununun 32 nci maddesinin birinci fıkrasının (d) bendinde yer alan suç,</div>
+
+bakımından da uygulanır. Bu fıkra kapsamındaki suçların beş yıl içinde tekrar işlenmesi hâlinde fail hakkında aynı suçtan dolayı önödeme hükümleri uygulanmaz. <br>
+
+(7) (Ek: 24/11/2016-6763/12 md.) Ödemede bulunulması üzerine verilen kovuşturmaya yer olmadığına dair kararlar ile düşme kararları, bunlara mahsus bir sisteme kaydedilir. Bu kayıtlar, ancak bir soruşturma veya kovuşturmayla bağlantılı olarak Cumhuriyet savcısı, hâkim veya mahkeme tarafından istenmesi hâlinde, bu maddede belirtilen amaç için kullanılabilir. </div></div></div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

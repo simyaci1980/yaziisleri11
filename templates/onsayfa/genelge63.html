@@ -1,0 +1,794 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+		body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.ark{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>genelge 63/2 hukuk uluslar arası istinabe</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+<br><br><br>
+<div id="kal" class="kal">T.C.ADALET BAKANLIĞI <br>
+ Uluslararası Hukuk ve Dış İlişkiler Genel Müdürlüğü <br>
+Konu : <span class="span"> Hukuki Konularda</span> Uluslararası İstinabe Taleplerine Uygulanacak Esaslar <br>
+GENELGENo: 63/2 </div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br>
+
+
+
+<div>  Uygulamada  karşılaşılan  sorunlar  dikkate  alınarak 01/03/2008  tarihli  ve  63/1  sayılı  Genelgemizin istinabeye ilişkin hükümleri yerine Hukuki Konularda Uluslararası İstinabe aleplerine Uygulanacak Esaslara dair Genelgenin yürürlüğe konulmasına ihtiyaç duyulmuştur.</div> <br>
+
+<div> BİRİNCİ BÖLÜM <span class="span"> TÜRKİYE’DEN YURT DIŞINA</span> YAPILACAK İSTİNABE TALEPLERİ
+
+<div> 1.Uluslararası <span class="span"> istinabenin kaynakları,</span>  <span class="span"> ikili anlaşma</span> veya <span class="span"> çok taraflı sözleşmeler</span> ile uluslararası adli   <span class="span"> yardımlaşma   kurallarıdır.</span>   Genel   olarak   uluslararası   usul   hukukunda   <span class="span"> istinabe,</span> mahkemenin görmekte olduğu bir davada nihaî<span class="span"> karara varabilmek için </span> fiilî ve hukuki engeller nedeniyle  yapamayacağı  tarafların  veya  <span class="span"> tanıkların  dinlenilmesi,  bilirkişi  incelemesi,  keşif yapılması gibi</span> usulî işlemleri yabancı <span class="span"> bir devletin yetkili makamına yaptırmasıdır.</span></div>
+
+<div> 2.Türkiye  bir  çok  devlet  ile istinabe  taleplerinin  yerine  getirilmesi  için  iki  taraflı  adli yardımlaşma  anlaşmaları  imzalamış  ve  aynı  zamanda  bu  konuda  en  önemli  uluslararası kaynakları oluşturan <span class="span"> 1954 tarihli Hukuk</span> Usulüne Dair Sözleşmesi (bundan sonra 1954 tarihli Sözleşme  olarak  anılacaktır)  ile  <span class="span"> 1970  tarihli  Hukukî  veya  Ticarî</span>   Konularda  Yabancı Ülkelerde  Delil  Sağlanması  Hakkında  Sözleşme’ye  (bundan  sonra  1970  tarihli  Sözleşme olarak anılacaktır) <span class="span"> taraf olmuştur.</span></div>
+
+<div>3.Kural  olarak,  yabancı  devletlerden  istinabe  talep  edilmesi  halinde;  <span class="span"> öncelikle</span>  o  devlet  ile Türkiye  arasında <span class="span"> ikili  anlaşma  veya  çok  taraflı  sözleşme </span>  olup  olmadığına  bakılır.  Eğer  bir anlaşma veya sözleşme varsa istinabe söz konusu anlaşma veya sözleşme hükümlerine göre yerine getirilir.</div>
+
+Çok Taraflı Adli Yardımlaşma Sözleşmesi Bulunması Halinde:
+
+<div> 4.1954 tarihli Sözleşmenin 8 ila 16’ncı maddeleri <span class="span"> arasında istinabe,</span> diğer maddelerinde de <span class="span"> adli müzaheret,  teminat,  yargılama  giderlerine  ilişkin  kararların  tenfizi</span>  gibi  adli  yardımlaşma konuları düzenlenmiştir.</div>
+<div></div>
+<div>
+5.1970 tarihli  Sözleşme <span class="span"> ise sadece istinabe konularını  düzenlemekte</span> olup  anılan Sözleşmenin 29’uncu  maddesinde  her  iki  Sözleşmeye  taraf  olan  devletler  bakımından  bu  Sözleşmenin, <span class="span"> 1954  tarihli  Sözleşmenin  8  ila  16’ncı  maddeleri  arasındaki  hükümlerin  yerini  alacağı belirtilmiştir.</span> </div> </div> <br>
+
+<div> 1970 Tarihli Sözleşmeye Göre İstinabe Usulü
+
+<div> 6.Sözleşmenin  1’inci  maddesi  uyarınca,  hukuki  ve  ticari  konularda  bir <span class="span"> âkit  devletin  adli makamı,</span>  kendi  kanun  hükümlerine  uygun  olarak  istinabe  yolu  ile <span class="span"> diğer  âkit  tarafın  yetkili makamından</span>  bir  adli  işlemin  <span class="span">  yerine  getirilmesini  veya  delil  sağlanmasını  talep  edebilir.</span> Ancak,  istinabe  yolu  ile  elde  edilmesi  amaçlanan  delillerin  açılmış  veya  açılacak  olan  <span class="span"> adli davalarda kullanılması gerekmektedir.</span></div>
+ <div>
+7.Sözleşmenin  2’nci  maddesi  uyarınca  anılan  Sözleşmenin  uygulanmasında   <span class="span"> Bakanlığımız Uluslararası  Hukuk  ve  Dış</span>  İlişkiler  Genel  Müdürlüğü  merkezî  makam  görevini <span class="span"> yerine getirmektedir.</span></div>
+<div>
+8. <span class="span"> Türkiye,</span>  Sözleşmenin  4’üncü  maddesinin  2’nci  fıkrasına  <span class="span"> koyduğu  çekince  ile</span>  Sözleşmenin 1’inci kısmına göre yerine getirilecek istinabe taleplerinin 4’üncü maddenin 1’inci ve 5’inci fıkralarına uygun olarak <span class="span"> Türkçe düzenlenmesi zorunluluğunu belirtmiştir.</span></div>
+<div>
+9.Türkiye  ayrıca,  Sözleşmenin  16  ve  17’nci  maddelerinde  öngörülen <span class="span"> izni  vermeye  yetkili makam</span>  olarak <span class="span"> Adalet Bakanlığı</span>’nın tayin edildiğini ve Sözleşmenin 23’üncü maddesine göre, <span class="span"> “Common   Law”</span>   devletlerinde   tanınan   bir   usul   olan   belgelerin   dava   öncesi   ortaya çıkarılmasını  sağlamak  amacına  yönelik  istinabe  taleplerini <span class="span"> yerine  getirmeyeceğini  beyan etmiştir.</span></div>
+<div>
+10.1970 tarihli Sözleşme’ye taraf olan devletler Ek (2)’de yer almaktadır.</div>
+
+<div>11.Sözleşmenin  “istinabe  talebi”  başlıklı  1  ilâ  14’üncü  maddelerinde  istinabe  talebinin düzenlenmesi  usulüne  göre;  yabancı  devlet  yetkili  makamlarına  gönderilecek  istinabe talebine esas olmak üzere, yapılması istenen işlemlerin belirtildiği, <span class="span"> ilgili adli makamın imza ve mührünü taşıyan bir istinabe <span class="ark"> talep yazısı </span>  düzenlenir </span> Ek (1). Ayrıca, istinabe işlemi yerine getirilirken  <span class="span"> hazır  bulunma  talebi  varsa</span>,  istinabenin  yapılacağı <span class="span"> yer  ve  tarihin  bildirilmesi istenir</span>.  Talep  yazısı  ile  eklenecek  evrakın <span class="span"> Türkçe  aslı</span>  veya  <span class="span"> onaylı  örneklerinin</span>  yabancı devletin   dilinde   yapılmış  <span class="span"> tercümeleri   ile</span>    birlikte  <span class="mavi"> ikişer   takım</span>   halinde   düzenlenerek <span class="ark"> Bakanlığımıza gönderilir.</span></div>
+
+<div>12.Sözleşme  uyarınca  bir  istinabe  talebinin yerine   getirilmesi,   talep   edilen   devletin   adli makamlarının  <span class="span"> yetkisine   girmemekte</span>    veya   talep   edilen   devletin  <span class="span"> egemenliğine</span>    veya <span class="span"> güvenliğine </span> zarar verebilecek nitelikte ise talep edilen devlet tarafından <span class="span"> reddedilebilir.</span></div>
+
+<div>13.Sözleşmeye taraf devletlerin yazışma dilleri Ek (3)’de yer almaktadır.</div></div><br>
+
+<div>
+1954 Tarihli Sözleşmeye Göre İstinabe Usulü
+
+<div> 14.Türkiye,  1954  tarihli  Sözleşmenin <span class="span"> 15’inci  maddesine  koyduğu  çekince  ile</span> <span class="span">  diplomatik memurların  veya  konsolosluk </span> görevlilerinin  sadece <span class="span">  kendi  vatandaşlarına  </span> karşı <span class="span"> istinabe</span>  yapabilme yetkisini <span class="span"> kabul etmiştir.</span></div>
+
+<div> 15.Sözleşmeye taraf olan devletler Ek (4)’de yer almaktadır.</div>
+
+<div>
+16.Sözleşmenin 8 ilâ l6’ncı Maddelerine Göre İstinabe Usulüa.Sözleşme  hükümlerine  göre  yabancı  devlet  yetkili  makamlarına  gönderilecek   istinabe talebine esas olmak üzere, yapılması istenen işlemlerin belirtildiği, ilgili adli makamın <span class="span"> imza ve mührünü taşıyan bir istinabe talep yazısı düzenlenir</span> Ek(1). Ayrıca, istinabe işlemi yerine getirilirken  <span class="span"> hazır  bulunma  talebi  varsa,</span>  istinabenin  yapılacağı <span class="span"> yer  ve  tarihin  bildirilmesi istenir.</span>  Talep yazısı ile eklenecek evrakın Türkçe aslı veya onaylı örnekleri, yabancı devletin dilinde  yapılmış  tercümeleri  ile  birlikte <span class="mavi"> ikişer  takım</span>  halinde  hazırlanarak  <span class="span"> Bakanlığımıza gönderilir</span>.b.Sözleşmesinin 9’uncu maddesi uyarınca <span class="span"> istinabe evrakı Bakanlığımızca <span class="ark"> diplomatik kanaldan</span> yabancı  devlet  makamına  gönderilir.</span>  <span class="span"> Mahkemelerimizin  </span>doğrudan  doğruya  yabancı  devlet makamından istinabe talebinde bulunma <span class="span"> yetkileri yoktur.</span> Bu tür talepler yabancı makamlarca <span class="span"> geri çevrilmektedir </span> .c.Sözleşmeye  göre  istinabe  talebinin  yerine  getirilmesi  ancak;  belgenin  <span class="span"> doğruluğu  tespit edilmemişse,</span>  talep  edilen  devlette  istinabenin  yapılması  adli  makamların  <span class="span"> yetkisi  dışında kalıyorsa</span>   veya  istinabenin  yapılacağı  devlet  bunun  ülkesinin  <span class="span"> egemenliğini  veya  güvenliğini</span>  ihlal edecek nitelikte olduğu <span class="span"> kanısına varırsa reddedilebilir.</span></div></div> <br>
+
+<div>
+İki Taraflı Adli Yardımlaşma Sözleşmesi Bulunması Halinde:
+
+<div> 17.İki   taraflı   adli   yardımlaşma   anlaşmasına   göre,   yabancı   devlet   yetkili   makamlarına gönderilecek istinabe talebine esas olmak üzere, yapılması istenen işlemlerin belirtildiği, ilgili adli  makamın  <span class="span"> imza  ve  mührünü  taşıyan  bir  istinabe  talep  yazısı  düzenlenir </span> Ek(1).  Ayrıca, istinabe  işlemi  yerine  getirilirken  hazır  bulunma  <span class="span"> talebi  varsa,</span>  istinabenin  yapılacağı  <span class="span"> yer  ve tarihin  bildirilmesi</span>  istenir.  Talep  yazısı  ile  eklenecek  evrakın  Türkçe  aslı  veya  onaylı örneklerinin  yabancı  devletin  dilinde  yapılmış  tercümeleri  ile  birlikte  <span class="mavi"> ikişer  takım</span>  halinde hazırlanarak <span class="span"> Bakanlığımıza gönderilmesi gerekir.</span></div>
+
+<div>
+18.İki  taraflı  adli  yardımlaşma  anlaşmasına  göre,  istinabe  talebi  ancak,  talep  edilen  devlette istinabenin  yapılması  adli  makamların <span class="span"> yetkisi  dışında</span>  kalıyorsa  veya  bu  devletin  <span class="span"> kamu düzenine, egemenliğine ya da güvenliğine</span> aykırı görülmekte ise <span class="span"> reddedilebilecektir.</span> </div>
+
+<div> 19.Devletlere göre istinabe işlemlerinde uygulanacak esaslar Ek(5)’tedir. </div> </div> <br>
+
+<div>
+	İkili Anlaşma veya Çok Taraflı Sözleşme <span class="ark" > Bulunmaması </span> Halinde:
+
+<div>
+20.İstinabe yapılacak devlet ile Türkiye  arasında bu konuda bir  anlaşma veya sözleşme <span class="span"> yoksa,</span>  istinabe  karşılıklılık  esasları  çerçevesinde <span class="span"> uluslararası  adli  yardımlaşma</span>  kurallarına  göre <span class="span"> yerine getirilir.</span></div>
+
+<div>
+21.Yabancı  devlet  yetkili  makamlarına  gönderilecek  istinabe  talebine  esas  olmak  üzere, yapılması  istenen  işlemlerin  belirtildiği,  ilgili <span class="span"> adli  makamın  imza  ve  mührünü  taşıyan </span> Ek(1)’de yer alan talep yazısı düzenlenir. Söz konusu talep yazısında, ayrıca <span class="span"> davacı ve davalı ile dinlenecek tanıkların isim ve adresleri</span>, kısaca davanın <span class="span"></span> konusu</span>, tanıklara <span class="span"> sorulacak sorular ile  istinabe  konusu  diğer hususlar</span>  <span class="ark"> maddeler  halinde  belirtilir.</span>  Talep  yazısı  ile  eklenecek evrakın Türkçe aslı veya onaylı örneklerinin, gönderilecek yabancı devletin dilinde yapılmış tercümeleri ile birlikte <span class="mavi"> ikişer takım </span> halinde hazırlanarak <span class="span"> Bakanlığımıza gönderilir.</span></div>
+
+
+İstinabe Evrakının Düzenlenmesinde <span class="span">  Dikkat Edilecek Hususlar</span>
+
+<div>
+22.İstinabe evrakı,  Türkçesi ve gönderilecek devlet  dilinde tercümesi  olmak üzere <span class="mavi
+"> ikişer takım</span> olarak  hazırlanır. <span class="span">  Bütün  sayfalar  nüsha  olarak  ayrı  ayrı  yazılmalı,</span>   karbon  kağıdı  veya fotokopi kullanılarak <span class="span"> çoğaltılmamalıdır.</span> </div>
+
+<div>
+23.Yurt  dışına  gönderilecek  istinabe  evrakının  <span class="span"> temiz,  okunaklı,  silintisiz  ve  düzgün</span>  olmasına özellikle  itina  gösterilmelidir,  bu  nitelikte  olmayan  belgeler  yeniden  düzenlenmek  üzere ilgilisine <span class="span"> iade edilir.</span></div>
+
+<div>
+24.İstinabe  yolu  ile  dinlenecek <span class="span">  kişiler farklı  şehir</span>  veya  yerleşim  yerlerinde   <span class="span"> bulunmakta  iseler,</span> istinabe evrakı yetkili adli makamlara hitaben <span class="span"> ayrı ayrı düzenlenir.</span></div>
+
+<div>
+25.İstinabe  talebinin  belirlenen  duruşma  gününe  kadar  yerine  getirilememesi  durumunda  geri çevrilmemesi için evraka <span class="ark"> zorunlu haller dışında duruşma tarihi yazılmaz.</span></div>
+
+<div>
+26.Bir  kısım  icra  müdürlüklerinin  alacaklının  başvurusu  üzerine,  yurt  dışında  bulunan  borçlu aleyhinde  haciz  kararı  vererek  alacağın  borçlunun  aylığından  haczen  kesilmesi  gibi taleplerine  ilişkin  istinabe  evrakını  Bakanlığımıza gönderdikleri  görülmektedir.  Cebrî  icra yetkisinin, <span class="span"> egemenlik  haklarının  kullanılmasının  bir  sonucu  olması  nedeniyle,</span>  yabancı devletlerde   yerine   getirilmesi   mümkün   bulunmayan   bu   gibi   talepler   <span class="span"> Bakanlığımıza gönderilmeyerek,</span> alacaklıların gereksiz tercüme <span class="span"> masrafı ödemeleri önlenmelidir.</span> </div>
+
+<div>
+27.İstinabe  talebinde,  davanın  konusu,  iddia  ve  savunma  özet  olarak  belirtileceğinden  ayrıca <span class="span"> dava    veya    cevap    dilekçelerinin</span>    ve    bunların    tercümelerinin    eklenmesine   <span class="span"> gerek bulunmamaktadır.</span></div>
+<div> <button  onclick="soruyuGoster(250)" class="soru" >2017 yılı çıkmış soru</button> </div>
+<div>
+28.İstinabe  evrakının  yurt  dışına  gidiş  ve  dönüşü  için  ödenmesi <span class="span"> gereken  posta  giderlerinin</span> Bakanlığımızca  her  takvim  yılı  başında  düzenlenip  Resmî  Gazete’de  ilan  edilen  “Yurt  Dışı Tebligat  ve  İstinabe  Taleplerinde  Uyulması  Gereken  Usul  ve  Esaslara  Dair  Tebliğ” hükümlerine göre <span class="span"> tespit edilerek</span> ilgilisince <span class="span"> Maliye Bakanlığının “Muhtelif Gelirler” hesabına yatırılması </span> sağlanarak  buna  dair  makbuzun  bir  örneği  Bakanlığımıza  gönderilen  <span class="span"> evraka eklenir veya makbuzun tarih ve sayısı bildirilir</span>.</div>
+
+<div>
+29. <span class="span"> Posta  giderinden  ayrı  olarak,</span>  yabancı  devlet  makamlarınca  istinabe talebinin   yerine getirilmesinden  dolayı  istenen  tanıklık,  bilirkişi  ücreti  <span class="span"> gibi  istinabe  masraflarının  da  anılan “Tebliğ”e  göre  belirlenerek</span>,  ilgilisince  <span class="ark"> mahkeme  veznesine  depo  ettirilir</span>  ve  buna  ilişkin makbuz  örneği  <span class="span"> Bakanlığımıza  gönderilen  evraka  eklenir veya  makbuzun  tarih  ve  sayısı bildirilir</span>.</div>
+
+<div>
+30.Yurt  dışına  gönderilen  istinabe  talebinin  <span class="span"> yerine  getirilmesinden  vazgeçilmesi</span>,  takipsizlik nedeniyle dosyanın işlemden kaldırılması veya karara çıkması hallerinde <span class="span"> Bakanlığımıza bilgi verilip</span>, paranın iadesi konusunda muvafakat alınmadan ve <span class="span"> evrak geri istenmeden</span> depo edilen <span class="span"> para </span> sahibine  <span class="span"> iade edilmemelidir</span>.</div>
+
+<div>
+31.Uygulamada   çoğunlukla   Bakanlığımıza   gönderilen   istinabe   evrakına   pul   eklendiği görülmektedir.    Bakanlığımızla    yapılan    yazışmalarda  <span class="span">  pul    gönderilmesine    gerek bulunmamaktadır</span>.
+<div>
+32. <span class="span"> Yabancı uyruklu kişilerin</span> nüfus kayıt örnekleri veya <span class="span"> nüfus aile kayıt tabloları</span> ancak istinabe usulüne <span class="span"> uygun olarak istenebilir</span>.</div> </div></div></div> <br>
+
+<div>
+İKİNCİ BÖLÜM YABANCI DEVLETLERDEN <span class="span"> GELEN İSTİNABE TALEPLERİ</span>
+
+<div>
+ İkili Anlaşma veya Çok Taraflı Sözleşme <span class="span"> Bulunması </span> Halinde:
+
+ <div>
+33.Yabancı devletten gelen istinabe talebinde, yabancı devlet ile Türkiye arasında <span class="span"> ikili anlaşma veya çok taraflı sözleşme varsa</span>, istinabe bu anlaşma veya sözleşme hükümlerine <span class="span"> göre yerine getirilir</span>.</div>
+
+<div>
+34.Devletlere göre istinabe işlemlerinde uygulanacak esaslar Ek(5)’tedir. </div>
+
+<div>
+35.l954  tarihli  Sözleşme  ve  1970  tarihli  Sözleşme  ile  ikili  anlaşmalar  veya  adli  yardımlaşma kuralları uyarınca <span class="span"> Bakanlığımıza  gönderilen istinabe evrakı , merkezi makam sıfatı ile</span> gerekli inceleme yapıldıktan sonra istinabenin yapılacağı yerdeki <span class="span"> <span class="ark"> adli</span> makama iletilir</span>.</div>
+
+<div>
+36.İstinabeyi  yapan  adli  makam  izlenecek  usul  bakımından <span class="span"> Türk  kanunlarını  uygular</span>.  Yabancı devlet  makamından  gönderilen  istinabe  evrakı  içeriği  itibariyle,  Türkiye’nin  egemenliğine, güvenliğine veya kamu düzenine aykırı görülür veya talep kanunlarımıza uygun bulunmazsa, bu gerekçeler gösterilmek suretiyle istinabe talebi <span class="span"> adli makamlarımızca reddedilebilir</span>.</div>
+
+İkili Anlaşma veya Çok Taraflı Sözleşme <span class="span"> Bulunmaması </span>Halinde:
+
+<div>
+37.Yabancı  bir devletin  Türkiye’den  talep  ettiği  istinabede,  talep  eden  devlet  ile  Türkiye arasında  bu  konuda  herhangi  bir  ikili  anlaşma  veya  çok  taraflı  sözleşme  yoksa,  o  takdirde istinabe,  <span class="span"> karşılıklılık  esasları  çerçevesinde  uluslararası  adli  yardımlaşma  kurallarına  göre yerine getirilir</span>.</div>
+
+<div>
+38.Bu  çerçevede  diplomatik  yoldan  Bakanlığımıza  gönderilen  hukuki  ve  ticari  konulardaki istinabe  talebi,  yetkili  adli  makama  gönderilir. <span class="span"> İstinabeyi  yapan <span class="ark"> adli  makam</span>  izlenecek  usul bakımından  Türk  Kanunlarını  uygular</span>.  Bu  şekilde  <span class="span"> tamamlanan istinabe</span>  işlemi,  talep  eden yabancı devlet makamına iletilmek üzere <span class="span"> Bakanlığımıza gönderilir</span>.</div> </div></div>
+
+
+<div>
+ÜÇÜNCÜ BÖLÜMYABANCI DEVLETLERDE BULUNAN <span class="span"> <span class="ark"> VATANDAŞLARIMIZIN </span>ADRES, EKONOMİK VE SOSYAL DURUMLARININ ARAŞTIRILMASI</span>
+<div>
+<div>
+39.  <span class="span"> Adalet  Bakanlığı  ile  Dışişleri  Bakanlığı  arasında  imzalanan</span>  19.12.2009  tarihli  Veri  Erişim, Paylaşım  ve  Kullanım  Esaslarına  Dair  Protokol  uyarınca;  öncelikle,  yabancı  devletlerde bulunan vatandaşlarımızın <span class="span"> Konsolosluk-net</span> sisteminde kayıtlı <span class="span"> adreslerine adli mercilerimizce UYAP üzerinden ulaşılır</span>.</div>
+
+<div>
+40.Konsolosluk-net  sisteminde  adres <span class="span"> bulunmaması  halinde,</span>  hazırlanacak  istinabe  evrakı  ile <span class="span"> yabancı</span> ülke yetkili adli makamlarından  <span class="span"> adresin tespiti talep edilir</span>.</div>
+
+<div>
+41.Özellikle;   Avrupa   Birliği   ve   Avrupa   Konseyine   üye   devletlerde   ikamet   eden vatandaşlarımızın adreslerinin tespitine ilişkin <span class="span"> taleplerde,  bilgi isteyen adli makamın ismi </span> ile, görülmekte olan davanın <span class="span"> türü, tarafları, içeriği</span>, adresi istenen kişinin <span class="span"> açık kimlik</span> bilgileri ve davada <span class="span"> hangi  sıfatla</span>  bulunduğu,  verilmiş  bir  mahkeme  kararı  söz  konusu  ise <span class="span"> kararın  içeriği hakkında bilgiler yer alır</span>. </div>
+
+<div>
+42.Adli makamlarımız, Türk ya da yabancı uyruklu şahısların <span class="span"> yurda giriş veya çıkışlarına</span> ilişkin bilgileri –bu  veriler  Valilikler  bünyesinde  mevcut  bilgi  işletim  sistemlerine  işlendiğinden- <span class="mavi"> bulunduğu yer Valiliğinden (Emniyet Müdürlüğünden)</span> talep eder.</div>
+
+<div>
+43.Vatandaşlarımızın  ekonomik  ve  sosyal  durumlarının  araştırılması  ile  <span class="span"> ücret  tespiti,  yurtdışı temsilciliklerimiz  aracılığıyla  yapılabileceği  gibi</span>  1970  tarihli  Sözleşme  uyarınca  <span class="span"> istinabe evrakı düzenlenmek suretiyle de istenebilir</span>. Buna göre; a.Bu  tür  taleplere  ilişkin  olarak  Bakanlığımıza  gönderilecek  mahkeme  müzekkerelerine,  ilgili kişinin  yurt dışında bilinen <span class="span"> en son  açık  adresinin,</span> şehir kod numarası  ile  birlikte ve <span class="span"> orijinal yazılış  şekliyle tam olarak yazılması</span>, karışıklığa ve yanlışlığa yer verilmemesi  için ilgilinin <span class="mavi" > anne </span>  ve <span class="mavi" >   baba </span> adının,  doğum <span class="mavi" > yerinin,</span>  ay,  gün  ve  yıl  olarak <span class="mavi" >  doğum  tarihinin </span> de  belirtilmesi gerekmektedir. Bakanlığımızla yapılan yazışmalarda cevap için posta <span class="span"> pulu eklenmesine gerek bulunmamaktadır</span>.b.1970  tarihli  Sözleşmenin  “İstinabe  Talebi”  başlıklı  1  ilâ  14’üncü  maddelerinde  istinabe talebinin  düzenlenmesi  usulü  uyarınca,  yabancı  devlet  yetkili  makamlarına  gönderilecek  bu tür  istinabe  talebinde,  yapılması  istenen  işlemlerin  belirtildiği, <span class="span"> ilgili  adli makamın  imza  ve mührünü taşıyan bir istinabe talep yazısı düzenlenir.</span> Ek(1)Talep yazısı ile eklenecek evrakın Türkçe aslı veya onaylı örneklerinin yabancı devletin dilinde yapılmış tercümeleri ile birlikte <span class="mavi"> ikişer takım</span> halinde düzenlenerek Bakanlığımıza gönderilir.</div>
+
+<div>
+44.İş   bu   Genelge   ile,   Hukuki   Konularda   Uluslararası   Adli   Yardımlaşma   Taleplerine Uygulanacak  Esaslara  ilişkin  01/03/2008  tarihli  ve  63/1  sayılı  Genelge  yürürlükten kaldırılmıştır. </div>
+
+<div>
+45.Bu  Genelgenin  ekleri, <span class="mavi"> Uluslararası  Hukuk  ve  Dış  İlişkiler  Genel  Müdürlüğü</span>  tarafından ihtiyaç     duyulduğunda     güncellenerek www.uhdigm.adalet.gov.trweb adresinde yayımlanacaktır. Bilgi  edinilmesini  ve  hukuki  konularda  uluslararası  adli  yardımlaşma  işlemlerinin  bu  Genelge esaslarına uygun olarak yürütülmesinde özengösterilmesini rica ederim </div></div> </div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

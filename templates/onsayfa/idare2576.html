@@ -1,0 +1,1176 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger; }
+
+.ark{background-color:black; font-size: larger; border-radius: 20px;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+
+</style>
+<title>2576 sayılı Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin Kuruluşu ve Görevleri</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+	<br><br><br>
+	<div id="kal" class="kal">
+
+BÖLGE İDARE MAHKEMELERİ,  <br>
+İDARE MAHKEMELERİ VE <br>
+VERGİ MAHKEMELERİNİN KURULUŞU VE <br>
+GÖREVLERİ HAKKINDA KANUN <br>
+Kanun Numarası                        : 2576 <br>
+
+Kabul Tarihi                         : 6/1/1982 <br>
+
+Yayımlandığı Resmî Gazete    : Tarih   : 20/1/1982          Sayı : 17580 <br>
+
+Yayımlandığı Düstur                 : Tertip  : 5,    Cilt : 21,      Sayfa : 139</div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	</div>
+	<script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+
+<div>
+Tanım:
+<div>
+Madde 1 –  <span class="kim">  Bölge idare  mahkemeleri, <br> idare mahkemeleri ve <br> vergi mahkemeleri</span> <br> <span class="mavi"> bu Kanunla verilen görevleri yerine getirmek üzere kurulmuş genel görevli bağımsız mahkemelerdir.</span></div></div>
+<div>
+Kuruluş:
+<div>
+Madde 2 – 1. <span class="kim"> Bölge idare mahkemeleri, <br> idare mahkemeleri ve <br> vergi mahkemeleri,</span> <span class="mavi"> bölgelerin coğrafi durumları ve  iş hacmi gözönünde tutularak 	Adalet Bakanlığınca kurulur ve  yargı çevreleri tespit olunur.</span><div> <button  onclick="soruyuGoster(382)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div> </div>
+<div>
+2. <span class="kim"> Bölge idare mahkemeleri, <br> idare mahkemeleri ve  <br> vergi  mahkemelerinin</span> <br> <span class="ark"> kuruluş ve <br> yargı çevrelerinin tespitinde,</span> <span class="mavi"> İçişleri,  Maliye Bakanlıkları ile  Gümrük ve Tekel
+	Bakanlığının görüşleri alınır.</span></div>
+<div>
+3. <span class="kim"> Bu mahkemelerin kaldırılmasına veya yargı çevrelerinin değiştirilmesine,</span> <span class="ark"> İçişleri,<br> Maliye Bakanlıkları ile <br> Gümrük ve Tekel Bakanlığının görüşleri</span> <span class="mavi"> alınarak, Adalet Bakanlığının önerisi üzerine Hakimler ve Savcılar Yüksek Kurulunca karar verilir.</span> </div>
+<div>
+4. (Değişik: 30/4/2013-6460/4 md.) Aynı yargı çevresinde birden fazla idare veya vergi mahkemesinin faaliyet gösterdiği hâllerde, özel kanunlarda başkaca hüküm bulunmadığı takdirde, ihtisaslaşmanın sağlanması amacıyla, gelen işlerin yoğunluğu ve niteliği dikkate alınarak, mahkemeler arasındaki <span class="mavi"> iş bölümü Hâkimler ve Savcılar Yüksek Kurulu tarafından belirlenebilir.</span>  Bu kararlar Resmî Gazete’de yayımlanır. <span class="mavi"> Mahkemeler, tevzi edilen davalara bakmak zorundadır.</span> </div>
+<div>
+5. Bu mahkemelerin kurulmaları, kaldırılmaları ve yargı çevrelerinin değiştirilmeleri hakkındaki kararlar Resmi Gazetede yayımlanır.</div></div>
+<div>
+Bölge İdare Mahkemelerinin oluşumu: (1)
+<div>
+Madde 3 – (Değişik: 18/6/2014-6545/3 md.)
+<div>  <span class="kim">
+1. Bölge idare mahkemeleri, <br> başkanlık, <br> başkanlar kurulu, <br> daireler, <br> bölge idare mahkemesi adalet komisyonu ve <br> müdürlüklerden <span class="mavi"> oluşur.</span></span></div>
+<div>
+2. <span class="kim"> Bölge idare mahkemelerinde</span> <span class="mavi">  <span class="dik"> biri</span> idare <span class="dik"> diğeri</span>  vergi olmak üzere <span class="dik"> en az iki daire</span>  bulunur.</span>  Gerekli hâllerde dairelerin sayısı, <span class="mavi">  Adalet Bakanlığının teklifi üzerine Hâkimler ve Savcılar Yüksek Kurulunca artırılıp azaltılabilir.</span></div>
+<div>
+3. <span class="kim"> Dairelerde</span> <span class="mavi"> bir başkan ile yeteri kadar üye bulunur.</span></div>
+<div>
+4. Bölge idare mahkemesi başkan ve üyeliklerine <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca atama yapılır.</span></div></div></div>
+
+
+
+
+<div>
+Bölge idare mahkemelerinin görevleri:
+<div>
+Madde 3/A- (Ek: 18/6/2014-6545/4 md.)</div></div>
+<div>
+	<span class="kim">
+Bölge idare mahkemelerinin görevleri şunlardır:</span>
+<div>
+a) <span class="span"> İstinaf başvurularını inceleyip karara bağlamak.</span> <br>
+b) <span class="span"> Yargı çevresindeki idare ve vergi mahkemeleri arasında çıkan görev ve yetki uyuşmazlıklarını kesin karara bağlamak.</span> <br>
+c) Diğer kanunlarla verilen görevleri yapmak.</div></div>
+
+
+<div>
+Bölge idare mahkemesi başkanı, daire başkanları ve üyelerinin görevleri:
+<div>
+Madde 3/B- (Ek: 18/6/2014-6545/5 md.)</div></div>
+
+
+
+
+
+<div>  <span class="kim">
+1. Bölge idare mahkemesi başkanının görevleri şunlardır:</span>  (2)
+<div>
+a) <span class="span"> Mahkemeyi temsil etmek.</span> <br>
+
+b) <span class="span"> Bölge idare mahkemesi başkanlar kuruluna ve <br> adalet komisyonuna başkanlık etmek, <br> alınan kararları yürütmek.</span> <br>
+
+c) (Mülga:17/10/2019-7188/37 md.) <br>
+
+d) <span class="span"> Mahkemenin uyumlu, <br> verimli ve düzenli çalışmasını sağlamak ve <br> bu yolda uygun göreceği önlemleri almak.</span> <br>
+
+e) Bölge idare mahkemesinin <span class="span"> genel yönetim işlerini yürütmek.</span> <br>
+
+f) Bölge idare mahkemesi <span class="span"> memurlarını denetlemek veya denetletmek,</span> <span class="mavi"> personelden kendisine doğrudan bağlı olanlar hakkında ilgili kanunda belirtilen disiplin cezalarını uygulamak.</span>   <br>
+
+g) <span class="kim"> Dairelerin benzer olaylarda kesin olarak verdikleri kararlar arasındaki uyuşmazlığın giderilmesi için</span> <span class="mavi"> başkanlar kuruluna başvurmak.</span>  <br>
+
+h) (Ek: 20/7/2017-7035/1 md.) <span class="kim"> Hukuki veya fiili nedenlerle bir dairenin kendi üyeleri ile toplanamadığı hâllerde</span> <span class="mavi"> ilgisine göre diğer dairelerden kıdem ve sıraya göre üye görevlendirmek.</span> <br>
+
+ı) Kanunlarla verilen diğer görevleri yapmak. (2)</div></div>
+<div> <button  onclick="soruyuGoster(58)" class="soru" >2023 yılı çıkmış soru</button> </div>
+
+
+
+<div>
+2. <span class="kim">  Daire başkanlarının görevleri şunlardır:</span>
+<div>
+a) <span class="span"> Dairelerinde uyumlu, <br> verimli ve düzenli bir çalışmanın gerçekleşmesini ve <br> işlerin makul süre içinde incelenmesini ve <br> karara bağlanmasını sağlamak,</span> <span class="mavi"> dairenin kendi kararları arasında meydana gelen farklılık ve uyumsuzlukların giderilmesi için tedbirler almak.</span>  <br>
+
+b) <span class="kim"> Dosyayı,</span> <span class="mavi">inceleyecek üyeye havale etmek</span>  ve <span class="mavi"> kararların zamanında yazılmasını sağlamak.</span> <br>
+
+c) <span class="span"> Personelin özlük işlemlerinin yürütülmesini sağlamak</span>  ve <br> <span class="span"> izin isteklerini düşünceleriyle birlikte adalet komisyonuna aktarmak.</span> <br>
+
+d) <span class="kim"> Dairede görevli yazı işleri müdürlüğünün</span> <span class="mavi"> işleyişini denetlemek ve personel hakkında ilgili kanunda belirtilen disiplin cezalarını uygulamak.</span>  <br>
+
+e) Kanunlarla verilen diğer görevleri yapmak.</div></div>
+
+
+
+<div>
+
+3. <span class="kim"> Üyelerin görevleri şunlardır:</span>
+<div>
+a) <span class="kim"> Daire başkanı tarafından verilen dosyaları</span> <span class="ark"> gerekli şekilde ve <br> zamanında inceleyerek heyete sunmak, <br> düşüncelerini bildirmek ve <br> kararları yazmak.</span> <br>
+b) <span class="span"> Dairelerindeki duruşma ve müzakerelere katılmak.</span> <br>
+c) <span class="span"> Dairenin uyumlu, verimli ve düzenli çalışmasının sağlanmasında ve <br> işlerin makul süre içinde incelenip karara bağlanmasında daire başkanına yardım etmek.</span> <br>
+d) Bu Kanun uyarınca daire başkanı tarafından verilen diğer görevleri yapmak.</div></div>
+<div>
+4. <span class="ark"> Bölge idare mahkemesi başkanının yokluğunda,</span> <strong> adalet komisyonu ve dairedeki görevler hariç olmak üzere,</strong> <span class="mavi"> en kıdemli daire başkanı başkana vekâlet eder.</span></div>
+
+
+
+
+<div>  <span class="kim">
+Bölge idare mahkemesi başkanlar kurulu:</span>
+<div>
+Madde 3/C- (Ek: 18/6/2014-6545/6 md.)
+<div>
+1. <span class="kim"> Bölge idare mahkemesi başkanlar kurulu, <br>  bölge idare mahkemesi başkanı ile <br> daire başkanlarından oluşur.</span> <br>
+2. <span class="ark"> Bölge idare mahkemesi başkanının bulunmadığı hâllerde</span> <span class="mavi"> kurula daire başkanlarından en kıdemli olan başkanlık eder.</span> <br>
+3. <span class="ark"> Daire başkanının mazereti hâlinde,</span> <span class="mavi"> o dairenin en kıdemli üyesi kurula katılır.</span> </div></div></div>
+
+<div>  <span class="kim">
+4. Bölge idare mahkemesi başkanlar kurulunun görevleri şunlardır:</span>
+<div>
+a) <span class="ark"> Daireler arasında çıkan iş bölümü uyuşmazlıklarını</span> <span class="mavi"> karara bağlamak.</span> <br>
+<div> <button  onclick="soruyuGoster(257)" class="soru" >2017 yılı çıkmış soru</button> </div>
+b) (Mülga: 20/7/2017-7035/2 md.) <br>
+
+c)<span class="kim"> Benzer olaylarda, <br> bölge idare mahkemesi dairelerince verilen kesin nitelikteki kararlar arasında veya <br> farklı bölge idare mahkemeleri dairelerince verilen <br> kesin nitelikteki  kararlar arasında aykırılık veya uyuşmazlık bulunması hâlinde; <br></span> <span class="ark"> resen veya <br> ilgili bölge idare mahkemesi dairelerinin ya da <br> istinaf yoluna başvurma hakkı bulunanların</span>  <span class="mavi"> bu aykırılığın veya uyuşmazlığın giderilmesini gerekçeli olarak istemeleri üzerine, istemin uygun görülmesi hâlinde <span class="dik"> kendi görüşlerini de ekleyerek Danıştaydan</span>  bu konuda karar verilmesini istemek</span>.(3)  <br>
+
+d) Kanunlarla verilen diğer görevleri yapmak.</div></div>
+<div>
+5. (Değişik:17/10/2019-7188/7 md.) Dördüncü fıkranın (c) bendine göre yapılacak <span class="mavi"> istemler, konusuna göre İdari veya Vergi Dava Daireleri Kuruluna iletilir.</span> <span class="mavi"> İlgili dava daireleri kurulunca <span class="dik"> üç ay</span> içinde karar verilir.</span> Aykırılık veya uyuşmazlığın giderilmesine ilişkin olarak <span class="mavi"> bu fıkra uyarınca verilen kararlar kesindir.</span>  <br></div>
+<div>
+6. <span class="mavi"> Başkanlar Kurulu eksiksiz toplanır ve çoğunlukla karar verir.</span> <br> <span class="mavi"> Oyların eşitliği hâlinde başkanın bulunduğu taraf çoğunluğu sağlamış sayılır.</span> </div><br>
+
+
+<div>  <span class="kim">
+Dairelerin görevleri:</span> <div>
+
+Madde 3/D- (Ek: 18/6/2014-6545/7 md.)</div></div>
+<div> <span class="kim">
+1. Bölge idare mahkemesi dairelerinin görevleri şunlardır:</span>
+<div>
+a) İlk derece mahkemelerince verilen ve istinaf yolu açık olan nihai kararlara karşı yapılan <span class="ark"> istinaf başvurularını inceleyerek karara bağlamak.</span> <br>
+b) <span class="ark"> İlk derece mahkemelerince yürütmenin durdurulması istemleri hakkında verilen kararlara karşı yapılan itirazları inceleyerek karara bağlamak.</span> <br>
+c) Yargı çevresi içinde bulunan <span class="ark"> ilk derece mahkemeleri arasındaki görev ve yetki uyuşmazlıklarını çözmek.</span> <br>
+d) <span class="kim"> Yargı çevresi içinde bulunan yetkili ilk derece mahkemesinin</span> <span class="ark"> bir davaya bakmasına fiili veya <br> hukuki bir engel çıktığı veya <br> iki mahkemenin yargı çevresi sınırlarında tereddüt edildiği veya <br> iki mahkemenin de aynı davaya bakmaya yetkili olduklarına karar verdikleri hâllerde;</span> <span class="mavi"> o davanın bölge idare mahkemesi yargı çevresi içinde bulunan başka bir mahkemeye nakline veya yetkili mahkemenin tayinine karar vermek.</span>  <br>
+e) Kanunlarla verilen diğer görevleri yapmak.</div></div>
+<div>
+2. <span class="kim"> İki dairenin görevine ilişkin davalar,</span> <span class="mavi"> ilgili dairenin isteği üzerine o dairelerin birlikte yapacakları toplantıda karara bağlanır.</span> <br> <span class="mavi"> Bu toplantıya daire başkanlarından kıdemli olan katılır ve başkanlık eder.</span>  <br> <span class="mavi"> Toplanma ve görüşme yeter sayısı <span class="dik"> beştir.</span> Kararlar oy çokluğuyla verilir.</span> <span class="kim"> Bu davalar,</span> <span class="mavi"> istemde bulunan ilgili dairenin esas ve karar numaralarını alır.</span> </div>
+<div>
+3. (Ek: 20/7/2017-7035/3 md.) <span class="ark"> Gelen işlerin  yoğunluğu ve niteliği dikkate alınarak</span>  bölge idare mahkemesi daireleri arasındaki <span class="mavi"> iş bölümü, Hâkimler ve Savcılar Kurulu tarafından belirlenir.</span> </div>
+
+
+<div>
+Bölge idare mahkemesi başkanı, daire başkanları ve üyelerin nitelikleri ve atanmaları:
+<div>
+Madde 3/E- (Ek: 18/6/2014-6545/8 md.)
+<div>
+1. <span class="kim"> Bölge idare mahkemesi başkanı ve daire başkanları</span> <br> <span class="ark"> birinci sınıf olup birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş;</span> <br> <span class="kim"> daire üyeleri ise </span> <span class="ark">en az birinci sınıfa <strong> ayrılmış</strong>  olup birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş</span> <span class="mavi"> idari yargı hâkim ve savcıları arasından Hâkimler ve Savcılar Yüksek Kurulunca atanır.</span> </div>
+<div>
+2. <span class="kim"> Danıştay daire başkanı ve üyeleri,</span> <span class="ark"> istekleri üzerine</span> <br> Hâkimler ve Savcılar Yüksek Kurulunca <span class="mavi"> bölge idare mahkemesi başkanlığına veya <br> daire başkanlıklarına <span class="dik"> dört yıllığına</span> atanabilirler.</span> <br> <span class="mavi">  Başka bir bölge idare mahkemesine yapılacak atamalarda da aynı usul uygulanır.</span> Bu şekilde atananların; Danıştay üyeliği sıfatı, kadrosu, aylık ve ödeneği ile <span class="mavi"> her türlü özlük hakları korunur;</span> <span class="mavi"> aylık ve ödenekleri ile her türlü mali ve sosyal haklarının Danıştay bütçesinden ödenmesine devam olunur;</span> <span class="mavi"> disiplin ve ceza soruşturma ve kovuşturmaları Danıştay üyeleri hakkındaki hükümlere tabidir;</span> <span class="mavi"> bu görevde geçirdikleri süre Danıştay üyeliğinde geçmiş sayılır.</span> <span class="kim"> Bu kişiler;</span> <span class="mavi"> Danıştay üyeleri tarafından Danıştayda yapılan iş ve işlemlere katılamazlar;</span> <span class="ark"> Hâkimler ve Savcılar Yüksek Kurulu üyeliği seçimleri hariç</span> <span class="mavi"> Danıştaydaki seçimlerde aday olamaz ve oy kullanamazlar; istekleri üzerine Danıştaydaki görevlerine geri dönerler.</span> </div></div></div>
+
+
+<div>  <span class="kim">
+Toplantı ve karar: </span> (1)
+<div>
+Madde 3/F-(Ek: 18/6/2014-6545/9 md.)
+<div>
+1. <span class="kim"> Her daire,</span><span class="mavi"> <span class="kim"> bir</span> başkan ve <span class="kim"> iki üyenin</span> katılımıyla toplanır.</span>  <br><span class="mavi"> Görüşmeler gizli yapılır,</span> <span class="mavi"> kararlar çoğunlukla verilir.</span> </div>
+<div>
+2. <span class="kim"> Hukuki veya fiili nedenlerle bir daire toplanamazsa,</span> <span class="mavi"> bölge idare mahkemesi başkanının kararıyla diğer dairelerden;</span> <span class="kim"> bu da mümkün olmazsa,</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca diğer bölge idare mahkemelerinden yetkili olarak görevlendirilen üyelerle eksiklik tamamlanır.</span>  (1)</div>
+<div>
+3. <span class="ark">Daire başkanının hukuki veya fiili nedenlerle bulunamaması hâlinde</span> <span class="mavi"> dairenin en kıdemli üyesi daireye başkanlık yapar.</span> </div></div></div>
+
+
+
+<div>
+
+Bölge idare mahkemesi adalet komisyonu:
+<div>
+Madde 3/G- (Ek: 18/6/2014-6545/10 md.)
+<div>
+1. <span class="kim"> Her bölge idare mahkemesinde bir bölge idare mahkemesi adalet komisyonu bulunur.</span></div>
+<div>
+2. <span class="kim"> Komisyon,</span> <span class="mavi"> bölge idare mahkemesi başkanının başkanlığında,</span> <br> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca daire başkanları arasından belirlenen iki asıl üyeden oluşur.</span> <br> Hâkimler ve Savcılar Yüksek Kurulu ayrıca <span class="mavi"> daire başkan veya üyeleri arasından  iki yedek üye belirler.</span> <span class="ark"> Başkanın yokluğunda</span> <span class="mavi"> asıl üye olan kıdemli daire başkanı,</span> <span class="ark"> asıl üyelerin yokluğunda ise</span> <span class="mavi"> kıdemine göre yedek üyeler komisyona katılır.</span> </div>
+<div>
+3. <span class="mavi"> Komisyon eksiksiz toplanır ve çoğunlukla karar verir.</span> </div>
+<div>
+4. Bölge idare mahkemesi adalet komisyonu, 24/2/1983 tarihli ve 2802 sayılı Hâkimler ve Savcılar Kanununun 114 ve 115 inci maddelerinde belirtilen görevler ile diğer kanunlarla verilen görevleri yerine getirir.</div></div></div>
+
+
+<div>  <span class="kim">
+Müdürlükler:</span>
+<div>
+Madde 3/H- (Ek: 18/6/2014-6545/11 md.)
+<div>
+1. <span class="kim"> Bölge idare mahkemesi başkanlığında,</span> <span class="ark"> dairelerinde ve adalet komisyonunda yeterli sayıda <br> yazı işleri müdürlüğü ve <br> idari işler müdürlüğü ile <br> ihtiyaç duyulan diğer müdürlükler</span><span class="mavi"> kurulur.</span> </div>
+<div>
+2. <span class="mavi"> Her müdürlükte <span class="dik"> bir müdür ile yeterli sayıda memur</span> bulunur.</span> </div></div></div>
+<div>  <span class="kim">
+Soruşturma ve kovuşturma usulü:</span>
+<div>
+Madde 3/I – (Ek: 17/4/2017-KHK-690/1 md.; Aynen kabul: 1/2/2018-7077/1 md.) <br>
+
+Bölge idare mahkemelerinde görev yapan başkan, daire başkanı ve üyelerin görevden doğan veya görev sırasında işlenen suçları ve şahsi suçlarıyla ilgili soruşturma ve kovuşturmalar, 26/9/2004 tarihli ve <span class="dik"> 5235</span> sayılı Adlî Yargı İlk Derece Mahkemeleri ile Bölge Adliye Mahkemelerinin Kuruluş, Görev ve Yetkileri Hakkında Kanunun 47 nci maddesi hükümleri uyarınca yürütülür. Ancak, anılan maddede yer alan <span class="kim"> en yakın <strong> bölge adliye</strong> mahkemesi ibaresinden,</span> <span class="mavi"> görev yapılan <span class="dik"> bölge idare</span> mahkemesinin bulunduğu ilin bağlı olduğu <span class="dik"> bölge adliye</span>  mahkemesi anlaşılır.</span></div></div>
+<div>  <span class="kim">
+İdare ve Vergi Mahkemelerinin oluşumu:</span>
+<div>
+Madde 4 – <span class="kim"> İdare ve vergi mahkemelerinde</span> <span class="mavi"> birer başkan ile yeteri kadar üye bulunur.</span> <span class="mavi"> Mahkeme kurulları, başkan ile iki üyeden oluşur.</span> <span class="mavi"> Başkanın yokluğunda kıdemli üye başkana vekillik eder.</span> </div></div>
+<div>  <span class="kim">
+İdare Mahkemelerinin görevleri:</span>
+<div>
+Madde 5 – <div> 1. (Değişik: 24/2/1988 - 3410/1 md.) İdare mahkemeleri, vergi mahkemelerinin görevine giren davalarla ilk derecede Danıştayda çözümlenecek olanlar dışındaki: <br>
+	<div>
+a) <span class="ark"> İptal davalarını,</span>  <br>
+
+b) <span class="ark"> Tam yargı davalarını,</span> <br>
+
+c)  <span class="kim"> Tahkim yolu öngörülen imtiyaz şartlaşma ve sözleşmelerinden doğan uyuşmazlıklardan hariç,</span> <span class="ark"> kamu hizmetlerinden birinin yürütülmesi için yapılan idarî sözleşmelerden dolayı taraflar arasında çıkan uyuşmazlıklara ilişkin davaları,</span> <br>
+
+d) Diğer kanunlarla verilen işleri,</div>
+<span class="mavi">
+Çözümler.</span> </div>
+<div>
+2. Özel Kanunlarda Danıştayın görevli olduğu belirtilen ve İdari Yargılama Usulü Kanunu ile idare mahkemelerinin görevli kılınmış bulunduğu davaları çözümler.</div></div></div>
+
+
+
+<div>  <span class="kim">
+Vergi Mahkemelerinin görevleri:</span>
+<div>
+Madde 6 – (Değişik: 24/2/1988 - 3410/2 md.)</div></div>
+<div>  <span class="kim">
+Vergi mahkemeleri:</span>
+<div>
+a) <span class="ark"> Genel bütçeye, <br> il özel idareleri, <br> belediye ve <br> köylere ait <br><strong> vergi, resim ve harçlar ile benzeri mali yükümler ve bunların zam ve cezaları ile tarifelere ilişkin davaları,</strong> </span>  <br>
+
+b) <span class="ark"> (a) bendindeki konularda <strong> 6183</strong>  sayılı Amme Alacaklarının Tahsil Usulü Hakkında Kanunun uygulanmasına ilişkin davaları</span>, <br>
+c) Diğer kanunlarla verilen işleri,</div>
+<span class="mavi">
+Çözümler.</span> </div>
+
+
+
+
+
+<div> <span class="kim">
+Tek hakimle çözümlenecek davalar:</span> (1)
+<div>
+Madde 7 –
+<div> 1. (Değişik birinci fıkra: 8/6/2000 - 4577/3 md.) <span class="kim"> Uyuşmazlık miktarı yirmibeşbin Türk Lirasını aşmayan;</span> (1)<div>
+	<div> <button  onclick="soruyuGoster(118)" class="soru" >2016 yılı çıkmış soru</button> </div>
+a) <span class="ark"> Konusu belli parayı içeren idarî işlemlere karşı açılan iptal davaları,</span> <br>
+
+b) <span class="ark"> Tam yargı davaları,</span> </div>
+<span class="mavi">
+İdare mahkemesi hâkimlerinden biri tarafından çözümlenir.</span></div>
+<div>
+2. (Değişik: 8/6/2000 - 4577/3. md.) 6 ncı maddenin (a) ve (b) bentlerinde belirtilen uyuşmazlıklardan kaynaklanan toplam değeri yirmibeşbin Türk Lirasını aşmayan davalar, vergi mahkemesi hâkimlerinden biri tarafından çözümlenir. (1)</div>
+<div>
+3. <span class="kim"> Bu tür davaların hakimler arasında dağılımına ilişkin esaslar,</span> işlerde denge sağlanacak biçimde <span class="mavi"> mahkeme başkanı tarafından önceden tespit edilir.</span></div></div></div>
+
+
+
+<div>
+Bölge İdare Mahkemelerinin görevleri:
+<div>
+Madde 8 – (Mülga: 18/6/2014-6545/103 md.)</div></div>
+<div>
+Bölge İdare Mahkemesi Başkanlarının görevleri:<div>
+
+Madde 9 – (Mülga: 18/6/2014-6545/103 md.)</div></div>
+
+
+<div>  <span class="kim">
+Mahkeme Başkanlarının görevleri:</span>
+<div>
+Madde 10 – <span class="kim"> Mahkeme başkanları;</span>
+<div>
+a) <span class="ark"> Görüşme ve duruşmaları yönetirler, <br> düşünce ve görüşlerini bildirirler, <br> oylarını verirler. <br> Mahkemelerinde görevli bulunanların görevlerine devamlarını, düzenli çalışmalarını, <br> mahkeme işlerinin verimli bir şekilde yürütülmesini sağlarlar,</span> <br>
+
+b) <span class="kim"> Her takvim yılı sonunda,</span> <span class="ark"> mahkemelerindeki işlerin durumu ve bunların yürütülmesinde aksaklıklar varsa sebepleri hakkında </span> <span class="mavi"> bölge idare mahkemesi başkanlığına bir rapor verirler ve alınmasını lüzumlu gördükleri tedbirleri bildirirler.</span> <br>
+
+c) Diğer kanunlarla verilen görevleri yaparlar.</div></div></div>
+
+
+
+
+
+
+<div>  <span class="kim">
+Üyelerin görevleri:</span>
+<div>
+Madde 11 – <span class="ark"> Üyeler, <br> bulundukları mahkemelerde başkanlar tarafından kendilerine verilen dosyaları geciktirmeden inceleyerek mahkeme kuruluna gerekli açıklamaları yaparlar, <br> düşünce ve görüşlerini bildirirler, <br> oylarını verirler, <br> kararları yazarlar ve <br> mahkeme ile ilgili olmak üzere kendilerine başkan tarafından verilen diğer işleri görürler.</span></div></div>
+
+<div>  <span class="kim">
+Müdürlükler ve mahkeme memurları:</span>  (1)
+<div>
+Madde 12 – (Değişik: 18/6/2014-6545/12 md.)
+<div>
+1. <span class="ark"> Her mahkemede bir yazı işleri müdürlüğü kurulur.</span></div>
+<div>
+2. <span class="kim"> Adalet Bakanlığınca gerekli görülen yerlerde</span> <span class="mavi"> ayrıca idari, mali ve teknik işlerle ilgili müdürlükler kurulur.</span> </div>
+<div>
+3. <span class="mavi"> Her müdürlükte <span class="dik"> bir</span> müdür ile <span class="dik"> yeteri kadar memur</span> bulunur.</span></div></div></div>
+
+
+<div>  <span class="kim">
+Değiştirilen deyimler:</span>
+<div>
+Madde 13 – <span class="kim"> Vergi mahkemelerinin göreve başlamasıyla bu mahkemelerin görev alanına giren konularla ilgili olarak diğer kanunlarda yer alan:</span>
+<div>
+a) <span class="ark"> İtiraz komisyonu, <br> Vergiler Temyiz Komisyonu, <br> Gümrük Hakem Kurulu  </span> deyimleri, <span class="mavi"></span> <span class="mavi"> Vergi Mahkemesi,</span> <br>
+
+b) <span class="ark"> Vergi ihtilafı</span> deyimi, <span class="mavi"> vergi davası,</span> <br>
+
+c) ,<span class="ark"> İtiraz </span> deyimi, <span class="mavi"> vergi mahkemesinde dava açılması,</span></div>
+
+<span class="mavi"> Anlamını taşır.</span></div></div>
+
+
+<div> <span class="kim">
+Yönetmelik:</span>
+<div>
+Madde 14 – Bölge idare mahkemeleri, idare mahkemeleri ve vergi mahkemelerinin idari işleri ile kalem hizmetlerinin yürütülmesi usul ve esasları <span class="mavi"> Adalet Bakanlığınca çıkarılacak bir yönetmelikte gösterilir.</span></div></div>
+
+
+
+<div>  <span class="kim">
+Kaldırılan görevler, yetkiler ve hükümler:</span>
+<div>
+Madde 15 –
+<div> 1. İdare ve vergi mahkemelerinin görev alanına giren ve kanunlarla çeşitli kurul ve komisyonlara verilmiş bulunan görev ve yetkiler, <span class="ark"> bu mahkemelerin göreve başladığı tarihte sona erer.</span></div>
+<div>
+2. <span class="ark"> Vergi itiraz komisyonlarının ve Vergiler Temyiz Komisyonunun kuruluşuna ilişkin hükümler birinci fıkrada gösterilen tarihte yürürlükten kalkar.</span> </div>
+
+
+<div>
+Ek Madde 1 – (Ek: 24/2/1988 - 3410/4. md.; Değişik : 8/6/2000 - 4577/4 md.) <br>
+<span class="kim">
+Bu Kanunun tek hakimle çözümlenecek davalara ilişkin 7 nci maddesindeki parasal sınırlar;</span>  her takvim yılı başından geçerli olmak üzere, önceki yılda uygulanan parasal sınırların, o yıl için 213 sayılı Vergi Usul Kanununun mükerrer 298 inci maddesi hükümleri uyarınca <span class="mavi"> Maliye Bakanlığınca her yıl tespit ve ilan edilen yeniden değerleme oranında artırılması suretiyle uygulanır.</span> <br> <span class="mavi"> Bu şekilde belirlenen sınırların bin Türk lirasını aşmayan kısımları dikkkate alınmaz.</span>  (2)</div>
+
+
+<div> <span class="kim">
+Yukarıdaki fıkra uyarınca her takvim yılı başından geçerli olmak üzere uygulanan parasal sınırların artışı, <br> </span> <span class="ark"> artışın yürürlüğe girdiği tarihten önce idare ve vergi mahkemelerince nihaî olarak karara bağlanmış davalar ile <br> Danıştayın bozma kararı üzerine bozulan mahkemece yeniden bakılan davalarda</span> <span class="mavi"> uygulanmaz.</span> </div>
+<div>
+Geçici Madde 1 – <span class="ark"> Adalet Bakanlığı, bu Kanunun yürürlüğe girdiği tarihi izleyen <strong> altı ay içinde</strong></span> <br> <span class="kim"> İçişleri ve <br> Maliye bakanlıkları ile <br> Gümrük ve Tekel Bakanlığının görüşünü alarak</span> <br> <span class="mavi"> bölge idare mahkemeleri, <br> idare mahkemeleri ve <br> vergi mahkemelerini kurar.</span> <br> <span class="mavi"> Mahkemelerin kuruluşları, yargı çevreleri ve tüm yurtta göreve başlayacakları tarih Resmi Gazete'de ilan edilir.</span></div>
+<div>
+2. <span class="kim"> Bu Kanunun yürürlüğe girdiği tarihten itibaren</span> <span class="mavi"> <span class="dik"> beş yıllık süre içinde</span>, idari yargı hakim adaylığından atanacakların yanı sıra; <span class="kim"> idare mahkemeleri başkan ve üyeliklerine,</span> <strong> hukuk veya hukuk bilgisine programlarında yer veren</strong> <br> siyasal bilimler, idari bilimler, <br> iktisat ve <br> maliye <br> alanında yükseköğrenimlerini yapmış olmaları şartıyla;</span>
+<div>
+a) <span class="span"> Danıştay tetkik hakimleri ve Danıştay savcıları,</span> <br>
+
+b) <span class="span"> Kaymakamlık sıfatını kazanmış olmak şartıyla</span> <span class="mavi"> İçişleri Bakanlığı mensupları,</span> <br>
+
+c) <span class="span"> Başbakanlık Yüksek Denetleme Kurulu üyeleri ve uzmanları,</span> <br>
+
+d) <span class="span"> Genel ve katma bütçeli daireler <br> genel müdürleri,<br> genel müdür yardımcıları ve <br> daire başkanları,</span> <br>
+
+e) <span class="span"> Başbakanlık ve bakanlık başmüşavirleri, <br> müşavirleri, <br> hukuk müşavirleri, <br>  bölge ve il muhakemat müdürleri, <br>  müşavir avukatları, <br> hazine avukatları ve <br> kamu iktisadi teşebbüsleri hukuk müşavirleri,</span> <br>
+
+f) <span class="span"> Sayıştay raportörleri, <br> uzman denetçileri, <br>  başdenetçileri, <br> denetçileri, <br> savcı ve savcı yardımcıları,</span></div>
+
+<span class="mavi">
+İle daha önce bu görevlerde bulunmuş olmak şartıyla halen bir kamu görevi yapmakta olanlar atanabilirler.</span></div>
+
+
+<div>
+3. <span class="kim"> Bu Kanunun yürürlüğe girdiği tarihten itibaren</span> <span class="mavi"> <span class="dik"> beş yıllık süre içinde,</span> idari yargı hakim adaylığından atanacakların yanı sıra; <span class="kim"> vergi mahkemeleri başkan ve üyeliklerine</span> <strong> hukuk veya hukuk bilgisine programlarında yer veren</strong> <br> siyasal bilimler <br> idari bilimler, <br> iktisat ve <br> maliye <br> alanında yükseköğrenimlerini yapmış olmak şartıyla;</span>
+<div>
+a) <span class="span"> Danıştay tetkik hakimleri ve Danıştay savcıları,</span><br>
+
+b) <span class="span"> Maliye müfettişleri, maliye hesap uzmanları,</span> <br>
+
+c) <span class="span"><span class="span"> Vergiler Temyiz Komisyonu ile <br> muvazzaf vergi itiraz komisyonları başkan ve üyeleri ile <br> başraportör ve raportörleri,</span> <br>
+
+d) <span class="span"> Maliye Bakanlığı Gelirler Genel Müdürü ve yardımcıları,  <br> gelirler kontrolörleri, <br> Gelirler Genel Müdürlüğü başmüşavir ve müşavirleri,</span> <br>
+
+e) <span class="span"> Maliye Bakanlığı hukuk müşavirleri, <br> bölge ve il muhakemat müdürleri, <br> müşavir avukatları, <br> hazine avukatları,</span>  <br>
+
+f) <span class="span"> Defterdar ve defterdar yardımcıları, <br> vergi dairesi müdürleri,</span> <br>
+
+g) <span class="span"> Gümrük ve Tekel Bakanlığı Gümrükler Genel Müdür ve yardımcıları, <br>  müşavirleri, <br> gümrük başmüdürleri, <br> gümrük müdürleri ile <br> Kontrol Genel Müdürü ve yardımcıları ve <br> Bakanlık müfettişleri,</span></div>
+
+<span class="mavi">
+İle daha önce bu görevlerde bulunmuş olmak şartıyla halen bir kamu görevi yapmakta olanlar atanabilirler.</span> </div>
+
+
+
+
+
+<div> <span class="kim">
+4. Atamalar,</span> <span class="ark"> Adalet Bakanlığınca</span> <span class="kim"> ilgilinin mensup olduğu kurum ve kuruluşların görüşleri alınarak</span> <span class="mavi"> Hakimler ve Savcılar Yüksek Kurulunca yapılır.</span></div>
+<div>
+5. <span class="ark"> Bölge idare mahkemesi başkanlıklarına atanacakların,</span> <span class="mavi"> en az üç yılı yukarıda belirtilen görevlerde olmak üzere on yıl;</span> <span class="ark"> diğer mahkeme başkanlıkları ile üyeliklere atanacakların ise,</span> <span class="mavi"> en az iki yılı yukarıda belirtilen görevlerde olmak üzere beş yıl devlet hizmetinde bulunmaları gerekir.</span> <span class="kim"> Ancak,</span> <span class="mavi"> Vergiler Temyiz Komisyonu ile muvazzaf vergi itiraz komisyonları başkan, üye, başraportör, raportörleri için beş yıllık devlet hizmeti aranmaz.</span> </div>
+<div>
+6. <span class="kim"> Bölge idare mahkemeleri başkan ve üyeliklerine,</span> <span class="ark"> bu maddenin ikinci ve üçüncü fıkralarında belirtilen niteliklere sahip olanlar atanabilirler.</span></div>
+<div>
+7. <span class="kim"> Vergiler Temyiz Komisyonu ile muvazzaf vergi itiraz komisyonları başkan, üye, başraportör ve raportörleri bu maddede belirtilen nitelikleri taşımaları şartıyla</span> <span class="mavi"> vergi mahkemesi başkan ve üyeliklerine tercihan atanırlar.</span> </div>
+<div>
+8. <span class="kim"> Atamalarda;</span> <span class="ark"> ilgilinin sicili, görevindeki başarısı, hakimlik mesleğinin gerektirdiği ahlak ve seciyeyi taşıyıp taşımadığı</span> <span class="mavi"> Hakimler ve Savcılar Yüksek Kurulunca takdir edilir.</span></div>
+<div>
+9. Bu madde uyarınca yapılacak başvurma usulü ve süresi Adalet Bakanlığınca Resmi Gazete'de ilan edilir. <span class="mavi"> Danıştay tetkik hakimi ve Danıştay savcıları için başvurma şartı aranmaz.</span></div>
+<div>
+Geçici Madde 2 – 1.  <span class="kim"> Bu Kanunun geçici birinci maddesine göre bölge idare, idare ve vergi mahkemeleri başkan ve üyeliklerine atanacakların aylık derece ve kademeleri,</span> <span class="mavi"> müktesap hak aylık derece ve kademelerine göre tespit edilir.</span> </div>
+<div>
+2. Hakimler Kanununda gerekli <span class="kim"> düzenlemeler yapılıncaya kadar</span> bölge idare, idare ve vergi mahkemeleri başkan ve üyelerine aylık, ek gösterge, ödenek ve diğer mali ve sosyal haklar ile <span class="mavi"> özlük işleri bakımından adli yargı hakimleri hakkındaki hükümler uygulanır.</span></div>
+<div>
+3. <div> a) Bu Kanunun yürürlüğe girdiği tarihte Danıştay tetkik hakimi ve Danıştay savcısı bulunanlar  Hakimler  Kanununun  birinci  sınıfa  ayrılma niteliğine ilişkin hükümlerindeki şartları taşıdıkları takdirde anılan görevlerde geçirdikleri süreler değerlendirilerek birinci sınıf incelemesine tabi tutulurlar. Ancak, Kanunun yürürlüğe girdiği tarihten önce birinci derecenin kademelerinde bulunanlar birinci sınıf incelemesine tabi tutulmaksızın, Danıştay üyeliğine seçilme yeteneğini kaybetmemiş olmaları şartıyla birinci dereceye yükseldikleri tarihten geçerli olmak üzere birinci sınıfa ayrılmış sayılırlar. <br>
+
+b) Bölge idare, idare ve vergi mahkemeleri başkan ve üyeliklerine, Danıştay tetkik hakimliği ve Danıştay savcılığı dışındaki görevlerden ilk defa atananlar Hakimler Kanunundaki birinci sınıfa ayrılmak için gerekli süre kaydına bakılmaksızın birinci derecenin kademelerinde bulunanlar bir terfi süresi, ikinci derecenin kademelerinde bulunanlar iki terfi süresi, üçüncü derecenin kademelerinde bulunanlar üç terfi süresi kadar çalıştıktan sonra birinci sınıf incelemesine tabi tutulurlar. <br>
+
+c) <span class="kim"> Bölge idare, idare ve vergi mahkemelerine Danıştay tetkik hakimliği ve Danıştay savcılığından atananların birinci sınıf incelemesine tabi tutulmalarında,</span> <span class="mavi"> Danıştaydaki hizmet süreleri nazara alınır.</span></div></div>
+<div>
+Geçici Madde 3 –<div>  1. Bu Kanunla kurulan mahkemelerin ihtiyaçlarını karşılamak üzere ilişik cetveldeki kadrolar, Adalet Bakanlığı taşra teşkilatı kadro cetvelinin mahkemeler bölümü hakimlik ve savcılık sınıfı ile diğer ilgili bölümlerine eklenmiştir.</div>
+
+
+
+
+
+<div>  <span class="kim">
+2. Genel kadro kanunu çıkıncaya kadar bu kadrolarda,</span> ekli cetvel ile sınırlı olmak koşulu ile yapılması gereken her türlü değişiklik; <span class="ark"> hakimlere ait kadrolar için</span> <span class="mavi"> Hakimler ve Savcılar Yüksek Kurulunca,</span> <span class="ark"> diğerleri için ise</span> <span class="mavi"> Maliye Bakanlığınca yapılır.</span> </div></div>
+
+<div>
+Geçici Madde 4 – <div> 1. Bu Kanunla kurulan mahkemelerin göreve başlaması ile görevleri sona erecek olan muvazzaf itiraz komisyonları ve Vergiler Temyiz Komisyonu mensuplarından bu mahkemelere atananların Maliye Bakanlığı kadro cetvellerinde <span class="ark"> yer alan kadroları, atama işleminin tamamlanması tarihinden itibaren iptal edilmiş sayılır.</span> </div>
+<div>
+2. <span class="ark"> Bu Kanunla kurulan mahkemelerin göreve başladıkları tarihte, Vergiler Temyiz Komsiyonu ile muvazzaf itiraz komisyonları raportörlüklerinde iki yıllık hizmet sürelerini tamamlamamış olan raportörler Adalet Bakanlığınca idari yargı hakim adaylığına atanabilirler.</span></div>
+<div>
+3. Muvazzaf itiraz komisyonları ile Vergiler Temyiz Komisyonu mensuplarından, bu Kanunla kurulan mahkemelere <span class="kim"> atanmayanlar,</span> <span class="ark"> Maliye Bakanlığında durumlarına uygun başka kadrolara atanırlar ve kadroları atama işleminin tamamlanması tarihinden itibaren iptal edilmiş sayılır.</span></div></div>
+<div>
+Geçici Madde 5 – Geçici birinci maddeye göre mahkeme başkan ve üyeliklerine atananlardan mesleğe uyum sağlayamadıkları Hakimler ve Savcılar Yüksek Kurulunca tespit edilenlerin Kurulca Başbakanlığa bildirilmesi üzerine, ek gösterge ve ödenekleri hariç olmak üzere, bulundukları derece ve kademe aylıklarına uygun genel veya katma bütçeye dahil idarelerdeki başka bir göreve atanmaları Başbakanlıkça sağlanır. Bu hüküm, atanma tarihinden itibaren ancak iki terfi süresi için uygulanabilir.</div>
+<div>
+Geçici Madde 6 –<div>  1. Bu Kanunla kurulmuş olan mahkemeler göreve başladığında, bu mahkemelerin görev ve yetki alanlarına giren konularda daha önce <span class="ark"> Danıştaya açılmış olan davalar ve işler Danıştayca sonuçlandırılır.</span></div>
+<div>
+2. Bu Kanunla yargı görev ve yetkileri kaldırılmış bulunan komisyonlar ve kurullarca verilmiş olan kararlar, <span class="ark"> Danıştayca bozulduğu takdirde dosyaları ile birlikte yetkili idare veya vergi mahkemesine gönderilir.</span></div></div>
+<div>
+Geçici Madde 7 <div> –1. Bu Kanuna göre kurulan mahkemelerin göreve başladığı tarihte, bu Kanun hükümleri uyarınca idare mahkemelerinin görev alanına giren uyuşmazlıklardan dolayı yargı yetkisi kaldırılmış kurullara ve komisyonlara itiraz edilmemiş, dava açılmamış ve henüz itiraz veya dava süresi sona ermemiş olanlar hakkında yetkili idare mahkemesinin <span class="ark"> göreve başladığı tarihten itibaren altmış gün içerisinde bu mahkemelere dava açılabilir.</span> </div>
+<div>
+2. Bu Kanuna göre kurulan mahkemelerin göreve başladığı tarihte, yargı yetkisi kaldırılmış kurul ve komisyonlarca karara bağlanmış ve Danıştaya başvurma <span class="ark"> süresi geçmemiş kararlar hakkında altmış gün içinde Danıştaya başvurulabilir.</span></div></div>
+<div>
+Geçici Madde 8 –<div>  1. Bu Kanuna göre kurulan mahkemelerin göreve başladığı tarihte, vergi mahkemelerinin görev alanına giren uyuşmazlıklardan dolayı vergi itiraz komisyonlarına ve Gümrük Hakem Kuruluna itiraz edilmemiş ve henüz itiraz süresi sona ermemiş olanlar hakkında, <span class="ark"> altmış gün içerisinde yetkili vergi mahkemesine dava açılabilir.</span> </div>
+<div>
+2. Bu Kanuna göre kurulan mahkemelerin göreve başladığı tarihte, vergi itiraz komisyonlarınca verilmiş olup Vergiler Temyiz Komisyonu veya Danıştay nezdinde <span class="ark"> temyiz edilmemiş ve temyiz süresi geçmemiş kararlar hakkında  altmış gün içinde Danıştaya dava açılabilir.</span></div>
+
+
+
+
+
+<div>
+3. Bu Kanuna göre kurulan mahkemelerin göreve başladığı tarihte Vergiler Temyiz Komisyonu ve Gümrük Hakem Kurulunca verilmiş olup <span class="ark">Danıştaya başvurma süresi geçmemiş kararlar hakkında altmış gün içinde Danıştaya dava açılabilir.</span></div></div>
+<div>
+Geçici Madde 9 – Bölge idare mahkemeleri, idare mahkemeleri ve vergi mahkemelerinin göreve başladıkları tarihte vergi itiraz komisyonları ile Gümrük Hakem Kurulunda ve bu Kanunla yargı yetkileri kaldırılmış diğer kurullarda bulunan ve <span class="mavi"> henüz karara bağlanmamış olan dosyalar bir ay içinde yetkili ve görevli idare ve vergi mahkemelerine devredilir.</span> </div>
+<div>
+Geçici Madde 10 – <div> 1. Vergi itiraz komisyonları ve Gümrük Hakem Kurulunda mevcut dosyaların vergi mahkemelerine devir esasları <span class="ark"> Adalet ve Maliye bakanlıkları ile Gümrük ve Tekel Bakanlığınca müştereken tespit olunur.</span></div>
+<div>
+2. Bu Kanunla yargı yetkileri kaldırılmış olan diğer kurullardaki dosyaların <span class="ark"> idare mahkemelerine devir esasları Adalet ve İçişleri bakanlıklarınca tespit olunur.</span></div></div>
+<div>
+Geçici Madde 11 –<div>  1. Vergi mahkemelerinin göreve başladıkları tarihte Vergiler Temyiz Komisyonunda bulunan dosyalardan,
+	<div>
+a) Bu Kanunun 7 nci maddesi gereğince tek hakim tarafından çözümlenebilecek nitelikte olanlar, yetkili bölge idare mahkemelerine, <br>
+
+b) Diğerleri Danıştaya,</div>
+
+Gönderilir ve bu mahkemelerce sonuçlandırılır.</div>
+<div>
+2. Yukarıdaki fıkra gereğince devredilen dosyalar hakkında aşağıdaki esaslar uygulanır:
+<div>
+a) Bu dosyalar için ek yargılama gideri ve harç alınmaz. <br>
+
+b) Bu dosyaların posta giderleri Maliye Bakanlığı bütçesinden karşılanır. <br>
+
+c) Vergi Usul Kanunu hükümlerine göre Vergiler Temyiz Komisyonunda tekemmül etmiş dosyalar, İdari Yargılama Usulü Kanunu hükümleri uygulanmaksızın tekemmül etmiş sayılır. Danıştayda savcının düşüncesine ilişkin hükümler saklıdır. <br>
+
+d) Bu dosyalar için duruşma yapılması ilgili daire veya mahkemenin kararına bağlıdır. <br>
+
+e) Bu dosyalar için Vergiler Temyiz Komisyonunca yapılmış duruşma tebliğleri geçersizdir. <br>
+
+f) Yapılan inceleme sonunda vergi itiraz komisyonu kararı bozulursa, dosya, resen ve nihai olarak karara bağlanır. <br>
+
+g) Vergiler Temyiz Komisyonunca yürütmenin durdurulmasına ilişkin olarak verilmiş kararlar geçerlidir. Ancak, bu dosyalar öncelikle karara bağlanır.</div></div></div>
+<div>
+Geçici Madde 12 – Danıştayca bozma kararı ile Vergiler Temyiz Komisyonuna gönderilmiş ve bu Komisyonca henüz karara bağlanmamış veya Danıştayın bozma kararı üzerine bu Komisyonca kararı bozularak vergiler itiraz komisyonuna gönderilmiş ve bu komisyonca henüz karara bağlanmamış dosyalar, görevli ve yetkili vergi mahkemesine gönderilir ve bu mahkemelerce bozma kararı çerçevesinde incelenerek karara bağlanır.</div>
+<div>
+Geçici Madde 13 – Vergiler Temyiz Komisyonunca ara kararı ile vergi itiraz komisyonuna gönderilmiş dosyaların karar gereği yerine getirilmiş olanlarından, bu Kanunun 7 nci maddesi gereğince tek hakim tarafından çözümlenebilecek dosyalar yetkili bölge idare mahkemesine, diğerleri Danıştaya; ara kararı yerine getirilmemiş olanlar ise, bu karara göre tamamlandıktan sonra ilgisine göre yetkili bölge idare mahkemesine veya Danıştaya gönderilmek üzere yetkili vergi mahkemesine tevdi edilir.</div>
+
+
+
+<div>
+Geçici Madde 14 – Vergi mahkemelerinin göreve başladığı tarihten önce itiraz ve temyiz komisyonlarınca karara bağlanmış ve kararları tebliğ edilmemiş dosyalar tebliğ işlemleri yerine getirilmek üzere göreve başladıkları tarihten itibaran bir ay içinde yetkili ve görevli vergi mahkemesine gönderilir. Bu dosyaların posta giderleri Maliye Bakanlığı bütçesinden karşılanır.</div>
+<div>
+Geçici Madde 15 – Kurulacak mahkemelerin ihtiyaçlarını karşılamak amacıyla; Adalet Bakanlığı bütçesi içinde mevcut veya yeniden açılacak tertiplere Maliye Bakanlığı bütçesinin ilgili tertiplerinden aktarma ve bununla ilgili diğer işlemleri yapmaya Maliye Bakanlığı yetkilidir.</div>
+<div>
+Geçici Madde 16 – Bu Kanunun uygulanmasında, 27/10/1980 tarih ve 2324 sayılı Anayasa Düzeni Hakkında Kanun hükümleri saklıdır.</div>
+<div>
+Geçici Madde 17 – (Ek: 23/6/1983 - 2856/1 md.) <br>
+
+Bu Kanunun geçici 1 inci maddesine göre bölge idare, idare ve vergi mahkemeleri başkan ve üyeliklerine atananların göreve başladıkları tarihten itibaren üç yıl içinde emekliliklerini istemeleri halinde emeklilik işlemleri; kazanılmış hak ve aylık derece ve kademeleri ile birinci derecenin son kademe aylığının kazanılmış hak olarak alanların, idari yargı hakimliğine atanmadan önce alabilecekleri ek göstergeler dikkate alınmak suretiyle yapılır. İdari yargı hakimliğine ait ek göstergeler uygulamada dikkate alınmaz.</div>
+<div>
+Geçici Madde 18 – (Ek: 8/6/2000 - 4577/10 md.) <br>
+
+Bu Kanunun değişik 7 nci maddesinin (1) ve (2) numaralı fıkra hükümleri, değişikliğin yürürlüğe girdiği tarihten önce, idare ve vergi mahkemelerince nihaî olarak  karara bağlanmış davalar ile Danıştayın bozma kararı üzerine kararı bozulan mahekeme yeniden bakılan davalarda uygulanmaz.</div>
+<div>
+Geçici Madde 19 – (Ek: 30/4/2013 - 6460/5 md.) Bu maddeyi ihdas eden Kanunla, bu Kanunun 2 nci maddesinin (4) numaralı fıkrasında yapılan değişikliğin yürürlüğe girdiği tarihten itibaren altı ay içinde Hâkimler ve Savcılar Yüksek Kurulu tarafından mahkemeler arasındaki iş bölümüne ilişkin olarak karar verilir ve bu karar Resmî Gazete’de yayımlanır. Kararda mahkemelerin iş bölümü  esaslarına göre çalışmaya başlayacakları tarih de belirtilir. Mahkemelerin iş bölümü esaslarına göre çalışmaya başlayacakları tarihe kadar açılmış olan davaların görülmesine bulundukları mahkemelerde devam olunur.</div>
+<div>
+Geçici Madde 20 – (Ek: 18/6/2014-6545/14 md.) (1)
+<div>
+1. Adalet Bakanlığı, bu Kanunun yürürlüğe girdiği tarihten itibaren üç ay içinde, Kanunun, bu Kanunla değişik 3 üncü maddesinde öngörülen bölge idare mahkemelerini kurar. Bölge idare mahkemelerinin kuruluşları, yargı çevreleri ve tüm yurtta göreve başlayacakları tarih, Resmî Gazete’de ilan edilir. Mevcut bölge idare mahkemeleri, yeni kurulan bölge idare mahkemelerinin göreve başlayacakları tarihe kadar faaliyetlerine devam ederler.</div>
+<div>
+2. Yeni kurulan bölge idare mahkemelerinin göreve başlayacakları tarih itibarıyla mevcut bölge idare mahkemelerinde bulunan dosyalar; yargı çevreleri dikkate alınarak yeni kurulan bölge idare mahkemelerine devredilir ve ilgili dairelere tevzi edilir.</div>
+<div>
+3. Yeni kurulan bölge idare mahkemelerinin göreve başlama tarihinden önce Hâkimler ve Savcılar Yüksek Kurulunca bu mahkemelerin başkanları, daire başkanları ve üyelerinin atamaları yapılır. Bölge idare mahkemelerinde görev yapacak diğer personelin atamaları da aynı süre içinde yapılır. </div>
+<div>
+4. Yeni kurulan bölge idare mahkemelerinin adalet komisyonları da bu mahkemelerin göreve başlayacakları tarih itibarıyla oluşturulur.</div></div>
+<div>
+Geçici Madde 21 – (Ek: 15/8/2016-KHK/671/28 md.; Aynen kabul: 9/11/2016-6757/25 md.)
+
+31/12/2020 tarihine kadar bölge idare mahkemesi üyeliğine, hâkimlik ve savcılık mesleğinde fiilen en az altı yıl görev yapmış ve üstün başarısı ile bölge idare mahkemesinde yararlı olacağı anlaşılmış bulunan idarî yargı hâkim ve savcıları arasından atama yapılabilir.</div></div></div>
+<div>
+Yürürlük:
+<div>
+Madde 16 – Bu Kanun yayımı tarihinde yürürlüğe girer.</div></div>
+<div>
+Yürütme:
+<div>
+Madde 17 – Bu Kanun hükümlerini Bakanlar Kurulu yürütür.</div></div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}

@@ -1,0 +1,1303 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size:larger; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>BELEDİYE KANUNU</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+	function sadeceişaretli(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "black";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınEDİ()	}
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button><button  onclick="sadeceişaretli()" name="butt" value="butt" class="butt" > SADECE İŞARETLİ</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+	<br><br><br>
+
+	<div class="kal">
+	BELEDİYE KANUNU <br>
+
+
+
+Kanun Numarası                    : 5393 <br>
+
+Kabul Tarihi                           : 3/7/2005 <br>
+
+Yayımlandığı Resmî Gazete   : Tarih  : 13/7/2005        Sayı  : 25874 <br>
+
+Yayımlandığı Düstur              : Tertip : 5                      Cilt   : 44</div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script><br><br><br><br><br><br><br>
+
+BİRİNCİ KISIM <br>
+
+Genel Hükümler <br>
+
+ <br>
+
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam ve Tanımlar
+<div>
+Amaç
+<div>
+Madde 1- Bu Kanunun amacı, belediyenin kuruluşunu, organlarını, yönetimini, görev, yetki ve sorumlulukları ile çalışma usûl ve esaslarını düzenlemektir.</div></div>
+
+
+<div>
+Kapsam
+<div>
+Madde 2- <span class="mavi"> Bu Kanun belediyeleri kapsar.</span> </div></div>
+
+<div>
+Tanımlar<div>
+Madde 3- Bu Kanunun uygulanmasında;
+<div>
+a) <span class="kim"> Belediye:</span>  Belde sakinlerinin mahallî müşterek nitelikteki <span class="ark"> ihtiyaçlarını karşılamak üzere kurulan</span>  ve <span class="ark"> karar organı seçmenler tarafından seçilerek oluşturulan</span>, <span class="ark"> idarî ve malî özerkliğe sahip</span> <span class="mavi"> kamu tüzel kişisini,</span>
+ <br>
+b) <span class="kim"> Belediyenin organları:</span> <span class="ark"> Belediye meclisini</span>, <span class="ark"> belediye encümenini</span> ve <span class="ark"> belediye başkanını</span> ,
+<br>
+c) <span class="kim"> Belde:</span> <span class="mavi"> Belediyesi bulunan yerleşim yerini,</span>
+<br>
+d) <span class="kim"> Mahalle:</span>  Belediye sınırları içinde, <span class="ark"> ihtiyaç ve öncelikleri benzer özellikler gösteren</span>  ve sakinleri arasında <span class="mavi"> komşuluk ilişkisi bulunan idarî birimi</span>,</div>
+<span class="mavi">
+İfade eder.</span></div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Belediyenin Kuruluşu ve Sınırları
+<div>
+Kuruluş
+<div>
+Madde 4- Nüfusu <span class="ark"> 5.000 ve üzerinde</span> olan yerleşim birimlerinde <span class="mavi"> belediye kurulabilir.</span>  <span class="ark"> İl ve ilçe merkezlerinde</span> <span class="mavi"> belediye kurulması zorunludur.</span> <br>
+<span class="ark">
+İçme ve kullanma suyu havzaları</span> ile sit ve diğer <span class="ark"> koruma alanlarında</span> ve meskûn sahası <span class="ark"> kurulu bir belediyenin sınırlarına 5.000 metreden daha yakın olan yerleşim yerlerinde</span>   <span class="mavi"> belediye kurulamaz.</span>  <br>
+<span class="kim">
+Köylerin veya muhtelif köy kısımlarının birleşerek belediye kurabilmeleri için</span> meskûn sahalarının, <span class="ark"> merkez kabul edilecek yerleşim yerinin</span> meskûn sahasına azami <span class="mavi"> 5.000 metre mesafede bulunması</span> ve <span class="mavi"> nüfusları toplamının  5.000 ve üzerinde olması gerekir.</span> <br>
+
+Bir veya birden fazla köyün köy ihtiyar meclisinin kararı veya seçmenlerinin en az yarısından bir fazlasının mahallin en büyük mülkî idare amirine yazılı başvurusu ya da valinin kendiliğinden buna gerek görmesi durumunda, valinin bildirimi üzerine, mahallî seçim kurulları, onbeş gün içinde köyde veya köy kısımlarında kayıtlı seçmenlerin oylarını alır ve sonucu bir tutanakla valiliğe bildirir. <br>
+
+İşlem dosyası valinin görüşüyle birlikte Çevre ve Şehircilik Bakanlığına gönderilir. <span class="mavi"> Cumhurbaşkanı kararı ile o yerde belediye kurulur</span> .[1][2] <br>
+
+Yeni iskân nedeniyle oluşturulan ve nüfusu 5.000 ve üzerinde olan herhangi bir yerleşim yerinde, Cumhurbaşkanı kararı ile belediye kurulabilir.(1)</div></div>
+
+
+<div>
+Sınırların tespiti
+<div>
+Madde 5- <span class="kim"> Yeni kurulan bir belediyenin sınırları,</span> <span class="mavi">  kuruluşu izleyen altı ay içinde aşağıdaki şekilde tespit edilir</span>:
+<div>
+a) Eskiden beri o yerleşim yerine ait sayılan tarla, bağ, bahçe, çayır, mera, otlak, yaylak, zeytinlik, palamutluk, fundalık gibi yerler ile kumsal ve plajlar belediye sınırı içine alınır. <br>
+
+b) Belediye sınırlarını dere, tepe, yol gibi belirli ve sabit noktalardan geçirmek esastır. <span class="ark"> Bunun mümkün olmaması durumunda</span>, <span class="mavi"> sınır düz olarak çizilir ve işaretlerle belirtilir.</span> <br>
+
+c) Belediyenin sınırları içinde kalan ve eskiden beri komşu belde veya köy halkı tarafından yararlanılan yayla, çayır, mera, koru, kaynak ve mesirelik gibi yerlerden geleneksel yararlanma hakları devam eder. Bu haklar için sınır kâğıdına şerh konulur. <br>
+
+d) Çizilen sınırların geçtiği yerlerin bilinen adları sınır kâğıdına yazılır. Ayrıca yetkili fen elemanı tarafından düzenlenen kroki sınır tespit tutanağına eklenir.</div></div></div>
+
+
+<div>
+Sınırların kesinleşmesi
+<div>
+Madde 6- Belediye sınırları, belediye meclisinin kararı ve kaymakamın görüşü üzerine valinin onayı ile kesinleşir. <br>
+
+Kesinleşen sınırlar, valilikçe yerinde uygulanmak suretiyle taraflara gösterilir ve durum bir tutanakla belirlenir. Kesinleşen sınır kararları ile dayanağı olan belgelerin birer örneği; belediyesine, mahallî tapu dairesine, il özel idaresine ve o yerin mülkî idare amirine gönderilir. <br>
+<span class="mavi">
+Kesinleşen sınırlar zorunlu nedenler olmadıkça <span class="dik"> beş yıl</span>  süre ile değiştirilemez.</span> </div></div>
+
+<div>
+
+Sınır uyuşmazlıklarının çözümü
+<div>
+Madde 7- Bir il dâhilindeki beldeler veya köyler arasında sınır uyuşmazlığı çıkması hâlinde ilgili belediye meclisi ve köy ihtiyar meclisi ile kaymakamın görüşleri otuz gün süre verilerek istenir. Vali, bu görüşleri değerlendirerek sınır uyuşmazlığını karara bağlar. Büyükşehir belediyesi sınırları içinde kalan ilçe ve ilk kademe belediyelerinin sınır değişikliklerinde büyükşehir belediye meclisinin de görüşü alınır. <br>
+
+İl ve ilçe sınırlarının değiştirilmesini gerektirecek sınır uyuşmazlıklarında 5442 sayılı İl İdaresi Kanunu hükümleri uygulanır.</div></div>
+
+
+<div>
+Birleşme ve katılma
+<div>
+Madde 8- Belde, köy veya bunların bazı kısımlarının bir başka beldeye katılabilmesi için bu yerlerin meskûn sahalarının katılınacak beldenin meskûn sahasına uzaklığı 5.000 metreden fazla olamaz. <br>
+
+Bir belde veya köyün veya bunların bazı kısımlarının meskûn sahasının, komşu bir beldenin meskûn sahası ile birleşmesi veya bu sahalar arasındaki mesafenin 5.000 metrenin altına düşmesi ve buralarda oturan seçmenlerin yarısından bir fazlasının komşu beldeye katılmak için başvurması hâlinde, katılınacak belde sakinlerinin oylarına başvurulmaksızın, katılmak isteyen köy veya belde veya bunların kısımlarında başvuruya ilişkin oylama yapılır. Oylama sonucunun olumlu olması hâlinde başvuruya ait evrak, valilik tarafından katılınacak belediyeye gönderilir. Belediye meclisi evrakın gelişinden itibaren otuz gün içinde başvuru hakkındaki kararını verir. Belediye meclisinin uygun görmesi hâlinde katılım gerçekleşir. Büyükşehirlerde birleşme ve katılma işlemleri, katılınacak ilçe veya ilk kademe belediye meclisinin görüşü üzerine, büyükşehir belediye meclisinde karara bağlanır. Katılma sonrası oluşacak yeni sınır hakkında, 6 ncı maddeye göre işlem yapılır ve sonuç Çevre ve Şehircilik Bakanlığına bildirilir.[3] <br>
+
+Bir beldenin bazı kısımlarının komşu bir beldeye katılmasında veya yeni bir belde ya da köy kurulmasında, beldenin nüfusunun 5.000'den aşağı düşmemesi gerekir. <br>
+<span class="kim">
+Büyükşehir belediyesi bulunan yerlerde ayrılma yoluyla yeni bir belde kurulması için</span> <span class="ark"> belde nüfusunun 100.000'den aşağı düşmemesi</span> ve yeni kurulacak beldenin <span class="ark"> nüfusunun 20.000'den az olmaması</span> <span class="mavi"> şarttır</span>.[4] <br>
+
+Bu madde uyarınca gerçekleşen katılmalarda, katılınan belde ile bazı kısımları veya tümü katılan köy veya belde arasında; taşınır ve taşınmaz mal, hak, alacak ve borçların devri ve paylaşımı, aralarında düzenlenecek protokolle belirlenir. <br>
+
+Birleşme ve katılma işlemlerinde bu maddede düzenlenmeyen hususlarda 4 üncü madde hükmüne göre işlem yapılır.</div></div>
+
+
+<div>
+Mahalle ve yönetimi
+<div>
+Madde 9- <span class="kim"> Mahalle,</span> <span class="mavi"> muhtar <span class="ark"> ve</span> ihtiyar heyeti tarafından yönetilir.</span>  <br>
+
+Belediye sınırları içinde mahalle <span class="ark"> kurulması,</span> kaldırılması, birleştirilmesi, bölünmesi, adlarıyla sınırlarının tespiti ve değiştirilmesi, <span class="mavi"> belediye meclisinin kararı ve kaymakamın görüşü üzerine valinin onayı ile olur.</span>  <br>
+
+Muhtar, mahalle sakinlerinin gönüllü katılımıyla ortak ihtiyaçları belirlemek, mahallenin yaşam kalitesini geliştirmek, belediye ve diğer kamu kurum ve kuruluşlarıyla ilişkilerini yürütmek, mahalle ile ilgili konularda görüş bildirmek, diğer kurumlarla iş birliği yapmak ve kanunlarla verilen diğer görevleri yapmakla yükümlüdür. (Ek cümle: 12/11/2012-6360/15 md.) <span class="mavi"> Belediye sınırları içinde nüfusu 500’ün altında mahalle kurulamaz.</span>  <br>
+
+Belediye, mahallenin ve muhtarlığın ihtiyaçlarının karşılanması ve sorunlarının çözümü için bütçe imkânları ölçüsünde gerekli ayni yardım ve desteği sağlar; kararlarında mahallelinin ortak isteklerini göz önünde bulundurur ve hizmetlerin mahallenin ihtiyaçlarına uygun biçimde yürütülmesini sağlamaya çalışır.</div></div>
+
+
+<div>
+Belde adının değiştirilmesi
+<div>
+Madde 10- Bir beldenin adı, belediye meclisi üye tam sayısının en az dörtte üç çoğunluğunun kararı ve valinin görüşü üzerine İçişleri Bakanlığının onayı ile değiştirilir. Bu karar Resmî Gazetede yayımlanır. <span class="mavi"> Beldenin adının değişmesi ile belediyenin adı da değişmiş sayılır</span>.</div></div>
+
+<div>
+
+Tüzel kişiliğin sona erdirilmesi[5]
+<div>
+Madde 11- Meskûn sahası, bağlı olduğu il veya ilçe belediyesi ile nüfusu 50.000 ve üzerinde olan bir belediyenin sınırına, 5.000 metreden daha yakın duruma gelen belediye ve köylerin tüzel kişiliği; genel imar düzeni veya temel alt yapı hizmetlerinin gerekli kılması durumunda, Cumhurbaşkanı kararı ile kaldırılarak bu belediyeye katılır. Tüzel kişiliği kaldırılan belediyenin mahalleleri, katıldıkları belediyenin mahalleleri hâline gelir. Tüzel kişiliği kaldırılan belediye ile köylerin taşınır ve taşınmaz mal, hak, alacak ve borçları katıldıkları belediyeye intikal eder.(5) <br>
+<span class="kim">
+Nüfusu 2.000'in altına düşen belediyeler,</span> <span class="mavi"> Cumhurbaşkanı kararı ile köye dönüştürülür.</span>  Tüzel kişiliği kaldırılan belediyenin tasfiyesi il özel idaresi tarafından yapılır. Bu belediyenin taşınır ve taşınmaz malları ile hak, alacak ve borçları ilgili köy tüzel kişiliğine intikal eder. İntikal eden borçların karşılanamayan kısımları il özel idaresi tarafından üstlenilir ve vali tarafından İller Bankasına bildirilir. İller Bankası bu miktarı, takip eden ayın genel bütçe vergi gelirleri tahsilat toplamının belediyelere ayrılan kısmından keserek ilgili il özel idaresi hesabına aktarır.(5) <br>
+
+(Ek fıkra: 6/3/2008-5747/3 md.) Tüzel kişiliği kaldırılan belediyelerin bulunduğu yerleşim birimlerinde, hizmetlerin aksamadan yürütülmesi amacıyla, ilgili belediye veya büyükşehir belediyesi ve köye dönüşen yerlerde il özel idaresi veya köylere hizmet götürme birlikleri tarafından içme suyu, kanalizasyon, temizlik, çöp toplama, ulaşım, itfaiye ve diğer hizmetlerin yürütülmesi için gerekli tedbirler alınır ve ihtiyaç durumuna göre bu hizmetleri yürütmek üzere hizmet birimleri kurulabilir. Büyükşehir belediye sınırları içinde açılacak hizmet birimlerini yönetmek üzere, büyükşehir belediye meclis üyeleri veya diğer belediye personeli arasından görevlendirme yapılabilir. Mahalli hizmetlerin aksamadan yürütülmesi için vali veya kaymakamlar ilgili kuruluşlar arasında koordinasyonu sağlar ve gerekli tedbirleri alır.</div></div>
+
+
+<div>
+Kararlarının uygulanması ve nüfus
+<div>
+Madde 12- 4, 6, 7, 8 ve 9 uncu maddelerde belirtilen kararlar kesinleşme tarihini takip eden yılın ocak ayının birinci gününden itibaren yürürlüğe girer. 4 üncü maddeye göre belediye kurulan yerlerde 2972 sayılı Mahallî İdareler ile Mahalle Muhtarlıkları ve İhtiyar Heyetleri Seçimi Hakkında Kanunun 29 uncu maddesine göre seçim yapılır. <br>
+
+8 inci maddede geçen birleşme ve katılmalara, 9 uncu maddede geçen mahalle kaldırılmasına, 11 inci maddede geçen belediye ve köy tüzel kişiliğinin kaldırılmasına veya bir beldenin köye dönüştürülmesine dair kararlar ilk mahallî idareler seçimlerinde uygulanır ve seçimler bu yerlerin yeni durumlarına göre yapılır. <br>
+<div>
+(Ek fıkra: 6/3/2007-5594/2 md.) Birleşme, katılma veya tüzel kişiliğin kaldırılması sonucu tüzel kişiliği ilk mahallî idare seçimlerine kadar devam edecek olan belediye ve köylerde, birleşme ve katılma işleminin gerçekleşmesi veya Cumhurbaşkanı kararının yayımlandığı tarihten itibaren yeni nazım ve uygulama planı yapılmaz; mevcut planlarda yapılması gereken zorunlu değişiklik ve her türlü imar uygulaması katılınacak belediyenin uygun görüşü alınarak yapılır. Uygun görüş verilmeyen plan değişiklikleri yapılamaz.[6]</div>
+<div>
+(Ek fıkra: 6/3/2007-5594/2 md.) Tüzel kişiliği sona erecek belediye ve köylerin taşınmazlarının satılması ile vadesi tüzel kişiliğin sona ereceği tarihi aşan borçlanma yapılması Çevre ve Şehircilik Bakanlığının onayına tabidir.[7]</div>
+<div>
+(Ek fıkra: 6/3/2007-5594/2 md.) Belediye ihbar ve kıdem tazminatlarının ödenmesi konusunda, 68 inci maddenin (d) bendinde öngörülen sınırlamaya bağlı olmaksızın Çevre ve Şehircilik Bakanlığının onayı ile borçlanma yapabilir. Bu amaçla yapılan borçlanmalar ihbar ve kıdem tazminatı dışında hiçbir gider için kullanılamaz.(7)</div>
+<span class="kim">
+Bu Kanunda öngörülen nüfus büyüklüğü için</span> <span class="mavi"> Devlet İstatistik Enstitüsü Başkanlığınca bildirilen nüfus esas alınır</span>. <br>
+<div>
+(Ek fıkra: 12/11/2012-6360/16 md.) Mevzuatla orman köyleri ve orman köylüsüne tanınan hak, sorumluluk ve imtiyazlar orman köyü iken mahalleye dönüşen yerler için devam eder. (Ek cümle: 20/2/2014-6525/28 md.) Bu hüküm, belde iken sakinleri orman köylüsüne tanınan hak, sorumluluk ve imtiyazlardan yararlanan mahalleye dönüştürülen beldeler için de geçerlidir. Bir belediyeye katılarak mahalleye dönüşen köy, köy bağlısı ve belediyelerce kullanılan mera, yaylak, kışlak gibi yerlerden bu mahalle sakinleri ve varsa diğer hak sahipleri 25/2/1998 tarihli ve 4342 sayılı Mera Kanunu hükümleri çerçevesinde yararlanmaya devam eder.</div></div></div></div>
+
+
+<div>
+Hemşehri hukuku
+<div>
+Madde 13- <span class="mavi"> Herkes ikamet ettiği beldenin hemşehrisidir.</span>  Hemşehrilerin, belediye karar ve hizmetlerine katılma, belediye faaliyetleri hakkında bilgilenme ve belediye idaresinin yardımlarından yararlanma hakları vardır. Yardımların insan onurunu zedelemeyecek koşullarda sunulması zorunludur. <br>
+
+Belediye, hemşehriler arasında sosyal ve kültürel ilişkilerin geliştirilmesi ve kültürel değerlerin korunması konusunda gerekli çalışmaları yapar. Bu çalışmalarda üniversitelerin, kamu kurumu niteliğindeki meslek kuruluşlarının, sendikaların, sivil toplum kuruluşları ve uzman kişilerin katılımını sağlayacak önlemler alınır. <br>
+
+Belediye sınırları içinde oturan, bulunan veya ilişiği olan her şahıs, belediyenin kanunlara dayanan kararlarına, emirlerine ve duyurularına uymakla ve belediye vergi, resim, harç, katkı ve katılma paylarını ödemekle yükümlüdür.</div></div>
+
+<hr>
+
+İKİNCİ KISIM <br>
+
+Belediyenin Organları <br><br>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Belediye Meclisi
+<div>
+Belediye meclisi
+<div>
+Madde 17- <span class="kim"> Belediye meclisi,</span> <span class="mavi"> belediyenin karar organıdır</span> ve ilgili kanunda gösterilen esas ve usûllere göre <span class="mavi"> seçilmiş üyelerden oluşur</span>.</div></div>
+
+
+<div>
+Meclisin görev ve yetkileri
+<div>
+Madde 18- Belediye meclisinin görev ve yetkileri şunlardır:
+<div>
+a) Stratejik plân ile yatırım ve çalışma programlarını, belediye faaliyetlerinin ve personelinin performans ölçütlerini görüşmek ve kabul etmek. <br>
+
+b) <span class="mavi"> Bütçe ve kesinhesabı kabul etmek,</span>  bütçede kurumsal kodlama yapılan birimler ile fonksiyonel sınıflandırmanın birinci düzeyleri arasında aktarma yapmak. <br>
+
+c) <span class="mavi"> Belediyenin imar plânlarını görüşmek ve onaylamak</span> , büyükşehir ve il belediyelerinde il çevre düzeni plânını kabul etmek. (Ek cümle: 1/7/2006-5538/29 md.) Belediye sınırları il sınırı olan Büyükşehir Belediyelerinde il çevre düzeni planı ilgili Büyükşehir Belediyeleri tarafından yapılır veya yaptırılır ve doğrudan Belediye Meclisi tarafından onaylanır. <br>
+
+d) <span class="mavi"> Borçlanmaya karar vermek.</span>  <br>
+
+e) Taşınmaz mal alımına, satımına, takasına, tahsisine, tahsis şeklinin değiştirilmesine veya tahsisli bir taşınmazın kamu hizmetinde ihtiyaç duyulmaması hâlinde tahsisin kaldırılmasına; üç yıldan fazla kiralanmasına ve süresi otuz yılı geçmemek kaydıyla bunlar üzerinde sınırlı aynî hak tesisine karar vermek. <br>
+
+f) Kanunlarda vergi, resim, harç ve katılma payı konusu yapılmayan ve ilgililerin isteğine bağlı hizmetler için uygulanacak ücret tarifesini belirlemek. <br>
+
+g) <span class="mavi"> Şartlı bağışları kabul etmek.</span> <br>
+
+h) Vergi, resim ve harçlar dışında kalan ve miktarı beşbin YTL'den fazla dava konusu olan belediye uyuşmazlıklarını sulh ile tasfiyeye, kabul ve feragate karar vermek. <br>
+
+i) Bütçe içi işletme ile 6762 sayılı Türk Ticaret Kanununa tâbi ortaklıklar kurulmasına veya bu ortaklıklardan ayrılmaya, sermaye artışına ve gayrimenkul yatırım ortaklığı kurulmasına karar vermek. <br>
+
+j) Belediye adına imtiyaz verilmesine ve belediye yatırımlarının yap-işlet veya yap-işlet-devret modeli ile yapılmasına; belediyeye ait şirket, işletme ve iştiraklerin özelleştirilmesine karar vermek. <br>
+
+k) <span class="mavi"> Meclis başkanlık divanını ve encümen üyeleri ile ihtisas komisyonları üyelerini seçmek.</span>  <br>
+
+l) Norm kadro çerçevesinde belediyenin ve bağlı kuruluşlarının kadrolarının ihdas, iptal ve değiştirilmesine karar vermek. <br>
+
+m) <span class="mavi"> Belediye tarafından çıkarılacak yönetmelikleri kabul etmek.</span>  <br>
+
+n) Meydan, cadde, sokak, park, tesis ve benzerlerine ad vermek; mahalle kurulması, kaldırılması, birleştirilmesi, adlarıyla sınırlarının tespiti ve değiştirilmesine karar vermek; <span class="mavi"> beldeyi tanıtıcı amblem, flama ve benzerlerini kabul etmek.</span>  <br>
+
+o) Diğer mahallî idarelerle birlik kurulmasına, kurulmuş birliklere katılmaya veya ayrılmaya karar vermek. <br>
+
+p) Yurt içindeki ve Çevre ve Şehircilik Bakanlığının izniyle yurt dışındaki belediyeler ve mahallî idare birlikleriyle karşılıklı iş birliği yapılmasına; kardeş kent ilişkileri kurulmasına; ekonomik ve sosyal ilişkileri geliştirmek amacıyla kültür, sanat ve spor gibi alanlarda faaliyet ve projeler gerçekleştirilmesine; bu çerçevede arsa, bina ve benzeri tesisleri yapma, yaptırma, kiralama veya tahsis etmeye karar vermek.[19] <br>
+
+r) <span class="mavi"> Fahrî hemşehrilik payesi ve beratı vermek.</span>  <br>
+
+s) Belediye başkanıyla encümen arasındaki anlaşmazlıkları karara bağlamak. <br>
+
+t) Mücavir alanlara belediye hizmetlerinin götürülmesine karar vermek. <br>
+
+u) İmar plânlarına uygun şekilde hazırlanmış belediye imar programlarını görüşerek kabul etmek.</div></div></div>
+
+
+<div>
+Başkanlık divanı
+<div>
+Madde 19- Belediye meclisi, seçim sonuçlarının ilânını takip eden <span class="mavi"> <span class="dik"> beşinci gün</span> belediye başkanının başkanlığında kendiliğinden toplanır.</span>  Meclis bu toplantıda, üyeleri arasından, gizli oyla meclis birinci ve ikinci başkan vekili ile en az iki kâtip üyeyi ilk <span class="mavi"> <span class="dik"> iki yıl</span> için görev yapmak üzere seçer.</span>  <span class="ark"> İlk iki yıldan sonra seçilecek başkanlık divanı</span> <span class="mavi"> yapılacak ilk mahallî idareler seçimlerine kadar görev yapar.</span>  <br>
+<span class="mavi">
+Başkanlık divanı seçimi <span class="dik"> üç gün</span> içinde tamamlanır.</span> <br>
+
+Meclise belediye başkanı, katılamaması durumunda meclis birinci başkan vekili, onun da katılamaması durumunda ikinci başkan vekili başkanlık eder. Ancak yıllık faaliyet raporunun görüşüldüğü meclis toplantısı meclis başkan vekilinin başkanlığında yapılır. <br>
+
+Başkanlık divanında boşalma olması durumunda kalan süreyi tamamlamak üzere yenisi seçilir. <br>
+
+Meclis başkanı, meclis çalışmalarında düzeni sağlamakla yükümlüdür. <br>
+
+Meclisin çalışması ve katılıma ilişkin esas ve usûller Çevre ve Şehircilik Bakanlığı tarafından çıkarılacak yönetmelikle düzenlenir.[20]</div></div>
+
+
+<div>
+Meclis toplantısı
+<div>
+Madde 20- Belediye meclisi, <span class="mavi"> <span class="dik"> her ayın ilk haftası</span>, önceden kararlaştırdığı günde toplânır.</span> <br>
+
+Meclis, resmî tatile rastlayan günlerde çalışmasına ara verebilir. <span class="mavi"> Belediye meclisi her yıl <span class="dik"> bir ay</span> tatil kararı alabilir.</span> <br>
+<span class="mavi">
+Bütçe görüşmesine rastlayan toplantı süresi en çok <span class="dik"> yirmi gün</span>, diğer toplantıların süresi en çok <span class="dik"> beş</span> gündür.</span> <br>
+
+Mutat toplantı yeri dışında toplanılmasının zorunlu olduğu durumda üyelere önceden bilgi vermek kaydıyla meclis başkanının belediye sınırları içerisinde belirlediği yerde toplantı yapılır. Ayrıca, toplantının yeri ve zamanı mutat usûllerle belde halkına duyurulur. <br>
+
+Meclis toplantıları açıktır. Meclis başkanının veya üyelerden herhangi birinin gerekçeli önerisi üzerine, toplantıya katılanların salt çoğunluğuyla kapalı oturum yapılmasına karar verilebilir. <br>
+
+Meclis görüşmeleri görevlilerce tutanağa geçirilir, başkan ve kâtip üyeler tarafından imzalanır. Toplantılar, meclisin kararıyla sesli ve görüntülü cihazlarla da kaydedilebilir. <br>
+<div>
+(Ek Fıkra: 30/5/2007-5675/3 md.) Belediye başkanı, acil durumlarda lüzum görmesi halinde belediye meclisini <span class="ark"> bir yılda üç defadan fazla olmamak ve her toplantı bir birleşimi geçmemek üzere</span> <span class="mavi"> toplantıya çağırır.</span>  Olağanüstü toplantı çağrısı ve gündem en az üç gün önceden meclis üyelerine yazılı olarak duyurulur ve ayrıca mutat usûllerle ilan edilir. Olağanüstü toplantılarda çağrıyı gerektiren konuların dışında hiçbir konu görüşülemez.</div></div></div>
+
+
+<div>
+Gündem
+<div>
+Madde 21- Her ayın ilk günündeki belediye meclis gündemi <span class="mavi"> belediye başkanı tarafından belirlenerek en az <span class="dik"> üç gün önceden</span>  üyelere bildirilir ve çeşitli yöntemlerle halka duyurulur.</span>  <br>
+
+Her ayın ilk toplantısında belediye başkanı ve meclis üyeleri belediyeye ait işlerle ilgili konuların gündeme alınmasını önerebilir. Öneri, toplantıya katılanların salt çoğunluğuyla kabul edildiği takdirde gündeme alınır. <br>
+
+İmar konuları ile yıllık bütçe dışında kalan gündemdeki diğer konular ile üyelerin teklifleri; toplantıya katılanların salt çoğunluğunun kabulü hâlinde komisyonlara havale edilmeksizin belediye meclisince görüşülerek karara bağlanabilir.</div></div>
+
+<div>
+
+Toplantı ve karar yeter sayısı
+<div>
+Madde 22- Belediye meclisi, üye tam sayısının <span class="mavi"> salt çoğunluğuyla toplanır</span> ve katılanların <span class="mavi"> salt çoğunluğuyla karar verir</span> . Ancak, <span class="kim"> karar yeter sayısı</span>, <span class="mavi"> üye tam sayısının dörtte birinden az olamaz.</span>  Oylamada eşitlik çıkması durumunda meclis başkanının bulunduğu taraf çoğunluk sayılır. Gizli oylamalarda eşitlik çıkması durumunda oylama tekrarlanır, eşitliğin bozulmaması durumunda meclis başkanı tarafından kur’a çekilir. <br>
+
+Meclisin toplanmasında, üye tam sayısının salt çoğunluğu sağlanamadığı takdirde başkan, gün ve saatini tespit ederek en geç üç gün içinde toplanmak üzere meclisi tatil eder. Gelecek toplantı, üye tam sayısının dörtte birinden az olmayan üye sayısı ile yapılır. <br>
+
+Görüşmeler sırasında başkan veya üyelerden birinin talebi üzerine yapılacak yoklamada karar yeter sayısının bulunmadığı anlaşılırsa, ikinci fıkradaki hükümler uygulanır. <br>
+
+Üyeler oylarını bizzat kullanır. Gizli oy kullanmaya fizikî bakımdan engelli üyeler, tayin edecekleri kişi eliyle oy kullanabilirler. <br>
+
+Oylama gizli, işaretle veya ad okunarak yapılır. <span class="mavi"> Oy verme kabul, ret veya çekimser şeklinde olur.</span>  <br>
+
+Kararlar, meclis başkanı ve kâtip üyeler tarafından imzalanır ve bir sonraki toplantıda üyelere dağıtılır. </div></div>
+
+
+<div>
+Meclis kararlarının kesinleşmesi
+<div>
+Madde 23- Belediye başkanı, hukuka aykırı gördüğü meclis kararlarını, gerekçesini de belirterek <span class="mavi"> yeniden görüşülmek üzere <span class="dik"> beş gün</span>  içinde meclise iade edebilir.</span>  <br>
+
+Yeniden görüşülmesi istenilmeyen kararlar ile yeniden görüşülmesi istenip de belediye meclisi <span class="mavi"> üye tam sayısının salt çoğunluğuyla ısrar edilen kararlar kesinleşir.</span>  <br>
+
+Belediye başkanı, meclisin ısrarı ile kesinleşen kararlar aleyhine <span class="mavi"> on gün içinde idarî yargıya başvurabilir.</span>  <br>
+
+Kararlar kesinleştiği tarihten itibaren en geç yedi gün içinde mahallin en büyük mülkî idare amirine gönderilir. <span class="mavi"> Mülkî idare amirine gönderilmeyen kararlar yürürlüğe girmez.</span>  <br>
+
+
+Kesinleşen meclis kararlarının özetleri <span class="mavi"> yedi gün içinde uygun araçlarla halka duyurulur.</span> </div></div>
+
+
+<div>
+İhtisas komisyonları
+<div>
+Madde 24- Belediye meclisi, üyeleri arasından en az üç en fazla beş kişiden oluşan ihtisas komisyonları kurabilir. Komisyonların bir yılı geçmemek üzere ne kadar süre için kurulacağı aynı meclis kararında belirtilir. <br>
+
+İhtisas komisyonları, her siyasî parti grubunun ve bağımsız üyelerin meclisteki üye sayısının meclis üye tam sayısına oranlanması suretiyle oluşturulur. İl ve ilçe belediyeleri ile nüfusu 10.000'in üzerindeki belediyelerde plân ve bütçe ile imar komisyonlarının kurulması zorunludur. <br>
+
+Meclis toplantısını müteakip imar komisyonu en fazla on iş günü, diğer komisyonlar ise beş iş günü içinde kendilerine havale edilen işleri sonuçlandırır. Komisyonlar kendilerine havale edilen işlerle ilgili raporlarını bu sürenin sonunda meclise sunmadıkları takdirde, konu meclis başkanı tarafından doğrudan gündeme alınır. <br>
+
+İhtisas komisyonlarının görev alanına giren işler bu komisyonlarda görüşüldükten sonra belediye meclisinde karara bağlanır. <br>
+
+Mahalle muhtarları ve ildeki kamu kuruluşlarının amirleri ile ildeki kamu kurumu niteliğindeki meslek kuruluşları, üniversiteler, sendikalar ve gündemdeki konularla ilgili sivil toplum örgütlerinin temsilcileri, oy hakkı olmaksızın kendi görev ve faaliyet alanlarına giren konuların görüşüldüğü ihtisas komisyonu toplantılarına katılabilir ve görüş bildirebilir. <br>
+
+Komisyon çalışmalarında uzman kişilerden yararlanılabilir. <br>
+
+Komisyon raporları alenîdir, çeşitli yollarla halka duyurulur ve isteyenlere meclis tarafından maliyetlerini aşmamak üzere belirlenecek bedel karşılığında verilir.</div></div>
+
+
+<div>
+Denetim komisyonu
+<div>
+Madde 25- İl ve ilçe belediyeleri ile nüfusu 10.000'in üzerindeki belediyelerde, belediye meclisi, her ocak ayı toplantısında belediyenin bir önceki yıl gelir ve giderleri ile bunlara ilişkin hesap kayıt ve işlemlerinin denetimi için kendi üyeleri arasından gizli oyla ve <span class="mavi"> üye sayısı üçten az beşten çok olmamak üzere bir denetim komisyonu oluşturur.</span>  Komisyon, <span class="ark"> her siyasî parti grubunun</span> ve bağımsız üyelerin meclisteki üye sayısının meclis üye tam sayısına <span class="mavi"> oranlanması suretiyle oluşur</span>. <br>
+
+Komisyon, belediye başkanı tarafından belediye binası içinde belirlenen yerde çalışır ve çalışmalarında kamu personelinden ve gerektiğinde diğer uzman kişilerden yararlanabilir. <br>
+
+Denetim komisyonu toplantılarına, belediye ve bağlı kuruluşları dışındaki kamu kurum ve kuruluşlarından görevlendirilenlere (1.000); kamu personeli dışındaki diğer uzman kişilere büyükşehir belediyelerinde (3.000), diğer belediyelerde (2.000) gösterge rakamının Devlet memurlarına uygulanan aylık katsayıyla çarpımı sonucu bulunacak miktarı geçmemek üzere, belediye meclisince belirlenecek miktarda günlük ödeme yapılır. Denetim komisyonunun emrinde görevlendirilecek kişi ve gün sayısı belediye meclisince belirlenir. Uzman kişilerde aranacak nitelikler belediye meclisinin çalışmasına dair yönetmelikte düzenlenir. <br>
+
+Komisyon belediye birimleri ve bağlı kuruluşlarından her türlü bilgi ve belgeyi isteyebilir. Bu istekler gecikmeksizin yerine getirilir. <br>
+
+Komisyon, çalışmasını kırkbeş işgünü içinde tamamlar ve buna ilişkin raporunu mart ayının sonuna kadar meclis başkanlığına sunar. <br>
+
+Konusu suç teşkil eden hususlarla ilgili olarak meclis başkanlığı tarafından yetkili mercilere suç duyurusunda bulunulur. </div></div>
+
+
+<div>
+Meclisin bilgi edinme ve denetim yolları
+<div>
+Madde 26 - Belediye meclisi, bilgi edinme ve denetim yetkisini <span class="ark"> faaliyet raporunu değerlendirme</span>, <span class="ark"> denetim komisyonu</span>, <span class="ark"> soru</span>, <span class="ark"> genel görüşme</span> ve <span class="ark"> gensoru</span> <span class="mavi"> yoluyla kullanır.</span>  <br>
+
+Meclis üyeleri, meclis başkanlığına önerge vererek belediye işleriyle ilgili konularda sözlü veya yazılı soru sorabilir. Soru, belediye başkanı veya görevlendireceği kişi tarafından sözlü veya yazılı olarak cevaplandırılır. <br>
+
+Meclis üyelerinin en az üçte biri, meclis başkanlığına istekte bulunarak, belediyenin işleriyle ilgili bir konuda genel görüşme açılmasını isteyebilir. Bu istek meclis tarafından kabul edildiği takdirde gündeme alınır. <br>
+<span class="kim">
+Belediye başkanınca meclise sunulan bir önceki yıla ait faaliyet raporundaki açıklamalar,</span> meclis üye tam sayısının <span class="mavi"> dörtte üç çoğunluğuyla yeterli görülmezse,</span>  yetersizlik kararıyla görüşmeleri kapsayan tutanak, meclis başkan vekili tarafından <span class="mavi"> mahallin mülkî idare amirine gönderilir.</span> <br>
+
+Vali, dosyayı gerekçeli görüşüyle birlikte Danıştaya gönderir. <br>
+
+<span class="kim"> Yetersizlik kararı, Danıştayca uygun görüldüğü takdirde</span> <span class="mavi"> belediye başkanı, başkanlıktan düşer.</span>  <br>
+
+Meclis üye tam sayısının en az üçte biri oranındaki üyenin imzasıyla belediye başkanı hakkında gensoru önergesi verilebilir. Gensoru önergesi, meclis üye tam sayısının salt çoğunluğunun oyu ile gündeme alınır ve üç tam gün geçmedikçe görüşülemez. <br>
+
+Gensoru önergesinin karara bağlanmasında dördüncü fıkraya göre işlem yapılır.</div></div>
+
+
+<div>
+Başkan ve meclis üyelerinin görüşmelere katılamayacağı durumlar
+<div>
+Madde 27- Belediye başkanı ve meclis üyeleri, münhasıran kendileri, <span class="mavi"> ikinci derece dâhil kan ve kayın hısımları ve evlatlıkları ile ilgili işlerin görüşüldüğü meclis toplantılarına katılamazlar</span>.</div></div>
+
+
+<div>
+Başkan ve meclis üyelerinin yükümlülükleri
+<div>
+Madde 28- Belediye başkanı görevi süresince ve görevinin sona ermesinden itibaren <span class="ark"> iki yıl süreyle</span>, meclis üyeleri ise görevleri süresince ve görevlerinin sona ermesinden itibaren bir yıl süreyle, belediye ve bağlı kuruluşlarına karşı doğrudan doğruya veya dolaylı olarak <span class="mavi"> taahhüde giremez, komisyonculuk ve temsilcilik yapamaz</span>.</div></div>
+
+
+<div>
+Meclis üyeliğinin sona ermesi
+<div>
+Madde 29- Meclis üyeliği, ölüm ve istifa durumunda kendiliğinden sona erer. Meclis üyeliğinden istifa dilekçesi belediye başkanlığına verilir ve başkan tarafından meclisin bilgisine sunulur. <br>
+<span class="ark">
+Özürsüz veya izinsiz olarak arka arkaya</span> <span class="mavi"> üç birleşim günü</span> veya  <span class="ark"> bir yıl içinde yapılan toplantıların yarısına</span> <span class="mavi"> katılmayan üyenin üyeliğinin düşmesine</span> , savunması alındıktan sonra üye tam sayısının <span class="mavi"> salt çoğunluğuyla karar verilir.</span>  <br>
+<span class="kim">
+Belediye meclisi üyeliğine seçilme yeterliğinin kaybedilmesi durumunda,</span>   <span class="mavi">valinin bildirmesi üzerine Danıştay tarafından üyeliğin düşmesine karar verilir</span>.</div></div>
+
+
+<div>
+Meclisin feshi
+<div>
+Madde 30- Belediye meclisi;
+<div>
+a) Kendisine kanunla verilen görevleri süresi içinde yapmayı ihmal eder ve bu durum belediyeye ait işleri sekteye veya gecikmeye uğratırsa, <br>
+
+b) Belediyeye verilen görevlerle ilgisi olmayan siyasî konularda karar alırsa, </div>
+<span class="ark">
+İçişleri Bakanlığının bildirimi üzerine</span> <span class="mavi"> Danıştayın kararı ile feshedilir.</span> <br>
+
+İçişleri Bakanlığı gerekli gördüğü takdirde meclisin feshine dair bildirim ile birlikte, karar verilinceye kadar meclis toplantılarının ertelenmesini de ister. Danıştay, <span class="mavi"> bu hususu en geç bir ay içinde karara bağlar.</span>  <br>
+
+Bu şekilde feshedilen meclisin yerine seçilen meclis, kalan süreyi tamamlar.</div></div>
+
+
+<div>
+Boşalan meclisin görevinin yerine getirilmesi
+<div>
+Madde 31- Belediye meclisinin;
+<div>
+a) Danıştay tarafından feshi veya meclis toplantılarının ertelenmesi,
+ <br>
+b) Meclis üye tam sayısının yarıdan fazlasının tutuklanması, <br>
+
+c) Yedek üyelerin getirilmesinden sonra da meclis üye tam sayısının yarısından aşağı düşmesi, <br>
+
+d) Geçici olarak görevden uzaklaştırılması,</div>
+
+Hâllerinde, meclis çalışabilir duruma gelinceye veya <span class="mavi"> yeni meclis seçimi yapılıncaya kadar meclis görevi, belediye encümeninin memur üyeleri tarafından yürütülür</span>.</div></div>
+
+
+<div>
+Huzur ve izin hakkı
+<div>
+Madde 32- Meclis başkan ve üyelerine, meclis ve komisyon toplantılarına katıldıkları her gün için, 39 uncu madde uyarınca <span class="mavi"> belediye başkanına ödenmekte olan aylık brüt ödeneğin günlük tutarının üçte birini geçmemek üzere meclis tarafından belirlenecek miktarda huzur hakkı ödenir.</span>  Huzur hakkı ödenecek gün sayısı, 20, 24 ve 25 inci maddelerde belirtilen toplantı günü sayısından fazla olamaz ve meclis üyelerine aynı gün için birden fazla huzur hakkı ödenemez. <br>
+
+Meclis üyeleri hastalıkları süresince izinli sayılır. Ayrıca mazeretleri durumunda, bir yıl içindeki toplantı süresinin yarısını aşmamak şartıyla istekleri üzerine meclis tarafından izin verilebilir.</div></div>
+
+
+
+İKİNCİ BÖLÜM <br>
+
+Belediye Encümeni
+<div>
+Belediye encümeni
+<div>
+Madde 33- Belediye encümeni, belediye başkanının başkanlığında;
+<div>
+a) <span class="kim"> İl belediyelerinde ve nüfusu 100.000'in üzerindeki belediyelerde,</span> <span class="ark"> belediye meclisinin </span>her yıl kendi üyeleri arasından bir yıl için gizli oyla <span class="mavi"> seçeceği üç üye</span>, <span class="mavi"> malî hizmetler birim amiri</span>  ve belediye <span class="ark"> başkanının</span> birim amirleri arasından bir yıl için <span class="mavi"> seçeceği iki üye</span> <span class="mavi">olmak üzere yedi kişiden,</span>  <br>
+
+b) <span class="kim"> Diğer belediyelerde,</span> belediye meclisinin her yıl kendi üyeleri arasından bir yıl için gizli oyla <span class="mavi"> seçeceği iki üye</span>, <span class="mavi">malî hizmetler birim amiri</span> ve belediye başkanının birim amirleri arasından bir yıl için <span class="mavi"> seçeceği bir üye</span> <span class="mavi"> olmak üzere beş kişiden</span>,</div>
+<span class="mavi">
+Oluşur. </span> <br>
+
+Belediye başkanının katılamadığı toplantılarda, belediye başkanının görevlendireceği başkan yardımcısı veya encümen üyesi, encümene başkanlık eder. <br>
+
+Encümen toplantılarına gündemdeki konularla ilgili olarak ilgili birim amirleri, belediye başkanı tarafından oy hakkı olmaksızın görüşleri alınmak üzere çağrılabilir.</div></div>
+
+
+<div>
+Encümenin görev ve yetkileri
+<div>
+Madde 34- Belediye encümeninin görev ve yetkileri şunlardır:
+<div>
+a) Stratejik plân ve yıllık çalışma programı ile bütçe ve kesinhesabı inceleyip belediye meclisine görüş bildirmek. <br>
+
+b) Yıllık çalışma programına alınan işlerle ilgili kamulaştırma kararlarını almak ve uygulamak. <br>
+
+c) Öngörülmeyen giderler ödeneğinin harcama yerlerini belirlemek. <br>
+
+d) Bütçede fonksiyonel sınıflandırmanın ikinci düzeyleri arasında aktarma yapmak. <br>
+
+e) Kanunlarda öngörülen cezaları vermek. <br>
+
+f) Vergi, resim ve harçlar dışında kalan dava konusu olan belediye uyuşmazlıklarının anlaşma ile tasfiyesine karar vermek. <br>
+
+g) Taşınmaz mal satımına, trampasına ve tahsisine ilişkin meclis kararlarını uygulamak; süresi üç yılı geçmemek üzere kiralanmasına karar vermek. <br>
+
+h) <span class="mavi"> Umuma açık yerlerin açılış ve kapanış saatlerini belirlemek.</span>  <br>
+
+i) Diğer kanunlarda belediye encümenine verilen görevleri yerine getirmek. </div></div></div>
+
+
+<div>
+Encümen toplantısı
+<div>
+Madde 35- Belediye encümeni, <span class="mavi"> <span class="dik"> haftada birden</span> az olmamak üzere önceden belirlenen gün ve saatte toplanır.</span>  Belediye başkanı acil durumlarda encümeni toplantıya çağırabilir. <br>
+
+Encümen üye tam sayısının <span class="mavi"> salt çoğunluğuyla toplanır</span> ve katılanların <span class="mavi"> salt çoğunluğuyla karar verir</span> . Encümenin 2886 sayılı Devlet İhale Kanunu uyarınca ihale komisyonu olarak yapacağı toplantılarda da bu hüküm geçerlidir. Oyların eşitliği durumunda başkanın bulunduğu taraf çoğunluk sayılır. <span class="mavi"> Çekimser oy kullanılamaz.</span> <br>
+
+Encümen gündemi belediye başkanı tarafından hazırlanır. Encümen üyeleri, başkanının uygun görüşü ile gündem maddesi teklif edebilir. Belediye başkanı tarafından havale edilmeyen konular encümende görüşülemez. <br>
+<span class="mavi">
+Encümene havale edilen konular bir hafta içinde görüşülerek karara bağlanır</span>. <br>
+
+Alınan kararlar başkan ve toplantıya katılan üyeler tarafından imzalanır. Karara muhalif kalanlar gerekçelerini de açıklar. <br>
+
+Encümen başkan ve üyeleri, münhasıran kendileri, <span class="mavi"> ikinci derece dâhil kan ve kayın hısımları ve evlatlıkları ile ilgili işlerin görüşüldüğü encümen toplantılarına katılamazlar.</span>  </div></div>
+
+
+<div>
+Encümen üyelerine verilecek ödenek
+<div>
+Madde 36- Belediye encümeni başkan ve üyelerine, nüfusu 10.000'e kadar olan belediyelerde (3.500), nüfusu 10.001-50.000'e kadar olan belediyelerde (4.500), 50.001-200.000'e kadar olan belediyelerde (6.000) ve 200.001'in üzerinde olan belediyelerde ise (7.500) gösterge rakamının Devlet memurları için belirlenen aylık katsayı ile çarpımı sonucu bulunacak tutarda aylık brüt ödenek verilir. Encümenin memur üyelerine bu tutarların yarısı ödenir.</div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Belediye Başkanı
+<div>
+Belediye başkanı
+<div>
+Madde 37- Belediye başkanı, belediye idaresinin başı ve belediye tüzel kişiliğinin temsilcisidir. Belediye başkanı, ilgili kanunda gösterilen esas ve usûllere göre seçilir. <br>
+
+<span class="kim">
+Belediye başkanı,</span> <span class="ark"> görevinin devamı süresince</span> <span class="mavi"> siyasî partilerin yönetim ve denetim organlarında görev alamaz;</span>  profesyonel spor kulüplerinin başkanlığını yapamaz ve yönetiminde bulunamaz.</div></div>
+
+
+<div>
+Belediye başkanının görev ve yetkileri
+<div>
+Madde 38- Belediye başkanının görev ve yetkileri şunlardır:
+<div>
+a) Belediye teşkilâtının en üst amiri olarak belediye teşkilâtını sevk ve idare etmek, belediyenin hak ve menfaatlerini korumak. <br>
+
+b) Belediyeyi stratejik plâna uygun olarak yönetmek, belediye idaresinin kurumsal stratejilerini oluşturmak, bu stratejilere uygun olarak bütçeyi, belediye faaliyetlerinin ve personelinin performans ölçütlerini hazırlamak ve uygulamak, izlemek ve değerlendirmek, bunlarla ilgili raporları meclise sunmak. <br>
+
+c) Belediyeyi Devlet dairelerinde ve törenlerde, davacı veya davalı olarak da yargı yerlerinde temsil etmek veya vekil tayin etmek. <br>
+
+d) <span class="mavi"> Meclise ve encümene başkanlık etmek.</span>  <br>
+
+e) Belediyenin taşınır ve taşınmaz mallarını idare etmek. <br>
+
+f) Belediyenin gelir ve alacaklarını takip ve tahsil etmek. <br>
+
+g) Yetkili organların kararını almak şartıyla sözleşme yapmak. <br>
+
+h) <span class="mavi"> Meclis ve encümen kararlarını uygulamak.</span>  <br>
+
+i) Bütçeyi uygulamak, bütçede meclis ve encümenin yetkisi dışındaki aktarmalara onay vermek. <br>
+
+j) <span class="mavi"> Belediye personelini atamak.</span>  <br>
+
+k) Belediye ve bağlı kuruluşları ile işletmelerini denetlemek. <br>
+
+l) <span class="mavi"> Şartsız bağışları kabul etmek.</span>  <br>
+
+m) Belde halkının huzur, esenlik, sağlık ve mutluluğu için gereken önlemleri almak. <br>
+
+n) Bütçede yoksul ve muhtaçlar için ayrılan ödeneği kullanmak, engellilere yönelik hizmetleri yürütmek ve engelliler merkezini oluşturmak.[21] <br>
+
+o) Temsil ve ağırlama giderleri için ayrılan ödeneği kullanmak. <br>
+
+p) Kanunlarla belediyeye verilen ve belediye meclisi veya belediye encümeni kararını gerektirmeyen görevleri yapmak ve yetkileri kullanmak.</div></div></div>
+
+
+<div>
+Belediye başkanının özlük hakları
+<div>
+Madde 39- Belediye başkanına nüfusu;
+<div>
+a) 10.000'e kadar olan beldelerde 70.000,  <br>
+
+b) 10.001'den 50.000'e kadar olan beldelerde 80.000, <br>
+
+c) 50.001'den 100.000'e kadar olan beldelerde 100.000, <br>
+
+d) 100.001'den 250.000'e kadar olan beldelerde 115.000, <br>
+
+e) 250.001'den 500.000’e kadar olan beldelerde 135.000, <br>
+
+f) 500.001’den 1.000.000’a kadar olan beldelerde 155.000, <br>
+
+g) 1.000.001’den 2.000.000’a kadar olan beldelerde 190.000, <br>
+
+h) 2.000.001’den fazla olan beldelerde 230.000,</div>
+
+Gösterge rakamının Devlet memurları için belirlenen aylık katsayı ile çarpımı sonucu bulunacak tutarda aylık brüt ödenek ödenir. Nüfusu 50.001'den az olan il merkezi beldelerde bu ödeneğin hesaplanmasında (c) bendinde belirtilen gösterge rakamı esas alınır. <br>
+<span class="mavi">
+Belediye başkanının görevli, izinli ve hasta bulunduğu sürelerde ödeneği kesilmez</span>. <br>
+
+Belediye başkanlığı yapmış olanların, personel kanunlarına tâbi bir kadroya atanmaları hâlinde <span class="mavi"> belediye başkanlığında geçen süreleri memuriyette geçmiş sayılır.</span> <br>
+
+657 sayılı Devlet Memurları Kanunu uyarınca Devlet memurları ile bakmakla yükümlü bulundukları için uygulanan sosyal hak ve yardımlar, aynı esas ve usûllere göre belediye başkanları ile bakmakla yükümlü bulundukları için de uygulanır.</div></div>
+
+
+<div>
+Başkan vekili
+<div>
+Madde 40- Belediye başkanı izin, hastalık veya başka bir sebeple görev başında bulunmadığı hâllerde, bu süre içinde kendisine vekâlet etmek üzere, belediye meclisi üyeleri arasından birini başkan vekili olarak görevlendirir. <br>
+<span class="mavi">
+Başkan vekili, başkanın yetkilerine sahiptir.</span> <br>
+
+Başkan vekiline, görev süresince başkana ödenen aylık brüt ödeneğin gün hesabı üzerinden ödenek verilir.</div></div>
+
+
+<div>
+Stratejik plân ve performans programı
+<div>
+Madde 41- Belediye başkanı, mahallî idareler genel seçimlerinden itibaren altı ay içinde; kalkınma plânı ve programı ile varsa bölge plânına uygun olarak stratejik plân ve ilgili olduğu yıl başından önce de yıllık performans programı hazırlayıp belediye meclisine sunar. <br>
+
+Stratejik plân, varsa üniversiteler ve meslek odaları ile konuyla ilgili sivil toplum örgütlerinin görüşleri alınarak hazırlanır ve belediye meclisi tarafından kabul edildikten sonra yürürlüğe girer. <br>
+<span class="ark">
+Nüfusu 50.000'in altında olan belediyelerde</span> <span class="mavi"> stratejik plân yapılması zorunlu değildir</span>. <br>
+
+Stratejik plân ve performans programı bütçenin hazırlanmasına esas teşkil eder ve belediye meclisinde bütçeden önce görüşülerek kabul edilir.</div></div>
+
+
+<div>
+Yetki devri
+<div>
+Madde 42- Belediye başkanı, görev ve yetkilerinden bir kısmını uygun gördüğü takdirde, <span class="mavi"> yöneticilik sıfatı bulunan belediye görevlilerine devredebilir.</span> </div></div>
+
+
+<div>
+İhtilâf hâli
+<div>
+Madde 43- Belediye başkanının kendisinin, birinci ve ikinci derecedeki kan ve kayın hısımlarının ve evlatlıklarının, belediye ile ihtilâflı olduğu durumlarda dava açılması ve bu davada belediyenin temsili, meclis birinci başkan vekili, bulunmadığı takdirde ikinci başkan vekili veya bunların yetkilendireceği kişiler tarafından yerine getirilir.</div></div>
+
+<div>
+
+Belediye başkanlığının sona ermesi
+<div>
+Madde 44- Belediye başkanlığı, ölüm ve istifa hâllerinde kendiliğinden sona erer. <br>
+
+Belediye başkanının;
+<div>
+a) <span class="ark"> Mazeretsiz ve kesintisiz olarak yirmi günden fazla görevini terk etmesi</span> ve bu durumun mahallin mülkî idare amiri tarafından belirlenmesi, <br>
+
+b) Seçilme <span class="ark"> yeterliğini kaybetmesi,</span> <br>
+
+c) Görevini sürdürmesine engel bir hastalık veya engellilik durumunun yetkili sağlık kuruluşu raporuyla belgelenmesi,[22] <br>
+
+d) Meclisin feshine neden olan <span class="ark"> eylem ve işlemlere katılması</span>, </div>
+
+Hâllerinden birinin meydana gelmesi durumunda <span class="mavi"> İçişleri Bakanlığının başvurusu üzerine Danıştay kararıyla başkanlık sıfatı sona erer</span>.</div></div>
+
+
+<div>
+Belediye başkanlığının boşalması hâlinde yapılacak işlemler
+<div>
+Madde 45- Belediye başkanlığının herhangi bir nedenle boşalması durumunda, vali tarafından belediye meclisinin on gün içinde toplanması sağlanır. Meclis, birinci başkan vekilinin, onun bulunmaması durumunda ikinci başkan vekilinin, onun da bulunmaması durumunda en yaşlı üyenin başkanlığında toplanarak;
+<div>
+a) Belediye başkanlığının boşalması veya seçim dönemini aşacak biçimde kamu hizmetinden yasaklanma cezasının verilmiş olması durumunda bir başkan, <br>
+
+b) Başkanın görevden uzaklaştırılması, tutuklanması veya seçim dönemini aşmayacak biçimde kamu hizmetinden yasaklama cezası alması durumunda bir başkan vekili,</div>
+
+Seçer. <br>
+<div>
+(Ek fıkra: 15/8/2016-KHK-674/38 md.; Aynen Kabul: 10/11/2016-6758/34 md.) Ancak, belediye başkanı veya başkan vekili ya da meclis üyesinin terör veya terör örgütlerine yardım ve yataklık suçları sebebiyle görevden uzaklaştırılması veya tutuklanması ya da kamu hizmetinden yasaklanması veya başkanlık sıfatı veya meclis üyeliğinin sona ermesi hallerinde 46 ncı maddedeki makamlarca belediye başkanı veya başkan vekili ya da meclis üyesi görevlendirilir. Görevlendirilecek kişinin seçilme yeterliğine sahip olması şarttır. Görevden uzaklaştırılan veya tutuklanan belediye meclisi üyesinin istifa etmesi halinde de bu fıkra hükümleri uygulanır. Bu fıkra gereğince belediye başkanı veya başkan vekili görevlendirilen belediyelerde bütçe ve muhasebe iş ve işlemleri valilik onayı ile defterdarlığa veya mal müdürlüğüne gördürülebilir. Bu belediyelerde belediye meclisi, başkanın çağrısı olmadıkça toplanamaz. Meclisin, encümenin ve komisyonların görev ve yetkileri 31 inci maddede belirtilen encümen üyeleri tarafından yürütülür. </div>
+
+Belediye başkanı veya başkan vekili belediye meclis üyeleri arasından ve gizli oyla seçilir. İlk iki oylamada üye tam sayısının üçte iki ve üçüncü oylamada üye tam sayısının salt çoğunluğu aranır. Üçüncü oylamada salt çoğunluk sağlanamazsa, bu oylamada en çok oy alan iki aday için dördüncü oylama yapılır. Dördüncü oylamada en fazla oy alan üye, belediye başkanı veya başkan vekili seçilmiş olur. Oyların eşitliği durumunda kur'a çekilir. <br>
+
+Birinci fıkranın (b) bendi uyarınca başkan vekili seçildikten sonra belediye başkanlığının (a) bendinde belirtilen nedenlerle boşalması durumunda bu maddeye göre belediye başkanı seçilir. <br>
+
+Yeni seçilen belediye başkanının görev süresi, yerine seçildiği başkanın görev süresi ile sınırlıdır. Başkan vekili, yeni başkan seçilinceye veya görevden uzaklaştırılmış ya da tutuklanmış olan başkan göreve dönünceye kadar görev yapar. <br>
+
+Belediye başkanı veya başkan vekili seçilinceye kadar belediye başkanlığı görevi, meclis birinci başkan vekili, bulunmaması durumunda ikinci başkan vekili, onun da bulunmaması durumunda vali tarafından görevlendirilecek bir kamu görevlisi tarafından yürütülür. <br>
+
+Belediye başkanı veya başkan vekili seçimi en geç onbeş gün içinde tamamlanmadığı takdirde belediye meclisinin feshine ilişkin hükümler uygulanır.</div></div>
+
+<div>
+
+Belediye başkanı görevlendirilmesi
+<div>
+Madde 46- <span class="kim"> Belediye başkanlığının herhangi bir nedenle boşalması ve yeni belediye başkanı veya başkan vekili seçiminin yapılamaması durumunda,</span> seçim yapılıncaya kadar belediye başkanlığına büyükşehir ve il belediyelerinde <span class="ark"> İçişleri Bakanı</span>,  <span class="ark"> diğer belediyelerde vali tarafından</span> <span class="mavi"> görevlendirme yapılır.</span>  Görevlendirilecek kişinin belediye başkanı seçilme yeterliğine sahip olması şarttır.</div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM <br>
+
+Organlara İlişkin Ortak Hükümler
+<div>
+Görevden uzaklaştırma
+<div>
+Madde 47- Görevleriyle ilgili bir suç nedeniyle haklarında <span class="mavi"> soruşturma veya kovuşturma açılan belediye organları veya bu organların üyeleri, kesin hükme kadar İçişleri Bakanı tarafından görevden uzaklaştırılabilir</span>. <br>
+
+Görevden uzaklaştırma kararı <span class="mavi"> iki ayda bir gözden geçirilir.</span>  Devamında kamu yararı bulunmayan görevden uzaklaştırma kararı kaldırılır. <br>
+
+Görevden uzaklaştırılanlar hakkında; kovuşturma açılmaması, kamu davasının düşmesi veya beraat kararı verilmesi, davanın genel af ile ortadan kaldırılması veya görevden düşürülmeyi gerektirmeyen bir suçla mahkûm olunması durumunda görevden uzaklaştırma kararı kaldırılır. <br>
+
+Görevden uzaklaştırılan belediye başkanına, <span class="mavi"> görevden uzak kaldığı sürece aylık ödeneğinin üçte ikisi ödenir</span>  ve bu süre içinde diğer sosyal hak ve yardımlardan yararlanmaya devam eder.</div></div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

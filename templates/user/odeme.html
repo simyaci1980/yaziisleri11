@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+                <h4>Ödeme Sayfası</h4>
+            </div>
+            <div class="card-body">
+
+                <p class="lead text-center">
+                    Ödeme yapmak için aşağıdaki adımları takip edin.
+                </p>
+
+                <hr>
+
+                <ol>
+                    <li>
+                        Aşağıdaki <b>IBAN</b> numarasına havale / EFT yapın:
+                        <div class="input-group mt-2 mb-2">
+                            <input type="text" id="ibanInput" class="form-control" 
+                                   value="TRXX XXXX XXXX XXXX XXXX XXXX XX" readonly>
+                                   
+                            <button class="btn btn-outline-secondary" type="button" onclick="copyIBAN()">
+                                Kopyala
+                            </button>
+                        </div>
+                        <small class="text-muted">
+                            Açıklamaya kullanıcı adınızı yazmayı unutmayın.
+                        </small>
+                    </li>
+                    <li>Ödeme yaptıktan sonra aşağıdaki “Ödeme Bildirimi Gönder” butonuna tıklayın.</li>
+                </ol>
+
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'odeme_bildirim' %}" class="mt-3">
+                    {% csrf_token %}
+                    
+                    <button type="submit" class="btn btn-success btn-lg w-100">
+                        Ödeme Bildirimi Gönder
+                    </button>
+                </form>
+                {% else %}
+                <p class="text-center mt-3">
+                    Ödeme bildiriminde bulunmak için <a href="{% url 'login' %}?next={{ request.path }}">giriş yapın</a>.
+                </p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyIBAN() {
+    var copyText = document.getElementById("ibanInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // Mobil uyumluluk
+    navigator.clipboard.writeText(copyText.value);
+    alert("IBAN kopyalandı: " + copyText.value);
+}
+</script>
+{% endblock %}

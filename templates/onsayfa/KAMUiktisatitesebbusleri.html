@@ -1,0 +1,991 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+      .navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; }
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px;  padding-right:3px; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+
+.span{color: chocolate;}
+
+.ark{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+    .but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>   İKTİSADİ TEŞEBBÜSLERİ HAKKINDA
+
+      KANUN HÜKMÜNDE KARARNAME</title>
+      <script>
+            function kapat() {
+                  if (balon.style.display === "block") {
+                        balon.style.display = "none"; cevaps.style.display="none" ;
+                  } }
+
+
+
+
+            function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+                var panDivs= document.querySelectorAll(".span");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  //panDivs[i].style.backgroundColor="darkred";
+                  panDivs[i].style.color="red"}}
+
+            function metinSifirla(){ // editör görünümü için
+                  var panDivs= document.querySelectorAll(".span");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  //panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metinSıfırla(){  // spanlar için
+
+                  document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+                  document.getElementById("bady").style.color="white"
+                  metinSifirla()
+                  metınArk()
+                  metınDık()
+                  metınEDİ()
+                  metınKim() 	}
+
+            function metınKim(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function kimmorlasss(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="purple";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function kimuyp(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+                  panDivs[i].style.color="black"} }
+
+            function kimdahe(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+                  panDivs[i].style.color="white"} }
+
+            function kimyes(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="green";
+                  panDivs[i].style.color="white"} }
+
+            function metınArk(){
+                  var panDivs= document.querySelectorAll(".ark");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metınKim(){
+                  var panDivs= document.querySelectorAll(".kim");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metınDık(){
+                  var panDivs= document.querySelectorAll(".dik");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metınEDİ(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metınYes(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="green";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function metındmavi(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="darkblue";
+                  panDivs[i].style.color="white"} }
+
+            function metınkır(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="red";
+                  panDivs[i].style.color="white"} }
+
+            function morlas(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="purple";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function dikcho(){
+                  var panDivs= document.querySelectorAll(".dik");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="chocolate";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function dikuyp(){
+                  var panDivs= document.querySelectorAll(".dik");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+                  panDivs[i].style.color="black"} }
+
+            function dikkırmızı(){
+                  var panDivs= document.querySelectorAll(".dik");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="red";
+                  panDivs[i].style.color="white"} }
+
+            function morlasss(){
+                  var panDivs= document.querySelectorAll(".ark");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="purple";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function arkuyp(){
+                  var panDivs= document.querySelectorAll(".ark");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+                  panDivs[i].style.color="black"} }
+
+            function arkdahe(){
+                  var panDivs= document.querySelectorAll(".ark");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+                  panDivs[i].style.color="white"} }
+
+            function metınmavi(){
+                  var panDivs= document.querySelectorAll(".mavi");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="darkcyan";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function dikles(){
+                  var panDivs= document.querySelectorAll(".dik");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  panDivs[i].style.backgroundColor="darkred";
+                  panDivs[i].style.color="whitesmoke"} }
+
+            function chola(){
+                  var panDivs= document.querySelectorAll(".span");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  //panDivs[i].style.backgroundColor="purple";
+                  panDivs[i].style.color="chocolate"} }
+
+            function dahadayeni(){
+                  var panDivs= document.querySelectorAll(".span");
+                for(var i =0 ; i<panDivs.length; i++) {
+                  //panDivs[i].style.backgroundColor="purple";
+                  panDivs[i].style.color="rgb(212, 12, 126"} }
+
+            setInterval(tarıh, 1000);
+            function tarıh(){
+                         var an = new Date()
+                         var yıl= Number( an.getFullYear() )
+                         var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+                         var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+                         var saat= Number( an. getHours().toString(). padStart(2,'0'))
+                         var dk=  an.getMinutes().toString(). padStart(2,'0')
+                        document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+                        }
+          function badyMavi(){
+                  document.getElementById("bady").style.backgroundColor = "darkblue"
+                  document.getElementById("bady").style.color = "white"
+                  sınıf()
+                  arkuyp()
+                  dikcho()
+                  metınkır()
+                  kimdahe()	}
+            function badyEditör(){
+                  document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+                  document.getElementById("bady").style.color = "white"
+                  chola()
+                  arkuyp()
+                  dikkırmızı()
+                  morlas()
+                  kimuyp()}
+
+            function badysiyah(){
+                  document.getElementById("bady").style.backgroundColor = "black"
+                  document.getElementById("bady").style.color = "whitesmoke";
+                  chola()
+                  arkdahe()
+                  dikuyp()
+                  metınYes()
+                  kimmorlasss()	}
+
+            function beyaz(){
+                  document.getElementById("bady").style.backgroundColor = " white"
+                  document.getElementById("bady").style.color = "black"
+                  sınıf()
+                  morlasss()
+                  metınDık()
+                  metındmavi()
+                  kimyes()	}
+
+
+            function uyap(){
+                  document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+                  document.getElementById("bady").style.color = "black"
+                  sınıf()
+                  morlasss()
+                  metınDık()
+                  metınmavi()
+                  kimdahe()	}
+
+            function yeni(){
+                  document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+                  document.getElementById("bady").style.color = "black"
+                  sınıf()
+                  arkdahe()
+                  metınDık()
+                  metınmavi()
+                  kimyes()	}
+
+            function dahayeni(){
+                  document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+                  document.getElementById("bady").style.color = "black"
+                  dahadayeni()
+                  morlasss()
+                  dikles()
+                  metınEDİ()
+                  kimyes()}
+
+            function soruGetır(){
+
+            }
+
+            function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+                  element.style.color="red";
+                  element.style.fontWeight="bold"}
+
+            function YAZDIR(){
+              document.getElementById("kal").style.position="relative"
+              document.getElementById("beyaz").style.position="relative"
+               window.print()
+                   }
+
+               function DivResetle(){
+
+                  const allDivs=document.querySelectorAll('div')
+                  allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+                  div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+                  //div.style.borderStyle="none"
+                  })  }
+
+        function sadeceişaretli(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "black";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınEDİ()	}
+
+      </script>
+</head>
+<body id="bady" onload="tarıh()">
+      <br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button><button  onclick="sadeceişaretli()" name="butt" value="butt" class="butt" > SADECE İŞARETLİ</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+ <br><br><br>
+<div id="kal" class="kal">
+  KAMU İKTİSADİ TEŞEBBÜSLERİ HAKKINDA
+
+                     KANUN HÜKMÜNDE KARARNAME (1)(2) <br>
+
+
+
+          Kanun Hük. Kar. nin Tarihi                         : 8/6/1984 No : 233 <br>
+
+          Yetki Kanununun Tarihi     : 17/6/1982        No : 2680 <br>
+
+          Yayımlandığı R.G. Tarihi   : 18/6/1984        No : 18435 (Mük.) <br>
+
+          V. Tertip Düsturun Cildi     : 23                    Sh.: 754 </div>
+
+
+
+
+
+
+
+
+          <div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+            <p>
+              <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+              <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+              <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+              <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+              <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+              <button class="yen" onclick="yeni()"> Yeni </button> <br>
+              <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+              <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+              <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+            </p></div>
+
+            <script>
+              acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+              </script>
+
+
+
+              <div id="soruContainer" class="soruContainer">
+                    <div id="soruDiv">
+                          <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+                    </div>
+                    <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+                    <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+                    <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+                    <p id="dogruCevap" style="display: none;"></p>
+              </div>
+              <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+
+
+                                                                 BİRİNCİ KISIM <br>
+
+                                                                  Genel Hükümler
+                                                                  <div>
+             Kapsam ve Amaç
+             <div>
+             Madde 1 – <div> 1.Bu Kanun Hükmünde Kararname, iktisadi devlet teşekkülleri ile <span class="span">      iktisadi kuruluşlarını ve bunların müesseselerini, </span> bağlı ortaklıklarını ve iştiraklerini kapsar. <br>
+
+             2. Bu Kanun Hükmünde Kararnamenin Amacı;
+             <div>
+             a) İktisadi devlet teşekkülleri ile    iktisadi kuruluşlarının ve bunların müesseselerinin, bağlı ortaklıklarının kurulmasını, iştiraklerinin teşkilini, özerk bir tarzda ve ekonominin kurallarına uygun olarak yönetilmelerini, <br>
+
+             b) İktisadi devlet teşekküllerinin ekonomik gereklere uygun olarak verimlilik ve karlılık ilkeleri doğrultusunda kendi aralarında ve milli ekonomi ile uyum içinde çalışarak sermaye birikimine yardım etmelerini ve bu suretle daha  <span class="span">  fazla yatırım kaynağı yaratmalarını,</span> <br>
+
+             c)    iktisadi kuruluşlarının kendilerine verilen görev ve    hizmetlerini ekonomik ve sosyal gereklere uygun olarak <span class="span"> verimlilik ilkesi doğrultusunda yürütmelerini,</span>  <br>
+
+             d) İktisadi devlet teşekküllerinde ve    iktisadi kuruluşlarında ve bunların müesseseleri ile bağlı ortaklıklarında 17/4/1984 tarih ve 2983 sayılı Tasarrufların Teşviki ve    Yatırımlarının Hızlandırılması Hakkında Kanun'un uygulanması ile ilgili <span class="span">  işbirliği ve koordinasyon esaslarını,</span> <br>
+
+             e) İktisadi devlet teşekküllerinin,    iktisadi kuruluşlarının ve bunların müesseseleri ile bağlı ortaklıklarının amaçlarına ulaşabilmelerini sağlamak için <span class="span">  denetlenmelerini,</span></div>
+
+             Düzenlemektir.</div></div></div>
+             <div>
+             Tanımlar ve kısaltmalar:
+             <div>
+             Madde 2 – Bu KHK de geçen deyimler ve kısaltmalar aşağıda tanımlanmıştır.
+             <div>
+             1.    iktisadi teşebbüsü <span class="mavi">  "Teşebbüs"; iktisadi devlet teşekkülü ile    iktisadi kuruluşunun ortak adıdır.</span> <br>
+
+             2. İktisadi devlet teşekkülü <span class="mavi"> "Teşekkül"; sermayesinin tamamı devlete ait,</span>  iktisadi alanda ticari esaslara göre faaliyet göstermek üzere kurulan,    iktisadi teşebbüsüdür. <br>
+
+             3. (Değişik: 24/11/1994 - 4046/34 md.) <span class="mavi">    iktisadi kuruluşu "Kuruluş"; sermayesinin tamamı Devlete ait olup tekel niteliğindeki mal ve hizmetleri    yararı gözeterek üretmek </span> ve pazarlamak üzere kurulan ve gördüğü bu    hizmeti dolayısıyla ürettiği mal ve hizmetler imtiyaz sayılan    iktisadi teşebbüsüdür. <br>
+
+             4. <span class="mavi"> Müessese; sermayesinin tamamı </span>bir iktisadi devlet teşekkülüne veya    iktisadi kuruluşuna ait olup,  ona bağlı işletme veya işletmeler topluluğudur. <br>
+
+             5. <span class="mavi">  Bağlı ortaklık; sermayesinin yüzde ellisinden fazlası </span> iktisadi devlet teşekkülüne veya    iktisadi kuruluşuna ait olan işletme veya işletmeler topluluğundan oluşan anonim şirketlerdir. <br>
+
+             6. <span class="mavi">  İştirak;</span>  iktisadi devlet teşekküllerinin veya    iktisadi kuruluşlarının <span class="dik">  veya bağlı ortaklıklarının,</span>  sermayelerinin <span class="mavi">  en az yüzde onbeşine, en çok yüzde ellisine </span>sahip bulundukları <span class="span">  anonim şirketlerdir. </span><br>
+
+             7. <span class="mavi"> İşletme;</span>  <span class="dik">  müesseselerin ve bağlı ortaklıkların</span>  mal ve hizmet üreten <span class="span">  fabrika ve diğer birimleridir.</span> <br>
+
+             8. <span class="mavi">  Koordinasyon Kurulu; Ekonomik İşler Yüksek Koordinasyon Kurulu'dur.</span> <br>
+
+             9. <span class="span">     Ortaklığı Kurulu; </span> 2983 sayılı Tasarrufların Teşviki ve    Yatırımlarının Hızlandırılması Hakkında Kanun'da belirtilen <span class="mavi">  Toplu Konut va    Ortaklığı Kurulu'dur.</span></div></div></div>
+
+                                                                  İKİNCİ KISIM <br>
+
+                                        Teşebbüs, Müessese, Bağlı Ortaklık ve İştirakler <br><br>
+
+                                                               BİRİNCİ BÖLÜM <br>
+
+                                                                     Teşebbüsler
+                                                                     <div>
+             Teşebbüslerin kurulması:
+             <div>
+             Madde 3 –<div>  1. Teşebbüsler <span class="span">  Cumhurbaşkanınca kurulur.</span> (1) <br>
+
+             2. Yeni bir teşebbüsün kurulmasında ve mevcut bir müessese veya bağlı ortaklığın teşebbüs haline getirilmesinde, <span class="span">  ekonomik ihtiyaçlar gözetilir.</span> <br>
+
+             3. (Değişik: 2/7/2018 – KHK/703/133 md.) Teşebbüsler, anonim şirket <span class="dik">  şeklinde de kurulabilir. Anonim şirket şeklinde kurulan teşebbüslerde genel kurul bulunmaz.</span> <br>
+
+             4. <span class="span">  Teşebbüsün merkezi,</span>  Koordinasyon Kurulunca tesbit edilir ve değiştirilebilir. </div></div></div>
+             <div>
+             Teşebbüslerin nitelikleri:
+             <div>
+             Madde 4 – <div> 1. Teşebbüsler <span class="span">  tüzelkişiliğe sahiptir.</span> <br>
+
+             2. Teşebbüsler, bu Kanun Hükmünde Kararname ile saklı tutulan hususlar dışında <span class="span">  özel hukuk hükümlerine tabidir.</span> <br>
+
+             3. Teşebbüsler, Genel Muhasebe Kanunu ile Devlet İhale Kanunu hükümlerine ve <span class="mavi">  Sayıştay'ın denetimine tabi değildir.</span> (2) <br>
+
+             4. Teşebbüslerin sorumlulukları <span class="span">  sermayeleri ile sınırlıdır.</span> Teşebbüslerin sermayesi, ilgili bakanlığın talebi üzerine Koordinasyon Kurulunca tesbit edilir. </div></div></div>
+             <div>
+             Teşebbüslerin organları:
+             <div>
+             Madde 5 – <div> 1. Teşebbüs <span class="mavi">  organları, yönetim kurulu ve genel müdürlüktür.</span> <br>
+
+             2. <span class="span">  Yönetim Kurulu, </span>teşebbüsün en yüksek seviyede <span class="span">  yetkili ve sorumlu karar organıdır.</span> <br>
+
+             3. <span class="span">  Genel Müdürlük,</span> teşebbüsün yetkili ve sorumlu <span class="span">  yürütme organıdır.</span></div></div></div>
+
+
+
+             <div>
+             Teşebbüs Yönetim Kurulu'nun teşkili:
+             <div>
+             Madde 6 –<div>  1.Yönetim kurulu <span class="mavi"> bir başkan ve beş üyeden</span> oluşur. <br>
+
+             2. (Değişik: 2/7/2018 – KHK/703/133 md.) <span class="mavi">  Genel müdür yönetim kurulunun da başkanıdır. </span><br>
+
+             3. (Mülga: 2/7/2018 - KHK/703/133 md.) <br>
+
+             4. Genel müdürün <span class="span">  bulunmadığı hallerde,</span> genel müdürün yönetim kurulu üyeleri arasından  <span class="span"> görevlendireceği genel müdür vekili yönetim kuruluna başkanlık yapar.</span> </div></div></div>
+             <div>
+             Teşebbüs Yönetim Kurulu Üyelerinin nitelik ve şartları:
+             <div>
+             Madde 7 – <div> 1. (Mülga: 2/7/2018 - KHK/703/133 md.) <br>
+
+             2. Teşebbüs yönetim kurulu <span class="span">  başkan ve üyeleri;</span> <span class="dik">  başka bir teşebbüste yönetim kurulu üyesi olamaz</span> ve rakip kuruluşlar ile menfaat ilişkisi içinde bulunamazlar. <br>
+
+             3. Birinci fıkradaki niteliklere sahip bulunan    görevlileri teşebbüs yönetim kurulu üyeliklerine atanabilirler. Esas görevleri devam etmek üzere atanan yönetim kurulu üyeleri, <span class="span">  başka bir teşebbüs, bağlı ortaklık ve denetim kurulu üyesi olarak görev alamazlar. </span></div></div></div>
+             <div>
+             Teşebbüs Yönetim Kurulu Üyelerinin görev süresi:
+             <div>
+             Madde 8 – <div> 1. Yönetim kurulu üyelerinin görev süresi <span class="mavi">  üç yıldır. </span>Görev süresi sona erenler <span class="dik"> tekrar atanabilirler. Atandıkları usule göre görevlerinden alınabilirler.</span> <br>
+
+             2. Süre dolmadan üyeliğin boşalması veya üyelik için aranan niteliklerin ve şartların kaybedilmesi halinde, <span class="mavi"> kalan süreyi tamamlamak üzere atama yapılır</span></div></div></div>
+             <div>
+             Teşebbüs Yönetim Kurulunun görev ve yetkileri:
+             <div>
+             Madde 9 – Yönetim Kurulu'nun görevleri ve yetkileri aşağıda gösterilmiştir.
+             <div>
+             1. İlgili mevzuat hükümleri, kalkınma planı ve üst politika metinleri çerçevesinde teşebbüsün gelişmesini sağlayacak kararları almak, (1) <br>
+
+             2. Teşebbüs, müessese ve bağlı ortaklıkların çalışmalarının verimli ve karlı olarak yürütülmesi şartlarını oluşturacak esasları ve işletme politikalarını belirlemek, <br>
+
+             3. Teşebbüs, müessese ve bağlı ortaklıklara ait yıllık program, bilanço ve netice hesapları ile yıllık ve uzun vadeli çalışma programlarına uygun olarak hazırlanan faaliyet raporlarını onaylayarak ilgili mercilere sunmak, <br>
+
+             4. <span class="span">  Müesseseler ve bağlı ortaklıklar arasında koordinasyonu sağlayacak kararları almak,</span> <br>
+
+             5. Yönetim Kurulunun onayı ile uygulanabilecek yönetim komitesi kararları hakkında, <span class="mavi">  komite kararının teşebbüse ulaşmasını izleyen onbeş gün içinde karar almak,</span> <br>
+
+             6. Genel müdürün <span class="span">  teklifi üzerine; </span>(...)(2), daire başkanları, müessese müdürleri veya benzer görevlere alınacak  <span class="span">  personeli atamak,</span> <br>
+
+
+             7. Genel müdürlük çalışmalarını izlemek, <br>
+
+             8. Teşebbüslerin taşıt alım ve kullanımına ait Koordinasyon Kurulu'nca alınacak kararlarla ilgili uygulama esaslarını belirlemek, <br>
+
+
+             9. Mevzuatla verilen diğer görevleri yapmak, (1)  <br>
+
+             10. Yönetim Kurulları sınırlarını açıkça belirlemek şartiyle yetkilerinden <span class="mavi">  bir kısmını  genel müdüre devredebilirler.</span> Ancak; yetki devri yönetim kurulunun <span class="span">  sorumluluğunu kaldırmaz.</span> </div></div></div>
+             <div>
+             Teşebbüs Yönetim Kurulunun toplantı ve karar yeter sayısı:
+             <div>
+             Madde 10 – Yönetim kurulu, genel müdürün daveti üzerine <span class="mavi">  ayda iki defadan az olmamak üzere üye tamsayısının <span class="span"> salt  çoğunluğu</span>  ile toplanır</span> ve kararlarını üye tamsayısının <span class="span"> salt  çoğunluğu</span> ile alır. Oylarda eşitlik halinde <span class="dik">  başkanın bulunduğu taraf çoğunluğu sağlamış sayılır.</span></div></div>
+             <div>
+             Teşebbüs Genel Müdürlüğü:
+             <div>
+             Madde 11 – Genel müdürlük, genel müdür, <br> Koordinasyon Kurulu Kararı ile <br> belirlenecek sayıda genel müdür yardımcısı  <br> ve bağlı ait birimlerden teşekkül eder.</div></div>
+             <div>
+             Teşebbüs Genel Müdürü:
+             <div>
+             Madde 12 – (Değişik; 12/5/1989 - KHK - 368/4 md; Mülga: 22/1/1990 - KHK 399/59 md.)</div></div>
+             <div>
+             Teşebbüs Genel Müdürünün görev ve yetkileri: (2)
+             <div>
+             Madde 13 – Genel müdürün görev ve yetkileri aşağıda gösterilmiştir:
+             <div>
+             1. Teşebbüsü; ilgili mevzuat hükümleri ile yönetim kurulu kararları doğrultusunda yönetmek, (2) <br>
+
+             2. Teşebbüsü, idare ve yargı mercilerinde ve üçüncü kişilere karşı <span class="span">  temsil etmek ve temsil yetkisini gerektiğinde devretmek,</span> <br>
+
+             3. Genel müdür yardımcıları, daire başkanları, müessese müdürleri veya benzer görevlere alınacak <span class="span">  personelin atanmalarını yönetim kuruluna teklif etmek,</span> <br>
+
+             4. (Mülga: 15/3/1990 - KHK - 408/5 md.) <br>
+
+             5. Teşebbüs sermayesi ile diğer mali kaynakların, verimlilik ve karlılık ilkelerine uygun bir düzen içinde kullanılmasını sağlamak, <br>
+
+             6. Mevzuatın verdiği diğer görevleri yapmak, (2) <br>
+
+             7. Genel Müdür, sınırlarını açıkça belirlemek şartıyla yetkilerinden bir kısmını <span class="span">  astlarına devredebilir.</span>Ancak; yetki devri Genel Müdürün <span class="span">  sorumluluğunu kaldırmaz.</span> </div></div></div>
+             <div>
+             Teşebbüs Genel Müdür Yardımcıları:
+             <div>
+             Madde 14 – (Mülga: 22/1/1990 - KHK - 399/59 md.)</div></div>
+
+
+
+                                                                 İKİNCİ BÖLÜM <br>
+
+                                                                     Müesseseler
+                                                                     <div>
+             Müesseseler ve kuruluşları:
+             <div>
+             Madde 15 – <div> 1. (Değişik: 16/6/1988 - KHK - 331/2 md.) <span class="mavi">  Sermayesinin tamamı Devlete ait teşebbüsler, işletmelerini müessese halinde teşkilatlandırabilirler.</span> <br>
+
+
+             2. Bir müessese içinde toplanmasında <span class="span">  yarar ve gerek görülmeyen </span>işletmeler, Koordinasyon Kurulu kararı ile doğrudan    <span class="span">  iktisadi kuruluşuna bağlı olarak faaliyetlerini sürdürebilirler.</span> <br>
+
+             3. <span class="span">  Tekel </span> niteliğindeki mallar, <span class="span">  müesseseler veya işletmeler tarafından üretilir.</span> <br>
+
+             4. <span class="mavi">  Müesseseler, teşebbüs genel müdürün teklifi ve yönetim kurulunun kararı ile kurulur.</span> <br>
+
+             5. (Değişik: 12/4/1990- KHK - 420/10 md.) Müesseseler, statülerinin <span class="dik">  ticaret sicillerine kayıt ve ilanı ile tüzel kişilik kazanır.</span> <br>
+
+             6. Müesseselerin statüsünde, <br> müessesenin ticaret unvanı, <br> çalışma alanı, <br> idare merkezi,  <br> tahsis edilmiş sermayesi ve sorumluluğunun sermayesi ile sınırlı olduğu hususları yer alır. <br>
+
+             7. <span class="mavi">  Müesseseler, teşebbüs yönetim kurulunun görüşü alınarak ilgili bakanlığın teklifi üzerine Koordinasyon Kurulu kararı ile bağlı ortaklık veya iştirak haline getirilebilir.</span> <br>
+
+             8. İşletmelerin müessese; müesseselerin bağlı ortaklık haline getirilmesine ve benzeri hertürlü yapı değiştirmeye ait işlemler bütün <span class="dik">  vergi, resim ve harçlardan muaftır.</span></div></div></div>
+             <div>
+             Müesseselerin nitelikleri:
+             <div>
+             Madde 16 – <div> 1. <span class="span">  Müesseseler tüzelkişiliğe sahiptir.</span> <br>
+
+             2. Müesseseler, bu Kanun Hükmünde Kararname'de saklı tutulan hususlar <span class="span"> dışında  özel hukuk hükümlerine tabidir.</span> <br>
+
+             3. Müesseseler, Genel Muhasebe Kanunu ile Devlet İhale Kanunu hükümlerine ve <span class="mavi">  Sayıştay'ın denetimine tabi değildir.</span> <br>
+
+             4. Müesseselerin sorumluluğu sermayeleri ile sınırlıdır. </div></div></div>
+             <div>
+             Müesseselerin organları:
+             <div>
+             Madde 17 – <div> 1. Müessesenin organları , <span class="mavi">  yönetim komitesi ve müessese müdürlüğüdür.</span> <br>
+
+             2. Yönetim Komitesi, müessesenin en yüksek seviyede <span class="span">  karar organıdır.</span> <br>
+
+             3. Müessese müdürlüğü, müessesenin yetkili ve sorumlu <span class="span">  yürütme organıdır.</span></div></div></div>
+             <div>
+             Müessese yönetim komitesinin teşkili:
+             <div>
+             Madde 18 – <div> 1. Yönetim komitesi <span class="mavi">  bir başkan ve dört üyeden oluşur.</span> <br>
+
+             2. Yönetim komitesinin <span class="dik">  başkanı müessese müdürüdür.</span> <br>
+
+             3. Yönetim komitesinin <span class="span">  üyeleri </span> müessesenin üst seviyedeki yöneticileri arasından, teşebbüs  <span class="span"> genel müdürünün teklifi üzerine yönetim kurulunca atanır.</span> <br>
+
+             4. Müessese yönetim komitesi üyeliklerine atanacakların, teşebbüs yönetim kurulu üyelerinin nitelik ve şartlarına sahip olmaları gerekir. </div></div></div>
+<div>
+             Yönetim komitesinin görev, yetki ve toplanması:
+             <div>
+             Madde 19 –<div>  1. Yönetim komitesi; teşebbüsçe tesbit edilen esaslara, işletme bütçesi ve programlara uygun olarak, verimlilik ve karlılık ilkeleri doğrultusunda müessesenin yönetimini sağlayacak kararları almakla görevli ve yetkilidir. <br>
+
+             2. Yönetim komitesi, üye tamsayısının <span >  salt çoğunluğu ile toplanır ve kararlarını çoğunlukla alır.</span> Oylarda eşitlik halinde <span class="span"> başkanın bulunduğu taraf çoğunluğu sağlamış olur. </span> <br>
+
+             3. Yönetim komitesi, <span class="mavi">  kararlarını karar gününü izleyen günden itibaren on gün içinde teşebbüse gönderir.</span></div></div></div>
+
+
+
+
+             <div>
+             Müessese Müdürü:
+             <div>
+             Madde 20 –<div>  1.   Müessese müdürü, <span class="mavi"> </span>teşebbüs müdürünün teklifi üzerine yönetim kurulunca atanır.</span> <br>
+
+             2. Müessese müdürü olarak atanabilmek için, <span class="span">  en az dört yıl </span>   kurum ve kuruluşlarında olmak üzere toplam <span class="mavi">  asgari sekiz yıl</span> başarı ile çalışmış olmak ve genel müdürde aranan diğer niteliklere sahip bulunmak gerekir.</div></div></div>
+             <div>
+Müessese Müdürünün görev ve yetkileri: (1)
+<div>
+             Madde 21 – <div> 1. Müessese Müdürü; müesseseyi, mevzuat hükümleri ile yönetim kurulu ve yönetim komitesi kararları doğrultusunda yönetir. (1) <br>
+
+             2. Müessese müdürü, idare ve yargı mercilerinde ve üçüncü kişilere karşı müesseseyi temsil eder. <span class="span">  Temsil yetkisini gerektiğinde devredebilir.</span></div></div></div>
+
+                                                              ÜÇÜNCÜ BÖLÜM <br>
+
+                                                                 Bağlı Ortaklıklar
+                                                                 <div>
+             Bağlı ortaklıkların kuruluşu: (1)
+             <div>
+             Madde 22 – <div> 1. Bağlı ortaklıklar;
+                  <div>
+             a) Bir <span class="span"> müessesenin bağlı ortaklık haline getirilmesi,</span> <br>
+
+             b) Teşebbüsün iştiraklerdeki hissesinin <span class="span"> % 50 nin üstüne çıkması</span>, <br>
+
+             c) Teşebbüsün sermayesinde <span class="span"> % 50'den fazla hisseye sahip olduğu yeni bir şirket kurulması,</span></div>
+
+             Şeklinde oluşur. <br>
+
+             2. Mevcut müesseselerin veya işletmelerin bağlı ortaklık haline getirilmesi ile, yeni bağlı ortakların kurulması <span class="mavi"> Cumhurbaşkanınca yapılır</span>. (1)</div></div></div>
+             <div>
+             Bağlı ortaklıklara uygulanacak hükümler:
+             <div>
+             Madde 23 – <div> 1. Sermayelerinin <span class="ark"> en az % 91'i</span> <span class="span">   iktisadi kuruluşlarına ait olan bağlı ortaklıkların</span> <span class="mavi"> genel kurulu ve denetçileri bulunmaz.</span> <br>
+
+             2. Bağlı ortaklıklar, bu Kanun Hükmünde Kararname'de saklı tutulan hususlar dışında <span class="span"> özel hukuk hükümlerine tabidir</span>. </div></div></div>
+             <div>
+             Bağlı ortaklıkların Yönetim Kurulu, Genel Müdürü ve atamalar:
+             <div>
+             Madde 24 – <div> 1.Bağlı ortaklıkların yönetim kurulu, <span class="mavi"> genel müdür dahil beş üyeden oluşur</span>. <br>
+
+             2. (Mülga : 2/7/2018 - KHK/703/133 md.) <br>
+
+             3. (Mülga birinci cümle : 2/7/2018 - KHK/703/133 md.) Bağlı ortaklık <span class="span"> genel müdürü aynı zamanda yönetim kurulu başkanıdır</span>. <br>
+
+             4. Yönetim kurulunun en çok iki üyesi, özel kesimi oluşturan ortaklıkların hisselerinin her % 20'si için yönetim kurulunda bir temsilci bulundurma hakkına sahip oldukları dikkate alınarak genel kurulca seçilir. <br>
+
+             5. (Değişik: 5/1/1988 - KHK - 308/1 md.) Yönetim kurulunun genel müdür ile özel kesim temsilcilerinin dışında kalan ve teşebbüsü <span class="span"> temsil edecek üyelerinden biri Hazine ve Dış Ticaret Müsteşarlığının bağlı olduğu bakan, diğerleri ilgili bakan tarafından atanır.</span> <br>
+
+             6. Genel Müdür <span class="span"> Yardımcıları Teşebbüs yönetim kurulu tarafından atanır</span>.</div></div></div>
+             <div>
+             Bağlı ortaklık denetçilerinin seçimi:
+             <div>
+             Madde 25 – (Mülga: 2/7/2018 - KHK/703/133 md.)</div></div>
+             <div>
+             Bağlı ortaklık Yönetim Kurulunun ibrası:
+             <div>
+             Madde 26 –<div>  1. Bağlı ortaklıkların, bilanço ve kar - zarar cetvellerini hazırlamaları ve <span class="span"> en geç Mart ayı sonuna kadar Yüksek Denetleme Kuruluna göndermeleri zorunludur.</span> <br>
+
+             2. Yüksek Denetleme Kurulunun, bağlı ortaklığa ilişkin raporunu hazırlaması ve <span class="span"> en geç Mayıs ayı sonuna kadar</span> bağlı ortaklık ve ilgili teşebbüse göndermesi gereklidir. <br>
+
+             3. Bağlı ortaklık genel kurulu <span class="span"> en geç Haziran ayının sonuna</span> kadar toplanır ve Yüksek Denetleme Kurulunun raporunu da dikkate alarak, kararlarını verir. <br>
+
+             4. <span class="mavi"> Genel kurul kararlarına ilişkin tutanak üç işgünü içinde Yüksek Denetleme Kuruluna gönderilir.</span> Yüksek Denetleme Kurulu, bağlı ortaklık genel kurulunca alınan kararı, ilgili teşebbüs hakkında düzenleyeceği raporda değerlendirir.</div></div></div>
+
+                                                           DÖRDÜNCÜ BÖLÜM <br>
+
+                                                                       İştirakler
+                                                                       <div>
+             İştiraklerin teşkili ve nitelikleri:
+             <div>
+             Madde 27 –<div>  1. Teşebbüs veya bağlı ortaklığın bir anonim şirkete iştiraki, ilgili teşebbüsün önerisi üzerine <span class="span"> Koordinasyon kararı ile yapılır</span>. <br>
+
+             2. Bir anonim şirkete iştirak için teşebbüsün veya bağlı ortaklığın şirket sermayesine katılma payının <span class="span"> en az % 15 olması gerekir.</span> Bu oran ortaklığın sermaye artırması halinde de <span class="span"> % 15'den aşağı düşürülemez.</span> <br>
+
+             3. Aynı iştirake <span class="span"> birden fazla</span> teşebbüs veya bağlı ortaklık <span class="span"> katılamaz.</span> <br>
+
+             4. Teşebbüs iştiraklerine ait hisse senetlerinin mülkiyeti teşebbüse, bağlı ortaklık iştiraklerine <span class="span"> ait  hisse senetlerinin mülkiyeti ise bağlı ortaklığa aittir</span>. <br>
+
+             5. İştiraklerin teşkilinde, 2983 sayılı Tasarrufların Teşviki ve    Yatırımlarının Hızlandırılması Hakkındaki Kanun hükümleri saklıdır. </div></div></div>
+
+<div>
+İştiraklerin yönetimi:
+<div>
+             Madde 28 – <div> 1. Teşebbüs ve bağlı ortaklıklara ait iştiraklerin yönetim kurullarında, teşebbüs ve bağlı ortaklığı temsilen <span class="span"> her % 15 hisse için en az bir üye bulundurulur.</span> <br>
+
+             2. Teşebbüs ve bağlı ortaklık temsilcileri,teşebbüsün veya bağlı ortaklığın kendi mensupları arasından ve imkan dahilinde iştirakin bulunduğu yere en yakın teşebbüs veya bağlı ortaklık birimi içinde veya dışardan teşebbüs veya bağlı ortaklığın <span class="span"> yönetim kurulunun göstereceği adaylar arasından seçilirler</span>. <br>
+
+
+             3. Teşebbüs ve bağlı ortaklık temsilcileri, yönetim kurulu üyesi oldukları anonim şirketin faaliyetleri ve mali durumu hakkında, tüzükte belirtilen esaslara göre, <span class="span"> teşebbüs veya bağlı ortaklığa bilgi vermekle yükümlüdürler</span>. <br>
+
+             4. Teşebbüs veya bağlı ortaklık, Türk Ticaret Kanunu gereğince ortakların haiz oldukları bütün haklara sahiptir. <span class="span"> Bu haklar temsilcinin varlığı ileri sürülerek kayıtlanamaz.</span> <br>
+
+             5. Her teşebbüs ve bağlı ortaklığa ait iştiraklerin bilanço ve netice hesapları, teşebbüs ve <span class="span"> bağlı ortaklıkların yıllık faaliyet raporlarına eklenir</span>.</div></div></div>
+             <div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+             </div>
+
+             <script>
+             var surukleniyor = false;
+             var offsetX, offsetY;
+
+             // Tüm soru göster butonlarını seç
+             const soruGosterButtons = document.querySelectorAll('.soru');
+
+             // Her bir buton için event listener ekle
+             soruGosterButtons.forEach(function (button, index) {
+             button.addEventListener('click', function() {
+             const soruContainer = document.querySelector('.soruContainer');
+
+             // Eğer gösteriliyorsa gizle, gizliyse göster
+                   if (soruContainer.style.display === "none") {
+                     soruContainer.style.display = "block";
+                   } else {
+                     soruContainer.style.display = "none";
+             }
+             });
+             });
+
+
+             soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+             document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+                         soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+                   document.addEventListener('mouseup', function() { surukleniyor = false;	});
+             </script>
+            </body>
+            </html>
+            {% endblock%}

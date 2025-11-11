@@ -1,0 +1,151 @@
+{% extends  'layout.html'%}             <!-- ŞABLONU LAYOUT HTML YAP  -->
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.navbar {
+				margin-left: 0 !important;
+				width: 100%;
+				position: fixed;
+			}
+
+
+
+			body{background-color: rgb(236, 170, 188);}
+			div{background-color: purple; color: rgba(92, 184, 192, 0.989); float: left; width: 300px ; height: 300px; margin: 20px; border-radius: 10px; border-style: groove; border-width: 2px; overflow:auto; padding: 10PX; border-color: black;}
+
+			.özel{ margin: 20px;  text-align: center
+				; padding: 10px;   height: 80px; border-color:rgb(19, 225, 232); border-style: dotted; overflow: auto; background-color:rgb(131, 6, 110); color: white; }
+			.sığdır{overflow:auto;}
+			.KALIN{font-weight: bold;}
+			.RENK{background-color: rgb(41, 211, 41); text-align: left;font-weight: bold;  }
+			.renki{color: black;}
+			.tablo{background-color: rgb(19, 225, 232);text-align: left;font-weight: bold; font-size: large; }
+
+		</style>
+		<title> YAZI İŞLERİ MÜDÜRLÜĞÜ SINAVI </title>
+		</head>
+	<body>
+		<br><br><br>
+		<h1 class="özel"> YAZI İŞLERİ MÜDÜRLÜĞÜ SINAVI </h1> <br> <br>
+		<div id="kutu1" class="sığdır" > <h3 >   ANAYASA (6 soru)   </h3>
+
+			<ol> <li> <button class="RENK"> <a class="renki" href="anayasa1"> Genel Esaslar ve Temel Hak ve Hürriyetler (2 + 2)</a></button></li> <br> <li> <button class="RENK"> <a class="renki" href="devletintemelorg">Devletin Temel Organları (2)</a> </button> </li> <br>
+				<li> <button class="tablo"> <a class="renki" href="anayasaNot"> Anayasa ile İlgili Notlar</a></button></li> <br>
+				<li> <button class="tablo"> <a class="renki" href="turkıyebmm"> TBMM başkanlık seçimi ve diğerleri için oy çoklukları</a></button></li></ol> </div>
+
+		<div id="kutu2" class="" >
+			<h3>ATATÜRK İLKE VE İNKİLAPLARI TARİHİ (2 soru) </h3>
+			<button class="RENK"  > <a href="inkilapTarihi" class="renki">ATATÜRK İLKE VE İNKİLAPLARI TARİHİ  </a>   </button>  <br>
+
+			<button  class="RENK"> <a href="ulusalGuvenlik" class="renki"> ULUSAL GÜVENLİK (?)</a> </button>  </div>
+
+		<div id="kutu3">  <h3>DEVLET TEŞKİLATI İLE İLGİLİ MEVZUAT (9  soru)</h3>
+			<ol> <li>
+				<br><BUtton  class="tablo"> <a href="denebakem" class="renki">  DEVLET TEŞKİLATI ŞEMA </a> </BUtton>
+			</li><br>
+			<li> <button class="RENK"> <a class="renki" href="KAMUiktisatitesebbusleri"> KAMU İKTİSADİ TEŞEBBÜSLERİ HAKKINDA
+			KANUN HÜKMÜNDE KARARNAME</a></button></li>
+			<li> <button class="RENK"> <a class="renki" href="devlettescum1kar">Devletin Teşkilatı ile ilgili 1 nolu kararname'nin ilgili kısımları </a> </button> </li>
+
+			<li> <button class="RENK"> <a class="renki" href="ilidaresi" class="renkli"> 5442 İL İDARESİ KANUNU</a> </button></li>
+
+			<li> <button class="RENK"> <a class="renki" href="ilozelidaresi" class="renkli"> 5302 İL ÖZEL İDARESİ KANUNU</a> </button></li>
+			<li> <button class="RENK"> <a class="renki" href="belediyekanunu" class="renkli"> 5393 BELEDİYE KANUNU</a> </button></li>
+
+
+		</ol> </button></div>
+
+		<div id="kutu1" > <h3>657 DEVLET MEMURLAR KANUNU (6 soru)</h3> <BUtton  class="RENK"> <a href="devletmemuru657" class="renki"> 657 DEVLET MEMURLAR KANUNU  </a> </BUtton>
+		<br><br><BUtton  class="tablo"> <a href="dmksureler" class="renki">  DEVLET MEMURLAR KANUNU SÜRELER </a> </BUtton>  </div> </div>
+
+		<div id="kutu2"> <h3>TÜRKÇE (2 soru)</h3> <BUtton  class="RENK"> <a href="turkce" class="renki"> TÜRKÇE</a> </BUtton>  </div> </div>
+
+		<div id="kutu3"> <h3>HALKLA İLİŞKİLER (1 soru)</h3> <BUtton  class="RENK"> <a href="halklailiskiler" class="renki"> HALKLA İLİŞKİLER  </a> </BUtton>  </div> </div>
+
+		<div id="kutu1" ><h3>ETİK DAVRANIŞ İLKELERİ (1 soru)</h3> <BUtton  class="RENK"> <a href="etik" class="renki"> ETİK DAVRANIŞ İLKELERİ  </a> </BUtton>  </div> </div>
+
+		<div id="kutu2" class="KALIN"> <h3>GENEL</h3> <BUtton  class="RENK"> <a href="bakanlıkmerkez" class="renki"> )1 sayılı Cumhurbaşkanlığı Teşkilatı Hakkında Cumhurbaşkanlığı
+Kararnamesi (38-56 ncı maddeler) (1 soru)</a> </BUtton>
+			<BUtton  class="RENK"> <a href="adaletKomisyonlarınnYapısı" class="renki"> ADALET KOMİSYONLARININ YAPISI VE GÖREVLERİ İLE YARGI ÖRGÜTÜ (2 soru)</a> </BUtton>
+			<BUtton  class="RENK"> <a href="ulusalYargıAgıBilisim" class="renki"> ULUSAL YARGI AĞI BİLİŞİM SİSTEMİ (1 soru)</a> </BUtton>
+			 <BUtton  class="RENK"> <a href="maliYonetim5018" class="renki"> 5018 SAYILI KANUN MALİ YÖNETİM VE KONTROL KANUNU (1 soru)</a> </BUtton>  </div>
+
+
+	</div>  </div>   </div> </div>
+		<div id="kutu3" class="KALIN"> <h4> 1 - Bakanlık teşkilatı (3 soru) </h4> <BUtton  class="RENK"> <a href="noluCumhur" class="renki"> 1 sayılı Cumhurbaşkanlığı Teşkilatı Hakkında Cumhurbaşkanlığı
+Kararnamesi (Altıncı Kısım Birinci Bölüm) </a> </BUtton></div>
+
+		<div id="kutu1" class="KALIN" > 2- Adli ve idari yargı adalet komisyonlarının yapısı ve görevleri (1 soru)
+  <ol> <li><BUtton  class="RENK"> <a href="bamhizmetleri" class="renki"> Bölge Adliye ve Adlî Yargı İlk Derece Mahkemeleri ile Cumhuriyet Başsavcılıkları İdarî ve Yazı İşleri Hizmetlerinin Yürütülmesine Dair Yönetmelik </a> </BUtton> </li>
+			<li><BUtton  class="RENK"> <a href="bimhizmetleri" class="renki"> Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin İdari İşler İle Yazı İşleri Hizmetlerinin Yürütülmesi Usul ve Esaslarına İlişkin Yönetmelik </a> </BUtton></li>
+			</ol></div>
+
+
+		<div id="kutu2" class="KALIN">3- YARGI ÖRGÜTÜ (4 soru) <ol>  <li> <BUtton  class="RENK"> <a href="adliye5235" class="renki"> 5235 sayılı Adli Yargı İlk Derece Mahkemeleri ile Bölge Adliye Mahkemelerinin Kuruluş ve Yetkileri Hakkında kanun </a> </BUtton> </li> <li> <BUtton  class="RENK"> <a href="idare2576" class="renki"> 2576 sayılı Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin Kuruluşu ve Görevleri Hakkında Kanun </a> </BUtton> </li></ol> </div>
+
+		<div id="kutu3" class="KALIN
+		"> 4- Elektronik imza ile Ses ve Görüntü Bilişim Sistemi (SEGBİS) ( 3 soru)  <ol> <li> <BUtton  class="RENK"> <a href="imza5070" class="renki"> 5070 sayılı Elektronik İmza Kanunu  </a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="segbis" class="renki"> Ceza Muhakemesinde Ses ve Görüntü Bilişim Sisteminin Uygulanması Hakkında Yönetmelik </a> </BUtton> </li>   <li> <BUtton  class="RENK"> <a href="hukukdurus" class="renki">Hukuk Muhakemelerinde Ses ve Görüntü Nakledilmesi Yoluyla Duruşma
+İcrası Hakkında Yönetmelik  </a> </BUtton> </li>
+			<li> <BUtton  class="tablo"> <a href="tebkveeleki" class="renki"> 5070 ve 7201 deki cezalar </a> </BUtton> </li></ol> </div>
+		<div id="kutu1" class="KALIN"> <h3> 5- Resmi yazışma kuralları (6 soru) </h3> <BUtton  class="RENK"> <a href="resmiyazısma" class="renki"> Resmi Yazışmalarda Uygulanacak Usul ve Esaslar Hakkında Yönetmelik  </a> </BUtton><BUtton  class="RENK"> <a href="https://www.tccb.gov.tr/assets/dosya/resmiyazisma/dosyalar/kilavuz.pdf" class="nav-link" style="color:black">Cumhurbaşkanlığınca hazırlanan Resmi Yazışmalarda Uygulanacak Usul
+ve Esaslar Hakkında Yönetmelik Kılavuzu</a> </BUtton></div>
+
+		<div id="kutu2" class="KALIN"> 6 - 7201 sayılı Tebligat Kanunu ve ilgili mevzuat (5 soru)
+ <ol><li> <BUtton  class="RENK"> <a href="tebligatkanunu" class="renki"> 7201 sayılı Tebligat Kanunu </a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="tebligatyonetmelik" class="renki"> Tebligat Kanununun Uygulanmasına Dair Yönetmelik </a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="elektroniktebligatyonetmelik" class="renki"> Elektronik Tebligat Yönetmeliği </a> </BUtton> </li> <br>
+			<li> <BUtton  class="tablo"> <a href="tebkveeleki" class="renki"> 5070 ve 7201 deki cezalar  </a> </BUtton> </li></ol> </div>
+
+		<div id="kutu3" class="KALIN"> 7 - Devlet memurları ile ilgili mevzuat (7 soru)  <ol><li> <BUtton  class="RENK"> <a href="bilgiedin" class="renki"> 4982 sayılı Bilgi Edinme Hakkı Kanunu </a> </BUtton> </li> <li> <BUtton  class="RENK"> <a href="dilekçehak" class="renki"> 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun</a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="adaletbakanlıgıdisiplin" class="renki"> Adalet Bakanlığı Disiplin Yönetmeliği </a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="unvanyön" class="renki"> Adalet Bakanlığı Personeli Görevde Yükselme ve Unvan Değişikliği Yönetmeliği </a> </BUtton> </li><li> <BUtton  class="RENK"> <a href="sinavatama" class="renki"> Adalet Bakanlığı Memur Sınav, Atama ve Nakil Yönetmeliği</a> </BUtton> </li> <br><br><li> <BUtton  class="tablo"> <a href="idarisüreler" class="renki"> 2577 ivedi dava + Merkezi sınav süreler </a> </BUtton> </li></ol> </div>
+
+
+
+		<div id="kutu1" class="KALIN"> 8- Yazı işleri hizmetlerinin yürütülmesine ilişkin mevzuat ve yargı harçları
+ (9 soru)
+ <ol><li> <BUtton  class="RENK"> <a href="harclarkanunu492" class="renki"> 492 sayılı Harçlar Kanununun 1. kısmı, 3. kısmı </a> </BUtton> </li><li> <BUtton  class="RENK"><a href="bamhizmetleri" class="renki"> Bölge Adliye ve Adlî Yargı İlk Derece Mahkemeleri ile Cumhuriyet Başsavcılıkları İdarî ve Yazı İşleri Hizmetlerinin Yürütülmesine Dair Yönetmelik </a> </BUtton> </li> <li> <BUtton  class="RENK"> <a href="bimhizmetleri" class="renki"> Bölge İdare Mahkemeleri, İdare Mahkemeleri ve Vergi Mahkemelerinin İdari İşler İle Yazı İşleri Hizmetlerinin Yürütülmesi Usul ve Esaslarına İlişkin Yönetmelik </a> </BUtton> </li></ol><br><br> <BUtton  class="tablo"> <a href="bamkayıtlar" class="renki"> BAM kayıtlar  </a> </BUtton> </div>
+ <div id="kutu2" class="KALIN"> <h3> 9-  5271 sayılı Ceza Muhakemesi Kanunu (3 Soru)</h3> <BUtton  class="RENK"> <a href="cezakanunu5271" class="renki"> a)Birinci Kitap: Birinci Kısım Birinci Bölüm, İkinci Bölüm, Üçüncü Bölüm,
+Dördüncü Bölüm; İkinci Kısım Birinci Bölüm, İkinci Bölüm; Üçüncü Kısım
+Birinci Bölüm, İkinci Bölüm, Üçüncü Bölüm; Dördüncü Kısım Birinci
+Bölüm, İkinci Bölüm, Üçüncü Bölüm, Dördüncü Bölüm, Beşinci Bölüm,
+a)Birinci Kitap: Birinci Kısım Birinci Bölüm, İkinci Bölüm, Üçüncü Bölüm,
+Dördüncü Bölüm; İkinci Kısım Birinci Bölüm, İkinci Bölüm; Üçüncü Kısım
+Birinci Bölüm, İkinci Bölüm, Üçüncü Bölüm; Dördüncü Kısım Birinci
+Bölüm, İkinci Bölüm, Üçüncü Bölüm, Dördüncü Bölüm, Beşinci Bölüm, </a> </BUtton></div>
+		<div id="kutu3" class="KALIN"> <h3>10- 6100 sayılı Hukuk Muhakemeleri Kanunu (3 soru)
+</h3> <BUtton  class="RENK"> <a href="hukukmuhakemesi6100" class="renki"> a)Birinci Kısım: Birinci Bölüm Birinci Ayırım, İkinci Ayırım, Üçüncü
+Ayırım; İkinci Bölüm; Dördüncü Bölüm Birinci Ayırım, İkinci Ayırım,
+Üçüncü Ayırım, Dördüncü Ayırım; Beşinci Bölüm; Altıncı Bölüm Birinci
+Ayırım, İkinci Ayırım, Üçüncü Ayırım
+b)İkinci Kısım: Birinci Bölüm; İkinci Bölüm Birinci Ayırım, İkinci Ayırım
+c)Üçüncü Kısım: Birinci Bölüm; İkinci Bölüm; Üçüncü Bölüm; Dördüncü
+Bölüm; Beşinci Bölüm Birinci Ayırım, İkinci Ayırım, Üçüncü Ayırım,
+Dördüncü Ayırım, Beşinci Ayırım, Altıncı Ayırım, Yedinci Ayırım; Altıncı
+Bölüm
+ç)Beşinci Kısım: Birinci Bölüm; İkinci Bölüm; Üçüncü Bölüm
+d)Altıncı Kısım
+e)Yedinci Kısım: Birinci Bölüm; İkinci Bölüm
+f)Sekizinci Kısım: Birinci Bölüm; İkinci Bölüm
+g)Dokuzuncu Kısım
+ğ)Onuncu Kısım: Birinci Bölüm; İkinci Bölüm </a> </BUtton>
+			<br><br> <BUtton  class="tablo"> <a href="süreler" class="renki"> 6100 süreler </a> </BUtton> </div>
+<div id="kutu1" class="KALIN"> <h3> 11- 2577 Sayılı İdari Yargılama Usulü Kanunu (2 Soru)
+ (2 soru)</h3> <BUtton  class="RENK"> <a href="idariyargılama2577" class="renki"> a)Birinci Bölüm
+b)İkinci Bölüm
+c)Üçüncü Bölüm
+
+ </a> </BUtton></div>
+		<div id="kutu1" class="KALIN"> <h3>12- 5275 Sayılı Ceza ve Güvenlik Tedbirlerinin İnfazı Hakkında Kanun (2
+Soru)
+)</h3> <BUtton  class="RENK"> <a href="infaz5275" class="renki"> a)Birinci Kitap: Birinci Kısım Birinci Bölüm, İkinci Bölüm; İkinci Kısım
+Birinci Bölüm, İkinci Bölüm, Üçüncü Bölüm, Dördüncü Bölüm; Dördüncü
+Kısım Yedinci Bölüm, Sekizinci Bölüm </a> </BUtton></div>
+
+		<div id="kutu1" class="KALIN"> <h3> SORU ÇÖZÜP PRATİK YAPALIM </h3> <BUtton  class="RENK"> <a href="sorucoz" class="renki"> ÇIKMIŞ SORULARDAN RASGELE SORU ÇÖZ  </a> </BUtton></div>
+
+
+	</body>
+</html>
+{% endblock%}

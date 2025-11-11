@@ -1,0 +1,837 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; border-radius: 10px;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.arkpspanBLACK{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.yuvarla{border-radius: 10px; background-color: black;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px; color: white; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+</style>
+<title>63/3 sayılı DİABGM Genelgesi-Hukuki alanda uluslararası adli tebligat işlemleri (ekler hariç)</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+	<div id="kal" class="kal">
+
+T.C. <br>
+ADALET BAKANLIĞI<br>
+Uluslararası Hukuk ve Dış İlişkiler Genel Müdürlüğü<br>
+Sayı   B.03.OTJİG.0.00,00.06/010.06,02/1-3 &../Îİ./2011<br>
+Konu : Hukuki Alanda Uluslararası Adli Tebligat İşlemleri<br>
+ GENELGENo: 63/3 <br></div>
+ <div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+<div>
+  Mevzuattaki  değişiklikler ve uygulamada karşılaşılan sorunlar dikkate alınarak 01/03/2008 tarihli ve  63/1  sayılı  Genelgemizin  tebligata  ilişkin  hükümleri  yerine  Hukuki  Alanda  Uluslararası  Adli Tebligat  İşlemleri konulu Genelgenin yürürlüğe konulmasına ihtiyaç duyulmuştur.</div>
+  <div>
+  GENEL HÜKÜMLERLER
+  <div>
+  1. Yurt dışı  tebligatın <span class="span">  kaynaklan;</span>  <span class="mavi"> ikili  anlaşma</span>  ve/veya  <span class="mavi">çok  taraflı </span> sözleşmeler,  uluslararası <span class="mavi"> adli yardımlaşma kuralları</span> ile <span class="mavi"> 7201  sayılı Tebligat Kanunu </span> ve <span class="mavi">ilgili mevzuattır.</span></div>
+  <div>
+  2.  Türkiye,  bir  çok  devlet  ile  tebligat  taleplerinin  yerine  getirilmesi  için  iki  taraflı  adli yardımlaşma  anlaşmaları  imzalamış  ve  aynı  zamanda  bu  konuda  en  önemli  uluslararası kaynakları  oluşturan <span class="dik"> 1954  tarihli  Hukuk  Usulüne  Dair  Lahey  Sözleşmesi</span>  (bundan  sonra  1954 tarihli  Sözleşme  olarak  anılacaktır)  ile  <span class="dik"> 1965  tarihli  Hukukî  ve  Ticari  Konularda  Adlî  ve  Gayri Adlî  Belgelerin  Yabancı  Memleketlerde  Tebliğine  Dair  Sözleşme’ye</span>  (bundan  sonra  1965  tarihli Sözleşme olarak anılacaktır) taraf olmuştur.</div></div>
+
+  <div>
+  BİRİNCİ BÖLÜM  <br><br>
+
+  TÜRKİYE DIŞINDAKİ YABANCILARA YAPILACAK TEBLİGAT <br><br>
+
+  Çok Taraflı Sözleşme Bulunması Halinde  <br>
+<div>
+  3.  1954  tarihli  Sözleşmenin  1  ilâ  7’nci  maddeleri  arasında  tebligat  konusu  düzenlenmiştir. Ancak,  1965  tarihli  Sözleşme,  her  iki  Sözleşmeye  taraf  olan  devletler  arasında  özel  nitelikte hükümler  taşıması  nedeniyle  anılan  Sözleşmelere  taraf  olan  devletler  bakımından  tebligat işlemleri <span class="mavi"> 1965 tarihli  Sözleşmeye göre yerine getirilir</span>.</div>
+
+  1965 Tarihli Sözleşmeye Göre Tebligat Usûlü <br>
+
+  Genel Olarak <br>
+<div>
+  4.  Sözleşmeye taraf olan devletler  Ek  (1 )’te yer almaktadır.</div>
+
+  <div>
+  5.  Türkiye  Sözleşmenin  8’inci  ve  10’uncu maddelerine <span class="span"> çekince koyarak</span>,  <span class="span"> diplomatik memurların ve  konsolosluk</span>  görevlilerinin <span class="mavi"> sadece  kendi  vatandaşlarına  tebliğ  yapabilme</span>  yetkilerini  kabul etmiş,  <span class="span"> 10’uncu maddede belirtilen tebliğ usullerini ise reddetmiştir</span>.</div>
+<div>
+  6.  Türkiye’nin,  Sözleşmenin  15’inci  maddesi  uyarınca  yaptığı  beyan  uyarınca;  yurt  dışında <span class="span"> tebligatın  yapıldığı  anlaşılır</span>  ve  <span class="span"> gönderme  tarihinden</span>  itibaren  <span class="mavi"> 6  aydan  fazla  zaman  geçmiş bulunursa</span>,  tebligatın  yapıldığını  bildiren  tebliğ  tasdiknamesi <span class="span"> elde  edilemese  bile</span>,  mahkeme, Türkiye’deki dava ile ilgili kararını, tebliğ <span class="dik"> tasdiknamesi olmadan da verebilecektir</span>. </div>
+<div>
+	7. Sözleşmenin  16’ncı  maddesine  göre,  adli  bir  belgenin  tebliğ  edilmek  üzere  yabancı  devlet makamlarına  gönderilmiş  ve  mahkemeye  gelmeyen  davalı  aleyhine <span class="span"> karar  verilmiş  olması halinde</span>;  davalının  kendi  <span class="span"> kusuru  bulunmaksızın  </span>savunmasını  hazırlamak  üzere,  belgeden  veya kanun  yollarına  müracaat  etmek  için  mahkeme  kararından  zamanında  haberdar  olmaması  ve davalı  tarafından  ileri  sürülen  def ilerin  dayanaktan  yoksun  bulunmaması <span class="span"> halinde</span> <span class="mavi">  hâkim,</span>  kanun yollarına  müracaatım  sağlamak  üzere,  süre  aşımının  davalı  hakkmdaki <span class="span"> sonuçlarını  kaldırmaya yetkilidir</span>.  Türkiye,  16’ncı  maddenin  2’nci  fıkrası  uyarınca  yaptığı  beyan  ile  bu  maddede bildirilen  taleplerin,  kararın  verildiği  tarihten  itibaren <span class="mavi"> bir  sene  içinde  ileri  sürülmemesi  halinde kabul edilmeyeceğini açıklamıştır</span>,</div>
+	<div>
+	8.  Sözleşmenin  2’nci  maddesi  uyarınca,  tebligatın  daha  çabuk  ve  kolay  yapılmasını  sağlamak amacıyla  taraf devletlerin  tebliğ  taleplerini  kabul  etmek  ve  3  ilâ  6’ncı  maddeleri  hükümlerine göre  işlem  yapmak  üzere <span class="mavi"> taraf  devletlerde  Merkezî  Makamlar  ihdas  edilmiştir.</span> <span class="mavi"> Bakanlığımız Uluslararası  Hukuk  ve  Dış  İlişkiler  Genel  Müdürlüğü</span>  anılan  Sözleşmenin  uygulanmasında <span class="span"> Merkezî makam</span> olarak görev yapmaktadır.  Diğer ülkelerin merkezi makamları ve yazışma dilleri Ek  (2)’te yer almaktadır.</div>
+	<div>
+	9. <span class="span"> Tebligat  evrakı</span>,  Sözleşmenin  ekini  teşkil  eden  örneğe  uygun  olarak  hazırlanan <span class="dik"> talepname  ile bu talepnameye eklenen tebliğ belgelerinden meydana gelir</span>.</div>
+	<div>
+	10. <span class="mavi"> Dört   sayfadan  oluşan   bu  talepnamenin</span>   Ek   (3Vte  yer  alan  örneğe  uygun  olması gerekmektedir.</div>
+<div>
+	11.  Talepname <span class="span"> doldurulurken aşağıdaki hususlar dikkate alınır</span>:
+	<div>
+		a.  Gerek  talepname  ve  gerekse  ekindeki  muhataba  tebliğ  edilecek  bütün  belgeler <span class="mavi"> ikişer  takım</span> olarak düzenlenir (m. 3/2). <br>
+		b.  Talepnamenin  ilgili  kısımları  gönderileceği  devletin <span class="mavi"> dilinde</span>  veya  <span class="mavi"> İngilizce</span>  ya  da <span class="mavi"> Fransızca</span> doldurulur (m. 7/2).<br>
+		c.  Talepnamenin  ekinde  gönderilen  ve  muhataba  tebliğ  edilecek <span class="mavi"> Türkçe  belgelere</span>,  ayrıca gönderileceği devletin dilinde <span class="mavi"> tercümeleri de eklenir</span> (m.  5/2).<br>
+		d.  Talepnamenin <span class="span"> 1 inci</span>  sayfasının <span class="mavi"> “Talep  Edenin  Kimliği  ve  Adresi”</span>  başlıklı  sol  üst  sütununa, mahkeme,  icra  müdürlüğü  veya  noterlik  gibi  tebliği  talep  eden  merciin  adı,  bulunduğu  yer  ve dosya numarası yazılır.<br>
+		e.  Talepnamenin <span class="span"> 1 ’ inci  sayfasının</span>  <span class="mavi"> “Muhatap  Makamın  Adresi”</span>  başlıklı <span class="span"> sağ  üst  sütununa</span>, muhatap makamın açık adresi yazılır.<br>
+		f.  Talepnamenin <span class="mavi"> “Kimlik  ve  Adres”  başlıklı  kısmına</span>,  yabancı  devlette  bulunan  ve  kendisine tebliğ  yapılacak  olan  gerçek  veya  tüzelkişinin  <span class="dik"> adı,  soyadı,  kimliğini  belirten  bilgiler  ve  adresi yazılır</span>.<br>
+		g.  Talepnamenin <span class="mavi"> “Tebliğ Şekli”</span> ne ilişkin kısmında yer alan şıklardan (a) bendi işaretlenir,   <br>
+		h.  Talepnamenin  “Evrak  Listesi”  başlıklı  kısmına,  formun  ekini  teşkil  eden  ve  tebliğ  edilecek olan belgelerin listesi yazılır. <br>
+		i.  Talepnamenin  sağ alt kısmında;  tebliğ belgelerini  çıkaran merciin bulunduğu  yer, hâkim,  icra müdürü veya noter gibi  yetkili  kişinin sicil numarası,  imzası  ile o merciin mührü ve düzenlendiği tarih bulunur </span> </div> </div>
+<div>
+	12.  Tasdikname: <span class="mavi"> Talepnamenin arka sayfasında bulunan <span class="dik"> “Tasdikname”</span> bölümü</span>, tebligat işlemi talep  edilen devlet merciince  gerçekleştirildikten  sonra,  yine  bu  devletin yetkili  merci  tarafından doldurulacağından <span class="mavi"> bu bölüme hiçbir şey yazılmaz</span>.</div>
+
+	<div>
+	13.  Tebliğ Edilecek Evrakın <span class="mavi"> Özeti</span>
+	<div>
+
+	<span class="dik">	a.  “Talep  Eden  Makamın  Adı  ve Adresi” kısmına,  tebliği  çıkaran  merciin  adı, yeri  ve numarası yazılır. <br>
+		b.  “Tarafların Kimlikleri” başlıklı kısmına, dava veya işlem taraflarının ad ve soyadları yazılır.<br>
+		c.  “Evrakın  Mahiyeti  ve Niçin  Gönderildiği” kısmına,  dava dilekçesi,  karar gibi  evrakın  niteliği ile duruşma günü tebliği, karar tebliği gibi evrakın gönderilme nedeni yazılır.<br>
+		d.  “Davanın Mahiyeti  ve Amacı  ile Var İse İhtilaf Konusu  Meblağ” kısmına,  davanın niteliği  ve amacı ve var ise, anlaşmazlık konusu miktar yazılır.<br>
+		e.  “Duruşmanın  Yeri  ve  Tarihi”  kısmına,  duruşmanın  yapılacağı  mahkemenin  yeri  ve  adı  ile duruşma tarih ve saati yazılır.<br>
+		f.  “Kararı Veren Mahkeme ve Karar Tarihi” kısmı, ilam tebliğlerinde kullanılır.<br>
+		g.  “Evrakta  Belirtilen  Müddetler”  kısmına,  tebliğ  konusu,  dava dilekçesi  ise  cevap  süresi,  karar ise temyiz süresi gibi süreler yazılır</span>.<br> </div></div>
+<div>
+	14.  Muhatabın  kimliği  ve  adresi: Talepnamenin  son  sayfasındaki  “Muhatabın  Kimliği  ve Adresi” kısmına, tebliğ yapılacak kişinin adı, soyadı ve yurtdışmdaki adresi yazılır.</div>
+<div>
+	15.  Kazaî  merciîîerce  Sözleşmeye  uygun  şekilde  düzenlenen  talepname  ve  ekleri, <span class="mavi"> -herhangi  bir üst  yazı  eklenmeksizin-  ikişer  nüsha  olarak  anılan  Sözleşme'nin  3'üncü  maddesi  uyarınca; Bakanlığımız  aracı  kılınmaksızm  doğrudan  talep  edilen  devletin  merkezi  makamına  gönderilir</span>. Merkezi Makamlarının adresleri  Ek (2)' de yer almaktadır.</div>
+
+	Doğrudan Tebligat Usulü
+<div>
+	16.  1965  tarihli  Sözleşmede kabul  edilen tebligat yöntemi, kural olarak merkezî makam aracılığı ile  tebligat  olup,  8’inci  madde  ile  taraf  devletlere  konsoloslukları  aracılığı  ile <span class="dik"> sadece  kendi vatandaşlarına tebligat yapma olanağı tanınmış bulunmaktadır</span>.</div>
+	<div>
+	17.  Sözleşmenin  tanıdığı  bir <span class="dik"> diğer  tebligat  yöntemi  de  doğrudan  posta  yolu  ile  tebligattır</span>.  Bu yönteme,  sadece  Sözleşmenin  10’uncu  maddesine  çekince  koymayan  devletler  açısından başvurmak  mümkündür. <span class="span"> Türkiye</span>,  İO’uncu  maddedeki  tebligat  yöntemini  kabul  etmeyeceğini  bu maddeye koyduğu <span class="span"> çekince ile belirtmiş bulunmaktadır</span>.</div>
+<div>
+	18.  Sözleşmenin  10/a  maddesi  uyarınca  Ek  (5)’da  yer  alan  devletler,  ülkelerinde  muhataplara doğrudan  posta  vasıtasıyla  tebligat  yapılmasını  kabul  etmişlerdir.  Buna  göre,  tebliği  çıkaracak yetkili  merci  tarafından,  tebliği  istenen  belgelerin <span class="mavi">  Türkçesi  ile  muhatabın  dilinde  yapılmış çevirisinin,  talepname  ekinde,  Bakanlığımız  aracı  kılınmaksızm  iadeli  taahhütlü  posta  yolu  ile doğrudan muhatabın adresine gönderilmesi mümkündür </span>.</div>
+
+<span class="mavi">	1954 Tarihli Sözleşmeye Göre Tebligat Usûlü</span>
+	<div>
+	19.  Sözleşmeye taraf olan devletler Ek (6 }’da yer almaktadır.</div>
+	<div>
+	20.  Türkiye,  Sözleşmenin  6’ncı  maddesine  koyduğu  çekince  ile,  bu  maddede  bildirilen  tebliğ usullerini  reddetmiş, <span class="span"> ancak  diplomatik  memurlar  veya  konsolosluk  görevlilerinin,  sadece  kendi vatandaşlarına tebliğ yapabileceğini kabul etmiştir.</span></div>
+	<div>
+	21.  Sözleşmenin  1  ilâ  7’nci  maddelerinde  düzenlenen  tebligat  hükümlerine  göre;  Sözleşme kapsamında yabancı  devlet yetkili  makamlarına gönderilecek tebligat talebine esas  olmak  üzere, talep  eden  makamın  adı,  olayın  mahiyeti,  tarafların  isim  ve  adresleri,  talebin  yerine  getirilmesi için gerekli diğer bilgilerin yer aldığı  Ek  (4)’de yer alan talep yazısı  ile ekindeki belgelerin <span class="mavi">ikişer takım</span>  olarak  düzenlenmesi  ve  buna,  yabancı  devletin  diline  tercüme  edilmiş  onaylı <span class="mavi"> ikişer örneğinin  de  eklenerek  Bakanlığımıza  gönderilmesi  gerekir</span>.  Talep  yazısı,  talep  eden  makam tarafından düzenlenerek imzalanır ve bu makamın resmî mührünü taşır.</div>
+
+ <span class="mavi"> İkili Anlaşma Bulunması Halinde</span>
+<div>
+	22. Genel  olarak,  iki  taraflı  adli  yardımlaşma  anlaşmalarına  göre  yapılacak  tebligat  talebinde; evrak <span class="span"> Türkçe  düzenlenir</span>,  talep  edilen  devletin  dilinde  veya  anlaşmada  yazılı  dillerden  birinde yapılmış onaylı <span class="span"> tercümeleri eklenir</span>.</div>
+	<div>
+	23.  İki  taraflı  adli  yardımlaşma  anlaşmaları  çerçevesinde,  yabancı  devlet  yetkili  makamlarına gönderilecek  tebligat  talebine  esas  olmak  üzere,  talep  eden  makamın  adı,  olayın  mahiyeti, tarafların  isim ve adresleri, talebin yerine  getirilmesi  için gerekli  diğer bilgileri  içeren  bk  (4)Me yer  alan  talep  yazısı  ile  ekindeki  belgelerin <span class="mavi"> ikişer  takım</span>  olarak  düzenlenmesi  ve  buna,  yabancı devletin diline tercüme edilmiş onaylı  <span class="mavi">ikişer örneğinin de eklenmesi  gerekmektedir</span>. Talep yazısı, talep  eden  makam  tarafından  düzenlenerek  imzalanmalı  ve  bu  makamın  resmî  mührünü taşımalıdır.</div>
+	<div>
+	24.  Türkiye  ile  tebligatın  yapılacağı  devlet  arasında <span class="mavi"> aynı  zamanda  ikili  anlaşma  ve  çok  taraflı sözleşme  varsa,  kural  olarak  çok  taraflı  sözleşmenin  uygulanması</span>;  <span class="mavi"> ancak</span>  ikili  anlaşmada  çok taraflı  sözleşmelere  nazaran  tebligatı <span class="mavi">  kolaylaştıran</span>  ayrı  ve  özel  bir  hükmün  bulunması  halinde <span class="mavi"> ikili  anlaşma  hükümlerinin  uygulanması</span>;  <span class="mavi"> tereddüt  halinde</span>  de  yine  <span class="mavi"> ikili  anlaşmaya  göre</span>  işlem yapılmasının daha uygun olacağı düşünülmektedir.</div>
+
+	İkili Anlaşma ve/veya Çok Taraflı Sözleşme <span class="span"> Bulunmaması Halinde</span> Tebligat Usulü
+<div>
+	25.  Tebligat  talebinin  iletileceği  devlet  ile  Türkiye  arasında  bu  konuda  herhangi  bir  anlaşma veya  sözleşme  yoksa  tebliğ,  uluslararası <span class="span"> adli  yardımlaşmanın  esasını</span>  teşkil  eden  karşılıklılık ilkesi çerçevesinde <span class="span"> 7201  sayılı Tebligat Kanunu</span> ve ilgili mevzuat hükümlerine göre yapılır.</div>
+
+	<div>
+
+	26.  7201  sayılı  Tebligat  Kanununun  25'inci  maddesinin  3’üncü  fıkrası  uyarınca,   hukuki konularda  adli  makamlarca  ve  noterliklerce  yurt  dışında  bulunanlara  tebliği  talep  edilen  evrak <span class="mavi"> Bakanlığımız  aracılığı  ile  diplomatik  yoldan  tebliğin  yapılacağı  devletteki  yetkili  makamlara ulaştırılır</span>.</div>
+	<div>
+
+	27.  Uluslararası  adli  yardımlaşma  kuralları  çerçevesinde  yabancı  devlet  yetkili  makamlarına gönderilecek  tebligat  talebine  esas  olmak  üzere,  talep  eden  makamın  adı,  olayın  mahiyeti, tarafların  isim  ve  adresleri,  talebin  yerine  getirilmesi  için  gerekli  diğer  bilgilerin  yer  aldığı tebligat talep yazısı  Kk (4) ile ekindeki belgelerin <span class="mavi"> ikişer takım</span> olarak düzenlenir ve buna, yabancı devletin diline tercüme edilmiş onaylı <span class="mavi"> ikişer örneği de eklenerek Bakanlığımıza gönderilir</span>. Talep yazısı, talep eden makam tarafından düzenlenerek imzalanır ve bu makamın resmî mührünü taşır.</div>
+
+	Tebligat Evrakının Düzenlenmesinde Dikkat Edilecek Hususlar
+
+	<div>
+	28.  Yurt  dışına  gönderilecek  belgelerde  silinti,  kazıntı  bulunmamasına;  Örnek,  fotokopi  ve tercümelerin  okunaklı,  düzgün  ve  yazışma  kurallarına  uygun  şekilde  düzenlenmesine;  onay, mühür  ve  imzaların  evrakın  ilgili  kısımlarına  düzenli  ve  okunaklı  olarak  konulmasına  özen gösterilir.</div>
+
+	<div>
+	29.  Tebliğ  evrakının  tercümesi  mutlaka <span class="dik"> hukuk  terimlerine  vakıf  bir  tercümana  yaptırılır.</span> <span class="mavi"> Tercümeyi  yapan  kişi  tarafından  adı,  soyadı  ve  unvanı  yazılarak,  tercümenin  her  sayfası imzalanmalı</span>,  tercümenin  <span class="mavi"> hangi  dilde  yapıldığı  belirtilmeli</span>  ve  <span class="mavi"> tercüme  metnine,  tercümenin yapıldığı dilde aslına uygunluk şerhi konulur</span>,</div>
+
+	<div>
+	30.  Yabancı  devletlere  gönderilecek tebliğ evrakı duruşma günü  gibi  aynı  zamanda muayyen bir gün  bildirimini  de  içeriyorsa  evrakın,  postada  olabilecek  gecikmeler  de  dikkate  alınarak  tespit edilen  günden <span class="mavi"> en  az 3  ay  önce ilgili  makama ulaşacak şekilde  gönderilir</span>.  Davaların  gecikmesine sebebiyet  vermemek  için  tebliğle  ilgili  kararların <span class="span"> Tebligat  Kanununun 40’ıncı  maddesi  uyarınca</span> duruşma günü beklenmeksizin evrak üzerinden verilmesi de <span class="span"> mümkün bulunmaktadır</span>.</div>
+	<div>
+	31.  Bakanlığımızca <span class="span"> her takvim yılı başında</span> çıkarılan ve Resmî Gazete’de yayımlanan “Yurt Dışı Tebligat ve İstinabe Taleplerinde Uyulması  Gereken Usul  ve  Esaslara Dair Tebliğ” ile belirlenen tebliğ  masraflarının,  ilgilisince  Maliye  Bakanlığımın <span class="mavi"> “Muhtelif  Gelirler”</span>  hesabına  yatırılması gerekmektedir.</div>
+
+	<div>
+	32. <span class="dik"> Tebligat  evrakı  1965  tarihli  Sözleşme  hükümlerine  göre  düzenlenmekte  ise,  talepname davetiye  yerine  geçtiğinden  ayrıca  tebliğ  mazbatalı  zarfın  bu  forma  eklenmesine  gerek bulunmamaktadır</span>.</div>
+</div>
+<div>
+	İKİNCİ BÖLÜM <br> <br>
+	YURT DIŞINDA BULUNAN TÜRK VATANDAŞLARI, TÜRK MEMURLARI VE TÜRK ASKERÎ ŞAHISLARINA TEBLİGAT <br><br>
+
+	Türk Vatandaşlarına Tebligat <br> <br>
+	<div>
+	33.  7201   sayılı   Tebligat   Kanununun   25/a   maddesine   göre;   yurtdışında   bulunan   Türk vatandaşlarına,  o  yerdeki <span class="span"> Türkiye  siyasî  memuru  veya  konsolosu  tarafından  doğrudan  tebligat yapılabilir</span>.  Bu tür tebligat  sadece <span class="span"> Türk  vatandaşları  bakımından mümkündür</span>.  19/01/2011  tarihli ve  27820  sayılı  Resmî  Gazete’de  yayımlanarak  yürürlüğe  giren  6099  sayılı  Kanunla  anılan maddeye  eklenen  son  fıkra  uyarınca  kazai  merciler  tarafından  çıkarılacak  bu  tür  tebligat Bakanlığımız   <span class="span"> aracı    kılmmaksızm    doğrudan    Türkiye’nin    ilgili    dış    temsilciliğine gönderilebilecektir</span>.</div>
+
+	<div>
+	34.  Türk vatandaşlarına, <span class="span"> Türkiye siyasî memuru</span> veya konsolosu ya da bunların görevlendireceği bir  memur <span class="span">  tarafından  </span>tebligatın  yapılıp  yapılmadığı,  bu  merci  tarafından  düzenlenecek  bir tutanak ile belgelendirilerek tanzim edilen evrak, <span class="span"> doğrudan talep eden kazai mercie gönderilir</span>.</div>
+
+	<div>
+	35.  Yabancı  devlette  bulunan  Türk  vatandaşlarına,  Türk  siyasî  memuru  veya  konsolosu tarafından  yapılacak  tebliğ  taleplerinde,  adli  makamlarca,  düzenlenecek <span class="span"> tebliğ  mazbatalı  zarf içerisine  tebliği   istenen  belgeler  konularak  bir  üst  yazı   ile  Türkiye  dış  temsilciliğine gönderilebilir</span>.  Tebligat  evrakının <span class="mavi"> bir  takım  olarak  ve  Türkçe  düzenlenmesi  yeterli  olup</span>,  ayrıca yabancı  dilde  tercümesine  gerek  yoktur.  Tebliğ  mazbatalı  zarfın  üstüne  mümkün  olduğu  kadar muhatabın  T.C,  kimlik  numarası  da  dahil  olmak  üzere  açık  kimlik  bilgileri  ile  açık  adresi yazılmalıdır.  Ayrıca,  gideceği  ülkeye  göre  posta  giderinin  tespit  edilerek,  ilgilisince  Maliye Bakanlığı’nın <span class="mavi"> “Muhtelif  Gelirler”  </span>hesabına  yatırılmasının  sağlanması  ve  buna  dair <span class="span"> makbuz örneğinin, dış temsilciliğimize gönderilen evraka eklenmesi gerekir</span>.</div>
+
+	<div>
+	36.  Aynı  zamanda; yurt dışında bulunan Türk vatandaşlarına iki taraflı veya çok taraflı sözleşme hükümleri  ya  da  uluslararası  adli  yardımlaşma  kuralları  çerçevesinde  de  tebligat  yapılması mümkündür. <span class="dik">  Ancak;  bu  yolla  yapılan  tebligatın  mutlaka  yabancı  devletin  yetkili  makamı aracılığıyla yapılması ve evraka tercüme eklenmesi gerekir.</span> </div>
+
+
+<span class="mavi">	Türk Memurlarına ve Askerî Şahıslara Tebligat</span>
+	 <div>
+	37.  7201  sayılı  Tebligat  Kanununun  27’nci  maddesinin  inci  fıkrasında,  yabancı  bir  devlette resmî  bir  görevle  bulunan  büyükelçi,  başkonsolos,  konsolos,  siyasî  memur,  İdarî  ve  ticari  ataşe gibi  Türk  memurlarına  tebligatın, <span class="mavi"> Dışişleri  Bakanlığı  vasıtasıyla  yapılacağı</span>;  2’nci  fıkrasında  da, yabancı  devlette  bulunan  askerî  ataşe,  subay,  astsubay  veya  askerî  memur  gibi  askerî  şahıslara tebligatın bağlı  bulundukları <span class="mavi"> Kara, Deniz,  Hava Kuvvetleri  veya Jandarma Genel  Komutanlıkları vasıtasıyla yapılacağı belirtilmiştir</span>.</div>
+
+	<div>
+	38.  Yabancı devlette bulunan Türk memurlarına veya askerî şahıslara, adli  makamlarca tebligat, <span class="span"> Türk  vatandaşlarına  yapılan  tebliğ  usulüne  göre  yapılacaktır</span>.  Buna  göre,   düzenlenecek  tebliğ mazbatalı  zarf,  içerisine  tebliği  istenen  belgeler  konularak, <span class="mavi"> bir  takım  halinde  ilgili  makama iletilmek   üzere   Bakanlığımıza  gönderilecektir.</span>   Ayrıca  yabancı   dilde  tercümesine  gerek bulunmamaktadır. </div> </div>
+
+	<div>
+	ÜÇÜNCÜ BÖLÜM <br> <br>
+
+	TÜRKİYE’DE BULUNAN YABANCI DEVLET DİPLOMATİK TEMSİLCİLERİ İLE BU TEMSİLCİLİKLERDE ÇALIŞAN TÜRK VATANDAŞLARINA TEBLİGAT <br> <br>
+
+	Yabancı Devlet Diplomatik Temsilcilerine Tebligat <br> <br>
+	<div>
+	39.  Diplomatik  ayrıcalığı  bulunan  misyon  mensupları  ile  elçilik  veya  konsolosluklarda  görevli kişilerle  ilgili  dava  ve  icra  takiplerinde,  Türkiye’nin  de  taraf  olduğu  “Diplomatik  İlişkiler Hakkında  Viyana  Sözleşmesinin  22,  30,  31  ve  37’nci  maddeleri  hükümleri  ile  “Konsolosluk İlişkileri  Hakkında Viyana Sözleşmesi” nin 31, 33, 43, 53, 58 ve 70Tnci  maddeleri  hükümlerinin de göz önünde tutulması gerekir</div>
+	<div>
+	40.  Birleşmiş  Milletler’e  yapılacak  tebligatlarda  ise,  Türkiye’nin  taraf  olduğu  “Birleşmiş Milletlerin  Ayrıcalık  ve  Muafiyetlerine  Dair  Sözleşme”nin  2’nci  ve  8’inci  maddeleri  hükümleri dikkate alınır.</div>
+	<div>
+	41.  Bu  cümleden  olmak  üzere;  yabancı  misyonlara  ve  Birleşmiş  Milletler  temsilcilik  ve kuruluşlarına  karşı  yürütülecek  tebligat  işlemlerinin <span class="mavi"> Dışişleri  Bakanlığı  aracılığı  ile  yapılması gerekir</span>.</div>
+	<div>
+	42.  Birleşmiş  Milletler  ile  Türkiye’de  yabancı  bir  devletin  temsilcisi  sıfatıyla  görevli  bulunan büyükelçiler,  elçiler,  maslahatgüzarlar,  yabancı  elçilik  müsteşar  ve  kâtipleri,  elçilik  ataşeleri  ile bu  görevde  bulunanların  eşleri  ve  yanlarında  bulunan  çocukları  ve  diğer  aile  fertleri  ile konsolosluk  ilişkileri  çerçevesinde  diplomatik  ayrıcalık  ve  bağışıklıktan  yararlanmaları  kabul edilmiş  kişilerle  ilgili  dava  ve  icra  takiplerinde,  diplomatik  ayrıcalığı  bulunan  misyon mensuplarına  adli  makamlarca <span class="mavi"> çıkarılan  her  türlü  tebligat  evrakı,  tebliği  çıkaran  adli  makam tarafından Bakanlığımıza gönderilir</span>.
+</div>
+<div>
+	43.  Bir  kimsenin,  diplomatik  ayrıcalığı  olan  yabancılardan  sayılıp  sayılmadığı  hususunda tereddüt edilmesi halinde keyfiyetin <span class="mavi"> Bakanlığımızdan sorulması uygun olacaktır</span>.</div>
+
+<span class="mavi">	Yabancı Devlet Temsilciliklerinde Çalışan Türk Vatandaşlarına Tebligat</span>
+	<div>
+	44.  Türkiye’de  bulunan  yabancı  bir  devlet  temsilciliğinde  memur,  sözleşmeli  eleman  veya tercüman  gibi  sıfatlarla  çalışan  Türk  vatandaşlarına,  çalıştıkları  yabancı  devlet  temsilciliği adresinde  tebligat, <span class="mavi"> Tebligat  Kanunu  hükümleri  uyarınca  yapılabilir  ise  de</span>;  muhatabın  tebligatı <span class="span"> almaması   veya  herhangi  bir  nedenle  adresinde  bulunmaması</span>  halinde,  yabancı  devletin Büyükelçilik  veya  Başkonsolosluk  binaları  ve  diğer  çalışma  yerleri <span class="mavi"> diplomatik  dokunulmazlığa sahip olduğundan Kanunun diğer özel  hükümlerine göre işlem yapılamaz</span>.
+</div>
+<div>
+	45. <span class="mavi"> Bu  sebeple</span>, yabancı  devlet temsilciliğinde çalışan Türk vatandaşı  veya diplomatik ayrıcalığı olmayan diğer kişilerle ilgili dava ve icra takiplerinde, tebliğ evrakının <span class="mavi"> diplomatik kanaldan ilgili yabancı devlet temsilciliğine iletilmek üzere Bakanlığımıza gönderilmesi gerekmektedir</span>. </div></div>
+	<div>
+	DÖRDÜNCÜ BÖLÜMYABANCI DEVLETLERDEN GELEN TEBLİGAT TALEPLERİ <br> <br>
+	<div>
+	46.  Yurt  dışından  Türkiye’ye  yapılacak  tebligat  taleplerinin  dayanakları  Tebligat  Kanunu  ile Türkiye’nin  taraf  olduğu  ikili  anlaşma  veya  çok  taraflı  sözleşmeler  ve  uluslararası  adli yardımlaşma kuralları dır.</div>
+	<div>
+	47.  Yabancı  bir  devletin  Türkiye’den  talep  ettiği  tebligatta,  talep  eden  devlet  ile  Türkiye arasında  herhangi  bir  ikili  anlaşma  veya  çok  taraflı  sözleşme <span class="span"> bulunmaması  halinde,</span>  tebligat karşılıklılık  ilkesi  ve  uluslararası  adli  yardımlaşma  kuralları  çerçevesinde <span class="span"> yerine  getirilir</span>.  Buna göre,  adli  evrakın  tebliği, <span class="mavi"> muhatabın  bulunduğu  yerdeki  Cumhuriyet  başsavcılığı  vasıtasıyla</span> Tebligat  Kanununun  26’ncı  maddesine  uygun  olarak  yaptırılır.  <span class="mavi"> Tebliğ  yapıldıktan  sonra</span> düzenlenecek  tasdikli  tebliğ  mazbatası,  talep  eden  yabancı  devlet  makamına  iletilmek  üzere <span class="mavi"> Bakanlığımıza gönderilmelidir</span>.</div>
+	<div>
+	48.  Yabancı  bir  devletten  gelen  tebliğ  talebinde,  Türkiye  ile  birlikte  talepte  bulunan  devlet  de, 1954  tarihli  Lahey  Hukuk Usulü  Sözleşmesine veya  1965  Lahey Tebligat  Sözleşmesine katılmış veya  iki  devlet  arasında  ikili  anlaşma  var  ise,  tebligat  işlemleri  bu  anlaşma  veya  sözleşmeler hükümlerine  göre  yerine  getirilecektir.  Bu  şekilde,  Bakanlığımıza  gönderilen  tebligat  evrakı, tebliğ edilecek <span class="mavi"> şahsın adresinin bulunduğu yerdeki Cumhuriyet başsavcılığına iletilmektedir</span>.</div>
+
+	<div>
+	49.  Cumhuriyet  başsavcılığınca  tebligat,  PTT  aracılığı  ile  Tebligat  Kanunu  hükümlerine  göre yaptırılır.  Ancak  evrakın  Türkçe  tercümesinin  bulunmadığı  hallerde, muhatap  özellikle  ve açıkça  kabul  ettiği  takdirde tebligat  yaptırılacaktır.  <span class="mavi"> Muhatap  kabul  etmediği  ve  rıza göstermediği  takdirde  Türkçe  tercümesi  bulunmayan  evrak  kesinlikle  tebliğ  edilmeyecektir Sonuçta   düzenlenecek   tebliğ   mazbatasının   yabancı   devlet   makamına   iletilmek   üzere Bakanlığımıza gönderilmesi  gerekmektedir</span>. <br>
+	50.  Yabancı  devlet  makamından  gönderilen  tebligat  evrakı  içeriği  itibariyle,  Türkiye’nin egemenliğine,  güvenliğine  veya  kamu  düzenine  aykırı  görülürse  tebligat  yapılmayarak,  bu gerekçeler gösterilmek suretiyle tebligat <span class="span"> istemi reddedilebilir</span>.</div>  </div>
+	<div>
+	SON HÜKÜMLER <br>
+	<div>
+
+	51.  Tebligat  taleplerinde  devletlere  göre  özel  olarak  uyulması  gereken  kurallar  l/k  (9)’da  yer almaktadır.</div>
+	<div>
+	52.  İş   bu  Genelge   ile,   Hukuki   Konularda  Uluslararası   Adli   Yardımlaşma  Taleplerine Uygulanacak Esaslara ilişkin 01/03/2008 tarihli ve 63/1  sayılı Genelge yürürlükten kaldırılmıştır.</div>
+	<div>
+	53.  Genelgenin  ekleri, <span class="mavi"> Uluslararası  Hukuk  ve  Dış  İlişkiler  Genel  Müdürlüğü</span>  tarafından  ihtiyaç duyulduğunda güncellenerek www.uhdigm.adalei.gov.tr web adresinde yayımlanacaktır</div>
+
+	Bilgi  edinilmesini  ve  hukuki  alanda  uluslararası  adli  tebligat  işlemlerinin  bu  Genelge  esaslarına uygun olarak yürütülmesine özen gösterilmesini rica ederim.</div>
+	<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+	</div>
+
+	<script>
+	var surukleniyor = false;
+	var offsetX, offsetY;
+
+	// Tüm soru göster butonlarını seç
+	const soruGosterButtons = document.querySelectorAll('.soru');
+
+	// Her bir buton için event listener ekle
+	soruGosterButtons.forEach(function (button, index) {
+	button.addEventListener('click', function() {
+	const soruContainer = document.querySelector('.soruContainer');
+
+	// Eğer gösteriliyorsa gizle, gizliyse göster
+		if (soruContainer.style.display === "none") {
+		  soruContainer.style.display = "block";
+		} else {
+		  soruContainer.style.display = "none";
+	}
+	});
+	});
+
+
+	soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+	document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+			soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+		document.addEventListener('mouseup', function() { surukleniyor = false;	});
+	</script>
+</body>
+</html>
+
+{% endblock%}

@@ -1,0 +1,1064 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger;  color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+</style>
+<title>5070 sayılı Elektronik İmza Kanunu</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+<div id="kal" class="kal">
+ELEKTRONİK İMZA KANUNU[1] <br>
+
+Kanun Numarası                    : 5070 <br>
+
+Kabul Tarihi                           : 15/1/2004 <br>
+
+Yayımlandığı Resmî Gazete   : Tarih  :23/1/2004         Sayı  : 25355 <br>
+
+Yayımlandığı Düstur              : Tertip : 5                      Cilt   : 43</div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+<div>
+BİRİNCİ KISIM
+
+Amaç, Kapsam ve Tanımlar
+<div>
+Amaç
+<div>
+Madde 1- Bu Kanunun amacı, <span class="kim"> elektronik imzanın</span> <span class="ark"> hukukî ve teknik yönleri</span> ile <span class="ark"> kullanımına ilişkin esasları</span> <span class="mavi"> düzenlemektir</span>.</div></div>
+
+
+<div>
+Kapsam
+<div>
+Madde 2- Bu Kanun, <span class="ark"> elektronik imzanın hukukî yapısını,</span> <span class="ark"> elektronik sertifika hizmet sağlayıcılarının faaliyetlerini</span>  ve <span class="ark"> her alanda elektronik imzanın kullanımına ilişkin işlemleri</span> <span class="mavi"> kapsar</span> .</div></div>
+
+
+<div>
+Tanımlar
+<div>
+Madde 3- Bu Kanunda geçen;
+<div>
+a) <span class="kim"> Elektronik veri:</span>  <span class="ark"> Elektronik</span>,<span class="ark"> optik</span> veya <span class="ark"> benzeri yollarla</span> <span class="mavi"> üretilen, taşınan veya saklanan kayıtları,</span> <br><br>
+
+b) <span class="kim"> Elektronik imza:</span>  Başka bir elektronik <span class="ark"> veriye eklenen</span> veya elektronik <span class="ark"> veriyle mantıksal bağlantısı bulunan</span>  ve <span class="mavi"> kimlik doğrulama amacıyla kullanılan elektronik veriyi,</span>  <br><br>
+<div> <button  onclick="soruyuGoster(120)" class="soru" >2016 yılı çıkmış soru</button> </div>
+c) <span class="kim"> İmza sahibi:</span> <span class="ark"> Elektronik imza oluşturmak amacıyla</span> bir  <span class="ark"> imza oluşturma aracını kullanan</span> <span class="mavi"> gerçek kişiyi,</span> <br><br>
+
+d) <span class="kim"> İmza oluşturma verisi:</span> <span class="ark"> İmza sahibine ait olan</span>, <span class="ark">imza sahibi tarafından elektronik imza oluşturma amacıyla kullanılan</span>  ve <span class="ark"> bir eşi daha olmayan şifreler, kriptografik gizli anahtarlar</span> <span class="mavi"> gibi verileri,</span>  <br><br>
+<div> <button  onclick="soruyuGoster(60)" class="soru" >2023 yılı çıkmış soru</button> </div>
+e) <span class="kim"> İmza oluşturma aracı:</span> <span class="ark"> Elektronik imza oluşturmak üzere</span>, <span class="mavi"> <span class="dik">imza oluşturma verisini kullanan</span> yazılım veya donanım aracını,</span> <br><br>
+
+f) <span class="kim"> İmza doğrulama verisi:</span> <span class="ark"> Elektronik imzayı doğrulamak için kullanılan</span> <span class="ark"> şifreler, kriptografik açık anahtarlar</span> <span class="mavi"> gibi verileri,</span> <br><br>
+
+g) <span class="kim"> İmza doğrulama aracı:</span> <span class="ark"> Elektronik imzayı doğrulamak amacıyla</span> <span class="mavi"> <span class="dik"> imza doğrulama verisini kullanan</span> yazılım veya donanım aracını,</span> <br><br>
+
+h) <span class="kim"> Zaman damgası:</span>  Bir elektronik verinin, <span class="ark"> üretildiği, değiştirildiği, gönderildiği, alındığı ve / veya kaydedildiği</span> <span class="dik"> zamanın tespit edilmesi amacıyla</span>, <span class="mavi"> <span class="dik"> elektronik sertifika hizmet sağlayıcısı tarafından</span>  elektronik imzayla doğrulanan kaydı</span>, <br><br>
+
+ı) <span class="kim"> Elektronik sertifika:</span> <span class="ark"> İmza sahibinin imza doğrulama verisini</span> ve <span class="ark"> kimlik bilgilerini birbirine bağlayan</span> <span class="mavi"> elektronik kaydı,</span> <br><br>
+
+j) <span class="kim"> Kurum:</span> <span class="mavi"> Telekomünikasyon Kurumunu</span> ,</div></div> <br>
+
+<span class="mavi">ifade eder.</span> </div></div>
+
+
+<div>
+İKİNCİ KISIM
+
+Güvenli Elektronik İmza ve Sertifika Hizmetleri
+
+<div>
+
+BİRİNCİ BÖLÜM
+
+Güvenli Elektronik İmza, Güvenli Elektronik İmza
+
+Oluşturma ve Doğrulama Araçları
+<div>
+Güvenli elektronik imza
+<div>
+Madde 4- <span class="kim"> Güvenli elektronik imza;</span>
+<div>
+a) <span class="span"> Münhasıran imza sahibine bağlı olan</span>, <br>
+
+b) <span class="span"> Sadece imza sahibinin tasarrufunda</span>  bulunan güvenli elektronik <span class="span"> imza oluşturma aracı ile oluşturulan</span>, <br>
+
+c) <span class="span"> Nitelikli elektronik sertifikaya <span class="dik"> dayanarak</span>  imza sahibinin kimliğinin tespitini sağlayan,</span> <br>
+
+d) <span class="span"> İmzalanmış elektronik veride sonradan herhangi bir değişiklik <span class="dik"> yapılıp yapılmadığının </span> tespitini sağlayan</span> ,</div>
+ <span class="mavi">
+elektronik imzadır</span>.</div></div>
+
+
+<div>
+Güvenli elektronik imzanın hukukî sonucu ve uygulama alanı
+<div>
+Madde 5- <span class="mavi"> Güvenli elektronik imza, elle atılan imza ile aynı hukukî sonucu doğurur.</span>  <br>
+
+Kanunların <span class="ark"> resmî şekle veya özel bir merasime tabi</span>  tuttuğu hukukî işlemler ile  banka teminat mektupları  ve Türkiye’de yerleşik sigorta şirketleri tarafından düzenlenen  kefalet senetleri <span class="dik"> dışındaki </span> <span class="ark"> teminat sözleşmeleri</span> , <span class="mavi"> güvenli elektronik imza ile gerçekleştirilemez.</span> [2][3]</div></div>
+
+<div>
+
+Güvenli elektronik imza oluşturma araçları
+<div>
+Madde 6-  <span class="kim"> Güvenli elektronik imza oluşturma araçları;</span>
+<div>
+a) <span class="span"> Ürettiği elektronik imza oluşturma verilerinin kendi aralarında <span class="dik"> bir eşi daha bulunmamasını</span> ,</span>  <br>
+
+b) <span class="span"> Üzerinde kayıtlı olan elektronik <span class="ark"> imza oluşturma verilerinin </span> <span class="dik">araç dışına hiçbir biçimde çıkarılamamasını ve gizliliğini</span> ,</span>  <br>
+
+c) <span class="span"> Üzerinde kayıtlı olan elektronik <span class="ark"> imza oluşturma verilerinin</span>, <span class="dik"> üçüncü kişilerce elde edilememesini</span> , <span class="ark"> kullanılamamasını</span> ve elektronik imzanın <span class="ark"> sahteciliğe karşı korunmasını</span>,</span>  <br>
+
+d) <span class="span">  İmzalanacak verinin imza sahibi <span class="dik"> dışında değiştirilememesini</span> ve bu verinin imza sahibi tarafından imzanın <span class="dik"> oluşturulmasından önce görülebilmesini</span></span>,</div>
+ <span class="mavi">
+sağlayan imza oluşturma araçlarıdır</span> .</div></div>
+
+
+<div>
+Güvenli elektronik imza doğrulama araçları
+<div>
+Madde 7- <span class="kim"> Güvenli elektronik imza doğrulama araçları;</span>
+<div>
+a) <span class="span"> İmzanın doğrulanması için kullanılan <span class="ark"> verileri</span>, değiştirmeksizin <span class="dik"> doğrulama yapan kişiye gösteren</span>,</span> <br>
+
+b) <span class="span"> İmza doğrulama işlemini <span class="ark"> güvenilir ve kesin</span> bir biçimde <span class="ark"> çalıştıran</span>  ve doğrulama sonuçlarını <span class="dik"> değiştirmeksizin doğrulama yapan kişiye gösteren</span></span> , <br>
+
+c) <span class="span"> Gerektiğinde, imzalanmış verinin güvenilir bir biçimde <span class="dik"> gösterilmesini</span> sağlayan</span>, <br>
+
+d) <span class="span"> İmzanın <span class="dik"> doğrulanması için kullanılan elektronik sertifikanın doğruluğunu ve geçerliliğini </span> güvenilir bir biçimde tespit ederek sonuçlarını  <span class="dik"> değiştirmeksizin doğrulama yapan kişiye gösteren</span>,</span> <br>
+
+e) <span class="span"> İmza sahibinin kimliğini değiştirmeksizin <span class="dik"> doğrulama yapan kişiye gösteren</span>,</span> <br>
+
+f) <span class="span"> İmzanın doğrulanması ile ilgili şartlara etki edecek değişikliklerin <span class="dik"> tespit edilebilmesini sağlayan</span> </span>,</div>
+<span class="mavi">
+imza doğrulama araçlarıdır</span> .</div></div></div>
+
+
+<div>
+İKİNCİ BÖLÜM
+
+Elektronik Sertifika Hizmet Sağlayıcısı, Nitelikli Elektronik Sertifika ve
+
+Yabancı Elektronik Sertifikalar
+<div>
+<span class="kim"> Elektronik sertifika hizmet sağlayıcısı</span>
+<div>
+Madde 8- Elektronik sertifika hizmet sağlayıcısı, <span class="ark"> elektronik sertifika, zaman damgası ve elektronik imzalarla ilgili hizmetleri sağlayan</span> <span class="mavi"> kamu kurum ve kuruluşları ile gerçek veya özel hukuk tüzel kişilerdir.</span>  Elektronik sertifika hizmet sağlayıcısı, <span class="mavi"> Kuruma yapacağı bildirimden <span class="dik"> iki ay sonra</span> faaliyete geçer.</span>  <br><br>
+<span class="kim">
+Elektronik sertifika hizmet sağlayıcısı yapacağı bildirimde;</span>
+<div>
+a) <span class="span"> Güvenli ürün ve sistemleri kullanmak</span>,
+
+b) <span class="span"> Hizmeti güvenilir bir biçimde yürütmek</span>,
+
+c) <span class="span"> Sertifikaların taklit ve tahrif edilmesini önlemekle ilgili her türlü tedbiri almak</span>,</div>
+<span class="mavi">
+ile ilgili şartları sağladığını ayrıntılı bir biçimde gösterir.</span>  <br><br>
+
+Kurum, yukarıdaki şartlardan birinin eksikliğini veya yerine getirilmediğini tespit ederse, <span class="mavi"> bu eksikliklerin giderilmesi için, elektronik sertifika hizmet sağlayıcısına <span class="dik"> bir ayı</span>  geçmemek üzere bir süre verir,</span> <span class="ark"> bu süre içinde</span> elektronik sertifika hizmet sağlayıcısının <span class="mavi"> faaliyetlerini durdurur.</span> <span class="ark">Sürenin sonunda</span>  eksikliklerin giderilmemesi halinde elektronik sertifika hizmet sağlayıcısının <span class="mavi"> faaliyetine son verir</span>. <span class="ark"> Kurumun bu kararlarına</span>  karşı 19 uncu maddenin ikinci fıkrası hükümleri gereğince <span class="mavi"> itiraz edilebilir.</span>  <br><br>
+
+Elektronik sertifika hizmet sağlayıcılarının faaliyetlerinin devamı sırasında bu maddede gösterilen şartları <span class="mavi"> kaybetmeleri hâlinde de yukarıdaki fıkra hükümleri uygulanır.</span>  <br>
+<span class="mavi">
+Elektronik sertifika hizmet sağlayıcıları, Kurumun belirleyeceği <span class="dik"> ücret alt ve üst sınırlarına</span> uymak zorundadır</span> .</div></div>
+
+
+<div>
+Nitelikli elektronik sertifika
+<div>
+Madde 9- <span class="kim"> Nitelikli elektronik sertifikada;</span>
+<div>
+a) <span class="span"> Sertifikanın "nitelikli elektronik sertifika" olduğuna dair bir ibarenin,</span> <br>
+
+b) <span class="span"> Sertifika hizmet sağlayıcısının kimlik bilgileri ve kurulduğu ülke adının,</span> <br>
+
+c) <span class="span"> İmza sahibinin teşhis edilebileceği kimlik bilgilerinin,</span>  <br>
+
+d) <span class="span"> Elektronik imza oluşturma verisine karşılık gelen imza doğrulama verisinin,</span> <br>
+
+e) <span class="span"> Sertifikanın geçerlilik süresinin başlangıç ve bitiş tarihlerinin</span>, <br>
+
+f) <span class="span"> Sertifikanın seri numarasının,</span> <br>
+
+g) <span class="span"> Sertifika sahibi diğer bir kişi adına hareket ediyorsa bu yetkisine ilişkin bilginin,</span> <br>
+
+h) <span class="span"> Sertifika sahibi talep ederse meslekî veya diğer kişisel bilgilerinin,</span>  <br>
+
+ı) <span class="span"> Varsa sertifikanın kullanım şartları ve kullanılacağı işlemlerdeki maddî sınırlamalara ilişkin bilgilerin,</span>  <br>
+
+j) <span class="span"> Sertifika hizmet sağlayıcısının sertifikada yer alan bilgileri doğrulayan güvenli elektronik imzasının</span>,</div>
+<span class="mavi">
+bulunması zorunludur</span>.</div></div>
+
+
+<div> <span class="kim">
+Elektronik sertifika hizmet sağlayıcısının yükümlülükleri</span>
+<div>
+Madde 10-  Elektronik sertifika hizmet sağlayıcısı;
+<div>
+a) <span class="span"> Hizmetin gerektirdiği nitelikte personel istihdam etmekle,</span> <br>
+
+b) <span class="span"> (Değişik: 14/1/2016-6661/7 md.) Nitelikli sertifika verdiği kişilerin kimliğini resmî belgelere göre veya Türkiye Cumhuriyeti kimlik kartı vasıtasıyla <span class="dik"> uzaktan güvenilir bir biçimde</span> tespit etmekle,</span>  <br>
+
+c) <span class="span"> Sertifika sahibinin <span class="dik"> diğer bir kişi adına hareket edebilme yetkisi</span> , meslekî veya diğer kişisel bilgilerinin sertifikada bulunması durumunda, bu bilgileri de  resmî belgelere dayandırarak güvenilir bir biçimde belirlemekle,</span>  <br>
+
+d) <span class="span"> İmza oluşturma verisinin sertifika hizmet sağlayıcısı tarafından veya sertifika talep eden kişi tarafından  <span class="dik"> sertifika hizmet sağlayıcısına ait yerlerde üretilmesi durumunda</span>  bu işlemin gizliliğini sağlamak veya sertifika hizmet sağlayıcısının sağladığı araçlarla üretilmesi durumunda, bu işleyişin güvenliğini sağlamakla,</span>  <br>
+
+e) <span class="span"> (Değişik: 14/1/2016-6661/7 md.) Kanunlarda öngörülen sınırlamalar saklı kalmak üzere sertifikanın kullanımına ilişkin özellikler, uyuşmazlıkların çözüm yolları ile ilgili şartlar ve güvenli elektronik imzanın elle atılan imza ile eşdeğer olduğu hakkında <span class="dik"> talep eden kişiyi sertifikanın tesliminden önce</span> bilgilendirmekle,</span>  <br>
+
+f) <span class="span"> (Değişik: 14/1/2016-6661/7 md.) Sertifikada bulunan imza doğrulama verisine karşılık gelen <span class="dik"> imza oluşturma verisini başkasına kullandırmaması konusunda</span> , sertifika sahibini bilgilendirmekle,</span>  <br>
+
+g) <span class="span"> Yaptığı hizmetlere ilişkin tüm kayıtları yönetmelikle belirlenen süreyle saklamakla,</span>  <br>
+
+h) <span class="span"> Faaliyetine son vereceği tarihten <span class="dik"> en az üç ay</span> önce durumu Kuruma ve <span class="mavi"> elektronik sertifika sahibine bildirmekle</span></span>,</div>
+<span class="mavi">
+yükümlüdür. </span> <br>
+
+
+Elektronik sertifika hizmet sağlayıcısı <span class="mavi"> üretilen imza oluşturma verisinin bir kopyasını alamaz veya bu veriyi saklayamaz.</span>  <br>
+
+(Ek fıkra:28/1/2021-7263/11 md.) Elektronik sertifika hizmet sağlayıcısı, nitelikli sertifika verdiği kişilerin kimlik bilgilerini Türkiye Cumhuriyeti kimlik kartı vasıtasıyla <span class="mavi"> uzaktan güvenilir bir biçimde tespit etmiş ise nitelikli sertifikayı kimlik kartına uzaktan güvenilir bir biçimde yükleyebilir.</span> </div></div>
+
+
+<div>  <span class="kim">
+Nitelikli elektronik sertifikaların iptal edilmesi</span>
+<div>
+Madde 11- Elektronik sertifika hizmet sağlayıcısı;
+<div>
+a) <span class="span"> Nitelikli elektronik sertifika <span class="dik"> sahibinin talebi</span>,</span> <br>
+
+b) <span class="span"> Sağladığı nitelikli elektronik sertifikaya ilişkin veri tabanında bulunan bilgilerin <span class="dik"> sahteliğinin veya yanlışlığının ortaya çıkması</span> veya bilgilerin değişmesi,</span> <br>
+
+c) <span class="span"> Nitelikli elektronik sertifika sahibinin fiil ehliyetinin <span class="dik"> sınırlandığının, iflâsının veya gaipliğinin ya da ölümünün</span>  öğrenilmesi</span>,</div>
+
+<span class="mavi">
+Durumunda vermiş olduğu nitelikli elektronik sertifikaları derhâl iptal eder.</span>  <br>
+
+Elektronik sertifika hizmet sağlayıcısı, <span class="ark"> nitelikli elektronik sertifikaların iptal edildiği zamanın tam olarak tespit edilmesine imkân veren</span>  ve <span class="mavi"> üçüncü kişilerin hızlı ve güvenli bir biçimde ulaşabileceği bir kayıt oluşturur.</span>  <br><br>
+
+Elektronik sertifika hizmet sağlayıcısı, <span class="ark"> faaliyetine son vermesi</span> ve vermiş olduğu nitelikli elektronik sertifikaların <span class="ark"> başka bir elektronik sertifika hizmet sağlayıcısı tarafından kullanımının sağlanamaması</span> <span class="mavi"> durumunda vermiş olduğu nitelikli elektronik sertifikaları derhâl iptal eder</span>. <br><br>
+
+Elektronik sertifika hizmet sağlayıcısının faaliyetine <span class="ark"> Kurum tarafından son verilmesi halinde</span> <span class="kim"> Kurum,</span> faaliyetine son verilen elektronik sertifika hizmet sağlayıcısının vermiş olduğu nitelikli elektronik sertifikaların <span class="mavi"> başka bir elektronik sertifika hizmet sağlayıcısına devredilmesine karar verir ve durumu ilgililere duyurur.</span>  <br><br>
+
+<span class="mavi">
+Elektronik sertifika hizmet sağlayıcısı geçmişe yönelik olarak nitelikli elektronik sertifika iptal edemez.</span> </div></div>
+
+
+<div>  <span class="kim">
+Bilgilerin korunması</span>
+<br>
+Madde 12- Elektronik sertifika hizmet sağlayıcısı;
+<div>
+a) <span class="span"> Elektronik sertifika talep eden kişiden, elektronik sertifika vermek için <span class="dik"> gerekli bilgiler hariç bilgi talep edemez</span> ve bu bilgileri kişinin rızası dışında elde edemez, </span> <br>
+
+b) <span class="span"> Elektronik sertifika <span class="dik"> sahibinin izni olmaksızın sertifikayı üçüncü kişilerin ulaşabileceği</span>  ortamlarda bulunduramaz,</span>  <br>
+
+c) <span class="span"> Elektronik sertifika talep eden kişinin yazılı rızası olmaksızın <span class="dik"> üçüncü kişilerin kişisel verileri elde etmesini engeller.</span> Bu bilgileri sertifika sahibinin onayı olmaksızın üçüncü kişilere iletemez ve başka amaçlarla kullanamaz.</span> </div></div></div>
+
+
+<div>  <span class="kim">
+Hukukî sorumluluk</span>
+<div>
+Madde 13- Elektronik sertifika hizmet sağlayıcısının, <span class="mavi"> elektronik sertifika sahibine karşı sorumluluğu genel hükümlere tâbidir.</span> <br>
+
+Elektronik sertifika hizmet sağlayıcısı, bu Kanun veya bu Kanuna dayanılarak çıkarılan yönetmelik hükümlerinin ihlâli suretiyle <span class="mavi"> üçüncü kişilere verdiği zararları tazminle yükümlüdür.</span> <br> Elektronik sertifika hizmet sağlayıcısı <span class="mavi"> kusursuzluğunu ispat ettiği takdirde tazminat ödeme yükümlülüğü doğmaz.</span> <br>
+
+Elektronik sertifika hizmet sağlayıcısı, <span class="kim"> söz konusu yükümlülük ihlâlinin istihdam ettiği kişilerin davranışına dayanması hâlinde</span> <span class="mavi"> de zarardan sorumlu olup</span>, elektronik sertifika hizmet sağlayıcısı, bu sorumluluğundan, <span class="ark"> Borçlar Kanununun 55 inci maddesinde öngörülen</span> türden <span class="mavi"> bir kurtuluş kanıtı getirerek kurtulamaz.</span>  <br>
+
+Nitelikli elektronik sertifikanın içerdiği kullanım ve maddî kapsamına ilişkin sınırlamalar hariç olmak üzere, elektronik sertifika hizmet sağlayıcısının <span class="mavi"> üçüncü kişilere ve nitelikli elektronik imza sahibine karşı sorumluluğunu ortadan kaldıran veya sınırlandıran her türlü şart geçersizdir.</span>  <br>
+
+Elektronik sertifika hizmet sağlayıcısı, bu Kanundan doğan yükümlülüklerini yerine getirmemesi sonucu doğan zararların karşılanması amacıyla <span class="mavi"> sertifika malî sorumluluk sigortası yaptırmak zorundadır.</span> <span class="kim"> Sigortaya ilişkin usul ve esaslar</span> <span class="mavi"> Hazine Müsteşarlığının <span class="dik"> görüşü alınarak Kurum</span>  tarafından çıkarılacak yönetmelikle belirlenir.</span>  <br>
+
+<span class="mavi">
+Bu maddede öngörülen sertifika malî sorumluluk sigortası Türkiye'de ilgili branşta çalışmaya yetkili olan sigorta şirketleri tarafından yapılır.</span>  Bu sigorta şirketleri sertifika malî sorumluluk sigortasını <span class="mavi"> yapmakla yükümlüdürler.</span> <span class="dik"> Bu yükümlülüğe uymayan sigorta şirketlerine</span> <span class="ark"> Hazine Müsteşarlığınca</span> <span class="mavi"> sekizmilyar lira <span class="dik"> idarî</span> para cezası verilir.</span>  Bu para cezasının tahsilinde ve cezaya itiraz usulünde 18 inci madde hükümleri uygulanır. <br>
+
+Elektronik sertifika hizmet sağlayıcısı, <span class="mavi"> nitelikli elektronik sertifikayı elektronik imza sahibine sigorta ettirerek teslim etmekle yükümlüdür.</span> </div></div>
+
+
+<div> <span class="kim">
+Yabancı elektronik sertifikalar</span>
+<div>
+Madde 14- <span class="kim"> Yabancı bir ülkede kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından verilen elektronik sertifikaların <span class="dik"> hukukî sonuçları  milletlerarası anlaşmalarla</span>  belirlenir.</span>  <br>
+
+Yabancı bir ülkede kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından verilen elektronik sertifikaların, <span class="mavi"> Türkiye'de kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından kabul edilmesi durumunda, bu elektronik sertifikalar nitelikli elektronik sertifika sayılır.</span>  Bu elektronik sertifikaların kullanılması sonucunda doğacak <span class="mavi"> zararlardan, Türkiye'deki elektronik sertifika hizmet sağlayıcısı da sorumludur.</span> </div></div></div></div>
+
+
+<div>
+ÜÇÜNCÜ KISIM <br>
+
+Denetim ve Ceza Hükümleri
+
+<div>  <span class="kim">
+Denetim</span>
+<div>
+Madde 15- Elektronik sertifika hizmet sağlayıcılarının bu Kanunun uygulanmasına ilişkin faaliyet ve işlemlerinin <span class="mavi"> denetimi Kurumca yerine getirilir.</span>  <br>
+
+Kurum, <span class="ark"> gerekli gördüğü zamanlarda</span> elektronik sertifika hizmet sağlayıcılarını <span class="mavi"> denetleyebilir.</span>  Denetleme sırasında, denetleme yapmaya yetkili görevliler tarafından <span class="ark"> her türlü defter, belge ve kayıtların verilmesi, yönetim yerleri, binalar ve eklentilerine girme, yazılı ve sözlü bilgi alma, örnek alma ve işlem ve hesapları denetleme</span> <span class="mavi"> isteminin elektronik sertifika hizmet sağlayıcıları ve ilgililer tarafından yerine getirilmesi zorunludur.</span> </div></div>
+
+
+<div>  <span class="kim">
+İmza oluşturma verilerinin izinsiz kullanımı</span>
+<div>
+Madde 16- (Değişik: 23/1/2008 – 5728/525 md.) <br>
+
+Elektronik imza oluşturma amacı ile  ilgili kişinin rızası dışında; imza oluşturma verisi veya imza oluşturma aracını <span class="kim"> elde eden, veren, kopyalayan ve bu araçları yeniden oluşturanlar ile izinsiz elde edilen imza oluşturma araçlarını kullanarak izinsiz elektronik imza oluşturanlar</span> <span class="mavi"> bir yıldan üç yıla kadar hapis ve elli günden az olmamak üzere adlî para cezasıyla cezalandırılırlar.</span> <br>
+
+Yukarıdaki fıkrada belirtilen suçlar elektronik sertifika hizmet <span class="kim"> sağlayıcısı çalışanları tarafından işlenirse </span> <span class="mavi"> bu cezalar yarısına kadar artırılır.</span></div></div>
+
+
+<div> <span class="kim">
+Elektronik sertifikalarda sahtekârlık</span>
+<div>
+Madde 17- (Değişik: 23/1/2008 – 5728/526 md.) <br>
+
+<span class="kim">
+Tamamen veya kısmen sahte elektronik sertifika oluşturanlar veya geçerli olarak oluşturulan elektronik sertifikaları taklit veya tahrif edenler ile bu elektronik sertifikaları bilerek kullananlar</span>,<span class="mavi"> iki yıldan beş yıla kadar hapis ve yüz günden az olmamak üzere adlî para cezasıyla cezalandırılır.</span> <div> <button  onclick="soruyuGoster(259)" class="soru" >2017 yılı çıkmış soru</button> </div> <br>
+
+Yukarıdaki fıkrada belirtilen suçlar elektronik sertifika hizmet <span class="mavi"> sağlayıcısı çalışanları tarafından işlenirse bu cezalar yarısına kadar artırılır.</span></div></div>
+
+
+<div>  <span class="kim">
+İdarî para cezaları</span>
+<div>
+Madde 18- (Değişik: 23/1/2008 – 5728/527 md.)
+
+Bu Kanunun;
+<div> <span class="ark">
+a) 10 uncu maddesindeki </span>yükümlülüklerinden herhangi birini yerine getirmeyen elektronik sertifika hizmet sağlayıcısına <span class="mavi"> onbeşbin Türk Lirasından otuzbin Türk Lirasına kadar</span>, <br>
+
+b) <span class="ark"> 11 inci maddesindeki</span> yükümlülüklerden herhangi birini yerine getirmeyen elektronik sertifika hizmet sağlayıcısına <span class="mavi"> onikibin Türk Lirasından yirmibin Türk Lirasına kadar,</span> <br>
+
+c) <span class="ark"> 12 nci maddesi hükümlerine</span> aykırı hareket edenler hakkında <span class="mavi">  onbeşbin Türk Lirasından otuzbin Türk Lirasına kadar,</span> <br>
+
+d) <span class="ark"> 13 üncü maddesinin beşinci ve yedinci fıkralarındaki yükümlülükleri</span> yerine getirmeyen elektronik sertifika hizmet sağlayıcısına <span class="mavi"> onikibin Türk Lirasından yirmibin Türk Lirasına kadar,</span> <br>
+
+e) <span class="ark"> 15 inci maddesi hükümlerine</span> aykırı hareket eden elektronik sertifika hizmet sağlayıcısına <span class="mavi"> otuzbin Türk Lirasından ellibin Türk Lirasına kadar,</span></div>
+
+<span class="kim"> idarî para cezası</span> <span class="mavi"> Telekomünikasyon Kurulu tarafından verilir.</span>  Bu madde hükümlerine göre ilgili tüzel kişi hakkında verilecek olan <span class="mavi"> idarî para cezasının üst sınırı yetmişbeşbin Türk Lirasıdır.</span> </div></div>
+
+
+<div>  <span class="kim">
+Tüzel kişilere özgü güvenlik tedbirleri</span> [4]
+<div>
+Madde 19- (Değişik: 23/1/2008 – 5728/528 md.) <br>
+
+Bu Kanunda tanımlanan suçlar dolayısıyla ilgili tüzel kişiler hakkında <span class="mavi"> Türk Ceza Kanununun 60 ıncı maddesi hükmüne göre tüzel kişilere özgü güvenlik tedbirlerine hükmolunur.</span>   <br>
+
+İdarî para cezasını gerektiren eylemlerin işlendikleri tarihten itibaren <span class="mavi"> geriye doğru <span class="dik"> üç yıl içinde üçüncü kez</span> işlenmesi hâlinde Kurum tarafından elektronik sertifika hizmet sağlayıcısı tüzel kişinin faaliyet izninin iptaline karar verilir.</span></div></div></div>
+
+
+<div>
+DÖRDÜNCÜ KISIM <br>
+
+Çeşitli Hükümler
+<div>
+Yönetmelik
+<div>
+Madde 20- (Değişik:28/1/2021-7263/12 md.)
+
+Bu Kanunun uygulanmasına ilişkin usul ve esaslar, ilgili kurum ve kuruluşların görüşü alınarak <span class="mavi"> Kurum tarafından çıkarılacak yönetmeliklerle düzenlenir</span>.</div></div>
+
+
+<div>
+Kamu kurum ve kuruluşları hakkında uygulanmayacak hükümler
+<div>
+Madde 21- (Değişik:28/1/2021-7263/13 md.)
+
+<span class="kim">
+Bu Kanunun 19 uncu maddesi hükmü,</span> <span class="mavi"> elektronik sertifika hizmet sağlama faaliyeti yerine getiren kamu kurum ve kuruluşları hakkında uygulanmaz.</span> </div></div>
+
+
+<div>
+Madde 22- (22.4.1926 tarihli ve 818 sayılı Borçlar Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+
+
+<div>
+Madde 23- (18.6.1927 tarihli ve 1086 sayılı Hukuk Usulü Muhakemeleri Kanunu ile ilgili olup yerine işlenmiştir.)
+</div>
+
+<div>
+Madde 24- (5.4.1983 tarihli ve 2813 sayılı Telsiz Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+
+
+<div>  <span class="kim">
+Elektronik mühür</span>
+<div>
+EK MADDE 1- (Ek:28/1/2021-7263/14 md.) <br>
+
+Elektronik mühür, <span class="mavi"> başka bir elektronik veriye eklenen veya elektronik veriyle mantıksal bağlantısı bulunan ve <span class="dik"> mühür sahibinin bilgilerini doğrulama amacıyla kullanılan</span>  elektronik veridir.</span>  <br> <br>
+<span class="kim">
+Elektronik mühür sahibi;</span>  <span class="ark">elektronik mührü oluşturan  kamu kurum ve kuruluşları</span> , <span class="ark">kamu idareleri</span>, <span class="ark"> kamu kurumu niteliğindeki meslek kuruluşları</span>  ve <span class="ark"> üst kuruluşları</span>, <span class="ark"> kamu ve özel hukuk tüzel kişileri</span> ile <span class="ark"> yargı mercileri</span> ve <span class="ark"> noterlikler </span> <span class="mavi"> dir.</span>  <br><br>
+
+<span class="kim">
+Elektronik mühür, </span> <span class="dik"> elektronik belgenin veya verinin</span> <span class="mavi"> mühür sahibi tarafından oluşturulduğunu, belgenin veya verinin kaynağını ve bütünlüğünü <span class="dik">garanti eden</span>  delil kaydıdır.</span>  <br> <br>
+
+<span class="kim">
+Elektronik mühür, </span> <span class="mavi"> resmî mühür dâhil her türlü fiziki mühür ile aynı hukuki niteliği haizdir.</span>  <br> <br>
+
+Elektronik mühür oluşturma amacı ile ilgili mühür sahibinin <span class="kim"> rızası veya talebi dışında; mühür oluşturma verisi veya mühür oluşturma aracını elde eden, veren, kopyalayan ve bu araçları yeniden oluşturanlar ile izinsiz elde edilen mühür oluşturma araçlarını kullanarak izinsiz elektronik mühür oluşturanlar</span> <span class="mavi"> bir yıldan üç yıla kadar hapis ve elli günden az olmamak üzere adlî para cezasıyla cezalandırılırlar.</span> <span class="kim"> Suçun elektronik sertifika hizmet sağlayıcısı çalışanları tarafından işlenmesi halinde,</span> <span class="mavi"> bu cezalar yarısına kadar artırılır.</span>  <br><br>
+
+<span class="mavi">
+Kanunlarda yer alan elektronik imzaya ilişkin hükümler, kıyasen elektronik mühür hakkında da uygulanır.</span>  <br><br>
+
+Elektronik sertifika hizmet sağlayıcılarının kanunlarda yer alan elektronik imza ile ilgili hak, yetki ve yükümlülükleri, <span class="mavi"> elektronik mühür hakkında da uygulanır.</span>  Bu yükümlülüklere aykırı hareket eden elektronik sertifika <span class="mavi"> hizmet sağlayıcıları hakkında 18 inci maddede belirtilen idari para cezaları uygulanır.</span> <div> <button  onclick="soruyuGoster(44)" class="soru" >2023 yılı çıkmış soru</button> </div></div></div>
+
+
+<div>  <span class="kim">
+İnternet sitesi kimlik doğrulama sertifikası ve diğer elektronik sertifikalar</span>
+<div>
+EK MADDE 2- (Ek:28/1/2021-7263/15 md.) <br>
+<span class="kim">
+İnternet sitesi kimlik doğrulama sertifikası,</span> <span class="mavi"> bir internet sitesi ile bu sitenin sahibi olan gerçek veya tüzel kişinin bilgilerini birbirine bağlayan elektronik kayıttır.</span>  <br> <br>
+
+<span class="kim">
+Benzer altyapıyı kullanan diğer elektronik sertifikalar,</span> <span class="mavi"> elektronik veriyi şifreleme veya verinin bütünlüğünü, inkâr edilemezliğini ve kaynağını belirleme gibi amaçlarla kullanılmak üzere elektronik sertifika hizmet sağlayıcıları tarafından açık anahtar altyapısı vasıtasıyla üretilen sertifikalardır.</span>  <br><br>
+
+<span class="kim">
+Kanunlarda yer alan elektronik imzaya ilişkin hükümler,</span> <span class="mavi"> kıyasen internet sitesi kimlik doğrulama sertifikası ve benzer altyapıyı kullanan diğer elektronik sertifikalar hakkında da uygulanır.</span>  <br> <br>
+
+<span class="kim">
+Elektronik sertifika hizmet sağlayıcılarının kanunlarda yer alan elektronik imza ile ilgili hak, yetki ve yükümlülükleri,</span> <span class="ark"> internet sitesi kimlik doğrulama sertifikası</span> ve <span class="ark"> benzer altyapıyı kullanan diğer elektronik sertifikalar</span> <span class="mavi"> hakkında da uygulanır.</span>  Bu yükümlülüklere <span class="mavi"> aykırı hareket eden elektronik sertifika hizmet sağlayıcıları hakkında 18 inci maddede belirtilen idari para cezaları uygulanır.</span> </div></div>
+
+
+<div>
+Yürürlük
+<div>  <span class="mavi">
+Madde 25- Bu Kanun yayımı tarihinden altı ay sonra yürürlüğe girer</span>.</div></div>
+
+
+<div>
+Yürütme
+
+Madde 26- Bu Kanun hükümlerini Bakanlar Kurulu yürütür.</div></div>
+
+
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+
+</body>
+</html>
+{% endblock%}

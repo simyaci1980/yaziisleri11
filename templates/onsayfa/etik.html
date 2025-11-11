@@ -1,0 +1,1321 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 7px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+span{color: chocolate; font-size: larger; }
+
+.ark{background-color:black; font-size: larger; border-radius: 20px;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+.örn{ background-color: yellowgreen; color: black; font-size: larger;}
+.do{background-color: rgb(8, 143, 39); color: azure; font-size: large; }
+.no{background-color: rgb(163, 2, 2); color: azure; font-size: large;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>etik ilkeler </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+
+
+	<div class="kal">
+		ETİK DAVRANIŞ İLKELERİ</div>
+
+		<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+			<p>
+			  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+			  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+			  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+			  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+			  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+			  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+			  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+			  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+			  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+			</p></div>
+
+			<script>
+			  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+			  </script>
+
+
+
+			  <div id="soruContainer" class="soruContainer">
+				  <div id="soruDiv">
+					  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+				  </div>
+				  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+				  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+				  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+				  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+			  </div>
+			  <script src="static/js/script.js"></script> <br> <br><br>
+
+	<br><br>
+		<div>
+	I. ETİK NEDİR?
+	<div>
+	<span class="kim">
+	Etik, </span> <span class="ark"> kişinin davranışlarına temel olan</span> <span class="mavi"> ahlak ilkelerinin tümüdür.</span> <span class="kim"> Başka bir ifade ile etik,</span> <span class="mavi"> insanlara “işlerin nasıl yapılması, gerektiğini” belirlemede yardımcı olan kılavuz (rehber) değerler, ilkeler ve standartlardır.</span>  <br><br>
+	<span class="kim"> Etik davranış ilkeleri ile varılmak veya elde edilmek istenen amaç,</span> <span class="mavi"> devlette ve toplumda yolsuzluğu ve genel olarak yozlaşmayı önlemek ve dürüstlüğü hâkim kılmaktır.</span>  <br> <br>
+	<span class="kim"> Etik,</span> <span class="mavi"> günümüzde çeşitli mesleklerin yürütülmesinde esas alınan değerlerin başında gelmektedir.</span>  Siyasette, yönetimde, yargıda, ticaret hayatında, tıpta, eğitimde, bilim, sanat ve basın-yayın alanlarında, hem mesleğin icra edildiği toplumun genel etik değerlerinden, hem de o meslekle ilgili evrensel kabul görmüş belli bazı ilkelerden etkilen etik ilke ve değerler ön plana çıkmaktadır. <br> <br>
+	<span class="kim"> Bir meslek etiği olarak kamu yönetimi etiği de,</span> <span class="mavi"> yönetim alanında, doğru davranışlara ulaşmak için gerekli olan ilke ve standartları ifade etmektedir.</span> <br> <span class="kim"> Yönetim etiğine ilişkin ilke ve değerler;</span> <br>
+	- <span class="ark"> İyi davranışta bulunma ve</span> <span class="ark"> kötü davranışlardan kaçınma konusunda</span>, <span class="mavi"> kamu görevlilerine rehberlik ederler,</span> <br>
+	- <span class="ark"> Devlete ve kamu görevlilerine olan güveni artırırlar,</span> <span class="ark"> yönetimin meşruiyetini geliştirirler ve</span> <span class="ark"> devlet-halk bütünleşmesini sağlarlar,</span> <br>
+	- <span class="ark"> Kamu kurumlarındaki yönetsel davranış standartlarını yükseltirler,</span> <br>
+	- <span class="ark"> Değerlerin çatıştığı durumlarda </span> <span class="mavi">karar vericilere ve uygulamacılara yol gösterirler,</span>  <br>
+	- <span class="ark"> Sosyal dokuyu,</span> <span class="ark"> ekonomik gelişmeyi,</span> <span class="mavi"> demokrasiyi ve hukuk devletini</span> <span class="mavi"> güçlendirirler,</span> <br>
+	- <span class="ark"> Kamu hizmetlerinin maliyetlerini</span> <span class="mavi"> düşürürler</span> ve <span class="ark"> hizmet kalitesini</span> <span class="mavi"> yükseltirler.</span></div></div><div> <button  onclick="soruyuGoster(41)" class="soru" >2023 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(232)" class="soru" >2017 yılı çıkmış soru</button> </div><div> <button  onclick="soruyuGoster(235)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div>
+	II. KAMU YÖNETİMİNDE ETİĞİN ÖNEMİ
+	<div>
+		<span class="kim">
+	Kamu hizmetleri,</span> <span class="mavi"> vatandaşların vergileriyle yerine getirilmektedir.</span>  <span class="kim"> Vatandaşlar,</span> <span class="mavi"> düşük maliyetli ve kaliteli hizmet alma beklentisiyle vergilerini kamu görevlilerine emanet etmektedir.</span>  <span class="kim"> Bu anlamda</span> <span class="mavi"> kamu hizmeti bir “emanet”tir.</span>  Kamu görevlileri, bu emanetin bilincinde olarak, kamu hizmetlerini etkin, verimli ve dürüst bir şekilde yürütmeli; görevlerini yerine getirirken ve takdir yetkilerini kullanırken mesleki etik ilke ve standartlara bağlı kalmalıdır.
+	<span class="ark"> Yasa ile ahlakın</span> <span class="mavi"> birbiriyle örtüşmesi gerekmektedir.</span> <span class="kim"> Ancak,</span> <span class="mavi"> ahlaki olan bir şey her zaman yasal değildir,</span> <span class="mavi"> yasal olan bir şey de her zaman ahlaki olmayabilir.</span> <span class="kim"> <strong> Kamu görevlileri, etik ikilem içeren durumlarda,</strong></span> <span class="mavi">  <strong> vicdanlarının sesini dinlemeli,</strong> problemlere tarafsız, adil ve dikkatli bir şekilde yaklaşmalıdır.</span> <br> <span class="kim">
+	Yönetimde yozlaşma olgusu,</span> <span class="mavi"> halkın yönetime olan güvenini ortadan kaldırmaktadır.</span> <span class="ark"> Savurganlık ve görevi kötüye kullanmanın</span> <span class="mavi"> devlet yönetiminde yeri yoktur ve bunların maliyeti de, daha az ve kalitesiz hizmettir.</span> <span class="kim"> Demokratik yönetim,</span> <span class="mavi"> halkla kamu görevlilerinin arasındaki güvene dayalıdır.</span>  <br> <span class="kim"> Toplum,</span><span class="mavi"> kamu görevlilerinden, yönetsel standartlara duyarlı olmalarını beklemektedir.</span>  Bu nedenle kamu görevlilerinin sadece rüşvet, zimmet, kayırmacılık ve buna benzer gerçek yolsuzluklardan değil, <span class="mavi"> halkın güven duygusunu zedeleyecek <strong> yolsuzluk şüphelerinden de kendilerini korumaları</strong> gerekmektedir.</span> </div></div>
+	<div> <button  onclick="soruyuGoster(200)" class="soru" >2016 yılı çıkmış soru</button> </div>
+	<div> <button  onclick="soruyuGoster(234)" class="soru" >2017 yılı çıkmış soru</button> </div>
+	<div>
+	III. ETİK İKİLEMLER <br>
+	<div>
+		<span class="kim">
+	Etik ikilem, </span> <span class="mavi"> iki veya daha fazla yarışan değerin Çatışma halinde olmasıdır.</span>  <span class="ark"> Eğer, çatışan bu değerlerden birisi korunursa diğeri korunamamaktadır ya da bir veya daha fazlasını koruyabilmek için, diğerlerini göz ardı etmek zorunluluğa bulunmaktadır.</span>
+	Kamu görevlilerinin günlük hayatlarında sıklıkla karşılaştıkları ya da karşılaşabilecekleri <span class="kim"> etik ikilemleri 4 grupta ele almak mümkündür:</span>
+	</div>
+	<div>
+	A. Kamu görevlilerinin karşılaştıkları <span class="kim"> birinci ikilem türü,</span> <span class="ark"> önlerindeki seçeneklerin hiç birisinin tam manasıyla tatmin edici olmadığı,</span>  onların içinden <span class="ark"> en az kötü ya da diğerlerine göre daha iyi olan seçeneğin</span> <span class="mavi"> belirlenmesi durumudur.</span> <br>
+	<span class="örn">
+Örnek: Yıkılan bir köprünün yenisinin yapılması için açılan ihalede, ihaleye katılmak üzere başvuran firmaların hiç birisi, tam anlamıyla yeterli şartları taşımamaktadır. Ancak, yeni bir ihalenin açılması için gerekli zaman yoktur ve kararın bir an önce verilmesi gerekmektedir. Bu durumda, kamu görevlisi, yeterli şartları taşımayan firmalar içinde, diğerlerine göre en iyisini seçmek durumundadır.</span> <br>
+
+B. <span class="kim"> İkinci ikilem türü,</span>  seçeneklerin <span class="ark"> birden fazlasının ya da tamamının kendi başına iyi olduğu ve birisinin seçilmesi durumunda diğerinden vazgeçilmesinin gerektiği bir durumdur.</span>  Burada kamu görevlisi, <span class="ark"> “en iyi”ler arasında bir seçim yapmak durumundadır.</span>  <br><div> <button  onclick="soruyuGoster(198)" class="soru" >2016 yılı çıkmış soru</button> </div>
+<span class="örn">
+Örnek: Bir kamu görevine atamada, aynı okuldan ve aynı diploma derecesiyle mezun olan, yapılan sınavlarda da aynı performansı gösteren iki aday arasından birisinin tercih edilmesi, böyle zor bir seçimi gerektirmektedir.</span>  <br>
+C. <span class="kim"> Üçüncü ikilem türü,</span> <span class="ark"> farklı kişi ve gruplar üzerinde</span> <span class="mavi"> farklı etki ve sonuçlar doğurması muhtemel bir kararın verilmesidir.</span> <span class="kim"> Burada </span> <span class="mavi"> <span class="dik"> en fazla kişiyi memnun</span> edecek bir kararın verilmesi gerekmektedir.</span>  <br>
+<span class="örn">
+Örnek: Bir kamu arazisinin, özel sektöre yatırımı teşvik amacıyla bedelsiz olarak tahsis edilmesi, bazı yerel topluluk üyelerini çevre kirliliği açısından rahatsız edebilecek, bazılarına da yeni iş imkânları temin edebilecektir. Bazıları kararı ekonomik gelişme yönünde olumlu olarak değerlendirirken, bazıları ise yolsuzluk olarak nitelendirebilecektir.</span> <br>
+Ç. Kamu görevlilerinin karşılaşabilecekleri <span class="kim"> son ikilem türü,</span> verecekleri <span class="kim"> kararın muhtemel sonucundan,</span> <span class="ark"> kendilerinin ya da yakınlarının olumlu ya da olumsuz ve/veya dolaylı ya da dolaysız etkilenmeleri durumudur.</span> <span class="mavi">  Böyle bir durumda, <span class="dik"> “çıkar çatışması”</span> söz konusu olmaktadır.</span>  <span class="kim"> Yani,</span> <span class="ark"> karar alıcının bireysel çıkarları ile genel anlamda kamu çıkarı çelişmektedir.</span>  Bir kimsenin, kendi çıkarı aleyhine bir karar verebilmesi son derece güçtür. Böyle durumlarda, ilke olarak, karardan olumlu ya da olumsuz ve/veya dolaylı ya da dolaysız olarak etkilenebilecek kamu görevlilerinin, <span class="mavi">  karar verme sürecine katılmamaları gerekmektedir.</span> <br>
+<div class="örn">Örnek: Bir yöneticinin, amcasının arsasının da bulunduğu bir yerin kamulaştırılmasına karar verecek bir kurulun içinde yer alması.</span></div></div></div>
+
+<div>
+IV. ETİK İLKE VE DEĞERLERE İLİŞKİN MEVZUAT  <br><div>
+
+Önceki dönemlerde, Ülkemizde, kamu görevlilerinin uyması gereken etik ilke ve değerlere ilişkin özel bir düzenleme yoktu. <br>
+2004 yılında 5176 sayılı “Kamu Görevlileri Etik Kurulu Kurulması ve Bazı Kanunlarda Değişiklik Yapılması Hakkında Kanun” ile <span class="kim"> Kamu Görevlileri Etik Kurulu kurulmuştur.</span> <br>
+Kamu Görevlileri Etik Kurulu tarafından hazırlanan <span class="kim"> "Kamu Görevlileri Etik Davranış İlkeleri ile Başvuru Usul ve Esasları Hakkında Yönetmelik"</span>  ise, <span class="mavi"> kamu görevlilerinin görevlerini yerine getirirken uymaları gereken genel etik ilke ve standartları toplu olarak ortaya koyması bakımından önemlidir. </span> <br>
+<span class="kim">
+Cumhurbaşkanı, <br> milletvekilleri ve <br> bakanlar ile <br> Türk Silahlı Kuvvetleri, <br> yargı ve <br> üniversite mensupları dışındaki</span> <span class="mavi"> tüm kamu personeli, 5176 sayılı Kanun ve ilgili Yönetmeliğin kapsamındadır</span><div> <button  onclick="soruyuGoster(39)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<span class="kim"> Kamu görevlileri,</span> <span class="mavi"> görevlerini yürütürken Yönetmelikte belirtilen etik davranış ilkelerine uymakla yükümlüdürler.</span>  <br> <span class="mavi"> Bu ilkeler, kamu görevlilerinin istihdamını düzenleyen mevzuat hükümlerinin bir parçasını oluşturur.</span> </div></div>
+
+
+<div>
+V. ETİĞE İLİŞKİN ÖRGÜTSEL YAPI<div>  <span class="kim">
+Ülkemizde etikle ilgili iki temel örgütlenme bulunmaktadır.</span> <span class="ark"> Bunlardan birincisi,</span> <span class="mavi"> kamu görevlilerinin uymaları gereken etik davranış ilkelerini belirlemek ve uygulamayı gözetmek üzere kurulan <strong> Kamu Görevlileri Etik Kurulu,</strong></span> <span class="ark"> İkincisi</span> <span class="mavi"> kurum ve kuruluşlarda oluşturulan <strong> Etik Komisyonlarıdır</strong>.</span></div></div>
+
+<div>
+
+A.KAMU GÖREVLİLERİ ETİK KURULU<div>
+<span class="kim"> Kamu Görevlileri Etik Kurulu,</span> <span class="mavi"> <span class="dik"> 11 üyeden</span> oluşur ve Kurulun <span class="dik"> dört önemli işlevi</span> vardır:</span> <br>
+1. <span class="ark"> Kamu görevlilerinin görevlerini yürütürken uymaları gereken</span> <span class="mavi"> etik davranış ilkelerini belirlemek,</span>  <br>
+2. <span class="ark"> Etik davranış ilkelerinin ihlal edildiği iddiasıyla re’sen veya yapılacak başvurular üzerine</span> <span class="mavi"> gerekli inceleme ve araştırmayı yapmak.</span> <br>
+3. <span class="mavi"> Kamuda etik kültürünü yerleştirmek üzere çalışmalar yapmak veya yaptırmak ve bu konuda yapılacak çalışmalara destek vermek.</span> <br>
+4. <span class="kim"> Hediye alma yasağının kapsamını</span> <span class="mavi"> belirlemek ve uygulamasını izlemek,</span> <br>
+5. <span class="ark"> <strong> Kurum ve kuruluşların,</strong> etik davranış ilkeleri konusunda</span> <span class="mavi"> uygulamada karşılaştıkları sorunlara yönelik olarak görüş bildirmek.</span></div></div>
+<div> <button  onclick="soruyuGoster(199)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+<div>
+B. ETİK KOMİSYONLARI<div>
+	<span class="kim">
+Etik komisyonları,</span> <span class="mavi"> kurum içinden <span class="dik"> en az 3 (üç) kişiden</span> oluşmaktadır.</span>  <br> <span class="kim"> Etik komisyonunun üyeleri, üyelerinin ne kadar süreyle görev yapacağı ve diğer hususlar,</span> <span class="mavi">  kurum ve kuruluşun <span class="dik"> üst yöneticisince</span> belirlenir.</span> <br> <span class="kim">
+Etik komisyonu üyelerinin özgeçmiş ve iletişim bilgileri,</span> <span class="mavi"> 3 (üç) ay içinde Kamu Görevlileri Etik Kurulu’na bildirilir.</span> <span class="mavi"> Etik komisyonu, Kurul ile işbirliği içinde çalışır.</span><div> <span class="kim">
+Etik Komisyonlarının işlevleri şunlardır:</span> <br>
+1. <span class="ark"> Kurum ve kuruluşlarda, etik kültürünü yerleştirmek ve geliştirmek,</span> <br>
+2. <span class="ark"> <strong> Personelin</strong> etik davranış ilkeleri konusunda</span> <span class="mavi"> karşılaştıkları sorunlarla ilgili olarak tavsiyelerde ve yönlendirmede bulunmak.</span> <br>
+3. <span class="mavi"> Etik uygulamaları değerlendirmek,</span> <br>
+4. Kurum ve kuruluşların yürüttükleri hizmetin veya görevin niteliğine göre, <span class="mavi"> kendi kurumsal etik davranış ilkelerini düzenlemek ve</span> <span class="mavi"> Kamu Görevlileri Etik Kurulunun inceleme ve onayına sunmak.</span></div></div></div>
+
+
+<div>
+VI. GÖREVİN YERİNE GETİRİLMESİNDE UYULMASI GEREKEN ESASLAR<div>
+Bu esaslar, çalışanların yeniliklere ve gelişmelere her zaman açık olmasını, çalışanların ve hizmetten yararlananların yönetime katılabilmesini, kurumların karar alma süreçlerinin kural olarak halka açık olmasını, yönetimin aldığı kararların kamuya duyurulmasını, resmi bilgi ve belgelerin istenildiğinde yönetimden alınabilmesini, vatandaşlara karşı tarafsız davranmayı, doğru, dürüst, adil ve haktanır olmayı, kişisel çıkarlardan çok kamu yararını gözetmeyi, kamu hizmetlerinin yerine getirilmesi sırasında hesap verebilirliği, kamusal değerlendirme ve denetime her zaman açık ve hazır olmayı, iş ve işlemlerle ilgili prosedür ve süreçlerin öngörülebilir olmasını, hizmetlerin vatandaşa en yakın birimlerce yürütülmesini, vatandaşın beyanına güven duymayı öngörmektedir. <br>
+Kamu görevlileri, kamu hizmetlerinin yerine getirilmesinde; sürekli gelişimi, katılımcılığı, saydamlığı, tarafsızlığı, dürüstlüğü, kamu yararını gözetmeyi, hesap verebilirliği, öngörülebilirliği, hizmette yerindeliği ve beyana güveni esas alırlar.</div></div>
+
+
+<div>
+A. HALKA HİZMET BİLİNCİYLE HAREKET ETME<div>
+Kamu görevlileri, halka hizmet etmenin herhangi bir kişi veya grubun çıkarına hizmet etmekten çok daha önemli olduğunu idrak ederek, <span class="kim"> kamu hizmetlerinin yerine getirilmesinde;</span>
+<div>
+	 <span class="ark">
+1. Halkın günlük yaşamını kolaylaştırmayı, <br>
+2. Halkın ihtiyaçlarını en etkin, hızlı ve verimli biçimde karşılamayı, <br>
+3. Hizmet kalitesini yükseltmeyi, <br>
+4. Halkın memnuniyetini artırmayı, <br>
+5. Hizmetten yararlananların ihtiyacına ve hizmetlerin sonucuna odaklı olmayı</span> <span class="mavi">
+hedeflemelidirler.</span></div>
+<span class="kim">
+Bu doğrultuda, yapılacak hizmetlerle ilgili hizmetten yararlananların ihtiyaçlarını ve beklentilerini önceden tespit etmeye yönelik</span> <span class="mavi"> anket ve referandumlar yapılabilir, halkın hizmetlere ilişkin memnuniyet düzeyi düzenli olarak ölçülebilir, özel sektörün ve diğer kamu kurumlarının iyi uygulama örnekleri görev yapılan kuruma aktarılabilir, kurumdaki iş süreçleri analiz edilerek kırtasiyeciliğe ve zaman kaybına yol açan gereksiz işlem adımları kaldırılabilir.</span></div></div>
+<div></div><button  onclick="soruyuGoster(323)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+
+<div>
+B. HİZMET STANDARTLARINA UYMA, VATANDAŞA YOL GÖSTERME, NEZAKET VE SAYGI
+<div>
+Hizmet almak için kamu kuramlarına müracaat eden vatandaşlar, çoğu zaman iş ve işlemlerle ilgili hangi belgelerin gerektiğini, nereye müracaat edeceklerini, nasıl bir yol izleyeceklerini ve işlerinin ne kadar sürede tamamlanacağını bilmemektedirler.</div>
+<div>
+Böyle durumlarda vatandaşlar, işlerinin hızlı ve sorunsuz görülebilmesi için, kendilerine yardımcı olacak bir tanıdık, eş-dost veya akraba aramakta ya da iş takipçisi ve aracılara yönelmektedir.</div>
+<div> <span class="kim">
+Etik dışı davranışlara zemin hazırlayan böylesi durumların önlenebilmesi için, öncelikle hizmet standartları ve iş süreçleri belirlenerek</span> <span class="mavi"> internet, afiş, levha, el ilanı, broşür vb. yönlendiriciler vasıtasıyla halka duyurulmalı ve iş ve işlemler bu standartlara göre yürütülmelidir.</span></div>
+<div>
+Hizmet standartlarının ve iş süreçlerinin önceden belirlenmesi kadar, hizmet süreci boyunca iş ve işlemlerle ilgili gerekli açıklayıcı bilgilerin verilerek vatandaşların aydınlatılması da önemlidir. <span class="kim"> Vatandaşlar, çoğu zaman basılı ve yazılı yönlendiriciler yoluyla bilgilense bile,</span> <span class="mavi"> durumu resmi bir görevliye teyit ettirme ve sözlü bilgi alma eğilimindedir.</span>  <span class="mavi">
+Bu durumda kuramlardaki danışma birimleri önem kazanmaktadır.</span> <br> <span class="mavi"> Kuramların danışma birimlerinde nitelikli ve tüm iş süreçlerini iyi derecede bilen personel görevlendirilmelidir.</span> </div><div> <button  onclick="soruyuGoster(236)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+<div>
+Tüm kamu görevlileri, tamamladıkları bir işlemin ardından, sonraki iş süreci hakkında iş sahibini bilgilendirmeli, kendilerine soru soran veya danışan vatandaşlara gerekli bilgileri vermeli ve gerekli yerlere yönlendirmelidir.
+Kamu görevlileri, kamu hizmetinin emanet olduğu düşüncesiyle halka hevesle hizmet etmeli, meslektaşlarına ve <span class="mavi"> hizmetten yararlananlara karşı sabırlı, nazik, saygılı ve güler yüzlü olmalıdır.</span> </div>
+<div class="örn">
+Örnek 1: Selahattin Bey uzun çalışma hayatı boyunca zorla sahip olduğu evinin tapusunu kaybetmiş, bir komşusu kendisine tapusunu bulan kimsenin evini satabileceğini söylemiştir. Telaşla tapu müdürlüğüne gelen Selahattin Bey, durumu sormak üzere doğrudan tapu müdürünün odasına girmiştir. Önünde incelemesi gereken onlarca evrak bulunan tapu müdürü, yaşlı adamı dinlemiş, belgeyi bulan kişinin evini satamayacağım defalarca uygun bir dille kendisine anlatmıştır. Ancak yaşlı adam anlatılanlarla ikna olmamaktadır. Bunun üzerine tapu müdürü gülümseyerek yaşlı adama, tapusunu kaybettiğine dair bir dilekçe yazmasını, bunu dosyaya koyacaklarını, böylece kimsenin evini satamayacağım söyleyerek ikna olmasını sağlamıştır.</div>
+<div class="örn">
+Örnek 2: Küçük bir köyde yaşayan Kazım Bey kendisine tebliğ edilen vergi cezasını ödemek üzere ilçedeki vergi dairesine gelmiştir. Nereye ve kime başvuracağını bilememektedir. Ne yapması gerektiğini sormak üzere kapısını açık bulduğu ilk odaya girmiş ve elindeki belgeyi masasında oturan memur İlyas Beye uzatmıştır. Dışarıda hava çok soğuk olduğu için yaşlı adamın kasketi başında ve elleri ceplerindedir. Memur İlyas Bey, başını eline aldığı belgeden kaldırmadan, sert bir ses tonuyla “çıkar elini cebinden” diye seslenmiştir. Kazım Bey, kendisine söylenmediğini düşünerek aynı şekilde durmaya devam etmiştir. İlyas Bey bu kez “sana ellerini cebinden çıkar dedim” diye bağırarak belgeyi Kazım Beyin eline tutuşturmuş, “önce devlet dairesine nasıl girileceğini öğren, ondan sonra gel” diyerek Kazım Beye kapıyı göstermiştir.</div>
+<div>
+Kamu kurum ve kuruluşlarının yöneticileri ve diğer personeli, kamu hizmetlerini belirlenen standartlara ve süreçlere uygun şekilde yürütürler, hizmetten yararlananlara iş ve işlemlerle ilgili gerekli açıklayıcı bilgileri vererek onları hizmet süreci boyunca aydınlatırlar. </div>
+<div>
+Kamu görevlileri, üstleri, meslektaşları, astları, diğer personel ile hizmetten yararlananlara karşı nazik ve saygılı davranırlar ve gerekli ilgiyi gösterirler, konu yetkilerinin dışındaysa ilgili birime veya yetkiliye yönlendirirler.</div></div></div>
+<div></div><button  onclick="soruyuGoster(321)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+
+<div>
+C. AMAÇ VE MİSYONA BAĞLILIK<div>  <span class="kim">
+Kamu görevlileri,</span> <span class="mavi"> çalıştıkları kurum veya kuruluşun amaçlarına ve misyonuna uygun davranırlar.</span> <br> <span class="ark"> Ülkenin çıkarları, <br> toplumun refahı ve <br> kuramlarının hizmet idealleri</span> <span class="mavi"> doğrultusunda hareket ederler.</span> <br>
+<span class="örn">
+Örnek: Kaymakam Ali Bey, Köylere Hizmet Götürme Birliği’nin bütçesinden lojmanının tadilatını yaptırmış ve makam aracı almıştır.</span></div></div>
+<div> <button  onclick="soruyuGoster(201)" class="soru" >2016 yılı çıkmış soru</button> </div>
+<div>
+Ç. DÜRÜSTLÜK VE TARAFSIZLIK <br>
+1. <span class="kim"> Genel İlke</span><div>
+	<span class="kim">
+Kamu görevlileri;</span> <span class="mavi">tüm eylem ve işlemlerinde yasallık, adalet, eşitlik ve dürüstlük ilkeleri doğrultusunda hareket ederler, görevlerini yerine getirirken ve hizmetlerden yararlandırmada dil, din, felsefi inanç, siyasi düşünce, ırk, cinsiyet ve benzeri sebeplerle ayrım yapamazlar, insan hak ve özgürlüklerine aykırı veya kısıtlayıcı muamelede ve fırsat eşitliğini engelleyici davranış ve uygulamalarda bulunamazlar.</span> </div>
+2. <span class="kim"> Takdir Yetkisinin Kullanımından Kaçınma</span> veya <span class="kim"> Kişisel Çıkar Sağlama </span> Amacıyla Kullanma
+<div>
+Kamu görevlilerinin, takdir yetkilerini, kamu yararı ve hizmet gerekleri doğrultusunda, her türlü keyfilikten uzak, tarafsızlık ve eşitlik ilkelerine uygun olarak kullanmaları gerekmektedir. <br>
+Kamu görevlilerinin, sorumluluktan kaçma amacıyla takdir yetkilerini kullanmaktan kaçınmaları veya takdir yetkilerini kendi ve yakınlarının çıkarları doğrultusunda kullanmaları etik davranış ilkelerine aykırıdır. <br>
+<div class="örn">
+Örnek 1: İnsan Kaynakları Müdürü Selami Bey, kurum personeli üzerinde bir anket uygulamak isteyen araştırmacının müracaatını incelemiş, ankette yer alan sorulardan bazılarının ileride başına iş açabileceğini düşünerek konuyu kurumun üst yöneticisine havale etmiştir.</div><div> <button  onclick="soruyuGoster(233)" class="soru" >2017 yılı çıkmış soru</button> </div>
+<div class="örn">
+Örnek 2: İl Sağlık Müdürü İhsan Bey, tıpta uzmanlık sınavına hazırlanan ve hastaların yoğun olduğu bir sağlık ocağında görev yaptığı için sınava hazırlanacak zaman bulamayan yeğeni pratisyen hekim İsmail Beyi, hasta yoğunluğunun olmadığı bir yere görevlendirmiştir.</div>
+</div>
+
+3. <span class="kim"> Hizmet Kayırmacılığı</span>
+<div>
+Kamu görevlileri, gerçek veya tüzel kişilere öncelikli, ayrıcalıklı, taraflı ve eşitlik ilkesine aykırı muamele ve uygulama yapamazlar, herhangi bir siyasi parti, kişi veya zümrenin yararını veya zararını hedef alan bir davranışta bulunamazlar.</div>
+<div class="örn">
+Örnek: Genel Müdür Haluk Bey, milletvekili adaylığı için görevinden istifa etmiştir. Haluk Beyin seçim kampanyasını büyük ölçüde kurumun ihaleli işlerini yürüten işadamı Emin Bey finanse etmiştir. Milletvekili seçilemeyen Haluk Bey, Genel Müdür olarak göreve geri dönmüştür. Emin Bey, Haluk Beyden hak ediş ve ödemelerde ayrıcalık beklemektedir.</div>
+
+4. Kamu Makamlarının Mevzuata Uygun Politikalarını, <span class="kim"> Kararlarını ve Eylemlerini Engelleme (Bürokratik Sabotaj)</span>
+<div>
+Kamu görevlileri, <span class="ark"> tüm siyasal iktidarlara eşit mesafede ve tarafsız olarak görev yapmak ve seçimle iş başına gelen kişi ve kurumlarca belirlenen kamu politikalarını uygulamakla görevlidirler.</span>  <span class="kim"> Kamu görevlileri,</span> <span class="ark"> aynı görüşte olmasalar bile, halkın seçtiği temsilcilerce mevzuata uygun olarak belirlenen politikaları uygulamak zorundadırlar.</span> <br>
+<div class="örn">
+Örnek: Bakanlık, personele verilen yemek ve temizlik hizmetlerinin hizmet alımı yoluyla yerine getirilmesi için tüm taşra teşkilatına yazı göndermiştir. İl Müdürü Muhsin Bey, kamu hizmetlerinin özel firmalarca yerine getirilmesine karşıdır. Yazının üzerinden bir yıl geçmesine rağmen, henüz hiçbir girişimde bulunmamıştır.</div>
+Kamu görevlileri, kamu makamlarının mevzuata uygun politikalarını, kararlarını ve eylemlerini engelleyemezler.</div></div></div>
+
+
+<div>
+D. SAYGINLIK VE GÜVEN <div>
+Demokratik yönetim, halkla kamu görevlileri arasındaki güvene dayanmaktadır. Bu nedenle, kamu görevlileri, kamu yönetimine güveni sağlayacak şekilde davranırlar ve görevin gerektirdiği itibar ve güvene layık olduklarını davranışlarıyla gösterirler. <span class="mavi"> Halkın kamu hizmetine güven duygusunu zedeleyen, şüphe yaratan ve adalet ilkesine zarar veren davranışlarda bulunmaktan kaçınırlar.</span>
+<div class="örn">
+Örnek: Devlet hastanesinde iç hastalıkları uzmanı olarak görev yapan Dilek Hanım, tetkiklerini yaptırmaları için hastalarını önceden anlaştığı görüntüleme merkezine yönlendirmektedir.</div>
+
+Kamu görevlileri, halka hizmetin kişisel veya özel her türlü menfaatin üzerinde bir görev olduğu bilinciyle hizmet gereklerine uygun hareket eder, <span class="mavi"> hizmetten yararlananlara kötü davranamaz, işi savsaklayamaz, çifte standart uygulayamaz ve taraf tutamazlar.</span>
+
+<div class="örn">
+Örnek 1: Burcu Hanım, nüfus cüzdanını yenilemek üzere nüfus müdürlüğüne gitmiş, sıra numarası almış ve beklemeye başlamıştır. Sıra kendisine geldiğinde, mesainin bittiği ve yarın gelmesi gerektiği kendisine bildirilmiştir.</div>
+<div class="örn">
+Örnek 2: Huzur evinde görev yapan Melahat Hanım, yatağa bağımlı yaşlıların temizliğini yaparken, onlara bağırıp çağırarak hakaret etmektedir.</div>
+
+<span class="kim">
+Yönetici veya denetleyici konumunda bulunan kamu görevlileri, keyfi davranışlarda, baskı, hakaret ve tehdit edici uygulamalarda bulunamaz, açık ve kesin kanıtlara dayanmayan rapor düzenleyemez, mevzuata aykırı olarak kendileri için hizmet, imkân veya benzeri çıkarlar talep edemez ve talep olmasa dahi sunulanı kabul edemezler.</span>  <br>
+<div class="örn">
+Örnek 1: Belediye Başkanı Musa Bey, Müdür Nevzat Beyin istifa ederek seçimlerde kendisine rakip olacağını duymuştur. Bunun üzerine hemen Nevzat Bey hakkında bir soruşturma başlatmış, görevlendirdiği soruşturmacıyı etkileyerek gerçeğe aykırı bir rapor düzenlenmesini sağlamış ve Nevzat Beye disiplin cezası vermiştir.</div>
+
+<div class="örn">
+Örnek 2: Vergi denetmeni Tolga Bey, denetlemek üzere gittiği bir özel hastanenin sahibine, muhasebe kayıtlarında ciddi açıklar bulduğunu, ancak kendisine ücretsiz check-up yapılması durumunda bunları görmezden gelebileceğini söylemiştir.</div>
+
+<div class="örn">
+Örnek 3: Genel Müdür Semih Bey, kaba inşaat halinde bir ev satın almıştır. <br>
+ Kurumun ihaleli işlerini yürüten firma sahibi Coşkun Bey, Semih Beye, evinin ince işlerini ve bahçe düzenlemesini sembolik bir ücret karşılığında tamamlamayı teklif etmiştir.</div></div></div>
+
+
+ <div>
+E. YETKİLİ MAKAMLARA BİLDİRİM<div>
+Yolsuzluk gizlilik içerisinde yürütülür, bu nedenle de ortaya çıkarılması son derece güçtür. Bir kamu kurumundaki ahlak dışı uygulamaları, dolandırıcılığı, savurganlığı ve görevi kötüye kullanmayı dışarıdakilere nazaran daha iyi bilen ya da haberdar olan, kurum içerisindeki görevlilerdir. <span class="kim"> Ancak kurum içerisindeki ahlaklı kamu görevlilerinin, meslek onurunu korumak ve kamu kaynaklarının israfını önlemek amacıyla, ahlak dışı uygulamalarda ve yolsuz davranışlarda bulunanları ihbar etmeleri suretiyle söz konusu olaylar kolaylıkla açığa çıkarılabilir.</span> <br>
+Bütün zorluklara rağmen, “gözlerimi kaparım, vazifemi yaparım” ya da “bana dokunmayan yılan, bin yıl yaşasın” anlayışı ile hareket etmek ve ahlak dışı uygulamaları görmezden gelmek doğru değildir. <br>
+Bu nedenle kamu görevlilerinin, etik davranış ilkeleriyle bağdaşmayan veya yasadışı iş ve eylemlerde bulunmalarının talep edilmesi halinde veya hizmetlerini yürütürken bu tür bir eylem veya işlemden haberdar olduklarında ya da gördüklerinde <span class="mavi"> durumu yetkili makamlara bildirmeleri; kurum ve kuruluş amirlerinin de, ihbarda bulunan kamu görevlilerinin kimliğini gizli tutması ve kendilerine herhangi bir zarar gelmemesi için gerekli tedbirleri alması, yani onları koruması gerekmektedir.</span>
+<div class="örn">
+Örnek: Kocaeli’nde görev yapan memur Orhan Bey ve arkadaşları, hafta sonu tuttukları takımın maçını seyretmek üzere, kamu aracı ile İstanbul’a gitmişlerdir. Orhan Bey, Pazartesi sabahı, hafta sonu maça gelmeyen Figen Hanım ve Suat Beyle birlikte aynı araçla göreve gitmiştir. Orhan Bey, taşıt görev formuna, hafta sonu yaptıkları kilometreyi de eklemek istemektedir. Durumu fark eden Figen Hanım, beni ilgilendirmez diyerek kayıtsız kalmıştır. Suat Bey ise Orhan Bey’e yaptığının yanlış olduğunu ve durumu amirlerine bildireceğini söylemiştir. Orhan Bey, Suat Bey’e haftaya oynanacak maça birlikte gitmeyi teklif etmiş, Suat Bey teklifi kabul etmeyerek durumu amirine bildirmiştir.</div></div></div>
+
+
+<div>
+F. ÇIKAR ÇATIŞMASINDAN KAÇINMA<div>
+	<span class="kim">
+Çıkar çatışması;</span> <span class="mavi"> kamu görevlilerinin görevlerini tarafsız ve objektif şekilde icra etmelerini etkileyen ya da etkiliyormuş gibi gözüken ve kendilerine, yakınlarına, arkadaşlarına ya da ilişkide bulunduğu kişi ya da kuruluşlara sağlanan her türlü menfaati ve onlarla ilgili mali ya da diğer yükümlülükleri ve benzeri şahsi çıkarlara sahip olmaları halini ifade eder.</span>
+Kamu görevlisinin yapacağı işlem, eylem veya alacağı karardan olumsuz olarak etkilenecek ya da bunlardan çıkar sağlayacak kişilerin içinde, kendisinin ya da eş, dost, akraba, arkadaş, daha önceki işinden tanıdığı kimselerin (objektif olarak davranmasını etkileyebilecek herkes) bulunması, çıkar çatışmasını ortaya çıkarmaktadır. <br> <br>
+
+
+Çıkar çatışmasının bulunduğu durumlarda, karar alıcının bireysel çıkarları ile genel anlamda kamu çıkarı çelişmektedir. <span class="mavi"> Bu nedenle, çıkar çatışmasının, görevin tarafsız ve objektif bir şekilde yerine getirilmesini etkileme “ihtimali” bulunmaktadır.</span>  Çıkar çatışması durumu, <span class="mavi"> görevi etkilemese bile, dışarıdan bakanlarca görevi etkiliyormuş gibi algılanabilmektedir.</span> <br><br>
+<div class="örn">
+Örnek: Bir ihalede kontrol mühendisi olarak görev yapan Selçuk Bey, firma sahiplerine ait tatil köyünde ailece ücretsiz tatile davet edilmiştir. Selçuk Bey, davete icabet ederek ailece bir hafta ücretsiz tatil yapmış, tatil dönüşünde firmaya ait hak edişleri kontrol ederken imalatlarda eksiklik olduğunu tespit etmiştir. Eksiklikleri firma sahibine ileteceği sırada, firma sahibi Selçuk Bey’e, tatilden memnun kalıp kalmadığını sormuştur. Bu durumda Selçuk Bey nasıl davranacaktır?
+Örnekte, firma sahibi, Selçuk Beyi ücretsiz tatile göndererek ona kişisel bir çıkar sağlamıştır.
+Bu durumda Selçuk Bey iki şekilde davranabilir:
+Birinci durumda, kendisine sağlanan kişisel çıkardan etkilenebilir ve hak edişleri imzalarken, imalattaki eksiklikleri görmezden gelebilir.
+İkinci durumda, kendisine sağlanan kişisel çıkardan etkilenmez ve imalattaki eksikliklerin giderilmesini firmadan isteyebilir. Ancak bu durumda, Selçuk Beyin firmanın tatil köyünde tatil yaptığını bilen üçüncü kişiler, Selçuk Beyin görevini kötüye kullandığını düşüneceklerdir.</div>
+
+
+Öte yandan, aşağıdaki örnekte görüldüğü üzere, çıkar çatışmaları, çoğu zaman olayın dışındaki kişilerce bilinemez ve tespit edilemez.
+<div class="örn">
+Örnek: Sınav komisyonunda görevli Emel Hanım, başvuru listesini incelediğinde, amcasının oğlunun da müracaatta bulunduğunu öğrenmiştir. Evli olan Emel Hanım’ın soyadı evlilik nedeniyle değiştiği için, kuzeniyle soyadı benzerliği bulunmamaktadır. Sınavdan önceki gece arayan amcası, kuzenine yardımcı olması için ricada bulunmaktadır. </div>
+
+Bu nedenle, kamu görevlileri, çıkar çatışmasında şahsi sorumluluğa sahiptir ve çıkar çatışmasının doğabileceği durumu genellikle şahsen bilen kişiler oldukları için, herhangi bir potansiyel ya da gerçek çıkar çatışması konusunda dikkatli davranır, çıkar çatışmasından kaçınmak için gerekli adımları atar, çıkar çatışmasının farkına varır varmaz durumu üstlerine bildirir ve çıkar çatışması kapsamına giren menfaatlerden kendilerini uzak tutarlar.</div></div>
+<div></div><button  onclick="soruyuGoster(324)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+<div>
+VII. ÇIKAR ÇATIŞMASI TÜRLERİ<div>
+Çıkar çatışması farklı durumlarda ortaya çıkabilmektedir. Aşağıda, DMK’da ve etik yönetmeliğinde düzenlenen belli başlı çıkar çatışması türleri yer almaktadır.</div></div>
+
+<div>
+A. ESKİ KAMU GÖREVLİLERİYLE İLİŞKİLER<div>
+1. <span class="kim"> Eski Kamu Görevlilerinin Kamu Hizmetlerinden Ayrıcalıklı Bir Şekilde Yararlanması</span> <br>
+Eski kamu görevlileri, yıllarca hizmet vermenin karşılığı olarak, kamu hizmetlerinden yararlanırken ayrıcalık beklemekte, görevdeki kamu görevlileri de, “vefa” gereği, görevden ayrılan kamu görevlilerine ayrıcalık tanıyabilmektedir. Ancak bu durumda eşitlik ve adalet ilkeleri göz ardı edilmekte, hizmetten yararlanan normal vatandaşlar mağdur olmaktadır. <span class="mavi"> Bu nedenle, kamu görevlilerinin, eski kamu görevlilerini kamu hizmetlerinden ayrıcalıklı bir şekilde faydalandırmaması ve onlara imtiyazlı muamelede bulunmaması gerekmektedir.</span> <br>
+<div class="örn">
+Örnek: Emekli hastane müdürü Ömer Bey, muayene olmak üzere eskiden görev yaptığı hastaneye gelmiştir. Randevu veya sıra numarası almak yerine, hastane müdürünü ziyaret etmiş ve öncelikli olarak muayene olmuştur.</div>
+
+2. <span class="kim"> Kamu Görevlisinin Ayrıldıktan Sonra Kurumla İş Yapması</span> <br>
+Kamu görevlerinden ayrılan kişilere, ilgili kanunlardaki hükümler ve süreler saklı kalmak kaydıyla, daha önce görev yaptıkları kurum veya kuruluştan, doğrudan veya dolaylı olarak herhangi bir yüklenicilik, komisyonculuk, temsilcilik, bilirkişilik, aracılık veya benzeri görev ve iş verilemez. <br>
+<span class="kim">
+Ülkemizde bu konuyla ilgili olarak, 2.10.1981 tarihli ve 2531 sayılı “Kamu Görevlerinden Ayrılanların Yapamayacakları işler Hakkında Kanun” bulunmaktadır. Söz konusu kanunun 2. maddesi şöyledir:</span>
+<div>  <span class="ark">
+“... görevlerinden hangi sebeple olursa olsun ayrılanlar, <strong> ayrıldıkları tarihten önceki iki yıl içinde</strong> hizmetinde bulundukları daire, idare, kurum ve kuruluşlara karşı <strong> ayrıldıkları tarihten başlayarak üç yıl süreyle,</strong> o daire, idare, kurum ve kuruluştaki görev ve faaliyet alanlarıyla ilgili konularda <span class="mavi"> doğrudan doğruya veya dolaylı olarak görev ve iş alamazlar, taahhüde giremezler, komisyonculuk ve temsilcilik yapamazlar.</span>”</span></div>
+<div class="örn">
+Örnek 1: Belediye Fen İşleri Müdürü Ahmet Bey, görevinden istifa ederek beldede faaliyet gösteren bir inşaat şirketinde yönetici olarak çalışmaya başlamıştır. Firma, belediyenin açtığı bir ihaleye girecektir.</div>
+<div class="örn">
+Örnek 2: Emekli Tapu Müdürü İlhami Bey, en son görev yaptığı tapu müdürlüğünün bulunduğu beldede emlakçilik yapmaktadır. Aracı olduğu kişilerin işlerini takip etmek amacıyla daireye geldiğinde Müdür Burhan Beyi ziyaret etmekte, kahvesini içerken işleri öncelikli olarak yerine getirilmektedir.</div></div></div>
+
+<div>
+B. İKİNCİ BİR İŞTE ÇALIŞMA<div> <span class="kim">
+Kamu görevlilerinin, kamu görevinin dışındaki ikinci bir işte çalışması, performanslarının ve sadakatlerinin bölünmesi açısından sakınca teşkil etmekte ve çıkar çatışması doğurmaktadır.</span>  <br><br> <span class="kim"> Devlet Memurları Kanunu’nda konu şöyle düzenlenmiştir:</span> <span class="ark">
+“Memurlar Türk Ticaret Kanununa göre (tacir) veya (esnaf) sayılmalarını gerektirecek bir faaliyette bulunamaz, ticaret ve sanayi müesseselerinde görev alamaz, ticari mümessil veya ticari vekil veya kolektif şirketlerde ortak veya komandit şirkette komandite ortak olamazlar. (Görevli oldukları kuramların iştiraklerinde kuramlarını temsilen alacakları görevler hariç)...”</span>
+<div class="örn">
+Örnek 1: Bir kamu iktisadi teşebbüsünün muhasebe biriminde görevli Muhittin Bey, mesai saatlerinin dışında özel bir şirketin defterlerini tutmaktadır. Ancak zaman zaman, şirket yetkilileri mesai saatlerinde Muhittin Beyi arayarak görüşmektedirler.</div><div class="örn">
+Örnek 2: Milli Eğitim Bakanlığı’na bağlı bir okulda matematik öğretmeni olarak görev yapan Hatice Hanım kendi öğrencilerine özel ders vermektedir.</div></div></div>
+
+<div>
+C. GÖREV VE YETKİLERİN MENFAAT SAĞLAMA AMACIYLA KULLANILMASI
+<div>
+Diğer bir çıkar çatışması türü, kamu görevlisinin kamu görevi dolayısıyla elde ettiği kazanmaları kullanarak kendine ve yakınlarına çıkar sağlamasıdır.<div>
+1. <span class="kim"> Genel İlke</span> <br>
+Kamu görevlileri; görev, unvan ve yetkilerini kullanarak kendileri, yakınları veya üçüncü kişiler lehine menfaat sağlayamaz ve aracılıkta bulunamazlar, akraba, eş, dost ve hemşeri kayırmacılığı, siyasal kayırmacılık veya herhangi bir nedenle ayrımcılık veya kayırmacılık yapamazlar. <br>
+Görev, unvan ve yetki kullanarak menfaat sağlamanın çeşitli türleri bulunmaktadır. <br>
+2. <span class="kim"> Kendisine ve/veya Yakınlarına Çıkar Sağlama</span> <br>
+<div class="örn">
+Örnek 1: Operatör Doktor Asım Bey, hastanede yapacağı ameliyatlar öncesinde hastalarını özel muayenehanesine yönlendirmektedir.</div>
+<div class="örn">
+Örnek 2: Belediye Başkanı Murteza Beyin yeğeninin değeri düşük olan arsasının da bulunduğu bir alanda, İmar Kanunu’nun 18. maddesine göre imar uygulaması yapılmış, uygulama sonucunda yapılan değişiklikle, Murteza Beyin yeğenine daha kıymetli bir arsa verilmiştir. Kararın alındığı toplantıya Belediye Başkanı Murteza Bey de katılmıştır.</div>
+<div class="örn">
+Örnek 3: Bazı derslerden düşük not alan öğrenci velileri, Lise Müdürü Çağrı Beyi ziyaret etmekte, üniversiteye girişte notların önemli olduğunu söyleyerek, düşük olan notların yükseltilmesini rica etmektedirler. Çağrı Bey, ileride kendisine veya yakınlarına çıkar sağlayabilecek velilerle ilgilenmekte, onların yanında ilgili öğretmenlerle görüşerek notların yükseltilmesini sağlamaktadır.</div>
+
+3. <span class="kim"> Yapılan İş İçin Özel Ücret Alma</span> <br>
+<div class="örn">
+Örnek 1: Veteriner Hekim Celal Bey, görevi gereği köye aşı yapmaya gelmiş, köylüden belirlenen tarifenin üzerinde ücret almıştır.</div>
+<div class="örn">
+Örnek 2: Belediye mezarlığında imam olarak görev yapan Mükremin Bey, defin işlemlerini yerine getirdiği için cenaze sahiplerinden para almaktadır.</div>
+
+4. <span class="kim"> Aracılık</span> <br>
+<div class="örn">
+Örnek: Fen işleri müdürü Fatih Bey, belediyenin yol yapım işlerini yürüten firmanın sahibi İlyas Beye, ihtiyaç duyduğu mıcırı amcasının sahip olduğu şirketten almasını önermektedir.</div>
+
+5. <span class="kim"> Adam Kayırmacılık</span> <br>
+<div class="örn">
+Örnek: Müsteşar Ekrem Beyin yeğeni, bir kamu kurumunun açtığı yazılı sınavı kazanarak sözlü sınava davet edilmiştir. Müsteşar Ekrem Bey, ilgili kurumun yöneticisini arayarak yeğeninin işe alınması için ricada bulunmaktadır.</div>
+
+6. <span class="kim"> Hizmet Kayırmacılığı </span><br>
+<div class="örn">
+Örnek: Kömür dağıtımında görevli Hasan Bey, dağıtımda hemşerilerine öncelik tanımaktadır.</div>
+
+7. <span class="kim"> Görev, Unvan ve Yetki Kullanarak Ticaret Yapma</span> <br>
+
+<span class="mavi">
+Kamu görevlileri, görev, unvan ve yetkilerini kullanarak kendilerinin veya başkalarının kitap, dergi, kaset, CD ve benzeri ürünlerinin satışını ve dağıtımını yaptırmaları yasaklanmıştır.</span>
+<span class="örn">
+Örnek: Müfettiş İhsan Bey, denetim görevi ile ilgili açıklamalı bir mevzuat kitabı hazırlamış, kitabı satın almaları amacıyla ilgili kamu kurumlarına dağıtmıştır.</span> <br>
+8. <span class="kim"> Kurum, Vakıf, Dernek veya Spor Kulübüne Yardım ve Bağış Alma</span> <br>
+<span class="mavi"> Kamu görevlilerinin, herhangi bir kurum, vakıf, demek veya spor kulübüne yardım, bağış ve benzeri nitelikte menfaat sağlamaları yasaklanmıştır.</span> <br>
+<div class="örn">
+Örnek: İşadamı Hüseyin Bey, aldığı ihale ile ilgili imalatları tamamlamasına rağmen, hak edişlerini alamamaktadır. Konuyu kurumun yöneticisi ile görüştüğünde, paranın bir kısmını şehrin spor kulübüne bağışlaması durumunda, alacağının hemen ödeneceğini öğrenmiştir.</div>
+
+9. <span class="kim"> Görev Sırasında Elde Edilen Bilgilerin Açıklanması</span> <br>
+
+<span class="kim">
+Kamu görevlileri, görevlerinin ifası sırasında ya da bu görevlerin sonucu olarak elde ettikleri resmi veya gizli nitelikteki bilgileri,</span> <span class="mavi"> kendilerine, yakınlarına veya üçüncü kişilere doğrudan veya dolaylı olarak ekonomik, siyasal veya sosyal nitelikte bir menfaat elde etmek için kullanamazlar, görevdeyken ve görevden ayrıldıktan sonra yetkili makamlar dışında hiçbir kurum, kuruluş veya kişiye açıklayamazlar.</span> <br>
+<div class="örn">
+Örnek: Belediye imar müdürü Zafer Bey, yapılacak imar değişikliği ile daha önce konut alanı olarak belirlenen bir bölgenin ticaret alanına dönüştürüleceğini, arkadaşı müteahhit İrfan Beye haber vermiş, İrfan Bey de zaman kaybetmeden söz konusu bölgedeki arsaları satın almıştır.</div>
+
+10. <span class="kim"> Seçimlerde Kamu İmkânlarını Kullanma</span> <br>
+
+<span class="mavi">
+Kamu görevlileri, seçim kampanyalarında görev yaptığı kurumun kaynaklarını doğrudan veya dolaylı olarak kullanamaz ve kullandıramazlar.</span> <br>
+<div class="örn">
+Örnek: Belediye Başkanı Hüsamettin Bey, yapılacak yerel seçimlerde yeniden aday olmuştur. Seçim kampanyasında kullanacağı afiş ve bayrakların, itfaiye araçlarınca asılması talimatını vermiştir.</div></div></div></div>
+
+<div>
+Ç. HEDİYE ALMA <br>
+Kamu görevlilerine verilen veya kamu görevlilerince alman hediyeler, kamuoyu nezdinde etik tartışmalara yol açmakta, kamuda yozlaşmaya, kamu görevlilerinin eleştirilmesine, yolsuzlukla ilgili algılamaların artmasına, kamu yönetimi ve yöneticilerine duyulan itibar ve güvenin sarsılmasına neden olmaktadır. <br>
+İlk anda masum, zararsız ve tehlikesiz olarak görülebilecek hediyeler, çoğu zaman kamu görevlisinin tarafsızlığını, kararını ve görevini etkilemekte, adeta “bubi tuzağına dönüşmektedir. <br>
+<span class="örn">
+Örnek: Devlet hastanesinde memur olarak görev yapan memur Sinan Bey, izin dönüşünde hemşerisi Vali yardımcısı Serhat Beyi ziyaret etmek amacıyla makamına gelmiş, kendisinin yerinde olmadığını görünce sekreterine memleketinden getirdiği bir kavunu bırakmıştır. Serhat Bey makamına dönünce kavunu görmüş, sekreterine kimin getirdiğini sormuş, Sinan Beyin getirdiğini öğrenince, “hemşerim memleketten getirmiştir” düşüncesiyle kavunu eve götürüp ailece yemiştir. Üç gün sonra Sinan Bey tekrar Serhat Beyi ziyaret etmiş, döner sermayeden daha iyi bir ücret alacağı bir göreve getirilmesine yardımcı olmasını istemiştir. Normalde böyle ricaları kabul etmeyen Serhat Bey, hediye edilen kavunu hatırlayarak, Sinan Beyin ricasını yerine getirmek için girişimde bulunmuştur.</span> <br> <br>
+
+Hediyeleri iki kısma ayırmak mümkündür: <br> <div>
+1. <span class="kim"> İyi Niyetle Verilen Hediyeler </span> <br>
+<span class="mavi">
+Hediye verenin herhangi bir menfaat beklentisi bulunmamaktadır.</span> <br> <span class="ark"> Örneğin yabancı bir ülkeyi ziyaretinde devlet adamlarına verilen hediyeler, <br> yılbaşında verilen ajanda ve benzeri hediyeler ile <br> aldığı kamu hizmetinden memnun kalan bir vatandaşın, memnuniyetini ifade etmek için kamu görevlisine içinden gelerek verdiği hediyeler ya da para (bahşiş) <br> <span class="mavi">bu kapsamda değerlendirilebilir.</span></span> <br>
+<div class="örn">
+Örnek 1: Mehmet Bey, hastanede yattığı sürece kendisine samimi ve güler yüzle davranan hemşirelere, taburcu olduktan sonra bir pasta hediye etmiştir.</div>
+<div class="örn">
+Örnek 2: Sadık Bey, hayatında ilk kez ev sahibi olmanın ve işlemlerin hızlı tamamlanmasının mutluluğuyla, işlemleri yürüten tapu memuru Semra Hanıma 20 TL vermiştir.</div>
+
+2. <span class="kim"> Çıkar Sağlama Amacıyla Verilen Hediyeler</span> <br>
+Hediyeyi verenin bir menfaat elde etme ya da hizmetin kolayca ve süratle görülmesi yönünde bir beklentisi bulunmaktadır. Bu durumda hediyeyi veren, ayrıcalıklı işlem yapmasını beklediği kamu görevlisine, önceden meşruiyet kazandırılmış çıkarlar sağlama yoluna gitmekte, <span class="mavi"> böylece doğrudan rüşvet vermenin risklerini en aza indirmeye çalışmaktadır.</span>  Hediyeyi veren başlangıçta niyetini açıkça belli etmemektedir. Çoğu zaman hediyenin verildiği anda kamu görevlisi ile hediyeyi veren arasında hizmetle ilgili bir bağlantı da bulunmamaktadır. Böyle durumlarda kamu görevlisi hediyeyi verenin uzun dönemdeki niyetini sezememekte ve durumdan şüphelenmeyerek hediyeyi kabul etmektedir. <br> <span class="ark">
+Araba ya da ev tahsis etmek, <br> tuttuğu takımın kombine maç biletlerini hediye etmek, <br> konferans verdirmek, <br> inceleme amaçlı gezilere davet etmek, <br> tatil masraflarını karşılamak vb.</span> <br> <span class="mavi">
+Bu kapsamdaki hediyeler genellikle sembolik olmanın ötesinde, kamu görevlisine belli bir çıkar sağlamayı hedeflemektedir.</span>
+<span class="örn">
+Örnek: İhalede kontrol mühendisi olarak görev yapan Aykut Beye, hak edişlerde kolaylık göstermesi beklentisiyle firma tarafından araç tahsis edilmiştir. Aracın yakıt giderleri de firma tarafından karşılanmaktadır. Aykut Bey arabayı özel işlerinde de kullanmaktadır. </span> <br> <span class="ark">
+İster iyi niyetle, isterse çıkar sağlama amacıyla verilsin,</span> <span class="mavi"> kamu görevlilerinin hediye almaması, kamu görevlisine hediye verilmemesi ve görev sebebiyle çıkar sağlanmaması temel ilkedir.</span>  <br>
+Kamu görevlisinin tarafsızlığını, performansını, kararını veya görevini yapmasını etkileyen veya etkileme ihtimali bulunan, ekonomik değeri olan ya da olmayan, doğrudan ya da dolaylı olarak kabul edilen her türlü eşya ve menfaat <span class="ark"> hediye</span>  kapsamındadır. <div> <button  onclick="soruyuGoster(40)" class="soru" >2023 yılı çıkmış soru</button> </div>
+Kamu görevlileri, yürüttükleri görevle ilgili bir iş, hizmet veya menfaat ilişkisi olan gerçek veya tüzel kişilerden kendileri, yakınları veya üçüncü kişi veya kuruluşlar için doğrudan doğruya veya aracı eliyle herhangi bir hediye alamazlar ve menfaat sağlayamazlar. <br>
+3. <span class="kim"> Hangi hediyeler alınabilir, hangileri alınamaz?</span> <br>
+<span class="kim"> Yönetmelikte, hediye alma yasağının istisnaları sayılmaktadır. Buna göre aşağıda belirtilenler hediye alma yasağı kapsamı dışındadır, yani alınabilir:</span>
+<div><div></div><button  onclick="soruyuGoster(322)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+	<span class="do">
+a. Görev yapılan kuruma katkı anlamına gelen, kurum hizmetlerinin hukuka uygun yürütülmesini etkilemeyecek olan ve kamu hizmetine tahsis edilmek, kurumun demirbaş listesine kaydedilmek ve kamuoyuna açıklanmak koşuluyla almanlar (makam aracı ve belli bir kamu görevlisinin hizmetine tahsis edilmek üzere alman diğer hediyeler hariç) ile kurum ve kuruluşlara yapılan bağışlar, <br>
+b. Kitap, dergi, makale, kaset, takvim, CD veya buna benzer nitelikte olanlar, <br>
+c. Halka açık yarışmalarda, kampanyalarda veya etkinliklerde kazanılan ödül veya hediyeler, <br>
+ç. Herkese açık konferans, sempozyum, forum, panel, yemek, resepsiyon veya buna benzer etkinliklerde verilen hatıra niteliğindeki hediyeler, <br>
+d. Tanıtım amacına yönelik, herkese dağıtılan ve sembolik değeri bulunan reklâm ve el sanatları ürünleri, <br>
+e. Finans kuramlarından piyasa koşullarına göre alınan krediler.</span></div>
+
+<span class="kim">
+Aşağıda belirtilenler ise hediye alma yasağı kapsamındadır, yani alınamaz:</span>
+<div> <span class="no">
+a. Görev yapılan kuramla iş, hizmet veya çıkar ilişkisi içinde bulunanlardan alman karşılama, veda ve kutlama hediyeleri, burs, seyahat, ücretsiz konaklama ve hediye çekleri, <br>
+b. Taşınır veya taşınmaz mal veya hizmet satın alırken, satarken veya kiralarken piyasa fiyatına göre makul olmayan bedeller üzerinden yapılan işlemler, <br>
+c. Hizmetten yararlananların vereceği her türlü eşya, giysi, takı veya gıda türü hediyeler, <br>
+ç. Görev yapılan kurumla iş veya hizmet ilişkisi içinde olanlardan alman borç ve krediler.</span></div>
+
+4. Örnekler (L Yasak kapsamında, J Kapsam dışı)
+<div>
+	<div class="do">
+J: Hayırsever Sıdıka Hanım, ilköğretim okulundaki dersliklerde kullanılmak üzere 20 bilgisayar bağışlamıştır. Bilgisayarların demirbaş kaydı yapılmış ve okulun internet sitesinde duyurulmuştur.</div>
+<div class="no">
+L: Selim Bey, kızının okuduğu okula matematik öğretmeni Semra Hanımın kullanması için dizüstü bilgisayar hediye etmiş, okul müdürü bilgisayarı demirbaşa kaydetmiş, ardından Selim Beyin kızının derslerine giren matematik öğretmeni Semra Hanıma tahsis etmiştir.</div>
+<div class="do">
+J: İşadamı Sadık Bey, hastaneye diyaliz makinesi bağışlamıştır.</div>
+<div class="no">
+L: Yeni atanan Vali İhsan Beye hoş geldiniz ziyaretinde bulunan müteahhit Sami Bey, kıymetli bir el halısı hediye etmiştir.</div>
+<div class="no">
+L: Başarılı Çocuklara Yardım Demeği, demeği denetlemekle görevli Selma Hanımın kızına burs vermektedir.</div>
+<div class="no">
+L: Sınıf anneleri Öğretmen Neriman Hanıma, öğretmenler gününde 22 ayar bir bilezik hediye etmişlerdir.</div>
+<div class="do">
+J: Memur Burhanettin Beye, kurumun iş yaptığı firmalardan birisi takvim hediye etmiştir.</div>
+<div class="no">
+L: Defterdar Kemal Bey, kızının düğünü için piyasa fiyatının yarısına düğün salonu kiralamıştır.</div></div>
+
+
+5. <span class="kim"> Hediye alıp almama konusunda şüpheye düşülürse ne yapılabilir?</span>
+<div>
+Hediye toplumsal ilişkilerin tesis edilmesinde önemli bir araçtır. İnsanların karşılıklılık esasına göre birbirleriyle hediyeleşmelerinde her hangi bir sorun bulunmamaktadır. <span class="mavi"> Burada sorun olan, kamu görevlisine kamu görevi nedeniyle verilen hediyelerdir.</span> <br>
+<span class="kim"> Bu nedenle, kamu görevlisi hediye kabul ederken kendisine şu soruyu sormalıdır:</span> <br>
+“Kamu görevlisi olmasaydım ya da işgal ettiğim makam ve <span class="ark"> mevkide bulunmasaydım,</span> <span class="mavi"> bu hediye yine de bana verilecek miydi?”</span> <br>
+<div>
+- <span class="kim"> Cevap “kesinlikle evet” ise </span> <span class="mavi">hediye alınabilir.</span> <br>
+- <span class="kim"> Cevap “hayır” ise ya da “tereddüt” varsa</span> <span class="mavi"> hediye reddedilmelidir.</span></div>
+<span class="kim">
+Teklif edilen hediyenin</span> <span class="mavi"> büyük ya da küçük olması, maddi değerinin bulunup bulunmaması önemli değildir.</span>  Bir kamu görevlisi maddi değeri büyük olan bir hediyeden etkilenmeyebilir, başka birisi değersiz gibi görülen bir hediyeden etkilenebilir.</div></div></div>
+
+
+
+
+<div>
+
+D. KAMU KAYNAKLARINI KULLANARAK HEDİYE VERME<div>
+	<span class="mavi">
+Kamu görevlileri, kamu kaynaklarını kullanarak hediye veremez,</span> <span class="ark"> resmi gün, tören ve bayramlar dışında, hiçbir gerçek veya tüzel kişiye çelenk veya çiçek gönderemezler;</span> <span class="mavi"> görev ve hizmetle ilgisi olmayan kutlama, duyuru ve anma ilanları veremezler.</span>
+<span class="örn">
+Örnek: İl Müdürü Süleyman Bey, bir iş adamının cenaze törenine kurum bütçesinden çelenk göndermiştir.</span></div></div>
+
+
+<div>
+E. YASA DIŞI NÜFUZ KULLANMA (KANUNSUZ EMİR)<div> <span class="kim">
+Açık yasal düzenlemelere rağmen, üst yöneticiler,</span> <span class="mavi"> astlarından sözlü talimat, emir veya rica biçiminde yasal ve etik olmayan taleplerde bulunabilmektedir. Söz konusu talepleri yerine getirmeme durumunda, kurum içinde yaptırımlarla (görevden azil, tayin, terfi edememe, dışlanma vb.) karşılaşabileceğini düşünen kamu görevlisi, çoğu zaman emri yerine getirmekte, delil ve şahit olmadığı için, sorumluluk emri- ricayı yerine getiren görevlinin üzerine kalmaktadır.</span> <br>
+Üst düzey yöneticilerin astlarından yasal ve etik olmayan taleplerde bulunmamaları, kendisine böyle bir talepte bulunulan kamu görevlilerinin de bunu yerine getirmemesi gerekmektedir. <br>
+
+<div class="örn">
+Örnek 1: Müsteşar Yılmaz Bey, makam aracı ile havaalanına gitmektedir. Uçağı kaçırma endişesi ile makam şoförüne “gaza bas, gerekirse kırmızı ışıkta geç” talimatı vermiştir.</div>
+<div class="örn">
+Örnek 2: Büyük bir satın alma ihalesi yapılacaktır. Kurumun üst yöneticisi Tahsin Bey, ihale şartnamesini hazırlayacak olan Müdür İhsan Beyi makamına çağırarak, şartnameyi belli bir firmanın ihaleyi kazanacağı şekilde hazırlamasını istemiştir.</div></div></div>
+
+<div>
+VIII. KAMU MALLARI VE KAYNAKLARININ KULLANIMI<div>  <span class="kim">
+Kamu görevlileri, kamu bina ve taşıtları ile diğer kamu malları ve kaynaklarını kamusal amaçlar ve hizmet gerekleri dışında kullanamaz ve kullandıramazlar,</span>  bunları korur ve her an hizmete hazır halde bulundurmak için gerekli tedbirleri alırlar.
+<div class="örn">
+Örnek 1: Şube Müdürü İlhami Bey, kurumun kamyoneti ile evini taşımıştır. <br></div>
+<div class="örn">
+Örnek 2: Bilgisayar işletmeni Emine Hanım, ofisindeki bilgisayarla kızının ödevi için internette araştırma yapmış, hazırladığı ödevin çıktısını kurum yazıcısından almıştır.</div></div></div>
+
+<div>
+IX. SAVURGANLIKTAN KAÇINMA<div> <span class="kim">
+Kamu görevlileri, kamu bina ve taşıtları ile diğer kamu malları ve kaynaklarının kullanımında israf ve savurganlıktan kaçınır; mesai süresini, kamu mallarını, kaynaklarını, işgücünü ve imkânlarım kullanırken etkin, verimli ve tutumlu davranırlar.</span> <br>
+<div class="örn">
+Örnek 1: Genel Müdürlüğe yeni atanan Kasım Bey, makam odasının tefrişatım beğenmeyerek tamamen yenilemiştir.</div>
+<div class="örn">
+Örnek 2: Memur Sıla Hanım, mesai saatlerinde arkadaşları ile bilgisayarda sohbet etmekte ve oyun oynamaktadır.</div>
+<div class="örn">
+Örnek 3: Göreve yeni atanan Bilgehan Bey, 3 yıl önce alman makam aracını beğenmeyerek oldukça pahalı ve lüks yeni bir makam aracı almıştır.</div>
+<div class="örn">
+Örnek 4: Şef Aysun Hanım, işyeri telefonundan akrabaları ve arkadaşları ile uzun uzun konuşmaktadır.</div></div></div>
+
+<div>
+X. BAĞLAYICI AÇIKLAMALAR VE GERÇEK DIŞI BEYAN<div>
+	<span class="kim">
+Kamu görevlileri, görevlerini yerine getirirken yetkilerini aşarak çalıştıkları kurulularını bağlayıcı açıklama, taahhüt, vaat veya girişimlerde bulunamazlar, aldatıcı ye gerçek dışı beyanat veremezler.</span>
+<span class="örn">
+Örnek: Bir hastanenin yeni doğan bölümünde hastane ortamının hijyenik olmamasından dolayı üç bebek hayatını kaybetmiştir. Başhekim Yaşar Bey, basma verdiği bilgide, ölümlerin hastalık nedeniyle olduğunu söylemektedir.</span></div></div>
+
+
+<div>
+XI. BİLGİ VERME, SAYDAMLIK VE KATILIMCILIK<div>
+	<span class="mavi">
+Kamu görevlileri, halkın bilgi edinme hakkını kullanmasına yardımcı olurlar.</span> Gerçek ve tüzel kişilerin talep etmesi halinde istenen bilgi veya belgeleri, 4982 sayılı Bilgi Edinme Hakkı Kanunu’nda belirlenen istisnalar dışında, usulüne uygun olarak verirler.
+<div class="örn">
+Örnek: Müdür Halit Bey, vatandaşların bilgi edinme hakkını kullanarak kurumdan bilgi ve belge istemelerine sıcak bakmamakta, yapılan başvuruları çeşitli bahanelerle geçiştirmeye çalışmaktadır.</div>
+
+<span class="kim">
+Üst yöneticiler,</span> ilgili kanunların izin verdiği çerçevede, kurumlarının ihale süreçlerini, faaliyet ve denetim raporlarını uygun araçlarla kamuoyunun bilgisine sunarlar. <br>
+Kamu görevlileri, kamu hizmetleri ile ilgili temel kararların hazırlanması, olgunlaştırılması, alınması ve bu kararların uygulanması aşamalarından birine, bir kaçma veya tamamına, aksine yasal bir hüküm olmadıkça, <span class="mavi"> o karardan doğrudan ya da dolaylı olarak etkilenecek olanların katkıda bulunmasını sağlamaya dikkat ederler.</span></div></div>
+
+<div>
+XII. YÖNETİCİLERİN HESAP VERME SORUMLULUĞU<div>
+	<span class="mavi">
+Kamu görevlileri, kamu hizmetlerinin yerine getirilmesi sırasında sorumlulukları ve yükümlülükleri konusunda hesap verebilir ve kamusal değerlendirme ve denetime her zaman açık ve hazır olurlar.</span> <br>
+Yönetici kamu görevlileri, kuramlarının amaç ve politikalarına uygun olmayan işlem veya eylemleri engellemek için görev ve yetkilerinin gerektirdiği önlemleri zamanında alırlar. <br>
+<span class="örn">
+Örnek: Kurum personelinin hizmet içi eğitiminden sorumlu Daire Başkanı Faruk Bey, 5 yıldızlı bir otelde gerçekleştirilecek oldukça yüksek bütçeli bir eğitim programı hazırlamış ve onaya sunmuştur. <br> Genel Müdür Fikret Bey, programı onaylamayarak, eğitimin kurumun tesislerinde ve daha düşük bir bütçe ile gerçekleştirilmesi talimatını vermiştir.</span> <br>
+<span class="mavi">
+	<span class="kim">
+Yönetici kamu görevlileri,</span> yetkisi içindeki personelin yolsuzluk yapmasını önlemek için gerekli tedbirleri alırlar.</span> <br> Bu tedbirler; yasal ve idari düzenlemeleri uygulamayı, eğitim ve bilgilendirme konusunda uygun çalışmalar yapmayı, <span class="mavi"> personelinin karşı karşıya kaldığı mali ve diğer zorluklar konusunda dikkatli davranmayı ve kişisel davranışlarıyla personeline örnek olmayı kapsar.</span>  <br>
+<span class="kim">
+Yönetici kamu görevlileri,</span> personeline etik davranış ilkeleri konusunda uygun eğitimi sağlamak, bu ilkelere uyulup uyulmadığını <span class="mavi"> gözetlemek, geliriyle bağdaşmayan yaşantısını izlemek ve etik davranış konusunda rehberlik etmekle yükümlüdür.</span>
+<span class="örn">
+Örnek: İcra Müdürlüğünde 10 yıldır memur olarak görev yapan Özlem Hanım, iş sahiplerinden elde ettiği menfaatlerle, 8 adet daire satın almış, bunlara ilişkin mal beyanında da bulunmuştur. <br> Amirleri Özlem Hanım hakkında hiçbir işlem yapmamıştır.</span>
+<span class="kim">
+Kurum ve kuruluşların yetkili sicil amirleri,</span> <span class="mavi"> personelin sicil ve performansını, bu Yönetmelikte düzenlenen etik davranış ilkelerine uygunluk açısından da değerlendirirler.</span></div></div>
+
+
+<div>
+XIII. MAL BİLDİRİMİNDE BULUNMA<div>
+	<span class="kim">
+Kamu görevlileri,</span> <br> <span class="ark"> kendileriyle  <br> eşlerine ve <br> velayeti altındaki çocuklarına</span> <span class="mavi"> ait taşınır ve taşınmazları, alacak ve borçları hakkında, 3628 sayılı Mal Bildiriminde Bulunulması, Rüşvet ve Yolsuzluklarla Mücadele Kanunu hükümleri uyarınca, yetkili makama mal bildiriminde bulunurlar.</span> <br>
+<span class="kim">
+Kamu Görevlileri Etik Kurulu’nun, gerek gördüğü takdirde</span> <span class="mavi"> mal bildirimlerini inceleme yetkisi bulunmaktadır.</span> <br>
+<span class="kim"> Mal bildirimlerindeki bilgilerin doğruluğunun kontrolü amacıyla</span> <span class="mavi"> ilgili kişi ve kuruluşlar (bankalar ve özel finans kurumlan dâhil) talep edilen bilgileri, <span class="dik"> en geç otuz gün içinde</span> Kurul’a vermekle yükümlüdürler.</span> <br>
+Yöneticiler, mal bildirimlerinin, kişilerin gelirleri ve daha önceki mal bildirimleri ile karşılaştırarak incelenmesi hususunda gerekli tedbirleri almalıdırlar.</div> </div>
+
+<div>
+XIV. ETİK DAVRANIŞ İLKELERİNE AYKIRILIK İDDİASIYLA BAŞVURU HAKKI<div>
+3071 sayılı Dilekçe Hakkının Kullanılmasına İlişkin Kanun’da belirlenen esaslara göre, <span class="kim"> medeni hakları kullanma ehliyetine sahip Türkiye Cumhuriyeti Vatandaşları ile Türkiye'de oturan yabancı gerçek kişiler,</span> <span class="mavi"> <span class="dik"> en az genel müdür, eşiti ve üstü</span> kamu görevlilerinin etik davranış ilkelerine aykırı davrandıkları iddiası ile Kamu Görevlileri Etik Kurulu’na başvuruda bulunabilirler.</span> Herhangi bir nedenle Türkiye’de bulunup da başvuru nedeni sayılan etik ilkelerden birisine aykırı davranıldığına <span class="kim"> tanık olan yabancı,</span> <span class="mavi"> başvuru hakkı açısından Türkiye’de oturuyor kabul edilir.</span> <span class="mavi"> Başvuruda bulunabilmek için başvuranın menfaatinin etkilenmesi koşulu aranmaz.</span>  <br>
+<span class="kim">
+Ancak, </span> <span class="mavi">kamu görevlilerini karalama amacı güttüğü açıkça anlaşılan ve başvuranın kimliği tespit edilemeyen başvurular değerlendirmeye alınmaz.</span>  <br>
+<span class="kim">
+Yargı organlarınca İncelenmekte olan veya karara bağlanmış bulunan uyuşmazlıklar hakkında</span> <span class="mavi"> Kurula veya yetkili disiplin kurullarına başvuru yapılamaz.</span> <span class="kim"> İnceleme sırasında yargı yoluna gidildiği anlaşılan</span> <span class="mavi"> başvuruların işlemi durdurulur.</span> <br>
+<span class="mavi"> Daha önce Kurulca incelenmiş şikâyet konusu, yeni kanıtlar gösterilmedikçe bir daha şikâyet konusu yapılamaz ve incelenemez.</span></div></div>
+
+<div>
+A. BAŞVURU BİÇİMLERİ <br> <span class="kim">
+Başvurular;</span>
+<div>
+	<span class="ark">
+a) Yazılı dilekçe, <br>
+b) Elektronik posta, <br>
+c) Tutanağa geçirilen sözlü başvuru yollan ile yapılır.</span></div>
+</div>
+<div>
+B. BAŞVURU USULÜ<div>
+	<span class="kim">
+Başvuru, </span> <span class="kim"> gerçek kişiler tarafından adı, soyadı, oturma yeri veya iş adresi ile imzayı kapsayan dilekçelerle,</span> <span class="ark"> en az genel müdür, eşiti ve üstü görevliler için</span> <span class="mavi"> Kurul Başkanlığına,</span> <span class="ark"> diğer görevliler için ise</span> <span class="mavi"> kurum yetkili disiplin kurullarına yöneltilmek üzere ilgili kurum amirliğine yapılır.</span>  <br>
+<span class="kim">
+Dilekçede, </span> <span class="mavi">etik ilkeye aykırı davranış iddiasına ilişkin bilgi ve belgeler açık ve ayrıntılı olarak belirtilir.</span>  Elde bulunan belgeler dilekçeye eklenir. <span class="mavi"> Başvuru konusu aykırı davranış iddiası, kişi, zaman ve yer belirtilerek somut biçimde gösterilir.</span>
+<span class="dik">
+Başvuru dilekçelerinin daktilo ile yazılması veya bilgisayar çıktısı olması koşulu aranmaz.</span>
+<span class="mavi"> Dilekçelerin okunaklı ve anlaşılır olması yeterlidir.</span> <span class="ark"> Başvurunun Kurul kayıtlarına geçtiği tarih,</span> <span class="mavi"> başvuru tarihidir.</span> <span class="ark"> Başvuru dilekçeleri</span> <span class="maiv"> posta yoluyla da Kurula gönderilebilir.</span>  <span class="ark"> Bu durumda dilekçenin Kurul kayıtlarına geçtiği tarih</span> <span class="mavi"> süre başlangıcına esas alınır.</span> <span class="ark"> Başvurunun tutanağa geçirilmek koşuluyla sözlü yapılması durumunda</span> <span class="mavi"> başvuranın imzası ve adresi de tutanağa alınır.</span></div></div>
+
+<div>
+C. ELEKTRONİK ORTAMDA YAPILACAK BAŞVURULAR<div>
+	<span class="kim">
+Başvurunun; gerçek kişiler tarafından elektronik posta yoluyla yapılması halinde,</span> <span class="mavi"> başvuru sahibinin adı ve soyadı, oturma yeri veya iş adresi belirtilir.</span>  <span class="kim"> Türkiye’de oturan yabancıların bu yolla yaptıkları başvurularda,</span> <span class="mavi"> pasaport numarası ve uyruğu gösterilir.</span> <span class="kim"> Elektronik posta yolu ile yapılacak başvurularda,</span> <span class="mavi"> başvurunun Kurulun elektronik posta adresine ulaştığı tarih başvuru tarihidir.</span></div></div>
+
+<div>
+D. HANGİ BAŞVURULAR KABUL EDİLMEZ?<div>
+İsim ve imza bulunmayan başvuru dilekçeleri ile Yönetmeliğin 33 ve 34. maddelerinde belirtilen unsurları içermeyen elektronik posta yolu ile gönderilmiş başvurular, işleme konulmaz ve mümkünse durum başvuru sahibine bildirilir. <br>
+<span class="kim">
+Gerçeğe aykırı beyanları içerdiği sonradan anlaşılan başvurular,</span> <span class="mavi"> bu durumun anlaşıldığı tarihte işlemden kaldırılır.</span> <br>
+<span class="kim">
+Elektronik posta yoluyla yapılan başvurularda,</span> <span class="mavi"> gerçeğe aykırı ad ve soyadı ile yapılan başvurular işleme konulmaz.</span>  <br><span class="kim">
+Oluştuğu tarihi izleyen günden başlayarak</span> <span class="mavi"> iki yıl içinde yapılmayan etik ilkelere aykırı davranışlar hakkındaki başvurular incelenmez.</span></div></div>
+
+
+<div>
+XV. KAMU GÖREVLİLERİNDEN BEKLENEN BAŞLICA ETİK DAVRANIŞLAR<div>
+
+- <span class="do"> Her zaman yüksek etik standartları izleyiniz, kamu yararı doğrultusunda halkın devlete ve kamu görevlilerine olan güvenini artırmak için çalışınız.</span> <br> <br>
+- <span class="do"> Görevinizi yerine getirirken, kamu kaynaklarını elde ederken ve kullanırken, dışarıdan mal ve hizmet satın alırken yazılı kurallara, etik ilke ve değerlere uygun davranınız.</span> <br> <br>
+- <span class="do"> Meslektaşlarınıza ve hizmetten yararlananlara içten saygı gösteriniz, tarafsız ve adil davranınız.</span> <br><br>
+- <span class="do"> Meslektaşlarınızın ve hizmetten yararlananların görüşlerini dikkate alınız ve karar alma sürecine onları da katınız.</span> <br> <br>
+- <span class="do"> Meslektaşlarınızın yaptıkları iyi işleri takdir ediniz ve duyurunuz.</span> <br> <br>
+- <span class="do"> Kamu görevini ve kaynaklarını kişisel çıkar için kullanmayınız, akraba, eş-dost ve yakınlarınızı kamu hizmetlerinden ayrıcalıklı olarak yararlandırmayınız.</span> <br> <br>
+- <span class="do"> Muhtemel ve gerçek çıkar çatışmaları konusunda dikkatli olunuz, kendinizin ve yakınlarınızın çıkar sağlayabileceği durumlardan kaçınınız.</span> <br> <br>
+- <span class="do"> Davranış ve kararlarınızdan doğacak sonuçların sorumluluğunu üstleniniz.</span> <br>
+- <span class="do"> Mal bildirimi formlarını zamanında, eksiksiz ve doğru bir şekilde doldurunuz. Mal varlığınızda artış olması durumunda, bunu zamanında bildiriniz.</span> <br> <br>
+- <span class="do"> Kamu görevinin dışında gelir getirici bir işte çalışmayınız.</span> <br> <br>
+- <span class="do"> Görev yaptığınız kurumla bağlantısı olan kişi veya firmalarla özel iş ilişkisi içine girmeyiniz.</span> <br> <br>
+- <span class="do"> Görev yapılan kurumla iş, hizmet veya çıkar ilişkisi içinde bulunanlardan hediye almayınız, size sunulan, burs, seyahat, ücretsiz konaklama ve yemek gibi imkânlardan uzak durunuz.</span> <br> <br>
+
+- <span class="do"> Özel işlerinizi mesai saatleri içerisinde yapmaktan kaçınınız.</span> <br> <br>
+- <span class="do"> Etik değerlere uygun örnek davranışlar gösteriniz.</span> <br> <br>
+- <span class="do"> Davranışları etik ilkelere uymayan diğer kamu çalışanlarını uyarınız, sonuç alamaz iseniz durumu yetkili mercilere bildiriniz.</span> <br> <br>
+<span class="mavi">
+Çıkar çatışması veya etik dışı bir durumla karşılaştığınızda, tavsiye almak için güvenilir kıdemli bir meslektaşınızla konuşabilir ya da kurumunuzdaki etik komisyonuna müracaat edebilirsiniz.</span></div></div>
+
+
+<div>
+XVI. KAMU YÖNETİCİLERİNDEN BEKLENEN ETİK DAVRANIŞLAR<div>
+	<span class="kim">
+Yönetim görevinizi yerine getirirken;</span><div>
+- <span class="do"> Kurumun genel amaçlarını, ana hedeflerini ve değerlerini tüm görevlilere bildiriniz. </span><br>
+- <span class="do"> Davranış beklentilerinin açıkça tanımlandığı ve her hangi bir ihlal varsa belirlenip düzeltildiği olumlu bir çalışma ortamı oluşturunuz.</span> <br>
+- <span class="do"> Kurumunuzun faaliyetleri ile ilgili tüm sorumluluğu kabul ediniz.</span> <br>
+- <span class="do"> Üst görevler için personel seçerken, liyakatlerini ve mevcut davranış ve gelişim potansiyellerini göz önüne alınız.</span> <br>
+- <span class="do"> Tüm personele adil, tarafsız ve eşit davranınız.</span> <br>
+- <span class="do"> Sorun ve anlaşmazlıkları adil ve hızlı bir şekilde çözünüz.</span> <br>
+- <span class="do"> Karar ve davranışlarınızda tutarlı, güvenilir, öngörülebilir, adil ve nesnel olunuz.</span> <br>
+- <span class="do"> Etik ilke ve değerler konusunda kişisel olarak örnek olunuz.</span> <br>
+- <span class="do"> İşinizde etkililik ve verimlilik konularında örnek alınacak olası en yüksek standartları sürdürünüz.</span></div></div></div>
+
+<div>
+XVII. KAMU GÖREVLİLERİ ETİK SÖZLEŞMESİ<div>
+	<span class="kim">
+Kamu hizmetinin her türlü özel çıkarın üzerinde olduğu ve kamu görevlisinin halkın hizmetinde bulunduğu bilinç ve anlayışıyla;</span>
+<div>
+- <span class="do"> Halkın günlük yaşamını kolaylaştırmak, ihtiyaçlarını en etkin, hızlı ve verimli biçimde karşılamak, hizmet kalitesini yükseltmek ve toplumun memnuniyetini artırmak için çalışmayı,</span> <br>
+- <span class="do"> Görevimi insan haklarına saygı, saydamlık, katılımcılık, dürüstlük, hesap verebilirlik, kamu yararını gözetme ve hukukun üstünlüğü ilkeleri doğrultusunda yerine getirmeyi,</span> <br>
+- <span class="do"> Dil, din, felsefi inanç, siyasi düşünce, ırk, yaş, bedensel engelli ve cinsiyet ayrımı yapmadan, fırsat eşitliğini engelleyici davranış ve uygulamalara meydan vermeden tarafsızlık içerisinde hizmet gereklerine uygun davranmayı,</span> <br>
+
+- <span class="do"> Görevimi, görevle ilişkisi bulunan hiçbir gerçek veya tüzel kişiden hediye almadan, maddi ve manevi fayda veya bu nitelikte herhangi bir çıkar sağlamadan, herhangi bir özel menfaat beklentisi içinde olmadan yerine getirmeyi,</span> <br>
+- <span class="do"> Kamu malları ve kaynaklarını kamusal amaçlar ve hizmet gerekleri dışında kullanmamayı ve kullandırmamayı, bu mal ve kaynakları israf etmemeyi,</span> <br>
+- <span class="do"> Kişilerin dilekçe, bilgi edinme, şikâyet ve dava açma haklarına saygılı davranmayı, hizmetten yararlananlara, çalışma arkadaşlarıma ve diğer muhataplarıma karşı ilgili, nazik, ölçülü ve saygılı hareket etmeyi,</span> <br>
+- <span class="mavi"> Kamu Görevlileri Etik Kurulu’nca hazırlanan yönetmeliklerle belirlenen etik davranış ilke ve değerlerine bağlı olarak görev yapmayı ve hizmet sunmayı <span class="dik"> taahhüt ederim.</span></span> <br>
+<span class="kim">
+Kapsam içerisindeki kamu görevlileri,</span> <span class="mavi"> <span class="dik"> bir ay</span> içinde, “Etik Sözleşme” belgesini imzalamakla yükümlüdürler.</span> <span class="mavi"> Bu belge, personelin özlük dosyasına konur.</span></div></div></div>
+ <hr>
+ KAMU GÖREVLİLERİ ETİK KURULU KURULMASI VE <br>
+BAZI KANUNLARDA DEĞİŞİKLİK YAPILMASI <br>
+HAKKINDA KANUN <br>
+Kanun Numarası : 5176 <br>
+Kabul Tarihi : 25/5/2004 <br>
+Yayımlandığı Resmî Gazete : Tarih : 8/6/2004 Sayı : 25486 <br>
+Yayımlandığı Düstur : Tertip : 5 Cilt : 43 <br>
+
+Amaç ve kapsam <br>
+<div>
+Madde 1- Bu Kanunun amacı, kamu görevlilerinin uymaları gereken saydamlık,
+tarafsızlık, dürüstlük, hesap verebilirlik, kamu yararını gözetme gibi etik davranış ilkeleri
+belirlemek ve uygulamayı gözetmek üzere Kamu Görevlileri Etik Kurulunun kuruluş, görev
+ve çalışma usul ve esaslarının belirlenmesidir.
+Bu Kanun, genel bütçeye dahil daireler, katma bütçeli idareler, kamu iktisadi
+teşebbüsleri, döner sermayeli kuruluşlar, mahalli idareler ve bunların birlikleri, kamu tüzel
+kişiliğini haiz olarak kurul, üst kurul, kurum, enstitü, teşebbüs, teşekkül, fon ve sair adlarla
+kurulmuş olan bütün kamu kurum ve kuruluşlarında çalışan; yönetim ve denetim kurulu ile
+kurul, üst kurul başkan ve üyeleri dahil tüm personeli kapsar. <span class="ark">
+Cumhurbaşkanı, Türkiye Büyük Millet Meclisi üyeleri, Cumhurbaşkanı Yardımcıları
+ve Bakanlar, Türk Silahlı Kuvvetleri ve yargı mensupları ve üniversiteler hakkında bu Kanun
+hükümleri uygulanmaz.</span></div>
+Kuruluş  <br>
+<div>
+Madde 2- Bu Kanunda yazılı görevleri yerine getirmek üzere (…)(2) Kamu Görevlileri
+Etik Kurulu (Kurul) kurulmuştur. <br> <span class="mavi">
+Cumhurbaşkanı,</span> bu Kanun kapsamındaki konularda her türlü kararları almak ve
+uygulamak üzere;(2) <div>
+a) <span class="kim"> Bakanlık görevi</span> yapmış olanlar arasından <span class="dik"> bir üye,</span> <br>
+b) <span class="kim"> İl belediye başkanlığı</span> yapmış olanlar arasından <span class="dik"> bir üye,</span> <br>
+c) <span class="kim"> Yargıtay, Danıştay, Sayıştay</span> üyeliği görevlerinden emekliye ayrılanlar arasından <span class="dik"> üç üye</span>, <br>
+d) <span class="kim"> Müsteşarlık, büyükelçilik, valilik, bağımsız ve düzenleyici kurul başkanlığı</span>
+görevlerinde bulunmuş veya bu görevlerden emekliye ayrılanlar arasından <span class="dik"> üç üye,</span> <br>
+e) <span class="kim"> Üniversitelerde rektörlük veya dekanlık</span> görevlerinde bulunmuş öğretim üyeleri
+veya bunların emeklileri arasından <span class="dik"> iki üye</span>, <br>
+f) <span class="kim"> Kamu kurumu niteliğindeki meslek kuruluşlarında en üst kademe yöneticiliği</span>
+yapmış olanlar arasından <span class="dik"> bir üye</span>, </div>
+Olmak üzere toplam <span class="mavi"> onbir üyeyi biri Başkan olmak üzere seçer ve atar.</span> <div> <button  onclick="soruyuGoster(38)" class="soru" >2023 yılı çıkmış soru</button> </div><br>
+Kurul başkan veya üyeliğine atanacaklar hakkında, 5434 sayılı Türkiye Cumhuriyeti
+Emekli Sandığı Kanununun 40 ıncı maddesinin birinci fıkrası hükmü ile ek 68 inci maddesinin dördüncü fıkrası hükmü uygulanmaz ve bu kişiler <span class="mavi"> Kurulda emekli aylıkları kesilmeksizin çalıştırılır.</span> <br>
+Üyelerin  <span class="mavi"> görev süresi dört yıldır.</span> Süresi dolan üyeler Cumhurbaşkanınca <span class="mavi"> yeniden
+seçilebilirler.</span> Kurul üyelerinin görev süresi dolmadan görevlerine son verilemez. <br> Ancak üyeler, ciddi bir hastalık veya engellilik nedeniyle iş görememeleri veya atamaya ilişkin şartları kaybetmeleri halinde, atandıkları usule göre süresi dolmadan görevden alınır. Üyeler, görevi kötüye kullanmaktan veya yüz kızartıcı bir suçtan mahkûm olmaları halinde ise Cumhurbaşkanı onayıyla görevden alınır. Görevden alma nedeniyle veya süresi dolmadan herhangi bir sebeple <span class="mavi"> boşalan Kurul üyeliklerine <span class="dik"> bir ay</span> içerisinde Cumhurbaşkanınca yeniden atama yapılır.</span> Bu şekilde atanan üye, yerine atandığı üyenin görev süresini tamamlar.34 Kurul, Başkanın daveti üzerine <span class="mavi"> en az <span class="dik"> altı üyeyle</span> toplanırve üye tam sayısının salt çoğunluğunun aynı yöndeki oyu ile karar verir.</span>  Toplantı kararları ilgililere duyurulur. <span class="mavi"> Kurul ayda <span class="dik"> dört defa</span> toplanır.</span> Kurul Başkan ve üyelerinin toplantılara katılmaları esastır. <span class="mavi"> <span class="dik"> Arka arkaya üç</span> toplantıya veya bir yıl içinde  <span class="dik"> toplam on</span> toplantıya katılmayan üyeler istifa etmiş sayılırlar.</span> <br>
+Kurulun <span class="mavi"> sekretarya hizmetleri Çalışma, Sosyal Hizmetler ve Aile Bakanlığı tarafından
+yerine getirilir</span>.(4) <br>
+Kurul Başkan ve üyelerine, 6245 sayılı Harcırah Kanunu hükümleri saklı kalmak
+koşuluyla, fiilen görev yapılan her gün için (3000) gösterge rakamının memur aylık katsayısı ile çarpımı sonucu bulunacak miktarda <span class="mavi"> huzur hakkı ödenir.</span> Bu ödemeden <span class="mavi"> damga vergisi hariç herhangi bir kesinti yapılmaz.</span>  <br>
+Huzur hakkı ve Kurulun diğer ihtiyaçları için her yıl Çalışma, Sosyal Hizmetler ve
+Aile Bakanlığı bütçesine gerekli ödenek konulur.(4)</div>
+
+Kurulun görevleri
+<div>
+Madde 3- Kurul, kamu görevlilerinin görevlerini yürütürken uymaları gereken etik
+davranış ilkelerini hazırlayacağı yönetmeliklerle belirlemek, etik davranış ilkelerinin ihlâl edildiği iddiasıyla re’sen veya yapılacak başvurular üzerine gerekli inceleme ve araştırmayı yaparak sonucu ilgili makamlara bildirmek, kamuda etik kültürünü yerleştirmek üzere çalışmalar yapmak veya yaptırmak ve bu konuda yapılacak çalışmalara destek olmakla görevli ve yetkilidir.</div>
+
+
+Kurula veya yetkili disiplin kurullarına başvuru
+<div>
+Madde 4- Bu Kanun kapsamındaki kamu kurum ve kuruluşlarında etik davranış
+ilkelerine aykırı uygulamalar bulunduğu iddiasıyla, en az genel müdür veya eşiti seviyedeki kamu görevlileri hakkında Kurula başvurulabilir. Hangi unvanların genel müdür eşiti sayılacağı kurum ve kuruluşların teşkilât yapısı ve yürüttükleri hizmetlerin niteliği dikkate alınarak Kurul tarafından belirlenir. <br>
+Diğer kamu görevlilerinin, etik davranış ilkelerine aykırı uygulamaları bulunduğu
+iddiasıyla yapılacak başvurular, ilgili kurumların yetkili disiplin kurullarında, Kurul tarafından çıkarılan yönetmeliklerde belirlenen etik davranış ilkelerine aykırılık olup olmadığı yönünden değerlendirilir. <br>
+Değerlendirme sonucu alınan karar, ilgililere ve başvuru sahibine bildirilir. <br>
+Başvurular, 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanunda belirlenen
+esaslara göre, <span class="mavi"> medeni hakları kullanma ehliyetine sahip Türkiye Cumhuriyeti vatandaşları ile Türkiye'de ikamet eden yabancı gerçek kişiler tarafından yapılabilir.</span> <br> Ancak, kamu görevlilerini karalama amacı güden, haklı bir gerekçeye dayanmayan, başvuru konusuyla ilgili yeterli bilgi ve belge sunulmamış başvurular değerlendirmeye alınmaz. <br>
+Yargı organlarında görülmekte olan veya yargı organlarınca karara bağlanmış bulunan
+uyuşmazlıklar hakkında Kurula veya yetkili disiplin kurullarına başvuru yapılamaz.  <br> İnceleme
+sırasında yargı yoluna gidildiği anlaşılan başvuruların işlemi durdurulur.</div>
+
+İnceleme ve araştırma
+<div>
+Madde 5- Kurul, başvurular hakkındaki inceleme ve araştırmasını etik davranış
+ilkelerinin ihlâl edilip edilmediği çerçevesinde yürütür. Kurul, kendisine şikâyet veya ihbar yoluyla ulaşan başvurular üzerine yapacağı <span class="mavi"> inceleme ve araştırmayı en geç <span class="dik"> üç ay</span> içinde sonuçlandırmak zorundadır.</span> <br> <span class="kim">
+Kurul,</span> <span class="mavi"> inceleme ve araştırma sonucunu <br> ilgililere ve <br>
+	Cumhurbaşkanlığı ve <br> Çalışma,
+Sosyal Hizmetler ve <br> Aile Bakanlığı Makamına <br> yazılı olarak bildirir.</span> <br>
+(İptal üçüncü fıkra: Anayasa Mahkemesi’nin 4/2/2010 tarihli ve E.: 2007/98,
+K.:2010/33 sayılı Kararı ile.)6 <br> Bu Kanuna göre yapılan inceleme ve araştırmalar, genel hükümlere göre ceza kovuşturmasına veya tâbi oldukları personel kanunları hükümlerine göre <span class="mavi"> disiplin kovuşturmasınaengel teşkil etmez.</span></div>
+
+Bilgi ve belge istenmesi
+<div>
+Madde 6- Bakanlıklar ve diğer kamu kurum ve kuruluşları, Kurulun başvuru konusu
+ile ilgili olarak istediği bilgi ve belgeleri vermek zorundadırlar.</div>
+
+
+Sözkonusu Karar 18/5/2010 tarihli ve 27585 sayılı Resmi Gazete’de yayımlanmıştır.
+Kurul, bu Kanunun kapsamındaki kuruluşlardan ve özel kuruluşlardan ilgili
+temsilcileri çağırıp bilgi alma yetkisine sahiptir. <br>
+
+Yönetmelik
+<div>
+Madde 7- Bu Kanunun uygulanmasına ilişkin hususlar, Kurulca hazırlanacak
+yönetmeliklerle belirlenir. <span class="mavi"> Kurul tarafından hazırlanacak yönetmelikler Cumhurbaşkanı onayı ile yürürlüğe konulur.</span></div>
+<div>
+Madde 8- (19.4.1990 tarihli ve 3628 sayılı Mal Bildiriminde Bulunulması, Rüşvet
+ve Yolsuzluklarla Mücadele Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+<div>
+Madde 9- (14.7.1965 tarihli ve 657 sayılı Devlet Memurları Kanunu ile ilgili olup
+yerine işlenmiştir.)</div>
+Yürürlük
+<div>
+Madde 10- Bu Kanun yayımı tarihinde yürürlüğe girer.</div>
+
+Yürütme
+<div>
+Madde 11- Bu Kanun hükümlerini Cumhurbaşkanı yürütür.</div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

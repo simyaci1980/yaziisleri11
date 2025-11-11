@@ -1,0 +1,1273 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white;}
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{ font-size: xx-large; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>TEBLİGAT KANUNUNUN UYGULANMASINA DAİR YÖNETMELİK</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+<div id="kal" class="kal"> 	TEBLİGAT KANUNUNUN UYGULANMASINA DAİR YÖNETMELİK </div>
+
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br> <hr>
+
+BİRİNCİ BÖLÜM
+
+Amaç, Kapsam ve Dayanak
+<div>
+Amaç
+<div>
+MADDE 1 – (1) Bu Yönetmeliğin amacı, 11/2/1959 tarihli ve 7201 sayılı Tebligat Kanununun uygulanmasına ilişkin usul ve esasları düzenlemektir.</div></div>
+<div>
+Kapsam
+<div>
+MADDE 2 – (1) Bu Yönetmelik; yargı mercileri, 10/12/2003 tarihli ve 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanununa ekli <span class="ark"> (I)</span> sayılı cetvelde yer alan genel bütçe kapsamındaki kamu idareleri, spanş <span class="ark"> (II)</span> sayılı cetvelde yer alan özel bütçeli idareler, <span class="ark"> (III)</span> sayılı cetvelde yer alan düzenleyici ve denetleyici kurumlar, <span class="ark"> (IV)</span> sayılı cetvelde yer alan sosyal güvenlik kurumları ile <span class="ark"> il özel idareleri</span>, <span class="ark"> belediyeler,</span> <span class="ark"> köy hükmî şahsiyetleri,</span> <span class="ark"> barolar ve noterler</span> tarafından yapılacak <span class="mavi"> tüm tebligat işlemlerine ilişkin usul ve esasları kapsar</span>.</div></div>
+<div>
+Dayanak
+<div>
+MADDE 3 – (1) Bu Yönetmelik, Tebligat Kanununun 60 ıncı maddesine dayanılarak hazırlanmıştır.</div></div>
+
+
+
+İKİNCİ BÖLÜM
+
+Tebligatın Yapılması
+<div> <strong>
+Tebligatın yapılması</strong>
+<div>
+MADDE 4 – (1) 2 nci maddede belirtilen merciler tarafından yapılacak tüm tebliğler, bu Yönetmelik hükümlerine göre <span class="ark"> Posta ve Telgraf Teşkilatı Genel Müdürlüğü (PTT)</span> veya <span class="ark"> memur </span> <span class="mavi"> vasıtasıyla yapılır</span>.</div></div>
+<div>
+Tebligatın memur vasıtasıyla yapılması
+<div>
+MADDE 5 – (1) Tebligatın;
+<div>
+a) Kanunlarda <span class="ark"> özel hüküm bulunan hallerde</span>, <br>
+
+b) Gecikmesi halinde <span class="ark"> zarar doğabilecek işlerde</span>, <br>
+
+c) <span class="ark"> 2 nci maddede belirtilen ve aynı yerde bulunan merciler arasında</span> ya da <span class="ark"> bu mercilerde bulunan kişilere</span>, <br></div>
+
+<span class="mavi"> yapılması durumunda, tebliğler <span class="dik"> kendi memurları veya mahalli mülki idare amirinin emriyle kolluk vasıtasıyla</span>  yaptırılır.</span> <br>
+
+(2) <span class="ark"> Memur vasıtasıyla tebligat yaptırılmasını gerektiren sebep</span> <span class="mavi"> tebligat evrakında gösterilir</span>. <br>
+
+(3) <span class="kim"> Kolluk vasıtasıyla tebligat yaptırılabilmesi için</span>, tebliği çıkaran merciin, sebebini de belirtmek suretiyle <span class="mavi"> mahalli mülki idare amirine müracaat etmesi gerekir.</span> <span class="kim"> Mahalli mülki idare amirinin emri olmadan kolluğa gönderilen tebliğ evrakı</span> <span class="mavi"> gönderen mercie iade edilir</span>. <br>
+
+(4) Zor kullanılmasını gerektiren veya soruşturma evresine ilişkin görevlerin kolluk tarafından yapılacağına dair olan hükümlerle bu Yönetmeliğin Yedinci Bölümünde yer alan özel hükümler saklıdır.</div></div>
+<div>
+Ücret tarifesi
+<div>
+MADDE 6 – (1) <span class="ark"> Posta ve Telgraf Teşkilatı Genel Müdürlüğü</span>, bu Yönetmeliğe göre yapacağı işlerden dolayı alacağı ücretleri ayrı <span class="mavi"> bir tarifeyle tespit eder</span>.</div></div>
+<div>
+Memur vasıtasıyla tebliğde zorunlu masraflar
+<div>
+MADDE 7 – <br> (1) Bu Yönetmelik gereğince memur vasıtasıyla yaptırılacak tebliğlerde, tebliğ yapana verilecek zorunlu masrafların miktarı, <span class="mavi"> tebliğ yapılacak şahsın bulunduğu yerin uzaklığına göre</span> , <span class="ark"> her mali yılbaşında, il idare kurullarınca,</span>  <span class="span"> merkez ilçe ve bağlı ilçeler için</span>  <span class="mavi"> ayrı ayrı tespit olunur</span>. <br>
+
+(2) 10/2/1954 tarihli ve 6245 sayılı Harcırah Kanununun 49 uncu maddesine göre <span class="mavi"> tazminat alan memurlara, yaptıkları tebliğler için ödeme yapılmaz</span>.</div></div>
+<div>
+Ücret ve masrafların peşin ödenmesi
+<div>
+MADDE 8 – <div> (1) <span class="kim"> Tebligatın yapılmasını isteyen</span>, aksine bir hüküm bulunmadıkça 6 ncı madde gereğince hazırlanan tarifede belirtilen ücreti veya 7 nci madde gereğince verilecek zorunlu masrafları <span class="mavi"> peşin olarak öder</span>. <span class="kim">Tebligat masrafları kesin olarak belirlenemez ise</span>  <span class="mavi"> avans olarak alınır ve daha sonra mahsubu yapılarak bakiyesi iade edilir</span>. <br>
+
+(2) <span class="kim"> Tebliği çıkaracak merci tarafından belirlenen süre içinde gerekli masrafın verilmemesi halinde</span> <span class="mavi"> talepten vazgeçilmiş sayılır</span>. <span class="ark"> Haklı sebeplerden dolayı bu süreye uyulmaması halinde</span> <span class="mavi"> yeni bir süre verilir</span>. <br>
+
+(3) <span class="kim"> Adli yardımdan faydalananların,</span>  birinci fıkra gereğince vermeleri gereken ücret veya masraflar, ileride <span class="mavi"> haksız çıkacak taraftan alınmak üzere ilgili mercilerce ödenir</span>. <br>
+
+(4) <span class="kim"> Yabancı elçilik ve konsolosluklardan gönderilen evraka ait ücret veya masrafın bu elçilik veya konsolosluklardan talep edilebilmesi</span> , <span class="mavi"> anlaşma hükümlerine ve mütekabiliyet esaslarına tabidir</span>. <br>
+
+(5) <span class="kim"> Yabancı ülkelerde yapılacak tebligat ücretleri</span>, 39 uncu madde gereğince yayımlanacak tebliğ esaslarına göre tebliği <span class="mavi"> çıkaran merci tarafından alınır</span>.</div></div></div>
+<div>
+Tebliğ evrakının kaybı halinde masraflar
+<div>
+MADDE 9 –<div>  (1) <span class="kim"> PTT İşletmesine tevdi edilen tebliğ evrakının, mücbir haller dışında kaybedilmesi halinde masraflar</span> , 2/3/1950 tarihli ve 5584 sayılı <span class="ark"> Posta Kanununun taahhütlü maddeler hakkındaki hükümleri gereğince karşılanır</span> . <span class="kim"> Masraf miktarı,</span>  tebliğ evrakının tanzim ve <span class="mavi"> tebliği için gerekli masraf miktarından fazla olamaz</span>. <br>
+
+(2) <span class="kim"> Tebliğ evrakı, postaya değerli olarak verilirse, kaybı halinde tazminat</span>, <span class="mavi"> Posta Kanununun değerli maddeler hakkındaki hükümleri gereğince ödenir</span>. <br>
+
+(3) <span class="kim">Tebliğ evrakının telgraf servisinde kayıp veya gecikmeye uğraması halinde</span> <span class="mavi"> birinci fıkra hükümleri uygulanır</span>.</div></div></div>
+<div>
+Uçak, telgraf ve diğer seri veya özel vasıtalarla tebligat
+<div>
+MADDE 10 – <div> (1) <span class="kim"> Tebligat,</span> <span class="ark"> uçakla </span>veya <span class="ark"> postada kullanılan diğer seri ve özel vasıtalarla</span> veya <span class="ark"> muhtelif işaretli telgraflarla</span>  <span class="mavi"> da yaptırılabilir.</span> <br>
+
+(2) Tebliğin bu vasıtalardan hangisiyle yapılacağı <span class="ark"> ilgilinin talebi</span> üzerine <span class="ark"> veya resen</span>, mahkeme başkanı, hâkim veya tebliği yaptıracak diğer <span class="mavi"> merciler tarafından kararlaştırılır.</span>  Talepte bulunan müracaatını <span class="kim"> yazılı olarak yapmamışsa,</span>  talep, ilgili evrak üzerine yazılarak <span class="mavi"> kendisine imzalattırılır.</span> <br>
+
+(3) <span class="kim"> İlgilinin talebi veya resen görülen lüzum üzerine birinci fıkrada yazılı vasıtalardan biriyle tebligat yapılabilmesi için,</span> <span class="mavi"> tebligatı çıkaran merci tarafından sebebinin evrak üzerinde gösterilmesi gerekir</span>.</div>
+</div></div>
+
+<div>
+Uçak, telgraf ve diğer seri veya özel vasıtalarla tebligat ücretleri
+<div>
+MADDE 11 – (1) Tebligatın, resen veya talep üzerine uçak, telgraf ve diğer seri veya özel vasıtalarla yapılması halinde bunlara ait ücretler, 6 ncı madde gereğince hazırlanan ücret tarifesine göre  <span class="mavi">tebliği isteyenden, tebliğ ücretine ilaveten alınır</span>.</div></div>
+<div>
+Elektronik tebligat
+<div>
+MADDE 12 – (1) Tebligatlar, elektronik yolla yapılabilir, <span class="mavi"> zorunlu bir sebeple yapılamaması hâlinde bu Yönetmelikte belirtilen usullerle tebligat yapılır</span>. Elektronik yolla tebligata ilişkin usul ve esaslar buna ilişkin yönetmelikle düzenlenir.</div></div>
+
+
+
+ÜÇÜNCÜ BÖLÜM
+
+Tebligat Esasları
+<div>
+Tebliğ evrakının nüshaları ve makbuz verilmesi
+<div>
+MADDE 13 – <div> (1) Tebliğ olunacak her nevi evrak, <span class="ark"> biri dosyasına</span> konulmak ve diğeri <span class="ark"> tebliğ edilecek kişilere verilmek üzere</span>  <span class="mavi"> yeterli sayıdaki nüshadan oluşur</span> . Bu nüshalarda, <span class="mavi"> iş sahibi veya vekilinin imzası bulunur</span>. <span class="kim"> Resen yapılan tebligata ait evrak,</span>  <span class="mavi"> tebliği çıkaran merciin yetkili memuru tarafından imzalanır.</span> <br>
+
+(2) <span class="kim"> Tebliğ olunmak üzere yetkili mercilere verilecek evrakın <span class="dik"> her nüshasına </span> bu mercilerce</span> , <span class="mavi"> verildiği tarih yazılır ve istenirse makbuz verilir</span>. <br>
+
+(3) Her nevi <span class="ark"> evrakın tebliğine</span> ve <span class="ark"> davetiyelere ait tebliğ mazbataları</span> <span class="mavi"> dosyasına konulur</span>.</div></div></div>
+<div>
+Davetiyelerin tanzimi
+<div>
+MADDE 14 – (1) Tebligat Kanununun 9 uncu maddesinde yazılı kayıtları içermek üzere tanzim olunacak davetiyeler, ek-1’de yer alan (1) numaralı örnekte gösterildiği şekilde hazırlanır.</div></div>
+<div>
+Müddet tayini
+<div>
+MADDE 15 – (1) 10 uncu maddede sayılan vasıtalarla yapılan tebligatlar dışındaki her çeşit tebliğ evrakı ve davetiyelerin, ilgililere ulaşması ve ilgililerin tebliğin veya davetiyenin gereklerini yerine getirebilmesi için <span class="kim"> bu evrakı çıkaran merci tarafından tayin edilecek müddetin hesabında,</span>  evrakın gönderileceği <span class="ark"> mahallin yakınlık</span> veya <span class="ark"> uzaklığı,</span> <span class="ark"> mevsim koşulları</span>, <span class="ark"> ulaşım araçlarının durumu</span> <span class="mavi"> gibi hususlar dikkate alınır</span>.</div></div>
+<div>
+Bilinen adreste tebligat
+<div>
+MADDE 16 –<div>  (1) Tebligat, öncelikle tebliğ yapılacak <span class="mavi"> şahsın bilinen en son adresinde yapılır.</span> <span class="kim"> Bilinen en son adresin tespitinde,</span> <span class="ark"> tebliğ isteyenin beyanı</span>, <span class="ark"> muhatabın veya diğer ilgililerin bildirimleri</span>  ya da <span class="ark"> mevcut belgeler</span>  <span class="mavi"> esas alınır.</span> <br>
+
+(2) <span class="kim"> Bilinen en son adresin tebligata elverişli olmadığının anlaşılması veya tebligat yapılamaması hâlinde</span> , <span class="mavi"> muhatabın adres kayıt sisteminde bulunan yerleşim yeri adresi bilinen en son adresi olarak kabul edilir ve tebligat buraya yapılır.</span>  <span class="ark"> Ayrıca başkaca adres araştırması yapılmaz</span> . 79 uncu maddenin ikinci fıkrasına göre <span class="ark"> renkli bastırılan tebligat zarfında</span>, adresin muhatabın adres kayıt sistemindeki yerleşim yeri adresi olduğu belirtilerek bu adrese tebligat yapılacağına dair <span class="mavi"> meşruhata yer verilir</span> .</div></div></div>
+<div>
+Adresten başka yerde tebligat
+<div>
+MADDE 17 –<div>  (1) Bir şahsa, <span class="kim"> adresinden başka bir yerde tebligat yapılabilmesi</span>, <span class="mavi"> o şahsın kabulü halinde mümkündür.</span> <br>
+
+(2) Tebliğ yapılacak şahsın, <span class="ark"> tebliği çıkaran mercie</span>, <span class="ark"> PTT merkezine</span> veya <span class="ark"> tebliğ memuruna</span>  <span class="mavi"> müracaat etmesi durumunda da tebliğ yapılır</span>.</div></div></div>
+<div>
+Vekile tebligat
+<div>
+MADDE 18 – <div> (1) <span class="mavi"> Vekil vasıtasıyla takip edilen işlerde tebligat vekile yapılır</span>. <span class="kim"> Vekile bürosunda yapılacak tebligat</span>, <span class="mavi"> resmî çalışma gün ve saatleri içinde yapılır.</span> <br>
+
+(2) <span class="kim"> Vekil birden çok ise</span> <span class="ark"> bunlardan birine tebligat yapılması yeterlidir.</span>  Eğer tebligat <span class="kim"> birden fazla vekile yapılmış ise</span> <span class="ark"> bunlardan ilkine yapılan</span> tebliğ tarihi <span class="mavi"> asıl tebliğ tarihi sayılır</span> . Ancak, 4/12/2004 tarihli ve 5271 sayılı Ceza Muhakemesi Kanununun, kararların <span class="span"> sanıklara tebliğ edilmesine ilişkin hükümleri saklıdır</span>.</div></div></div>
+<div>
+Kanuni temsilciye tebligat
+<div>
+MADDE 19 –<div>  (1) <span class="kim"> Kanuni temsilcisi bulunanlara yapılacak tebligat</span>  <span class="mavi"> temsilciye yapılır.</span> <br>
+
+(2) Kanuni temsilcisi bulunanlara kanun hükümleri gereğince <span class="mavi"> bizzat kendilerine tebligat yapılması icap ederse temsilciye tebligat yapılmaz</span>. <br>
+
+(3) <span class="kim"> Kanuni temsilcisi olmayıp da bulunması gerekenlere</span> <span class="mavi"> usulüne göre kanuni temsilci tayini yoluna gidilir</span>.</div></div></div>
+<div>
+Tüzel kişilere ve ticari işletmelere tebligat
+<div>
+MADDE 20 – <div> (1) <span class="kim"> Tüzel kişilere tebliğ yetkili temsilcilerine</span> , <span class="mavi"> bunlar birden çok ise yalnız birine yapılır</span>. <br>
+
+(2) Bakanlıkların ve bunların teşkilatının, Kamu Malî Yönetimi ve Kontrol Kanununa ekli (I) sayılı cetvelde yer alan genel bütçe kapsamındaki kamu idareleri, (II) sayılı cetvelde yer alan özel bütçeli idareler, (III) sayılı cetvelde yer alan düzenleyici ve denetleyici kurumlar, (IV) sayılı cetvelde yer alan sosyal güvenlik kurumları ile il özel idarelerinin, belediyelerin, köylerin ve özel kanunlarına dayanılarak kurulmuş bulunan teşekküllerle, şirketlerin, derneklerin ve vakıfların yetkili temsilcileri, <span class="mavi"> bağlı bulundukları kanunlara ve statülerine göre tayin edilir</span>. <br>
+
+(3) <span class="kim"> Gerçek ve tüzel kişilere ait ticari işletmelerin işlemlerinden kaynaklanan uyuşmazlıklarda</span>, ticari işletmenin <span class="mavi"> o işlemde yetkili ticari temsilcisine yapılan tebliğ geçerlidir</span>.</div></div></div>
+<div>
+Tüzel kişilerin memur ve müstahdemlerine tebligat
+<div>
+MADDE 21 –<div>  (1) <span class="kim"> Tüzel kişiler adına tebligatı almaya yetkili kişiler</span>, herhangi bir sebeple mutat iş saatlerinde işyerinde <span class="ark"> bulunmamaları </span>veya o sırada evrakı bizzat <span class="ark"> alamayacak bir halde olmaları durumunda</span>  tebliğ, <span class="mavi"> tüzel kişinin o yerdeki sürekli çalışan memur veya müstahdemlerinden birine yapılır. </span> <br>
+
+(2) <span class="kim"> Ancak, kendisine tebliğ yapılacak memur veya müstahdemin,</span>  tüzel kişinin o yerdeki teşkilatı veya personeli içinde görev itibariyle tebligatın muhatabı olan tüzel kişinin <span class="ark"> temsilcisinden sonra gelen bir kimse</span>  veya <span class="ark"> evrak müdürü gibi esasen bu tür işlerle görevlendirilmiş bir kişi olması</span> <span class="mavi"> gereklidir.</span> <br>
+
+(3) <span class="kim"> Bu kişilerin de bulunmaması halinde</span>, bu husus tebliğ mazbatasında belirtilir ve tebliğ, o yerdeki <span class="mavi"> diğer bir memur veya müstahdeme yapılır</span>.</div></div></div>
+<div>
+Er ve erbaşlara tebligat
+<div>
+MADDE 22 – (1) Er ve erbaşlara yapılacak tebliğ, <span class="mavi"> kıta komutanı ve kurum amiri gibi en yakın üste yapılır.</span>
+
+(2) <span class="kim"> Nöbetçi amiri veya subayı</span>, <span class="mavi"> tebliğ memurunun en yakın üste tebliğ yapmasını temin eder</span>.</div></div>
+<div>
+Diğer askeri şahıslara tebligat
+<div>
+MADDE 23 – (1) 22 nci maddenin kapsamı dışında kalan askeri şahıslara, birlik veya kurumda tebligat yapılması gerektiğinde, <span class="mavi"> tebliğin yapılmasını nöbetçi amiri veya subayı temin eder</span> . Muhatap bu kişiler tarafından  <span class="ark"> derhal bulundurulamaz </span> veya <span class="ark"> tebellüğden kaçınırsa</span>  ya da <span class="ark"> diğer bir sebeple</span> tebliğin temini mümkün olmazsa, <span class="mavi"> tebliğ o nöbetçi amiri veya subayına yapılır</span>.</div></div>
+<div>
+Seferde askeri şahıslara tebligat
+<div>
+MADDE 24 –<div>  (1) Sefer halinde olan birlik veya kuruma mensup askeri şahıslara tebligat, <span class="mavi"> bağlı bulundukları Kara, Deniz ve Hava Kuvvetleri Komutanlıkları aracılığıyla yapılır</span>. <br>
+
+(2) <span class="mavi"> Tebligatı, kıta komutanı, kurum amiri gibi en yakın üst yapar</span>.</div></div></div>
+<div>
+Aynı konutta oturan kişilere veya hizmetçiye tebligat
+<div>
+MADDE 25 – (1) <span class="kim"> Kendisine tebligat yapılacak kişi adresinde bulunmazsa</span>  tebliğ, kendisi ile <span class="ark"> aynı konutta oturan kişilere</span> veya <span class="ark"> hizmetçilerinden </span> <span class="mavi"> birine yapılır</span>.</div></div>
+<div>
+Meslek ve sanat erbabına tebligat
+<div>
+MADDE 26 –<div>  (1) Belirli bir yerde devamlı olarak meslek veya sanatını icra edenlere, <span class="mavi"> o yerde de tebligat yapılabilir.</span> <br>
+
+(2) <span class="kim"> Muhatabın işyerinde bulunmaması halinde </span> tebliğ,<span class="mavi">aynı yerde sürekli olarak çalışan memur veya müstahdemlerinden birine yapılır</span>  . <br>
+
+(3) <span class="kim"> Muhatap, meslek veya sanatını konutunda icra ediyorsa</span> , <span class="mavi"> kendisi bulunmadığı takdirde memur veya müstahdemlerinden birine yapılır</span> . <span class="ark"> Bunlardan hiç birinin bulunmaması durumunda </span> tebliğ, <span > aynı konutta sürekli olarak oturan kişilere</span> veya <span class="span"> hizmetçilerinden</span>  <span class="mavi"> birine yapılır.</span></div></div></div>
+<div>
+Otel, hastane, fabrika ve okul gibi yerlerde tebligat
+<div>
+MADDE 27 – (1) Tebliğ yapılacak kişi; otel, pansiyon, hastane, tedavi veya istirahat evi, fabrika, okul, öğrenci yurdu, resmi veya özel daire veya kurum gibi içine <span class="kim"> serbestçe girilemeyen veya arananın kolayca bulunması mümkün olmayan bir yerde bulunuyorsa</span> <span class="mavi"> tebliğin yapılmasını, o yeri idare eden veya muhatabın bulunduğu kısmın amiri temin eder.</span>
+
+(2) Muhatap bu kişiler tarafından <span class="ark"> derhal bulundurulamaz</span> veya <span class="ark"> tebellüğden kaçınırsa</span> yahut <span class="ark"> diğer bir sebeple</span> tebliğin temini mümkün olmazsa <span class="mavi"> tebliğ o yeri idare eden veya muhatabın bulunduğu kısmın amirine yapılır.</span> </div></div>
+<div>
+Tutuklu ve hükümlülere tebligat
+<div>
+MADDE 28 –<div>  (1) <span class="kim"> Tutuklu ve hükümlülere tebligat yapılmasını</span>, <span class="mavi"> bu kişilerin bulunduğu <span class="ark"> kurum müdürü</span> , müdür <span class="ark"> yoksa orayı idare eden memur</span> temin eder</span>. <br>
+
+(2) <span class="kim"> <span class="dik"> Bir yıl veya daha fazla hürriyeti bağlayıcı ceza</span>  ile mahkûm olup kendilerine <span class="dik"> kanuni temsilci atanmış olanlara</span>  ait tebligat</span>, <span class="mavi"> 19 uncu maddeye göre yapılır.</span>  <br>
+
+(3) <span class="kim"> Tutuklu ve hükümlüye tebligat yapılamazsa</span>  tebliğ mazbatasına müdür veya memur tarafından <span class="mavi"> belirtilen sebep şerh verilir.</span> <br>
+
+(4) <span class="kim"> Tutuklu veya hükümlünün hastanede bulunması halinde dahi</span>  tebligat, <span class="mavi"> yukarıdaki fıkralar hükümlerine göre yapılır</span>.</div></div></div>
+<div>
+Muhatabın geçici olarak başka yere gitmesi
+<div>
+MADDE 29 – <div> (1) <span class="kim"> 21, 22, 23, 25, 26 ve 27 nci maddelerde yazılı kişiler, tebliğ yapılacak olanın geçici olarak başka yere gittiğini belirtirlerse,</span>  tebliğ memuru, muhatabın hangi sebeple adresten geçici olarak ayrıldığını, beyanda bulunanın adı ve soyadı ile sıfatını tebliğ tutanağına yazar. <span class="mavi"> Tebliğ tutanağını beyanda bulunana imzalattırır ve tebliğ edilecek evrakı beyanda bulunana verir</span>. <span class="mavi"> Bu kişiler, tebliğ evrakını kabule mecburdurlar</span>. <br>
+
+(2) <span class="kim"> Bu kişilerin beyanlarını imzadan kaçınmaları ve tebliğ evrakını kabul etmemeleri durumunda,</span>  tebliğ memuru bu hususu tutanağa yazar, imzalar ve tebliğ olunacak evrakı, o yerin <span class="ark"> muhtar</span> veya <span class="ark"> ihtiyar heyeti</span> üyesinden birine ya da <span class="ark"> kolluk amir veya memurlarına</span> <span class="mavi"> imza karşılığında teslim eder</span>  ve <span class="mavi"> <span class="dik"> teslim ettiği kişinin adresini içeren ihbarnameyi</span>  gösterilen adresin kapısına yapıştırır</span>. <br>
+
+(3) Bu maddeye göre yapılacak tebligatlarda tebliğ, tebliğ evrakının 21, 22, 23, 25, 26 ve 27 nci maddelerde yazılı <span class="ark"> kişilere verildiği tarihte</span> <span class="kim"> veya</span> <span class="ark"> ihbarname kapıya yapıştırılmışsa bu tarihten</span> <span class="mavi">  itibaren onbeş gün sonra yapılmış sayılır</span>.</div></div></div>
+<div>
+Muhatabın adreste bulunmaması, ölmesi veya adresinden sürekli olarak ayrılması halinde yapılacak işlem
+<div>
+MADDE 30 –<div>  (1) Adres kayıt sistemindeki yerleşim yeri adresine meşruhat verilerek çıkarılan tebligatlar hariç olmak üzere, muhatap veya muhatap adına tebliğ yapılabilecek olanlardan hiçbiri gösterilen adreste sürekli olarak bulunmazsa, tebliğ memurunun, adreste bulunmama sebebini bilmesi muhtemel komşu, yönetici, kapıcı, muhtar, ihtiyar heyeti veya meclisi üyeleri, kolluk amir ve memurlarından araştırarak beyanlarını tebliğ mazbatasına yazıp imzalatması, imzadan çekinmeleri halinde bu durumu yazarak imzalaması gerekir. <br> <span class="mavi">POSTA MEMURU YENİ ADRESİ  ARAŞTIR DİYOR YANLIZ 21/2 YE GÖRE ÇIKARILMIŞSA ARAŞTIRMAZ DİYOR </span> <br>
+
+(2) <span class="kim"> Muhatap <span class="ark"> ölmüşse</span> veya gösterilen adresten sürekli olarak <span class="ark"> ayrılmış</span>  ve yeni adresi de tebliğ memurunca tespit <span class="ark"> edilememişse </span> tebligat evrakı</span>, <span class="mavi"> tebligatı çıkaran mercie geri gönderilir.</span> <br>
+
+(3) Yeni adres, tebliğ memuru tarafından tespit edilmişse bu adres, tebliğ mazbatasındaki mahsus yerine ve tebliğ evrakındaki adresin bulunduğu tarafa yazılır. <br>
+
+(4) <span class="kim"> Yeni adres, tebliğ memurunun tevzi bölgesi dâhilinde bulunduğu takdirde</span> <span class="mavi"> tebligat o adrese yapılır.</span> <span class="kim"> Yeni adres, aynı PTT merkezinin diğer bir tevzi bölgesinde veya başka bir PTT merkezinin mıntıkası içinde bulunursa</span>, tebliğ evrakı yeni adreste tebliğinin temini için <span class="mavi"> memur tarafından bağlı olduğu merkeze iade olunur</span>. <br>
+
+(5) 15 inci maddede yer alan hususlar göz önünde bulundurulduğunda tebligatın, tebliğ evrakında <span class="ark"> belirtilen tarihten önce yapılamayacağının anlaşılması</span> veya <span class="ark"> yeni adresin yabancı bir ülkeye ait olması</span>  durumunda <span class="mavi"> PTT merkezi tebliğ evrakını tebligatı çıkaran mercie geri gönderir</span>. <br></div></div></div>
+<div>
+Tebliğ imkânsızlığı ve tebellüğden kaçınma ile adres kayıt sistemindeki adreste bulunamama halinde yapılacak işlem
+<div>
+MADDE 31 – <div> (1) Tebliğ memuru;
+	<div>
+a) Muhatap veya muhatap adına tebligat yapılabilecek kişiler, o adreste bulundukları halde <span class="mavi"> hiçbirinin tebliğ anında gösterilen adreste mevcut olmamaları</span>, <br>
+
+b) Muhatap ya da kendilerine tebligat yapılabilecek kişilerin <span class="mavi"> tebellüğden kaçınması,</span> <br>
+
+c) Muhatap, gösterilen adreste hiç oturmamış veya bu adresten sürekli olarak ayrılmış olsa dahi tebligatın, muhatabın <span class="mavi"> adres kayıt sistemindeki yerleşim yeri adresine bu husus meşruhat verilerek çıkarılması</span>,</div>
+<span class="kim">
+hallerinden biri gerçekleştiği takdirde</span>  tebliğ olunacak evrakı, o yerin <span class="ark"> muhtar</span> veya <span class="ark"> ihtiyar heyeti</span> veya <span class="ark"> meclisi üyesinden birine</span>  ya da <span class="ark"> kolluk amir veya memuruna</span> <span class="mavi"> imza karşılığında teslim eder.</span>  Tebliğ memuru, ek-1’de yer alan (2) numaralı örneğe uygun olarak düzenlenen <span class="mavi"> ihbarnameyi gösterilen adresteki kapıya yapıştırır</span>. <span class="ark"> (a) bendinde belirtilen</span> halin gerçekleşmesi durumunda tebliğ memuru, tebliğ olunacak şahsa keyfiyetin haber verilmesini de <span class="mavi"> mümkün oldukça en yakın komşularından birine, varsa yönetici veya kapıcıya da bildirir</span>. <br>
+
+(2) Birinci fıkranın (c) bendi gereğince yapılacak tebligatlarda tebliğ memurunca 30 uncu maddeye göre araştırma yapılmaz.<div> <button  onclick="soruyuGoster(269)" class="soru" >2017 yılı çıkmış soru</button> </div></div></div></div>
+<div>
+Tebliğ tarihi
+<div>
+MADDE 32 – (1) 31 inci maddenin birinci fıkrasına göre yapılacak tebligatlarda, <span class="mavi"> ihbarnamenin gösterilen adresin kapısına yapıştırıldığı tarih, tebliğ tarihi sayılır</span> .  </div></div>
+<div>
+Tebliğ evrakının saklanması ve ihbarnamenin kapıda kalma süresi
+<div>
+MADDE 33 – (1) <span class="kim"> 29 uncu maddenin ikinci fıkrası ve 31 inci madde gereğince kendisine tebliğ evrakı teslim edilen kişiler</span> , <span class="mavi"> tebliğ evrakını üç ay saklamakla yükümlüdürler.</span>  <span class="kim"> Tebliğ evrakının belirli süre içermesi durumunda</span>, bu evrak içerdiği <span class="maiv"> sürenin bitiminden itibaren üç ay daha saklanır</span>. Bu süreden sonra tebliğ evrakı hakkında yapılacak işlemler ilgili kurumların mevzuatına tâbidir. <br>
+
+(2) <span class="kim"> 29 ve 31 inci maddeler gereğince yapılan tebligatlarda kapıya yapıştırılan ihbarname</span> <span class="mavi"> on gün süreyle kapıda kalır</span>.</div></div>
+<div>
+Muhatap yerine tebligat yapılacak kişinin yaş ve ehliyet şartı
+<div>
+MADDE 34 –<div>  (1) Muhatap yerine kendisine tebliğ yapılacak kişinin görünüşüne nazaran <span class="ark"> onsekiz yaşından aşağı olmaması</span> ve açıkça anlaşılır bir şekilde <span class="ark"> ehliyetsiz bulunmaması</span> <span class="mavi"> gerekir</span>. <br>
+
+(2) <span class="ark"> Akıl hastalığı</span>, akıl zayıflığı veya diğer bir hastalık ya da engel sebebiyle <span class="ark"> kendisi ile anlaşma imkânı olmayan kişiye</span>  <span class="mavi"> tebligat yapılmaz.</span> <br>
+
+(3) Muhatap adına kendisine tebligat yapılacak olan, görünüşüne nazaran onsekiz yaşından aşağı veya açıkça anlaşılır bir şekilde ehliyetsiz olur ve o adreste muhatap yerine tebligat yapılacak başka bir kişi de bulunmazsa 30 ve 31 inci madde hükümlerine göre işlem yapılır.</div></div></div>
+<div>
+Tebliğ mazbatasında bulunması gereken bilgiler ve tanzimi
+<div>
+MADDE 35 –<div> (1) Tebliğ bir mazbata ile belgelendirilir. Bu mazbatanın;
+	<div>
+a) Tebliği <span class="span"> çıkaran merciin adını</span>,
+
+b) <span class="span"> Tebliği isteyen tarafın</span> adını, soyadını ve adresini,
+
+c) <span class="span"> Muhatabın adını</span>, soyadını ve adresini,
+
+ç) <span class="span"> Tebliğin konusunu</span>,
+
+d) <span class="span"> Tebliğin  kime yapıldığını</span> ve tebliğ muhatabından <span class="span"> başkasına yapılmış ise o kişinin</span> adını, soyadını, adresini ve 34 üncü madde gereğince tebellüğe ehil olduğunu,
+
+e) Tebliğ <span class="span"> tarihini, saatini ve nerede yapıldığını</span>,
+
+f) <span class="kim"> 30 uncu ve 31 inci maddelerdeki durumların gerçekleşmesi halinde</span> bu hususlarla ilgili hangi işlemlerin yapıldığını, adreste bulunmama ve kaçınma için gösterilen <span class="span"> sebebi</span>,
+
+g) Tebligatın adres kayıt sistemindeki yerleşim <span class="span"> yeri adresine yapılması durumunda buna ilişkin kaydı</span>,
+
+ğ) <span class="span"> Tebliğ evrakı kime verilmiş ise</span> onun adı, soyadı, sıfatı ve imzası ile tebliğ memurunun adı, soyadı ve imzasını,</div>
+
+içermesi gerekir.
+
+(2) Tebliğ mazbatasında yukarıda <span class="kim"> belirtilen hususları kaydetmek için yeterli alan bulunmaması halinde</span> <span class="mavi"> tebliğ memuru usulüne uygun şekilde mazbataya eklenti yapabilir</span>. <br>
+
+(3) Bu maddeye göre hazırlanarak bastırılan ve tebligatı çıkaran merci tarafından tanzim edilen ek-1’de yer alan (3) numaralı örnek tebliğ mazbatasının ilgili bölümleri tebliğ memuru tarafından tebliğ yerinde düzenlenir. <br>
+
+(4) <span class="kim"> Tebliğ mazbatası</span>, <span class="ark"> tebliği çıkaran merci</span> ve <span class="ark"> tebliğ memuru tarafından</span> <span class="mavi"> okunaklı şekilde düzenlenir.</span> <br>
+
+(5) <span class="mavi"> Tebliğ mazbatasında muhatabın birden fazla adresine yer verilemez</span>. Aksi halde tebliğ mazbatası tebligatı <span class="mavi"> çıkaran mercie iade edilir</span>.<div> <button  onclick="soruyuGoster(395)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div></div></div></div>
+<div>
+Kimlik araştırması
+<div>
+MADDE 36 – (1) <span class="kim"> Tebliğ memuru</span>, tebligat yaparken muhatabın veya bu Yönetmelik hükümlerine göre onun adına tebliğ yapılacak <span class="mavi">  kişilerin kimlikleri ile bu Yönetmelikte belirtilen şartları taşıyıp taşımadıklarını incelemeye yetkilidir</span>.</div></div>
+<div>
+İmza edemeyecek durumda olmak
+<div>
+MADDE 37 –  (1) Kendisine tebliğ yapılacak kişi, imza atacak kadar <span class="ark"> yazı bilmez</span>  veya diğer sebeplerle <span class="ark"> imza atamayacak durumda bulunursa</span> <span class="mavi"> okuryazar komşulardan bir kimse</span>, <span class="ark"> okuryazar bir komşu bulunmaz</span>  veya <span class="ark"> bulunan komşu imzadan kaçınırsa</span>  tebliğ memurunun daveti üzerine gelecek olan o mahalle veya köyün <span class="mavi"> muhtar veya ihtiyar heyeti ya da meclisi üyelerinden birisi yahut bir kolluk görevlisi huzurunda aşağıdaki hükümlere göre tebligat yapılır</span> : <br>
+<div>
+a) <span class="mavi"> Kendisine tebliğ yapılan kişinin sol elinin başparmağı</span>, <span class="ark"> sol elinin baş parmağı yoksa</span> <span class="mavi"> aynı elinin diğer bir parmağı,</span> <span class="ark"> sol eli yoksa </span> <span class="mavi"> sağ elinin baş parmağı</span>, <span class="ark"> bu da yoksa</span>  <span class="mavi"> diğer parmaklarından biri bastırılır</span>. <br>
+
+b) Tebliğ yapılacak kişinin <span class="ark"> iki eli de yoksa</span> <span class="mavi"> tebliğ evrakı kendisine verilir.</span> <br>
+
+c) Tebliğ mazbatasında hangi elin hangi parmağının bastırıldığı ve sebebi, tebliğ yapılacak kişinin iki eli de yoksa evrakın kendisine verildiği ve huzurunda tebligat yapılan şahsın kimliği yazılarak hazır bulunan şahsa da imzalattırılır.</div></div></div>
+
+
+
+DÖRDÜNCÜ BÖLÜM
+
+Yabancı Ülkede Yapılacak, Yabancı Ülkeden Gelecek veya
+
+Yabancılara Yapılacak Tebligat
+<div>
+Yabancı ülkelerde bulunanlara tebligat
+<div>
+MADDE 38 – (1) Yabancı ülkelerde bulunanlara tebliğ olunacak evrak, <span class="mavi"> tebligatı çıkaran merciin bağlı bulunduğu bakanlık aracılığıyla Dışişleri Bakanlığına</span>,  <span class="mavi"> oradan da o yerdeki Türkiye Büyükelçiliğine veya başkonsolosluğuna gönderilir</span>. <br>
+
+(2) <span class="kim"> Dışişleri Bakanlığının aracılığına gerek görülmeyen hallerde</span>, <span class="mavi"> tebligat evrakı bakanlıklarca doğrudan o yerdeki Türkiye Büyükelçiliğine veya başkonsolosluğuna gönderilebilir.</span> <br>
+
+(3) <span class="kim"> Dışişleri Bakanlığı ve tebliği çıkaran merciin bağlı olduğu bakanlık</span>  tebliğ evrakını, 39, 40, 41, 43 ve 47 nci madde hükümlerine göre düzenlenip düzenlenmediği <span class="mavi"> yönünden inceler, varsa yanlışlık ve eksiklikleri düzelttirir veya tamamlattırır</span>.</div></div>
+<div>
+Tebliğ evrakının düzenlenmesi
+<div>
+MADDE 39 – <div> (1) Yabancı ülkelere gönderilecek tebliğ evrakı, <span class="mavi"> anlaşma hükümleri ve mütekabiliyet esaslarına göre düzenlenir.</span> <br>
+
+(2) <span class="kim"> Yabancı ülkelere gönderilecek tebliğ evrakında</span>; muhatabın<span class="mavi">  adı ve soyadı, tam adresi ve uyruğu gösterilir</span>. <span class="mavi"> Bu bilgiler <span class="dik"> yazı makinesi</span> ile yazılır.</span> <br>
+
+(3) Her takvim yılı başında, tebligat işleriyle ilgili anlaşmalar hükümleri, mütekabiliyet esasları ve <span class="kim"> hangi ülkeler için avans olarak ne kadar tebligat masrafı yatırılması gerektiği</span> <span class="mavi"> Adalet Bakanlığınca Dışişleri Bakanlığından görüş alınarak Resmî Gazete’de yayımlanır.</span> <br>
+
+(4) <span class="mavi"> Bir takvim yılı içinde meydana gelen değişiklikler de aynı usulle ilan edilir</span>.</div></div></div>
+<div>
+Tebliğ evrakının tercüme ettirilmesi
+<div>
+MADDE 40 –<div>  (1) <span class="kim"> Tebliğ evrakı ve tebliğ mazbatalı kapalı zarf</span>, muhatabın bulunduğu ülke diline veya anlaşmalarla belirlenen dile <span class="mavi"> tercüme ettirilir</span>. <br>
+
+(2) <span class="kim">Tebliğ evrakı, ilgili tarafından tebligatı çıkaracak mercie verilmişse</span> , <span class="mavi"> tercümenin noterlikte yaptırılması gerekir</span>. <span class="ark"> İlgilinin bulunduğu yerdeki noterlikte o dili bilen mütercim bulunmaz ve ilgilinin tercümeyi şahsen veya vekili tarafından diğer bir şehirdeki noterlikte yaptırması imkânı da bulunmazsa</span> , <span class="mavi"> tercüme, tebligatı çıkaracak merci tarafından tercüme yapılabilecek yerde bulunan denk bir merci vasıtasıyla oradaki noterlikte yaptırılır</span>. <br>
+
+(3) <span class="kim"> Tebligat evrakı, ilgili merci tarafından resen tanzim edilmişse</span>,
+ <span class="mavi"> merciin mütercimi varsa onun tarafından tercüme edilir ve merci tarafından onaylanır</span>. <span class="kim"> Aksi halde</span>, o yerdeki <span class="ark"> noterlikte </span>veya diğer bir yerde bulunan <span class="ark"> denk bir merci vasıtasıyla</span>  <span class="mavi"> tercüme ettirilir.</span> <br>
+
+(4) <span class="kim"> Şu kadar ki ilgili merci, adli mercilerden ibaret ise</span>, tercüme, <span class="mavi"> mütercim bulunabilecek yerdeki yetkili merciin istinabesi suretiyle yaptırılır.</span> </div></div></div>
+<div>
+Müddet tayini
+<div>
+MADDE 41 – (1) <span class="kim"> Yabancı ülkelere gönderilecek olan ve belirli bir günü içeren tebliğ evrakının, tebliği çıkaran merci tarafından</span>,<span class="mavi">  belirlenen günden en az üç ay önce ilgili bakanlığa gönderilmesi gerekir</span>.<div> <button  onclick="soruyuGoster(132)" class="soru" >2016 yılı çıkmış soru</button> </div></div></div>
+<div>
+Yabancı ülkelerdeki Türk vatandaşı olmayanlara tebligat
+<div>
+MADDE 42 – (1) <span class="kim"> Yabancı ülkede kendisine tebligat yapılacak kişi Türk vatandaşı olmadığı takdirde</span>, tebligat <span class="mavi"> o ülkenin yetkili makamı vasıtasıyla yapılır.</span> <span class="kim"> Bunun için anlaşma veya o ülke kanunları müsait ise</span>,  o yerdeki <span class="ark"> Türkiye siyasi memuru</span> veya <span class="ark"> konsolosu </span>tebligat yapılmasını <span class="mavi">  yetkili makamdan ister</span>.</div></div>
+<div>
+Yabancı ülkelerde Türk vatandaşına yapılacak tebligat
+<div>
+MADDE 43 – <div> (1) Yabancı ülkede kendisine tebligat yapılacak kişi, <span class="kim"> Türk vatandaşı olduğu takdirde tebligat</span>, <span class="mavi"> o yerdeki Türkiye siyasi memuru veya konsolosu vasıtasıyla da yapılabilir</span>. <br>
+
+(2) Bu halde tebligatı Türkiye siyasi memuru veya konsolosu ya da bunların görevlendirecekleri bir memur yapar. <br>
+
+(3) <span class="kim"> Tebliğin konusu ile hangi merci tarafından çıkarıldığı bilgilerinin yer aldığı ve <span class="dik"> otuz gün</span> içinde başvurulmadığı takdirde tebliğin yapılmış sayılacağı ihtarını içeren bildirim</span>, <span class="mavi"> muhataba o ülkenin mevzuatının izin verdiği yöntemle gönderilir</span>. <br>
+
+(4) <span class="kim"> Bildirimin o ülkenin mevzuatına göre muhataba tebliğ edildiği belgelendirildiğinde,</span> <span class="mavi"> tebliğ tarihinden itibaren <span class="dik"> otuz gün</span> içinde Türkiye Büyükelçiliği veya Konsolosluğuna başvurulmadığı takdirde tebligat <span class="dik"> otuzuncu</span>  günün bitiminde yapılmış sayılır.</span>  Muhatap Türkiye Büyükelçiliği veya Konsolosluğuna başvurduğu takdirde tebliğ evrakını <span class="kim"> almaktan kaçınırsa</span>, <span class="mavi"> bu hususta düzenlenecek tutanak tarihinde tebliğ yapılmış sayılır</span>. <span class="mavi"> Evrak bekletilmeksizin merciine iade edilir</span>. <br>
+
+(5) Tebligat, ek-1’de yer alan (4) numaralı örneğe göre düzenlenecek bir mazbata ile belgelendirilir. <br>
+
+(6) Tebellüğden kaçınma halinde bu husus mazbataya yazılarak tebliğ yapan tarafından imzalanır. <br>
+
+(7) <span class="kim"> Bu maddeye göre kazaî merciler tarafından çıkarılacak tebligatta</span>, <span class="mavi"> tebliğ evrakı doğrudan o yerdeki Türkiye Büyükelçiliği veya Konsolosluğuna gönderilebilir.</span> Türkiye Büyükelçiliği veya Konsolosluğu tarafından <span class="mavi"> tebliğ işleminin gerçekleştirilmesinden sonra evrak doğrudan ilgili kazaî mercie gönderilir</span>. <br>
+
+(8) Tebligatı çıkaran kazaî merci bu madde hükmüne ya da 38 inci maddeye göre tebliğ yapma hususunda takdir hakkına sahiptir.</div></div></div>
+<div>
+Yabancı ülkelerden gelen evrakın tebliği
+<div>
+MADDE 44 –<div>  (1) <span class="kim"> Yerleşim yeri Türkiye’de bulunan <span class="ark"> yerli veya yabancı şahıslara</span> tebliğ edilmek üzere yabancı bir ülkenin <span class="dik"> elçiliğinden veya havzasında bulunduğu valilik kanalıyla konsolosluğundan</span>  Dışişleri Bakanlığına tevdi olunan evrak</span>, <span class="ark"> Dışişleri Bakanlığı tarafından</span> anlaşma hükümleri ve mütekabiliyet esaslarına uygun görüldüğü takdirde, ek-1’de yer alan (5) numaralı örnek şeklindeki tebliğ mazbatası, zarf içinde tebligatın mahiyetine göre <span class="mavi"> ilgili bakanlığa gönderilir.</span> <span class="span"> İlgili bakanlık tebligatı</span>, muhatabın bulunduğu yerdeki <span class="ark"> yetkili merci </span>vasıtasıyla bu <span class="ark"> Yönetmelik hükümleri gereğince</span> <span class="mavi"> yaptırır.</span> <br>
+
+(2) Tebliğ işlemi yerine getirildikten sonra tebliğ mazbatası <span class="mavi"> aynı yollardan iade edilir</span>.</div></div></div>
+<div>
+Türkiye’de yabancılara tebligat
+<div>
+MADDE 45 – <div> (1) <span class="kim"> Türkiye’de kendisine tebligat <span class="dik"> yapılamayacak olan bir yabancıya</span>  tebligat çıkarılması durumunda muhatap</span>, tebliğ memuruna kendisine tebligat yapılamayacağını beyan eder veya tebliğ memuru bu hususu bizzat öğrenirse <span class="mavi"> keyfiyet tebliğ mazbatasına şerh edilerek evrak iade olunur.</span> <br>
+
+(2) Muhatap, tebliğ yapılabilecek kişilerden olmasına rağmen, <span class="kim"> muhatabın adresi, “ülke dışı” muamelesi gören bir yer ise</span>  ve tebliğ memuru tebligatı yapamazsa <span class="mavi"> birinci fıkra gereğince işlem yapılır</span>. <br>
+
+(3) <span class="kim"> Birinci ve ikinci fıkralarda belirtilen hallerde</span>, <span class="mavi"> tebellüğden kaçınma gibi bu Yönetmelik hükümlerine göre diğer bir işlem yapılmaz</span>. <br>
+
+(4) <span class="kim"> Birinci ve ikinci fıkralarda belirtilen hallerde tebligatı çıkaran merci</span>, tebliğ evrakını, <span class="mavi"> bağlı olduğu bakanlık kanalıyla Dışişleri Bakanlığına gönderir</span>. <br>
+
+(5) <span class="kim"> Türkiye’de kendilerine tebligat yapılamayacak olan elçi, elçilik katibi gibi kişiler</span> <span class="mavi"> Dışişleri Bakanlığı tarafından belirlenir</span>.</div></div></div> <br>
+<div>
+Yabancı ülkelerde Türk memurlarına tebligat
+<div>
+MADDE 46 – (1) Resmî görevle yabancı ülkede bulunan Türk memurlarına 38 inci maddenin birinci fıkrası veya 43 üncü madde hükümlerine göre tebliğ yapılır.</div></div>
+<div>
+Yabancı ülkelerde Türk askerî şahıslarına tebligat
+<div>
+MADDE 47 –<div>  (1) <span class="kim"> Yabancı ülkede bulunan Türk askerî şahıslarına yapılacak tebligat</span> <span class="mavi"> bağlı bulundukları Kara, Deniz, Hava Kuvvetleri Komutanlığı, Jandarma Genel Komutanlığı ve Sahil Güvenlik Komutanlığı vasıtasıyla yapılır</span>. <br>
+
+(2) Bu komutanlıklar tebliğ evrakını, tebligat yapılacak şahsın bulunduğu yabancı ülkedeki birlik veya kurum komutan veya amirine gönderirler. <br>
+
+(3) Tebligatı, <span class="mavi"> kıta komutanı, kurum amiri gibi en yakın üst yapar</span>. Kıta veya bir kurum <span class="kim"> yoksa</span> <span class="mavi"> tebligat  en yakın amiri tarafından yapılır</span>. <br>
+
+(4) Üçüncü fıkradaki haller dışında yurt dışında bulunan asker kişilere tebligat, 46 ncı madde hükmüne göre yapılır.</div></div></div>
+
+
+
+BEŞİNCİ BÖLÜM
+
+İlanen Tebligat
+<div>
+Adresin meçhul olması
+<div>
+MADDE 48 – <div> (1) Bu Yönetmelik hükümleri uyarınca kendisine tebligat yapılamayan, tebliğ memuru tarafından adresi tespit edilemeyen, adres kayıt sisteminde de yerleşim yeri adresi bulunmayan kişinin adresinin tespiti için <span class="mavi"> tebligatı çıkaran merci tarafından adres araştırması yapılır</span>. <br>
+
+(2) Tebligatı çıkaran merci, muhatabın adresini <span class="span"> öncelikle </span> <span class="ark">resmî veya özel kurum ve dairelerden</span> , bunlardan <span class="span"> sonuç alınamadığı takdirde</span> <span class="ark"> kolluk vasıtasıyla araştırabilir</span>  ve tespit ettirebilir. <span class="mavi"> Yapılan araştırmalara rağmen muhatabın adresinin tespit edilememesi halinde adres meçhul sayılır.</span> <br>
+
+(3) <span class="mavi"> Adresi meçhul olanlara tebligat ilanen yapılır</span>. <br>
+
+(4) <span class="kim"> İlânen tebligat</span> , <span class="mavi"> bu maddedeki usuller izlendikten sonra başvurulacak son çaredir</span>.</div></div></div>
+<div>
+İlanen tebligat usulü
+<div>
+MADDE 49 – <div> (1) İlanen tebliğ, 48 inci madde gereğince ilgili merciin sebebini göstermek suretiyle vereceği karar üzerine aşağıdaki şekilde yapılır:
+	<div>
+a) İlan, kendisine tebliğ yapılacak <span class="ark"> kişinin en güvenilir bir şekilde öğrenmesini sağlayabilecek  ve varsa <span class="kim"> tebliği çıkaran merciin bulunduğu yerde yayımlanan </span> <span class="ark">bir gazetede</span> ve <span class="ark"> elektronik ortamda</span>  <span class="ark">Basın İlan Kurumu vasıtasıyla</span> <span class="mavi"> yapılır</span>.  Muhatabın en güvenilir bir şekilde öğrenmesini sağlayabileceği umulan gazete,</span> <span class="ark"> tebliği çıkaran merciin bulunduğu yerde yayımlanan bir gazete ise</span>, <span class="mavi"> ayrıca bir diğer gazete ile ilan yapılmaz</span>. <br>
+
+b) Tebliğ olunacak evrak ve <span class="mavi"> ilan sureti <span class="dik"> bir ay</span> süreyle tebliği çıkaran mercide herkesin kolayca görebileceği bir yere asılır. </span><br>
+
+c) Merci, gerekirse, ikinci defa ilan yapılmasına karar verebilir. İkinci ilan da (a) ve (b) bendi hükümlerine göre yapılır. <span class="mavi"> İki ilan arasındaki süre <span class="dik"> bir haftadan</span> az olamaz</span>. <span class="mavi"> İkinci ilan, gerekiyorsa yabancı ülke gazeteleriyle de yaptırılabilir</span>.</div>
+
+(2) <span class="kim"> Adresi yabancı ülkede bulunanlara ilan yoluyla tebliğ yapılmasını gerektiren hallerde,</span>  tebliği çıkaran merci, <span class="ark"> tebliğ olunacak evrak</span> ile <span class="ark"> ilan suretlerini</span> <span class="dik"> yabancı ülkede bulunan kişinin varsa bilinen en son adresine</span>, <span class="mavi"> ayrıca, iadeli taahhütlü mektupla gönderir ve posta makbuzunu dosyasında saklar</span>.</div></div></div>
+<div>
+İlanın yaptırılması
+<div>
+MADDE 50 –<div>  (1) İlan, tebliği çıkaran merci tarafından masrafı 8 inci maddeye göre ilgilisinden alınarak 49 uncu madde gereğince yayımlattırılır.
+
+(2) İlan yabancı bir ülke gazetesiyle yayımlanacak ise 38 ilâ 41 inci madde hükümleri de kıyasen uygulanır.</div></div></div>
+<div>
+İlanın içeriği
+<div>
+MADDE 51 – (1) <span class="kim"> İlanda;</span>  ilgililerin <span class="ark"> ad ve soyadları</span>,  <span class="ark">işleri</span>, <span class="ark"> yerleşim yeri veya mesken ya da işyeri adresleri</span>,  <span class="ark">tebliğ olunacak evrakın içeriğinin özeti</span>, <span class="ark"> tebliğin anlaşılabilecek şekilde konusu</span> ,<span class="ark"> sebebi</span>, <span class="ark"> ilanın hangi merciden verildiği</span> , <span class="ark"> ilan daveti gerektiriyorsa nerede ve ne için</span> , <span class="ark"> hangi gün ve saatte hazır bulunacağı</span> <span class="mavi"> hususlarına yer verilir</span>.</div></div>
+<div>
+Tebliğ tarihi
+<div>
+MADDE 52 – (1) İlan yoluyla tebliğ, <span class="mavi"> son ilan tarihinden itibaren <span class="dik"> yedi gün sonra</span> yapılmış sayılır.</span> İlan yoluyla tebliğ yapılmasına karar veren merci, işin gereğine göre <span class="mavi"> daha uzun bir süre tayin edebilir. Ancak bu süre <span class="dik"> onbeş günü</span> geçemez</span>.</div></div>
+
+
+
+ALTINCI BÖLÜM
+
+Usulsüz Tebligat, Gece ve Tatil Günlerinde Tebligat
+<div>
+Usulüne aykırı tebliğin hükmü
+<div>
+MADDE 53 –<div>  (1) <span class="kim"> Tebliğ, usulüne aykırı yapılmış olsa bile</span>, <span class="mavi"> muhatabı tebliği öğrenmiş ise geçerlidir</span> . <span class="mavi"> Aksi takdirde tebligat yapılmamış sayılır</span>. <span class="kim"> Muhatap</span>, her ne şekilde olursa olsun tebliğ evrakını veya davetiyeyi <span class="ark"> alırsa</span> ya da bunların <span class="ark"> içeriğini  öğrenirse</span> <span class="mavi"> tebliği öğrenmiş sayılır</span>. <br>
+
+(2) <span class="kim"> Muhatabın tebliği öğrendiğini beyan ettiği tarih</span>, <span class="mavi"> tebliğ tarihi olarak kabul edilir</span>. <br>
+
+(3) Tebliğin usulüne aykırı yapılmış olması halinde, muhatabın tebliği öğrendiğinin ve bunun tarihinin iddia ve ispatı mümkün değildir.</div></div></div>
+<div>
+Gece vakti tebligat
+<div>
+MADDE 54 – (1) <span class="mavi">  Gece vakti tebligat yapılabilir</span>.</div></div>
+<div>
+Tatil günlerinde tebligat
+<div>
+MADDE 55 – (1) <span class="mavi"> Resmî ve adli tatil günlerinde de tebligat yapılabilir</span>.</div></div>
+<div> <button  onclick="soruyuGoster(74)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<div> <button  onclick="soruyuGoster(270)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+YEDİNCİ BÖLÜM
+
+Kazaî Tebligat
+<div>
+Kazaî tebligatın kapsamı
+<div>
+MADDE 56 – (1) Adli, idari ve askerî kaza mercilerince yapılacak tebligat işlerinde bu Yönetmelik hükümleri uygulanır.</div></div>
+<div>
+Değiştirilen adresin bildirilmesi zorunluluğu ve yapılacak işlemler
+<div>
+MADDE 57 –<div>  (1) Muhataba veya adresinde bu Yönetmeliğin gösterdiği usullere göre onun yerine tebellüğ edebilecek birine tebligat yapılmasından veya 31 inci madde gereğince işlem yapılmasından sonra muhatap bu adresini değiştirirse, <span class="mavi"> yeni adresini hemen tebliği yaptırmış olan kaza merciine bildirmek zorundadır</span>. Bu takdirde bundan sonraki tebliğler, bildirilen yeni adrese yapılır. <br>
+
+(2) Adresini değiştiren kişi <span class="ark"> yenisini bildirmediği</span> ve adres kayıt sisteminde yerleşim yeri adresi de <span class="ark"> tespit edilemediği takdirde</span>, <span class="mavi"> adres araştırması yapılmasına gerek kalmaksızın</span> ek-1’de yer alan (6) numaralı örneğe göre düzenlenecek tebliğ evrakının bir nüshası <span class="mavi"> eski adresin kapısına asılır ve asılma tarihi tebliğ tarihi sayılır</span>. <br>
+
+(3) <span class="mavi"> Bundan sonra eski adrese çıkarılan tebliğler muhataba yapılmış sayılır</span>. <br>
+
+(4) <span class="kim"> Daha önce tebligat yapılmamış olsa bile, tüzel kişiler bakımından </span> <span class="ark"> ana statü, sicil, tüzük ve kuruluş senedi gibi resmî kayıtlardaki adresleri</span> <span class="mavi"> esas alınır ve bu madde hükümleri uygulanır.</span> <br>
+
+(5) <span class="kim"> Daha önce yurt dışındaki adresine tebligat yapılmış Türk vatandaşı</span>, yurt dışı adresini <span class="ark"> değiştirir</span> ve bunu tebliği çıkaran mercie <span class="ark"> bildirmez</span>, adres kayıt sisteminden de <span class="ark"> yerleşim yeri adresi tespit edilemezse</span>, <span class="mavi"> bu kişinin yurt dışında daha önce tebligat yapılan adresine Türkiye Büyükelçiliği veya Konsolosluğunca 43 üncü maddeye göre gönderilen bildirimin adrese ulaştığının belgelendiği tarihten itibaren <span class="dik"> otuz gün</span> sonra tebligat yapılmış sayılır</span>.</div></div></div>
+<div>
+Celse esnasında veya kalemde tebligat
+<div>
+MADDE 58 – (1) Celse esnasında veya kalemde soruşturmaya, davaya ya da takibe ait evrakın; taraflara, ilgili üçüncü kişilere, katılana, vekillere veya kanuni temsilcilere tutanağa geçirilmek suretiyle veya imza karşılığında, tebliğ konusu belirtilerek tevdii, <span class="mavi"> tebliğ hükmündedir.</span> <span class="mavi"> Bu durumda ayrıca tebliğ mazbatası düzenlenmesi gerekmez ve masraf da alınmaz</span>.</div></div>
+<div>
+Avukat kâtiplerine ve stajyerlerine tebligat
+<div>
+MADDE 59 – (1) Celse esnasında kazaî merci tarafından, sıfatları usulen tespit edilen <span class="ark"></span> avukat kâtiplerine</span> ve <span class="ark"> stajyerlerine</span> <span class="mavi"> bir sonraki celse gün ve saatinin bildirilmesi, avukata tebliğ hükmündedir</span>.</div></div>
+<div>
+Vekillerin birbirlerine tebligat yapması
+<div>
+MADDE 60 – (1) Vekil vasıtasıyla takip edilen davalarda, <span class="mavi"> vekil, makbuz karşılığında diğer vekile tebligat yapabilir</span>.</div></div>
+<div>
+Tebliğ mazbatası tanzim edilmemesi
+<div>
+MADDE 61 – (1) 59 uncu ve 60 ıncı maddeler gereğince yapılan tebligatta, ayrıca tebliğ mazbatası tanzim edilmez.</div></div>
+<div>
+Tebellüğ edecek şahsın hasım olması
+<div>
+MADDE 62 – (1) Bu Yönetmelik hükümlerine göre muhatap adına kendilerine tebliğ yapılabilecek kişilerin, <span class="mavi"> o davada hasım olarak ilgileri varsa, muhatap adına kendilerine tebligat yapılamaz</span>.</div></div>
+<div>
+Tebliğ kararlarının ivediliği
+<div>
+MADDE 63 – (1) Tebliğe dair kararlar, daha önce belirlenmiş <span class="mavi"> celse günü beklenmeden verilir</span>.</div></div>
+<div>
+Yargı yerlerinde memur vasıtasıyla tebliğ
+<div>
+MADDE 64 – (1) Adli, idari ve askerî yargı yerleriyle diğer adalet daireleri, resen veya talep halinde, işin mahiyetine göre, <span class="mavi"> memurları vasıtasıyla tebligat yapılmasına karar verebilirler</span> .</div></div>
+<div>
+Cumhuriyet başsavcılığına tebligat
+<div>
+MADDE 65 –<div>  (1) Cumhuriyet başsavcılığına yapılacak tebligat, <span class="mavi"> tebliğ olunacak evrak aslının gösterilmesi ya da elektronik ortamda gönderilmesi suretiyle yapılır</span>. Tebligatın belgelendirilmesi için, elektronik ortamda güvenli elektronik imzalı olarak gönderilen evrak hariç olmak üzere <span class="mavi"> Cumhuriyet savcısı tarafından evrak aslına “Görüldü” ibaresi yazılarak imzalanır.</span>  <br>
+
+(2) <span class="kim"> Şu kadar ki, bu Tebliğ bir sürenin başlangıcına esas olacaksa,</span> <span class="mavi"> Cumhuriyet savcısı evrakın gösterildiği günü de evrak aslına yazar ve imzalar</span>.</div></div></div>
+<div>
+Askerî kazada tebligat
+<div>
+MADDE 66 –<div>  (1) <span class="kim"> Askerî kaza makam ve mercilerince askeri şahıslara yapılacak tebligat,</span> <span class="mavi"> yazılı bir emirle ifa olunur</span>  ve <span class="mavi"> tebellüğ ilmühaberi, tebligatı talep veya emreden makam veya mercie gönderilir.</span>
+
+(2) Tebellüğ ilmühaberinin;
+<div>
+a) <span class="span"> Tebliği çıkaran merciin adını</span>,
+
+b) <span class="span"> Tebliği talep veya emreden makam veya merciin</span> adını,
+
+c) <span class="span"> Tebliğ olunan şahsın</span>, adını, soyadını ve künyesini,
+
+ç) <span class="span"> Tebliğin konusunu</span>,
+
+d) <span class="span"> Tebliğin nerede yapıldığını, tarihi ve saatini</span>,
+
+e) <span class="span"> Tebliğ ve tebellüğ eden şahısların imzalarını</span>,</div>
+
+içermesi gerekir.</div></div></div>
+<div> <button  onclick="soruyuGoster(133)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+
+SEKİZİNCİ BÖLÜM
+
+İdari Tebligat
+<div>
+Kapsamı
+<div>
+MADDE 67 – (1) <span class="kim"> Kazaî ve mali tebligatın dışında kalan tebligat</span>, <span class="mavi"> idari tebligattır</span>.</div></div>
+<div>
+Birden fazla kişinin temsilcisine tebligat
+<div>
+MADDE 68 –<div>  (1) <span class="kim"> Birden fazla kişinin temsilcisine, </span> <span class="mavi"> tebliğ olunacak evrakın ancak bir nüshası verilir</span>. <br>
+
+(2) <span class="kim"> Şu kadar ki, yalnız evrakı tebellüğ için vekalet verilen kişiye</span> <span class="mavi"> temsil ettiği kişilerin sayısı kadar nüsha verilir</span>. <br>
+
+(3) <span class="mavi"> Evrakı tebellüğ için temsilci tayin ederek merciine bildirmiş olan kişiye tebligat yapılmaz</span>.</div></div></div>
+<div>
+Gümrük ve tekel işlerinde tebligat
+<div>
+MADDE 69 – (1) <span class="kim"> Gümrük ve tekel işlerinde,</span>  <span class="ark"> kendi kanunlarının imkân verdiği hallerde,</span> <span class="mavi"> işlemin yapıldığı yerde hazır bulunan ilgiliye tebligat, bu işle görevli memurlar vasıtasıyla yapılır</span>.</div></div>
+<div>
+Tapu idarelerince yapılacak tebligat
+<div>
+MADDE 70 – (1) <span class="kim"> Tapuda kayıtlı taşınmazların veya miras, istimlak, cebrî icra veya mahkeme ilâmıyla iktisapta bulunan hak sahipleri</span> , adreslerini ve değiştirdikleri takdirde <span class="mavi"> yenisini bulundukları yerin tapu idaresine bildirmeye mecburdur</span>. Kendilerine bu durumu belgeleyen bir makbuz verilir. Davetiye veya tebliğ evrakı, bu suretle bilinen son adrese gönderilir. <span class="mavi"> Hak sahiplerinin adres bildirmemeleri hâlinde adres kayıt sistemindeki adresleri tebligat adresleri olarak kabul edilir</span>.</div></div>
+
+
+
+DOKUZUNCU BÖLÜM
+
+Malî Tebligat
+<div>
+Sayıştay tarafından yapılacak tebligat
+<div>
+MADDE 71 – <div> (1) <span class="kim"> Sayıştay tarafından yapılacak tebligat,</span>  tebliğ yapılacak kişilerden <span class="ark"> merkez teşkilatlarında görevli bulunanlara</span> <span class="mavi"> bağlı oldukları daireler</span>, <span class="ark"> bunların haricinde kalanlara</span> <span class="mavi"> mahalli mülki amiri vasıtasıyla ve memur marifetiyle yaptırılır</span>. <br>
+
+(2) <span class="kim"> Adresin tespit olunamaması veya tebellüğden kaçınma hallerinde tebligat</span>, <span class="mavi"> Tebligat Kanunu ve bu Yönetmelik hükümlerine göre yapılır</span>.</div></div></div>
+<div>
+Diğer mali tebligat
+<div>
+MADDE 72 – (1) <span class="kim"> Özel kanunlarda tebligata ilişkin bir hüküm bulunmaması halinde mali tebliğler</span>, <span class="mavi"> Tebligat Kanunu ve bu Yönetmelik hükümlerine göre yapılır</span>.</div></div>
+
+
+ONUNCU BÖLÜM
+
+Tebliğ Evrakının Hazırlanması ve PTT İşletmesine Tevdi
+<div>
+Tebliğ mazbatalı zarfın düzenlenmesi
+<div>
+MADDE 73 –<div> (1) 2 nci maddede belirtilen mercilerce çıkarılacak tebliğ evrakı, teslim sırasında kolaylıkla ayrılabilecek şekilde, ek-1’de yer alan (7) numaralı örneğe göre hazırlanmış olan tebliğ mazbatalı bir zarf içine konulur.  <br>
+
+(2) <span class="kim"> Tebliğ evrakının tebliğ mazbatası haricindeki kısımları</span> , <span class="mavi"> tebliği çıkaran merci tarafından doldurulur</span>.</div></div></div>
+<div>
+Telgrafla tebligat
+<div>
+MADDE 74 – (1) <span class="kim"> Telgrafla tebligat</span>, <span class="ark">  normal</span> veya <span class="ark"> acele</span>  işaretli olmak üzere <span class="mavi"> iki tür olarak kabul edilir.</span> Telgraf otomasyon sistemi üzerinden alınacak listenin bir örneği çıkaran mercie verilir.</div></div>
+<div>
+Liste ile tevdi
+<div>
+MADDE 75 – (1) Tebligat çıkarmaya yetkili mercilerce usulüne uygun olarak düzenlenen tebliğ evrakı, ek-1’de yer alan (8) numaralı örneğe uygun olarak tanzim edilen <span class="mavi"> tevdi listesi ile birlikte PTT işyerlerine tevdi edilir</span>.</div></div>
+<div>
+Tebliğ evrakının tetkiki
+<div>
+MADDE 76 – (1)  <span class="kim"> PTT İşletmesi</span>, tebliğ evrakının tebliğ mazbatası haricinde kalan kısımlarının tebliği çıkaran merci tarafından <span class="ark"> tamamen doldurup doldurmadığı,</span> posta pullarının tarifeye göre <span class="ark"> yapıştırıp yapıştırmadığı,</span> <span class="mavi"> evrakı tevdi edenin huzurunda tetkik eder</span>. <span class="mavi"> Usulüne uygun olmayan evrak, sebebi tevdi listesinde yazılarak  iade edilir</span>.</div></div>
+<div>
+Tebliğ evrakının kabulü
+<div>
+MADDE 77 – (1) <span class="kim"> Tebliğ evrakı</span>, <span class="mavi">  barkod numaraları vasıtasıyla kayıtlı posta otomasyon sistemine kaydedilir. </span>  Sistem üzerinden kabul listesi düzenlenir. <span class="mavi"> Kabul listesinin bir örneği çıkaran mercie verilir</span> . Kabul edilen tebliğ evrakı, <span class="mavi"> sistem üzerinden takip edilir</span>. Tebliğ evrakının teslimi ile mazbatalarının çıkış merciine iade işlemleri bu Yönetmelik hükümleri kapsamında yapılır.</div></div>
+
+
+
+ONBİRİNCİ BÖLÜM
+
+Çeşitli ve Son Hükümler
+<div>
+Tebliğin vaktinde yapılmaması
+<div>
+MADDE 78 – <div> (1) Tebliğ vaktinde yapılmaz veya tebliğ mazbatası belirlenen zamanda gelmezse tebligatı <span class="mavi"> çıkaran merci durumu mahalli PTT merkezine bildirir</span>. <br>
+
+(2) <span class="kim"> Mahalli PTT merkezi</span>, <span class="mavi"> şikâyet konusu olan evrakın ne işlem gördüğünü inceler ve gerekirse varış merkezinden araştırır ve takip eder</span>. <br>
+
+(3) <span class="kim"> Yapılan araştırma ve takip sonucu</span> , mahalli <span class="ark"> PTT merkezi</span>  ve gerektiğinde <span class="ark"> Posta ve Telgraf Teşkilatı Genel Müdürlüğü tarafından</span> mümkün olduğu kadar kısa bir zaman içinde <span class="mavi">  tebligatı çıkaran mercie bildirilir</span>.</div></div></div>
+<div>
+Basılı evrak
+<div>
+MADDE 79 –<div>  (1) Ek-1’de yer alan (2) ve (7) numaralı örnek basılı evrağı, Posta ve Telgraf Teşkilatı Genel Müdürlüğü, diğerleri ise tebliği çıkaran merciler tarafından temin edilir.
+
+(2) <span class="mavi"> Bu Yönetmeliğe ekli örneklere göre bastırılacak evrakın beyaz renkte olması gerekir</span> . Ancak, 16 ncı maddenin ikinci fıkrası uyarınca <span class="mavi"> adres kayıt sistemine göre düzenlenecek tebliğ zarfı açık mavi renkte bastırılır</span>.</div></div></div>
+<div>
+Atıflar
+<div>
+MADDE 80 – (1) Bu Yönetmeliğin yürürlüğe girmesiyle, mevzuatta, 20/8/1959 tarihli ve 4/12059 sayılı Bakanlar Kurulu Kararı ile yürürlüğe konulan Tebligat Tüzüğüne yapılan atıflar, bu Yönetmeliğe yapılmış sayılır.</div></div>
+<div>
+Yürürlük
+<div>
+MADDE 81 – (1) Bu Yönetmelik yayımı tarihinde yürürlüğe girer.</div></div>
+<div>
+Yürütme
+<div>
+MADDE 82 – (1) Bu Yönetmelik hükümlerini Adalet Bakanı yürütür.</div></div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}

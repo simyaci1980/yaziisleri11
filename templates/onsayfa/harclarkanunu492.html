@@ -1,0 +1,1019 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white;}
+.kim{background-color: chocolate ; color: azure; font-size: larger;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title> Harçlar kanunu  (Yim SINAVI için) </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+<div id="kal" class="kal">
+HARÇLAR KANUNU (1)(2) <br>
+
+
+
+Kanun Numarası                      : 492 <br>
+
+Kabul Tarihi                              : 2/7/1964 <br>
+
+Yayımlandığı Resmî Gazete  : Tarih  : 17/7/1964      Sayı    : 11756 <br>
+
+Yayımlandığı Düstur                : Tertip : 5    Cilt : 3     Sayfa : 2760
+
+</div>
+
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+<div>
+Kanunun şümulü:
+<div>
+Madde 1 – Bu kanuna göre alınacak harçlar aşağıda gösterilmiştir:
+<div>
+1. <span class="span"> Yargı harçları,</span> <br>
+
+2. Noter harçları, <br>
+
+3. (Değişik: 21/1/1982 - 2588/1 md.) <span class="span">  Vergi Yargısı Harçları,</span> <br>
+
+4. Tapu ve Kadastro harçları, <br>
+
+5. Konsolosluk harçları, <br>
+
+6. Pasaport, ikamet tezkeresi, çalışma izni, çalışma izni muafiyeti, vize ve Dışişleri Bakanlığı tasdik harçları, (3) <br>
+
+7. Gemi ve liman harçları, <br>
+
+8. İmtiyazname,ruhsatname ve diploma harçları, <br>
+
+9. Trafik harçları.</div></div></div>
+
+
+
+BİRİNCİ KISIM <br>
+
+Yargı  Harçları <br><br>
+
+BİRİNCİ BÖLÜM <br>
+
+
+Mükellefiyet
+<div>
+Mevzuu:
+<div>
+Madde 2 – Yargı işlemlerinden bu kanuna bağlı <span class="span"> (1) sayılı</span> tarifede yazılı olanları,  <span class="mavi">yargı harçlarına tabidir</span>. <br>
+
+Ceza mahkemelerinde <span class="ark"> şahsi hukuka ait</span>  hakların hüküm altına alınması <span class="dik"> halinde de</span>, <span class="mavi"> celse harçları hariç</span> olmak üzere (1) sayılı tarifeye göre <span class="mavi"> harç alınır</span>.</div></div>
+<div>
+Hakem kararları:
+<div>
+Madde 3 – Hakem kararlarının infazı lazım geldiğine dair mahkeme başkanı veya hakim tarafından verilen  şerhlerden, <span class="mavi"> hakem kararının <span class="dik"> mahiyetine göre</span>, <span class="ark"> karar ve ilam harcı</span> alınır</span>. <br>
+<div> <button  onclick="soruyuGoster(146)" class="soru" >2016 yılı çıkmış soru</button> </div>
+<span class="ark">Yabancı hakem kararları</span>  ile, kanun gereğince <span class="ark"> tahkim yolu ile halli mecburi olan</span>  <span class="mavi"> davalardan da aynı suretle harç alınır</span>.</div></div>
+
+
+<div>
+Yabancı mahkeme ilamları:
+<div>
+Madde 4 – <span class="ark"> Yabancı bir mahkeme</span>  tarafından verilen ilamların <span class="dik"> tenfizi için</span>  açılacak davalardan, bu ilamlarda hükmolunmuş <span class="ark"> şeyin değeri, nevi ve mahiyetine</span>  göre (1) sayılı tarife gereğince <span class="mavi"> harç alınır</span>.</div></div>
+
+<div>
+Bölge idare mahkemeleri ile Danıştay işlemleri:
+<div>
+Madde 5 – (Değişik: 21/1/1982 - 2588/2 md.) <br>
+
+<span class="ark"> Bölge İdare Mahkemeleri</span>  ile <span class="ark"> Danıştay'da</span>  açılacak davalardan <span class="dik"> (1) sayılı tarife</span> gereğince <span class="mavi"> harç alınır</span>. <br>
+
+<span class="dik"> Ancak, vergi,resim, harç</span> ve benzeri mali yükümler ile bunlara bağlı zam ve cezalarla ilgili olup <span class="ark"> Bölge İdare Mahkemeleri</span> ve <span class="ark"> Danıştay'</span>ın görevi içinde bulunan işlemler <span class="mavi"> (3) sayılı tarifeye göre harca tabidir</span>.</div></div>
+<div>
+Karşılık davalar ve davaya müdahale :
+<div>
+Madde 6 – <span class="mavi"> Karşılık davalar, <span class="dik"> müstakil davalar gibi</span> harca tabidir</span>. <br>
+
+Davaya <span class="kim"> müdahale eden kimse</span>, <span class="ark"> kanun yollarına müracaat ederse </span> <span class="mavi"> iltihak ettiği taraftan alınan harca eşit harcı ödemek mecburiyetindedir</span>.</div></div>
+<div> <button  onclick="soruyuGoster(147)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+<div>
+Yeniden harç alınması:
+<div>
+Madde 7 – <span class="kim"> Muameleden kaldırılan dosya</span>, Hukuk Usulü Muhakemeleri Kanununda belirtilen <span class="mavi"> süre içinde yenilenmediği takdirde</span>, <span class="mavi"> davanın görülebilmesi yeniden harç verilmesine bağlıdır</span>.</div></div>
+
+
+<div>
+Hükmün bozulması:
+<div>
+Madde 8 – Bir hükmün <span class="span"> bozulmasını mütaakıp</span> verilecek hükümlerden <span class="span"> yeni bir hüküm gibi</span> <span class="mavi"> karar ve ilam harcı alınır</span>  ve bozulan hükümden <span class="span"> evvelce alınmış olan karar ve ilam harcı</span>, mütaakıp hükme ait <span class="mavi"> harçdan mahsup olunur</span> .</div></div>
+
+
+<div>
+Tashihi karar:
+<div>
+Madde 9 – <span class="span"> Tashihi karar talebinin kabulü üzerine temyiz olunan hüküm tasdik edilirse</span>, <span class="mavi"> temyiz olunan hükümden alınmış olunan harç kadar yeniden harç alınır</span>.<div> <button  onclick="soruyuGoster(148)" class="soru" >2016 yılı çıkmış soru</button> </div></div></div>
+<div><div> <button  onclick="soruyuGoster(352)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div>
+İadei muhakeme:
+<div>
+Madde 10 – İadei muhakemenin kabulü üzerine cereyan edecek davalar, <span class="mavi"> yeni davalar gibi harca tabidir</span>. İadei muhakeme talebinde bulunan <span class="mavi"> neticede haklı çıkarsa evvelce alınan harç mahsup edilir</span>.</div></div>
+<div>
+Mükellef:
+<div>
+Madde 11 – Genel olarak yargı harçlarını <span class="mavi">  <span class="ark">davayı açan</span> veya <span class="ark"> harca mevzu olan işlemin yapılmasını istiyen kişiler</span>  ödemekle mükelleftir</span>. <br>
+
+
+
+<span class="span"> Vasinin hesabının görülmesi</span> dolayısiyle alınacak harçlar, <span class="mavi"> vesayet altındaki şahsa izafeten vasiden alınır</span>. <br>
+
+Herhangi bir istek olmaksızın <span class="ark"> resen yapılacak işlemlere ait harçlar</span>, aksine hüküm yoksa, <span class="mavi"> lehine işlem yapılan kişilerden alınır</span>.</div></div>
+<div> <button  onclick="soruyuGoster(149)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+<div>
+Celse harçlarında mükellef:
+<div>
+Madde 12 – Hukuk ve ticaret mahkemelerinde celse harcı, muhakeme tarafların talep ve muvafakatleri üzerine talik edilmiş ise taraflardan ve evvelce yapılması mümkün olan bir işlemin yapılmamış olmasından dolayı talik edilmişse, <span class="mavi"> talike sebebiyet veren taraftan alınır</span>. <br>
+<span class="mavi">
+Her iki halde talike vekiller sebebiyet vermişse celse harcı vekillere yüklenir</span>. <br>
+
+Vekil veya taraflara yüklenilen celse harcı <span class="ark"> mütaakıp iki celsede ödenmezse</span> <span class="mavi"> bir misli fazlasiyle alınır</span>. <span class="ark"> Ödenmediği takdirde harcın bu miktar üzerinden tahsili için</span> <span class="mavi"> Maliyeye tezkere yazılmasına karar verilir</span>.</div></div>
+
+
+
+
+
+İKİNCİ BÖLÜM <br>
+
+İstisna ve Muaflıklar
+<div>
+             Harçdan müstesna işlemler:
+             <div>
+             Madde 13 – Aşağıda yazılı mevzular harçdan müstesnadır:
+             <div>
+             a) (Değişik: 20/3/1981 - 2430/1 md.) <span class="ark"> Değeri 50 Yeni Türk Lirasını geçmeyen dava ve takipler</span> (Ticari senetlere ait takipler hariç),(1) <br>
+
+             b) <span class="ark"> Vasi tayini ve azli</span>, <span class="ark"> hakimin reddi talebinin kabulü</span> ve <span class="ark"> hakimin istinkafına</span> ait kararlar, <br>
+
+             c) (Değişik: 30/12/1980 - 2366/1 md.) <span class="ark"> Ayda 100 Yeni Türk Lirasını geçmeyen nafakalara ait <span class="dik"> dava ve takipler</span></span>, “Birden fazla kişiler lehine nafakaya hükmedilmesine dair ilamlarda <span class="mavi"> her kişi lehine hükmedilen miktar müstakil olarak nazara alınır</span>.,(1) <br>
+
+             d) İcra ve iflas dairelerinin kusuru yüzünden yanlış yapılmış olan işlemlerin ıslahı ve iptaline dair tetkik mercileri kararlariyle, bu <span class="mavi"> iptal veya ıslah dolayısiyle yeniden yapılacak işlemler</span>, <br>
+
+             e) <span class="ark"> Ticaret sicilinde re'sen yapılan düzeltmeler</span>, <br>
+
+             f) <span class="ark"> İcra tetkik mercilerinin cezaya mütedair kararlariyle</span>  bu kararların <span class="ark"> temyizi</span> işlemleri. <br>
+
+             g) İcra ve İflas Kanununun 270 nci maddesine göre yapılacak <span class="ark"> defter tutma işlemleri,</span> <br>
+
+             h) <span class="ark"> Yetkili makamların istiyecekleri</span> ilam ve sair evrak suretleri, <br>
+
+             i) Kamu adına <span class="kim"> C. savcıları tarafından</span>  <span class="ark"> Hukuk mahkemelerine açılan davalar</span> ve kanun yolu başvuruları ile ceza mahkemelerinden verilen kararlara karşı kanun yolu başvuruları, (2) <br>
+
+             J) (Ek: 21/1/1982 - 2588/3 md.) Genel Bütçeye dahil idarelerin bu Kanunun 1 ve 3 sayılı tarifelerine giren bütün işlemleri. </div>
+
+             (Yukarıdaki işlemlerin hesaplanacak harçlarının, Genel Bütçeye dahil idarelerin haklılığı nispetinde karşı taraftan tahsiline ilgili merciince karar verilir.)</div></div>
+             <div>
+             Harçtan muaf olanlar:
+             <div>
+             Madde 14 – <span class="ark"> Erler</span> ve ihtiyaçları Devlet tarafından <span class="ark"> deruhde ve temin olunan onbaşı ve çavuşlar</span>  <span class="mavi"> adliye işlemlerinden ötürü harçtan muaftırlar</span>.</div></div>
+
+            ÜÇÜNCÜ BÖLÜM  <br>
+
+            Harç Alma Ölçüleri ve Nispetleri
+            <div>
+             Harç alma ölçüleri:
+             <div>
+             Madde 15 – Yargı harçları (1) sayılı tarifede yazılı işlemlerden  <span class="ark">değer ölçüsüne göre</span> <span class="mavi"> nispi esas üzerinden</span>, işlemin <span class="ark"> nev'i ve mahiyetine göre</span> <span class="mavi"> maktü esas üzerinden alınır</span>.</div></div>
+             <div>
+             Değer esası:
+             <div>
+             Madde 16 – Değer ölçüsüne göre harca tabi işlemlerde (1) sayılı tarifede yazılı değerler esastır. <span class="ark"> Müdahelenin men'i tescil</span>  ve <span class="ark"> tapu kayıt iptali</span> gibi <span class="mavi"> gayrimenkulün aynına taallük eden davalarda gayrimenkulün değeri nazara alınır</span>. <br>
+
+             Gayrimenkulün aynına taallük eden davalarda ecrimisil ve tazminat gibi taleplerde de bulunulduğu takdirde harc, gayrimenkulün değeri ile <span class="mavi"> talebolunan tazminat ve ecrimisil tutarı üzerinden alınır</span>. <br>
+
+             <span class="span"> Değer</span> tayini mümkün olan hallerde dava dilekçelerinde değer gösterilmesi mecburidir. <span class="mavi"> Gösterilmemişse davacıya tesbit ettirilir</span>. <span class="ark"> Tesbitten kaçınma halinde</span>, <span class="mavi"> dava dilekçesi muameleye konmaz.</span> <br>
+
+             Noksan tesbit edilen değerler hakkında 30 uncu madde hükmü uygulanır.</div></div>
+
+
+
+             <div>
+             Tahliye davalarında değer:
+             <div>
+             Madde 17 – Gayrimenkulün tahliyesi davalarında, yazılı mukavele olsun veya olmasın <span class="mavi"> bir yıllık kira bedeli üzerinden karar ve ilam harcı alınır</span>.</div></div>
+             <div>
+             Gayrimenkul veya gemilerin tahliye ve teslimi:
+             <div>
+             Madde 18 – Bir gayrimenkulün veya bir geminin tahliye ve teslimine dair olan icra takiplerinde tahsil harcı;<span class="mavi"> bir yıllık kira bedeli, yoksa bu süreye göre takdir edilecek bir bedel üzerinden hesaplanır</span>.</div></div>
+             <div>
+             Menkullerin teslimi:
+             <div>
+             Madde 19 – Bir menkulün teslimine dair olan icra takiplerinde tahsil harcı; <span class="mavi"> menkulün ilamda veya takip talebinde gösterilen değeri, bu yoksa takdir edilecek değer üzerinden hesaplanır</span>.</div></div>
+             <div>
+             İcra takiplerinde faiz:
+             <div>
+             Madde 20 – İcra takiplerinde takipten sonra işliyecek olan faizler, <span class="mavi"> harcın hesabında nazara alınmaz</span>.</div></div>
+             <div>
+             Harcın nispeti:
+             <div>
+             Madde 21 – Yargı harçları (1) sayılı tarifede yazılı nispetler üzerinden alınır.</div></div>
+             <div>
+             Davadan feragat, davayı kabul veya sulh:
+             <div>
+             Madde 22 – Davadan <span class="ark"> feragat</span> veya davayı <span class="ark"> kabul</span> veya <span class="ark"> sulh</span>, muhakemenin <span class="dik"> ilk celsesinde vuku bulursa</span>, <span class="kim">karar ve ilam harcının</span> <span class="mavi"> üçte biri</span>, <span class="dik"> daha sonra olursa</span>  <span class="mavi">üçte ikisi alınır</span>.<div> <button  onclick="soruyuGoster(150)" class="soru" >2016 yılı çıkmış soru</button> </div></div></div>
+             <div>
+             İcra takibinden vazgeçme:
+             <div>
+             Madde 23 – Her ne sebep ve suretle olursa olsun, icra takibinden vazgeçildiğinin zabıtnameye yazılması için vazgeçilen miktara ait tahsil <span class="mavi"> harcının yarısı alınır</span>. Ancak haczedilen mal <span class="ark"> satılıp paraya çevrildikten sonra</span> vazgeçilirse tahsil harcı <span class="mavi"> tam olarak alınır</span>.<div> <button  onclick="soruyuGoster(92)" class="soru" >2023 yılı çıkmış soru</button> </div></div></div>
+             <div>
+             Gayrimenkul veya gemilerin tahliye ve tesliminde tahsil harcı nispeti:
+             <div>
+             Madde 24 – Gayrimenkul veya gemilerin tahliye veya teslimine dair <span class="span"> icralarda</span> Tahsil Harcı (1) sayılı tarifede yazılı miktarların <span class="mavi"> yarısı nispetinde alınır</span>.</div></div>
+
+
+
+   DÖRDÜNCÜ BÖLÜM <br>
+  Harcın Ödenmesi
+  <div>
+             Ödeme usulü:
+             <div>
+             Madde 25 – Yargı harçları <span class="mavi"> makbuz karşılığında ödenir</span>.(1)</div></div>
+             <div>
+             Ödeme yeri:
+             <div>
+             Madde 26 – Yargı harçları harca konu olan işlemleri <span class="mavi"> yapan mahkeme veya daire tarafından alınır</span>. <br>
+
+             Kanunlarda aksine hüküm varsa bu madde yerine o hüküm uygulanır.</div></div>
+             <div>
+             Maktu harçlarda ödeme zamanı:
+             <div>
+             Madde 27 – (1) sayılı tarifede yazılı maktu harçlar ilgili bulunduğu işlemin yapılmasından <span class="mavi"> önce peşin olarak ödenir</span>. <br>
+
+             <span class="ark"> Mahiyetleri icabı</span> işin <span class="ark"> sonunda</span> hesap edilip alınması gerekenler, harç alacağının <span class="mavi"> doğması tarihinden itibaren <span class="dik"> 15 gün</span> içinde ödenir</span>. <br>
+
+             Harç peşin veya süresinde <span class="ark"> ödenmemiş ise</span>, <span class="mavi"> mütaakıp muamelelere ancak harç ödendikten sonra devam olunur</span>.</div></div>
+			 <div> <button  onclick="soruyuGoster(286)" class="soru" >2017 yılı çıkmış soru</button> </div>
+
+             <div>
+             Nispi harclarda ödeme zamanı: (1)
+             <div>
+             Madde 28 – (1) sayılı tarifede yazılı nispi harçlar aşağıdaki zamanlarda ödenir.:
+             <div>
+a) <span class="kim"> Karar ve ilam harcı,</span> <br>
+
+Karar ve ilam harçlarının <span class="mavi"> dörtte biri peşin</span>, <span class="mavi"> geri kalanı kararın tebliğinden itibaren <span class="dik"> bir ay</span>  içinde ödenir</span>. Şu kadar ki, ölüm ve cismani zarar sebebiyle açılan maddi ve manevi <span class="ark"> tazminat davalarında</span> peşin alınan harcın oranı <span class="mavi"> yirmide bir olarak uygulanır</span>. <span class="ark"> Bakiye karar</span> ve <span class="ark"> ilam harcının ödenmemiş olması</span>, hükmün tebliğe çıkarılmasına, <br> takibe konulmasına  ve <br> kanun yollarına başvurulmasına <span class="mavi"> engel teşkil etmez</span>. (1)(2) <br>
+<div> <button  onclick="soruyuGoster(287)" class="soru" >2017 yılı çıkmış soru</button> </div>
+             b) <span class="kim"> İcra Tahsil Harcı,</span> <br>
+
+             İcra takiplerinde Tahsil Harcı <span class="ark"> alacağın ödenmesi sırasında</span>, <span class="dik"> ödeme yapılmayan hallerde</span>  harç alacağının <span class="mavi"> doğması tarihinden itibaren <span class="dik"> 15 gün</span> içinde ödenir</span>. <br>
+
+             <span class="mavi"> Harç alacağı icranın yerine getirilmesiyle doğar</span>. <br>
+
+             Konunun değeri üzerinden alınacak İflas Harclarında da bu bent hükümleri uygulanır. <br>
+
+             c) <span class="kim"> Depozito, defter tutma ve miras işlerine ait harclar,</span> <br>
+
+             (1) Sayılı tarifenin (D) bölümünde yazılı depozito defter tutma ve miras işlerine ait harclar <span class="mavi"> işin sonundan itibaren <span class="dik"> 15 gün</span> içinde ödenir</span>.</div></div></div>
+<div>
+             İlamsız takiplerde peşin harc:
+             <div>
+             Madde 29 – <span class="ark"> İlama dayanmıyan</span> takip isteklerinden alacak miktarının <span class="mavi"> binde beşi peşin alınır</span>. <br><div><div> <button  onclick="soruyuGoster(353)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div>
+
+             <span class="mavi"> Peşin harclar takip sonunda alınacak asıl harca mahsup olunur</span>. <br>
+
+             İlama dayanmıyan takiplerde alacaklı <span class="ark"> mahkemeye müracaata mecbur kalırsa</span>, <span class="mavi"> peşin alınan harç kendisine iade olunur</span>. <span class="mavi"> Veya alacaklının isteği üzerine mahkeme harclarına mahsup edilir</span>.</div></div>
+
+
+             <div>
+Merkezî Takip Sistemi harcı:
+<div>
+MADDE 29/A- (Ek:6/12/2018-7155/18 md.) <br>
+
+6/12/2018 tarihli ve 7155 sayılı <span class="ark"> Abonelik Sözleşmesinden Kaynaklanan</span> Para Alacaklarına İlişkin Takibin Başlatılması Usulü Hakkında Kanun uyarınca yapılan takiplerde, Merkezî Takip Sistemi harcı <span class="mavi"> peşin alınır</span>. <br>
+
+Haciz aşamasına geçilmeden Merkezî Takip Sistemi aracılığıyla <span class="ark"> sonuçlanan icra takipleri için ayrıca</span> <span class="mavi"> icraya başvurma harcı ile tahsil harcı alınmaz.</span> <br>
+
+İcra takibinin Merkezî Takip Sistemi kapsamında <span class="ark"> sonuçlandırılamaması </span> veya takipten <span class="ark"> vazgeçilmesi</span> hâlinde tahsil edilmiş olan Merkezî Takip Sistemi <span class="mavi"> harcı iade edilmez</span> . Ancak, kesinleşen takibe <span class="ark"> icra  dairesinde devam edilmesi hâlinde</span>, tahsil edilmiş Merkezî Takip Sistemi harcının ödendiği tarihte geçerli olan icraya başvurma harcı tutarını aşan kısmı takip sonunda alınacak <span class="mavi"> tahsil harcına mahsup olunur</span>.</div></div>
+<div>
+             Noksan tesbit edilen değer üzerinden harcın ödenmesi:
+             <div>
+             Madde 30 – Muhakeme sırasında tesbit olunan değerin, dava dilekçesinde bildirilen değerden fazla olduğu anlaşılırsa, <span class="mavi"> yalnız o celse için muhakemeye devam olunur</span>, takip eden celseye kadar noksan değer üzerinden <span class="mavi"> peşin karar ve ilam harcı tamamlanmadıkça davaya devam olunmaz</span>. Hukuk Usulü Muhakemeleri Kanununun 409 uncu maddesinde gösterilen süre içinde dosyanın <span class="mavi"> muameleye konulması, noksan olan harcın ödenmesine bağlıdır</span>.</div></div>
+             <div>
+             Peşin alınan karar ve ilam harclarının geri verilmesi:
+             <div>
+             Madde 31 – Peşin alınan Karar ve İlam Harcı işin hitamında ödenmesi gerekenden fazla olduğu anlaşılırsa <span class="mavi"> fazlalık istek üzerine geri verilir</span>.</div></div>
+
+
+
+
+
+
+BEŞİNCİ BÖLÜM
+
+ Çeşitli Hükümler
+ <div>
+             Harcı ödenmiyen işlemler: (1)
+             <div>
+             Madde 32 – Yargı işlemlerinden alınacak harclar ödenmedikçe mütaakıp işlemler yapılmaz. Ancak ilgilisi tarafından ödenmiyen harcları <span class="ark"> diğer taraf öderse</span>  işleme devam olunmakla beraber bu para muhakeme neticesinde <span class="mavi"> ayrıca bir isteğe hacet kalmaksızın hükümde nazara alınır</span>.</div></div>
+             <div>
+             İşçi alacaklarının takibi:
+             <div>
+             Madde 33 – İş mahkemeleri tarafından işçiler lehine hükme bağlanmış olan hak ve alacakların takibinde işçilerden <span class="mavi"> hiç bir harç alınmadan gerekli işlem yapılır</span>. Bu harclar işçi haklı çıktığı takdirde takip sonunda hesap edilerek ayrıca bir hükme hacet kalmadan borçludan tahsil olunur.</div></div>
+             <div>
+             Yol giderleri ve tazminatı :
+             <div>
+             Madde 34 – (Mülga : 8/5/1991 - 3717/3 md.)</div></div>
+             <div>
+             İstinabe yoliyle icra takiplerinde giderler:
+             <div>
+             Madde 35 – Diğer bir icra ve iflas dairesinden istinabe suretiyle bir işlemin yapılması istendiği zaman bu işlemlere ait lüzumlu <span class="mavi"> giderler o dairelere gönderilir</span>.</div></div>
+             <div>
+             Paraların bankalara  ve mal sandıklarına yatırılması:
+             <div>
+             Madde 36 – (İptal birinci fıkra: Anayasa Mahkemesinin 5/4/2023 Tarihli ve E: 2023/48, K: 2023/72 Sayılı Kararı ile) <br>
+
+             (İptal ikinci fıkra: Anayasa Mahkemesinin 5/4/2023 Tarihli ve E: 2023/48, K: 2023/72 Sayılı Kararı ile) <br>
+
+             <span class="mavi"> Paraların bankaya ve malsandıklarına yatırılması için ilgililerden gider adı ile bir şey alınmaz</span>. <br>
+
+             <span class="mavi"> Paraların alacaklıya gönderilme giderleri alacaklıya aittir. </span><br>
+
+             İlgilinin hak ettiği parayı, hak etme tarihinden itibaren <span class="mavi"> <span class="dik"> on yıl</span> içinde almak için müracaat etmemesi halinde</span>, bu paralar <span class="mavi"> Hazineye gelir kaydolunur</span>.</div></div>
+
+
+             <div>
+             Süresinde ödenmiyen harclar:
+             <div>
+             Madde 37 – Bu kanunda ödeme zamanı gösterilen harclardan süresinde ödenmiyenleri, ilgili mahkeme ve daireler tarafından <span class="mavi"> sürenin sonundan itibaren <span class="dik"> onbeş gün</span> içinde bir yazı ile</span> o yerin vergi dairesine bildirilir ve harclar  <span class="mavi"> vergi dairesince tahsil olunur</span>. <br>
+
+             <span class="kim"> Yazıda</span> harcın <span class="ark"> nevi</span> ve <span class="ark">
+               mahiyeti
+              </span>, <span class="ark"> miktarı,</span> mükellefin <span class="ark"> soyadı ve adı ve en son ikametgah</span>  adresi açık olarak gösterilir.</div></div>
+
+
+             <hr>
+
+
+             ÜÇÜNCÜ KISIM <br>
+
+             Vergi Yargısı Harçları <br> <br>
+
+               BİRİNCİ BÖLÜM <br>
+
+                     Mükellefiyeti
+                     <div>
+Mevzuu:
+<div>
+Madde 52 – (Değişik: 21/1/1982 - 2588/4 md.)
+
+Vergi yargısı işlemlerinden bu Kanuna ekli <span class="span"> (3) sayılı tarifede</span> yazılı olanlar, <span class="mavi"> vergi yargısı harçlarına tabidir</span>.</div></div>
+
+
+<div>
+Mükellef:
+<div>
+Madde 53 – (Değişik: 21/1/1982  - 2588/5 md.) <br>
+
+Vergi yargısı harçları, harca mevzu olan işlemlerden dolayı <span class="ark"> Vergi Mahkemeleri</span>,  <span class="ark">Bölge İdare Mahkemeleri</span> ve <span class="ark"> Danıştay</span>'a <span class="mavi"> başvuranlar tarafından ödenir</span>.</div></div>
+<div> <button  onclick="soruyuGoster(288)" class="soru" >2017 yılı çıkmış soru</button> </div>
+                 İKİNCİ BÖLÜM <br>
+
+Harcın Ölçüsü, Ödenmesi ve Geri Verilmesi
+<div>
+Harç alma ölçüleri:
+<div>
+Madde 54 – (Değişik: 21/1/1982  - 2588/6 md.)
+<br>
+Vergi yargısı harçları (3) sayılı tarifede yazılı işlemlerden <span class="ark"> değer ölçüsüne göre</span> <span class="mavi"> nispi esas üzerinden</span>, işlemin <span class="ark"> nevi ve mahiyetine göre</span>  <span class="mavi"> maktu esas üzerinden alınır</span>.</div></div>
+<div>
+Harcın ödenmesi:
+<div>
+Madde 55 – (Değişik: 21/1/1982 - 2588/7 md.) <br>
+
+Vergi yargısı harçlarından, <span class="mavi"> <span class="dik"> “Başvurma harcı”</span> <span class="ark">dava dilekçesi verilmesi sırasında</span> makbuz karşılığında ödenir.</span>(1) <br>
+
+Nispi ve maktu harçlar, ihbarname esasına göre, <span class="mavi"> ihbarnamenin tebliği tarihinden itibaren <span class="dik"> 1 ay</span> içinde ilgili vergi dairesine ödenir</span>.</div></div>
+<div>
+Harcın geri verilmesi:
+<div>
+Madde 56 – (Değişik: 21/1/1982 - 2588/8 md.) <br>
+
+Vergi Mahkemelerince verilen nihai kararlar üzerinden alınan nispi ve maktu harçlar (Başvurma harcı hariç) Bölge İdare Mehkemelerince veya Danıştayca mükellef lehine karar verilmesi halinde mükellefçe kazanılan miktar üzerinden, kesin kararın tebliği tarihinden itibaren <span class="mavi"> <span class="dik"> bir yıl</span> içinde geri verilir veya istek üzerine vergi borcuna mahsup edilir</span>.<div> <button  onclick="soruyuGoster(91)" class="soru" >2023 yılı çıkmış soru</button> </div></div></div><div> <button  onclick="soruyuGoster(151)" class="soru" >2016 yılı çıkmış soru</button> </div>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+  if (soruContainer.style.display === "none") {
+    soruContainer.style.display = "block";
+  } else {
+    soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+    soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+  document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

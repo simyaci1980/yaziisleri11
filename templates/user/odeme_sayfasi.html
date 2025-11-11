@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+                <h4>Ödeme Sayfası</h4>
+            </div>
+            <div class="card-body text-center">
+                {% if user.is_authenticated %}
+                    <p class="lead">
+                        Ödeme yapmak için aşağıdaki adımları takip edin.
+                    </p>
+                    <hr>
+                    <ol class="text-left">
+                        <li>
+                            Aşağıdaki <b>IBAN</b> numarasına havale / EFT yapın:
+                            <div class="input-group mt-2">
+                                <input type="text" id="ibanInput" class="form-control" 
+                                       value="TR090006701000000024652195" readonly>                                  
+                                <button class="btn btn-outline-secondary" type="button" onclick="copyIBAN()">
+                                    Kopyala
+                                </button>
+                                <input type="text" id="isimInput" class="form-control" 
+                                       value="Ceyhan ALTINSOY" readonly>
+                                       <button class="btn btn-outline-secondary" type="button" onclick="copyIsim()">
+                                    Kopyala
+                                </button>
+                            </div>
+                            <strong class="text-danger fw-bold">AÇIKLAMAYA KULLANICI ADINIZI YAZMAYI UNUTMAYIN </strong>
+                        </li>
+                        <li>Ödeme yaptıktan sonra aşağıdaki “Ödeme Bildirimi Gönder” butonuna tıklayın.</li>
+                        <li>Telefon: {{ user.profile.telefon|default:"Sisteminizde telefon kaydı yok" }}</li>
+                    </ol>
+
+                    <form method="post" action="{% url 'odeme_bildirim' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-lg mt-3">
+                            Ödeme Bildirimi Gönder
+                        </button>
+                    </form>
+                {% else %}
+                    <p class="text-danger fw-bold">
+                        Ödeme bildirimini gönderebilmek için lütfen giriş yapın.
+                        <a href="{% url 'login' %}">Giriş Yap</a>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyIBAN() {
+    var copyText = document.getElementById("ibanInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // mobil uyumluluk için
+    navigator.clipboard.writeText(copyText.value);
+    alert("IBAN kopyalandı: " + copyText.value);
+}
+function copyIsim() {
+    var copyText = document.getElementById("isimInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // mobil uyumluluk için
+    navigator.clipboard.writeText(copyText.value);
+    alert("İsim kopyalandı: " + copyText.value);
+}
+</script>
+{% endblock %}

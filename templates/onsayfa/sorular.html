@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorular</title>
+</head>
+<body>
+    <h1>Sorular Listesi</h1>
+
+    <!-- JSON verisini bir div içinde saklıyoruz -->
+    <div id="json-data" style="display: none;">
+        [
+            {"id": 1, "soru": "Django nedir?", "cevap": "Python tabanlı bir web framework'üdür."},
+            {"id": 2, "soru": "Django neden kullanılır?", "cevap": "Hızlı, güvenli ve ölçeklenebilir olduğu için."}
+        ]
+    </div>
+
+    <ul id="soru-listesi"></ul>
+
+    <script>
+        // JSON verisini HTML içinden çek
+        let jsonVerisi = document.getElementById("json-data").innerText;
+        
+        // JSON stringini parse et
+        let sorular = JSON.parse(jsonVerisi);
+
+        // HTML içinde listeleme
+        let liste = document.getElementById("soru-listesi");
+        sorular.forEach(item => {
+            let li = document.createElement("li");
+            li.innerHTML = `<strong>${item.soru}</strong>: ${item.cevap}`;
+            liste.appendChild(li);
+        });
+    </script>
+</body>
+</html>

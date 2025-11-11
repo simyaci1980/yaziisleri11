@@ -1,0 +1,1133 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ; 
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}	
+
+.span{color: chartreuse;}
+
+.ark{background-color:black ; color: aliceblue; border-radius: 10 px; }
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px;}
+.yel{background-color: green;}
+.yal{background-color: blue;}
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }	
+
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }	
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}	  
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+	
+	}	
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+	
+	
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1); 
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+		
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;	
+	top: 5;
+	width: 100%;
+	position: fixed; 
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 5px;
+	border-style: groove;
+	border-color:white;
+	}	
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;	
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}	
+.soru{
+	cursor: pointer;	
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}	
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}	
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}	
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}	
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;		
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+	
+	
+</style>
+<title>BAM tutulacak kayıtlar</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ; 
+		} }
+	     
+	
+	
+	
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon 
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için 		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için 
+		
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ() 
+		metınKim()
+        metınyel()
+        metınyal() 	}
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+
+    function metınyel(){		
+		var panDivs= document.querySelectorAll(".yel");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	 
+        
+    function metınyal(){		
+		var panDivs= document.querySelectorAll(".yal");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }  
+		
+	function kimuyp(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function kimdahe(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} } 
+		
+	function kimyes(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} } 	
+		
+	function metınArk(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function metınDık(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınEDİ(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınYes(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function metındmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }	
+	
+	function metınkır(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }	
+
+	function morlas(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikcho(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function dikuyp(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }		
+
+	function dikkırmızı(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }			
+	
+	function morlasss(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }				
+	
+	function arkuyp(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function arkdahe(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }	
+
+	function metınmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikles(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }			
+		
+	function chola(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }			
+	
+	function dahadayeni(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }	
+	 
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor 
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))	
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')		 
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık 
+			} 
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+	
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+	
+	
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+	
+	}	
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor 
+		element.style.color="red";
+		element.style.fontWeight="bold"}	 
+	 
+	function YAZDIR(){
+	   window.print()}
+	
+	   function DivResetle(){
+		
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ; 
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  } 
+	
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>		
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button> 
+	</div> <br><br>
+							<hr>
+	
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+		
+	  <p> 
+		<button class="but" onclick= "badyMavi()" >Mavi</button> <br>	
+		<button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		<button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		<button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		<button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		<button class="yen" onclick="yeni()"> Yeni </button> <br>
+		<button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		<button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		<button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	  </p></div>
+		
+	  <script>			
+		acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};}); 		
+		</script> </div>
+		
+	
+		
+		<div id="soruContainer" class="soruContainer">
+			<div id="soruDiv">
+				<!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+			</div>
+			<div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+			<button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			<button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			<p id="dogruCevap" style="display: none;"></p>
+		</div>	
+		<script src="static/js/script.js"></script>
+	Bölge Adliye Mahkemesi Cumhuriyet Başsavcılığı <br>
+
+Yazı İşleri Müdürlüğü Hizmetleri
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 14 ‒<div>  (1) Cumhuriyet başsavcılıklarında;
+	<div> 
+a) Esas kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+b)  Tebliğname kaydı, <span class="yal"> ____ (BAM SAV  )</span> <br>
+
+c) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+ç)  Suç eşyası kaydı, <span class="yel"> ____ (BAM SAV /  CUM SAV  )</span> <br>
+
+d) Uyuşmazlığın giderilmesi başvuru kaydı, <span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  )</span> <br>
+
+e) Yakalama kaydı,<span class="yel"> ____ (BAM SAV /  CUM SAV  )</span> <br>
+
+f) Temyiz kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+g)  İtiraz kaydı, <span class="yal"> ____ (BAM SAV)</span> <br>
+
+ğ)  Kanun yararına bozma kaydı, <span class="yal"> ____ (BAM SAV)</span> <br>
+
+h) Dava nakil istekleri kaydı, <span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  )</span> <br>
+
+ı) Cumhuriyet savcısı bilgi kaydı, <span class="yel"> ____ (BAM SAV /  CUM SAV  )</span><br>
+
+i)  Kitaplık kaydı <span class="yel"> ____ (BAM SAV /  CUM SAV  )</span> </div></div></div></div>
+
+<hr>
+<div> 
+    Kartonlar ve tahsis amacı
+    <div> 
+    MADDE 27 ‒<div>  (1) Cumhuriyet başsavcılıklarında aşağıda gösterilen karar ve işlem kartonlarının UYAP’ta tutulması zorunludur.
+        <div> 
+    a) <span class="kim"> Tebliğnameler kartonu:</span> Cumhuriyet başsavcılığınca düzenlenen tebliğnamelerin saklandığı kartondur. <br>
+    
+    b)<span class="kim">  Posta gönderi kartonu:</span> <span class="span" > Görevli tarafından imza ve mühür ile teslim alınan</span>  posta evrakına ait sevk irsaliyelerinin bir örneği ile ödeme <span class="span"> talimatının ve aylık posta gideri cetvelinin</span>  bir örneğinin konulduğu ve saklandığı kartondur. <br>
+    
+    c)<span class="kim">  İstinabe belgesi kartonu:</span> Başka yer Cumhuriyet başsavcılıklarından dava ve işler ile ilgili olarak gönderilen ve <span class="span"> işlem görüp iade edilen istinabe belgesinin</span> saklandığı kartondur. <br>
+    
+    ç) <span class="kim"> İş cetvelleri kartonu:</span> Cumhuriyet başsavcılığınca, <span class="mavi"> Bakanlık ve Kurula gönderilen</span> iş cetvellerinin saklandığı kartondur. <br>
+    
+    d)<span class="kim">  Zimmet kartonu:</span> Cumhuriyet başsavcılığınca, UYAP üzerinden gönderilemeyen veya <span class="span"> fizikî olarak gönderilmesi gereken</span> evrakın teslimine ilişkin belgelerin konulduğu ve saklandığı kartondur. <br>
+    
+    e) <span class="kim"> Uyuşmazlığın giderilmesi talebi kartonu:</span> Ceza dairelerinin benzer olaylarda kesin olarak verdikleri kararlar arasındaki <span class="span"> uyuşmazlığın giderilmesi için başkanlar kuruluna yapılan</span>  başvuruların saklandığı kartondur. <br>
+    
+    f)<span class="kim">  İtiraz kartonu:</span> Ceza dairesinin kararlarına <span class="span"> Cumhuriyet başsavcılığınca yapılan itirazların</span> saklandığı kartondur. <br>
+    
+    g)<span class="kim">  Temyiz kartonu:</span> Ceza dairesi kararlarının Yargıtay tarafından incelenmesi için <span class="span"> Cumhuriyet başsavcılığınca ilgili daireye</span> verilen evrakın saklandığı kartondur. <br>
+    
+    ğ) <span class="kim"> Kanun yararına bozma kartonu:</span> Ceza dairesinin kararlarına karşı <span class="span"> Cumhuriyet savcılarınca kanun yararına bozma yoluna gidilmesi için yazılan</span> dilekçelerin saklandığı kartondur. <br>
+    
+    h)<span class="kim">  Nöbetçi Cumhuriyet savcıları isim listesi kartonu:</span> Nöbetçi Cumhuriyet savcılarının isimlerinin yer aldığı listelerin saklandığı kartondur. <br>
+    
+    ı) <span class="kim"> İş bölümü kartonu:</span> İş bölümü kararlarının saklandığı kartondur. <br>
+    
+    i)<span class="kim">  Dava nakil istekleri kartonu:</span> Dava nakil isteklerine ilişkin <span class="span"> Cumhuriyet başsavcılığı tarafından verilen mütalaaların veya tebliğnamelerin</span> saklandığı kartondur.</div>
+    
+    (2) Birinci fıkranın (b) ve (d) bentlerinde gösterilen kartonların fizikî olarak da tutulması gerekir.</div></div></div>
+
+    <hr>
+    Bölge Adliye Mahkemesi Ceza Daireleri Yazı İşleri Hizmetleri
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 28 ‒ <div> (1) Ceza dairelerinde;
+	<div> 
+a) Esas kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+b) Duruşma ve keşif günleri kaydı,  ____ ( BAM CD / BAM HD )<br>
+
+c) Karar kaydı,______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM ) <br>
+
+ç) <span class="span"> SEGBİS kaydı</span>,______ ( BAM CD / CEZA / CUM SAV )  <br>
+
+d) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+e) Uyuşmazlığın giderilmesi başvuru kaydı, <span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  )</span><br>
+
+f) Temyiz kaydı,<span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+g) <span class="span"> Taşra temyiz kaydı</span>, ______( BAM CD / BAM HD) <br>
+
+ğ) <span class="span"> Dava nakil istekleri kaydı,</span> <span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  )</span> <br>
+
+h) <span class="span"> Dağıtım kaydı</span>, ______( BAM CD / BAM HD) <br>
+
+ı) <span class="span"> Değişik işler kaydı</span> ____(BAM CD / BAM HD / CEZA / HUKUK</div></div></div></div>
+
+<hr>
+<div> 
+    Kartonlar ve tahsis amacı
+    <div> 
+    MADDE 40 ‒ <div> (1) Ceza dairelerinde aşağıda gösterilen karar ve işlem kartonlarının UYAP’ta tutulması zorunludur.
+        <div> 
+    a)<span class="kim">  Karar kartonu:</span> Ceza dairesince verilen kararların saklandığı kartondur. <br>
+    
+    b)<span class="kim">  Değişik işler kartonu:</span> Değişik işler kaydına kaydolunan işler hakkında verilen kararların saklandığı kartondur. <br>
+    
+    c)<span class="kim">  Yayınlanan kararlar kartonu :</span> <span class="mavi"> Başkanlar kurulu tarafından yayınlanan</span> kararların saklandığı kartondur. <br>
+    
+    ç) <span class="kim"> İş cetvelleri kartonu:</span> Ceza dairelerince, <span class="mavi"> Bakanlık ve Kurula gönderilen iş cetvellerinin</span> saklandığı kartondur. <br>
+    
+    d)<span class="kim">  Posta gönderileri kartonu:</span> Görevli tarafından imza ve mühür ile teslim alınan posta evrakına ait <span  class="span"> sevk irsaliyelerinin bir örneği ile ödeme talimatının ve aylık posta gideri cetvelinin</span> bir örneğinin konulduğu ve saklandığı kartondur. <br>
+    
+    e)<span class="kim">  Zimmet kartonu:</span> Ceza dairesince, UYAP üzerinden gönderilemeyen veya <span class="span"> fizikî olarak gönderilmesi gereken</span> evrakın teslimine ilişkin belgelerin konulduğu ve saklandığı kartondur. <br>
+    
+    f)<span class="kim">  Uyuşmazlığın giderilmesi talebi kartonu:</span> Benzer olaylarda ceza dairelerince verilen <span class="span"> kesin nitelikteki kararlar</span> ile bu ceza dairesi ile <span class="span"> aynı</span> mahkemenin <span class="span"> başka ceza</span> daireleri veya başka bir bölge adliye mahkemesi ceza dairelerince verilen kesin nitelikteki kararları <span class="span"> arasında</span> uyuşmazlık bulunması hâlinde bu <span class="span"> uyuşmazlığın giderilmesi amacıyla yapılan taleplerin saklandığı kartondur</span>. <br>
+    
+    g) <span class="kim"> Duruşma listesi kartonu:</span> Duruşması yapılacak dosyalar için <span class="span"> duruşma listelerinin saklandığı kartondur</span>. <br>
+    
+    ğ)<span class="kim">  Nöbetçi daire başkanı ve üyeleri isim listesi kartonu:</span> Nöbetçi daire başkanı ve üyelerin isimlerinin yer aldığı listelerin saklandığı kartondur. <br>
+    
+    h) <span class="kim"> Yargılama giderleri yazışma kartonu: </span><span class="span"> Yargılama giderlerinin tahsili için yapılan yazışmaların</span> saklandığı kartondur. <br>
+    
+    ı) <span class="kim"> İnceleme raporları kartonu:</span> <span class="span"> Üyeler tarafından hazırlanan inceleme raporlarının</span> saklandığı kartondur. <br>
+    
+    i)<span class="kim">  Ön inceleme değerlendirme kartonu:</span> <span class="span"> Ön inceleme sonucunda verilen kararların</span> saklandığı kartondur. <br>
+    
+    j) <span class="kim"> Dava nakil istekleri kartonu:</span> Dava nakil <span class="span"> isteklerine ilişkin dairece verilen</span> kararların saklandığı kartondur.</div>
+    
+    (2) Birinci fıkranın (d) ve (e) bentlerinde gösterilen kartonların fizikî olarak da tutulması gerekir.</div></div></div>
+
+    <hr>
+    Bölge Adliye Mahkemesi Hukuk Daireleri Yazı İşleri Hizmetleri
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 48 ‒ <div> (1) Hukuk dairelerinde;
+	<div> 
+a) Esas kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br> 
+
+b) Duruşma ve keşif günleri kaydı,  ____ ( BAM CD / BAM HD )<br>
+
+c) Karar kaydı, ______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM )<br>
+
+ç) Uyuşmazlığın giderilmesi başvuru kaydı,<span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  ) </span><br>
+ 
+d) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+e) Temyiz kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+f) Değişik işler kaydı, ____(BAM CD / BAM HD / CEZA / HUKUK)<br>
+
+g) Posta mutemet kaydı, ____(BAM HD / HUKUK) <br>
+
+ğ) Dağıtım kaydı, ______( BAM CD / BAM HD)<br>
+
+h) <span class="span"> Vezne kaydı</span>, <span class="yal"> _____ (BAM HD)</span> <br>
+
+ı) Taşra temyiz kaydı,  ______( BAM CD / BAM HD) <br>
+
+i) Dava nakil istekleri kaydı, <span class="dik"> ____ (BAM SAV / BAM CD / BAM HD  )</span> <br>
+
+j) <span class="span"> Harç tahsil müzekkeresi kaydı</span>,____(BAM HD / HUKUK ) <br>
+
+k) Kıymetli evrak ve eşya kaydı, ____(BAM HD / HUKUK )<br>
+
+l) <span class="span"> Sosyal inceleme-görüşme rapor kaydı</span>,____(BAM HD / HUKUK ) </div></div></div></div>
+
+<hr>
+<div> 
+    Kartonlar ve tahsis amacı
+    <div> 
+    MADDE 64 ‒ <div> (1) Hukuk dairelerinde aşağıda gösterilen karar ve işlem kartonlarının UYAP’ta tutulması zorunludur.
+        <div> 
+    a)<span class="kim">  Karar kartonu:</span> Hukuk dairesince dava sonunda verilen <span class="span"> kararların saklandığı kartondur</span>. <br>
+    
+    b)<span class="kim">  Değişik işler kartonu:</span> Değişik işler kaydına kaydolunan işler hakkında verilen kararların saklandığı kartondur. <br>
+    
+    c) <span class="kim"> Yayınlanan kararlar kartonu:</span> <span class="mavi"> Başkanlar kurulu tarafından yayınlanan</span> kararların saklandığı kartondur. <br>
+    
+    ç)<span class="kim"> İcranın geri bırakılması kararlar kartonu:</span> <span class="mavi"> İcranın geri bırakılması talepleri hakkında verilen kararların saklandığı kartondur</span>. <br>
+    
+    d) <span class="kim"> İş cetvelleri kartonu:</span> Hukuk dairelerince, <span class="span"> Bakanlık ve Kurula gönderilen iş cetvellerinin saklandığı kartondur. </span><br>
+    
+    e) <span class="kim"> Posta gönderileri kartonu:</span> Görevli tarafından imza ve mühür ile teslim alınan posta evrakına ait <span class="span"> sevk irsaliyelerinin bir örneği ile ödeme talimatının ve aylık posta gideri cetvelinin</span> bir örneğinin konulduğu ve saklandığı kartondur. <br>
+    
+    f)<span class="kim">  Zimmet kartonu:</span> Hukuk dairesince, UYAP üzerinden  <span class="span">gönderilemeyen veya fizikî olarak gönderilmesi gereken</span> evrakın teslimine ilişkin belgelerin konulduğu ve saklandığı kartondur. <br>
+    
+    g)<span class="kim">  Uyuşmazlığın giderilmesi talebi kartonu:</span> Benzer olaylarda hukuk dairelerince verilen kesin nitelikteki kararlar ile bu hukuk dairesi ile <span class="span"> aynı</span> mahkemenin <span class="span"> başka hukuk daireleri</span>  veya başka bir bölge adliye mahkemesi hukuk dairelerince verilen <span class="span"> kesin nitelikteki kararları arasında</span>  uyuşmazlık bulunması hâlinde bu uyuşmazlığın giderilmesi amacıyla yapılan taleplerin saklandığı kartondur. <br>
+    
+    ğ) <span class="kim"> Duruşma listesi kartonu:</span> Duruşması yapılacak dosyalar için duruşma listelerinin saklandığı kartondur. <br>
+    
+    h)<span class="kim">  Nöbetçi daire başkanı ve üyeleri isim listesi kartonu:</span> Nöbetçi daire başkan ve üyelerin isimlerinin yer aldığı listelerin saklandığı kartondur. <br>
+    
+    ı) <span class="kim"> Harç ve para cezası tahsil müzekkereleri kartonu:</span> Harç ve para cezası tahsil müzekkerelerinin saklandığı kartondur. <br>
+    
+    i) <span class="kim"> İnceleme raporları kartonu:</span> <span class="mavi"> Üyeler tarafından hazırlanan inceleme raporlarının saklandığı kartondur</span>. <br>
+    
+    j)<span class="kim">  Ön inceleme değerlendirme kartonu:</span> <span class="mavi"> Ön inceleme sonucunda verilen kararların saklandığı kartondur</span>. <br>
+    
+    k)<span class="kim">  Dava nakil istekleri kartonu:</span> <span class="span"> Dava nakil isteklerine ilişkin dairece verilen kararların</span>  saklandığı kartondur. </div>
+    
+    (2) Birinci fıkranın (e), (f) ve <span class="ark"> (ı)</span>  bentlerinde gösterilen kartonların fizikî olarak da tutulması gerekir.</div></div></div>
+
+    <hr>
+    Bölge Adliye Mahkemesi Adalet Komisyonu Yazı İşleri Hizmetleri
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 70 ‒ (1) Komisyon yazı işleri müdürlüğünde;
+<div> 
+a) Özlük kaydı, ______(BAM KOM / KOM)<br>
+
+b) Karar kaydı, ______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM ) <br>
+
+c) Personel <span class="span"> nöbet</span> kaydı, ______(BAM KOM / KOM)<br>
+
+ç) Genelge ve görüş kaydı,______(BAM KOM / KOM) <br>
+
+d) <span class="span"> Duyuru kaydı</span>, ______(BAM KOM / KOM) <br>
+
+e) <span class="span"> Fazla ve esnek</span> çalışma kaydı, ______(BAM KOM / KOM)<br>
+
+f) Hâkim <span class="span"> bilgi kaydı</span>, ______(BAM KOM / KOM)<br>
+
+g) <spanv> Komisyon gündem</span> kaydı,______(BAM KOM / KOM) <br>
+
+ğ) Bilirkişi listesi kaydı, ____(BAM KOM / KOM / CEZA/ CUM SAV) <br>
+
+h) Sınav kaydı, ______(BAM KOM / KOM)<br>
+
+ı) Dava işleri kaydı, ______(BAM KOM / KOM) </div></div></div>
+
+<hr>
+Ortak Tutulacak Kayıtlar
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 89 ‒ (1) Bölge adliye mahkemesi başkanlığı, daireler, Cumhuriyet başsavcılığı ile komisyonlarda;
+<div> 
+a) <span class="span"> Zimmet </span> kaydı, <br>
+
+b) <span class="span"> Muhabere</span> kaydı, <br>
+
+c) <span class="span"> Disiplin soruşturma</span> kaydı, <br>
+
+ç) <span class="span"> Teftiş</span> kaydı, <br>
+
+d) <span class="span"> Bilgi edinme</span> kaydı,</div>
+
+tutulması zorunludur.</div></div>
+<hr>
+<div> 
+    Kartonlar ve tahsis amacı
+    <div> 
+    MADDE 95 ‒ (1) Bölge adliye mahkemesi başkanlığı, daireler, Cumhuriyet başsavcılığı ile komisyonlarda aşağıda gösterilen karar ve işlem kartonlarının UYAP’ta tutulması zorunludur.
+    <div> 
+    a) <span class="kim"> Muhabere kartonu:</span> <span class="span"> Muhabereye kayıtlı olarak</span> yapılan tüm yazışmaların saklandığı kartondur. <br>
+    
+    b)<span class="kim">  Denetim kartonu:</span> <span class="span"> Denetim döneminde yapılan tavsiyeler</span> ile tebliğine ilişkin belgelerin saklandığı kartondur. <br>
+    
+    c)<span class="kim">  Genelge ve görüş kartonu:</span> <span class="span"> Bakanlık ve Kurul tarafından çıkarılan genelge ve görüşler</span> ile tebliğine ilişkin belgelerin saklandığı kartondur. <br>
+    
+    ç)<span class="kim">  Disiplin soruşturması kartonu:</span> <span class="span"> Disiplin soruşturması sonucu verilen nihai kararların</span> saklandığı kartondur. <br>
+    
+    d) <span class="kim"> Taşınır kartonu:</span> 28/12/2006 tarihli ve 2006/11545 sayılı Bakanlar Kurulu Kararı ile yürürlüğe konulan Taşınır Mal Yönetmeliği hükümlerine uygun olarak, kamu hizmetlerinin yürütülmesinde kullanılan <span class="span"> her türlü taşınırın kayıt ve hesap işlemlerinin saklandığı kartondur</span>.</div></div></div>
+    <hr>
+    Cumhuriyet Başsavcılığı Yazı İşleri Hizmetleri
+<div> 
+Tutulacak Kayıtlar
+<div> 
+MADDE 107 ‒ (1) Cumhuriyet başsavcılığında;
+<div> 
+a) Soruşturma kaydı, <br>
+
+b) Suç eşyası kaydı, <span class="yel"> ____ (BAM SAV /  CUM SAV  ) </span><br>
+
+c) Ölü muayenesi ve otopsi kaydı, <br>
+
+ç) Uzlaşma kaydı, _____(CUM SAV/ CEZA)<br>
+
+d) Önödeme kaydı, _____(CUM SAV/ CEZA)<br>
+
+e) <span class="span"> Bilirkişilik kaydı</span>,____(BAM KOM / KOM / CEZA/ CUM SAV) <br>
+
+f) Tercüman kaydı, _____(CUM SAV/ CEZA)<br>
+
+g) SEGBİS kaydı, ______ ( BAM CD / CEZA / CUM SAV )<br>
+
+ğ) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+h) Yakalama kaydı, <span class="yel"> ____ (BAM SAV /  CUM SAV  )</span><br>
+
+ı) <span class="span"> Ailenin korunması kararlarının kaydı</span>, <br>
+ 
+i) Esas kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+j) İnfaz kaydı, <br>
+
+k) Denetimli serbestlik kaydı, <br>
+
+l) <span class="span"> Hapis ile tazyik kaydı</span>, <br>
+
+m)  <span class="span">Tazyik hapsi kaydı,</span> <br>
+ 
+n) <span class="span"> Disiplin hapsi kaydı</span>, <br>
+
+o) İstinaf kaydı, ______(CUM SAV/ CEZA / HUKUK) <br>
+
+ö) Temyiz kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )<br></span>
+
+p) Muhabere kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+
+r) <span class="span"> İdarî yaptırım kararlarının kaydı</span>, <br>
+
+s) Zimmet kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+
+ş) Kitaplık kaydı,<span class="yel"> ____ (BAM SAV /  CUM SAV  )</span> <br>
+
+t) Cumhuriyet savcısı <span class="span"> bilgi kaydı</span>,<span class="yel"> ____ (BAM SAV /  CUM SAV  )</span></div></div></div>
+<hr>
+<div> 
+    Kartonlar
+    <div> 
+    MADDE 134 ‒<div>  (1) Cumhuriyet başsavcılığında, aşağıda gösterilen karar ve işlem kartonlarının UYAP’ta tutulması zorunludur.
+        <div> 
+    a) <span class="kim">  İddianame kartonu:</span> Cumhuriyet başsavcılığınca düzenlenen <span class="span"> iddianamelerin saklandığı kartondur</span>. <span class="mavi"> Her mahkeme için ayrı bir iddianame kartonu tutulur</span>. <br>
+    
+    b) <span class="kim"> Kovuşturmaya yer olmadığına dair karar kartonu:</span> Cumhuriyet başsavcılığınca verilen <span class="span"> kovuşturmaya yer olmadığına dair</span> kararların saklandığı kartondur. <br>
+    
+    c)<span class="kim">  Fezleke kartonu: </span><span class="mavi"> Cumhuriyet başsavcılığınca görev nedeniyle ağır ceza mahkemesi Cumhuriyet başsavcılığına gönderilen fezlekelerin</span> saklandığı kartondur. <br>
+    
+    ç) <span class="kim"> Görevsizlik ve yetkisizlik kararı kartonu: </span> Cumhuriyet başsavcılığınca verilen <span class="span"> görevsizlik ve yetkisizlik kararlarının</span> saklandığı kartondur. Gerekli hâllerde bu kartonlar ayrı tutulabilir. <br>
+    
+    d) <span class="kim"> Kamu davasının açılmasının ertelenmesine ilişkin karar kartonu: </span> Cumhuriyet başsavcılığınca verilen <span class="span"> kamu davasının açılmasının ertelenmesine ilişkin</span> kararların saklandığı kartondur. <br>
+    
+    e) <span class="kim">  İdarî yaptırım kararı kartonu:</span> Cumhuriyet başsavcılığınca verilen <span class="span"> idarî yaptırım kararlarının</span> saklandığı kartondur. <br>
+    
+    f) <span class="kim"> Değişik işler kartonu:</span> Cumhuriyet başsavcılığınca, <span class="span"> diğer kartonlarda saklanması gerekmeyen işlem ve kararların</span> saklandığı kartondur. <br>
+    
+    g) <span class="kim">  Hapis cezasının infazının ertelenmesi kararı kartonu:</span> Cumhuriyet başsavcılığınca, 5275 sayılı Ceza ve Güvenlik Tedbirlerinin İnfazı Hakkında Kanunun 16 ve 17 nci maddeleri uyarınca verilen <span class="span"> hapis cezasının infazının ertelenmesine dair</span> kararların saklandığı kartondur. <br>
+    
+    ğ) <span class="kim">  Adlî tebligat ve posta gönderileri kartonu:</span> Görevli tarafından imza ve mühür ile <span class="mavi"> teslim alınan tebligat ve posta evrakına </span>ait sevk irsaliyelerinin bir örneği ile <span class="mavi"> ödeme talimatının ve aylık posta gideri cetvelinin bir örneğinin</span> konulduğu ve saklandığı kartondur. <span class="mavi"> Temyiz ve istinaf kanun yoluna gönderilen dosyalar ile haricî ilâmlar hakkında ayrı irsaliyeler düzenlenir ve bunlar ayrı kartonlarda muhafaza edilir</span>. <br>
+    
+    h)<span class="kim">  İş cetvelleri kartonu:</span> Cumhuriyet başsavcılığınca, <span class="span"> Bakanlık ve Kurula gönderilen iş cetvellerinin saklandığı kartondur</span>. <br>
+    
+    ı) <span class="kim"> Teftiş tavsiyeler listesi kartonu:</span> <spanv> Teftiş sonucunda düzenlenen tavsiye listelerinin</span> saklandığı kartondur. <br>
+    
+    i) <span class="kim">  Denetleme kartonu:</span> Cumhuriyet başsavcılığınca, <span class="mavi"> noterlik ve icra müdürlüğü işlemlerinin denetimi sonucunda düzenlenen raporlar</span> ile mahkeme yazı işleri müdürleri ve parayı elinde bulunduran diğer görevlilerin <span class="dik"> kasa hesaplarının tespit ve denetimine ilişkin tutanakların birer örneğinin konulduğu ve saklandığı kartondur.</span>  Bu kartona konulacak rapor örneklerinde ve tutanaklarda <span class="mavi"> Cumhuriyet savcısının imzası ile Cumhuriyet başsavcılığı mührünün bulunması zorunludur</span>. <br>
+    
+    j)  <span class="kim"> Zimmet kartonu: </span> Cumhuriyet başsavcılığınca, <span class="span"> UYAP üzerinden gönderilemeyen evrakın</span> teslimine ilişkin belgelerin konulduğu ve saklandığı kartondur. Elektronik ortamda tutulan kaydın <span class="mavi"> çıktısı alınır, ilgili sütun imzalatıldıktan sonra taranarak UYAP’a aktarılır ve kartonda muhafaza edilir.</span> </div>
+    
+    (2) Birinci fıkranın <span class="ark"> (ğ), (i)</span> ve (j) bentlerinde gösterilen kartonların fizikî olarak da tutulması gerekir.</div></div></div>
+    
+    <hr>
+    Ceza Mahkemeleri ve Hâkimlikleri Yazı İşleri Hizmetleri
+<div> 
+Tutulacak Kayıtlar
+<div> 
+MADDE 139 ‒ (1) Ceza mahkemeleri ve hâkimliklerinde ilgisine göre;
+<div> 
+a) İddianamenin değerlendirilmesi kaydı, <br>
+
+b) Esas kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span> <br>
+
+c) Duruşma günleri kaydı, <br>
+
+ç) Keşif günleri kaydı, <br>
+
+d) Uzlaşma kaydı,_____(CUM SAV/ CEZA) <br>
+
+e) Önödeme kaydı,_____(CUM SAV/ CEZA) <br>
+
+f) <span class="span"> Bilirkişilik kaydı</span>,____(BAM KOM / KOM / CEZA/ CUM SAV) <br>
+
+g) Tercüman kaydı,_____(CUM SAV/ CEZA) <br>
+
+ğ) SEGBİS kaydı, ______ ( BAM CD / CEZA / CUM SAV )<br>
+
+h) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+ı) Karar kaydı, ______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM )<br>
+
+i) İstinaf kaydı,______(CUM SAV/ CEZA / HUKUK) <br>
+
+j) Temyiz kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )<br></span>
+
+k) <span class="span"> İnfaz hâkimliği kaydı</span>, <br>
+
+l) <span class="span"> Koruyucu ve destekleyici tedbir kararları kaydı</span>, <br>
+
+m) <span class="span"> Sorgu kaydı</span>, <br>
+
+n) Değişik işler kaydı,  ____(BAM CD / BAM HD / CEZA / HUKUK) <br>
+
+o) Muhabere kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+
+ö) Zimmet kaydı,____(CUM SAV / CEZA / HUKUK /KOM)</div>
+
+tutulması zorunludur.</div></div>
+
+<hr>
+Hukuk Mahkemeleri Yazı İşleri Hizmetleri 
+<div> 
+Tutulacak kayıtlar
+<div> 
+MADDE 171 ‒ <div> (1) Hukuk mahkemelerinde ilgisine göre;
+	<div> 
+a) Esas kaydı,  <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+b) Karar kaydı, ______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM )<br>
+
+c) İstinaf kaydı,______(CUM SAV/ CEZA / HUKUK) <br>
+
+ç) Temyiz kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )<br></span>
+
+d) İstinabe kaydı, <span class="ark"> ____ (BAM SAV / BAM CD / BAM HD / CUM SAV / CEZA / HUKUK )</span><br>
+
+e) Değişik işler kaydı, ____(BAM CD / BAM HD / CEZA / HUKUK) <br>
+
+f) Duruşma günleri kaydı, <br>
+
+g) Keşif günleri kaydı, <br>
+
+ğ) <span class="span"> Taşra istinaf veya temyiz kaydı</span>, <br>
+
+h) <span class="span"> Satış talep edilen ortaklığın giderilmesi dosyalarının kaydına mahsus esas kaydı</span>, <br>
+
+ı) <span class="span"> Ortaklığın giderilmesi satış paralarının kaydına mahsus kasa kaydı</span>, <br>
+
+i)  Tereke <span class="span"> esas</span> kaydı, <br>
+ 
+j) Tereke <span class="span"> karar </span> kaydı, <br>
+
+k) Tereke <span class="span"> kasa</span> kaydı, <br>
+
+l) <span class="span"> Mirası ret kaydı</span>, <br>
+
+m) Posta mutemet kaydı, ____(BAM HD / HUKUK)<br>
+
+n) Tevzi kaydı, <br>
+
+o) Zimmet kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+
+ö) Harç tahsil müzekkeresi zimmet kaydı,____(BAM HD / HUKUK ) <br>
+
+p) <span class="span"> Vakıf tescil kaydı</span>, <br>
+
+r) <span class="span"> Vesayet ad kaydı</span>, <br>
+
+s) <span class="span"> Kıymetli evrak ve eşya kaydı</span>,____(BAM HD / HUKUK ) <br>
+
+ş) <span class="span"> Sosyal inceleme‒görüşme kaydı,</span>____(BAM HD / HUKUK ) <br>
+
+t) Muhabere kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+
+u) <span class="span"> Hakem kararları saklama kaydı</span>,</div></div></div></div>
+
+<hr>
+<div> 
+    Tutulacak kayıtlar
+    <div> 
+    MADDE 230 ‒<div>  (1) Komisyonda;
+        <div> 
+    a) <span class="span"> Özlük</span> kaydı, ______(BAM KOM / KOM)<br>
+    
+    b) Karar kaydı, ______ ( BAM CD / BAM HD  / CEZA / HUKUK / BAM KOM / KOM )<br>
+    
+    c) Personel nöbet kaydı, ______(BAM KOM / KOM)<br>
+    
+    ç) Genelge ve görüş kaydı, ______(BAM KOM / KOM)<br>
+    
+    d) <span class="span"> Duyuru</span> kaydı,______(BAM KOM / KOM) <br>
+    
+    e) Fazla ve esnek çalışma kaydı, ______(BAM KOM / KOM)<br>
+    
+    f) <span class="span"> Hâkim</span> bilgi kaydı, ______(BAM KOM / KOM)<br>
+    
+    g) <span class="span"> Lojman kaydı</span>, <br>
+    
+    ğ) <span class="span"> Tasdik şerhi</span> kaydı, <br>
+    
+    h) Hâkim ve savcı adayları kaydı, <br>
+    
+    ı) Avukat stajyerleri kaydı, <br>
+     
+    i) Bilirkişi ve tercüman listesi kaydı,____(BAM KOM / KOM / CEZA/ CUM SAV) <br>
+    
+    j) Sınav kaydı, ______(BAM KOM / KOM)<br>
+    
+    k) Zimmet kaydı,____(CUM SAV / CEZA / HUKUK /KOM) <br>
+    
+    l) Muhabere kaydı, ____(CUM SAV / CEZA / HUKUK /KOM)<br>
+    
+    m) Disiplin soruşturma kaydı, <br>
+    
+    n) Teftiş kaydı, <br>
+    
+    o) Bilgi edinme kaydı, <br>
+    
+    ö) <span class="span"> Dava işleri kaydı</span>,______(BAM KOM / KOM) <br>
+    
+    p) <span class="span"> Komisyon gündem kaydı</span>,______(BAM KOM / KOM)</div>
+    
+    tutulması zorunludur.</div></div></div>
+
+    <hr>
+    <div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button> 
+    </div>
+    
+    <script>				
+    var surukleniyor = false;
+    var offsetX, offsetY;
+        
+    // Tüm soru göster butonlarını seç
+    const soruGosterButtons = document.querySelectorAll('.soru');
+    
+    // Her bir buton için event listener ekle
+    soruGosterButtons.forEach(function (button, index) {
+    button.addEventListener('click', function() {
+    const soruContainer = document.querySelector('.soruContainer');
+    
+    // Eğer gösteriliyorsa gizle, gizliyse göster
+        if (soruContainer.style.display === "none") {
+          soruContainer.style.display = "block";
+        } else {
+          soruContainer.style.display = "none";
+    }
+    });
+    });
+    
+        
+    soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+        
+    document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+            soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+        
+        document.addEventListener('mouseup', function() { surukleniyor = false;	}); 
+    </script>
+
+</body>
+</html>
+{% endblock%}

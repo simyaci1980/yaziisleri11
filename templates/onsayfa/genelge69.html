@@ -1,0 +1,813 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+		body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.arkpspanBLACK{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>genelge 69/2 uluslar arası ceza istinabe </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div  id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+<div id="kal" class="kal">
+T.C. <br>
+ADALET BAKANLIĞI  <br>
+Uluslararası Hukuk ve Dış İlişkiler Genel Müdürlüğü <br>
+Sayı : B.03.0.UIG.0.00.00.06/010.06.02/7-2 <br>
+
+Konu : Uluslararası <span class="span"> Ceza İstinabe </span>İşlemlerinde
+Adli Makamlarımızca Dikkat Edilmesi
+Gereken Hususlar  <br>
+
+GENELGE
+No: 69/2 </div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+
+<div>
+Cezai İşlere İlişkin Uluslararası İşbirliğinde Adli Makamlarımızca Dikkat Edilmesi Gereken Hususlara dair 01/03/2008 tarihli ve 69/1 sayılı Genelge, uygulamada karşılaşılan sorunlarnedeniyle aşağıdaki şekilde güncellenerek değiştirilmiştir,(1) Uluslararası istinabe, bir devletin yetkili bir adli makamının diğer bir devletin adli makamı adına yerine getirdiği işlemler bütünüdür. İstinabe işlemleri, ilgili devletlerle aramızda yürürlükte bulunan ikili anlaşma ya da çok taraflı sözleşmeler vasıtasıyla, bunların bulunmaması halinde de, uluslararası teamül hukuku kuralları ve karşılıklılık ilkesi çerçevesinde yürütülmektedir.</div>
+
+<div>
+(2) İstinabe işlemleri; <br>
+a) Şüpheli veya sanıkların ifadelerinin alınması veya <span class="span"> sorgularının yapılması</span>,<br>
+b) Mağdur, müşteki, katılan, tanık veya bilirkişilerin <span class="span"> dinlenilmesi</span>,<br>
+c) Bilgi ve delil temini, banka kayıtları, muhasebe belgeleri, şirket dosyalan ve ticari belgeler de dâhil olmak üzere, ilgili <span class="span"> belge ve kayıtların asılîarmın veya tasdikli suretlerinin sağlanması</span>,<br>
+d) Delil toplamak amacıyla <span class="span"> kazançların,</span> malvarlıklarının, araç-gerecin ya da diğer hususların <span class="span"> belirlenmesi veya izlenmesi</span>,<br>
+e) Delil amaçlı arama ve el koyma, <span class="span"> eşya ve yer incelemesi</span>,<br>
+f) <span class="span"> El koyma ve müsadereye dair yabancı mahkeme kararlarının infazı</span>,<br>
+gibi hususları kapsar.</div>
+
+<div>
+(3) Ek de yer alan örnek dikkate alınarak ilgili devlet adli makamına hitaben hazırlanacak <span class="span"> talepname aşağıdaki bilgileri ihtiva eder</span>: <br>
+a) Talepte bulunan <span class="span"> adli makamın adı</span>,<br>
+b) Maddî olguların <span class="span"> özeti,</span><br>
+c) Uygulanması muhtemel <span class="span"> kanun maddeleri</span>,<br>
+d) İstenilen yardımlaşmanın tanımı, gerekçesi ve talep ediliyorsa herhangi bir özel <span class="span"> usûlün ayrıntıları</span>,<br>
+e) Mümkün olduğu ölçüde, ilgili kişinin <span class="span">kimliği, adresi ve uyruğu</span>,<br>
+f) Delil, bilgi veya işlemlerin <span class="span"> hangi amaçla talep edildiği</span>.</div>
+
+<div>
+(4) İstinabe evrakı aşağıdaki <span class="mavi"> belgeleri</span> <span class="span"> ihtiva eder</span>: <br> <span class="dik">
+a) Talepname,<br>
+b) Düzenlenmişse iddianame,<br>
+c) Gerektiğinde mahkeme kararı, Yargıtay ilamı, görevsizlik ve yetkisizlik kararlan,<br>
+d) Uygulanması muhtemel kanun maddeleri,<br>
+e) İfade suretleri,<br>
+f) Gerektiğinde bilirkişi raporu,<br>
+g) Diğer gerekli belgeler,<br>
+h) Talepnamenin ve ekli evrakın tercümesi </span>.</div>
+
+<div>
+
+(5)- İstinabe Taleplerinin Düzenlenmesinde <span class="span"> Dikkat Edilmesi Gereken Hususlar</span>: <br>
+a) Gerek Devletimizin gerekse Adli Makamlarımızın yurt dışındaki <span class="span"> itibarı açısından</span> evrak, yazışma kurallarına <span class="span"> uygun, itinalı ve temiz</span> bir şekilde düzenlenir.<br>
+b) İstinabe evrakı, yukarıda 4. maddede belirtilen sıraya göre <span class="span">dizi pusulasına bağlanarak zımba kullanılmaksızın</span> , <span class="dik"> Türkçe asıllarm tamamı üstte</span>, <span class="span"> tercümelerin tamamı altta</span> olacak şekilde <span class="mavi"> 2 takım</span> halinde hazırlanarak <span class="mavi"> telli dosyaya takılmalıdır</span>.,<br>
+c) Evrak ve tercümesi <span class="span"> A4 ebatta birinci hamur beyaz kağıda</span> yazılır. Belirtilen ebatta olmayan <span class="dik"> yırtık evrakın okunaklı bir şekilde fotokopisi çekiiip</span>, usulüne uygun olarak onaylanmak suretiyle gönderilir.<br>
+d) Evrakta, ilgili kişilerin yurtdışı <span class="span"> adresleri mutlaka orijinal haliyle</span> ve mevcutsa posta kodunu içerecek şekilde yazılır.<br>
+e) Evrakın muhatabı <span class="span"> yabancı uyruklu kişi ise</span>, kişinin isim ve adresinin yazılı olduğu <span class="span"> kimlik ve Özellikle pasaport fotokopileri mutlaka evraka eklenir</span> ,<span class="dik" > Rusya Federasyonu, Çin Halk Cumhuriyeti, İran İslâm Cumhuriyeti ve Suudi Arabistan gibi Latin alfabesi kullanmayan devletlerin</span> uyrukları ile ilgili istemlerde, bu esasa uyulmaması halinde istemin yerine getirilmesi <span class="span"> mümkün olamamaktadır.</span>
+f) Talepnamelerde, ilgili kanun ve uluslararası <span class="mavi"> sözleşme isimleri tam olarak yazılır</span> . Yalnızca kanun numaralarının belirtilmesi, “Ceza İşlerinde Karşılıklı Adli Yardım Avrupa Sözleşmesi” yerine ‘C İ K A Y A S ’ veya ‘Türk Ceza Kanunu yerine    ‘T C K ’ gibi kısaltmaların yazılması
+halinde anılan <span class="span"> kısaltmalar yabancı adli makamlar tarafından anlaşılamamaktadır</span>.<br>
+g) Yurt dışına gönderilecek talepnamelerin <span class="span">Hâkim veya Cumhuriyet savcısı tarafından</span>  ad,soyad ve ünvan yazılmak suretiyle <span class="span"> imzalanıp mühürlenmesi zorunludur</span>. Tercüme edilen evrakın <span class="mavi"> aslına uygun</span> olduğunu belirten ibarenin tercüman tarafından <span class="mavi"> tercüme edilen dilde</span> evraka <span class="span"> şerh verilip imzalanması yeterlidir</span>.<br>
+h) <span class="span"> Talimatlarda</span>, talebin yerine getirilmesi için <span class="mavi"> kesin tarih belirtilmemelidir</span>. Zira, evrak istemi yerine getirecek yabancı adli makama ulaştığında, saptanan tarihler çoğu zaman geçmiş olduğundan, istemin yerine getirilmesine gerek kalmadığı düşüncesiyle, talep yerine getirilmeden evrak iade edilmektedir.<br>
+i) Tercüme işlemleri, <span class="dik"> hukuk lisanına vâkıf ve ehil tercümanlara yaptırılmalıdır</span>,. Ehil olmayan tercümanlara yaptırılan çeviriler taleplerin sonuçsuz kalmasına neden olmaktadır. İstinabe evrakının tercüme edileceği dil veya diller Ek (2 de yer almaktadır.)<br>
+j) Evrakın tercümana teslimine ilişkin tutanak, sarf kararı ve tercüme için yapılan yazışmalar ile ara kararlar gibi istinabe talebini yerine getirecek olan <span class="span"> yabancı adli makamı ilgilendirmeyen yazışmalar Bakanlığımıza gönderilmemelidir</span>,<br>
+k) Yabancı devletlerdeki <span class="span"> diplomat ve konsoloslarımızın</span> bulundukları ülkelerin adli makamı huzurunda şüpheli veya sanık sıfatıyla ifade vermelerinin, görevlerinin niteliği bakımından sakınca doğurabileceği <span class="span"> Dışişleri Bakanlığımızca bildirildiğinden</span>, bu gibi hallerde <span class="span"> söz konusu meslek mensuplarının yurda geliş tarihleri anılan Bakanlık aracılığıyla öğrenilip</span>, geldiklerinde ilgili adli makamlara başvurmaları kendilerine duyurulmak suretiyle sorgularının yapılmasının ve <span class="span"> savunmalarının alınmasının uygun olacağı değerlendirilmektedir</span>.<br>
+I) Bakanlığımızda tercüme bürosu bulunmadığından, yabancı devletlere gönderilecek olan veya yabancı adli makamlardan alman evrakın <span class="span"> tercümesi için Bakanlığımıza başvurulmamalıdır</span>.<br>
+m) Adli yardımlaşma taleplerine ilişkin bazı devletlerle ilgili özel uygulamalar Ek (3 te yer almaktadır.</div>
+
+<div>
+(6) <span class="span"> Yabancı Devletlerin İstinabe Taleplerinde</span> Dikkat Edilecek Hususlar:
+<div>
+a) İstinabe talepleri, talepte bulunulan devlet mevzuatına göre yerine getirilir. Adli yardımlaşma talepnamesinde, talebin yerine getirilmesinde özel bir usul uygulanması istenmekteyse, <span class="span"> bu usul ancak Türk mevzuatı ile bağdaştığı oranda uygulanmalıdır.</span> Eğer
+uygulanması istenilen usul tamamen veya kısmen hukuk sistemimizle <span class="span"> bağdaşmıyorsa,</span> talep yerine getirilmeden önce en kısa zamanda bu durum talepte bulunan yabancı adli makamlara <span class="span"> iletilmek üzere Bakanlığımıza bildirilmelidir.</span> <br>
+b) Sözleşmelerde belirtilen ret halleri mevcutsa, taleplerin yerine getirilmemesi gerekmektedir.<br>
+c) Adli yardımlaşma talepnamesinde <span class="span"> açıkça belirtmek kaydıyla</span>, adli yardımlaşma talebinde bulunan <span class="mavi"> merciler</span> veya <span class="mavi">şüpheli</span>, sanık,<span class="mavi"> mağdur</span>  ve <span class="mavi"> müşteki</span> gibi ilgili kişiler istinabe işleminin yerine getirilmesi sırasında <span class="span"> hazır bulunmalarına izin verilmesini talep edebilirler</span>.<br></div>
+<div></div>
+<div>
+d) Hazır bulunma talebini de içeren istinabe evrakı <span class="span"> alındığında:</span> <br>
+	d.a) Adli makamlarımızca alman talep, <span class="span"> iç hukukumuza</span> ve kamu menfaatine <span class="span"> uygunluk</span> açısından denetlendikten sonra hazır bulunma isteminin uygun olduğuna <span class="span"> karar verildiği takdirde</span>; işlemin ifa edileceği tarih ve yer hazır bulunmaya imkan verecek şekilde <span class="span"> Bakanlığımıza bildirilmelidir</span>.<br>
+	d.b) Adli yardımlaşma istemi <span class="span"> farklı yerlerdeki adli makamlarımızı ilgilendiriyorsa</span>, bu takdirde ilgili adli makamların <span class="span"> birbirleriyle temasa geçmek suretiyle</span>, istinabe işlemleri için birbirine yakın  <span class="span"> makul tarih belirlemeleri uygun olacaktır</span>,<br>
+	d.c)İstinabe işlemi sırasında hazır bulunmalarına izin verilen <span class="span"> yabancı görevli ve kişilerin doğrudan bilgi ve belge sağlamaları mümkün olmayıp</span>, <span class="mavi"> tüm işlemler yetkili makam ve  görevlilerimizce yerine getirilir </span>ve istinabe işlemi sırasında <span class="span"> Devletin ve Adli Makamlarımızın itibarı gözetilir</span>.<br>
+	d.d) İstinabe evrakının ve yapılan işlemlere ilişkin tüm belgelerin <span class="span"> işlem sonunda Bakanlığımıza gönderilmesi gerekir</span>.<br>
+	d.e) Konuya ilişkin olarak daha ayrıntılı bilgiye ihtiyaç duyulduğunda, <span class="mavi"> Uluslararası Hukuk ve Dış İlişkiler Genel Müdürlüğü</span> ile irtibata geçilebilir.<br></div>
+<div>
+(e) <span class="span"> Arama veya el koymayı</span> kapsayan istinabe taleplerinin yerine getirilmesinde; <br>
+	e.a) İstinabe konusu fiilin <span class="span"> hem talep eden hem de talep edilen tarafın</span> kanunlarına göre <span class="span"> cezalandırılabilir bir suç olması</span>,<br>
+	e.b) <span class="span"> İstinabe konusu fiilin, <span class="mavi"> talep eden taraf ülkesinde</span>, suçlunun <span class="dik"> geri verilmesine elverişli</span> bir suç olması</span>,		<br>
+	e.c) İstinabenin yerine getirilmesinin, <span class="mavi"> talep edilen tarafın kanunu ile bağdaşması</span>,Hususları dikkate alınmalıdır.<br> </div></div>
+<div>
+(7)- Bazı Suçlarla İlgili Özel Uygulama: <br>
+<div>
+a) 2863 sayılı Kültür ve Tabiat Varlıklarını Koruma Kanunu’nun 32 ve 6 8 ’inci maddeleri ihlâl edilerek, yurt içinde korunması gerekli ve Devlet malı niteliğindeki tarihî ve arkeolojik değeri haiz eserler, kazanç amacıyla, <span class="span"> genelde Avrupa ülkelerine kaçırılmaktadır</span>. Bu tür eserlerin, açılacak soruşturma çerçevesinde Ülkemize iadelerinin <span class="span"> temini için</span>, “Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşmesi” ilgili ikili anlaşma ya da mütekabiliyet prensibinin <span class="span"> yanı sıra</span> Birleşmiş Milletler <span class="span"> UNESCO nezdinde</span> akdedilmiş bulunan ve 25/12/1979 tarih ve 2256 sayılı Kanunla onaylanması uygun bulunan ve 26/01/1981 tarih ve 17232 sayılı Resmî Gazete’de yayımlanan <span class="dik"> “Kültür Varlıklarının Kanunsuz İthal, İhraç ve Mülkiyet Transferinin Önlenmesi ve Yasaklanması İçin Alınacak tedbirlerle İlgili Sözleşme”</span>hükümlerine istinaden düzenlenecek istinabe evrakının ilgili yabancı dile tercümesi ile birlikte <span class="span"> Bakanlığımıza iletilmesi önem arz etmektedir</span>,</div>
+<div>
+b) Öte yandan talepte bulunulan Devletin taraf olması halinde; <br>
+	b.a) <span class="span"> Uyuşturucu</span> veya uyarıcı madde imal ve <span class="span"> ticareti suçları</span> (TCK m. 188) ile uyuşturucudan kaynaklanan malvarlığı değerlerinin aklanması suçlarına ilişkin (TCK m. 282) adli yardımlaşma taleplerinde; Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşmesi ya da ikili anlaşmaların yanı sıra 1988 tarihli “<span class="dik"> Uyuşturucu ve Psikotrop</span> Maddelere Karşı BM Sözleşmesine”<br>
+	b.b) Suç işlemek amacıyla <span class="span"> örgüt kurma</span> (TCK m. 220) suçuna ve diğer örgütlü suçlara ilişkin adli yardımlaşma taleplerinde; Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşmesinin ya da ikili anlaşmaların yanı sıra Birleşmiş Milletler
+<span class="dik"> Sınırıaşan Örgütlü</span> Suçlarla Mücadele Sözleşm esi’ne,<br>
+	b.c) <span class="span"> Malvarlığı </span> değerlerinin aklanmasıv suçuna ilişkin (TCK m. 282) adli yardımlaşma taleplerinde; “Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşmesi” ya da ikili anlaşmaların yanı sıra  “ <span class="dik"> Suçtan Kaynaklanan Gelirlerin Aklanması</span>, Araştırılması, Ele Geçirilmesi ve El Konulmasına İlişkin Sözleşme” ile “Yolsuzluğa Karşı
+BM Sözleşmesine” <br>
+	b.d) <span class="span"> Terör suçlarında;</span> Birleşmiş Milletler Güvenlik KonseyiTıin terörizme karşı mücadelede adli makamlar arasında uluslararası işbirliğinin önemini vurgulayan <span class="dik"> 1373 (2001) sayılı kararma ve “Terörizmin Finansmanının</span> Önlenmesine Dair Birleşmiş Milletler Sözleşmesi” ile <span class="dik"> “Tedhişçiliğin Önlenmesine</span> Dair Avrupa Sözleşm esi”ne,<br>
+	b.e) <span class="span"> Rüşvet</span>, yabancı kamu görevlilerine rüşvet (TCK m, 2S2) ve diğer yolsuzluğa ilişkin suçlarda; “Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşmesi” ya da ikili anlaşmaların yanı sıra “Avrupa Konseyi Yolsuzluğa Karşı Ceza Hukuku Sözleşmesi”ne (Madde 26), Yolsuzluğa Karşı BM Sözleşmesi ve <span class="dik">x “OECD Uluslararası Ticari İşlemlerde Yabancı Kamu Görevlilerine Verilen Rüşvetin Önlenmesi Sözleşmesi”ne,</span> Atıfta bulunulmalıdır.<br></div>
+
+<div>
+(c) Yukarıda bahsedilen sözleşmelere taraf olan devletlerin listesi Ek (4) ve Ek (5)’de yer almaktadır.</div>
+
+
+
+<div>(d) “Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşm” esinin Hinci maddesinin 	2 ’nci fıkrası ve ikili adli yardım laşma anlaşmaları askeri nitelikli suçları <span class="span"> (bakaya ve yoklama kaçağı gibi) kapsamadığından,</span> yargılama yetkisi sivil mahkemelerde bulunan askeri nitelikli suçlarla ilgili adli yardımlaşma talepleri <span class="span"> yerine getirilmemektedir.</span></div>
+
+<div>
+(8) <span class="dik"> El Koyma ve Müsadere Kararlarının İnfazı ve Varlıkların Geri Alınmasına İlişkin Karşılıklı Adli Yardımlaşma:</span>
+
+<div>
+(a) Uyuşturucu veya uyarıcı madde imal ve ticareti suçları (TCK m. 188), malvarlığı değerlerinin aklanması suçu (TCK m. 282), örgütlü suçlar ve yolsuzluk suçlarına ilişkin soruşturma ve davalarda <span class="span"> yurtdışında bulunan malvarlığı değerleri hakkında verilen el koyma ve müsadereye ilişkin kararlar,</span> “ 1988 tarihli Uyuşturucu ve Psikotrop Maddelere Karşı BM Sözleşmesi”,<br>
+“BM Sınıraşan Örgütlü Suçlarla Mücadele Sözleşmesi”<br>
+“Smıraşan Örgütlü Suçlara Karşı BM Sözleşmesine Ek İnsan Ticaretinin Özellikle Kadın ve Çocuk Ticaretinin Önlenmesine ve Durdurulmasına ve Cezalandırılmasına İlişkin Protokol”,<br>
+“Sınıraşan Örgütlü Suçlara Karşı BM Sözleşmesine Ek Kara Deniz ve Hava Yolu ile Göçmen Kaçakçılığına İlişkin Protokol”.<br>
+“BM Terörizmin Finansmanının Önlenmesi Sözleşmesi”,<br>
+“BM Yolsuzlukla Mücadele Sözleşmesi”,<br>
+“Suçtan Kaynaklanan Gelirlerin Aklanması, Araştırılması, Ele Geçirilmesi ve El Konulmasına İlişkin Avrupa Konseyi Sözleşmesi”,<br>
+“Avrupa Konseyi Yolsuzluğa Karşı Ceza Hukuku Sözleşmesi”,<br>
+“Ceza Yargılarının Milletlerarası Değeri Konusunda Avrupa Sözleşmesi”<br>
+“OECD Uluslararası Ticari İşlemlerde Yabancı Kamu Görevlilerine Verilen Rüşvetin Önlenmesi Sözleşmesi”,<br> <span class="dik">
+Çerçevesinde taraf devletlerde infaz ettirilebilir</span>.</div>
+<div>
+b) <span class="dik"> Yolsuzluk suçlarından elde edilip, yurt dışına çıkarılmış varlıkların geri alınması istenildiği takdirde, bu alanda yegane sözleşme olan Yolsuzluğa Karşı BM Sözleşmesi nin V. Bölüm 51 ilâ 59. maddeleri hükümleri çerçevesinde talepte bulunulmalıdır</span>,</div>
+<div>
+c) <span class="span"> Yabancı adli makamların benzer talepleri de aynı sözleşmeler çerçevesinde Ülkemizde yerine getirilir</span>,</div>
+<div>
+d) Bu itibarla, yurt dışı bağlantılı ekonomik, malî ve örgütlü suçlarda şüpheli veya sanıkların yurtdışmdaki malvarlıklarının araştırılması, tespit edilerek el konulması ve müsaderesinin sağlanması için düzenlenecek istinabe taleplerinin, “Ceza İşlerinde Karşılıklı Adli
+Yardımlaşma Avrupa Sözleşmesi” ya da ilgili ikili anlaşmanın yanı sıra, konusuna göre yukarıda değinilen sözleşme adı ve ilgili hükümleri de belirtilerek hazırlanması ve evrakın <span class="mavi"> iki nüsha halinde Bakanlığımıza iletilmesi gerekmektedir</span>,</div></div>
+
+<div>
+(9) İstinabeye İlişkin  Taraf Olduğumuz Sözleşmeler:
+a) İstinabe alanında taraf olduğumuz çok taraflı sözleşmeler ve bu sözleşmelere taraf devletler
+Ek (4)’te, ikili anlaşmalar Ek (6)Ma yer almaktadır.</div>
+
+<div>
+(10) <span class="span"> Türk Vatandaşlarının Yurtdışı Adresleri ile Ekonomik ve Sosyal Durumlarının Tespiti</span>
+<div>
+a) <span class="span"> Adalet Bakanlığı ile Dışişleri Bakanlığı arasında imzalanan 19.12.2009 tarihli</span> Veri Erişim, Paylaşım ve Kullanım Esaslarına Dair Protokol uyarınca; yurtdışmda bulunan şüpheli, sanık, hükümlü, mağdur, müşteki, müdahil ve tanık durumundaki <span class="span"> Türk vatandaşlarının     Konsolosluk-net sisteminde kayıtlı adreslerine adli mercilerimizce UYAP üzerindenulaşılması mümkündür</span>.</div>
+<div>
+b) Konsolosluk-net sisteminde adres <span class="span"> bulunmaması halinde</span>, hazırlanacak Ek-1 de yer alan örneğe uygun olarak hazırlanacak istinabe evrakı ile, yabancı ülke yetkili adli makamlarından adresin tespiti <span class="span"> talep edilmelidir</span>.</div>
+<div>
+c) <span class="span"> Türk ya da yabancı </span> uyruklu şahısların yurda giriş veya çıkışlarına ilişkin bilgiler Valilikler bünyesinde mevcut bilgi işletim sistemlerine işlendiğinden, buna ilişkin talepler <span class="dik"> bulunulan yer Valiliğinden (Emniyet Müdürlüğünden) talep edilmelidir</span>.</div>
+<div>
+d) Yabancı ülkelerde bulunan vatandaşlarımızın ekonomik ve sosyal durumlarının ve ücretlerinin saptanması istemine ilişkin adli yardım taleplerinde, ilgili kişinin <span class="dik"> yurtdışmda bilinen en son adresinin</span>, şehir ismi, sokak veya cadde ismi veya numarası ve şehir kod  numarası ile birlikte ve <span class="dik"> orijinal yazılış şekliyle tam olarak yazılması,</span> karışıklığa ve yanlışlığa yer verilmemesi için, ilgilinin <span class="span"> anne ve baba adının, doğum yerinin, ay, gün ve yıl olarak doğum tarihinin de belirtilmesi</span> uygun olacaktır, İlgilinin bulunduğu <span class="span"> adresin bilinmemesi halinde</span>, hangi ülkede bulunduğu ve  <span class="span"> kimlik bilgileri belirtilmek suretiyle</span> araştırma yapılması <span class="span"> istenmelidir.</span>
+
+<span class="dik">
+Her iki durumda da, söz konusu taleplerin Bakanlığımız aracılığı ile Dışişleri Bakanlığına intikal ettirilmesi gerekmektedir</span>.</div></div>
+
+<div>
+(11) Yabancı Uyruklu Şahısların Doğum ve Sabıka Kayıtlarının Temini ile Adres <br>
+Bilgilerinin Tespiti :
+<div>
+a) Ülkemizde suç işleyen ve şüpheli veya sanık sıfatı taşıyan <span class="span"> yabancı uyruklu kişilerle</span>, açılan kamu davalarında <span class="mavi"> mağdur,</span>  müşteki </span>veya <span class="mavi">tanık</span>  konumundaki yabancı uyruklu diğer kişilerin
+<span class="span"> nüfus-sabıka</span> kayıtlarının teminine ve <span class="span"> adreslerinin tespitine</span> ilişkin olarak adli mercilerimizce yapılan <span class="span">talepler</span> , <span class="dik"> Uluslararası Kriminal Polis Teşkilâtı (INTERPOL)</span> Ana Sözleşm esinin 2 ’ncimaddesi ile “Ceza İşlerinde Karşılıklı Adli Yardımlaşma Avrupa Sözleşm esinin” 15’inci maddesi 5’inci bendi çerçevesinde  <span class="mavi">  İçişleri Bakanlığı Emniyet Genel Müdürlüğü İnterpol
+Daire Başkanlığı tarafından yerine getirilmektedir</span>.
+<span class="span"> Bu konudaki taleplerin, Bakanlığımız aracı kılmmaksızm doğrudan Emniyet Genel Müdürlüğü İnterpol Daire Başkanlığına
+iletilmesi gerekmektedir.</span>
+
+Bununla birlikte, yabancı uyruklu kişilerin nüfus-sabıka kayıtlarının teminine ve adreslerinin tespitine ilişkin olarak bazı devletlerle ilgili uygulamalar Ek 7  te yer almaktadır.</div>
+<div>
+b) Yabancı kişilerin dahil olduğu soruşturma ve kovuşturmalarda sonraki aşamalarda doğabilecek nüfus, sabıka kaydı ve adres tespiti ihtiyacına binaen; kimlik bilgilerine ilişkin pasaport <span class="span"> gibi belgelerin Örneklerinin alınması,</span> kimliğe ilişkin belge bulunmadığı takdirde sözlü ve yazılı beyanlarına başvurarak kimlik bilgilerinin, <span class="span"> fotoğraf ile şahısları tanımaya elverişli diğer hususların tespit edilmesi gerekmektedir</span>.</div>
+<div>
+c) <span class="span"> İNTERPOL’e üye Devletler</span> Ek 8 da yer almakta olup, bu Devlet vatandaşlarının; <br>
+	c.a) Doğum ve sabıka kayıtlarının temini için; şüpheli veya sanığın <span class="dik"> adı, soyadı, ana ve baba adı, tespit edilebilen açık adresi orijinal yazılış şekliyle yazılıp, atılı suç
+belirtilmek ve şüpheli veya sanığın pasaport veya benzeri kimliğinin fotokopisi, fotoğraf ve parmak izi formu eklenmek suretiyle <span class="mavi"> doğrudan</span> Emniyet Genel Müdürlüğü İnterpol  Daire Başkanlığından,</span> <br>
+	c.b) <span class="span"> Adreslerinin tespiti için ise</span>; yukarıda sayılan bilgi ve belgelerle doğrudan ve birim adı belirtilmeksizin <span class="mavi"> Emniyet Genel Müdürlüğümden,</span> İstemde bulunulması gerekmektedir. <br> </div>
+<div>
+d) Yabancı uyruklu şahısların nüfus-sabıka ve adres kayıtlarının tespiti amacıyla yapılacak olan taleplerde mümkün olduğunca dava konusu suçun özeti, ilgilinin uyruğu, <span class="span"> vatansız olması halinde</span> daha <span class="span"> önce vatandaşı olduğu devletin adı</span>, anne-baba adı, ay ve gün dahil doğum tarihi ve doğum yerini içeren açık kimlik bilgileri, ülkesindeki daimî açık ve kesin ikamet-iş adresleri ve telefonları, vatandaşı olduğu devlet yetkili makamlarının verdiği pasaport, sürücü belgesi, nüfus cüzdanı veya benzeri kimlik belge fotokopileri veya seri numaraları ile verildiği yer ve tarih, kimlik teyidinin yanında, sabıka kayıtlarının tespitine yarayan, bütün devlet makamlarınca da talep edilen ve uluslararası geçerliliği olan fotoğraf ve parmak izi formları
+ile birlikte gönderilmesi, taleplerin yerine getirilmesi ihtimalini artıracaktır,</div>
+<div>
+e) <span class="span"> Yurda giriş çıkış kayıtlarına</span> ilişkin bilgi temini için; Adli makamlarımızın, Türk ya da yabancı uyruklu şahısların yurda giriş veya çıkışlarına ilişkin bilgileri, <span class="mavi"> bulunduğu yerValiliğinden (Emniyet Müdürlüğünden) talep etmesi gerekmektedir</span>. </div></div>
+
+<div>
+(12) İş bu Genelge ile, Cezai İşlere İlişkin Uluslararası İşbirliğinde Adli M akamlarımızca Dikkat Edilmesi Gereken Hususlara dair 01/03/2008 tarihli ve 69/1 sayılı Genelge yürürlükten kaldırılmıştır.</div>
+Bu Genelgenin ekleri, <span class="mavi"> Uluslararası Hukuk ve Dış İlişkiler Genel Müdürlüğü</span> tarafından ihtiyaç duyulduğunda güncellenerek www.uhdigm.adalet.gov.tr web adresinde yayımlanacaktır.
+<br> <br>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+
+{% endblock%}

@@ -1,0 +1,853 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(80, 193, 159); color: rgb(0, 0, 0); font-size: large; padding: 7px; }
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px; color: black; }
+
+span{color: chocolate;}
+
+.ark{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white;}
+strong{background-color: rgb(0, 221, 255); color: black;}
+
+
+/* Ekran genişliği 600px'den küçük olduğunda tablo genişliğini ayarla */
+@media screen and (max-width: 600px) {
+    table {
+
+        width: 100%; /* Tabloyu ekran genişliğinin tamamı kadar geniş yap */
+        /* İstenirse tablo sütunları için scroll bar eklemek de düşünülebilir */
+        overflow-x: auto;
+        background-color: rgb(8, 110, 8);
+        font-size: larger;
+    }
+}
+
+table{background-color: rgb(8, 110, 8);    font-size: larger;}
+
+
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>657 DEVLET MEMURLAI KANUNU SÜRELER</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+	<div id="kal" class="kal">DEVLET MEMURLARI KANUNUNDAKİ SÜRELER İÇİN HAZIRLANAN TABLO</div>
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+        <p>
+          <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+          <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+          <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+          <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+          <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+          <button class="yen" onclick="yeni()"> Yeni </button> <br>
+          <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+          <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+          <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+        </p></div>
+
+        <script>
+          acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+          </script>
+
+
+
+          <div id="soruContainer" class="soruContainer">
+              <div id="soruDiv">
+                  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+              </div>
+              <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+              <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+              <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+              <p id="dogruCevap" style="display: none;"></p>
+          </div>
+          <script src="static/js/script.js"></script> <br> <br><br>
+
+	<br>
+	<h1>GÜNLÜ SÜRELER</h1>
+	<table border="2">
+
+		<tr><th>AÇIKLAMA</th> <th>SÜRESİ</th></tr>
+<tr><td>Sözleşmeli olarka üç yılını tamamlayan sözleşmeli personel </td><td> <strong>30 gün</strong> içinde talepte bulunmalı </td></tr>
+<tr><td>Eşleri, reşit olmayan veya mahcur olan çocukları, yasaklanan faaliyetlerde bulunan memurlar</td><td>bu durumu <strong> 15 gün</strong> içinde </td></tr>
+<tr><td>sınav yerlerini ve zamanlarını ve gerek görülen diğer bilgileri başvurma süresinin bitiminden</td><td>en az <strong> 15 gün</strong> önce Resmi Gazete, radyo, televizyon ve ülke çapında tirajı yüksek gazetelerden asgari biri ve uygun görülecek diğer araçlar ile duyurur.(Devlet Personel Başkanlığı)</td></tr>
+<tr><td> Başka yerdeki görevlere atananlar, atama emirlerinin kendilerine tebliğ tarihinden itibaren </td><td><strong> 15 gün </strong>çerisinde o yere hareket ederek belli yol süresini,</td></tr>
+<tr><td> belli yol süresi sonunda yeni görevlerine başlamayanlara, eski görevlerinden ayrılış ve yeni görevlerine başlayış tarihleri arasında aylık verilmemek şartı ile</td><td><strong> 10 günlük</strong> bir süre daha verilebilir.</td></tr>
+<tr><td>Bilgilerini Artırmak İçin Yabancı Memlekete Gönderilenlerin Hak ve Yükümlülükleriİzin bitiminde yol süresi hariç</td><td><strong> 15 gün</strong> içinde görevlerine dönerler</td></tr>
+<tr><td> askerlik görevini tamamlayıp memuriyete dönmek isteyenler, terhis tarihinden itibaren</td><td><strong> 30 gün</strong> içinde kurumlarına başvurmak</td></tr>
+<tr><td>kurumları da başvurma tarihinden itibaren azami</td><td><strong> 30 gün</strong> içinde ilgilileri göreve başlatmak zorundadırlar.</td></tr>
+<tr><td>Açıktan vekil atananlara her ay için </td><td><strong> 2 gün</strong> izin verilir en fazla <strong> 20 gün </strong>çemez </td></tr>
+<tr><td>Kadroları Kaldırılan Devlet Memurları:Devlet Personel Başkanlığınca tespit edilen kadroya, anılan Başkanlık tarafından</td><td><strong> kırk beş gün</strong> içinde ataması teklif edilir. kurumda bunları <strong> 30 gün</strong> içinde atama işlemini yapmak zorudadır</td></tr>
+<tr><td>Mezuniyetsiz veya kurumlarınca kabul edilen mazereti olmaksızın görevin terk edilmesi ve bu terkin kesintisiz</td><td><strong> 10 gün</strong> devam etmesi halinde, yazılı müracaat şartı aranmaksızın, çekilme isteğinde bulunulmuş sayılır.</td></tr>
+<tr><td>hizmeti 1 yıldan on yıla kadar (On yıl dâhil) olanlar için</td><td><strong> yirmi gün</strong></td></tr>
+<tr><td>hizmeti on yıldan fazla olanlar için</td><td><strong> 30 gündür</strong></td> <td>gidiş ve dönüş için en çok<strong>  ikişer gün </strong></td></tr>
+<tr><td>Memura, eşinin doğum yapması hâlinde, isteği üzerine</td><td><strong> on gün</strong> babalık izni</td></tr>
+<tr><td>kendisinin veya çocuğunun evlenmesi ya da eşinin, çocuğunun, kendisinin veya eşinin ana, baba ve kardeşinin ölümü hâllerinde isteği üzerine</td><td><strong> yedi gün</strong> izin verilir.</td></tr>
+<tr><td>birim amirinin muvafakati ile bir yıl içinde toptan veya bölümler hâlinde, mazeretleri sebebiyle memurlara </td><td><strong> on gün </strong> verilebilir.</td></tr>
+<tr><td>Zaruret hâlinde öğretmenler hariç olmak üzere, aynı usulle</td><td> <strong> on gün </strong> mazeret izni verilebilir. </td> <td>Bu takdirde, ikinci kez verilen bu izin, yıllık izinden düşülür.</td></tr>
+<tr><td>Memurlara; en az yüzde 70 oranında engelli ya da süreğen hastalığı olan çocuğunun ( çocuğun evli olması durumunda eşinin de en az yüzde 70 oranında engelli olması kaydıyla ) hastalanması hâlinde hastalık raporuna dayalı olarak ana veya babadan sadece biri tarafından kullanılması kaydıyla bir yıl içinde toptan veya bölümler hâlinde</td><td><strong>  on güne</strong> kadar mazeret izni verilir.</td></tr>
+<tr><td> Aylıksız izin süresinin bitiminden önce mazereti gerektiren sebebin ortadan kalkması hâlinde</td><td><strong> on gün </strong>çinde göreve dönülmesi zorunludur.</td></tr>
+<tr><td>mazeret sebebinin kalkmasını izleyen</td><td><strong> on gün </strong>çinde görevine dönmeyenler, memuriyetten çekilmiş sayılır.</td></tr>
+<tr><td>Disiplin kurulu ve yüksek disiplin kurulunun ayrı bir ceza tayinine yetkisi yoktur , cezayı kabul veya reddeder. Ret halinde atamaya yetkili amirler</td><td><strong> 15 gün</strong> içinde başka bir disiplin cezası vermekte serbesttirler.</td></tr>
+<tr><td>Disiplin amirleri uyarma, kınama ve aylıktan kesme cezalarını soruşturmanın tamamlandığı günden itibaren </td><td><strong> 15 gün </strong>çinde vermek zorundadırlar.</td></tr>
+<tr><td>Kademe ilerlemesinin durdurulması cezasını gerektiren hallerde soruşturma dosyası, kararını bildirmek üzere yetkili disiplin kuruluna</td><td><strong> 15 gün</strong> içinde tevdi edilir</td><td>Disiplin kurulu, dosyayı aldığı tarihten itibaren <strong> 30 gün</strong> içinde soruşturma evrakına göre kararını bildirir</td></tr>
+<tr><td>Devlet memuru hakkında savunması alınmadan disiplin cezası verilemez. Soruşturmayı yapanın veya yetkili disiplin kurulunun</td><td><strong> 7 günden </strong> olmamak üzere verdiği süre içinde veya belirtilen bir tarihte savunmasını yapmayan memur, savunma hakkından vazgeçmiş sayılır.</td></tr>
+<tr><td>İtirazda süre, kararın ilgiliye tebliği tarihinden itibaren (Disiplin cezaları için)</td><td><strong> yedi gündür.</strong> </td></tr>
+<tr><td>İtiraz mercileri, itiraz dilekçesi ile karar ve eklerinin kendilerine intikalinden itibaren </td><td><strong> otuz gün </strong>çinde kararlarını vermek zorundadır.</td></tr>
+<tr><td>Görevinden uzaklaştırılan Devlet memurları hakkında görevden uzaklaştırmayı izleyen</td><td><strong> 10 iş günü</strong> içinde soruşturmaya başlanması şarttır.</td></tr>
+<tr><td>Hastalıkları sebebiyle resmi yataklı tedavi kurumlarında yatarak tedavi gördükleri tedavi süreleri, hariç olmak üzere bir takvim yılı içinde kullanılan hastalık izin süreleri toplamının</td><td><strong> 7 günü</strong> aşması halinde, aşan sürelere isabet eden zam ve tazminatlar %25 eksik ödenir.</td></tr>
+<tr><td>esaplarını, görevi devralanlara devir zorunluluğu bulunan saymanların devir süresi</td><td><strong> yedi gündür </strong>.</td></tr>
+<tr><td>Sayman mutemetleri için devir süresi</td><td><strong> iki gündür</strong>.</td></tr>
+<tr><td>Bu durumda personele yaptırılacak fazla çalışmanın her sekiz saati için</td><td><strong> bir gün</strong> hesabı ile izin verilir</td><td>Ancak, bu suretle verilecek iznin en çok<strong>  on günlük</strong> kısmı yıllık izinle birleştirilerek yılı içinde kullandırılabilir.</td></tr>
+<tr><td>Sürekli Görevle Yurt Dışında Bulunan Memurların Aylıkları: sürekli görevle yurt dışına gönderilen veya kurumların yurt dışı kuruluşlarına dâhil kadrolarında görev alan memurlardan görevlerine başladıktan sonra yurt içinde veya yurt dışında başka bir göreve atananların aylıkları ise atanma emrinin tebliği tarihini izleyen </td><td><strong> on beşinci gün</strong> sonuna kadar 156 ncı maddedeki esaslara göre ödenir .</td><td> Sürekli görevle yurt dışına atanan memurların aylıkları görevlerine başladıkları tarihten itibaren ödenir </td></tr>
+
+</table>
+<hr><hr>
+
+<h1>AYLI SÜRELER </h1>
+<table  rigth: 70%  border="3" >
+
+
+
+    <tr><th>AÇIKLAMA </th> <th>SÜRE</th></tr>
+
+    <tr>
+		<td>Bu kapsamda sözleşmeli personelin atanacağı memur kadroları, başka bir işleme gerek kalmaksızın atama işleminin yapıldığı tarih itibarıyla ihdas edilerek ilgili kurumların kadro cetvellerinin ilgili bölümlerine eklenmiş sayılır. İhdas edilen kadrolar; unvanı, sınıfı, adedi, derecesi ve teşkilatı belirtilmek suretiyle atama tarihinden itibaren</td>
+		<td> <strong> iki ay</strong> içinde Kamu Personel Bilgi Sisteminin bulunduğu kuruma bildirilir.</td>
+	</tr>
+
+    <tr>
+		<td>ilgili mevzuatı gereğince tahsis edilen sürekli işçi kadrolarında belirsiz süreli iş sözleşmeleriyle çalıştırılan sürekli işçiler ile mevsimlik veya kampanya işlerinde ya da orman yangınıyla mücadele hizmetlerinde ilgili mevzuatına göre geçici iş pozisyonlarında</td>
+		<td><strong> altı aydan</strong> az olmak üzere belirli süreli iş sözleşmeleriyle çalıştırılan geçici işçilerdir.</td>
+	</tr>
+
+    <tr>
+		<td>Devlet Memurluğuna" atandıktan sonra en geç</td>
+		<td><strong> bir ay </strong>çinde kurumlarınca düzenlenecek merasimle yetkili amirlerin huzurunda yapacakları yeminle belirtirler ve özlük dosyalarına konulacak aşağıdaki "Yemin Belgesi"ni imzalayarak göreve başlarlar.</td>
+	</tr>
+
+    <tr>
+		<td>Bakan Müşaviri:Kamu görevlisi iken bakan müşavirliğine atananlar, görevleri sona erdiğinde veya görevden alındıklarında, yönetici kadro, pozisyon ve görevleri hariç olmak üzere önceki kadro veya pozisyonlarına en geç</td>
+		<td><strong> bir ay</strong> içinde atanırlar. </td>
+	</tr>
+
+    <tr>
+		<td>Kademe ilerlemesine hak kazanamayan memurlar, kurumlarınca</td>
+		<td><strong> her ay </strong>alınacak toplu onaylarla belirlenir.</td>
+	</tr>
+
+    <tr>
+		<td>Bunların kademe ilerlemesi; emeklilik ve diğer bütün hakları ve yükümlülükleri devam eder. Ancak ücretsiz izin verilenlerin bu sürelerinin emeklilikten sayılabilmesi için kesenek ve kurum karşılıklarının (eşlerinin görevleri nedeni ile )</td>
+		<td><strong>  her ay</strong> kendileri tarafından T.C. Emekli Sandığına yatırılması gerekir.</td>
+	</tr>
+
+    <tr>
+		<td>Kazanılmış hak derecelerinden aşağı derecelere atananların aylık derece ve kademeleri genel hükümlere göre tespit edilmekle beraber, atandıkları bu derecelerde geçirdikleri süreler (kesenek ve karşılık farklarının kendileri tarafından</td>
+		<td><strong> her ay </strong> Emekli Sandığına gönderilmesini kabul etmeleri şartıyla) emeklilik yönünden eski derecelerinde değerlendirilir.</td>
+	</tr>
+
+    <tr>
+		<td>Bilgilerini Artırmak İçin Yabancı Memlekete Gönderilenlerin Hak ve Yükümlülükleri:Bunlardan kurumlarınca kendilerine maaşsız izin verilmesi uygun görülenlerin bu süreleri keseneklerinin ve karşılıklarının kendileri tarafından</td>
+		<td><strong> her ay </strong> Emekli Sandığına gönderilmesini kabul etmeleri şartıyla emeklilik yönünden eski derecelerinde değerlendirilir.</td>
+	</tr>
+
+    <tr>
+		<td>Çekilmek isteyen memur yerine atanan kimsenin gelmesine veya çekilme isteğinin kabulüne kadar görevine devam eder. Yerine atanan kimse </td>
+		<td><strong> bir aya</strong> kadar gelmediği veya yerine bir vekil atanmadığı takdirde, üstüne haber vererek görevini bırakabilir.</td>
+		<td>Olağanüstü mazeretle çekilenler, üstüne haber vermek şartıyla <strong> bir ay</strong>ına tabi değildirler.</td>
+	</tr>
+
+    <tr>
+		<td>uygun olarak memuriyetten çekilenler</td>
+		<td><strong> altı ay</strong> geçmeden tekrar devlet memurluğuna atanamazlar </td>
+	</tr>
+
+    <tr>
+		<td>Doğum sonrası analık izni süresi sonunda kadın memur, isteği hâlinde çocuğun hayatta olması kaydıyla analık izni bitiminde başlamak üzere ayrıca süt izni verilmeksizin birinci doğumda</td>
+		<td> <strong> iki ay, </strong> doğumda <strong> dört ay</strong>, sonraki doğumlarda ise <strong> altı ay</strong> süreyle günlük çalışma süresinin yarısı kadar çalışabilir</td>
+		<td>Çoğul doğumlarda bu sürelere birer ay ilave edilir</td>
+	</tr>
+
+    <tr>
+		<td>. Çocuğun engelli doğması veya doğumdan sonraki (doğum yapan kadın memura uyarıdaki metinler ışığında) </td>
+		<td><strong> on iki ay </strong>çinde çocuğun engellilik durumunun tespiti hâllerinde bu süreler <strong> on iki ay</strong> olarak uygulanır.</td>
+	</tr>
+
+    <tr>
+		<td>Uyarma, kınama, aylıktan kesme ve kademe ilerlemesinin durdurulması cezalarında</td>
+		<td><strong> bir ay</strong> içinde disiplin soruşturmasına,</td></tr>
+
+    <tr>
+		<td> Memurluktan çıkarma cezasında </td>
+		<td><strong> altı ay</strong> içinde disiplin kovuşturmasına, Başlanmadığı takdirde disiplin cezası verme yetkisi zamanaşımına uğrar.</td>
+	</tr>
+
+    <tr>
+		<td>Memurluktan çıkarma cezası için disiplin amirleri tarafından yaptırılan soruşturmaya ait dosya, memurun bağlı bulunduğu kurumun yüksek disiplin kuruluna tevdiinden itibaren azami</td>
+		<td><strong> altı ay</strong> içinde bu kurulca, karara bağlanır.</td>
+	</tr>
+
+    <tr>
+		<td>Görevden uzaklaştırma; bir disiplin kovuşturması icabından olduğu takdirde en çok</td>
+		<td><strong> 3 ay </strong> edebilir</td>
+	</tr>
+
+    <tr>
+		<td> Sürekli görevle yurt dışına gönderilen Devlet memurları, geçici görevle</td>
+		<td>en çok<strong>  bir ay</strong> süre ile merkeze çağrılabilir </td>
+	</tr>
+
+    <tr>
+		<td> Aile yardımı ödeneği Devlet memurlarına</td>
+		<td><strong> her ay</strong> aylıklarıyla birlikte ödenir.</td>
+	</tr>
+
+    <tr>
+		<td>Kurumlar yıllık eğitim programlarına göre yapmakta oldukları eğitim çalışmalarının sonuçlarını</td>
+		<td><strong> her altı aylık</strong> dönemin bitiminden en geç <strong> bir ay</strong> sonra Başbakanlık Devlet Personel Başkanlığına bir raporla bildirmek zorundadırlar.</td>
+	</tr>
+
+    <tr>
+		<td>Yetiştirilmek, eğitilmek, bilgilerini artırmak veya staj yapmak üzere</td>
+		<td><strong> 3 ay</strong> ve daha fazla süre ile dış memleketlere gönderilen memurlara gönderilme şekillerine bakılmaksızın yurtdışında kaldıkları sürenin iki katı kadar mecburi hizmet yüklenir .</td>
+	</tr>
+
+    <tr>
+		<td>Mecburi hizmetle yükümlü bulunanlar yetiştirme, eğitim veya staj sürelerinin bitiminden itibaren en çok</td>
+		<td><strong> iki ay</strong> içinde kurumlarına başvurmak zorundadırlar</td>
+	</tr>
+
+    <tr>
+		<td> Başvurma tarihinden itibaren en geç </td>
+		<td><strong> 3 ay</strong> içinde bir göreve atanmayanların mecburi hizmet yükümlülükleri kalkar. </td>
+	</tr>
+   </table>
+
+
+   <hr><hr>
+
+   <table border="3">
+    <h1>YIL İLE İLGİLİ SÜRELER</h1>
+    <tr><th>AÇIKLAMA</th><th>SÜRE</th></tr>
+    <tr><td>Bu personel can güvenliği ve sağlık sebepleri hariç olmak üzere (SÖZLEŞMELİ PERSONEL)</td><td><strong> üç yıl</strong> süreyle başka bir yere atanamaz.</td></tr>
+    <tr><td>Memur kadrolarına atananlar, aynı yerde en az</td><td><strong> bir yıl</strong> daha görev yapar</td></tr>
+    <tr><td>Bu şekilde istihdam edilenler, hizmet sözleşmesi esaslarına aykırı hareket etmesi nedeniyle kurumlarınca sözleşmelerinin feshedilmesi veya sözleşme dönemi içerisinde Cumhurbaşkanı kararı ile belirlenen istisnalar hariç sözleşmeyi tek taraflı feshetmeleri halinde fesih tarihinden, sözleşmeyi yenilememeleri hâlinde sözleşmenin bitiminden itibaren</td><td><strong> bir yıl</strong> geçmedikçe kurumların sözleşmeli personel pozisyonlarında istihdam edilemezler.</td></tr>
+    <tr><td>Türk Ceza Kanununun 53 üncü maddesinde belirtilen süreler geçmiş olsa bile; kasten işlenen bir suçtan dolayı</td><td><strong> bir yıl</strong> veya daha fazla süreyle hapis cezasına ya da affa uğramış olsa bile devletin güvenliğine karşı suçlar, suçlarından mahkûm olmamak.</td></tr>
+    <tr><td>Engelli açığı bulunan kamu kurum ve kuruluşları bir sonraki yıl için alım yapacakları engellilere ilişkin taleplerini</td><td><strong> her yılın</strong> Ekim ayının sonuna kadar Devlet Personel Başkanlığına bildirmek zorundadır. </td></tr>
+    <tr><td>Adaylık süresi sonunda başarısızlık:İlişikleri kesilenler ilgili kurumlarca derhâl Devlet Personel Başkanlığına bildirilir. Adaylık devresi içinde veya sonunda, 56 ncı ve bu madde hükümlerine göre ilişikleri kesilenler (sağlık nedenleri hariç) </td><td><strong> 3 yıl</strong> süre ile Devlet memurluğuna alınmazlar.</td></tr>
+    <tr><td>Bir göreve ilk defa veya yeniden atananlardan belge ile ispatı mümkün zorlayıcı sebepler olmaksızın 62 nci maddedeki süre içinde işe başlamayanların atanmaları iptal edilir ve bunlar</td><td><strong> 1 yıl </strong>üreyle Devlet memuru olarak istihdam edilemezler.</td><td>Bunların belge ile ispatı mümkün zorlayıcı sebepler nedeniyle göreve başlamama hali iki ayı aştığı takdirde atama işlemi atamaya yetkili makamlarca iptal edilirv.</td></tr>
+    <tr><td>Kademe; derece içinde, görevin önemi veya sorumluluğu artmadan, memurun aylığındaki ilerlemedir.
+        Memurun kademe ilerlemesinin yapılabilmesi için bulunduğu kademede</td><td><strong> en az bir yıl</strong> çalışmış olması ve bulunduğu derecede ilerleyebileceği bir kademenin bulunması şartları aranır.</td></tr>
+    <tr><td>kalkınmada birinci derecede öncelikli yörelerde bulunanlara, bu yörelerde fiilen çalışmak suretiyle geçirilen</td><td><strong> her iki yıl </strong>çin bir kademe ilerlemesi daha verilir.</td><td>Yıllık izinde geçirilen süreler fiilen çalışılmış sayılır. İki yıldan az süreler dikkate alınmaz.</td></tr>
+    <tr><td>bir kademe ilerlemesi uygulanır.</td><td><strong> Son sekiz yıl</strong> içinde herhangi bir disiplin cezası almayan memurlara, aylık derecelerinin yükseltilmesinde dikkate alınmak üzere</td></tr>
+    <tr><td>Derece Yükselmesinin Usul ve İartları:</td><td>Derecesi içinde en az<strong>  3 yıl </strong> bu derecenin 3 üncü kademesinde <strong> 1 yıl</strong> bulunmuş,</td></tr>
+    <tr><td> Eğitim ve Öğretim Hizmetleri Sınıfı ile Sağlık Hizmetleri ve Yardımcı Sağlık Hizmetleri Sınıfı hariç, sınıfların 1, 2, 3 ve 4 üncü derecelerindeki kadrolarına, derece yükselmesindeki süre kaydı aranmaksızın, atanmasındaki usule göre daha aşağıdaki derecelerden atama yapılabilir.
+        Ancak, bu şekilde bir atamanın yapılabilmesi için ilgilinin;</td><td>a) 1 inci dereceli kadrolardan ek göstergesi 5300 ve daha yukarıda olanlar için en az <strong> 12 yıl,</strong>
+            b) 1 inci ve 2 nci dereceli kadrolardan ek göstergesi 5300’den az olanlar için en az <strong> 10 yıl,</strong>
+            c) 3 üncü ve 4 üncü dereceli kadrolar için en az<strong>  8 yıl,</strong>
+            hizmetinin bulunması ve yükseköğrenim görmüş olması şarttır. Dört yıldan az süreli yükseköğrenim görenler için bu sürelere<strong>  iki yıl </strong> edilir. </td></tr>
+    <tr><td>Yasama görevinde veya bakan olarak geçirilen</td><td><strong> her yıl</strong> bir kademe ilerlemesi ve <strong> her iki yıl </strong> derece yükselmesine esas olacak şekilde değerlendirilir.</td></tr>
+    <tr><td>uymadan görevlerinden ayrılanlar</td><td><strong> bir yıl</strong> geçmeden,</td></tr>
+    <tr><td>yazılı zorunluluklara uymayanlar</td><td><strong> 3 yıl</strong> geçmeden,</td></tr>
+    <tr><td>kadın memurlara; tabip raporunda belirtilmesi hâlinde hamileliğin yirmi dördüncü haftasından önce ve her hâlde hamileliğin yirmi dördüncü haftasından itibaren ve doğumdan sonraki</td><td><strong> iki yıl </strong>üreyle gece nöbeti ve gece vardiyası görevi verilemez. Engelli memurlara da isteği dışında gece nöbeti ve gece vardiyası görevi verilemez.</td></tr>
+    <tr><td>Hizmetleri sırasında radyoaktif ışınlarla çalışan personele ,</td><td><strong> her yıl</strong> yıllık izinlerine ilaveten bir aylık sağlık izni verilir.</td></tr>
+    <tr><td>Disiplin cezasını gerektiren fiil ve hallerin işlendiği tarihten itibaren nihayet</td><td><strong> iki yıl</strong> içinde disiplin cezası verilmediği takdirde ceza verme yetkisi zamanaşımına uğrar.</td></tr>
+    <tr><td>Aylıktan kesme cezası ile tecziye edilenler</td><td><strong> 5 yıl</strong></td></tr>
+    <tr><td>kademe ilerlemesinin durdurulması cezası ile tecziye edilenler </td><td><strong> 10 yıl</strong> boyunca</td> <td>daire başkanı kadrolarına, daire başkanı kadrosunun dengi ve daha üstü kadrolara, bölge ve il teşkilatlarının en üst yönetici kadrolarına, düzenleyici ve denetleyici kurumların başkanlık ve üyeliklerine, vali ve büyükelçi kadrolarına atanamazlar.</td></tr>
+    <tr><td>Devlet Memurlarından T. C. Emekli Sandığına tabi hizmeti</td><td><strong> 10 yıl</strong> ve daha fazla olanlara, istekleri üzerine Toplu Konut Fonundan özel şartlarla ve öncelikle konut kredisi verilebilir.</td></tr>
+    <tr><td></td><td></td></tr>
+<br><br>
+
+<table>
+	<caption class="dik" >DERECE KADEME</caption>
+    <tr><td>i</td> <td>15</td><td>/1</td></tr>
+    <tr><td>O</td> <td>14</td><td>/2</td></tr>
+    <tr><td>O-D</td> <td>14</td><td>/3</td></tr>
+    <tr><td>O-1</td> <td>13</td><td>/1</td></tr>
+    <tr><td>O-2</td> <td>13</td><td>/2</td></tr>
+    <tr><td>L</td> <td>13</td><td>/3</td></tr>
+    <tr><td>L-D</td> <td>12</td><td>/2</td></tr>
+    <tr><td>L-1</td> <td>11</td><td>/1</td></tr>
+    <tr><td>L-2 O-5</td>    <td>10</td><td>/3</td></tr>
+    <tr><td>L-3</td> <td>10</td><td>/2</td></tr>
+</table>
+
+
+   </table>
+
+   <div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+   </div>
+
+   <script>
+   var surukleniyor = false;
+   var offsetX, offsetY;
+
+   // Tüm soru göster butonlarını seç
+   const soruGosterButtons = document.querySelectorAll('.soru');
+
+   // Her bir buton için event listener ekle
+   soruGosterButtons.forEach(function (button, index) {
+   button.addEventListener('click', function() {
+   const soruContainer = document.querySelector('.soruContainer');
+
+   // Eğer gösteriliyorsa gizle, gizliyse göster
+       if (soruContainer.style.display === "none") {
+         soruContainer.style.display = "block";
+       } else {
+         soruContainer.style.display = "none";
+   }
+   });
+   });
+
+
+   soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+   document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+           soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+       document.addEventListener('mouseup', function() { surukleniyor = false;	});
+   </script>
+
+</body>
+</html>
+{% endblock%}

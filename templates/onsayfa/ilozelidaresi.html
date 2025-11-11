@@ -1,0 +1,1065 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size:larger; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>İL ÖZEL İDARESİ KANUNU</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+		function sadeceişaretli(){
+				document.getElementById("bady").style.backgroundColor = "black"
+				document.getElementById("bady").style.color = "black";
+				chola()
+				arkdahe()
+				dikuyp()
+				metınEDİ()	}
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button><button  onclick="sadeceişaretli()" name="butt" value="butt" class="butt" > SADECE İŞARETLİ</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+ <div id="kal" class="kal">
+İL ÖZEL İDARESİ KANUNU <br>
+
+
+
+          Kanun Numarası              : 5302 <br>
+
+           Kabul Tarihi                     : 22/2/2005 <br>
+
+           Yayımlandığı R.Gazete     : Tarih: 4/3/2005 Sayı : 25745 <br>
+
+           Yayımlandığı Düstur         : Tertip : 5  Cilt : 44  </div>
+
+
+           <div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+            <p>
+              <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+              <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+              <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+              <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+              <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+              <button class="yen" onclick="yeni()"> Yeni </button> <br>
+              <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+              <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+              <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+            </p></div>
+
+            <script>
+              acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+              </script>
+
+
+
+              <div id="soruContainer" class="soruContainer">
+                <div id="soruDiv">
+                  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+                </div>
+                <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+                <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+                <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+                <p id="dogruCevap" style="display: none;"></p>
+              </div>
+              <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+BİRİNCİ KISIM <br>
+
+Genel Hükümler <br><br>
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam ve Tanımlar
+<div>
+          Amaç
+             <div>
+             Madde 1- Bu Kanunun amacı; il özel idaresinin kuruluşunu, organlarını, yönetimini, görev, yetki ve sorumlulukları ile çalışma usul ve esaslarını düzenlemektir.</div></div>
+             <div>
+            Kapsam<div>
+             Madde 2- Bu Kanun il özel idaresini kapsar.</div></div>
+             <div>
+            Tanımlar<div>
+             Madde 3- Bu Kanunun uygulanmasında;
+             <div>
+             a) <span class="kim"> İl özel idaresi:</span>  İl halkının mahallî müşterek nitelikteki <span class="ark"> ihtiyaçlarını karşılamak üzere kurulan</span>  ve <span class="ark"> karar organı seçmenler tarafından seçilerek oluşturulan</span> , <span class="ark"> idarî ve malî özerkliğe sahip</span> <span class="mavi"> kamu tüzel kişisini,</span>  <br>
+
+             b) <span class="kim"> İl özel idaresinin organları:</span> <span class="ark"> İl genel meclisini</span>, <span class="ark"> il encümenini</span>  ve <span class="ark"> valiyi,</span></div>
+
+            <span class="mavi"> İfade eder.</span></div></div>
+
+İKİNCİ BÖLÜM <br>
+
+İl Özel İdaresinin Kuruluşu ve Sınırları
+<div>
+            Kuruluş <div>
+             Madde 4- İl özel idaresi, <span class="mavi"> ilin kurulmasına dair kanunla kurulur</span>  ve ilin <span class="mavi"> kaldırılmasıyla tüzel kişiliği sona erer.</span> </div></div>
+             <div>
+            İl özel idaresinin görev alanı<div>
+             Madde 5- İl özel idaresinin görev alanı <span class="mavi"> il sınırlarını kapsar.</span></div></div>
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+İl Özel İdaresinin Görev, Yetki ve Sorumlulukları
+<div>
+             İl özel idaresinin görev ve sorumlulukları
+             <div>
+             Madde 6- İl özel idaresi mahallî müşterek nitelikte olmak şartıyla;
+             <div>
+             a) Gençlik ve spor Sağlık, tarım, sanayi ve ticaret; Belediye sınırları il sınırı olan Büyükşehir Belediyeleri hariç ilin çevre düzeni plânı, bayındırlık ve iskân, toprağın korunması, erozyonun önlenmesi, kültür, sanat, turizm, sosyal hizmet ve yardımlar, yoksullara mikro kredi verilmesi, çocuk yuvaları ve yetiştirme yurtları; ilk ve orta öğretim kurumlarının arsa temini, binalarının yapım, bakım ve onarımı ile diğer ihtiyaçlarının karşılanmasına ilişkin hizmetleri <span class="kim">il  sınırları içinde,</span> (1)(2)(3) <br>
+
+
+            b) İmar, yol, su, kanalizasyon, katı atık, çevre, acil yardım ve kurtarma (...)(1); orman köylerinin desteklenmesi, ağaçlandırma, park ve bahçe tesisine ilişkin hizmetleri<span class="kim"> belediye  sınırları dışında,</span>  <br>
+
+c) (Ek:24/12/2020-7261/32 md.) Bisiklet yollarının ve şeritlerinin, bisiklet ve elektrikli skuter park ve şarj istasyonlarının, yaya yollarının ve gürültü bariyerlerinin planlanması, projelendirilmesi, yapımı, bakımı ve onarımıyla ilgili işleri, <br>
+
+            <span class="mavi"> Yapmakla görevli ve yetkilidir.</span> </div>
+             <div>
+(Ek fıkra: 16/11/2022-7421/15 md.) İl özel idaresi; il sınırları içinde <span class="ark"> mabetler, kültür ve tabiat varlıkları,</span> tarihî doku ve kent tarihi bakımından önem taşıyan mekânlar ile cemevlerinin yapım, <span class="mavi"> bakım ve onarımını yapabilir.</span></div>
+<div>
+             (Ek fıkra: 3/7/2005-5393/85 md.; Değişik ikinci fıkra: 24/7/2008-5793/42 md.) Bakanlıklar ve diğer merkezi idare kuruluşları; yapım, bakım ve onarım işleri, devlet ve il yolları, içme suyu, sulama suyu, kanalizasyon, enerji nakil hattı, sağlık, eğitim, kültür, turizm, çevre, imar, bayındırlık, iskan, gençlik ve spor gibi hizmetlere ilişkin yatırımlar ile bakanlıklar ve diğer merkezi idare kuruluşlarının görev alanına giren diğer yatırımları, kendi bütçelerinde bu hizmetler için ayrılan ödenekleri il özel idarelerine aktarmak suretiyle gerçekleştirebilir. Aktarma işlemi ilgili bakanın onayıyla yapılır ve bu ödenekler tahsis amacı dışında kullanılamaz. İş, il özel idaresinin tabi olduğu usul ve esaslara göre sonuçlandırılır. İl özel idareleri de bütçe imkanları ölçüsünde bu yatırımlara kendi bütçesinden ödenek aktarabilir. Bu fıkraya göre, bakanlıklar ve diğer merkezi idare kuruluşları tarafından aktarılacak ödenekler ile gerçekleştirilecek yatırımlar, birinci fıkrada öngörülen görev alanı sınırlamasına tabi olmaksızın bütün il sınırları içinde yapılabilir. (Ek cümle: 6/4/2011-6225/1 md.) Bu fıkra kapsamında belirli bir projenin gerçekleştirilmesi amacıyla il özel idaresine aktarıldığı halde, aktarıldığı mali yılı takip eden yıl sonuna kadar tahsis edildiği proje için kullanılamayacağı anlaşılan ödenekler, ilgili Bakanın onayı ile bu fıkra kapsamında değerlendirilmek ve başka bir projede kullanılmak üzere aynı veya başka bir il özel idaresine veya ilgili mevzuatı çerçevesinde kullanılmak üzere Toplu Konut İdaresine aktarılabilir. </div>
+             <div>
+            (Ek fıkra: 1/7/2006-5538/26 md.; Değişik üçüncü fıkra: 24/10/2011-KHK-661/61 md.) Kamu kurum ve kuruluşlarının 5/1/1961 tarihli ve 237 sayılı Taşıt Kanunu kapsamındaki araçlarının alımı, işletilmesi, bakım ve onarımı ile bürolarının ihtiyaçları; kamu konutlarının yapım, bakım, işletme ve onarımı ile emniyet hizmetlerinin gerektirdiği teçhizat alımıyla ilgili harcamalar il özel idaresi bütçesinden karşılanabilir.</div>
+
+             İl çevre düzeni plânı; valinin koordinasyonunda, büyükşehirlerde büyükşehir belediyeleri, diğer illerde il belediyesi ve il özel idaresi ile birlikte yapılır. <span class="mavi"> İl çevre düzeni plânı belediye meclisi ile il genel meclisi tarafından onaylanır.</span>  (Ek cümle: 1/7/2006-5538/26 md.) Belediye sınırları il sınırı olan <span class="mavi"> Büyükşehir Belediyelerinde il çevre düzeni planı ilgili Büyükşehir Belediyeleri tarafından yapılır veya yaptırılır ve doğrudan Belediye Meclisi tarafından onaylanır.</span> <br>
+
+             Hizmetlerin yerine getirilmesinde <span class="ark"> öncelik sırası,</span> il özel idaresinin malî durumu, hizmetin ivediliği ve verildiği yerin gelişmişlik düzeyi <span class="mavi"> dikkate alınarak belirlenir.</span>  <br>
+
+             İl özel idaresi hizmetleri, vatandaşlara en yakın yerlerde ve en uygun yöntemlerle sunulur. Hizmet sunumunda engelli, yaşlı, düşkün ve dar gelirlilerin durumuna uygun yöntemler uygulanır.(2) <br>
+
+             Hizmetlerin diğer mahallî idareler ve kamu kuruluşları arasında bütünlük ve uyum içinde yürütülmesine yönelik koordinasyon o ilin valisi tarafından sağlanır. <br>
+
+             4562 sayılı Organize Sanayi Bölgeleri Kanunu ile Sanayi ve Ticaret Bakanlığına ve organize sanayi bölgelerine tanınan yetki ve sorumluluklar bu Kanun kapsamı dışındadır.</div></div>
+
+
+
+             <div>
+
+             İl özel idaresinin yetkileri ve imtiyazları
+             <div>
+             Madde 7- İl özel idaresinin yetkileri ve imtiyazları şunlardır:
+             <div>
+             a) Kanunlarla verilen görev ve hizmetleri yerine getirebilmek için her türlü faaliyette bulunmak, gerçek ve tüzel kişilerin faaliyetleri için  <span class="mavi">kanunlarda belirtilen izin ve ruhsatları vermek ve denetlemek.</span>  <br>
+
+            b) Kanunların il özel idaresine verdiği yetki çerçevesinde yönetmelik çıkarmak, emir vermek, yasak koymak ve uygulamak, kanunlarda belirtilen cezaları vermek. <br>
+
+             c) Hizmetlerin yürütülmesi amacıyla, taşınır ve taşınmaz malları almak, satmak, kiralamak veya kiraya vermek, takas etmek, bunlar üzerinde sınırlı aynî hak tesis etmek. <br>
+
+             d) <span class="mavi"> Borç almak ve bağış kabul etmek.</span> <br>
+
+             e) <span class="ark"> Vergi, resim ve harçlar dışında kalan </span> ve <span class="ark"> <strong> miktarı yirmibeşmilyar Türk Lirasına</strong> kadar olan</span> <span class="mavi"> dava konusu uyuşmazlıkların anlaşmayla tasfiyesine karar vermek.</span> <br>
+
+             f) Özel kanunları gereğince il özel idaresine ait vergi, resim ve harçların tarh, tahakkuk ve tahsilini yapmak. <br>
+
+             g) Belediye sınırları dışındaki gayri sıhhî müesseseler ile umuma açık istirahat ve eğlence yerlerine ruhsat vermek ve denetlemek.(Ek cümle: 6/3/2007-5594/4 md.) Ancak, sivil hava ulaşımına açık havaalanları bünyesinde yer alan tüm tesislere işyeri açma ve çalışma ruhsatı dahil her türlü ruhsat, Sivil Havacılık Genel Müdürlüğü tarafından verilir. Bu konuya ilişkin usûl  ve esaslar Sivil Havacılık Genel Müdürlüğünce hazırlanacak bir yönetmelikle düzenlenir. <br>
+
+             h) (Ek: 4/4/2015-6645/83 md.) Belediye sınırları dışında, yapı ruhsatı veya yapı kullanma izni hangi idare tarafından verilmiş olursa olsun, <span class="mavi"> hizmete sunulacak olan asansörlerin tescilini yapmak,</span>  ilgili teknik mevzuat çerçevesinde yıllık periyodik kontrollerini yapmak ya da yetkilendirilmiş muayene kuruluşları aracılığıyla yaptırmak, gerekli hâllerde asansörleri hizmet dışı bırakmak. Bu bent uyarınca asansörlerin yıllık periyodik kontrolünü yapabilecek il özel idareleri ile yetkilendirilmiş muayene kuruluşlarının sahip olması gereken koşullar, yıllık periyodik kontrol esasları ile yıllık periyodik kontrol ücretleri Vilayetler Hizmet Birliği, Türk Mühendis ve Mimar Odaları Birliği ve Türk Standardları Enstitüsü temsilcilerinin de yer alacağı bir komisyon tarafından belirlenir. Konuya ilişkin düzenlemeler, komisyon kararları doğrultusunda Bilim, Sanayi ve Teknoloji Bakanlığı tarafından yapılır. </div>
+
+             İl özel idaresi, hizmetleri ile ilgili olarak, halkın görüş ve düşüncelerini belirlemek amacıyla <span class="mavi"> kamuoyu yoklaması ve araştırması yapabilir.</span> <br>
+
+             İl özel idaresinin mallarına karşı suç işleyenler Devlet malına karşı suç işlemiş sayılır. (Ek cümle: 1/7/2006-5538/26 md.) 2886 sayılı Devlet İhale Kanununun 75 inci maddesi hükümleri il özel idaresi taşınmazları hakkında da uygulanır. <br>
+
+             İl özel idaresinin proje karşılığı borçlanma yoluyla elde edilen gelirleri, vergi, resim ve harçları, şartlı bağışlar ve kamu hizmetlerinde <span class="mavi"> fiilen kullanılan malları haczedilemez.</span> <br>
+             <div>
+(Ek: 4/4/2015-6645/83 md.) Birinci fıkranın (h) bendinde düzenlenen yetkinin usulüne uygun kullanılmaması sonucu oluşacak yaralanma ve ölüm olaylarından dolayı, ilgili il özel idaresi yetkilileri 5237 sayılı Türk Ceza Kanunu hükümlerine göre sorumludur.</div></div></div>
+
+
+
+
+<div>
+
+             İl özel idaresine tanınan muafiyetler<div>
+             Madde 8- İl özel idaresinin kamu hizmetine ayrılan veya kamunun yararlanmasına açık, gelir getirmeyen taşınmaz malları ile bunların inşa ve kullanımları katma değer vergisi ile özel tüketim vergisi hariç her türlü vergi, resim, harç, katkı ve katılma paylarından muaftır. (1)</div></div>
+
+
+
+İKİNCİ KISIM <br>
+
+İl Özel İdaresinin Organları <br><br>
+BİRİNCİ BÖLÜM <br>
+
+İl Genel Meclisi
+<div>
+             İl genel meclisi
+             <div>
+             Madde 9- İl genel meclisi, <span class="mavi"> il özel idaresinin karar organıdır</span>  ve ilgili kanunda gösterilen esas ve usullere göre <span class="mavi"> ildeki seçmenler tarafından seçilmiş üyelerden oluşur.</span> </div></div>
+             <div>
+             İl genel meclisinin görev ve yetkileri<div>
+             Madde 10- İl genel meclisinin görev ve yetkileri şunlardır:
+             <div>
+             a) Stratejik plân ile yatırım ve çalışma programlarını, il özel idaresi faaliyetlerini ve personelinin performans ölçütlerini görüşmek ve karara bağlamak. <br>
+
+             b) <span class="mavi"> Bütçe ve kesinhesabı kabul etmek,</span> bütçede kurumsal kodlama yapılan birimler ile fonksiyonel sınıflandırmanın birinci düzeyleri arasında aktarma yapmak. <br>
+
+             c) <span class="kim"> Belediye sınırları il sınırı olan Büyükşehir Belediyeleri hariç</span> <span class="mavi"> İl <strong> çevre düzeni</strong> plânı</span>  ile <span class="ark"> belediye sınırları dışındaki alanların</span> <span class="mavi"> <strong> imar plânlarını</strong> görüşmek ve karara bağlamak</span>.(2) <br>
+
+             d) <span class="mavi"> Borçlanmaya karar vermek.</span> <br>
+
+             e) Bütçe içi işletmeler ile Türk Ticaret Kanununa tâbi ortaklıklar kurulmasına veya bu ortaklıklardan ayrılmaya, sermaye artışına ve gayrimenkul yatırım ortaklığı kurulmasına karar vermek. <br>
+
+             f) Taşınmaz mal alımına, satımına, trampa edilmesine, tahsisine, tahsis şeklinin değiştirilmesine veya tahsisli bir taşınmazın akar haline getirilmesine izin; üç yıldan fazla kiralanmasına ve süresi yirmibeş yılı geçmemek kaydıyla bunlar üzerinde sınırlı aynî hak tesisine karar vermek. <br>
+
+             g) <span class="mavi"> Şartlı bağışları kabul etmek.</span> <br>
+
+             h) (İptal: Anayasa Mahkemesinin 18/1/2007 tarihli ve E.:2005/32, K.:2007/3 sayılı Kararı ile.) <br>
+
+             i) İl özel idaresi adına imtiyaz verilmesine ve il özel idaresi yatırımlarının yap-işlet veya yap-işlet-devret modeli ile yapılmasına,  <span class="mavi">il özel idaresine ait şirket, işletme ve iştiraklerin özelleştirilmesine karar vermek.</span> <br>
+
+             j) <span class="ark"> Encümen üyeleri</span> ile <span class="ark"> ihtisas komisyonları üyelerini</span> <span class="mavi"> seçmek.</span> <br>
+
+             k) <span class="mavi"> İl özel idaresi tarafından çıkarılacak yönetmelikleri kabul etmek.</span> <br>
+
+             l) Norm kadro çerçevesinde il özel idaresinin ve bağlı kuruluşlarının kadrolarının ihdas, iptal ve değiştirilmesine karar vermek. <br>
+
+             m) Yurt içindeki ve yurt dışındaki mahallî idareler ve mahallî idare birlikleriyle karşılıklı işbirliği yapılmasına karar vermek. <br>
+
+             n) Diğer mahallî idarelerle birlik kurulmasına, kurulmuş birliklere katılmaya veya ayrılmaya karar vermek. <br>
+
+             o) İl özel idaresine kanunlarla verilen görev ve hizmetler dışında kalan ve ilgililerin <span class="mavi"> isteğine bağlı hizmetler için uygulanacak ücret tarifesini belirlemek.</span> </div></div></div>
+
+
+             <div>
+             Meclis başkanlık divanı
+             <div>
+             Madde 11- İl genel meclisi, seçim sonuçlarının ilânını izleyen <span class="mavi"> <span class="dik"> beşinci</span> gün kendiliğinden toplanır.</span> Bu toplantıda meclise <span class="mavi"> en yaşlı üye başkanlık eder.</span>  Meclis, bu toplantıda, üyeleri arasından ve <span class="ark"> gizli oyla  meclis başkanını</span>, meclis birinci ve ikinci başkan vekillerini, ikisi yedek olmak üzere dört kâtip üyeyi ilk <span class="mavi"> <span class="dik"> iki yıl</span> için görev yapmak üzere seçer.</span> <span class="ark"> İlk iki yıldan sonra seçilecek başkanlık divanı</span> , yapılacak ilk mahallî idareler <span class="mavi"> seçimlerine kadar görev yapar.</span> <br>
+
+             <span class="mavi"> Meclis başkanlık divanı seçimi <span class="dik"> üç gün</span> içinde tamamlanır.</span> <br>
+
+             Meclis başkanlığı ve başkanlık divanında boşalma olması durumunda, kalan süreyi tamamlamak üzere, yenisi seçilir. <br>
+
+             İl genel meclisine meclis başkanı, bulunmaması durumunda meclis birinci başkan vekili, onun da bulunmaması durumunda ikinci başkan vekili başkanlık eder. <br>
+
+             Meclis başkanı, meclis çalışmalarında düzeni sağlamakla yükümlüdür. <br>
+
+            <span class="kim"> İl genel meclisinin çalışmalarına ilişkin esas ve usuller</span> <span class="mavi"> İçişleri Bakanlığı tarafından çıkarılacak yönetmelikle düzenlenir.</span> </div></div>
+             <div>
+             Meclis toplantısı
+             <div>
+             Madde 12- İl genel meclisi, il genel meclisince belirlenecek bir aylık tatil hariç <span class="mavi"> <span class="dik"> her ayın ilk haftası</span> meclis tarafından önceden belirlenen günde mutat toplantı yerinde toplanır.</span> (Mülga son cümle: 3/7/2005-5393/85 md.) <br>
+
+            <span class="kim"> Bütçe görüşmesine rastlayan toplantı süresi</span> <span class="mavi"> en çok <span class="dik"> yirmi gün</span>, diğer toplantıların süresi en çok <span class="dik"> beş</span> gündür.</span>  <br>
+
+             Mutat toplantı yeri dışında toplanılmasının zorunlu olduğu durumda üyelere ve valiye önceden bilgi vermek kaydıyla meclis başkanının belirlediği yerde toplantı yapılır. Ayrıca, toplantının yeri ve zamanı mutat usullerle halka duyurulur. <br>
+
+             İl genel meclisinin toplantıları açıktır. Meclis başkanı veya üyelerden herhangi birinin gerekçeli önerisi üzerine, toplantıya katılanların salt çoğunluğuyla kapalı oturum yapılmasına karar verilebilir. Salt çoğunluk belli bir sayının yarısından az  olmayan çoğunluğu ifade eder. <br>
+
+             İl genel meclisi görüşmeleri görevlilerce tutanağa geçirilir, tutanak başkan ve kâtip üyeler tarafından imzalanır. Toplantılar, meclisin kararıyla sesli veya görüntülü cihazlarla da kaydedilebilir. <br>
+
+             Özel idare teşkilatı ve ildeki kamu kurum ve kuruluşlarının birim amirleri gündemdeki konularla ilgili olarak meclis toplantılarına davet edilebilir ve  bilgi alınabilir. <br>
+
+             (Ek fıkra: 30/5/2007-5675/2 md.) İl genel meclisi başkanı, acil durumlarda lüzum görmesi halinde il genel meclisini bir yılda üç defadan fazla olmamak ve her toplantı bir birleşimi geçmemek üzere toplantıya çağırır. Olağanüstü toplantı çağrısı ve gündem en az üç gün önceden meclis üyelerine yazılı olarak duyurulur ve ayrıca mutat usûllerle ilan edilir. Olağanüstü toplantılarda çağrıyı gerektiren konuların dışında hiçbir konu görüşülemez. </div></div>
+             <div>
+             Gündem (1)
+             <div>
+             Madde 13- <span class="kim"> Gündem,</span> <span class="mavi"> meclis başkanı tarafından belirlenir</span> ve <span class="mavi"> üyelere en az <span class="dik"> üç gün</span>  önceden bildirilir.</span> Valinin önerdiği hususlar meclisin ilk toplantısında gündeme alınır. Gündem, çeşitli yollarla da halka duyurulur. <br>
+
+             İl genel meclisi üyeleri de il özel idaresine ait işlerle ilgili konuların gündeme alınmasını önerebilir. Öneri, toplantıya katılanların salt çoğunluğuyla kabul edildiği takdirde gündeme alınır. </div></div>
+             <div>
+             Toplantı ve karar yeter sayısı
+             <div>
+             Madde 14- İl genel meclisi, <span class="mavi"> üye tam sayısının <span class="dik"> salt çoğunluğuyla</span> toplanır</span>  ve <span class="mavi"> katılanların <span class="dik"> salt çoğunluğuyla</span> karar verir</span>. <span class="kim"> Ancak,</span> <span class="ark"> karar yeter sayısı</span>, <span class="mavi"> üye tam sayısının <span class="dik"> dörtte birinden</span>  az olamaz</span>. Oylamada eşitlik çıkması durumunda meclis başkanının bulunduğu taraf çoğunluk sayılır. Gizli oylamalarda eşitlik çıkması durumunda oylama tekrarlanır, eşitliğin bozulmaması durumunda meclis başkanı tarafından kur'a çekilir. <br>
+
+
+            Meclisin toplanmasında, üye tam sayısının salt çoğunluğu sağlanamadığı takdirde, başkan, gün ve saatini tespit ederek en geç üç gün içinde toplanmak üzere meclisi tatil eder. Gelecek toplantı, üye tam sayısının dörtte birinden az olmayan üye sayısı ile yapılır. <br>
+
+             Görüşmeler sırasında başkan veya üyelerden birinin isteği üzerine yapılacak yoklamada karar yeter sayısının bulunmadığı anlaşılırsa, ikinci fıkradaki hükümler uygulanır. <br>
+
+             Üyeler oylarını bizzat kullanır. Gizli oy kullanmaya fizikî bakımdan engelli üyeler, tayin edecekleri kişi eliyle oy kullanabilir. <br>
+
+             Oylama; gizli, işaretle veya ad okunarak yapılır. <span class="mavi"> Oy verme kabul, ret veya çekimser şeklinde olur.</span>  <br>
+
+             Kararlar, meclis başkanı ve kâtip üyeler tarafından imzalanır ve bir sonraki toplantıda üyelere dağıtılır. </div></div>
+             <div>
+             Meclis kararlarının kesinleşmesi<div>
+             Madde 15- İl genel meclisi tarafından alınan kararların tam metni, <span class="mavi"> en geç <span class="dik"> beş gün</span> içinde valiye gönderilir.</span> Vali, hukuka aykırı gördüğü kararları, <span class="ark"> yedi gün içinde</span> gerekçesini de belirterek yeniden görüşülmek üzere il genel meclisine <span class="mavi"> iade edebilir.</span> <span class="mavi"> Valiye gönderilmeyen meclis kararları yürürlüğe girmez.</span> <br>
+
+            <span class="mavi"> Yeniden görüşülmesi istenilmeyen kararlar kesinleşir. (1)</span> <br>
+
+             (İptal üçüncü fıkra: Anayasa Mahkemesinin 18/1/2007 tarihli ve E.:2005/32, K.:2007/3 sayılı Kararı ile.) <br>
+
+             Kesinleşen il genel meclisi karar özetleri toplantıyı izleyen <span class="mavi"> en geç <span class="dik"> yedi gün</span> içinde çeşitli yollarla halka duyurulur.</span> </div></div>
+             <div>
+             İhtisas komisyonları<div>
+             Madde 16- (Değişik birinci cümle: 3/7/2005-5393/85 md.) İl genel meclisi, bir yıl görev yapmak üzere üyeleri arasından en az üç, en fazla beş kişiden oluşan ihtisas komisyonları kurabilir. Plân ve Bütçe ile İmar ve Bayındırlık komisyonları en çok yedi kişiden meydana gelir. <br>
+
+             İhtisas komisyonları, her siyasî parti grubunun ve bağımsız üyelerin il genel meclisindeki üye sayısının meclis üye tam sayısına oranlanması suretiyle oluşturulur. Eğitim, kültür ve sosyal hizmetler komisyonu, imar ve bayındırlık komisyonu, çevre ve sağlık komisyonu ile plân ve bütçe komisyonu kurulması zorunludur. <br>
+
+             İmar ve bayındırlık komisyonu dışındaki komisyonların çalışma süreleri meclisin toplantı süresiyle sınırlıdır. Meclis toplantısını müteakip imar  ve bayındırlık komisyonu en fazla on iş günü, diğer komisyonlar ise beş iş günü toplanarak kendisine havale edilen işleri sonuçlandırır. Rapor bu sürenin sonunda meclise sunulmadığı takdirde, konu meclis başkanı tarafından doğrudan gündeme alınır. <br>
+
+             Kaymakamlar ve ildeki kamu kuruluşlarının amirleri ve  ildeki kamu kurumu niteliğindeki meslek kuruluşları, üniversite ve sendikalar ile gündemdeki konularla ilgili köy ve mahalle muhtarları ile sivil toplum örgütlerinin temsilcileri, oy hakkı olmaksızın kendi görev ve faaliyet alanlarına giren konuların görüşüldüğü ihtisas komisyonu toplantılarına katılabilir ve görüş bildirebilir. <br>
+
+             İhtisas komisyonlarının görev alanına giren işler bu komisyonlarda görüşüldükten sonra il genel meclisinde karara bağlanır. <br>
+
+             Komisyon çalışmalarında uzman kişilerden yararlanılabilir. <br>
+
+             Komisyon raporları alenîdir, çeşitli yollarla halka duyurulur ve isteyenlere il genel meclisi tarafından belirlenecek bedel karşılığında verilir.</div></div>
+             <div>
+             Denetim komisyonu
+             <div>
+             Madde 17- İl genel meclisi, her yılın ocak ayında yapılacak toplantısında il özel idaresinin bir önceki yıl gelir ve giderleri ile hesap ve işlemlerinin denetimi için kendi üyeleri arasından gizli oyla ve <span class="mavi"> üye sayısı üçten az, beşten çok olmamak üzere bir denetim komisyonu oluşturur.</span> Komisyon, <span class="ark"> her siyasî parti grubunun</span> ve bağımsız üyelerin il genel meclisindeki üye sayısının meclis üye tam sayısına <span class="mavi"> oranlanması suretiyle oluşur.</span> <br>
+
+             Komisyon, vali tarafından il özel idare binası içinde belirlenen yerde çalışır ve çalışmalarında uzman kişi ve kuruluşlardan yararlanabileceği gibi valinin onayıyla kamu kuruluşları personelinden de yararlanabilir. Komisyon tarafından istenen bilgi ve belgelerin iade edilmek üzere verilmesi zorunludur. (Ek cümleler: 12/11/2012-6360/21 md.) Denetim komisyonu çalışmalarına, il özel idaresi dışındaki kamu kurum ve kuruluşlarından görevlendirilenlere 3/7/2005 tarihli ve 5393 sayılı Belediye Kanununun 25 inci maddesinin üçüncü fıkrasında öngörülen miktarı geçmemek üzere, il genel meclisince belirlenecek miktarda günlük ödeme yapılır. Denetim komisyonunun emrinde görevlendirilecek kişi ve gün sayısı il genel meclisince belirlenir. Uzman kişilerde aranacak nitelikler il genel meclisinin çalışmasına dair yönetmelikte düzenlenir. <br>
+
+             Komisyon, çalışmasını şubat ayı sonuna kadar tamamlar ve buna ilişkin raporunu, izleyen ayın onbeşine kadar meclis başkanlığına sunar. <br>
+
+             Konusu suç teşkil eden hususlarla ilgili olarak meclis başkanlığı tarafından yetkili mercilere suç duyurusunda bulunulur. </div></div>
+             <div>
+             Meclisin bilgi edinme ve denetim yolları
+             <div>
+             Madde 18- İl genel meclisi <span class="ark"> soru</span>, <span class="ark"> genel görüşme</span> ve <span class="ark"> faaliyet raporunu değerlendirme</span> <span class="mavi"> yollarıyla bilgi edinme ve denetim yetkisini kullanır.</span> <br>
+
+             <spana class="kim"> Meclis üyeleri</spana>, meclis başkanlığına önerge vererek il özel idaresi işleriyle ilgili konularda sözlü veya yazılı <span class="mavi"> soru sorabilir.</span> Soru, vali veya görevlendireceği kişi tarafından <span class="mavi"> sözlü veya yazılı olarak cevaplandırılır.</span> <br>
+
+             İl genel meclisi üyelerinin en az üçte biri, meclis başkanlığına istekte bulunarak il özel idaresinin işleriyle ilgili bir konuda mecliste genel görüşme açılmasını isteyebilir. Bu istek, meclis tarafından kabul edildiği takdirde gündeme alınır. <br>
+
+            <span class="kim"> Vali,</span> <span class="ark"> mart ayı toplantısında </span> <span class="mavi"> bir önceki yıla ait faaliyet raporunu meclise sunar.</span> <br>
+
+             Faaliyet raporundaki açıklamalar, meclis üye tam sayısının dörtte üç çoğunluğuyla yeterli görülmezse, yetersizlik kararıyla görüşmeleri kapsayan tutanak, meclis başkanı tarafından gereği yapılmak üzere İçişleri Bakanlığına gönderilir. </div></div>
+             <div>
+             Başkan ve meclis üyelerinin görüşmelere katılamayacağı durumlar
+             <div>
+             Madde 19- <span class="kim"> İl genel meclisi başkanı ve üyeleri,</span> <span class="mavi"> münhasıran kendileriyle veya ikinci derece dahil kan, kayın hısımları ve evlatlıkları ile ilgili işlerin görüşüldüğü meclis toplantılarına katılamazlar</span>.</div></div>
+             <div>
+             Meclis üyelerinin yükümlülükleri
+             <div>
+             Madde 20- İl genel meclisi üyeleri, görevleri süresince ve görevlerinin sona ermesinden itibaren <span class="ark"> iki yıl süreyle</span> il özel idaresi ve bağlı kuruluşlarına karşı doğrudan doğruya veya dolaylı olarak <span class="mavi"> taahhüde giremez,</span> komisyonculuk ve temsilcilik yapamaz.</div></div>
+             <div>
+             Meclis üyeliğinin sona ermesi
+             <div>
+             Madde 21- İl genel meclisi üyeliği, <span class="ark"> ölüm ve istifa durumunda</span> <span class="mavi"> kendiliğinden sona erer.</span> <br>
+
+           <span class="kim">  Özürsüz veya izinsiz olarak arka arkaya</span> <span class="mavi"> üç birleşim günü</span>  veya <span class="kim"> bir yıl içinde yapılan toplantıların yarısına</span> <span class="mavi"> katılmayan üyenin üyeliğinin düşmesine</span> , savunması alındıktan sonra <span class="mavi"> üye tam sayısının <span class="dik"> salt çoğunluğuyla</span> karar verilir.</span>  <br>
+
+             İl genel meclisi üyeliğine <span class="ark"> seçilme yeterliliğinin kaybedilmesi durumunda</span>, valinin bildirmesi üzerine <span class="mavi"> Danıştay tarafından üyeliğin düşmesine karar verilir</span>.</div></div>
+             <div>
+             Meclisin feshi
+             <div>
+             Madde 22- İl genel meclisi;
+             <div>
+             a) Kendisine kanunla verilen görevleri süresi içinde yapmayı ihmal eder ve bu durum il özel idaresine ait işleri aksatırsa, <br>
+
+             b) İl özel idaresine verilen görevlerle ilgisi olmayan siyasî konularda karar alırsa,</div>
+
+            <span class="ark"> İçişleri Bakanlığının bildirisi üzerine</span> <span class="mavi"> Danıştayın kararı ile feshedilir.</span> <br>
+
+             İçişleri Bakanlığı gerekli gördüğü takdirde meclisin feshine dair bildiri ile birlikte <span class="ark"> karar verilinceye kadar</span> <span class="mavi"> meclis toplantılarının ertelenmesini de ister.</span> <span class="kim"> Danıştay, toplantıların ertelenmesi hususunu</span> <span class="mavi"> en geç bir ay içinde karara bağlar</span>. <br>
+
+             Bu şekilde feshedilen meclisin yerine seçilen meclis, kalan süreyi tamamlar. </div></div>
+             <div>
+             Boşalan meclisin görevinin yerine getirilmesi
+             <div>
+             Madde 23- İl genel meclisinin;
+             <div>
+             a) Danıştay tarafından feshi veya meclis toplantılarının ertelenmesi, <br>
+
+             b) Yedek üyelerin getirilmesinden sonra da meclis üye tam sayısının yarısından aşağı düşmesi, <br>
+
+             c) Geçici olarak görevden uzaklaştırılması, <br>
+
+             d) Meclis üye tamsayısının yarıdan fazlasının tutuklanması,</div>
+
+             Durumlarında, meclis çalışabilir duruma gelinceye veya <span class="mavi"> yeni meclis seçimi yapılıncaya kadar il genel meclisi görevi, <span class="dik"> encümenin memur üyeleri</span>  tarafından yürütülür.</span> </div></div>
+             <div>
+             Meclis üyelerinin huzur hakları ve diğer sosyal hakları
+             <div>
+             Madde 24- Meclis ve komisyon toplantılarına katıldıkları her gün için; il genel meclisi başkanına <span class="ark"> 6000 gösterge</span>, diğer meclis üyelerine <span class="ark"> 2200 gösterge</span> rakamının,  memur aylıklarına uygulanan katsayı ile çarpımı sonucu bulunacak miktarda huzur hakkı ödenir.(1) <br>
+
+        İl genel meclisi üyeleri hastalıkları süresince izinli sayılır. Ayrıca mazeretleri durumunda, bir yıl içindeki toplantı süresinin yarısını aşmamak şartıyla istekleri üzerine meclis tarafından izin verilebilir.</div></div>
+
+İKİNCİ BÖLÜM <br>
+
+İl Encümeni
+<div>
+             İl encümeni
+             <div>
+             Madde 25- (Değişik birinci fıkra: 12/11/2012-6360/22 md.) İl encümeni <span class="ark"> valinin</span> başkanlığında, <span class="ark"> genel sekreter ile</span> il genel <span> meclisinin</span> her yıl kendi üyeleri arasından <span class="ark"> seçeceği üç üye</span> ve <span> valinin</span> her yıl birim amirleri arasından <span class="ark"> seçeceği iki</span> <span class="mavi"> üyeden oluşur.</span>  <br>
+
+            <span class="ark"> Valinin katılamadığı encümen toplantısına</span> <span class="mavi"> genel sekreter başkanlık eder.</span> <br>
+
+             Encümen toplantılarına gündemdeki konularla ilgili olarak, ilgili birim amirleri vali tarafından oy hakkı olmaksızın görüşleri alınmak üzere çağrılabilir. </div></div>
+             <div>
+             Encümenin görev ve yetkileri
+             <div>
+             Madde 26- Encümenin görev ve yetkileri şunlardır:
+             <div>
+             a) Stratejik plân ve yıllık çalışma programı ile <span class="ark"> bütçe ve kesin hesabı inceleyip</span> <span class="mavi"> il genel meclisine görüş bildirmek.</span> <br>
+
+              b) Yıllık çalışma programına alınan işlerle ilgili <span class="mavi"> kamulaştırma kararlarını almak ve uygulamak.</span> <br>
+
+             c) Öngörülmeyen giderler ödeneğinin harcama yerlerini belirlemek. <br>
+
+             d) Bütçede fonksiyonel sınıflandırmanın ikinci düzeyleri arasında aktarma yapmak. <br>
+
+             e) Kanunlarda öngörülen cezaları vermek. <br>
+
+             f) Vergi, resim ve harçlar dışında kalan ve miktarı beşmilyar Türk Lirasına kadar olan ihtilafların sulhen halline karar vermek. <br>
+
+             g) Taşınmaz mal satımına, trampa  edilmesine ve tahsisine ilişkin kararları uygulamak, süresi üç yılı geçmemek üzere kiralanmasına karar vermek. <br>
+
+             h) <span class="ark"> Belediye sınırları dışındaki umuma açık yerlerin</span> <span class="mavi"> açılış ve kapanış saatlerini belirlemek.</span>  <br>
+
+             i) Vali tarafından havale edilen konularda görüş bildirmek. <br>
+
+             j) Kanunlarla verilen diğer görevleri yapmak. </div></div></div>
+             <div>
+             Encümen toplantısı
+             <div>
+             Madde  27- Encümen, <span class="mavi"> <span class="dik"> haftada en az bir defa</span> olmak üzere önceden belirlenen gün ve saatte toplanır.</span>  Başkan acil durumlarda encümeni toplantıya çağırabilir. <br>
+
+             Encümen üye tam sayısının <span class="mavi"> salt çoğunluğuyla toplanır</span> ve katılanların <span class="mavi"> salt çoğunluğuyla karar verir.</span>  Oyların eşitliği durumunda başkanın bulunduğu taraf çoğunluk sayılır. <span class="mavi"> Çekimser oy kullanılamaz.</span> (Ek cümle: 12/11/2012-6360/23 md.) Encümenin ihale komisyonu olarak yapacağı toplantılarda da bu fıkra hükümleri geçerlidir. <br>
+
+             <span class="ark"> Encümen gündemi</span> <span class="mavi"> vali tarafından hazırlanır.</span>  Encümen üyeleri gündem maddesi teklif edebilir. <br>
+
+             Encümen, gündemindeki konuları <span class="mavi"> en geç <span class="dik"> bir hafta içinde</span>  görüşüp karara bağlar.</span> <br>
+
+             Alınan kararlar başkan ve toplantıya katılan üyeler tarafından imzalanır. Karara muhalif kalanlar gerekçelerini de açıklar. <br>
+
+             Vali kanun ve diğer mevzuat hükümleri ile il genel meclisi kararlarına aykırı gördüğü encümen kararının bir sonraki toplantıda tekrar görüşülmesini isteyebilir. Encümen, kararında ısrar ederse karar kesinleşir. Bu takdirde, vali, kesinleşen encümen kararının uygulanmasını durdurur ve  <span class="mavi"> idari yargı mercilerine yürütmeyi durdurma talebi ile birlikte <span class="dik"> on gün</span> içinde başvurur. İtiraz Danıştayca en geç <span class="dik"> altmış gün</span>  içinde karara bağlanır.</span>  (1) <br>
+
+             Encümen başkan ve üyeleri, <span class="mavi"> münhasıran kendileri, ikinci derece dahil kan ve kayın hısımları ve evlatlıkları ile ilgili işlerin görüşüldüğü encümen toplantılarına katılamazlar. </span> </div></div>
+             <div>
+             Encümen üyelerine verilecek ödenek (2)(3)
+             <div>
+             Madde 28- Encümenin memur olmayan (…)(2) , üyelerine <span class="ark"> 12000 gösterge </span>rakamının Devlet memurları için belirlenen aylık katsayı ile çarpımı sonucu bulunacak miktarda aylık brüt ödenek verilir. Encümen başkanı hariç encümenin memur üyelerine encümen üyeleri için belirlenen gösterge rakamının yarısı ödenir. (1) </div></div>
+
+
+
+
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Vali
+
+
+<div>
+             Vali
+             <div>
+             Madde 29- Vali, il özel idaresinin başı ve tüzel kişiliğinin temsilcisidir.</div></div>
+
+             <div>
+             Valinin görev ve yetkileri<div>
+             Madde 30- Valinin görev ve yetkileri şunlardır:
+             <div>
+             a) İl özel idaresi teşkilâtının <span class="mavi"> en üst amiri olarak il özel idaresi teşkilâtını sevk ve idare etmek,</span> il özel idaresinin hak ve menfaatlerini korumak.  <br>
+
+             b) İl özel idaresini stratejik plâna uygun olarak yönetmek, <span class="ark"> il özel idaresinin kurumsal stratejilerini oluşturmak, bu stratejilere uygun olarak bütçeyi</span>, il özel idaresi faaliyetlerinin ve personelinin performans ölçütlerini hazırlamak ve uygulamak, izlemek ve değerlendirmek, bunlarla ilgili raporları meclise sunmak. <br>
+
+             c) İl özel idaresini Devlet dairelerinde ve törenlerde, davacı veya davalı olarak da yargı yerlerinde  <span class="mavi"> temsil etmek veya vekil tayin etmek.</span>  <br>
+
+             d) İl encümenine başkanlık etmek. <br>
+
+             e) İl özel idaresinin taşınır ve taşınmaz mallarını idare etmek. <br>
+
+             f) İl özel idaresinin gelir ve alacaklarını takip ve tahsil etmek. <br>
+
+             g) Yetkili organların kararını almak şartıyla sözleşme yapmak. <br>
+
+             h) <span class="mavi"> İl genel meclisi ve encümen kararlarını uygulamak.</span>  <br>
+
+             i) Bütçeyi uygulamak, bütçede meclis ve encümenin yetkisi dışında kalan aktarmaları yapmak. <br>
+
+             j) <span class="mavi"> İl özel idaresi personelini atamak.</span> <br>
+
+             k) İl özel idaresi, bağlı kuruluşlarını ve işletmelerini denetlemek. <br>
+
+             l) <span class="mavi"> Şartsız bağışları kabul etmek.</span> <br>
+
+             m) İl halkının huzur, esenlik, sağlık ve mutluluğu için gereken önlemleri almak. <br>
+
+             n) Bütçede yoksul ve muhtaçlar için ayrılan ödeneği kullanmak. <br>
+
+             o) Kanunlarla il özel idaresine verilen ve il genel meclisi veya il encümeni kararını gerektirmeyen görevleri yapmak ve yetkileri kullanmak.</div></div></div>
+             <div>
+             Stratejik plân ve performans plânı<div>
+             Madde 31- Vali, mahallî idareler genel seçimlerinden itibaren <span class="ark"> altı ay içinde;</span> <span class="mavi"> kalkınma plân ve programları </span> ile varsa bölge plânına uygun olarak stratejik plân ve <span class="ark"> ilgili  olduğu yıl başından önce de</span> <span class="mavi"> yıllık performans plânı hazırlayıp il genel meclisine sunar.</span> <br>
+
+             Stratejik plân, varsa üniversiteler ve meslek odaları ile konuyla ilgili sivil toplum örgütlerinin görüşleri alınarak hazırlanır ve il genel meclisinde kabul edildikten sonra yürürlüğe girer. <br>
+
+             Stratejik plân ve performans plânı bütçenin hazırlanmasına esas teşkil eder ve il genel meclisinde bütçeden önce görüşülerek kabul edilir. </div></div>
+             <div>
+             Yetki devri<div>
+             Madde 32- Vali, görev ve yetkilerinden bir kısmını uygun gördüğü takdirde, vali yardımcılarına, yöneticilik sıfatı bulunan il özel idaresi görevlileri ile ilçelerde kaymakamlara devredebilir.(1) </div></div>
+             <div>
+             İhtilaf halinde temsil yetkisinin devri<div>
+             Madde 33- Vali ile birinci ve ikinci derecedeki kan ve kayın hısımlarının il özel idaresi ile ihtilâflı olduğu durumlarda, dava açılması ve bu davada il özel idaresinin temsili, meclis başkanı, bulunmadığı takdirde başkan vekili veya bunların yetkilendireceği kişiler tarafından yerine getirilir.</div></div>
+             <div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+             </div>
+
+             <script>
+             var surukleniyor = false;
+             var offsetX, offsetY;
+
+             // Tüm soru göster butonlarını seç
+             const soruGosterButtons = document.querySelectorAll('.soru');
+
+             // Her bir buton için event listener ekle
+             soruGosterButtons.forEach(function (button, index) {
+             button.addEventListener('click', function() {
+             const soruContainer = document.querySelector('.soruContainer');
+
+             // Eğer gösteriliyorsa gizle, gizliyse göster
+               if (soruContainer.style.display === "none") {
+                 soruContainer.style.display = "block";
+               } else {
+                 soruContainer.style.display = "none";
+             }
+             });
+             });
+
+
+             soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+             document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+                 soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+               document.addEventListener('mouseup', function() { surukleniyor = false;	});
+             </script>
+</body>
+</html>
+{% endblock%}

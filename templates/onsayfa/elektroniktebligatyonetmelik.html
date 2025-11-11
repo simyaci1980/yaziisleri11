@@ -1,0 +1,999 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white;}
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{ font-size: 20px; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+
+
+</style>
+<title>ELEKTRONİK TEBLİGAT YÖNETMELİĞİ</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	   window.print()}
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+<div class="kal"> 	ELEKTRONİK TEBLİGAT YÖNETMELİĞİ</div>
+
+BİRİNCİ BÖLÜM
+
+Amaç, Kapsam, Dayanak, Tanımlar ve İlkeler <br>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br>
+
+<div>
+Amaç ve kapsam
+<div>
+MADDE 1 –<div>  (1) Bu Yönetmeliğin amacı, elektronik ortamda yapılacak tebligata ilişkin usul ve esasları düzenlemektir.
+
+(2) Bu Yönetmelik, 11/2/1959 tarihli ve 7201 sayılı Tebligat Kanunu uyarınca tebligat çıkarmaya yetkili makam ve merciler tarafından Posta ve Telgraf Teşkilatı Anonim Şirketi (PTT) vasıtasıyla yapılacak elektronik tebligata ilişkin hususları kapsar.</div></div></div>
+<div>
+Dayanak
+<div>
+MADDE 2 – (1) Bu Yönetmelik, <span class="mavi"> Tebligat Kanununun 7/a maddesine dayanılarak hazırlanmıştır</span>.</div></div>
+<div>
+Tanımlar
+<div>
+MADDE 3 – (1) Bu Yönetmelikte geçen;
+<div>
+a) <span class="kim"> Bakanlık</span>: <span class="mavi"> Adalet Bakanlığını</span>, <br>
+
+b) <span class="kim"> Delil kaydı:</span> Tebligatın; tebligat çıkarmaya yetkili makam ve merciden <span class="ark"> Ulusal Elektronik Tebligat Sistemi (UETS) tarafından teslim alındığına</span> , muhatabın elektronik tebligat <span class="ark"> adresine ulaştığına</span>, <span class="ark"> okunduğuna</span> ve  <span class="ark"> usulen tebliğ edilmiş sayıldığına </span> <span class="mavi"> dair üretilen ve elektronik sertifika ile imzalanmış kayıtları</span>, <br>
+
+c) <span class="kim"> Elektronik sertifika:</span> 15/1/2004 tarihli ve <span class="mavi"> 5070 sayılı Elektronik İmza Kanununun 9 uncu maddesinde nitelikleri belirtilen nitelikli elektronik sertifikayı,</span> <br>
+
+ç) <span class="kim"> Elektronik tebligat:</span> Tebligat Kanunu ve bu Yönetmeliğe uygun olarak <span class="mavi"> elektronik ortamda yapılan tebligatı</span>, <br>
+
+d) <span class="kim"> Elektronik tebligat adresi:</span> PTT tarafından, <span class="ark"> gerçek kişiler için</span> <span class="mavi"> kimlik bilgileri</span>, <span class="ark"> tüzel kişiler için ise</span> <span class="mavi"> tabi oldukları sistem bilgileri </span> <span class="mavi"> esas alınmak suretiyle tek ve benzersiz şekilde oluşturulan ve UETS’ye kaydedilen tebligat adresini</span>, <br>
+
+e) <span class="kim"> Elektronik tebligat mesajı:</span> <span class="span"> Tebligat çıkarmaya yetkili makam ve merci tarafından güvenli elektronik imza veya elektronik sertifikayla imzalanmış</span> , <span class="ark"> tebliğ edilecek içerik</span>, <span class="ark"> ekli dokümanlar</span> ve <span class="ark"> tebliğ için gerekli muhatap bilgilerinden</span> <span class="mavi"> oluşan elektronik iletiyi</span>, <br>
+
+f) <sapn class="kim"> Güvenli elektronik imza:</sapn> <span class="mavi"> 5070 sayılı Kanunun 4 üncü maddesinde nitelikleri belirtilen güvenli elektronik imzayı</span>, <br>
+
+g) <span class="kim"> İşlem kaydı:</span> <span class="span"> PTT tarafından elektronik tebligat hizmetinin verilmesi esnasında</span>  meydana gelen ve mevzuat gereği <span class="mavi"> kaydının tutulması zorunlu olan tüm bilişim sistemi işlem kayıtlarını,</span> <br>
+
+ğ) <span class="kim"> Muhatap:</span> Elektronik tebligat <span class="mavi"> alıcısı gerçek veya tüzel kişiyi</span>, <br>
+
+h) <span class="kim"> PTT:</span> Posta ve Telgraf Teşkilatı Anonim Şirketini, <br>
+
+ı) <span class="kim"> Tebligat çıkarmaya yetkili makam ve merci:</span> Tebligat Kanunu uyarınca <span class="mavi"> tebligat çıkarmaya yetkili merci, idare, kurum, kuruluş ve kişileri,</span> <br>
+
+i) <span class="kim"> UETS:</span> Tebligat Kanunu ve bu Yönetmelik uyarınca yapılan elektronik tebligat işlemlerini yürütmek amacıyla <span class="mavi"> PTT tarafından kurulan, işletilen ve güvenliği sağlanan sistemi,</span> <br>
+
+j) <span class="kim"> Zaman damgası:</span> 5070 sayılı Kanunun 3 üncü maddesinin birinci fıkrasının (h) bendinde tanımlanan zaman damgasını,</div>
+
+ifade eder.</div></div>
+<div>
+İlkeler
+<div>
+MADDE 4 – (1) Bu Yönetmeliğin uygulanmasında aşağıdaki ilkeler göz önüne alınır:
+<div>
+a) <span class="span">
+ Teslim, bilgilendirme ve belgelendirmenin
+	</span>  sağlanması. <br>
+
+b) <span class="span"> Bilgi güvenliğinin sağlanması</span>. <br>
+
+c) <span class="span"> Kişisel verilerin korunması.</span> <br>
+
+ç) <span class="span"> Entegrasyon ve işbirliğinin sağlanması</span>. <br>
+
+d) <span class="span"> Hizmet kalitesinin sağlanması</span>. <br>
+
+e) <span class="span"> Ulusal ve uluslararası standartların sağlanması</span>.</div></div></div>
+
+İKİNCİ BÖLÜM
+
+Tebligatın Elektronik Yolla Yapılması Zorunlu Olanlar, Başvuru,
+
+Adresin Oluşturulması ve Teslimi
+<div>
+Tebligatın elektronik yolla yapılması zorunlu olanlar
+<div>
+MADDE 5 –<div>  (1) Aşağıda belirtilen gerçek ve tüzel kişilere tebligatın elektronik yolla yapılması zorunludur:
+	<div>
+a) 10/12/2003 tarihli ve 5018 sayılı Kamu Malî Yönetimi ve Kontrol Kanununa ekli <span class="ark"> (I), (II), (III) ve (IV) sayılı cetvellerde yer</span>  alan <span class="ark"> kamu idareleri</span> ile <span class="ark"> bunlara bağlı döner sermayeli</span> <span class="mavi"> kuruluşlar.</span> <br>
+
+b) 5018 sayılı Kanunda tanımlanan <span class="ark"> mahallî idareler</span>. <br>
+
+c) Özel kanunla kurulmuş diğer kamu kurum ve kuruluşları ile kanunla <span class="ark"> kurulan fonlar ve kefalet sandıkları</span>. <br>
+
+ç) <span class="ark"> Kamu iktisadi teşebbüsleri</span> <span class="kim"> ile</span>  bunların bağlı <span class="ark"> ortaklıkları</span>, <span class="ark"> müessese</span> ve <span class="ark"> işletmeleri</span>. <br>
+
+d) <span class="ark"> Sermayesinin yüzde ellisinden fazlası kamuya ait diğer ortaklıklar</span>. <br>
+
+e) Kamu kurumu niteliğindeki <span class="ark"> meslek kuruluşları ve üst kuruluşları</span>. <br>
+
+f) Kanunla kurulanlar da dâhil olmak üzere <span class="ark"> tüm özel hukuk tüzel kişileri</span>. <br>
+
+g) <span class="ark"> Noterler</span>. <br>
+
+ğ) Baro levhasına yazılı <span class="ark"> avukatlar</span>. <br>
+
+h) Sicile kayıtlı <span class="ark"> arabulucular ve bilirkişiler</span>. <br>
+
+ı) İdareleri, kamu iktisadi teşebbüslerini veya sermayesinin yüzde ellisinden fazlası kamuya ait diğer ortaklıkları; <span class="ark"> adli ve idari yargı mercileri</span>, <span class="ark"> icra müdürlükleri</span> veya <span class="ark"> hakemler nezdinde vekil sıfatıyla temsile yetkili olan kişilerin bağlı bulunduğu birim</span> .</div>
+
+(2) <span class="kim"> Birinci fıkra kapsamı dışında kalan gerçek ve tüzel kişilere</span>, <span class="mavi"> talepleri hâlinde elektronik tebligat adresi verilir</span>. <span class="mavi"> Bu durumda bu kişilere tebligatın elektronik yolla yapılması zorunludur</span>.</div></div></div>
+<div>
+Elektronik tebligat adresi alma zorunluluğuna tabi olanlar için yapılacak başvuru
+<div>
+MADDE 6 –<div>  (1) 5 inci maddenin birinci fıkrası kapsamında kalanlar için <span class="kim"> başvuru</span>, <span class="mavi"> zorunluluğun başladığı tarihten itibaren bir ay içinde ilgili kurum, kuruluş veya birlik tarafından</span> <span class="mavi"> PTT’ye yapılır</span> . <br>
+
+(2) Başvuruya aşağıdaki bilgi ve belgeler eklenir:
+<div>
+a) Kamu kurum ve kuruşları ile birlikler için Devlet Teşkilatı Merkezi Kayıt Sisteminde <span class="mavi"> (DETSİS) yer alan benzersiz numara ve sistem bilgileri</span> , <span class="ark"> DETSİS’e kayıtlı olmayanlar için</span> <span class="mavi"> tabi oldukları sistem bilgileri</span>.
+
+b) Merkezi Sicil Kayıt Sistemine <span class="ark"> (MERSİS) kayıtlı tüzel kişiler için</span> <span class="mavi"> MERSİS numarası ve sistem bilgileri</span>, <span class="ark"> MERSİS’e kayıtlı olmayan tüzel kişiler için</span> <span class="mavi"> tabi oldukları sistem bilgileri.</span>
+
+c) <span class="ark"> Türk vatandaşı gerçek kişiler için </span> <span class="mavi">Türkiye Cumhuriyeti kimlik numarası da dâhil olmak üzere kimlik bilgileri</span> ; <span class="ark"> yabancı gerçek kişiler için</span> <span class="mavi"> yabancı kimlik numarası da dâhil olmak üzere kimlik bilgileri</span>.</div>
+
+(3) <span class="mavi"> PTT, ikinci fıkrada belirtilenler dışında da bilgi ve belge talep edebilir</span>. Buna ilişkin usul ve esaslar Bakanlığın uygun görüşü alınmak suretiyle PTT tarafından belirlenir.</div></div></div>
+<div>
+Elektronik tebligat adresi alma zorunluluğuna tabi olmayanlar için yapılacak başvuru
+<div>
+MADDE 7 –<div>  (1) 5 inci maddenin ikinci fıkrası kapsamında kalan gerçek veya tüzel kişiler, elektronik tebligat adresi <span class="mavi"> almak için PTT’ye başvurabilir.</span> <br>
+
+(2) PTT başvuru sahibinin kimliğini aşağıdaki bilgi ve belgelere göre tespit eder:
+<div>
+a) <span class="ark"> Türk vatandaşları için</span>  kimlik numarası bulunan Türkiye Cumhuriyeti <span class="span"> kimlik kartı</span>, <span class="span"> pasaport</span>, <span class="span"> kanunen kimlik yerine geçen geçerli resmî belge</span> <span class="kim"> veya</span>  <span class="span"> güvenli elektronik</span> imza. <br>
+
+b) <span class="ark"> Yabancılar için </span> <span class="span"> yabancı kimlik numarası</span>, <span class="span"> Mavi Kart numarası</span> , <span class="span"> pasaport</span> <span class="kim"> veya</span> <span class="span"> güvenli elektronik imza</span>. <br>
+
+c) Tüzel kişiler için tabi oldukları sistem bilgileri.</div></div></div></div>
+<div>
+Elektronik tebligat adresinin oluşturulması ve teslimi
+<div>
+MADDE 8 –<div>  (1) <span class="kim"> PTT</span>, başvurunun yapıldığı tarihten itibaren <span class="kim"> bir ay içinde elektronik tebligat adresini</span> , <span class="ark"> gerçek kişiler için </span> <span class="mavi">kimlik bilgilerini</span>, <span class="ark"> tüzel kişiler için</span> ise <span class="mavi"> tabi oldukları sistem bilgilerini esas almak suretiyle</span> <span class="mavi"> tek ve benzersiz olacak şekilde oluşturur ve UETS’ye kaydeder</span>. <br>
+
+(2) <span class="kim"> PTT</span>, 5 inci maddenin birinci fıkrası kapsamında kalanlar için <span class="kim"> oluşturduğu elektronik tebligat adresini</span>, adres sahibine teslim edilmek üzere <span class="mavi"> ilgili kurum, kuruluş veya birliğe gönderir</span> . <span class="kim"> Teslim işleminin gerçekleştiği bilgisi kendisine iletildikten sonra</span> <span class="mavi">  bu adresi tebligat çıkarmaya yetkili makam ve mercilerin kullanımına derhâl sunar</span>. <br>
+
+(3) PTT, 5 inci maddenin ikinci fıkrası kapsamında kalanlar için oluşturduğu elektronik tebligat adresini ilgilisine teslim eder ve bu adresi tebligat çıkarmaya yetkili makam ve mercilerin kullanımına derhâl sunar.</div></div></div>
+
+ÜÇÜNCÜ BÖLÜM
+
+Elektronik Tebligatın Yapılması
+<div>
+Elektronik tebligatın hazırlanması ve muhataba ulaştırılması
+<div>
+MADDE 9 – <div> (1) <span class="kim"> Tebligat çıkarmaya yetkili makam ve merci</span>, <span class="mavi"> elektronik tebligat mesajını <span class="dik"> hazırlayarak, UETS’ye</span> teslim eder.</span> <br>
+
+(2) <span class="kim"> UETS,</span> <span class="ark"> elektronik tebligat mesajını zaman damgasıyla ilişkilendirerek</span> <span class="mavi"> muhatabın elektronik tebligat adresine ulaştırır</span>. <br>
+<div> <button  onclick="soruyuGoster(271)" class="soru" >2017 yılı çıkmış soru</button> </div>
+(3) <span class="kim"> Gizliliğin sağlanması amacıyla tebliğ edilecek içerik ve ekli dokümanlar</span>, <span class="mavi"> UETS tarafından şifrelenir ve bunlar ancak muhatap tarafından görülür</span>. <br>
+
+(4) <span class="ark"> Gerek UETS içi</span> ve  <span class="ark">gerekse sistemler arası entegrasyon yoluyla yapılan</span> <span class="mavi"> tebligata ait delil kayıtları</span> , <span class="mavi"> elektronik tebligat mesajının tamamının ulaştığı anda üretilir.</span> <br>
+
+(5) Elektronik yolla tebligat, idareleri, kamu iktisadi teşebbüslerini veya sermayesinin yüzde ellisinden fazlası kamuya ait diğer ortaklıkları; adli ve idari yargı mercileri, icra müdürlükleri veya hakemler nezdinde vekil sıfatıyla <span class="kim"> temsile yetkili olan kişilerin bağlı bulunduğu birime yapılır.</span> <span class="mavi"> Temsile yetkili olan kişilerin ayrı bir elektronik tebligat adresinin bulunması bu kuralın uygulanmasına engel olmaz</span>. <br>
+
+(6) Elektronik yolla tebligat, <span class="mavi"> muhatabın elektronik tebligat adresine ulaştığı tarihi izleyen <span class="dik"> beşinci günün sonunda</span>  yapılmış sayılır</span>.</div></div></div>
+<div>
+Muhatabın bilgilendirilmesi
+<div>
+MADDE 10 –<div>  (1) <span class="kim"> Elektronik tebligat adresine elektronik tebligat mesajı ulaştığı konusunda bilgilendirilmek isteyen muhatap</span>, <span class="ark"> elektronik posta adresini</span> veya <span class="ark"> kısa mesaj alma özelliği olan bir telefon numarasını</span>  <span class="mavi">PTT’ye bildirir.</span> <br>
+
+(2) <span class="kim"> Elektronik tebligat, muhatabın adresine ulaştığı anda</span> <span class="mavi"> PTT tarafından muhataba bilgilendirme mesajı iletilir.</span> <span class="ark"> Bu mesaj kısa mesaj alma özelliği olan telefona</span> <span class="mavi"> ücreti mukabilinde</span>,<span class="ark"> elektronik posta adresine ise</span> <span class="mavi"> ücretsiz olarak iletilir</span>. <br>
+
+(3) <span class="kim"> Bu madde kapsamındaki bilgilendirmelerin herhangi bir nedenle yapılamamış veya geç yapılmış olması</span>, <span class="mavi"> tebligatın geçerliliğini etkilemez.</span> <br>
+
+(4) <span class="kim"> Muhatabın bu madde kapsamında bilgilendirilmesine ilişkin işlem kayıtları</span> <span class="mavi"> UETS tarafından tutulur</span>.</div></div></div>
+<div>
+Muhatabın elektronik tebligat adresine erişimi
+<div>
+MADDE 11 – (1) <span class="kim"> Muhatap elektronik tebligat adresine</span>, <span class="ark"> güvenli elektronik imzasını kullanarak</span> veya <span class="ark"> e-Devlet kapısı üzerinden kimlik doğrulaması yaparak</span> ya da <span class="ark"> PTT tarafından verilen şifre ile birlikte telefonuna kısa mesajla gelen tek kullanımlık doğrulama kodunu kullanarak</span>  <span class="mavi">  erişir</span>.</div></div>
+<div>
+Elektronik tebligatın muhatabın adresine ulaşmasına dair delil kaydının bildirimi
+<div>
+MADDE 12 – (1) <span class="kim"> UETS, elektronik tebligatın muhatabın adresine ulaşıp ulaşmadığına dair delil kayıtlarını tutar ve bu kayıtları</span>, <span class="mavi"> tebligat çıkarmaya yetkili makam ve mercie derhâl ve <span class="dik"> en geç yirmi dört saat</span>  içinde bildirir</span>. <span class="kim"> Süresinde bildirim yapılmadığı için yeniden elektronik tebligat çıkarılması durumunda</span> <span class="mavi"> bu tebligatın masrafı PTT tarafından karşılanır</span>.</div></div>
+<div>
+Ana ve alt işlem yetkilisi
+<div>
+MADDE 13 – <div> (1) <span class="kim"> 5 inci madde kapsamında kalan tüzel kişiler</span>, elektronik tebligat adresiyle <span class="mavi"> ilgili işlemleri yapmak üzere  <span class="dik">en az bir, en fazla on ana işlem yetkilisi</span> belirleyerek PTT’ye bildirir</span>. <br><div> <button  onclick="soruyuGoster(76)" class="soru" >2023 yılı çıkmış soru</button> </div>
+
+(2) <span class="kim"> Ana işlem yetkilisinin görev ve yetkileri şunlardır</span>:
+<div>
+a) <span > Alt işlem yetkililerini belirlemek</span>, bunları <span class="span"> UETS’ye eklemek veya çıkarmak</span>. <br>
+
+b) <span class="span"> UETS’de alt işlem yetkililerine rol tanımlamak</span>. <br>
+
+c) <span class="span"> Gerektiğinde alt işlem yetkililerinin yapacağı tüm işlemler ile diğer teknik işlemleri yürütmek</span>.</div>
+
+(3) <span class="kim"> Alt işlem yetkilisi</span>, <span class="mavi"> ana işlem yetkilisince kendisine verilen yetki kapsamında verilere ulaşabilir</span>.</div></div></div>
+<div>
+İspat gücü
+<div>
+MADDE 14 – (1) <span class="kim"> Delil kayıtları</span>, <span class="mavi"> aksi ispat edilmedikçe kesin delil sayılır</span>.</div></div>
+<div>
+İşlem ve delil kayıtlarının muhafazası
+<div>
+MADDE 15 –<div>  (1) İşlem ve delil kayıtları erişilebilir şekilde, güvenliği, gizliliği ve bütünlüğü sağlanarak aşağıda belirtilen süreler kadar <span class="mavi"></span> arşivde muhafaza edilir</span>:
+	<div>
+a) <span class="ark"> UETS kapsamında görev yapan sistem yöneticileri ve operatörler</span> , tebligat <span class="ark"> çıkarmaya yetkili makam</span>  ve <span class="ark"> merciler</span> ile <span class="ark"> muhataplar </span> <span class="mavi">tarafından gerçekleştirilen işlem kayıtları <span class="dik"> on yıl</span></span>. <br>
+
+b) <span class="ark"> UETS iş süreçlerinin sürekliliğini veya bilgi güvenliğini tehdit eden ya da öngörülemeyen durumlara ait</span> <span class="mavi"> işlem kayıtları <span class="dik"> on yıl</span></span>. <br>
+
+c) <span class="ark"> Muhatabın UETS’ye erişim kayıtları</span> <span class="mavi"> <span class="dik"> on yıl</span>.</span> <br>
+
+ç) <span class="ark"> Delil kayıtları</span> <span class="mavi">  <span class="dik">otuz yıl</span></span>.</div>
+
+(2) <span class="kim"> İşlem ve delil kayıtlarının silinmesi</span> <span class="mavi"> en az bir defa denetimden geçmiş olması şartına bağlıdır</span>. <br>
+
+(3) <span class="kim"> PTT</span>, talep halinde elektronik tebligata ilişkin <span class="ark"> işlem ve delil kayıtlarını yetkili mercilere</span> <span class="mavi"> elektronik ortamda sunmakla yükümlüdür</span>.</div></div></div>
+<div>
+Tebligatın elektronik yolla yapılamaması
+<div>
+MADDE 16 – (1) <span class="kim"> Elektronik yolla tebligatın, zorunlu bir sebeple yapılamaması hâlinde</span> <span class="mavi"> Tebligat Kanununda belirtilen diğer usullerle tebligat yapılır</span>.</div></div>
+
+DÖRDÜNCÜ BÖLÜM
+
+Elektronik Tebligat Adresinin Kullanıma Kapatılması
+<div>
+Elektronik tebligat adresinin kullanıma kapatılması
+<div>
+MADDE 17 –<div>  (1) 5 inci maddenin birinci fıkrası kapsamındakiler için tebligatın elektronik yolla yapılması <span class="kim"> zorunluluğu ortadan kalktığı takdirde,</span>  <span class="ark"> ilgili kurum, kuruluş veya birlik tarafından</span> <span class="mavi"> bir ay içinde PTT’ye gerekli bildirim yapılır.</span> <span class="kim"> Elektronik tebligat adresi</span>, <span class="mavi"> bildirim tarihinden itibaren bir ay içinde PTT tarafından kullanıma kapatılır</span> . <br>
+
+(2) 5 inci maddenin <span class="kim"> ikinci fıkrası kapsamındakiler için</span> oluşturulan elektronik tebligat adresi, <span class="ark"> ilgilinin talebi üzerine</span> <span class="mavi"> talep tarihinden itibaren bir ay içinde PTT tarafından kullanıma kapatılır</span>. <br>
+
+(3) <span class="ark"> Kısıtlılık</span>,  ceza  <span class="ark">infaz kurumuna girme</span> veya <span class="ark"> askerlik</span>  hizmeti gibi <span class="ark"> hukuki ve fiili sebeplerle</span> elektronik tebligat hizmetinden yararlanma imkânı <span class="ark"> ortadan kalkmış muhatabın</span>  elektronik tebligat adresi,  <span class="mavi"> ilgilisinin bildirimi üzerine PTT tarafından bildirim tarihinden itibaren bir ay içinde kullanıma kapatılır.</span>  <br>
+
+(4) <span class="kim"> Kapatma işlemi</span>  ilgili kurum, kuruluş veya birlikler ile PTT’nin sistemi arasında sağlanacak <span class="mavi"> entegrasyon çerçevesinde otomatik olarak da yapılabilir</span>.</div></div></div>
+<div>
+Kullanıma kapatma işlemleri
+<div>
+MADDE 18 –<div>  (1) Elektronik tebligat adresinin kullanıma kapatıldığı an zaman damgasıyla kayıt altına alınır. Kullanıma kapatılan elektronik tebligat adresine  <span class="mavi"> tebligat yapılamaz. Ancak bu adres <span class="dik"> altı ay süreyle</span> adres sahibinin erişimine açık tutulur</span>. Kapatma işlemi ve elektronik tebligat adresinin <span class="ark"> altı ay süreyle erişimine açık tutulacağı</span> hususunda, varsa adres sahibinin <span class="mavi">  elektronik posta adresi veya telefon numarasına bilgilendirme mesajı iletilir.</span> <div> <button  onclick="soruyuGoster(396)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div><br>
+
+(2) <span class="kim"> PTT, adres kapatmaya ilişkin talepleri,</span> <span class="mavi"> yedi gün yirmi dört saat esasına göre kesintisiz olarak alır.</span> <br>
+
+(3) PTT, kullanıma kapatılan elektronik tebligat adresine ilişkin işlem ve delil kayıtlarını, 15 inci maddede öngörülen süreler boyunca güvenliğini, gizliliğini ve bütünlüğünü sağlayarak muhafaza eder.</div></div></div>
+<div>
+Kapatma ve kullandırma yasağı
+<div>
+MADDE 19 –<div>  (1) Elektronik tebligat adresi,  <span class="mavi"> kapatmaya ilişkin başvurunun yapıldığı tarihten öncesine etkili olacak şekilde kullanıma kapatılamaz.</span> <br>
+
+(2) Kullanıma kapatılan elektronik tebligat adresi, <span class="mavi"> farklı bir kullanıcıya tahsis edilemez</span>.</div></div></div>
+
+BEŞİNCİ BÖLÜM
+
+PTT ve Adres Sahibinin Yükümlülükleri
+<div>
+PTT’nin yükümlülükleri
+<div>
+MADDE 20 –<div>  (1) PTT’nin elektronik tebligat işlemlerinin yürütülmesindeki yükümlülükleri şunlardır:
+	<div>
+a) <span class="span"> UETS’yi kurmak</span>, <span class="span"> işletmek</span>, sistemin <span class="span"> güvenliğini</span> ve sistemde kayıtlı verilerin <span class="span"> muhafazasını</span>  sağlayacak her türlü tedbiri almak. <br>
+
+b) Elektronik tebligata ilişkin Tebligat Kanunu hükümlerine ve bu Yönetmeliğe uygun olarak tebligat çıkarmaya yetkili makam ve merci tarafından iletilen elektronik tebligatı, <span class="span"> UETS vasıtasıyla muhataba ulaştırmak</span>. <br>
+
+c)  <span class="span"> Elektronik tebligat mesajını</span>, bu Yönetmelikte belirlenen çerçevede <span class="span"> erişime hazır halde bulundurmak</span>. <br>
+
+ç) Elektronik tebligatın, tebligat çıkarmaya yetkili makam ve merciden UETS tarafından teslim alındığına, muhatabın elektronik tebligat adresine ulaştığına, okunduğuna ve usulen tebliğ edilmiş sayıldığına dair delil kayıtlarını ayrı ayrı oluşturup her bir kaydı oluşturulduğu <span class="span"> andan itibaren derhâl ve  en geç yirmi dört saat içinde, tebligat çıkarmaya yetkili makam ve mercie iletmek</span>. <br>
+d) Muhataba, bu Yönetmelikte belirlenen çerçevede <span class="span">  bilgilendirme mesajı iletmek</span>. <br>
+
+e) <span class="span"> Elektronik tebligat adresine</span> sistemler arası elektronik entegrasyon yoluyla veya mobil ortam üzerinden güvenli bir şekilde <span class="span"> erişilebilmesini sağlamak</span>. <br>
+
+f) <span class="mavi"> Elektronik tebligata ilişkin ana ve yedek sistemleri, Türkiye Cumhuriyeti mülki sınırları içerisinde bulundurmak.</span> <br>
+
+g) Elektronik tebligat sistemindeki imzalama süreçlerinde elektronik sertifika hizmet sağlayıcıları tarafından <span class="mavi"> PTT için oluşturulan elektronik sertifikayı kullanmak</span>. <br>
+
+ğ) <span class="span"> Delil kayıtlarının gerçek zamanlı olarak doğrulanması hizmetini sunmak</span>. <br>
+
+h) Tebligat çıkarmaya yetkili makam ve merci tarafından <span class="mavi"> elektronik tebligat ücretinin eksiksiz olarak ilgili hesaba yatırıldığını aynı gün UETS'ye işlemek</span>. <br>
+
+ı) İşlem ve delil kayıtlarının güvenliğini, gizliliğini ve bütünlüğünü sağlamak ve <span class="mavi"> bunları belirlenen süreler kadar muhafaza etmek</span>. <br>
+
+i) Kanunlarda yer alan istisnalar saklı kalmak kaydıyla elektronik tebligat <span class="mavi"> mesajının muhatap haricindeki kişilerce görülmemesi için gerekli tedbirleri almak</span>. <br>
+
+j) Elektronik tebligat sistemi hakkında  <span class="span"> kamuoyunu bilgilendirmek</span>, elektronik tebligat hizmetini <span class="span"> etkileşimli ve kullanıcı dostu bir ortamda</span> <span class="mavi"> kullanıcıya sunmak</span>.</div>
+
+(2) PTT, UETS’ye teslim edilen elektronik tebligat mesajını, muhatabın <span class="kim"> rızası olsa dahi</span>, tebligat çıkarmaya yetkili makam ve merciin <span class="mavi"> amacı dışında herhangi bir maksatla kullanamaz ve üçüncü kişilerle paylaşamaz</span>. <br>
+
+(3) PTT, elektronik tebligata ilişkin verilerin güvenli bir şekilde muhafazasından münhasıran sorumlu olup, <span class="mavi"> mevzuat gereğince muhafazasına ihtiyaç kalmayan verileri imha eder</span>. <br>
+
+(4) PTT, elektronik tebligatı muhatabın erişimine hazır tutar. <span class="kim"> PTT tarafından muhatap için tanımlanan muhafaza kapasitesinin dolması halinde veriler</span>, <span class="ark"> usulen tebliğ edilmiş sayıldığı tarihten başlamak üzere</span> <span class="mavi"> en az altı ay boyunca muhatabın erişimine açık tutulmak kaydıyla eski tarihliden başlanarak silinebilir</span>. <br>
+
+(5) <span class="mavi"> PTT, engelli kişilerin elektronik tebligat işlemlerinden yararlanabilmeleri için mümkün olan çalışmaları yapar</span>.</div></div></div>
+<div>
+Adres sahibinin yükümlülükleri
+<div>
+MADDE 21 – (1) <span class="kim"> Adres sahibinin yükümlülükleri şunlardır</span>:
+<div>
+a) Elektronik tebligat adres başvurusu için <span class="span"> gerekli olan bilgi ve belgeleri doğru ve eksiksiz olarak ilgili birime teslim etmek</span>. <br>
+
+b) Elektronik tebligat adresi başvurusu sırasında teslim etmiş olduğu <span class="span"> bilgi ve belgelerde olan değişiklikleri PTT'ye derhâl bildirmek</span>. <br>
+
+c) Kimlik doğrulama amacıyla <span class="span"> kendisine verilen bilgileri korumak</span> , üçüncü kişilerle paylaşmamak ve başkasına kullandırmamak.</div></div></div>
+<div>
+Bilgi, belge gönderme usulü ve zorunluluğu
+<div>
+MADDE 22 – (1) PTT, elektronik tebligat sisteminin etkin ve verimli bir şekilde yürütülmesi için gerekli bilgi ve belgeleri, ilgili kamu veya özel hukuk tüzel kişileri ile gerçek kişilerden ister. <span class="mavi"> İlgililer, talep edilen bilgi ve belgeleri en geç bir ay içinde PTT’ye göndermek zorundadır</span>.</div></div>
+
+ALTINCI BÖLÜM
+
+Sistemin Güvenliği, Adres Rehberi ve Teknik Kriterler
+<div>
+Sistemin güvenliği
+<div>
+MADDE 23 – <div> (1) <span class="kim"> PTT, UETS’nin güvenliğini ve bu sistemde kayıtlı verilerin muhafazasını sağlayacak her türlü tedbiri alır</span>. <span class="ark"> Bunun için güvenli sistem ve cihazlar kullanır</span> ; <span class="mavi"> bu sistem ve cihazlar ile bunların bulunduğu bina veya alanın korunmasını sağlar</span>. <br>
+
+(2) PTT, bilgi güvenliği, veri tabanı yönetimi, bilgisayar ağları ve veri koruması gibi teknik alanlarda <span class="mavi"> yeteri kadar uzman personel istihdam eder veya ettirir</span>. <span class="mavi"> Bu personel, konusunda yeterli meslekî deneyime sahip ya da ilgili alanlarda eğitim almış olmak zorundadır.</span> <br>
+
+(3) <span class="kim"> PTT, UETS organizasyon şemasında</span> , <span class="mavi"> istihdam ettiği veya ettirdiği tüm personelin görev tanımını ve dağılımını gösterir</span>.</div></div></div>
+<div>
+Adres rehberi
+<div>
+MADDE 24 –<div>  (1) <span class="kim"> PTT</span>, elektronik tebligat adreslerine ilişkin bilgileri içerir <span class="kim"> güncel bir adres rehberi oluşturur</span> <span class="mavi"> ve bu rehberi tebligat çıkarmaya yetkili makam ve mercilerin kullanımına sunar</span>.
+
+(2) <span class="kim"> Elektronik tebligat adres rehberine ilişkin usul ve esaslar</span>, <span class="mavi"> Bakanlığın uygun görüşü alınmak suretiyle PTT tarafından belirlenir</span>.</div></div></div>
+<div>
+Teknik kriterler
+<div>
+MADDE 25 – (1) Elektronik tebligat sisteminin etkin, verimli ve güvenli bir şekilde yürütülmesi için <span class="mavi"> PTT’nin kullanacağı sistemler ve cihazlar hakkındaki teknik kriterlere ilişkin usul ve esaslar Bakanlık tarafından belirlenir</span>.</div></div>
+<div> <button  onclick="soruyuGoster(75)" class="soru" >2023 yılı çıkmış soru</button> </div>
+YEDİNCİ BÖLÜM
+
+Çeşitli ve Son Hükümler
+<div>
+PTT’nin diğer hizmetleri
+<div>
+MADDE 26 – (1) PTT, UETS’nin yürütülmesi için zorunlu olan hizmetler yanında <span class="mavi"> bu alanla ilgili güvenilir taraf hizmetleri de sunabilir</span>.</div></div>
+<div>
+Denetim
+<div>
+MADDE 27 – (1) <span class="kim"> Bakanlık</span>, PTT’nin elektronik tebligat hizmetini mevzuata uygun olarak verip vermediğini resen veya şikâyet üzerine <span class="mavi"> her zaman denetleyebilir</span>.</div></div>
+<div>
+Faaliyet raporu
+<div>
+MADDE 28 – <div> (1) <span class="mavi"> PTT, her yıl Ocak ayının sonuna kadar bir önceki yıla ilişkin faaliyet raporunu Bakanlığa verir</span>. Rapor aşağıdaki unsurları içerir:
+	<div>
+a) <span class="span"> Oluşturulan elektronik tebligat adreslerinin türü ve sayısı</span>. <br>
+
+b) <span class="span"> Kullanıma kapatılan elektronik tebligat adreslerinin sayısı ve kullanıma kapatma nedenleri</span>. <br>
+
+c) <span class="span"> Bakanlık tarafından istenecek diğer</span> hususlar.</div>
+
+(2) <span class="mavi"> Faaliyet raporunda yer alması istenen diğer hususlar <span class="dik"> her yıl en geç Aralık ayı içinde</span>  Bakanlık tarafından PTT’ye yazılı olarak bildirilir</span>.</div></div></div>
+<div>
+Ücretlendirme
+<div>
+MADDE 29 – (1) <span class="kim"> PTT,</span> elektronik tebligat hizmeti karşılığında alacağı bedele ilişkin ücret tarifesini Tebligat Kanunu hükümleri çerçevesinde belirleyerek <span class="mavi"> resmî internet sayfasında yayımlar</span>.</div></div>
+<div>
+Hüküm bulunmayan haller
+<div>
+MADDE 30 – (1) Bu Yönetmelikte hüküm bulunmayan hallerde niteliğine <span class="ark"> uygun düştüğü ölçüde</span> 25/1/2012 tarihli ve 28184 sayılı Resmî Gazete’de yayımlanan <span class="mavi"> Tebligat Kanununun Uygulanmasına Dair Yönetmelik hükümleri uygulanır</span>.</div></div>
+<div>
+Yürürlükten kaldırılan yönetmelik
+
+MADDE 31 – (1) 19/1/2013 tarihli ve 28533 sayılı Resmî Gazete’de yayımlanan Elektronik Tebligat Yönetmeliği yürürlükten kaldırılmıştır.</div>
+<div>
+Geçiş hükmü
+<div>
+GEÇİCİ MADDE 1 – (1) 19/1/2013 tarihli ve 28533 sayılı Resmî Gazete’de yayımlanan Elektronik Tebligat Yönetmeliğinin 9 ve 14 üncü maddelerinde düzenlenen saklama yükümlülüğü, bu maddelerde belirtilen süreler doluncaya kadar devam eder.</div></div>
+<div>
+Yürürlük
+<div>
+MADDE 32 – (1) Bu Yönetmelik 1/1/2019 tarihinde yürürlüğe girer.</div></div>
+<div>
+Yürütme
+<div>
+            MADDE 33 – (1) Bu Yönetmelik hükümlerini Adalet Bakanı yürütür.</div></div>
+
+			<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+			</div>
+
+			<script>
+			var surukleniyor = false;
+			var offsetX, offsetY;
+
+			// Tüm soru göster butonlarını seç
+			const soruGosterButtons = document.querySelectorAll('.soru');
+
+			// Her bir buton için event listener ekle
+			soruGosterButtons.forEach(function (button, index) {
+			button.addEventListener('click', function() {
+			const soruContainer = document.querySelector('.soruContainer');
+
+			// Eğer gösteriliyorsa gizle, gizliyse göster
+				if (soruContainer.style.display === "none") {
+				  soruContainer.style.display = "block";
+				} else {
+				  soruContainer.style.display = "none";
+			}
+			});
+			});
+
+
+			soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+			document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+					soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+				document.addEventListener('mouseup', function() { surukleniyor = false;	});
+			</script>
+</body>
+</html>
+
+{% endblock%}

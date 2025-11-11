@@ -1,0 +1,1377 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;  }
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger; }
+
+.ark{background-color:black; font-size: larger; border-radius: 20px;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; color: white; border-radius: 10px; font-size: larger; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 5px;
+	border-style: groove;
+	border-color: rgba(7, 7, 7, 0.46);
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+.siyah{
+	background-color: black;
+	height: 20px;
+	width: 60px;
+	color: white;
+	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+</style>
+<title>5235 sayılı Adli Yargı İlk Derece Mahkemeleri ile Bölge Adliye Mahkemelerinin Kuruluş ve Yetkileri Hakkında kanun</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+
+<br><br><br>
+	<div id="kal" class="kal">
+	ADLÎ YARGI İLK DERECE MAHKEMELERİ İLE BÖLGE ADLİYE
+MAHKEMELERİNİN KURULUŞ, GÖREV VE YETKİLERİ
+HAKKINDA KANUN <br></div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br><br><br><br><br><br>
+
+Kanun Numarası                    : 5235 <br>
+
+Kabul Tarihi                           : 26/9/2004 <br>
+
+Yayımlandığı Resmî Gazete   : Tarih  : 7/10/2004        Sayı  : 25606 <br>
+
+Yayımlandığı Düstur              : Tertip : 5                      Cilt   : 43</div> <br> <br>
+
+
+<div>
+BİRİNCİ KISIM <br>
+Genel Hükümler <br>
+<div>
+Amaç ve kapsam <br>
+
+Madde 1- Bu Kanun, <span class="ark"> adlî yargı ilk derece mahkemeleri</span> ile <span class="ark"> bölge adliye mahkemelerinin</span> <span class="mavi"> kuruluş, görev ve yetkilerini düzenler.</span></div>
+
+
+<div>  <span class="kim">
+İlk derece mahkemeleri </span> <br>
+
+Madde 2- Adlî yargı ilk derece mahkemeleri, <span class="mavi"> hukuk ve ceza mahkemeleridir.</span> </div>
+
+
+<div>
+Bölge adliye mahkemeleri <br>
+
+Madde 3 - <span class="mavi"> Adlî yargı <span class="dik"> ikinci derece</span> mahkemeleri, bölge adliye mahkemeleridir.</span></div></div>
+<div> <button  onclick="soruyuGoster(116)" class="soru" >2016 yılı çıkmış soru</button> </div>
+
+<div>
+İKİNCİ KISIM <br>
+
+Adlî Yargı İlk Derece Mahkemeleri
+
+<div>
+
+BİRİNCİ BÖLÜM <br>
+
+Hukuk Mahkemeleri
+<div>
+
+Madde 4- <span class="kim"> Hukuk mahkemeleri, <br></span> <span class="ark"> sulh hukuk ve <br> asliye hukuk mahkemeleri ile <br> özel kanunlarla kurulan diğer</span> <span class="mavi"> hukuk mahkemeleridir.</span> </div>
+
+
+
+Hukuk mahkemelerinin kuruluşu
+<div>
+
+Madde 5- <span class="kim"> Hukuk mahkemeleri, <br></span> <span class="ark"> her il merkezi ile <br> bölgelerin coğrafî durumları ve iş yoğunluğu göz önünde tutularak belirlenen ilçelerde </span>  <br><span class="kim">Hâkimler ve Savcılar Yüksek Kurulunun olumlu görüşü alınarak</span>  <span class="mavi"> Adalet Bakanlığınca kurulur.</span> </div>
+<div>
+(Değişik ikinci fıkra: 18/6/2014–6545/45 md.) <span class="mavi"> Sulh hukuk ve asliye hukuk mahkemeleri <span class="dik"> tek</span>  hâkimlidir.</span> </div>
+<div>
+(Mülga fıkra: 9/2/2011-6110/13 md.; Yeniden düzenleme: 18/6/2014–6545/45 md.) <span class="kim"> Asliye ticaret mahkemesi kurulan yerlerde</span> <br> <span class="ark"> bu mahkemelerde bir başkan ile yeteri kadar üye bulunur.</span> <br><span class="kim"> Konusu parayla ölçülebilen uyuşmazlıklarda</span> <span class="mavi"> <span class="dik"> dava değeri bir milyon Türk lirasının üzerinde</span>  olan dava ve işler ile dava değerine bakılmaksızın;</span></div>
+<div>
+1. <span class="span"> İflas, <br>  iflasın kaldırılması, <br> iflasın kapatılması, <br>konkordato ve  <br> yeniden yapılandırmadan kaynaklanan iş ve davalara,</span></div>
+<div>
+2. 13/1/2011 tarihli ve <span class="span"> 6102 sayılı Türk Ticaret Kanununda hâkimin kesin olarak karara bağlayacağı işler</span> ile davalara,</div>
+<div>
+3. <span class="kim"> Şirketler ve kooperatifler hukukundan kaynaklanan</span> <br> <span class="span"> genel kurul kararlarının iptali ve butlanına ilişkin davalara, <br> yönetim organları ve denetim organları aleyhine açılacak sorumluluk davalarına, <br> organların azline ve geçici organ atanmasına ilişkin davalara, <br> fesih, <br>  infisah ve tasfiyeye yönelik davalara,</span></div>
+<div>
+4. 12/1/2011 tarihli ve 6100 sayılı Hukuk Muhakemeleri Kanununa ve 21/6/2001 tarihli ve 4686 sayılı Milletlerarası Tahkim Kanununa göre yapılan tahkim yargılamasında; <br> <span class="span"> tahkim şartına ilişkin itirazlara, <br>  hakemlerin seçimi ve reddine yönelik davalar ile  <br> yabancı hakem kararlarının tanıma ve tenfizine yönelik davalara,</span> (3)</div>
+<div>  <span class="kim">
+ilişkin tüm yargılama safhaları, bir başkan ve iki üye ile toplanacak heyetçe yürütülür ve sonuçlandırılır.</span>  (Ek cümle:22/7/2020-7251/54 md.) Bu iş ve davalarda mahkeme başkanı, belirli bazı tahkikat işlemlerini yapmak üzere üyelerden <span class="mavi"> birini naip hâkim olarak görevlendirebilir.</span>  Heyet hâlinde bakılacak davalarla ilgili olmak üzere, dava açılmadan önce veya açıldıktan sonra talep edilen <span class="mavi"> ihtiyati haciz ve ihtiyati tedbirler de heyet tarafından incelenir ve karara bağlanır.</span>  <span class="mavi"> Bu fıkrada belirtilen dava ve işler dışında kalan uyuşmazlıklar mahkeme <span class="dik"> hâkimlerinden biri tarafından görülür</span> ve karara bağlanır.</span> Başkan ve üye hâkimler arasında <span class="kim"> dağılıma ilişkin esaslar,</span> işlerde denge sağlanacak biçimde <span class="mavi">  mahkeme başkanı tarafından önceden tespit edilir.</span>  (Ek cümle: 28/3/2023-7445/15 md.) Bu fıkrada belirtilen parasal sınır, 6100 sayılı Kanunun ek 1 inci maddesinin birinci fıkrasına göre artırılır.<div> <button  onclick="soruyuGoster(381)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div></div>
+<div>
+Özel kanunlarla kurulan diğer hukuk mahkemelerinin kuruluşuna ilişkin hükümler saklıdır.</div>
+<div>
+(Değişik beşinci fıkra:17/4/2013–6460/10 md.) <span class="mavi"> İş durumunun gerekli kıldığı yerlerde hukuk mahkemelerinin birden fazla dairesi oluşturulabilir.</span>  Bu daireler numaralandırılır. Özel kanunlarda başkaca hüküm bulunmadığı takdirde, ihtisaslaşmanın sağlanması amacıyla, gelen işlerin yoğunluğu ve niteliği dikkate alınarak, <span class="mavi"> daireler arasındaki iş dağılımı Hâkimler ve Savcılar Yüksek Kurulu tarafından belirlenebilir.</span>  Bu kararlar Resmî Gazete’de yayımlanır. <span class="mavi"> Daireler, tevzi edilen davalara bakmak zorundadır.</span>
+
+<span class="mavi">
+Hukuk mahkemeleri bulundukları il veya ilçenin adı ile anılır.</span> </div>
+
+
+
+Hukuk mahkemelerinin görevleri
+<div>
+
+Madde 6- <span class="kim"> Sulh hukuk mahkemeleri,</span> 18.6.1927 tarihli ve <span class="mavi"> 1086 sayılı Hukuk Usulü Muhakemeleri</span>  Kanunu ile diğer kanunlarda belirtilen görevleri yerine getirir.</div>
+<div>
+<span class="kim">
+Asliye hukuk mahkemeleri,</span>  <span class="mavi"> sulh hukuk mahkemelerinin görevleri dışında kalan ve özel hukuk ilişkilerinden doğan her türlü dava ve işler ile kanunların verdiği diğer dava ve işlere bakar.</span> </div>
+<div>
+Özel kanunlarla kurulan hukuk mahkemelerinin görevleri saklıdır.</div>
+
+
+
+Hukuk mahkemelerinin yargı çevresi
+<div>
+
+Madde 7- <span class="kim"> Hukuk mahkemelerinin yargı çevresi,</span> <br> <span class="ark"> bulundukları il merkezi ve  ilçeler ile <br> bunlara adlî yönden bağlanan ilçelerin </span> <span class="mavi"> idarî sınırlarıdır.</span>  (Ek cümle:22/7/2020-7251/55 md.) Ancak özel kanunlarla kurulanlar da dâhil olmak üzere, <br>
+<span class="kim"> hukuk mahkemelerinin yargı çevresi,</span> <span class="ark"> il ve ilçe sınırlarına bakılmaksızın</span> <br> <span class="kim"> Adalet Bakanlığının önerisi üzerine</span>  <span class="mavi"> Hâkimler ve Savcılar Kurulunca belirlenebilir.</span> </div>
+
+<div>  <span class="kim">
+Coğrafî durum ve iş yoğunluğu göz önünde tutularak bir hukuk mahkemesinin</span> <br> <span class="ark"> kaldırılmasına veya <br> yargı çevresinin değiştirilmesine, <br> özel kanunlarında yargı çevresi belirtilmemiş olan hukuk mahkemelerinin yargı çevresinin belirlenmesine,</span>  <br> <span class="kim"> Adalet Bakanlığının önerisi üzerine</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca karar verilir.</span> </div></div>
+
+
+<div>
+İKİNCİ BÖLÜM
+
+Ceza Mahkemeleri
+
+<div>
+
+Madde 8- <span class="kim"> Ceza mahkemeleri,</span> <span class="mavi">  asliye ceza ve ağır ceza mahkemeleri ile özel kanunlarla kurulan diğer ceza mahkemeleridir.</span></div>
+
+
+
+Ceza mahkemelerinin kuruluşu
+<div>
+
+Madde 9- <span class="kim"> Ceza mahkemeleri,</span>  <br><span class="ark"> her il merkezi ile <br> bölgelerin coğrafî durumları ve  iş yoğunluğu göz önünde tutularak belirlenen ilçelerde </span> <br><span class="kim"> Hâkimler ve Savcılar Yüksek Kurulunun olumlu görüşü alınarak</span> <span class="mavi"> Adalet Bakanlığınca kurulur.</span><div> <button  onclick="soruyuGoster(256)" class="soru" >2017 yılı çıkmış soru</button> </div> </div>
+<div>
+ <span class="mavi"> asliye ceza mahkemeleri tek hâkimlidir.</span> </div>
+<div> <span class="kim">
+Ağır ceza mahkemesinde </span> <span class="mavi">bir başkan ile <span class="dik"> yeteri kadar</span> üye bulunur.</span>  <span class="mavi"> Bu mahkeme <span class="dik"> bir</span> başkan ve <span class="dik"> iki</span> üye ile toplanır.</span> </div>
+<div>
+Özel kanunlarla kurulan diğer ceza mahkemelerinin kuruluşuna ilişkin hükümler saklıdır.</div>
+<div>
+İş durumunun gerekli kıldığı yerlerde ceza mahkemelerinin birden fazla dairesi oluşturulabilir. Bu daireler numaralandırılır. (Ek cümleler: 2/12/2014-6572/39 md.) Özel kanunlarda başkaca hüküm bulunmadığı takdirde ihtisaslaşmanın sağlanması amacıyla, gelen işlerin yoğunluğu ve niteliği dikkate alınarak daireler arasındaki <span class="mavi"> iş dağılımı, Hâkimler ve Savcılar Yüksek Kurulu tarafından belirlenebilir.</span> <span class="mavi"> Bu kararlar, Resmî Gazete’de yayımlanır.</span> <span class="mavi"> Daireler, tevzi edilen davalara bakmakla yükümlüdür.</span> <span class="kim"> Hâkimler ve Savcılar Yüksek Kurulunca iş dağılımının yapıldığı tarih itibarıyla görülmekte olan davalarda daireler,</span> <span class="mavi"> iş bölümü gerekçesiyle dosyaları diğer bir daireye gönderemez.</span> </div>
+<div>  <span class="mavi">
+Ceza mahkemeleri bulundukları il veya ilçenin adı ile anılır.</span> </div>
+
+
+<span class="kim">
+Sulh ceza hâkimliği</span> [7]<div>
+
+Madde 10- (Değişik: 18/6/2014–6545/48 md.)</div>
+<div>
+Kanunların ayrıca görevli kıldığı hâller saklı kalmak üzere, <span class="kim"> yürütülen soruşturmalarda</span> <span class="mavi"> hâkim tarafından verilmesi gerekli kararları almak, işleri yapmak ve bunlara karşı yapılan itirazları incelemek amacıyla sulh ceza hâkimliği kurulmuştur.</span> </div>
+<div>
+İş durumunun gerekli kıldığı yerlerde birden fazla sulh ceza hâkimliği kurulabilir. Bu durumda sulh ceza hâkimlikleri numaralandırılır. <span class="kim"> Müstakilen sulh ceza hâkimliğinde görevlendirilen hâkimler,</span> <span class="mavi"> adli yargı adalet komisyonlarınca başka mahkemelerde veya işlerde <span class="dik"> görevlendirilemez.</span> </span> </div>
+<div>
+Sulh ceza hâkimliğinde <span class="mavi"> <span class="dik"> bir</span> yazı işleri müdürü ile <span class="dik"> yeteri kadar</span> personel bulunur.</span></div>
+<div>  <span class="kim">
+Sulh ceza hâkimliği,</span> <span class="ark"> her il merkezi ile <br> bölgelerin coğrafi durumları ve iş yoğunluğu göz önünde tutularak belirlenen ilçelerde</span> <br> <span class="kim"> Hâkimler ve Savcılar Yüksek Kurulunun olumlu görüşü alınarak</span> <span class="mavi"> Adalet Bakanlığınca kurulur.</span> </div>
+<div>
+Sulh ceza hâkimliği bulundukları il veya ilçenin adı ile anılır.</div>
+<div>
+	<span class="kim">
+Sulh ceza hâkimliğinin yargı çevresi,</span> <span class="ark"> bulundukları il merkezi ve <br> ilçeler ile <br> bunlara adli yönden bağlanan ilçelerin idari sınırlarıdır.</span> </div>
+<div>
+	<span class="kim">
+Ağır ceza mahkemeleri ile büyükşehir belediyesi bulunan illerde,</span> <span class="ark"> büyükşehir belediyesi sınırları içerisindeki il ve ilçenin adı ile anılan sulh ceza hâkimliğinin yargı çevresi,</span> <span class="mavi"> il veya ilçe sınırlarına bakılmaksızın <strong> Adalet Bakanlığının önerisi</strong> üzerine <strong> Hâkimler ve Savcılar Yüksek Kurulunca</strong>  belirlenir.</span> </div>
+<div>
+Coğrafi durum ve iş yoğunluğu göz önünde tutularak bir  <br> <span class="kim"> sulh ceza hâkimliğinin kaldırılmasına veya yargı çevresinin değiştirilmesine, <br></span> <span class="kim"> Adalet Bakanlığının önerisi üzerine</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca karar verilir.</span> </div>
+
+
+<span class="kim">
+Asliye ceza mahkemesinin görevi</span> <div>
+
+Madde 11- Kanunların ayrıca görevli kıldığı hâller saklı kalmak üzere, <span class="mavi"> sulh ceza hâkimliği ve ağır ceza mahkemelerinin görevleri dışında kalan dava ve işlere asliye ceza mahkemelerince bakılır.</span></div>
+
+
+<span class="kim">
+Ağır ceza mahkemesinin görevi</span> <div>
+
+Madde 12- (Değişik: 21/2/2014 – 6526/2 md.)</div>
+<div>
+Kanunların ayrıca görevli kıldığı hâller saklı kalmak üzere, <span class="kim"> Türk Ceza Kanununda yer alan</span> <br> <span class="ark"> yağma (m. 148), <br> irtikâp (m. 250/1 ve 2),<br> resmî belgede sahtecilik (m. 204/2),<br> nitelikli dolandırıcılık (m. 158),<br> hileli iflâs (m. 161) suçları,<br> Türk Ceza Kanununun İkinci Kitap Dördüncü Kısmının Dört, Beş, Altı ve Yedinci Bölümünde tanımlanan suçlar (318, 319, 324, 325 ve 332 nci maddeler hariç) ve 12/4/1991 tarihli ve 3713 sayılı Terörle Mücadele Kanununun kapsamına giren suçlar dolayısıyla açılan davalar ile<br> ağırlaştırılmış müebbet hapis, müebbet hapis ve<br> <strong> on yıldan fazla hapis</strong>  cezalarını gerektiren suçlarla ilgili dava ve işlere</span> <br> <span class="mavi"> bakmakla ağır ceza mahkemeleri görevlidir.</span>  Anayasa Mahkemesi ve Yargıtayın yargılayacağı kişilere ilişkin hükümler, askerî mahkemelerin görevlerine ilişkin hükümler ile çocuklara özgü kovuşturma hükümleri saklıdır.</div>
+
+
+<span class="kim">
+Diğer ceza mahkemelerinin görevleri</span> <div>
+
+Madde 13- Diğer ceza mahkemeleri, <span class="mavi"> özel kanunlarla belirlenen dava ve işleri görür.</span> </div>
+
+
+<span class="kim">
+Mahkemenin görevinin belirlenmesi</span> <div>
+
+Madde 14- Mahkemelerin görevlerinin belirlenmesinde <span class="dik"> ağırlaştırıcı veya hafifletici nedenler gözetilmeksizin </span> <span class="mavi"> kanunda yer alan suçun cezasının <span class="dik"> üst sınırı</span>  göz önünde bulundurulur.</span> </div>
+
+
+<span class="kim">
+Ceza mahkemelerinin yargı çevresi</span> <div>
+
+Madde 15- <span class="kim"> Ceza mahkemelerinin yargı çevresi,</span> <br> <span class="ark"> bulundukları il merkezi  ve <br> ilçeler ile <br> bunlara adlî yönden bağlanan ilçelerin idarî sınırlarıdır.</span> </div>
+<div>  <span class="kim">
+Ağır ceza mahkemeleri ile büyükşehir belediyesi bulunan illerde,</span> <span class="ark"> büyükşehir belediyesi sınırları içerisindeki il ve ilçenin adı ile anılan sulh veya asliye ceza mahkemelerinin yargı çevresi,</span> <span class="mavi"> il veya ilçe sınırlarına bakılmaksızın <strong> Adalet Bakanlığının önerisi</strong> üzerine <strong> Hâkimler ve Savcılar Yüksek Kurulunca</strong>  belirlenir.</span> </div>
+<div>
+Coğrafî durum ve iş yoğunluğu göz önünde tutularak bir <span class="kim"> ceza mahkemesinin kaldırılmasına veya yargı çevresinin değiştirilmesine,</span> <span class="kim"><strong> özel kanunlarında yargı çevresi belirtilmemiş olan diğer ceza mahkemelerinin</strong> yargı çevresinin belirlenmesine,</span> <br> <span class="kim"> Adalet Bakanlığının önerisi üzerine</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca karar verilir.</span> </div>
+<div>
+(Ek fıkra: 1/7/2016-6723/29 md.) Türk Ceza Kanununun İkinci Kitap Dördüncü Kısmının Dördüncü, Beşinci, Altıncı ve Yedinci Bölümlerinde tanımlanan suçlar (318 inci, 319 uncu, 324 üncü, 325 inci ve 332 nci maddeler hariç) ile 3713 sayılı Kanunun kapsamına giren suçlar sebebiyle açılan davalar, <span class="mavi">suçun işlendiği yerin bağlı olduğu ilin adıyla anılan ağır ceza mahkemesinde görülür.</span> </div></div>
+
+
+<div>
+ÜÇÜNCÜ BÖLÜM  <br>
+
+Cumhuriyet Başsavcılığı <br><br>
+
+ <span class="kim">
+Cumhuriyet başsavcılığının kuruluşu</span>
+<div>
+Madde 16- <span class="mavi"> <span class="dik"> Mahkeme kuruluşu bulunan</span>  her il merkezi ve ilçede o il veya ilçenin adı ile anılan bir Cumhuriyet başsavcılığı kurulur.</span> </div>
+<div>
+	<span class="kim">
+Cumhuriyet başsavcılığında,</span> <span class="mavi"> <span class="dik"> bir</span> Cumhuriyet başsavcısı ve <span class="dik"> yeteri kadar Cumhuriyet savcısı</span>  bulunur.</span> <br>
+<span class="mavi"> Gerekli görülen yerlerde <span class="dik"> Adalet Bakanlığının önerisi</span> üzerine <span class="dik"> Hâkimler ve Savcılar Yüksek Kurulunun</span> kararıyla <span class="dik"> bir veya birden fazla Cumhuriyet başsavcıvekili</span>  atanır.</span> </div>
+
+
+Cumhuriyet başsavcılığının görevleri<div>
+
+Madde 17- <span class="kim"> Cumhuriyet başsavcılığının görevleri şunlardır:</span> <div>
+
+1. <span class="span"> Kamu davasının açılmasına yer olup olmadığına karar vermek üzere soruşturma yapmak veya yaptırmak,</span> <br>
+
+2. Kanun hükümlerine göre, yargılama faaliyetlerini <span class="span"> kamu adına izlemek, bunlara katılmak ve gerektiğinde kanun yollarına başvurmak</span>, <br>
+
+3. <span class="span"> Kesinleşen mahkeme kararlarının yerine getirilmesi ile ilgili işlemleri yapmak ve izlemek</span>,<br>
+
+4. Kanunlarla verilen diğer görevleri yapmak.</div></div>
+
+
+
+Cumhuriyet başsavcısının görevleri<div>
+
+Madde 18- <span class="kim"> Cumhuriyet başsavcısının görevleri şunlardır:</span> <div>
+
+1. Cumhuriyet başsavcılığını <span class="span"> temsil etmek,</span> <br>
+
+2. <span class="span"> Başsavcılığın verimli, uyumlu ve düzenli bir şekilde çalışmasını sağlamak, iş bölümünü yapmak,</span> <br>
+
+3. <span class="span"> Gerektiğinde adlî göreve ilişkin işlemleri yapmak, duruşmalara katılmak ve kanun yollarına başvurmak,</span>  <br>
+
+4. Kanunlarla verilen diğer görevleri yapmak. <br><br>
+ <span class="kim">
+Ağır ceza mahkemesi Cumhuriyet başsavcısının;</span> <span class="mavi"> ağır ceza mahkemesinin yargı çevresinde görevli Cumhuriyet başsavcıları, <br> Cumhuriyet başsavcıvekilleri, <br> Cumhuriyet savcıları ile <br> bağlı birimler <br> üzerinde gözetim ve denetim yetkisi vardır.</span> </div>
+<span class="kim">
+Asliye ceza mahkemesi Cumhuriyet başsavcısının</span> <span class="mavi">  o yer yargı çevresinde görevli <br> Cumhuriyet savcıları ile  <br> bağlı birimler <br> üzerinde gözetim ve denetim yetkisi vardır.</span> </div>
+
+(Ek fıkra:17/6/2021-7328/2 md.) <br> <span class="kim"> Cumhuriyet başsavcısı,</span> <span class="ark"> Cumhuriyet savcılarının soruşturmayı sonlandıran kararları arasında</span> <span class="mavi"> oluşabilecek farklılıkların giderilmesi ile bu kararların kanuna uygunluğunun denetlenmesi hususlarında görevli ve yetkilidir.</span> </div></div></div>
+
+
+
+Cumhuriyet başsavcıvekilinin görevleri<div>
+
+Madde 19- <span class="kim"> Cumhuriyet başsavcıvekilinin görevleri şunlardır:</span>  <br>
+
+1. <span class="ark"> Cumhuriyet başsavcısının</span> <span class="span"> verdiği görevleri yerine getirmek,</span> <br>
+
+2. <span class="ark"> Cumhuriyet savcılarının adlî ve idarî görevlerine ilişkin işlemlerini</span> <span class="span"> inceleyip Cumhuriyet başsavcısına bilgi vermek,</span> <br>
+
+3. <span class="span"> Gerektiğinde adlî göreve ilişkin işlemleri yapmak, duruşmalara katılmak ve kanun yollarına başvurmak,</span> <br>
+
+4. Cumhuriyet başsavcısının <span class="ark"> yokluğunda ona vekâlet</span> <br>
+<span class="kim">
+Aynı yerde görev yapan birden çok Cumhuriyet başsavcıvekili bulunduğunda,</span> <span class="mavi"> Cumhuriyet başsavcısına vekâlet edecek olanı Cumhuriyet başsavcısı belirler.</span> </div>
+
+
+
+Cumhuriyet savcısının görevleri <div>
+
+Madde 20- <span class="kim"> Cumhuriyet savcısının görevleri şunlardır:</span> <div>
+
+1. <span class="span"> Adlî göreve ilişkin işlemleri yapmak, duruşmalara katılmak ve kanun yollarına başvurmak,</span> <br>
+
+2. <span class="ark"> Cumhuriyet başsavcısı tarafından</span> <span class="span"> verilen adlî ve idarî görevleri yerine getirmek,</span> <br>
+
+3. <span class="ark"> Gerektiğinde</span>  Cumhuriyet başsavcısına <span class="span"> vekâlet etmek,</span> <br>
+
+4. Kanunlarla verilen diğer görevleri yapmak. <br> <br>
+<span class="kim">
+Aynı yerde görev yapan Cumhuriyet başsavcıvekili bulunmadığında,</span> <span class="mavi"> Cumhuriyet başsavcısına vekâlet edecek olanı Cumhuriyet başsavcısı belirler.</span></div></div>
+
+
+<span class="kim">
+Cumhuriyet savcılarının yetkisi</span> <div>
+	<div>
+Madde 21- <span class="kim"> Cumhuriyet savcıları,</span> <br> <span class="ark"> bulundukları il merkezi veya <br> ilçenin idarî sınırları ile <br> bunlara adlî yönden bağlanan ilçelerin <br> idarî sınırları içerisinde yetkilidirler.</span> </div>
+<div> <span class="kim">
+Ağır ceza mahkemesi ile özel kanunlarla kurulan diğer ceza mahkemelerinin yargı çevresinde yer alan Cumhuriyet başsavcılıkları,</span>  yetki alanları içerisinde yürüttükleri bu mahkemelerin görevine giren suçlarla ilgili <span class="mavi"> soruşturmaları yapar ve ivedi, zorunlu işlerin tamamlanmasından sonra <span class="dik"> düşünce yazısına soruşturma evrakını ekleyip</span>  ağır ceza mahkemesi veya özel kanunlarla kurulan diğer ceza mahkemelerinin Cumhuriyet başsavcılığına gönderirler.</span> </div>
+<div>  <span class="kim">
+Büyükşehir belediye sınırları içerisinde bulunan Cumhuriyet başsavcıları,</span> <span class="mavi"> bu yer ceza mahkemelerinin yargı çevresinde yetkilidir.</span> <span class="kim"> Ancak,</span> <span class="mavi"> büyükşehir belediye sınırları içerisinde yer alan ağır ceza mahkemeleri ile özel kanunlarla kurulan diğer ceza mahkemelerinin görevine giren işlerde yukarıdaki fıkra hükmü uygulanır.</span> </div>
+<div>
+ Türk Ceza Kanununun İkinci Kitap Dördüncü Kısmının Dördüncü, Beşinci, Altıncı ve Yedinci Bölümlerinde tanımlanan suçlar (318 inci, 319 uncu, 324 üncü, 325 inci ve 332 nci maddeler hariç) ile 3713 sayılı Kanunun kapsamına giren <span class="kim"> suçlar sebebiyle açılan soruşturmalar</span> <span class="mavi"> suçun işlendiği yerin bağlı olduğu ilin adıyla anılan Cumhuriyet başsavcılığınca yürütülür.</span>  İl Cumhuriyet savcısı, suçun işlendiği yer Cumhuriyet savcısından soruşturmanın kısmen veya tamamen yapılmasını isteyebilir. Gecikmesinde sakınca bulunan hâllerde suçun işlendiği yer Cumhuriyet savcısı zorunlu olan delilleri toplar ve gerekmesi hâlinde alınacak kararlar bakımından bulunduğu yer sulh ceza hâkimliğinden talepte bulunur.</div>
+<div>
+Diğer kanunların Cumhuriyet savcılarının yetkisine ilişkin hükümleri saklıdır.</div></div>
+
+
+<span class="kim">
+Duruşmalarda Cumhuriyet başsavcılığını temsil</span> <div>
+
+Madde 22- <span class="kim"> Kanunlarda Cumhuriyet savcılığının görev yapacağı belirtilen mahkemelerdeki duruşmalara,</span> <br> <span class="ark"> Cumhuriyet başsavcısı, <br> görevlendireceği Cumhuriyet başsavcıvekili veya <br> Cumhuriyet savcısı katılır.</span> <span class="mavi">  Gerektiğinde duruşmalara birden çok Cumhuriyet savcısı katılabilir.</span> </div></div>
+
+
+<div>
+DÖRDÜNCÜ BÖLÜM <br>
+
+Ortak Hükümler<div>
+
+	<span class="kim">
+Adlî yargı ilk derece mahkemesi adalet komisyonu</span>  <br>
+
+Madde 23-  <span class="mavi"> <span class="dik"> Ağır ceza mahkemelerinin bulunduğu yargı çevresinde</span>  görev yapmak üzere bir adlî yargı ilk derece mahkemesi adalet komisyonu kurulur.</span>  Bu komisyonun kuruluş şekli, görev ve yetkileri hakkında 24.2.1983 tarihli ve <span class="dik"> 2802</span>  sayılı Hâkimler ve Savcılar Kanununun 113 ilâ 115 inci maddeleri uygulanır.</div>
+
+
+<span class="kim">
+Müdürlükler</span> <div>
+
+Madde 24- <span class="kim"> Her mahkemede</span>  <br> <span class="mavi"> bir yazı işleri müdürlüğü kurulur.</span>  <br>
+<span class="kim">
+Her Cumhuriyet başsavcılığında, </span> <br> <span class="mavi"> yazı işleri müdürlüğü ile <br> Adalet Bakanlığınca gerekli görülen yerlerde ayrıca <br> idarî, <br> malî ve <br> teknik <br> işlerle ilgili müdürlükler kurulur.</span>  <br>
+
+<span class="mavi">
+Her müdürlükte <span class="dik"> bir</span> müdür ile <span class="dik"> yeterli sayıda</span>  memur bulunur.</span> </div></div></div>
+
+
+<div>
+ÜÇÜNCÜ KISIM <br>
+
+Bölge Adliye Mahkemeleri
+
+<div>
+
+BİRİNCİ BÖLÜM <br>
+
+Kuruluş
+
+<div>
+
+Madde 25- <span class="kim"> Bölge adliye mahkemeleri,</span> <span class="ark"> bölgelerin coğrafi durumları ve iş yoğunluğu göz önünde tutularak belirlenen yerlerde,</span> <span class="kim">Hâkimler ve Savcılar Yüksek Kurulunun olumlu görüşü alınarak</span>  <span class="mavi"> Adalet Bakanlığınca kurulur.</span> </div>
+<div>  <span class="kim">
+Bölge adliye mahkemelerinin yargı çevrelerinin belirlenmesine, değiştirilmesine veya bu mahkemelerin kaldırılmasına </span> <br> <span class="kim">  Adalet Bakanlığının önerisi üzerine</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca karar verilir.</span> </div>
+<div>
+Birinci ve ikinci fıkra gereğince alınacak kararlar, Resmî Gazetede yayımlanır.</div>
+
+
+<span class="kim">
+Bölge adliye mahkemelerinin oluşumu</span> <div>
+
+Madde 26- <span class="kim"> Bölge adliye mahkemeleri, <br> </span> <span class="ark"> başkanlık,<br> ceza daireleri başkanlar kurulu,<br> hukuk daireleri başkanlar kurulu,<br> daireler,<br> bölge adliye mahkemesi Cumhuriyet başsavcılığı,<br> bölge adliye mahkemesi adalet komisyonu ve<br> müdürlüklerden</span> <span class="mavi"> oluşur.</span></div>
+
+
+ <span class="kim">
+Bölge adliye mahkemesi başkanlığı</span> <div>
+
+Madde 27- <span class="mavi"> Her bölge adliye mahkemesinde bir başkan bulunur. Başkanlık, başkan ile yazı işleri müdürlüğünden oluşur.</span> </div>
+
+
+
+Bölge adliye mahkemesi ceza daireleri başkanlar kurulu ve hukuk daireleri başkanlar kurulu[10]<div>
+
+Madde 28- <span class="kim"> Bölge adliye mahkemesi <br> ceza daireleri başkanlar kurulu ve <br>  hukuk daireleri başkanlar kurulu,</span> <br> <span class="mavi">  bölge adliye mahkemesi <span class="dik"> başkanı</span> ve <span class="dik"> ilgili dairelerin başkanlarından</span>  oluşur.</span></div>
+<div>
+	<span class="kim">
+Bölge adliye mahkemesi başkanının bulunmadığı hâllerde</span> <span class="mavi"> kurulun başkanlığını ilgili daire başkanlarından kıdemli olanı yerine getirir.</span></div>
+<div>
+	<span class="kim">
+Daire başkanının mazereti hâlinde,</span> <span class="mavi"> o dairenin kıdemli üyesi kurula katılır.</span> </div>
+
+<span class="kim">
+Bölge adliye mahkemesi daireleri</span><div>
+
+Madde 29- Bölge adliye mahkemeleri, hukuk ve ceza dairelerinden oluşur. <br>
+<span class="kim"> Her bölge adliye mahkemesinde </span> <span class="mavi">en az <span class="dik"> üç hukuk</span> ve en az <span class="dik"> iki ceza</span> dairesi bulunur.</span> <br> <span class="kim"> Gerekli hâllerde dairelerin sayısı, Adalet Bakanlığının önerisi üzerine</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca artırılıp azaltılabilir.</span> </div>
+<div>
+	<span class="mavi">
+Dairelerde <span class="dik"> bir</span> başkan ile <span class="dik"> yeteri kadar</span> üye bulunur.</span></div>
+
+
+<span class="kim">
+Bölge adliye mahkemesi Cumhuriyet başsavcılığı</span><div>
+
+Madde 30- <span class="mavi">Her bölge adliye mahkemesinde bir Cumhuriyet başsavcılığı bulunur.</span><br> <span class="kim"> Bölge adliye mahkemesi Cumhuriyet başsavcılığı,</span> <span class="mavi">Cumhuriyet başsavcısı ve <br> yeteri kadar Cumhuriyet savcısından oluşur.</span> </div>
+<div>
+	<span class="mavi"> <strong>
+En kıdemli </strong>Cumhuriyet savcısı, Cumhuriyet başsavcıvekili olarak görev yapar.</span></div>
+
+
+<span class="kim">
+Bölge adliye mahkemesi adalet komisyonu</span> <div>
+
+Madde 31- <span class="mavi"> Her bölge adliye mahkemesinde bir bölge adliye mahkemesi adalet komisyonu bulunur.</span> </div>
+<div> <span class="kim">
+Komisyon, </span> <br> <span class="mavi"> bölge adliye mahkemesi <span class="dik"> başkanının</span> başkanlığında,</span> <br> <span class="ark"> Hâkimler ve Savcılar Yüksek Kurulunca daire başkanları arasından belirlenen</span> <span class="mavi"><span class="dik"> bir asıl üye</span> ile  bölge adliye mahkemesi <span class="dik"> Cumhuriyet başsavcısından</span> oluşur.</span> <br><span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulu ayrıca daire başkan veya üyeleri arasından <span class="dik"> bir yedek üye</span>  belirler.</span>  <br>
+<span class="ark"> Başkanın yokluğunda</span> <span class="mavi"> en kıdemli daire başkanı,</span> <span class="ark"> Cumhuriyet başsavcısının yokluğunda</span> <span class="mavi"> Cumhuriyet başsavcıvekili</span> ve <span class="ark"> asıl üyenin yokluğunda</span> <span class="mavi"> yedek üye </span> <span class="mavi">komisyona katılır</span>.</div>
+<div>
+	<span class="mavi">
+Komisyon eksiksiz toplanır ve çoğunlukla karar verir.</span> </div>
+
+
+<span class="kim">
+Müdürlükler</span><div>
+
+Madde 32- <span class="ark"> Bölge adliye mahkemesi başkanlığında, <br> dairelerinde, <br> Cumhuriyet başsavcılığında ve <br> adalet komisyonunda</span> <br><span class="mavi"> birer yazı işleri müdürlüğü,</span> <br> <span class="ark"> Cumhuriyet başsavcılığında ayrıca</span> <span class="mavi"> bir idarî işler müdürlüğü ile ihtiyaç duyulan diğer müdürlükler kurulur.</span></div>
+<div>
+	<span class="mavi">
+Her müdürlükte <span class="dik"> bir</span> müdür ile <span class="dik"> yeterli sayıda</span> memur bulunur.</span></div>
+<div>
+	<span class="kim">
+Müdürlüklerde çalışanların atama, disiplin ve diğer özlük işlerinde</span> <span class="mavi"> adlî yargı ilk derece mahkemelerinde görevli personelin tâbi oldukları hükümler uygulanır.</span></div></div>
+
+
+<div>
+İKİNCİ BÖLÜM <br>
+
+Görevler <br>
+
+Bölge adliye mahkemelerinin görevleri<div>
+
+Madde 33- <span class="kim"> Bölge adliye mahkemelerinin görevleri şunlardır:</span><div>
+
+1. <span class="span"> Adlî yargı ilk derece mahkemelerince verilen ve <strong> kesin olmayan hüküm ve kararlara karşı </strong> yapılacak başvuruları inceleyip karara bağlamak,</span> <br>
+
+2. (Mülga: 9/2/2011 – 6110/14 md.) <br>
+
+3. Kanunlarla verilen diğer görevleri yapmak.</div></div>
+
+
+
+Başkanın görevleri[11][12]<div>
+
+Madde 34- <span class="kim"> Bölge adliye mahkemesi başkanının görevleri şunlardır</span>:<div>
+
+1. <span class="span"> Mahkemeyi temsil etmek</span>, <br>
+
+2. <span class="ark"> Bölge adliye mahkemesi <br> ceza daireleri başkanlar kurulu ve <br> hukuk daireleri başkanlar kuruluna ve <br> adalet komisyonuna</span> <span class="mavi"> başkanlık etmek,</span> <span class="ark"> ceza daireleri başkanlar kurulu ve <br> hukuk daireleri başkanlar kurulu ile  <br> komisyon kararlarını</span> <span class="mavi"> yürütmek,</span> (11) <br>
+
+3. <span class="span"> Mahkemenin uyumlu, verimli ve düzenli çalışmasını sağlamak, genel yönetim işlerini yürütmek ve bu yolda uygun göreceği önlemleri almak,</span> <br>
+
+4. <span class="kim"> Hukukî veya fiilî nedenlerle bir dairenin kendi üyeleri ile toplanamadığı hâllerde</span> <span class="mavi"> ilgisine göre diğer dairelerden kıdem ve sıraya göre üye görevlendirmek,</span> (10) <br>
+
+5. <span class="span"> Bölge adliye mahkemesi memurlarını denetlemek veya denetletmek,</span> <span class="mavi"> personelden kendisine doğrudan bağlı olanlar hakkında ilgili kanunda belirtilen disiplin cezalarını uygulamak,</span> <br>
+
+6. <span class="ark"> Hükme bağlanan işlerde <strong> adlî yargı ilk derece mahkeme</strong></span> <span class="mavi"> hâkim ve savcılarına verilen not fişlerini mercilerine göndermek,</span><br>
+
+7. Kanunlarla verilen diğer görevleri yapmak.(10)</div></div>
+
+
+<span class="kim">
+Başkanlar kurulunun görevleri</span><div>
+
+Madde 35- <span class="kim"> Bölge adliye mahkemesi <br> ceza daireleri başkanlar kurulu ve <br> hukuk daireleri başkanlar kurulu <br> kendi aralarında toplanır ve aşağıdaki görevleri yaparlar:</span><div>
+
+1. <span class="ark"> Daireler arasında çıkan iş bölümü uyuşmazlıklarını</span> <span class="mavi"> karara bağlamak,</span> <br>
+
+2. (Mülga: 15/8/2016-KHK-674/10 md.; Aynen kabul: 10/11/2016-6758/10 md.) <br>
+
+3. Re'sen veya bölge adliye mahkemesinin ilgili hukuk veya ceza dairesinin ya da Cumhuriyet başsavcısının, Hukuk Muhakemeleri Kanunu veya Ceza Muhakemesi Kanununa göre istinaf yoluna başvurma hakkı bulunanların, <span class="kim"> benzer olaylarda <br> bölge adliye mahkemesi hukuk veya ceza dairelerince verilen kesin nitelikteki kararlar arasında ya da <br> bu mahkeme ile başka bir bölge adliye mahkemesi hukuk veya ceza dairelerince verilen kesin nitelikteki kararlar arasında uyuşmazlık bulunması hâlinde</span> <span class="mavi"> bu uyuşmazlığın giderilmesini gerekçeli olarak istemeleri üzerine, <strong> kendi görüşlerini de ekleyerek</strong> <span class="dik"> Yargıtaydan </span> bu konuda bir karar verilmesini istemek,</span>  <br>
+
+4. Kanunlarla verilen diğer görevleri yerine getirmek. <br></div>
+<div >
+(Değişik fıkra: 20/11/2017 – KHK-696/92 md.; Aynen kabul: 1/2/2018-7079/87 md.) (3) numaralı bende göre yapılacak istemler, <span class="kim"> ceza davalarında</span> <span class="mavi"> Yargıtay Cumhuriyet Başsavcılığına,</span> <span class="kim"> hukuk davalarında ise</span> <span class="mavi"> ilgili hukuk dairesine iletilir.</span> <br> <span class="mavi"> Yargıtay Cumhuriyet Başsavcılığı uyuşmazlık bulunduğuna kanaat getirmesi durumunda ilgili ceza dairesinden bir karar verilmesini talep eder.</span> <br> <span class="mavi"> Uyuşmazlığın giderilmesine ilişkin olarak dairece bu fıkra uyarınca verilen kararlar kesindir.</span></div> <br>
+
+<span class="mavi">
+Başkanlar kurulu eksiksiz toplanır ve çoğunlukla karar verir.</span> <br>
+
+(Ek fıkra: 20/7/2017-7035/12 md.) Gelen işlerin yoğunluğu ve niteliği dikkate alınarak bölge adliye mahkemeleri ceza ve hukuk daireleri arasındaki <span class="mavi"> iş bölümü, Hâkimler ve Savcılar Kurulu tarafından belirlenir.</span>
+
+
+<br>
+
+   <span> (9. yargı paketi 07/11/2024)</span> <br> MADDE 35/A- İstinaf incelemesi için dosya kendisine gönderilen ilgili hukuk dairesi,<span class="mavi"> bir ay içinde </span> yapacağı ön inceleme sonucunda iş bölümü bakımından kendisini görevli görmez ise gerekçesiyle birlikte dosyayı görevli olduğu kanısına vardığı ilgili hukuk dairesine gönderir. <span class="mavi"> Bir aylık </span> sürenin bitiminden sonra veya duruşma günü verilen dosya hakkında gönderme kararı verilemez.
+
+Gönderme kararı üzerine dosya kendisine gelen hukuk dairesi, <span class="mavi">iki hafta içinde </span> yapacağı ön inceleme sonucunda görevli olmadığı kanaatine varırsa, varsa geçici hukuki koruma tedbirlerine dair talepler hakkında da karar vermek suretiyle dosyayı hukuk daireleri başkanlar kuruluna gönderir.<span class="mavi"> İki haftalık</span> sürenin bitiminden sonra gönderme kararı verilemez. Kurul tarafından yapılan ön inceleme sonunda verilen iş bölümüne ilişkin karar kesindir.” <br>
+<br><br>Hukuk dairelerinin görevleri <br>
+Madde 36- <span class="kim"> Bölge adliye mahkemesi hukuk dairelerinin görevleri şunlardır:</span><div>
+
+1. <span class="span"> Adlî yargı ilk derece hukuk mahkemelerinden verilen ve <strong> kesin olmayan hüküm ve kararlara karşı</strong> yapılan başvuruları inceleyip karara bağlamak,</span> <br>
+
+2. (Mülga: 9/2/2011 – 6110/14 md.) <br>
+
+3. Yargı çevresi içerisinde bulunan adlî yargı <span class="mavi"> ilk derece hukuk mahkemeleri arasındaki <span class="dik"> yetki ve görev</span> uyuşmazlıklarını çözmek,</span> <br>
+
+4. <span class="kim"> Yargı çevresindeki yetkili adlî yargı <strong> ilk derece hukuk mahkemesinin</strong> bir davaya bakmasına fiilî veya hukukî bir engel çıktığı veya <br> iki mahkemenin yargı sınırları kapsamının belirlenmesinde tereddüt edildiği takdirde,</span> <span class="mavi"> o davanın bölge adliye mahkemesi yargı çevresi içerisinde başka bir hukuk mahkemesine <strong> nakline veya yetkili mahkemenin tayinine</strong> karar vermek,</span>  <br>
+
+5. Kanunlarla verilen diğer görevleri yapmak.</div>
+
+
+
+Ceza dairelerinin görevleri<div>
+
+Madde 37- <span class="kim"> Bölge adliye mahkemesi ceza dairelerinin görevleri şunlardır:</span><div>
+
+1. <span class="span"> Adlî yargı ilk derece ceza mahkemelerince verilen ve <strong> kesin olmayan hüküm ve kararlara</strong> karşı yapılacak başvuruları inceleyip karara bağlamak,</span><br>
+
+2. Yargı çevresi içerisinde bulunan adlî yargı <span class="mavi"> ilk derece ceza mahkemeleri arasındaki <span class="dik"> yetki ve görev</span>  uyuşmazlıklarını çözmek,</span><br>
+
+3. <span class="kim"> Yargı çevresindeki adlî yargı ilk derece ceza mahkemeleri hâkimlerinin davayı görmeye hukukî veya fiilî engellerinin çıkması hâlinde,</span> <span class="mavi"> o davanın bölge adliye mahkemesi yargı çevresi içerisinde başka bir adlî yargı ilk derece ceza mahkemesine <strong> nakli hakkında</strong>  karar vermek,</span> <br>
+
+4. Kanunlarla verilen diğer görevleri yapmak.</div></div>
+
+
+
+Daire başkanlarının görevleri<div>
+
+Madde 38- <span class="kim"> Bölge adliye mahkemesi daire başkanlarının görevleri şunlardır:</span><div>
+
+1. <span class="span"> Dairelerinde uyumlu, verimli ve düzenli bir çalışmanın gerçekleşmesini ve işlerin <strong> makul süre içinde incelenmesini ve karara bağlanmasını</strong> sağlamak, <br> dairenin kendi kararları arasında meydana gelen <strong> farklılık ve uyumsuzlukların giderilmesi</strong> için tedbirler almak, <br> dosya hakkında <strong> rapor hazırlayacakları tespit etmek</strong> ve kararların yazılmasını sağlamak,</span> <br>
+
+2. <span class="span"> Personelin sicil raporlarını düzenlemek, <strong> izin isteklerini düşünceleriyle birlikte adalet komisyonuna aktarmak,</strong></span><br>
+<div> <button  onclick="soruyuGoster(117)" class="soru" >2016 yılı çıkmış soru</button> </div>
+3. <span class="span"> Dairede görevli yazı işleri müdürlüğünün işleyişini denetlemek </span><span class="mavi"> ve personel hakkında ilgili kanunda belirtilen disiplin cezalarını uygulamak,</span><br>
+
+4. Kanunlarla verilen diğer görevleri yapmak.</div></div>
+
+
+
+Üyelerin görevleri<div>
+
+Madde 39- <span class="kim"> Bölge adliye mahkemesi üyelerinin görevleri şunlardır:</span><div>
+
+1. <span class="span"> Daire başkanı tarafından verilen dosyaları gerekli şekilde ve zamanında inceleyerek heyete sunmak, rapor hazırlamak ve kararlarını yazmak,</span>  <br>
+
+2. <span class="span"> Dairelerindeki duruşma ve müzakerelere katılmak,</span><br>
+
+3. <span class="span"> Dairenin uyumlu, verimli ve düzenli çalışmasının sağlanmasında ve işlerin makul süre içinde incelenip karara bağlanmasında daire başkanına yardım etmek,</span><br>
+
+4. Bu Kanun uyarınca daire başkanı tarafından verilen diğer görevleri yapmak.</div></div>
+
+
+
+Cumhuriyet başsavcısının görevleri<div>
+
+Madde 40- <span class="kim"> Bölge adliye mahkemesi Cumhuriyet başsavcısının görevleri şunlardır:</span><div>
+
+1. Bölge adliye mahkemesi Cumhuriyet başsavcılığını <span class="span"> temsil etmek,</span> <br>
+
+2. <span class="span"> Cumhuriyet başsavcılığının verimli, uyumlu ve düzenli bir şekilde çalışmasını sağlamak,</span><br>
+
+3. <span class="ark"> Bölge adliye mahkemesinin</span> <span class="mavi"> genel yönetim işlerini yürütmek,</span><br>
+
+4. <span class="span"> Bölge adliye mahkemesine gelen ceza davalarına ilişkin hüküm ve kararlara ait dosyaların duruşmalarına katılmayı sağlamak,</span> <br>
+
+5. <span class="span"> Ceza dairelerinin kararlarına karşı gerektiğinde kanun yollarına başvurmak,</span> <br>
+
+6. <span class="kim"> Dairelerin benzer olaylarda kesin olarak verdikleri kararlar arasındaki uyuşmazlığın giderilmesi için</span> <span class="mavi"> <span class="dik"> ceza</span> daireleri başkanlar kuruluna veya <span class="dik"> hukuk</span> daireleri başkanlar kuruluna başvurmak,</span> <br>
+
+7. Bölge adliye mahkemesi <span class="mavi"> Cumhuriyet savcılarının  ilerleme belgelerini düzenlemek,</span> <br>
+
+8. Bölge adliye mahkemesi <span class="span"> Cumhuriyet savcıları üzerinde gözetim ve denetim yetkisini kullanmak,</span> <br>
+
+9. Cumhuriyet başsavcılığı <span class="span"> müdürlüklerini ve personelini denetlemek veya denetletmek,</span> <br>
+
+10. Cumhuriyet başsavcılığında <span class="span"> görevli personel hakkında ilgili kanunda belirtilen disiplin cezalarını uygulamak,</span>  <br>
+
+11. Kanunlarla verilen diğer görevleri yapmak. <br>
+
+(Ek fıkra:17/6/2021-7328/3 md.) <span class="kim"> Cumhuriyet başsavcısı,</span> <span class="ark"> Cumhuriyet savcılarının soruşturmayı sonlandıran kararları arasında</span> <span class="mavi"> oluşabilecek farklılıkların giderilmesi ile bu kararların kanuna uygunluğunun denetlenmesi hususlarında görevli ve yetkilidir.</span><div> <button  onclick="soruyuGoster(43)" class="soru" >2023 yılı çıkmış soru</button> </div></div></div>
+
+
+
+Cumhuriyet savcılarının görevleri<div>
+
+Madde 41- <span class="kim"> Bölge adliye mahkemesi Cumhuriyet savcılarının görevleri şunlardır:</span><div>
+
+1. <span class="span"> Bölge adliye mahkemesine gelen ceza davalarına ilişkin hüküm ve kararlara ait dosyaların duruşmalarına katılmak,</span> <br>
+
+2. <span class="span"> Ceza daireleri kararlarına karşı gerektiğinde kanun yollarına başvurmak,</span> <br>
+
+3. Cumhuriyet başsavcısının vereceği diğer görevleri yapmak, <br>
+
+4. Kanunlarla verilen diğer görevleri yapmak.</div></div><div> <button  onclick="soruyuGoster(57)" class="soru" >2023 yılı çıkmış soru</button> </div>
+
+
+
+Bölge adliye mahkemesi adalet komisyonunun görevleri<div>
+
+Madde 42- <span class="span"> Bölge adliye mahkemesi adalet komisyonunun görevleri şunlardır:</span><div>
+
+1. <span class="mavi"> Bölge adliye mahkemelerinin hâkim ve savcıları dışında kalan personeli hakkında, kanunlarla adlî yargı <strong> ilk derece mahkemesi adalet komisyonuna verilen tüm görevleri</strong> yerine getirmek,</span> <br>
+
+2. Kanunlarla verilen diğer görevleri yapmak.</div></div></div>
+
+<div>
+ÜÇÜNCÜ BÖLÜM <br>
+
+Nitelik ve Atama <br><br>
+
+<span class="kim">
+Bölge adliye mahkemesi başkanı, <br> daire başkanları ve  <br> üyelerin <br> nitelikleri ve atanmaları</span>
+<div>
+
+Madde 43- (Değişik: 18/6/2014–6545/50 md.) <br>
+
+<span class="ark"> Bölge adliye mahkemesi başkanı ve daire başkanları</span> <span class="mavi"> birinci sınıf olup, birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş;</span> <span class="ark"> daire üyeleri ise</span> <span class="mavi"> en az birinci sınıfa <strong> ayrılmış olup,</strong> birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş</span> <br> <span class="mavi"> adli yargı hâkim ve savcıları arasından Hâkimler ve Savcılar Yüksek Kurulunca atanır.</span></div>
+
+
+ <span class="kim">
+Cumhuriyet başsavcısı ve savcılarının nitelikleri ve atanmaları</span><div>
+
+Madde 44- (Değişik: 18/6/2014–6545/51 md.) <br>
+
+<span class="ark">
+Bölge adliye mahkemesi Cumhuriyet başsavcıları</span> <span class="mavi"> birinci sınıf olup, birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş;</span> <span class="ark"> Cumhuriyet savcıları ise</span> <span class="mavi"> hâkimlik ve savcılık mesleğinde fiilen <span class="dik"> en az sekiz yıl görev yapmış</span>  ve üstün başarısı ile bölge adliye mahkemesinde yararlı olacağı anlaşılmış</span> <br> <span class="mavi">  bulunan adli yargı <strong> hâkim ve savcıları arasından</strong> Hâkimler ve Savcılar Yüksek Kurulunca atanır.</span> </div>
+
+
+<span class="kim">
+İstek üzerine atama</span> <div>
+
+Madde 45- <span class="kim"> Yargıtay daire başkanı ve üyeleri, istekleri üzerine</span>  Hâkimler ve Savcılar Yüksek Kurulunca <br>  <span class="mavi"> bölge adliye mahkemesi başkanlığına, <br> daire başkanlıklarına veya <br> Cumhuriyet başsavcılığına <span class="dik"> dört yıllığına</span> atanabilirler.</span>  <br>  Başka bir bölge adliye mahkemesine yapılacak atamalarda da aynı usul uygulanır. <span class="mavi"> Bu şekilde atananların; Yargıtay üyeliği sıfatı, kadrosu, aylık ve ödeneği ile her türlü özlük hakları korunur;</span> <span class="mavi"> aylık ve ödenekleri ile her türlü mali ve sosyal haklarının Yargıtay bütçesinden ödenmesine devam olunur;</span> <span class="mavi"> disiplin ve ceza soruşturma ve kovuşturmaları Yargıtay üyeleri hakkındaki hükümlere tabidir;</span> <span class="mavi"> bu görevde geçirdikleri süre Yargıtay üyeliğinde geçmiş sayılır.</span> <span class="kim"> Bu kişiler; Yargıtay üyeleri tarafından Yargıtayda yapılan iş ve işlemlere katılamazlar;</span> <span class="ark"> Hâkimler ve Savcılar Yüksek Kurulu üyeliği seçimleri hariç</span> <span class="mavi"> Yargıtaydaki seçimlerde aday olamaz ve oy kullanamazlar;</span> <br> <span class="mavi"> istekleri üzerine Yargıtaydaki görevlerine geri dönerler.</span></div>
+<div>
+	<span class="kim">
+Adlî yargı hâkim sınıfından olan <br> Adalet Bakanlığı yüksek müşavirleri, <br> müsteşar yardımcıları,  <br> Teftiş Kurulu Başkanı ve genel müdürleri, <br> bağımsız daire başkanları </span> <br>  <span class="ark"> istekleri üzerine Hâkimler ve Savcılar Yüksek Kurulunca</span> <br><span class="mavi"> bölge adliye mahkemesi başkanlığına, <br> daire başkanlıklarına veya <br> Cumhuriyet başsavcılığına atanabilirler.</span></div></div>
+
+
+<div>
+DÖRDÜNCÜ BÖLÜM <br>
+
+Ortak Hükümler  <br>
+
+<span class="kim">
+Toplantı ve karar</span> <div>
+
+Madde 46- <span class="mavi"> Her daire, bir başkan ve iki üyenin katılmasıyla toplanır.</span> <span class="mavi"> Görüşmeler <span class="dik"> gizli</span> yapılır,</span> <span class="mavi"> kararlar çoğunlukla verilir.</span>  (Ek cümleler:20/2/2019-7165/6 md.) <span class="mavi"> İş yoğunluğu dikkate alınarak, üye sayısının yeterli olması hâlinde dairelerde birden fazla heyet oluşturulabilir.</span> <span class="kim"> Oluşturulan diğer heyetlere,</span> <span class="mavi"> Hâkimler ve Savcılar Kurulunun belirleyeceği üye başkanlık eder.</span></div>
+<div>
+<span class="kim"> Hukukî veya fiilî nedenlerle bir daire toplanamazsa,</span> <span class="mavi"> bölge adliye mahkemesi başkanının kararıyla diğer dairelerden,</span> <span class="kim"> bu da mümkün olmazsa,</span> <span class="mavi"> Hâkimler ve Savcılar Yüksek Kurulunca diğer bölge adliye mahkemelerinden yetkili olarak görevlendirilen üyelerle eksiklik tamamlanır.</span></div>
+<div>
+	<span class="kim">
+Daire başkanının hukukî veya fiilî nedenlerle bulunamaması halinde</span> <span class="mavi"> dairenin en kıdemli üyesi daireye başkanlık yapar.</span> </div>
+
+
+<span class="kim">
+Soruşturma ve kovuşturma usulü</span><div>
+
+Madde 47- <span class="kim"> Bölge adliye mahkemesi başkanı, <br> daire başkanları, <br> üyeleri, <br> Cumhuriyet başsavcısı ve <br> Cumhuriyet savcılarının</span> <br> <span class="ark"> görevden doğan veya <br> görev sırasında işlenen suçları ile <br> şahsî suçlarından, <br> sıfat ve görevleri gereklerine uymayan tutum ve davranışlarından dolayı</span>  <span class="mavi"> haklarında yapılacak soruşturma ve kovuşturmalarda <strong> özel kanunlarında yazılı</strong>  hükümler uygulanır.</span> </div>
+<div>
+
+Şu kadar ki, bunların görevden doğan veya görev sırasında işledikleri suçlar nedeniyle soruşturma ve kovuşturma mercii olarak kanunda yazılı ağır ceza mahkemesi ile bu mahkeme nezdindeki Cumhuriyet başsavcısına verilen görevler, <span class="mavi"> <strong> en yakın bölge adliye mahkemesi ceza dairesinin suç türüne göre görevli ceza dairesi</strong> ile bu mahkeme nezdindeki <span class="dik"> Cumhuriyet başsavcısı tarafından</span>  yerine getirilir.</span> <span class="mavi"> Kovuşturma <span class="dik">mercii</span> Yargıtayın görevli ceza dairesidir.</span></div>
+<div> <span class="kim">
+Bölge adliye mahkemesi başkanı, <br> daire başkanları, <br> üyeleri, <br> Cumhuriyet başsavcısı ve <br> Cumhuriyet savcılarının</span>  <span class="ark"> şahsî suçları hakkında genel hükümlere göre yapılacak soruşturma ve kovuşturma görevi,</span> <span class="mavi"> en yakın bölge adliye mahkemesi Cumhuriyet başsavcısı ile bu bölge adliye mahkemesi ceza dairesinin suç türüne göre görevli ceza dairesine aittir.</span> <span class="mavi"> Daire kararlarına karşı 4/12/2004 tarihli ve 5271 sayılı Ceza Muhakemesi Kanununun 272 nci maddesinde yer alan hükümler çerçevesinde <span class="dik"> temyiz başvurusu</span> yapılabilir.</span> </div>
+<div>
+
+<span class="kim"> Soruşturma aşamasında hâkim kararı gerektiren işlemlere dair Cumhuriyet başsavcılığının talepleri ile kovuşturmaya yer olmadığına dair kararlara yapılan itirazlar hakkında,</span> <span class="mavi"> soruşturma konusu suçların en ağırına bakmakla görevli bölge adliye mahkemesi ceza dairesini numara itibarıyla izleyen ceza dairesi başkanı tarafından karar verilir.</span> <br>
+<span class="kim">Suçun son numaralı ceza dairesinin görevine girmesi halinde</span> <span class="mavi"> talebi inceleme yetkisi birinci ceza dairesi başkanına aittir.</span> <br>
+<span class="kim">Hâkim kararı gerektiren işlemlerde başkanın verdiği kararlara karşı yapılan itirazı,</span> <span class="mavi"> numara itibarıyla izleyen ceza dairesi başkanı inceler.</span> <span class="kim"> Son numaralı daire başkanının kararı,</span> <span class="mavi"> birinci ceza dairesi başkanı tarafından incelenir.</span> </div>
+<div>
+ Bölge adliye mahkemesi Cumhuriyet savcıları ile ceza dairelerinin idarî yaptırım kararı verme yetkisi bakımından 30/3/2005 tarihli ve 5326 sayılı Kabahatler Kanununun 22 ila 31 inci maddeleri uygulanır. <span class="mavi"> Cumhuriyet savcısının verdiği idarî yaptırım kararlarına karşı bölge adliye mahkemesi ceza dairesine başvurulabilir.</span> </div>
+
+
+<span class="kim">
+Denetleme </span> <div>
+
+Madde 48- <span class="kim"> Bölge adliye mahkemeleri ve <br> bölge adliye mahkemeleri Cumhuriyet başsavcılıkları ile <br> bölge adliye mahkemeleri adalet komisyonlarının</span> <br> <span class="mavi">  denetimleri, ilgisine göre  <span class="dik">Hâkimler ve Savcılar Yüksek Kurulu  başmüfettişleri</span>  veya <span class="dik"> adalet başmüfettişlerince</span> yapılır.</span></div></div></div>
+
+
+<div>
+DÖRDÜNCÜ KISIM <br>
+
+Son Hükümler <br>
+
+Değiştirilen hükümler <br>
+<div>
+Madde 49-50 – (24.2.1983 tarihli ve 2802 sayılı Hâkimler ve Savcılar Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+
+
+<div>
+Madde 51- (4.2.1983 tarihli ve 2797 sayılı Yargıtay Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+
+
+<div>
+Madde 52- (2.7.1964 tarihli ve 492 sayılı Harçlar Kanunu ile ilgili olup yerine işlenmiştir.)</div>
+
+
+<div>
+Madde 53- Bu Kanunla kurulan bölge adliye mahkemelerinin ihtiyaçları için Adalet Bakanlığı taşra teşkilâtında kullanılmak üzere ekli (1) ve (2) sayılı listelerde yer alan kadrolar ihdas edilerek 190 sayılı Genel Kadro ve Usulü Hakkında Kanun Hükmünde Kararnamenin eki (I) ve (II) sayılı Cetvellerin ilgili bölümlerine eklenmiştir.[22]</div>
+
+
+
+Kaldırılan hükümler<div>
+
+Madde 54- 8.4.1924 tarihli ve 469 sayılı Mehakimi Şer'iyenin İlgasına ve Mehakimin Teşkilatına Ait Ahkâmı Muaddil Kanun, 11 Nisan 1329 tarihli Sulh Hâkimleri Hakkında Kanunu Muvakkat, 26.4.1926 tarihli ve 825 sayılı Ceza Kanununun Mevkii Mer'iyete Vaz'ına Müteallik Kanunun 25, 26, 27, 28 ve 29 uncu maddeleri yürürlükten kaldırılmıştır.</div>
+
+
+
+Yargı çevresinin değişmesi<div>
+
+Ek Madde 1- (Ek: 15/8/2017-KHK-694/136 md.; Aynen kabul: 1/2/2018-7078/131 md.)</div>
+<div>
+	<span class="kim">
+Bölge adliye mahkemelerinin yargı çevresinin 25 inci madde uyarınca değişmesi halinde,</span>  bu değişikliğin uygulanması için Resmî Gazetede belirlenen tarihten önce ilk derece mahkemelerince verilen kararların istinaf incelemesinde, <span class="mavi"> karar tarihi itibarıyla yetkili bölge adliye mahkemelerince yargı çevresinin değiştiği gerekçesiyle yetkisizlik kararı verilemez.</span>  <br> <span class="kim"> Yargı çevresinin değiştirilmesinden önce istinaf incelemesinden geçen dosyalar,</span> <span class="mavi"> yeniden istinaf incelemesine konu edilmesi halinde de ilk incelemeyi yapan bölge adliye mahkemesince sonuçlandırılır.</span> </div>
+<div>
+	<span class="kim">
+Bölge adliye mahkemelerinin yargı çevresinin 25 inci madde uyarınca değişmesi halinde,</span>  bu değişikliğin uygulanması için Resmî Gazetede belirlenen tarihten önce bölge adliye mahkemeleri Cumhuriyet başsavcılığınca açılan soruşturmalar ile bölge adliye mahkemelerinde yürütülmekte olan kovuşturmalarda <span class="mavi"> yargı çevresinin değiştiği gerekçesiyle yetkisizlik kararı verilemez.</span>  <span class="mavi"> <strong> Soruşturma neticesinde açılacak kamu davaları da aynı yer bölge adliye mahkemesinde görülür.</strong></span> </div>
+
+
+<div>
+Geçici Madde 1- Bu Kanunun yürürlüğe girdiği tarihte görüşülmekte olan dava ve işlerde mahkemelerin görevinde bir değişikliğin söz konusu olduğu hallerde, üst görevli mahkemeler yargılamaya devam ederler, alt görevli mahkemeler görevsizlik kararı vererek dosyayı üst görevli mahkemeye gönderirler.</div>
+
+
+<div>
+Geçici Madde 2- Adalet Bakanlığı, bu Kanunun yürürlüğe girdiği tarihten itibaren en geç iki yıl içinde 25 inci maddede öngörülen bölge adliye mahkemelerini kurar. Bölge adliye mahkemelerinin kuruluşları, yargı çevreleri ve tüm yurtta göreve başlayacakları tarih, Resmî Gazetede ilân edilir.</div>
+<div>
+Bölge adliye mahkemeleri göreve başlamadan önce Hâkimler ve Savcılar Yüksek Kurulunca bu mahkemelerin başkanları, daire başkanları ve üyeleri ile Cumhuriyet başsavcısı ve savcılarının atamaları yapılır. Bölge adliye mahkemelerinde görev yapacak diğer personelin atamaları da aynı süre içinde yapılır.</div>
+
+
+<div>
+Geçici Madde 3- Bu Kanunun yürürlüğe girdiği tarihten başlayarak en geç iki yıl içinde bölge adliye mahkemeleri için ihtiyaç duyulan bina, araç ve gereçler, yapım, satın alma veya kiralama yoluyla sağlanır.</div>
+<div>
+Kurulacak mahkemelerin ihtiyaçlarını karşılamak amacı ile, Adalet Bakanlığı bütçesi içinde mevcut veya yeniden açılacak tertiplere Maliye Bakanlığı bütçesinin ilgili tertiplerinden aktarma ve bununla ilgili diğer işlemleri yapmaya Maliye Bakanlığı yetkilidir.</div>
+
+
+<div>
+Geçici Madde 4- (Ek: 17/4/2013-6460/11 md.) <br>
+
+Bu maddeyi ihdas eden Kanunla, bu Kanunun 5 inci maddesinin beşinci fıkrasında yapılan değişikliğin yürürlüğe girdiği tarihten itibaren altı ay içinde Hâkimler ve Savcılar Yüksek Kurulu tarafından mahkemeler arasındaki iş dağılımına ilişkin olarak karar verilir ve bu karar Resmî Gazete’de yayımlanır. Kararda mahkemelerin iş dağılımı esaslarına göre çalışmaya başlayacakları tarih de belirtilir. Mahkemelerin iş dağılımı esaslarına göre çalışmaya başlayacakları tarihe kadar açılmış olan davaların görülmesine bulundukları mahkemelerde devam olunur.</div>
+
+<div>
+Geçici Madde 5- (Ek: 18/6/2014-6545/55 md.)
+
+Bu maddeyi ihdas eden Kanunla, 5235 sayılı Kanunun 5 inci maddesinde yapılan değişikliğin yürürlüğe girmesinden itibaren üç ay içinde Hâkimler ve Savcılar Yüksek Kurulu tarafından yetkilendirme veya tayin işlemleri yapılır ve bu mahkemelerin heyet hâlinde çalışmaya başlayacakları tarih belirlenerek Resmî Gazete’de ilan edilir. Bu mahkemeler, Hâkimler ve Savcılar Yüksek Kurulu tarafından belirlenen ve ilan edilen tarihe kadar tek hâkimle çalışmaya devam eder.</div>
+
+
+<div>
+Geçici Madde 6- (Ek: 1/7/2016-6723/31 md.)
+
+Bu Kanunun yürürlüğe girdiği tarihe kadar Türk Ceza Kanununun İkinci Kitap Dördüncü Kısmının Dördüncü, Beşinci, Altıncı ve Yedinci Bölümlerinde tanımlanan suçlar (318 inci, 319 uncu, 324 üncü, 325 inci ve 332 nci maddeler hariç) ile 3713 sayılı Kanunun kapsamına giren suçlar sebebiyle açılmış olan davalarda, bu Kanunla 15 inci maddeye eklenen hüküm uyarınca yetkisizlik kararı verilemez; bu davalara kesin hükümle sonuçlandırılıncaya kadar bu mahkemelerce bakılmaya devam olunur. Bu Kanunun yürürlüğe girdiği tarihe kadar bu fıkra kapsamındaki suçlar nedeniyle başlatılmış soruşturmalarda da bu Kanunla 21 inci maddeye eklenen hüküm uyarınca yetkisizlik kararı verilemez.</div>
+
+
+
+Yürürlük<div>
+
+Madde 55- Bu Kanun 1 Haziran 2005 tarihinde yürürlüğe girer.[23]</div>
+
+
+
+Yürütme<div>
+
+Madde 56- Bu Kanun hükümlerini Bakanlar Kurulu yürütür.</div>
+
+
+
+26/9/2004 TARİHLİ VE 5235 SAYILI KANUNA İŞLENEMEYEN HÜKÜMLER <br>
+
+1-9/2/2011 tarihli ve 6110 sayılı Kanunun Geçici Maddesi:<div>
+
+Geçici Madde 3 – (1) Bu Kanunla, 5235 sayılı Kanunun 5 inci maddesinde yapılan değişikliğin yürürlüğe girmesinden itibaren altı ay içinde Hâkimler ve Savcılar Yüksek Kurulu tarafından yetkilendirme veya tayin işlemleri yapılır ve bu mahkemelerin tek hâkimli olarak çalışmaya başlayacakları tarih belirlenerek Resmî Gazetede ilân edilir. Bu mahkemeler, Hâkimler ve Savcılar Yüksek Kurulu tarafından belirlenen ve ilân edilen tarihe kadar heyet hâlinde çalışmaya devam eder.</div></div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

@@ -1,0 +1,800 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; border-radius: 10px;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.ark{background-color:black; border-radius: 10px; }
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+ .italic{font-style: italic; font-size: large;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.yuvarla{border-radius: 10px; background-color: black;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>154/2 sayılı ADMHDB Genelgesi- Ailenin korunması ve kadına karşı şiddetin önlenmesine dair kanunun uygulanması</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div  id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+	<br><br><br>
+	<div  id="kal" class="kal">
+		T.C. <br>
+		ADALET BAKANLIĞI<br>
+		Adli Destek ve Mağdur Hizmetleri Dairesi Başkanlığı<br>
+		Sayı :E-27239794-010.06.02-517l<br>
+		Konu : Aile İçi ve Kadına Karşı Şiddetin önlenmesi<br>
+		GENELGE NO: 154/2 <br></div>
+
+
+
+
+		<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+			<p>
+			  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+			  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+			  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+			  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+			  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+			  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+			  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+			  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+			  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+			</p></div>
+
+			<script>
+			  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+			  </script>
+
+
+
+			  <div id="soruContainer" class="soruContainer">
+				  <div id="soruDiv">
+					  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+				  </div>
+				  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+				  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+				  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+				  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+			  </div>
+			  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+
+
+<div>
+Aile içi ve kadına karşı şiddet eylemlerine ilişkin  <span class="span"> soruşturmaların yürütülmesi </span> ile 6284 sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanunun uygulanmasında <span class="span"> yol gösterici</span> olması amacıyla 17.12.20|9 tarihli ve 154/1 sayılı "Ailenin Korunması ve Kadına Karşı Şiddetin
+Önlenmesine Dair Kanunun <span class="span"> Uygulanması</span> " konulu Genelgenin güncellenmesinde fayda bulunduğu değerlendirilmiştir.</div>
+<div>
+Anayasanın 10 uncu maddesinde; kadın ve erkeklerin eşit haklara sahip olduğu, Devletin bu
+eşitliğin  yaşama geçmesini sağlamakla yükümlü olduğu ve bu maksatla alınacak tedbirlerin eşitlik
+ilkesine aykırı olarak yorumlanamayacağı düzenlenmiştir. Anayasarun 41 inci maddesinde de ailenin
+Türk toplumunun temeli olduğu ve eşler arasında eşitliğe dayandığı,<span class="ark">  Devletin, ailenin huzur ve refahı ile özellikle ananın ve çocukların korunması için gerekli tedbirleri alması ve teşkilatı kurması gerektiği hüküm altına alınmıştır.</span> </div>
+
+<div>
+20 Mart 2012 taihinde yürürlüğe giren 6284 sayılı Kanunda, şiddete uğrayan veya şiddete
+uğrama tehlikesi bulunan<span class="mavi"> kadınların</span>,<span class="mavi">çocukların,</span> <span class="mavi">aile bireylerinin</span>  ve<span class="mavi">tek taraflı ısrarlı takip mağduru </span>olan kişilerin korunması ile bu kişilere yönelik şiddetin önlenmesi amacıyla alınacak koruyucu ve önleyici tedbirlere ilişkin usul ve esaslar belirlenmiş, bu tedbirlerin etkin olarak uygulanmasına yönelik destek hizmetlerine yer verilmiştir. Aile içi ve kadına karşı şiddetle etkin mücadele; amaca uygun mevzuat düzenlemeleri ile bu konuda uzmanlaşmış birimlerin iş birliği içinde çalışmasını gerekli kılmaktadır.</div>
+
+<div>
+Bu kapsamda, <span class="ark"> Cumhuriyet başsavcılıkları bünyesinde "Aile İçi ve Kadına Yönelik Şiddet Suçları
+Soruşturma Bürosu" kurulmuş,</span>  ayrrca 21 Aralık 2019 tarihli ve 1584 sayılı Hikimler ve Savcılar Kurulu kararıyla 6284 sayılı Kanunda düzenlenen <span class="ark">tedbir kararlarını vermek üzere</span> her adliyede<span class="ark">belirli aile mahkemeleri görevlendirilmiştir.</span></div>
+
+<div>
+Aynı amaçla 8 Temmuz 2021 tarihli ve 7331 sayılı Kanunla <span class="italic"> 5237 sayılı Türk Ceza Kanununda
+yapılan değişiklikle; kasten öldürme, kasten yaralama, eziyet ve kişiyi hürriyetinden yoksun kılma suçlarının<span class="ark"> "boşanılan eşe karşı"</span> işlenmesi hali cezada artırım sebepleri arasında sayılmıştır.</span></div>
+
+<div>
+12 Mayıs 2022 taihli ve 7406 sayılı Kanunla 5237 sayılı Kanunda yapılan değişiklikle; kasten
+öldürme, kasten yaralama, işkence, eziyet ve tehdit suçlarının<span class="ark">  "kadına karşı"</span> işlenmesi, cezada<span class="ark">artırım nedeni</span> olarak düzenlenmiş, ayrıca<span class="ark">ısrarlı takip eylemleri de Türk Ceza Kanununa eklenen 123/A maddesiyle müstakil bir suç olarak kabul edilmiştir.</span> </div>
+
+<div class="arkpspanBLACK">
+7406 sayılı Kanunla 5271 sayılı Ceza Muhakemesi Kanununun 100 üncü maddesinde yapılan
+değişiklikle; kadına karşı işlenen kasten yaralama suçu, tutuklama nedeni varsayılan <span class="span"></span> katalog suçlar arasına alınmıştır.</div>
+<div>
+5271  sayılı Kanunun 234 ve 239 uncu maddelerinde yapılan değişiklikler sonucunda; <span class="span"> mağdur,
+şikayetçi ve katılanın </span> vekili bulunmaması halinde avukat yardımından yararlanma hakkının kapsamı
+genişletilerek <span class="mavi"> cinsel saldırı,</span><span class="mavi">çocukların cinsel istismarı,</span><span class="mavi"> ısrarlı takip suçları </span> ile<span class="mavi">kadına karşı işlenen kasten yaralama,</span><span class="mavi"> işkence ve eziyet suçlarında </span> ve<span class="mavi">alt sınırı beş yıldan fazla hapis cezasını </span> gerektiren suçlarda, baro tarafından kendisine avukat görevlendirilmesi<span class="ark"> mümkün hale gelmiştir.</span></div>
+
+<div>
+10 Haziran 2020 tarihli ve 63 sayılı <span class="span"> Suç Mağdurlarınrn Desteklenmesine </span> Dair Cumhurbaşkanlığı
+Kararnamesinin 6 ncı maddesi uyarınca;<span class="mavi">kasten öldürme </span>  ve<span class="mavi"> bu suça teşebbüs,</span>  neticesi sebebiyle
+ağırlaşmış yaralama,</span><span class="mavi">çocuğun cinsel istismarı,</span><span class="mavi"> nitelikli cinsel saldırı </span> ve<span class="mavi"> neticesi sebebiyle ağırlaşmış işkence</span> suçlarından tutuklu veya hükümlü olan kişilerin, ceza infaz kurumlarından   <span class="span">  tahliyesine veya firarına ilişkin</span> bilgilerin ceza infaz kurumu müdürlüğünce<span class="ark"> mağdurun bulunduğu yer kolluk birimine bildirilmesi,</span> kolluk birimleri tarafindan yapılan değerlendirme sonucunda gerekli koruyucu ve önleyici tedbirlerin alınması, <div> mağdur için tehlike oluşturabilecek hallerde ise mağdura bilgi verilmesi gerekmektedir.</div></div>
+<div>
+Bu itibarla;
+<div>
+<div>
+1- İhtisaslaşmanın sağlanması amacıyla Aile İçi ve Kadına Yönelik Şiddet Suçları Soruşturma
+Bürolarında görevli Cumhuriyet savcılarının <span class="span">zorunludurumlar dışında</span>  farklı işlerde görevlendirilmemesi ve bu amaca aykırı iş bölümü değişikliği yapılmaması,</div>
+
+<div>
+2- Cumhuriyet başsavcılıklarına doğrudan yapılan şikayet başvurularında, <span class="span"> mağdurun beyanının
+bizzat Cumhuriyet savcısı </span> tarafindan alınarak şikayet ve delillerinin ayrıntılı şekilde açıklattırılması, olaya ilişkin adli rapor, kamera kaydı, tanık beyanı gibi delillerin ivedi şekilde <span class="span"> toplanması için ilgili kolluk biriminin talimatlandırılması,</span> </div>
+<div>
+3- Cumhuriyet savcısı tarafından beyanının özel ortamda alınması gerektiği ya da şüpheli ile yüz
+yüze gelmesinde sakınca bulunduğu değerlendirilen mağdurun Adli Görüşme Odasında uzman
+aracılığıyla dinlenmesi, bu kapsamda  170/1 sayıh Cinsel Dokunulmazlığa Karşı İşlenen Suç
+Soruşturmaları konulu Genelge hükümlerinin de dikkate alınması,</div>
+<div>
+4- Vekili bulunmaması halinde; cinsel saldırı, çocukların cinsel istismarı, ısrarlı takip suçları ile kadına karşı işlenen kasten yaraLama, işkence, eziyet suçlarında ve alt sınırı beş yıldan fazla hapis cezasını gerektiren suçlarda, baro tarafından kendisine avukat görevlendirilmesini isteme hakkı bulunduğunun mağdura ve şikayetçiye<span class="ark"> hatırlatılması,</span></div><div> <button  onclick="soruyuGoster(55)" class="soru" >2023 yılı çıkmış soru</button> </div>
+<div>
+5- Cumhuriyet savcısı tarafından aile (tedbir) mahkemesinden talepte bulunulurken UYAP
+kayıtlan incelenmek suretiyle; taraflar hakkında 6284 sayılı Kanun kapsamında daha önce verilmiş tedbir kararı, soruşturma ve kovuşturma dosyası ile boşanma ve velayet davası gibi <span class="span"> risk </span> oluşfurabilecek bir durumun <span class="span"> bulunup bulunmadığının araştırılması </span> ve aynca kolluk birimleri tarafindan düzenlenen <span class="span"> risk değerlendirme formunun da dikkate alınması,</span></div>
+<div>
+6- Nitelikli veya tekrarlanan şiddet vakalarını içerenler <span class="span"> başta olmak üzere </span> yürütülen
+soruşturmalarda <span class="span"> şüpheli hakkında </span> 5271 sayılı Kanunda düzenlenen <span class="span"> uygun koruma </span>tedbirlerine
+başvurulması hususunun <span class="span"> değerlendirilmesi,</span> </div>
+<div>
+7- Nitelikli veya tekrarlanan şiddet <span class="span">  vakalarında,</span> 6284 sayılı Kanunda düzenlenen uzaklaştırma
+veya yaklaşmama tedbirleri <span class="span">  ile birlikte </span> teknik yöntemlerle takip <span class="span"> (elektronik kelepçe)</span> kararı verilmesinin de  <span class="span"> talep edilmesi </span> ve böylelikle bu tedbirlerin etkin şekilde uygulanmasının sağlanması,</div>
+<div>
+8- Kasten öldürme ve bu suça teşebbüs, neticesi sebebiyle ağırlaşmış yaralama, çocuğun cinsel istismarı, nitelikli cinsel saldırı ve neticesi sebebiyle ağırlaşmış işkence suçlarından tutuklu ya da hükümlü bulunan kişilerin ceza infaz kurumlarından <span class="span"> tahliye olması veya firar etmesi halinde</span>  ceza infaz  <span class="span"> kurumu müdürlüğünce</span> mağdurun bulunduğu yer <span class="span"> kolluk birimine bildirimde bulunulması </span> nın sağlanması, <span class="span"> izin nedeniyle cezainfaz kurumundan ayrılma durumunda da aynı uygulamanrın yapılması,</span></div>
+
+<div>
+9- <span class="span"> Hayati risk </span> içerdiği değerlendirilen vakalar veya şiddet  <span class="span">  failinin kayıp veya kaçak durumu</span>  olması yüksek riskli kabul edilerek mağdurun mümkünse <span class="span"> konukevine alınması,</span> kabul etmemesi halinde  <span class="span"> geçici koruma </span> altına alınması tedbiri <span class="span"> başta olmak üzere </span> gerekli tüm tedbirlerin ilgili merciiler tarafindan alınması için <span class="span"> kolluğa talimat verilmesi</span> ya da mahkemeden talepte bulunulması,</div>
+<div>
+10- 5237 sayılı Kanunun 123/A maddesi gereğince <span class="span"> ısrarlı takip</span> suçundan yürütülen
+soruşturmalarda 6284 sayılı Kanun kapsamında vakaya uygun <span class="span"> tedbir</span> talebinde bulunulup bulunulmayacağı <span class="span"> hususunun değerlendirilmesi,</span></div>
+<div>
+11- 6284 sayılı Kanun kapsamında korunan kişiler bakımından hayati tehlikenin bulunması ve bu tehlikenin önlenmesi için diğer tedbirlerin <span class="span"> yeterli olmayacağının anlaşılması halinde;</span>
+ <div>
+	a) 6284 sayılı Kanunun 4 üncü maddesi uyarınca ilgilinin aydınlatılmış <span class="span">  rızasına bağlı</span> olarak <span class="span"> kimlik </span> ve ilgili diğer bilgi ve belgelerinin <span class="span"> değiştirilmesi </span> tedbirine karar verilmek üzere mahkemeden <span class="span"> talepte  bulunulması</span> hususunun değerlendirilmesi, <br>
+	b) Kimlik ve ilgili diğer bilgi ve belgelerin değiştirilmesi kararından beklenen amaç ve faydanın gerçekleşebilmesi için kararın <span class="span"> uygulanmasında gizlilik kuralına riayet edilmesi,</span></div></div>
+
+<div>
+12- Alkol ya da uyuşturucu veya uyancı <span class="span"> madde bağımlısı</span> olduğu veya bu maddelerin etkisi <span class="span"> altındayken şiddet uyguladığı</span> iddia edilen kişiler hakkında 6284 sayılı Kanunun 5 inci maddesinin birincifıkrasının (h) bendi gereğince <span class="span"> sağlık tedbirine</span> hükmedilmesinin mahkemeden <span class="span"> talep edilmesi,</span></div>
+
+<div>
+13- 6284 sayılı Kanunun 5 inci maddesinin birinci fıkrasının (h) bendi gereğince bağımlılık tedavisine ilişkin <span class="span"> sağlık tedbirine hükmedildiği</span> takdirde 6284 sayılı Ailenin Korunması ve Kadına Karşı şiddetin Önlenmesine Dair Kanuna İlişkin Uygulama Yönetmeliğinin 27 nci maddesinin ikinci fıkrası uyarınca kararın yerine getirilmesi sırasında Şiddet Önleme ve İzleme Merkezi <span class="span"> (ŞÖNİM) taraflndan</span> olayın özelliğine göre <span class="span"> kolluktan yardım istenebileceğinin </span> göz önünde bulundurulması,</div>
+
+<div>
+14- Şiddet uyguladığı iddia edilen kişinin <span class="span"> akıl veya ruh sağlığının</span> yerİnde <span class="span"> olmadığı </span> hususunda şüphe oluşması halinde 6284 sayı|ı Kanunun 5 inci maddesinin birinci fıkrasının (ı) bendi gereğince bir sağlık kuruluşuna muayene veya tedavi için <span class="span"> başvurması ve tedavisinin sağlanması </span> tedbirinin taleP edilmesi,</div>
+<div>
+15- 6284 sayılı Kanuna göre verilen <span class="span"> sağlık tedbirlerine uymayan</span>kişi hakkında koşulları varsa <span class="span"> zorlama hapsi kararı verilmesi </span> nin talep edilmesi,</div>
+<div>
+16- Akıl hastalığı, akıl zayıflığı, alkol veya uyuşturucu madde bağımlılığı sebeplerinden biriyle toplum için <span class="span"> tehlike oluşturan kişi </span> hakkında 4721 sayılı Türk Medeni Kanununun 432 ve devamı maddeleri uyarınca gereği için <span class="span">  ilgili vesayet makamına bildirimde</span> bulunulması,</div>
+<div>
+17- 6284 sayılı Kanunun 15 inci maddesinin üçüncü fikrasının (c) bendi gereğince <span class="span">  şiddet uygulayan hakkında;</span> teşvik edici, aydınlatıcı ve yol gösterici mahiyette olmak izere, önleyici tedbirlere ek olarak <span class="span"> gerekirse </span> öfke kontrolü, stresle başa çıkma, şiddeti önlemeye yönelik farkındalık sağlayarak tutum ve davranış değiştirmeyi hedefleyen <span class="span"> eğitim ve rehabilitasyon programlarına katılma </span> yönünde karar verilmesinin talep edilmesi,</div>
+<div>
+18- 6284 sayılı Kanunda düzenlenen koruyucu ve önleyici tedbirlere ek olarak Kanunun 3,4 ve 5 inci maddelerinin birinci fıkraları gereğince şiddetle etkin mücadeleye yönelik amaca uygun <span class="span"> benzer tedbirlerin talep edilebileceği,</span></div>
+<div>
+19- 6284 sayılı Kanun uyarınca hükmedilen tedbir kararlarının verildiği anda uygulanabileceği, teftıim veya tebliğ edilememesinin ya da <span class="span"> karara itiraz edilmesinin kararın infazına engel teşkil etmeyeceğinin</span> göz önünde bulundurulması,</div>
+<div>
+20- Tedbir kararlarının tebliğ işlemlerinin olayın ve kararın niteligine göre 720l sayılı Tebligat Kanununun 2 nci maddesinde belirtilen <span class="span">"tehirinde zarar umulan iş"</span>  kapsamında değerlendirilerek <span class="span"> kolluk aracılığıyla tebliğ edilebileceğinin</span> göz önünde bulundurulması,</div>
+
+<div>
+21- Tedbir kararlarının ihlali halinde mahkeme tarafından <span class="span"> zorama hapsi kararı verilebilmesi için;</span>
+ <div>
+	a) Tebliğ evrakında <span class="span"> "kararın gereklerine aykırı hareket edildiğinde zorlama hapsi uygulanacağı"</span> yönünde <span class="span"> ihtara </span> yer verilmesi gerektiğinin bilinmesi, <br>
+	b)Tebliğ işleminin <span class="span"> kolluk</span> tarafından yapılması halinde, <span class="span"> tebliğ tutanağında</span> tebliğ  <span class="span"> tarihi</span>  ile  <span class="span"> saati</span>ninaçıkça yazılması gerektiğinin gözden uzak tutulmaması, </div></div>
+<div>
+22-Tekrarlanan veya nitelikli şiddet vakaları ile <span class="span"> hayati risk</span> içeren olaylarda, 6284 sayılı Kanunun 8 inci maddesinin altıncı fikrası uyannca;
+<div>
+	a) Şiddet mağduru ve gerekirse diğer aile bireyleri hakkında <span class="span"> gizlilik kararı</span> talep edilmesi, <br>
+	b) Gizlilik kararı talep edilirken gizlilik süresince <span class="span"> çocukla kişisel ilişki </span> <span class="span"> kurulmaması</span> hususununda ayrıca değerlendirilmesi,<br>
+	c) Hakkında gizlilik kararı verilen kişilerle ilgili <span class="span"> tebligat adresinin ŞÖNİM</span>  olarak belirlenmesi gerektiğinin bilinmesi,<br>
+	d) Hakkında tedbir karan verilen kişilerin <span class="span"> güncel adres </span>ve iletişim bilgilerinin <span class="span"> gizlilik kararlarını ihlal etmeyecek şekilde UYAP'a kaydıyla ŞÖNİM ve kolluk birimleri ile paylaşılması,</span> <br>
+	e) Korunan kişi hakkında verilen <span class="span"> gizlilik kararının ilgili nüfus müdürlüğüne </span> gönderilmek üzere ŞÖNİM'e iletilmesi,<br>
+	f) Korunan kişinin <span class="span"> taraf olduğu dosyaların</span> UYAP'tan tespiti ile ilgili mahkemeler tarafından <span class="span"> gizlilik</span>  kararının yerine getirilmesinin <span class="span"> istenmesi,</span><br></div></div>
+
+<div>
+23- 6284 sayılı Kanun kapsamında verilen <span class="span"> tedbir kararlarının</span> etkin şekilde uygulanabilmesi için;
+<div>
+	a) Mahkemece verilen <span class="span"> tedbir kararlarının</span> infazı ve takibi gerekenlerin ilgili kurumlara ve kolluğa iletilmesi amacıyla <span class="span"> Cumhuriyet başsavcılığına gönderilmesi,</span> <br>
+	b) Önleyici tedbir kararlarının yerine getirilmesinin 6284 sayılı Kanuna İlişkin Uygulama Yönetmeliğinin 35 inci maddesi uyarınca <span class="span"> kolluk birimleri tarafından kontrol edilip edilmediğinin Cumhuriyet başsavcılığınca izlenmesi,</span> <br></div></div>
+<div>
+24- Tedbir kararlarının ihlali iddiası ortaya çıktığında;
+<div>
+	a) İhlal eylemi bir suç oluşturuyorsa kanuni gereğine tevessül edilmesi,
+	b) Cumhuriyet başsavcılığı tarafından kolluk birimlerine verilecek talimatta; şiddet mağdurunun konuya ilişkin beyanının alınmasının yanı sıra ilgili tüm delillerin toplanması, aynca <span class="span"> şiddet uyguladığı iddia edilen kişinin de  beyanına başvurulmasının istenmesi,</span> <br>
+	c) Kolluk birimlerince düzenlenecek ihlal <span class="span"> tutanaklarında</span> ihlalin şekli ile gerçekleştiği <span class="span"> tarih</span>  ve 	<span class="span"> saat </span>bilgisine yer verilmesinin istenmesi,<br>
+	d) İhlal tutanağı düzenlenirken şiddet <span class="span"> mağdurunun rızası halinde telefon</span> incelemesi yapılarak vakaya ve ihlal edilen tedbirin niteliğine göre tarih ve saati içeren arama, aranma, mesaj kayıtları ve içeriklerinin telefon numaraları tespit edilebilecek şekilde <span class="span"> ekran görüntüsü alınarak tutanağa eklenmesi,</span><br>
+	e) Gecikmesinde sakınca bulunan hal kapsamında kolluk amiri tarafından verilebilen tedbir kararlarının <span class="span"> ihlali durumundada tutanak düzenlenerek ilgili Cumhuriyet başsavcılığı aracılığıyla mahkemeye iletilmesi,</span> <br></div></div>
+<div>
+25- <span class="span"> Zorlama hapsi</span> kararlarının;
+<div>
+	a) İtiraz kanun yoluna tabi olması ve <span class="span"> kesinleşmeden infaz edilemeyeceği</span>nin göz önünde bulundurulması, <br>
+	b) Açık Ceza İnfaz Kurumlarına Ayrılma Yönetmeliğinin 8 inci maddesi uyarınca,  <span class="span"> kapalı ceza infaz kurumlarında infaz edilmesi gerektiği,</span><br>
+	<span class="span">c) Koşullu salıverme ve denetimli serbestlik uygulamalarrna konu edilemeyeceği,</span> <br></div></div>
+<div>
+26- Tedbir kararlarının etkin uygulanabilmesi ve ilgili kurumlarla <span class="span"> doğru veri paylaşılabilmesi </span> amacıyla;
+<div>
+	a) 6284 sayılı Kanun kapsamında verilen koruyucu ve önleyici tedbir kararları ile ek kararların, <span class="span"> kolluk amiri tarafından verilen tedbirlerin </span> onaylanmasına dair talepler ile itiraz ve zorlama hapsine ilişkin kararların UYAP'ta bu iş için oluşturulan değişik iş ekranlarından <span class="span"><span class="span"></span> kaydının sağlanması,</span>  <br>
+	b) Tedbir  ve süreleri ile taraflara ilişkin bilgilerin personel tarafından doğru, zamanında ve eksiksiz şekilde UYAP'a kaydının sağlanması, <br></div></div>
+<div>
+27- Çocuğun üsttün yararı ilkesi uyarınca 5395 sayılı Çocuk Koruma Kanununun 5 inci
+maddesine göre başta danışmanlık tedbiri olmak üzere uygun tedbir kararlarının talep edilmesi,</div>
+<div>
+28- Mağdur çocuk ile yasal temsilcileri arasında <span class="span"> menfaat çatışması bulunması</span>  halinde, <span class="span"> çocuğa kayyım atanması</span> gereğinin gözden uzak tutulmaması,</div>
+<div>
+29- Soruşturmaların yürütülmesi sırasında özel hayatın gizliliğinin korunması ve lekelenmeme hakkı ile mahremiyet ve kişisel verilerin korunması ilkelerine riayet edilmesi, soruşturmanın gizliliği dikkate alınarak soruşturmaya ilişkin bilgilerin üçüncü kişilere verilmesinin 5237 sayılı Kanunun ilgili hükümleri uyarınca sorumluluk doğuracağının bilinmesi,</div></div> </div>
+Konularında gerekli dikkat ve özenin gösterilmesini rica ederim.																					BEKİR BOZDAĞ
+																						BAKAN
+																						<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+																						</div>
+
+																						<script>
+																						var surukleniyor = false;
+																						var offsetX, offsetY;
+
+																						// Tüm soru göster butonlarını seç
+																						const soruGosterButtons = document.querySelectorAll('.soru');
+
+																						// Her bir buton için event listener ekle
+																						soruGosterButtons.forEach(function (button, index) {
+																						button.addEventListener('click', function() {
+																						const soruContainer = document.querySelector('.soruContainer');
+
+																						// Eğer gösteriliyorsa gizle, gizliyse göster
+																							if (soruContainer.style.display === "none") {
+																							  soruContainer.style.display = "block";
+																							} else {
+																							  soruContainer.style.display = "none";
+																						}
+																						});
+																						});
+
+
+																						soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+																						document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+																								soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+																							document.addEventListener('mouseup', function() { surukleniyor = false;	});
+																						</script>
+</body>
+</html>
+{% endblock%}

@@ -1,0 +1,76 @@
+{% load static %}
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+		<a href="{% url 'onindex' %}" class="navbar-brand ml-5"> ÖN SAYFA</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  <br><br><br>
+		<main class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+
+			<li class="nav-item">
+			  <a class="nav-link active" href=" {% url 'hakkimizda' %}"
+			  >HAKKIMIZDA </a>
+			</li>
+
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'index' %}">DERS LİSTESİ</a>
+</li>
+
+
+
+		</ul>
+<span class="navbar-text mx-auto gy-center font-size: 28px" style=" color: #ccff90;">
+  GYSYİM
+</span>
+
+			<ul class="navbar-nav mr-5">
+
+				{% if user.is_authenticated %}
+					<li class="nav-item pt-3">
+						<a class="nav-link-active text-white  " href="javascript:{ document.getElementById('logout').submit() }"  > ({{ user.username }}) ÇIKIŞ YAP   </a>
+						<form action="{% url 'logout' %}" method="POST" id="logout">
+						  {% csrf_token %}
+						  <input type="hidden" >
+						</form>
+					</li>
+					<li class="nav-item pt-3">
+						<img src="{% static 'img/LOGO1.PNG' %}" alt="Logo"
+					width="50px" height="50px" class="ml-5">
+						</li>
+				{% else %}
+				<li class="nav-item pt-3 ">
+					<a class="text-white pt-3 " href=" {% url 'login' %}"  > GİRİŞ YAP   </a>
+					</li>
+
+					<li class="nav-item pt-3">
+					<a href=" {% url 'register' %}"  class="text-white ml-3 mr-5">  KAYIT OL  </a>
+					</li>
+
+				<li class="nav-item pt-1">
+				<img src="{% static 'img/LOGO1.PNG' %}" alt="Logo"
+					width="50px" height="50px" class="ml-5">
+				</li>
+
+			    {% endif %}
+			</ul>
+			 </span>
+		</main>
+	  </nav>
+</header>
+
+<!-- CSS Animasyon -->
+<style>
+  @keyframes moveLeftRight {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+
+  .navbar-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

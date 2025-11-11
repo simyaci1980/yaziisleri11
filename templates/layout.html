@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta name="google-site-verification" content="MEQOTRDCmiXbD7PVxKoI74qeZrHG3rTy-0sRyvxkcPg" />
+
+
+<link rel="icon" href="/static/img/LOGO1.PNG" type="image/png">
+
+	<style>
+        .body{
+
+        }
+		 h1{
+		color: white;
+
+		}
+		.kutu{border-style: solid;
+			border-color:purple;
+			background-color:rgb(29, 189, 224);
+			color:  rgba(13, 13, 14, 0.989);
+			margin: 20px; border-radius: 10px; border-style: groove; border-width: 2px; overflow:auto; padding: 10PX; border-color: black;
+
+			border-width: 5px;
+			width: 300px;
+			height: 300px;
+			float: left;  /* left dediğimiz anda sola 1. kutu sola yaslanır 2. kutu da bir önceki kutunun soluna 3. kutuda bir önceki kutunun ya yaslanır */ /*sola yaslansada web sayfası küçültülürse  alta ata geçerler */ /*rigth te tam tesi sağa yaslanarak gelirler */ /*float komutu sayesinde artık aside bölümünü oluşturabiliriz */
+			margin: 20px;
+			box-shadow: 20px 10px 10px black ;
+
+			}
+
+			.separator {
+				height: 20px; /* İstenilen boşluk yüksekliği */
+				width: 100%; /* Sayfa genişliği kadar olacak */
+				clear: both; /* Float'ları temizle */
+			}
+
+
+
+
+	</style>
+	<meta charset="UTF-8">
+	<meta name="google-site-verification" content="X7KV_B6bLwzQabngEi0ys2R0z-SL1_BmUNqk2SV7vh4" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Yazi İşleri Müdürlüğü Sınavı</title>
+
+	<link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href=" {% static 'css/style.css' %}">        <!-- css' den sonra boşluk olmalı % -->
+
+
+
+	 {% include 'partials/_navbar.html' %}
+	 <br> <br>          <!-- navbar htmlyi dahil et -->
+
+	 <main clas="mr-5">
+
+
+			{% block content %}                                    <!-- BU HTML İÇİNE BİR BLOCK AÇIYORUM BAŞKA HTML DEKİ BLOCKLAR BURAYA GELECEK DİYOR  -->
+
+			{% endblock %}
+
+	</main> <br><br>
+	{% include 'partials/_alert.html' %}
+	<span class="separator"></span>
+
+	 {% include 'partials/_footer.html' %}                 <!-- footer html yi dahil et -->
+
+
+
+	<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

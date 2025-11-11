@@ -1,0 +1,1015 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+a{color: white}
+
+ul li {	float: left;margin-right: 20px;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate;}
+
+.ark{background-color:black; border-radius: 10px; }
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white; }
+.kim{color:aqua; font-size: larger; background-color:mediumseagreen;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+
+</style>
+<title>ADALET BAKANLIĞI DİSİPLİN YÖNETMELİĞİ</title>
+
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+	<br><br><br>
+<div id="kal" class="kal"> ADALET BAKANLIĞI
+
+DİSİPLİN YÖNETMELİĞİ</div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br> <hr>
+
+
+
+BİRİNCİ BÖLÜM <br>
+
+Amaç, Kapsam, Dayanak ve Tanımlar
+
+Amaç
+<div>
+MADDE 1 – (1) Bu Yönetmelik, disiplin <span class="span" > âmirlerinin tâyin ve tespiti</span>, disiplin kurullarının kuruluş, işleyiş ve çalışmaları ile disiplin soruşturmalarına ilişkin usûl ve esasları belirlemek amacıyla hazırlanmıştır.</div></div>
+<div>
+Kapsam
+<div>
+MADDE 2 – (1) Bu Yönetmelik hükümleri, adlî ve idarî yargı hâkim ve savcıları dışında kalan Adalet Bakanlığı merkez ve taşra teşkilâtlarında görevli <span class="span"> memurlar ile sözleşmeli personel hakkında uygulanır</span>.</div></div>
+<div>
+Dayanak
+<div>
+MADDE 3 – (1) Bu Yönetmelik, 14/7/1965 tarihli ve 657 sayılı Devlet Memurları Kanununun 134 üncü maddesine ve 24/10/1982 tarihli ve 17848 sayılı Resmî Gazete'de yayımlanarak yürürlüğe giren Disiplin Kurulları ve Disiplin Âmirleri Hakkında Yönetmeliğin 2 nci maddesine dayanılarak hazırlanmıştır.</div></div>
+<div>
+Tanımlar
+<div>
+MADDE 4 – (1) Bu Yönetmelikte geçen;
+<div>
+a) <span class="span"> Atamaya yetkili</span> âmir: Adalet Bakanını, <br>
+
+b) Bakan: Adalet Bakanını, <br>
+
+c) Bakanlık: Adalet Bakanlığını, <br>
+
+ç) Disiplin âmiri: Yönetmeliğe ekli cetvelde disiplin âmiri olarak gösterilen kişileri, <br>
+
+d) <span class="span"> Komisyon disiplin kurulu</span>: Bölge adliye ve bölge idare mahkemeleri adalet komisyonları ile adlî yargı ilk derece mahkemesi <span class="mavi"> adalet komisyonlarını,</span> <br>
+
+e) (Değişik:RG-15/5/2019-30775) Bakan Yardımcısı: Adalet Bakanlığı Bakan Yardımcısını,</div>
+
+ifade eder.</div></div>
+
+İKİNCİ BÖLÜM <br>
+
+Disiplin Âmirleri ve Disiplin Kurullarının Görev ve Yetkileri <br>
+<div>
+Disiplin cezaları
+<div>
+MADDE 5 – (1) Disiplin cezasını gerektiren fiil ve hâller ile öngörülen disiplin cezaları yönünden <span class="dik"> 657 sayılı Kanunun 125 inci maddesi uygulanır</span>.</div></div>
+<div>
+Disiplin âmirleri
+<div>
+MADDE 6 – <div> (1) Adalet Bakanlığı merkez ve taşra teşkilâtında çalışan personele  <span class="dik"> uyarma, kınama ve aylıktan kesme cezaları</span> Ek Cetvel’de gösterilen yetkili disiplin âmirleri tarafından verilir. <br>
+
+(2) Cetvelde disiplin âmiri olarak tespit edilen unvanlara ait görevleri yetki ile veya <span class="dik"> vekâleten yürütenler de</span> bu görevi yürüttükleri sürece disiplin âmirliği yetkisine sahiptir. <br>
+
+(3) Cetvelde gösterilen disiplin âmiri unvanını taşıyan birden fazla kişi olması durumunda, yapılan iş bölümüne göre ilgili olan, <span class="dik"> ilgili birden fazla ise kıdemli olan</span> <span class="mavi"> disiplin âmirliği yetkisini kullanır</span>.</div>
+</div></div>
+<div>
+Üst disiplin âmirleri
+<div>
+MADDE 7 – <div> (1) <span class="span"> Bakan,</span> Bakanlık merkez ve taşra teşkilâtı ile bağlı kuruluşlarında görevli <span class="mavi"> bütün memurların üst disiplin âmiridir</span>. <br>
+
+(2) (Değişik:RG-15/5/2019-30775) <span class="span"> İlgili Bakan Yardımcısı</span>, Bakanlık merkez teşkilâtında görevli <span class="mavi"> bütün memurların Bakandan sonra gelen</span> üst disiplin âmiridir. <br>
+
+(3) Bakanlığın <span class="span"> birim âmirleri ile bağlı kuruluşların âmirleri</span>, birimlerindeki bütün personelin <span class="mavi"> diğer disiplin âmirlerine göre üst disiplin âmiridir</span>. <br>
+
+(4) <span class="span"> Üst disiplin âmirleri</span>, bu sıfatla hâiz oldukları yetkileri <span class="dik"> her derecedeki memur hakkında</span> <span class="mavi"> doğrudan kullanabilirler</span>.</div></div></div>
+<div>
+Disiplin cezası vermeye yetkili âmir ve kurullar
+<div>
+MADDE 8 – <div> (1) <span class="span"> Uyarma, kınama ve aylıktan kesme cezaları</span>, 10 uncu maddenin üçüncü fıkrasındaki hâl dışında bu Yönetmeliğe ekli cetvelde belirtilen <span class="mavi"> disiplin âmirlerinden biri tarafından verilir</span>. <br>
+
+(2) <span class="span"> Kademe ilerlemesinin durdurulması cezası</span>, bu Yönetmeliğin 17 nci maddesinde gösterilen usûle göre, <span class="dik"> Bakanlık Disiplin Kurulunun kararı alındıktan sonra</span>,<span class="mavi"> atamaya yetkili âmirce</span>; <span class="span"> Devlet memurluğundan çıkarma cezası</span> ise <span class="dik"> âmirlerin bu yoldaki isteği üzerine</span> <span class="mavi">  Yüksek Disiplin Kurulunca verilir</span>.</div></div></div>
+<div>
+Yetkili disiplin âmirleri ve disiplin kurulları
+<div>
+MADDE 9 –<div>  (1) Disiplin soruşturmasının yapılması ve karara bağlanmasında, ilgilinin disipline aykırı fiil veya hâli <span class="mavi"> işlediği anda <span class="dik"> görevli olduğu yerdeki</span>  disiplin âmirleri yetkilidir.</span> <br>
+
+(2) <span class="span"> Uyarma, kınama ve aylıktan kesme</span> cezalarına yapılacak itirazlarda, disipline aykırı fiil veya hâlin <span class="dik"> işlendiği anda</span> memurun görevli olduğu <span class="mavi"> yerdeki disiplin kurulu yetkilidir</span>.</div></div></div>
+<div>
+Disiplin âmirlerinin görev ve yetkileri
+<div>
+MADDE 10 –<div>  (1) Disiplin âmirlerince, yapılan soruşturma sonucunda disipline aykırı fiil ya da hâli tespit edilen <span class="mavi"> memurlara durumun niteliği</span>  ve  <span class="mavi">ağırlık derecesine göre</span>  disiplin cezaları verilir.
+<br>
+(2) <span class="kim"> Komisyon disiplin kurullarınca</span> <span class="span"> uyarma, kınama ve aylıktan kesme</span> cezalarına yapılan <span class="dik"> itirazın kabulü hâlinde</span>, disiplin âmirleri kararı gözden geçirerek verilen cezayı <span class="mavi"> hafifletebilir veya tamamen kaldırabilir</span>.
+<br>
+(3) <span class="kim"> İlgili disiplin kurullarınca</span> <span class="span"> kademe ilerlemesinin durdurulması</span>  ve <span class="span">Devlet memurluğundan çıkarma</span> cezası tekliflerinin <span class="dik"> reddedildiği durumlarda,</span> atamaya yetkili âmirce ret kararının alındığı tarihi izleyen <span class="mavi"> onbeş gün içinde başka bir disiplin cezası verilebilir.</span>
+<br>
+(4) <span class="kim"> Bakanlık Disiplin Kurulunca</span>, <span class="span"> uyarma, kınama veya aylıktan kesme cezalarına</span> yapılan <span class="dik"> itirazın kabulü hâlinde</span>, disiplin âmirleri veya bu maddenin üçüncü fıkrasına göre işlem yapılan durumlarda atamaya yetkili âmir kararını gözden geçirerek verilen cezayı <span class="mavi"> hafifletebilir veya tamamen kaldırabilir</span>.
+<br>
+(5) <span class="dik"> Yüksek Disiplin Kurulunca</span>, <span class="span"> kademe ilerlemesinin durdurulması </span> cezasına yapılan <span class="dik"> itirazın kabulü hâlinde</span> ise atamaya yetkili âmir kararını gözden geçirerek verilen cezayı <span class="mavi"> hafifletebilir veya tamamen kaldırabilir</span>.</div></div></div>
+
+ÜÇÜNCÜ BÖLÜM <br>
+
+Disiplin Kurulları
+<div>
+Komisyon disiplin kurulları
+<div>
+MADDE 11 – (1) <span class="kim"> Komisyon disiplin kurulları</span>; bölge adliye ve bölge idare mahkemeleri, adlî yargı ilk derece mahkemesi <span class="ark"> adalet komisyonları başkan</span>  ve <span class="ark"> üyeleri</span>  ile <span class="ark"> varsa Devlet memurunun üyesi olduğu sendikanın temsilcisinden oluşur</span>.</div></div>
+<div>
+Bakanlık disiplin kurulu
+<div>
+MADDE 12 – <div> (1) (Değişik:RG-15/5/2019-30775) <span class="kim"> Bakanlık Disiplin Kurulu</span> , <span class="ark"> Hukuk</span> İşleri Genel Müdürünün <span class="dik"> başkanlığında</span>, <span class="ark"> Teftiş</span> Kurulu Başkan Yardımcısı, <span class="ark"> Ceza İşleri</span> Genel Müdür Yardımcısı, <span class="ark"> Ceza ve Tevkifevleri</span> Genel Müdür Yardımcısı, <span class="ark"> Personel Genel</span> Müdür Yardımcısı ile varsa Devlet memurunun üyesi olduğu <span class="ark"> sendikanın temsilcisinden oluşur</span>. <br>
+
+(2) Bakanlık Disiplin Kurulu başkan ve üyelerinin <span class="mavi"> görev süreleri iki yıldır</span>. Süresi dolanlar <span class="dik"> yeniden görevlendirilebilir</span>.</div></div></div>
+<div>
+Yüksek disiplin kurulu
+<div>
+MADDE 13 – (1) (Değişik:RG-15/5/2019-30775) <span class="kim"> Yüksek Disiplin Kurulu</span>, <span class="ark"> Bakan tarafından görevlendirilen Bakan Yardımcısının başkanlığında</span>, <span class="ark"> Teftiş Kurulu Başkanı</span>, <span class="ark"> Ceza İşleri</span> Genel Müdürü, <span class="ark"> Ceza ve Tevkifevleri</span> Genel Müdürü, <span class="ark"> Personel Genel</span> Müdürü ile varsa Devlet memurunun üyesi olduğu <span class="ark"> sendikanın temsilcisinden oluşur</span>.</div></div>
+<div>
+Kurul toplantılarına katılamayacak olanlar
+<div>
+MADDE 14 – (1) Kurulların başkan ve üyeleri ile raportörler; kendilerine, boşanmış olsalar da <span class="ark"> eşlerine</span>, <span class="ark"> üçüncü dereceye kadar (bu derece dâhil)</span> kan ve kayın hısımlarına, disiplin <span class="dik"> soruşturmasını </span> <span class="mavi"> disiplin âmiri</span> veya <span class="mavi"> muhakkik sıfatıyla yaptıkları memurlara</span> , <span class="ark"> mağduru ya da tanığı bulundukları fiillere</span>  ilişkin kurul toplantılarına <span class="mavi"> katılamazlar</span>.</div></div>
+<div>
+Kurulların çalışma usûl ve esasları
+<div>
+MADDE 15 – <div> (1) Kurullarda toplantı gündeminin düzenlenip ilgililere dağıtılması, toplantının belirli gün, saat ve yerde yapılması, kurul çalışmalarının gereği gibi yürütülüp sonuçlandırılması, <span class="mavi"> Başkan tarafından sağlanır</span>. <br> <br>
+
+(2) <span class="span"> Raportörlük görevi</span>, <span class="kim"> komisyon disiplin kurullarında</span> <span class="ark"> komisyon yazı işleri müdürü</span> <span class="dik"> veya</span> gerektiğinde başkan tarafından görevlendirilecek <span class="ark"> bir yazı işleri müdürü</span>, <span class="kim"> Bakanlık Disiplin Kurulu ve Yüksek Disiplin Kurulunda</span> ise görevlendirilecek <span class="ark"> tetkik hâkimleri</span> tarafından yürütülür. <br>
+<div> <button  onclick="soruyuGoster(280)" class="soru" >2017 yılı çıkmış soru</button> </div>
+(3) <span class="kim"> Bakanlık Disiplin Kurulu ile Yüksek Disiplin Kurulu</span> , <span class="mavi"> salt çoğunlukla</span>; <span class="kim"> komisyon disiplin kurulları</span> ise <span class="mavi"> üye tam sayısı ile toplanır</span>. Raportörün açıklamaları dinlendikten sonra işin görüşülmesine geçilir. Konunun aydınlanması ve görüşmelerin yeterli görülmesi hâlinde açık oylamaya geçilir ve <span class="mavi"> oy çokluğu ile karar alınır</span>. Oylamada <span class="ark"> çekimser kalınamaz</span>. <span class="mavi"> Başkan oyunu en son kullanır</span>. Oyların eşitliği hâlinde başkanın bulunduğu <span class="mavi"> tarafın oyu üstün sayılır Karar Başkan tarafından açıklanır.</span> <br>
+
+(4) Karar özeti, üyeler tarafından imzalanan bir tutanakla tespit edilir. <br>
+
+(5) Kurulların başkan ve üyeleri ile raportörlerin, görev başında bulunmamaları veya 14 üncü maddedeki sebeplerle katılamamaları hâllerinde, <span class="mavi"> kurullara bunların vekil veya yedekleri katılır</span>.</div></div></div>
+<div>
+Komisyon disiplin kurullarının görev alanı
+<div>
+MADDE 16 – <div> (1) Atamaları adalet komisyonlarınca teklif edilen memurlar, disiplin âmirleri tarafından verilen <span class="ark"> uyarma, kınama ve aylıktan kesme cezalarına karşı</span>, fiil veya hâli işlediği sırada görev yaptığı <span class="mavi"> yer komisyon disiplin kuruluna itiraz edebilir</span>. <br>
+
+(2) Komisyon disiplin kurulları, itiraz dilekçesi ile disiplin soruşturma dosyasının kendilerine <span class="mavi"> intikâlinden itibaren otuz gün içinde kararını verir</span>.</div></div></div>
+<div>
+Bakanlık disiplin kurulunun görev alanı ve çalışma usûlü
+<div>
+MADDE 17 –<div>  (1) <span class="kim"> Bakanlık Disiplin Kurulu</span>, <span class="dik"> kademe ilerlemesinin durdurulması cezasını gerektiren fiillerle</span> ilgili olarak gönderilen dosyalar hakkında karar verir. <span class="dik"> Ayrıca fiilen merkez teşkilâtında görev yapanlar</span>  ile atamaları adalet <span class="dik"> komisyonları tarafından teklif edilenler dışındaki Devlet memurlarına</span> disiplin âmirleri tarafından verilen <span class="ark"> uyarma, kınama ve aylıktan kesme</span> cezalarına karşı <span class="mavi"> yapılan itirazları inceler</span>. <br>
+
+(2) <span class="ark"> Kademe ilerlemesinin durdurulması veya Devlet memurluğundan çıkarma cezası</span> <span class="mavi"> tekliflerinin ret edildiği durumlarda </span> atamaya yetkili âmir tarafından <span class="dik"> verilen uyarma, kınama ve aylıktan kesme</span>  cezalarına <span class="mavi"> yapılan itirazlar da Bakanlık Disiplin Kurulunca karara bağlanır</span>. <br>
+
+(3) Bakanlık Disiplin Kurulu, kademe ilerlemesinin durdurulması cezası ile ilgili işlerde, soruşturma dosyasını <span class="mavi"> aldığı tarihten itibaren otuz gün içinde</span>, soruşturma evrakına göre karar verir ve atamaya yetkili <span class="mavi"> âmire bildirir.</span>  Teklif kabul edildiği takdirde, atamaya yetkili âmir tarafından ivedi olarak <span class="mavi"> kademe ilerlemesinin durdurulması cezası verilir</span>. <br>
+
+(4) Bakanlık Disiplin Kurulu, <span class="dik"> itirazlarla ilgili işlerde</span>, itiraz dilekçesi ile soruşturma dosyasının kendisine intikâlinden itibaren <span class="mavi"> otuz gün içinde kararını verir</span>. <br>
+
+(5) 25/5/2004 tarihli ve 5176 sayılı Kamu Görevlileri Etik Kurulu Kurulması ve Bazı Kanunlarda Değişiklik Yapılması Hakkında Kanunun 4 üncü maddesinin ikinci fıkrası uyarınca; kamu görevlilerinin etik davranış ilkelerine aykırı uygulamalarının bulunduğu iddiasıyla yapılacak başvurular hakkında Kamu Görevlileri Etik Kurulu tarafından çıkarılan yönetmeliklerde belirlenen <span class="span"> etik davranış ilkelerine aykırılık olup olmadığı yönünden bu yönetmeliklerde belirlenen usul hükümlerine göre değerlendirme yapılır.</span>  Değerlendirme sonucu alınan karar ilgililere ve başvuru sahiplerine bildirilir.</div></div></div>
+<div>
+Yüksek disiplin kurulunun görev alanı ve çalışma usûlü
+<div>
+MADDE 18 –<div>  (1) Yüksek Disiplin Kurulu, <span class="dik"> Devlet memurluğundan çıkarma cezasını</span> gerektiren fiillerle ilgili olarak âmirler tarafından yapılan teklifleri <span class="mavi"> karara bağlar</span>. Ayrıca, <span class="dik"> kademe ilerlemesinin durdurulması cezalarına</span>  <span class="mavi">itirazları inceler</span>. <br>
+
+(2) Âmirlerin Devlet memurluğundan <span class="dik"> çıkarma cezasına ilişkin</span> teklifleri, soruşturma dosyasının Yüksek Disiplin Kuruluna gönderilmesinden itibaren <span class="mavi">  en geç altı ay içinde karara bağlanır</span>. <br>
+
+(3) Yüksek Disiplin Kurulu, <span class="dik"> kademe ilerlemesinin</span> durdurulması cezalarına yapılan <span class="dik"> itirazlarla ilgili işlerde</span>, itiraz dilekçesi ile soruşturma dosyasının kendisine intikâlinden <span class="mavi"> itibaren otuz gün içinde kararını verir</span>. <br>
+
+(4) <span class="span"> Yüksek Disiplin Kurulu</span> , kendisine intikâl eden dosyaların tetkiki sırasında gerekli gördüğü takdirde, ilgilinin özlük dosyasını ve her türlü evrakı incelemeye, kurumlardan bilgi almaya, yeminli tanık ve bilirkişi dinlemeye veya talimatla dinletmeye, mahâllinde keşif yapmaya veya yaptırmaya <span class="span"> yetkilidir</span>.</div></div></div>
+<div>
+Sendika temsilcileri
+<div>
+MADDE 19 – <div> (1) Sendikalar tarafından Bakanlık Disiplin Kurulu ve Yüksek Disiplin Kurulu toplantılarına hangi temsilcinin katılacağı toplantı tarihinden önce ilgili <span class="span"> kurula bildirilir</span>. <br>
+
+(2) Sendika temsilcisine, talebi hâlinde soruşturma dosyasından <span class="span"> suret verilir</span>. <br>
+
+(3) Sendika temsilcisi, kurul toplantılarında soruşturma konusu fiil veya hâl hakkındaki görüşlerini <span class="span"> sözlü veya yazılı olarak bildirebilir</span>.</div></div></div>
+<div>
+Kurulların ayrı bir ceza tâyinine yetkisi
+<div>
+MADDE 20 – <div> (1) (Değişik:RG-15/5/2019-30775) Yüksek Disiplin Kurulunun 657 sayılı Kanunun 125 inci maddesinin <span class="dik"> üçüncü fıkrasında belirtilen alt ceza uygulaması hariç</span>, Disiplin <span class="mavi"> Kurullarının ayrı bir ceza tâyinine yetkileri yoktur</span>. Teklifi veya itirazı kabul ya da reddeder. <br>
+
+(2) Teklifin <span class="dik"> reddi</span> hâlinde, <span class="mavi"> atamaya yetkili âmir onbeş gün içinde başka bir disiplin cezası verebilir</span>. <br>
+
+(3) Kademe ilerlemesinin durdurulması cezasına itirazın kabulü hâlinde atamaya yetkili âmir, diğer hâllerde ise disiplin âmiri verdiği kararı gözden geçirerek cezayı <span class="mavi"> hafifletebilir veya tamamen kaldırabilir</span>.</div></div></div>
+<div>
+Disiplin kurullarında kararların yazılması ve tebliği
+<div>
+MADDE 21 –<div>  (1) Kararlar, karar tarihini izleyen <span class="mavi"> yedi gün içinde, gerekçeli olarak</span> , karara karşı başvuru yolları ve süreleri ile oy birliği veya oy çokluğu ile alındığı da belirtilmek suretiyle <span class="mavi"> raportörler tarafından yazılır ve başkanla üyeler tarafından imzalanır</span>. <span class="span"> Karşı oy</span> kullananların görüşlerine de kararda <span class="span"> yer verilir</span>. <br>
+
+(2) Kademe ilerlemesinin durdurulması cezasına ilişkin Bakanlık Disiplin Kurulunun kararı hariç olmak üzere, disiplin kurullarının tüm kararları, imzalandığı tarihi izleyen <span class="mavi"> onbeş gün içinde ilgili memura tebliğ edilir</span>.<div> <button  onclick="soruyuGoster(404)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button> </div></div></div></div>
+
+DÖRDÜNCÜ BÖLÜM
+
+Disiplin Soruşturması Usûl ve Esasları
+<div>
+İşleme konulmayacak ihbar ve şikâyetler
+<div>
+MADDE 22 –<div>  (1) Memur hakkında;
+	<div>
+a) Belli bir <span class="span"> konuyu içermeyen veya somut delile dayanmayan</span>, <br>
+
+b) Başvuru sahibinin <span class="span"> adı, soyadı, imzası, Türkiye Cumhuriyeti kimlik numarası ile adresi</span>  bulunmayan, <br>
+
+c) Daha önceden şikâyet konusu yapılıp sonuçlanan hususlarda <span class="span"> yeni delil içermeyen,</span> <br>
+
+ç) <span class="span"> Kanun yollarına başvuru sebebi olarak</span> ileri sürülebilecek hususları içeren, <br>
+
+d) <span class="span"> Akıl hastalığı sebebiyle</span> vesayet altına alınanlar veya henüz vesayet altına alınmamış olmakla birlikte bu hastalığa duçar oldukları sağlık kurulu raporu ile belirlenenlerce <span class="span"> verilmiş olan</span>,</div>
+
+<span class="mavi"> ihbar ve şikâyetler işleme konulmaz</span>. <br>
+
+(2) Ancak, <span class="ark"> (b)</span> bendinde yazılı şartları taşımayan ihbar ve şikâyetlerin <span class="dik"> somut delillere dayanması durumunda</span>, konu hakkında disiplin <span class="mavi"> soruşturmasına başlanır</span>.</div></div></div>
+<div>
+Disiplin soruşturmasına başlama ve muhakkiklik
+<div>
+MADDE 23 – <div> (1) Disiplin âmiri tarafından disipline aykırı fiil veya hâlin öğrenilmesinden itibaren <span class="span"> derhal disiplin soruşturmasına başlanır</span>. Disiplin soruşturması yazılı olarak görevlendirilen <span class="span"> muhakkik</span> marifetiyle yapılır. Ancak, muhakkiklik görevini yapabilecek <span class="span"> bir kişinin bulunmadığı durumlarda</span> <span class="span"> disiplin âmiri</span> soruşturmayı yapmak üzere düzenleyeceği tutanağı bu Yönetmeliğe ekli cetvele göre kendisinin <span class="mavi"> bir derece üzerindeki disiplin âmirine gönderir</span>. <br>
+
+(2) <span class="span"> Muhakkik</span> olarak tâyin edilecek kişinin, hakkında soruşturma yapılan memurdan <span class="mavi">  daha üst veya memura eşit bir görevde bulunması zorunludur.</span> <br>
+
+(3) <span class="span"> Muhakkik</span>, görevlendirildiği fiil veya hâl dışında yeni bir disipline aykırı fiil veya hâl tespit ederse <span class="span"> kendiliğinden soruşturma yapamaz</span>. Durumu disiplin âmirine <span class="span"> yazılı olarak bildirir</span>. Kendisine yazılı olarak <span class="span"> ek soruşturma izni verildiği takdirde</span>, <span class="mavi"> bu konularda da soruşturma yapabilir.</span> <br>
+
+(4) <span class="span"> Muhakkik</span>, kendisini görevlendiren disiplin âmirinin <span class="span"> disiplin cezası verme yetkisi hariç</span> <span class="dik"> bütün yetkilerini hâiz olup</span>; soruşturma konusuyla sınırlı olmak üzere her nevi evrakı incelemeye, ilgili kurumlardan ve kişilerden bilgi ve belge almaya, tanık dinlemeye, mahâllinde keşif yapmaya, hakkında soruşturma yapılan memurun savunmasını almaya, soruşturma raporu düzenlemeye <span class="span"> yetkilidir.</span> <br>
+
+(5) Emekliye <span class="ark"> ayrılan</span>, memuriyetten <span class="ark"> çekilen</span> veya çekilmiş sayılan, kurum <span class="ark"> değiştiren</span> ya da başka bir eylemi nedeniyle Devlet memurluğundan <span class="ark"> çıkarma cezası almış</span> olan memurlar <span class="mavi"> hakkında da disiplin soruşturması yapılır</span>. <br>
+<div> <button  onclick="soruyuGoster(85)" class="soru" >2023 yılı çıkmış soru</button> </div> Memur <span class="ark"> ölmüş ise</span> soruşturma evrakı <span class="mavi"> işlemden kaldırılır</span>, disiplin cezası verilmiş ise uygulanmaz.</div></div></div>
+<div>
+Âmirlerle birlikte işlenen disiplin suçları
+<div>
+MADDE 24 –<div>  (1) Memurların, bu Yönetmeliğe ekli cetvelde yer alan disiplin âmirlerinden birisi ile birlikte işledikleri disiplin suçlarında, <span class="mavi"> suça iştirak eden âmirin bir derece üzerindeki disiplin âmirince soruşturma yapılır</span>.  <br>
+
+(2) Suça iştirak eden disiplin âmirinin <span class="dik"> başka bir soruşturma usûlüne tabi olması hâlinde</span>, bu hususta yetkili mercilerce yapılacak soruşturma sonucu beklenmeksizin, <span class="mavi"> memur hakkındaki soruşturma, üst disiplin âmirince yürütülür</span>.</div></div></div>
+<div>
+Disiplin âmiri veya muhakkikin disiplin suçunun mağduru veya tanığı olması
+<div>
+MADDE 25 – (1) Disiplin âmiri veya muhakkik, disipline aykırı fiilin mağduru veya tanığı olması hâlinde disiplin soruşturmasını <span class="dik"> yürütemez.</span> Fiilin mağduru veya tanığı olduğunu tutanak altına alan disiplin âmiri, bu tutanağı gereğini yapmak üzere bu Yönetmeliğe ekli cetvele göre kendisinin <span class="mavi"> bir derece üzerindeki disiplin âmirine, yoksa bir derece alt disiplin âmirine gönderir</span>. Fiilin mağduru veya tanığı <span class="ark"> muhakkik ise</span>, durumu gereğini yapması için kendisini görevlendiren <span class="mavi"> disiplin âmirine bildirir.</span> </div></div>
+<div>
+Adlî soruşturma ve kovuşturma ile disiplin soruşturmasının ayrı yürütülmesi
+<div>
+MADDE 26 – <div> (1) Hakkında adlî soruşturma veya kovuşturma yapılan memurun eylemi, disiplin yönünden gereğinin takdir ve ifası için derhal disiplin âmirine bildirilir. Disiplin âmirince, bu Yönetmeliğin 23 üncü maddesine göre işlem yapılır. <br>
+
+(2) Aynı olaydan dolayı memur hakkında adlî soruşturma veya kovuşturma bulunması gerekçe gösterilerek <span class="mavi"> disiplin soruşturması geciktirilemez.</span> <br>
+
+(3) Memurun adlî soruşturma ve kovuşturma sonucunda mahkûm olması veya olmaması hâlleri de ayrıca disiplin cezası verilmesine <span class="mavi"> engel teşkil etmez</span>. <br>
+
+(4) Memurlar hakkında görevden doğan veya görevi sırasında işledikleri suçlar ile kişisel suçları sebebiyle Cumhuriyet savcıları veya yetkili kurullarca yapılan soruşturma sonunda düzenlenen <span class="span"> kovuşturmaya yer olmadığı</span>, soruşturma izni verilmesi ya da verilmemesi kararları ile iddianame <span class="span"> suretleri ve mahkemelerce verilen kesinleşmiş karar suretleri</span>, <span class="mavi"> memurun bağlı olduğu birime gönderilir</span>.</div></div></div>
+<div>
+Disiplin soruşturması sırasında yapılacak işlemler
+<div>
+MADDE 27 – <div> (1) Disiplin soruşturması, suç konusu olayı incelemek, muhbir veya şikâyetçinin ihbar veya iddialarını tespit etmek, adlî soruşturma kapsamında dinlense bile ayrıca tanıkları dinlemek, olayla ilgili tüm bilgi ve belgeleri toplamak, bunları soruşturma dosyasına koymak, gerekirse inceleme tutanağı düzenlemek ve bilirkişi incelemesi yaptırmak, keşif yapmak, kendisine suç isnat edilen kişi ya da kişilerin savunmasını almak, savunmada öne sürülen hususlar da dikkate alınarak gerekirse tanıkları yeniden dinlemek ve diğer hususları araştırmak suretiyle yapılır. <br>
+
+(2) Konu ile ilgili adlî soruşturma yapılmış ise bu kapsamda alınan ifadeler, bilirkişi raporları, sağlık raporları, iddianame ve duruşma zabıtları, mahkeme kararları gibi delil niteliğindeki tüm belgelerin onaylı örnekleri ile <span class="dik"> memura ait ödül ve başarı belgeleri,</span> <span class="dik"> kesinleşme şerhini taşıyan disiplin cezalarına ilişkin belgeler</span>, <span class="dik"> memurun sendika üyesi olup olmadığına ilişkin bilgi yazısı</span>,<span class="dik"> sicil özeti,</span> <span class="mavi"> hizmet belgesi soruşturma dosyasına konulur</span>. <br>
+
+(3) Disipline konu olayla ilgili tanıkların ve bilirkişilerin ifadeleri <span class="mavi"> yeminli olarak alınır</span>.</div></div></div>
+<div>
+Savunma hakkı
+<div>
+MADDE 28 –<div>  (1) Memura savunma hakkı tanınmadan <span class="mavi"> disiplin cezası verilemez</span>. Hakkında soruşturma yapılan memura, isnat edilen fiil ve hâller açıkça belirtilmek suretiyle, <span class="mavi"> yedi günden az olmamak üzere</span> verilen süre içerisinde bizzat veya vekili aracılığıyla yazılı veya sözlü olarak savunma yapması, aksi hâlde savunma hakkından vazgeçmiş sayılacağı hususu yazılı olarak bildirilir. Memur disiplin soruşturması evrakını <span class="mavi"> inceleyebilir ve istediği belgelerin bir örneğini masrafını karşılamak kaydıyla alabilir</span>. <br>
+
+(2) Mücbir sebep hâli hariç olmak üzere memurun <span class="mavi"> izinli veya raporlu olması savunma süresini uzatmaz</span>. <br>
+
+(3) Devlet memurluğundan <span class="span"> çıkarma cezasına ilişkin</span> savunma istem yazısında, memura soruşturma evrakını inceleme, tanık dinletme, Yüksek Disiplin Kurulunda sözlü veya yazılı olarak bizzat veya vekili vasıtasıyla <span class="mavi"> savunma yapma hakkına sahip olduğu ayrıca belirtilir</span>. <br>
+
+(4) Savunma istem yazısı, disiplin soruşturması kapsamında tüm deliller toplanıp, disipline aykırı fiil veya hâl somut olarak belirlendikten sonra ilgilisine tebliğ edilir.</div></div></div>
+<div>
+Disiplin soruşturması sonucu yapılacak işlemler
+<div>
+MADDE 29 – <div> (1) <span class="mavi"> Soruşturma sona erince bir rapor düzenlenir</span>. <br>
+
+(2) Rapor;
+<div>
+a) Soruşturma onayının <span class="span"> tarih ve sayısı</span>, <br>
+
+b) Soruşturmaya <span class="span"> başlama tarihi</span>, <br>
+
+c) Disiplin <span class="span"> âmirinin isnat edilen fiil veya hâli öğrenme tarihi</span>, <br>
+
+ç) <span class="span"> Muhbir veya müştekinin kimlik bilgileri</span>, <br>
+
+d) Hakkında soruşturma <span class="span"> yapılanın kimliği ve resmî sıfatı</span>, <br>
+
+e) İddia konusu <span class="span"> olay</span>, <br>
+
+f) Fiil veya hâlin <span class="span"> gerçekleştiği tarih ve yer</span>, <br>
+
+g) Soruşturma <span class="span"> maddeleri,</span> <br>
+
+ğ) <span class="span"> Savunma,</span> <br>
+
+h) Leh ve aleyhe olan  <span class="span"> deliller</span>, <br>
+
+ı) <span class="span"> Delillerin tartışılması,</span> <br>
+
+i) <span class="span"> Sonuç</span>,</div>
+
+bölümlerinden oluşur. <br>
+
+(3) Soruşturmaya konu olaylar, ayrı ayrı tahlil edilerek suç teşkil ettiği kanaatine varılırsa, fiil veya hâlin gerektirdiği <span class="mavi"> disiplin cezası madde ve bent tâyini suretiyle gösterilir</span>. <br>
+
+(4) Disiplin soruşturması sonucu elde edilen delillerin bir disiplin cezası vermeye <span class="span"> yeterli olmadığı anlaşılır</span> veya 657 sayılı Kanunun 127 nci maddesindeki <span class="span"> zamanaşımı sürelerinin dolduğu</span> tespit edilirse <span class="mavi"> disiplin cezası verilmez</span>. Bu yöndeki karar, <span class="span"> disiplin âmirince memura tebliğ edildikten sonra</span>, <span class="mavi"> bilgi için kararın bir sureti atamaya yetkili âmire gönderilir.</span> <br>
+
+(5) Eylemin karşılığı olarak tespit edilen disiplin cezası,<span class="ark"> uyarma, kınama veya aylıktan kesme</span> cezalarından biri olduğu takdirde, <span class="ark"> disiplin âmirince başvuru yolları</span>  ve sürelerini içerir şekilde karar verilerek <span class="mavi"> memura yazılı olarak bildirilir</span>. <br>
+
+(6) <span class="ark"> Kademe ilerlemesinin durdurulması cezasını gerektiren hâllerde</span>, soruşturmayı tamamlayan disiplin âmiri <span class="ark"> on beş gün içinde bir fezleke</span>  ekinde dizi pusulasına bağladığı soruşturma dosyasını <span class="mavi"> Bakanlık Disiplin Kuruluna gönderir</span>. <br>
+
+(7) <span class="ark"> Devlet memurluğundan çıkarma cezasını gerektiren hâllerde</span>, soruşturmayı tamamlayan disiplin âmiri bir fezleke ekinde dizi pusulasına bağladığı soruşturma dosyasını <span class="mavi"> ivedi olarak Yüksek Disiplin Kuruluna gönderir</span>.</div></div></div>
+<div>
+Tekerrür ve alt ceza uygulaması
+<div>
+MADDE 30 – <div> (1) Disiplin cezası verilmesine sebep olmuş bir fiil veya hâlin, cezaların sicilden silinmesine ilişkin süre içinde <span class="mavi"> tekerrüründe bir derece ağır ceza uygulanır</span>. Aynı derecede cezayı gerektiren fakat ayrı fiil ve hâller nedeniyle verilen disiplin cezalarının <span class="mavi"> üçüncü uygulamasında da bir derece ağır ceza verilir</span>. <br>
+
+(2) Her iki tekerrür hâlinde de <span class="dik"> tekerrüre esas alınan</span> disiplin ceza ya da cezalarının bu Yönetmeliğin 35 inci maddesinin birinci fıkrası anlamında <span class="mavi"> kesinleşmiş olması gerekir</span>. <br>
+
+(3) Geçmiş hizmetleri sırasındaki çalışmaları olumlu olan, <span class="ark"> ödül veya başarı belgesi alan</span>  memurlar için verilecek cezalarda <span class="mavi"> bir derece hafif olanı uygulanabilir.</span> <span class="dik"> İndirim yapılmayan durumlarda, kararda gerekçesi belirtilir</span>. <br>
+
+(4) Disiplin cezası vermeye yetkili âmirler ve disiplin kurulları, ancak <span class="mavi"> vermeye yetkili oldukları disiplin cezası üzerinden bir alt ceza indirimi yapabilir</span>.</div></div></div>
+<div>
+Zamanaşımı
+<div>
+MADDE 31 – <div> (1) Disiplin âmirince, <span class="ark"> uyarma, kınama, aylıktan kesme</span> ve <span class="ark"> kademe ilerlemesinin durdurulması cezasını</span> gerektiren hâllerde, fiilin öğrenildiği tarihten  <span class="mavi">itibaren bir ay içinde</span>; Devlet memurluğundan <span class="ark"> çıkarma cezasını</span> gerektiren hâllerde ise <span class="mavi"> altı ay içinde disiplin soruşturmasına başlanması zorunludur.</span> <br>
+
+(2) Belirtilen süreler içinde disiplin soruşturmasına <span class="dik"> başlanmadığı</span> veya disiplin cezasını gerektiren fiilin işlendiği tarihten itibaren nihayet <span class="mavi"> iki yıl içinde</span> disiplin cezası <span class="dik"> verilmediği</span> takdirde, ceza verme yetkisi <span class="mavi"> zamanaşımına uğrar</span>.</div></div></div>
+<div>
+Âmirin ve ilgililerin sorumluluğu
+<div>
+MADDE 32 – (1) Ceza verme yetkisinin zamanaşımına uğramasına sebebiyet veren âmir, kurul ve ilgililer hakkında <span class="mavi"> adlî ve idarî yönden işlem yapılır</span>.</div></div>
+<div>
+Aday memurlar hakkında yapılacak uygulama
+<div>
+MADDE 33 – <div> (1) Disipline aykırı fiil veya hâli tespit edilen aday memurlar hakkında da disiplin soruşturması yapılır. <span class="mavi"> Fiil veya hâl, uyarma, kınama, aylıktan kesme veya kademe ilerlemesinin durdurulması cezalarını gerektirdiği takdirde disiplin cezası verilir.</span> <br>
+
+(2) Özel kanunlardaki hükümler saklı kalmak kaydıyla, 657 sayılı Kanunun 57 nci maddesinin birinci fıkrası hükmü uygulanır. <br>
+
+(3) Devlet memurluğundan çıkarma cezasını gerektiren <span class="mavi"> hâllerde ise, atamaya yetkili âmirce teklifte bulunulmaz</span>; 657 sayılı Kanunun 56 ncı maddesi gereğince işlem yapılır.</div></div></div>
+<div>
+Hâkim ve savcı adayları hakkında yapılacak uygulama
+<div>
+MADDE 34 – (1) Türkiye Adalet Akademisindeki hazırlık ve son eğitim süreleri hariç olmak üzere; hâkim ve savcı adaylarının disiplin soruşturmalarında adayın görevlendirildiği birime bakılmaksızın Ek Cetvel’de gösterilen disiplin âmirleri yetkilidir.</div></div>
+<div>
+Disiplin cezalarına karşı başvuru yolları ve süreleri
+<div>
+MADDE 35 – (1) Uyarma, kınama, aylıktan kesme ve kademe ilerlemesinin durdurulması cezalarına karşı itiraz süresi, kararın disiplin cezası verilen memura tebliğinden itibaren <span class="mavi"> yedi gündür</span>. Süresi içinde itiraz edilmeyen veya itirazı reddedilen disiplin cezaları <span class="mavi"> kesinleşir.</span> <br>
+
+(2) Disiplin cezası verilen memur, <span class="mavi"> tüm disiplin cezalarına karşı idarî yargı yoluna başvurabilir</span>.</div></div>
+<div>
+Disiplin kararlarının bildirimi ve disiplin cezalarının uygulanması
+<div>
+MADDE 36 – <div> (1) Disiplin kararları, ilgili memura veya vekiline tebliğ edildikten sonra, gereği yapılmak ve memurun özlük dosyasına işlenmek üzere <span class="ark"> ilgili birimlere</span>; Devlet memurluğundan çıkarma cezasına ilişkin kararlar <span class="ark"> ayrıca Devlet Personel Başkanlığına</span> gönderilir. <br>
+
+(2) Disiplin cezaları verildiği tarihten itibaren hüküm ifade eder ve <span class="ark"> derhal uygulanır.</span> <span class="mavi"> Aylıktan kesme cezası verildiği tarihi takip eden ay başında uygulanır</span>.</div></div></div>
+<div>
+Disiplin cezalarının özlük dosyasından silinmesi
+<div>
+MADDE 37 – <div> (1) Memurun özlük dosyasına işlenen Devlet memurluğundan çıkarma cezası dışındaki disiplin cezaları, cezanın uygulanma tarihinden itibaren;
+	<div>
+a) <span class="ark"> Uyarma ve kınama</span> cezalarında <span class="mavi"> beş yıl</span>,
+
+b) <span class="ark"> Diğer</span> disiplin cezalarında <span class="mavi"> on yıl</span>, </div>
+
+geçtikten sonra, ilgilinin başvurusu üzerine <span class="mavi"> atamaya yetkili âmir tarafından özlük dosyasından silinebilir</span>. <br>
+
+(2) Disiplin cezasının özlük dosyasından silinmesi talebinde bulunan memurun, yukarıda belirtilen süreler içindeki davranışları bu talebini haklı kılacak nitelikte görülürse, isteğinin yerine getirilmesine karar verilerek bu karar özlük dosyasına işlenir. <br>
+
+(3) <span class="dik"> Kademe ilerlemesinin durdurulması cezasının</span> özlük dosyasından çıkarılmasında, <span class="ark"> Bakanlık Disiplin Kurulunun mütalâası</span> alındıktan sonra yukarıdaki fıkralar uyarınca <span class="mavi"> işlem yapılır</span>.</div></div></div>
+
+BEŞİNCİ BÖLÜM <br>
+
+Çeşitli ve Son Hükümler
+<div>
+Yürürlükten kaldırılan yönetmelik
+<div>
+MADDE 38 – (1) 30/5/1999 tarihli ve 23710 sayılı Resmî Gazete'de yayımlanarak yürürlüğe giren Adalet Bakanlığı Disiplin Kurulları ve Disiplin Âmirleri Yönetmeliği ve eki cetvel ile değişiklikleri yürürlükten kaldırılmıştır.</div></div>
+<div>
+Devam etmekte olan dosyaların disiplin kuruluna devri (Değişik başlık:RG-15/5/2019-30775)
+<div>
+GEÇİCİ MADDE 1 – (1) Bu Yönetmeliğin yürürlüğe girdiği tarihten itibaren Bakanlık Disiplin Kurulu işlemlerini yürüten birim, komisyon disiplin kurullarının yetkisine giren işleri ilgili disiplin kuruluna gönderir.</div></div>
+<div>
+Devam etmekte olan dosyaların disiplin amiri
+<div>
+GEÇİCİ MADDE 2 – (1) Bu Yönetmeliğin yürürlüğe girdiği tarihten önce başlatılmış olan disiplin soruşturmaları, 30/5/1999 tarihli ve 23710 sayılı Resmî Gazete’de yayımlanarak yürürlüğe giren Adalet Bakanlığı Disiplin Kurulları ve Disiplin Âmirleri Yönetmeliğine ekli cetveldeki disiplin âmirleri tarafından tamamlanır.</div></div>
+<div>
+Yürürlük
+<div>
+MADDE 39 – (1) Bu Yönetmelik yayımı tarihinde yürürlüğe girer.</div></div>
+<div>
+Yürütme
+<div>
+MADDE 40 – (1) Bu Yönetmelik hükümlerini Adalet Bakanı yürütür.</div></div>
+
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

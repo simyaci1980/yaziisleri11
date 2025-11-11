@@ -1,0 +1,961 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+		body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+span{color: chocolate; font-size: larger; }
+
+.ark{background-color:black; font-size: larger; border-radius: 20px;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 5px;
+	border-style: groove;
+	border-color: rgba(7, 7, 7, 0.46);
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+
+
+</style>
+<title> 1 nolu Cumhurbaşkanlığı kararnamesi</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz"  > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+
+
+	<div id="kal" class="kal">
+ANLAŞILAN O Kİ 1 NOLU KARARNAMEDEKİ KISIMDAN BAHSEDİYOR  <br>
+  1 NOLU CUMHURBAŞKANI KARARNAMESİ
+   ALTINCI KISIM / BİRİNCİ BÖLÜM
+   ADALET BAKANLIĞI </div> <br><br><br><br><br><br><br>
+   Görev <br>
+   <div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script><br>
+	   <br><br>
+   MADDE 38 -
+   <div>  (1) <span class="kim"> Adalet Bakanlığının görev ve yetkileri şunlardır:</span><div>
+    a) <span class="ark"> Kanunlarda kurulması öngörülen mahkemeleri <span class="mavi">açmak ve teşkilatlandırmak,</span> <br> ceza infaz kurumları, icra ve iflas    daireleri gibi her derece ve türdeki adalet kurumlarını  <br> <span class="mavi"> planlamak   kurmak ve idari görevleri yönünden gözetim ve denetimini yapmak ve geliştirmek,</span></span> <br>
+    b) <span class="ark"> Bir mahkemenin kaldırılması veya <br> yargı çevresinin değiştirilmesi konularında</span> <span class="mavi"> Hakimler ve Savcılar Kuruluna teklifte bulunmak,</span>  <br>
+    c) <span class="ark"> Kamu davasının açılması ile ilgili</span> <span class="mavi"> olarak mevzuatla Adalet Bakanına verilen yetkinin kullanılması ile ilgili çalışma ve işlemleri yapmak,</span>  <br>
+    ç) <span class="ark"> Adli sicilin tutulması ile ilgili</span> <span class="mavi"> hizmetleri yürütmek,</span> <br>
+    d) <span class="ark"> Adalet hizmetlerine ilişkin konularda,</span> <span class="mavi"> yabancı ülkelerle ilgili işlemleri yerine getirmek</span>
+    <br>
+
+    e) <span class="ark"> Adalet hizmetleriyle ilgili konularda,</span> <span class="mavi"> gerekli araştırmalar ve mevzuat hazırlıklarını yapmak ve görüş bildirmek,</span>  <br>
+    f)  <span class="ark"> Bakanlıklarca  gönderilen mevzuat  taslaklarının  Türk  hukuk  sistemine  ve  mevzuat  tekniğine uygunluğunu</span> <span class="mavi"> incelemek ve bu konularda görüş bildirmek,</span>  <br>
+    g) <span class="ark"> İlgili mevzuat hükümleri uyarınca</span> <span class="mavi"> infaz işlerini düzenlemek,</span>  <br>
+    ğ) <span class="ark"> İcra ve iflas daireleri vasıtasıyla,</span> <span class="mavi"> icra ve iflas iş ve işlemleriniyürütmek,</span> <br>
+    h) <span class="ark"> Görev  alanıyla  ilgili  olarak  uygulamayı  takip  etmek  ve  ortaya  çıkan  sorunların</span> <span class="mavi">  nedenlerini araştırarak çözüm önerileri geliştirmek,</span>  <br>
+    ı) <span class="ark"> Ulusal veya uluslararası düzeyde bilimsel toplantılar düzenlemek,</span> <span class="mavi"> bu nitelikteki çalışmaları teşvik etmek ve desteklemek,</span>  <br>
+    i) <span class="ark"> Görev alanıyla ilgili kamu ya da özel kurum veya kuruluşlarla</span> <span class="mavi"> iş birliği yapmak,</span>  <br>
+    j) Kanunlarla veya Cumhurbaşkanlığı kararnameleriyle verilen diğer görevleri yapmak.</div></div>
+
+  Teşkilat
+  MADDE 39 –
+  <div> (1) <span class="kim"> Adalet Bakanlığı;</span> <br> <span class="ark"> merkez, <br> taşra ve <br> yurtdışı</span>   <span class="mavi">teşkilatından oluşur.</span>  <br><br>
+  <span class="kim">
+  Hizmet birimleri </span> <br>
+  MADDE 40 –(1) Bakanlığın hizmet birimleri şunlardır:
+  <div>
+  a) <span class="ark"> Ceza</span> İşleri Genel Müdürlüğü,  <br>
+  b) <span class="ark">Hukuk</span> İşleri Genel Müdürlüğü,  <br>
+  c) <span class="ark"> Mevzuat</span> Genel Müdürlüğü,  <br>
+  ç) <span class="ark"> Ceza ve Tevkifevleri</span> Genel Müdürlüğü,  <br>
+  d) <span class="ark"> Adli Sicil ve İstatistik</span> Genel Müdürlüğü, <br>
+  e) <span class="ark"> Dış İlişkiler ve Avrupa Birliği</span> Genel Müdürlüğü, <br>
+  f) <span class="ark"> Personel </span> Genel Müdürlüğü,  <br>
+  g) <span class="ark"> Hukuk Hizmetleri</span>  Genel Müdürlüğü, <br>
+  ğ) <span class="ark"> Bilgi İşlem</span> Genel Müdürlüğü, <br>
+  h) <span class="ark"> Teftiş Kurulu Başkanlığı,</span>  <br>
+  ı) <span class="ark"> Strateji Geliştirme Başkanlığı,</span>  <br>
+  i) <span class="ark"> İnsan Hakları Dairesi Başkanlığı</span> <br>
+  j) <span class="ark"> Eğitim Dairesi Başkanlığı,</span> <br>
+   k) <span class="ark"> İcra İşleri Dairesi Başkanlığı,</span> <br>
+   l) <span class="ark"> Destek Hizmetleri Dairesi Başkanlığı,</span> <br>
+   m) <span class="ark"> Adli Destek ve Mağdur Hizmetleri Dairesi Başkanlığı</span>  <br>
+   n) <span class="ark"> Basın ve Halkla İlişkiler Müşavirliği,</span>   <br>
+   o) <span class="ark"> Özel Kalem Müdürlüğü.</span> </div></div>
+   <div>  <span class="kim">
+   Ceza İşleri Genel Müdürlüğü</span> <div>
+   MADDE 41 –(1) <span class="kim"> Ceza İşleri Genel Müdürlüğünün görev ve yetkileri şunlardır:</span><div>
+   a) <span class="ark"> Kamu güvenliği yönünden dava nakli ile ilgili olarak</span> <span class="mavi"> mevzuatın Adalet Bakanına verdiği yetkinin kullanılmasına ilişkin iş ve işlemleri yapmak,</span>  <br>
+    b)  <span class="ark"> Kamu  davasının  açılması  ile  ilgili  olarak</span> <span class="mavi">  mevzuatın  Adalet  Bakanına  verdiği  yetkinin kullanılmasına ilişkin iş ve işlemleri yapmak,</span> <br>
+	<div> <button  onclick="soruyuGoster(107)" class="soru" >2016 yılı çıkmış soru</button> </div>
+    c) <span class="ark"> 4/12/2004 tarihli ve 5271 sayılı Ceza Muhakemesi Kanunu uyarınca</span> <span class="mavi"> Bakanlığa verilen  kanun yararına bozmaya ilişkin işlemleri yürütmek,</span>  <br>
+    ç) <span class="ark"> Soruşturma veya kovuşturma yapılması Adalet Bakanının veya Adalet Bakanlığının iznine ya da talebine bağlı suçlarla ilgili</span> <span class="mavi"> işlemleri yapmak ve sonuçlarını takip etmek.</span> <br>
+    d) <span class="ark"> Cezai işlemlerle ilgili </span> <span class="mavi"> ihbar ve şikâyetleri inceleyip gereğini yapmak,</span> <br>
+
+    e) <span class="ark"> Mevzuatın Adalet Bakanlığına verdiği</span> <span class="mavi"> soruşturma, kovuşturma ve disiplin işlemlerini yürütmek,</span>   <br>
+    f) <span class="ark"> Adalet Bakanına veya Adalet Bakanlığına mevzuatla verilen cezai işlerle ilgili</span> <span class="mavi"> işlemleri yürütmek,</span>  <br>
+    g)  <span class="ark"> Ceza  muhakemesinde  <br>  önödeme,   <br>
+      uzlaştırma  ve <br>  kamu  davasının  açılmasının  ertelenmesi  gibi <br> </span> <span class="mavi"> alternatif uyuşmazlık çözüm usullerinin geliştirilmesi ve etkin şekilde uygulanmasını sağlamak,</span> <br>
+    ğ) <span class="ark"> Ceza Muhakemesi Kanunu uyarınca uzlaştırmacıların  <br>  eğitimi, <br>  sınavı, <br> sicile kaydı, <br> çalışma usul ve esasları, <br>  denetim  ve  performansları  ile  uzlaştırma  kurumuna  ilişkin <br> </span> <span class="mavi"> gerekli  diğer  iş  ve  işlemleri yürütmek,</span> <br> <span class="mavi"> Uzlaştırmacı Asgari Ücret Tarifesini hazırlamak,</span>  <br>
+    l) <span class="ark"> Görev alanına giren istatistiklerin derlenmesi ve yayımı konusunda</span> <span class="mavi"> Bakanlığın ilgili birimleriyle iş birliği halinde çalışmak</span>  <br>
+    ö) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+
+
+    <div> <span class="kim">
+    Hukuk İşleri Genel Müdürlüğü</span><div>
+    MADDE 41/A-(1) <span class="kim"> Hukuk İşleri Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+    a) 19/3/1969 tarihli ve 1136 sayılı <span class="dik"> Avukatlık Kanunu</span>  ile 18/1/1972 tarihli ve 1512 sayılı <span class="dik"> Noterlik Kanunu’nda verilen görevleri yapmak</span> <span class="mavi"> ve ceza uygulamalarını gerektiren işlerde evrakı ilgili mercie tevdi etmek,</span> <br>
+     b) 13/1/2011 tarihli ve 6102 sayılı <span class="dik"> Türk Ticaret Kanunu ve bu Kanuna dayanılarak çıkarılan mevzuatın</span> <span class="mavi"> Bakanlıkça yapılması gereken işlemlerini yürütmek</span>,<br>
+      c) <span class="dik"> Kanun yararına temyiz yoluna başvurulması</span> <span class="mavi"> işlemlerini yürütmek,</span> <br>
+    ç)  7/6/2012  tarihli  ve  6325  sayılı  <span class="dik"> Hukuk  Uyuşmazlıklarında</span> <span class="mavi">  Arabuluculuk  Kanununda  verilen görevleri yapmak,</span>  <br>
+    d) 3/11/2016 tarihli ve 6754 sayılı <span class="dik"> Bilirkişilik Kanununda</span> <span class="mavi"> verilen görevleri yapmak</span>,<br>
+    e) Bakan tarafından verilen diğer görevleri </div></div></div>
+    <div>  <span class="kim">
+    Mevzuat Genel Müdürlüğü</span><div>
+    MADDE 42-(1) <span class="kim"> Mevzuat Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+    a) <span class="ark"> Adlî konulara ilişkin kanunlarla ilgili</span> <span class="mavi"> inceleme ve araştırma yapmak, önerilerde bulunmak,</span>   <br>
+    b) <span class="ark"> Bakanlığa gönderilen kanun teklifleri hakkında</span> <span class="mavi"> görüş bildirmek,</span> <br>
+    c)  <span class="ark"> Bakanlıklarca  gönderilen  mevzuat taslaklarının,</span> <span class="mavi">  Türk  hukuk  sistemine  ve  mevzuat  tekniğine uygunluğunu incelemek ve bu konularda görüş bildirmek</span>, <br>
+    ç) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+
+    <div>  <span class="kim">
+    Ceza ve Tevkifevleri Genel Müdürlüğü</span><div>
+
+    MADDE 43 –(1) <span class="kim"> Ceza ve Tevkifevleri Genel Müdürlüğününgörev ve yetkileri şunlardır:</span>  <div>
+  a) <span class="mavi"> Ceza infaz kurumları ve tutukevlerini yönetmek, denetlemek ve hesap işlerini izlemek,</span>  Ceza İnfaz Kurumları ile Tutukevleri İşyurtları Kurumuna ilişkin mevzuatla verilen görevleri yerine getirmek, <br>
+  b) <span class="mavi"> Hükümlü ve tutukluların giydirilmesi, beslenmesi, yatırılması, eğitilmesi, çalıştırılması ve muhtaç durumda bulunanların tedavi giderlerinin karşılanması</span>  işleri ile 30/6/1934 tarihli ve 2548 sayılı Ceza Evleriyle Mahkeme Binaları İnşası Karşılığı Olarak Alınacak Harçlar ve Mahkûmlara Ödettirilecek Yiyecek Bedelleri Hakkında Kanunda gösterilen her türlü işlemleri yapmak, <br>
+  c) Ceza infaz kurumları ve tutukevleri ile küçüklerin cezalarının yerine getirileceği infaz kurumları ve eğitimevlerinin, haklarında tedbir uygulanmış olan küçüklerin yerleştirileceği kurumların, müşahede merkezlerinin,  küçüklerin  kısa  sürelerde  kabul  edilecekleri  kurumların  ve  <span class="mavi"> küçüklere  mahsus tutukevlerinin çağdaş ölçülere uygun tesis, yapım, onarım, satın alma ve kira işleri ile ilgili program ve projeleri hazırlamak, geliştirmek, uygulamak, bu kurumları sevk ve idare etmek ve buralara alınmış küçüklerin korunma, bakım ve eğitim işlerinin kontrolünü yapmak,</span>  <br>
+  ç) <span class="mavi"> Ceza infaz kurumları ve tutukevleri, eğitim merkezleri, çocuk infaz kurumları ve eğitimevleri ile müşahede merkezlerinde görevli personelden; atanmaları Bakanlığa ait olanların atanma, yükselme, yer değiştirme, kadro, izin, istifa, emeklilik, dava ve disiplin gibi her türlü özlük işlemlerini, atanmaları adli yargı adalet komisyonlarına ait olanların kadro ve özlük işlemleri ile bunlara ilişkin adli yargı adalet komisyonu kararlarının incelenmesi ve onaylanması işlemlerini yürütmek,</span>  bu kurumlardaki bütün personelin hizmet öncesi, adaylık, hizmet içi ve görevde yükselme eğitimlerini yapmak veya yaptırmak, gerektiğinde özlük işlemlerine ilişkin olarak Personel Genel Müdürlüğü, eğitim faaliyetleri yönünden Eğitim Dairesi Başkanlığı ile koordinasyonu sağlamak,<br>
+  d) <span class="mavi"> Çocuk  suçluluğu  konusunda  Adli  Sicil  ve  İstatistik  Genel  Müdürlüğünden  alınacak  istatistiki bilgileri değerlendirmek,</span>  çocuk suçluluğunun önlenmesi amacıyla çalışmalar yapmak ve bu hususta yerli, yabancı ve milletlerarası kurum ve kuruluşlarla iş birliği yapmak,<br>
+
+  e) <span class="mavi"> Görev alanına giren konularda velayet ve vesayetin kaldırılması ve küçüklere vasi tayinine dair işlemleri takip etmek,</span> <br>
+  f) <span class="mavi"> Çocuk  mahkemeleri  ile  olan  ilişkilerinin  düzenlenmesi  konularında  eğitimi  güç  küçüklerin yerleştirildiği  kurumlarla  küçüklerin  zararlı  yayınlardan  korunması,  filmlerin  küçükler  yönünden kontrolü, çeşitli iş yerlerinde çalışan küçükler bakımından çalışma şartları,</span>  küçüklerin yerleştirileceği tedavi kurumları ve sosyal servislerin tespiti hususunda ilgili bakanlık ve kamu kuruluşlarıyla iş birliği yapmak,<br>
+  g)  <span class="mavi"> Cezaları  infaz  edilen  hükümlülerin  işe  yerleştirilmeleri  konusunda,  infazsonrası  yardım müesseseleri ve diğer kurumlarla iş birliği yapmak,</span> <br>
+  ğ) <span class="mavi"> Hükümlülerin müşahedeye tabi tutulma işlerini yürütmek,</span> <br>
+  h) <span class="mavi"> Hükümlü ve tutukluların sevk ve nakil işlerini yürütmek,</span> <br>
+  ı) 3/7/2005 tarihli ve 5402 sayılı <span class="mavi"> Denetimli Serbestlik Hizmetleri Kanunu ile verilen görevleri yapmak</span>, <br>
+  i) <span class="mavi"> İlgili mevzuat hükümlerine göre infaz işlerini düzenlemek,</span> <br>
+  j) <span class="mavi"> Kurumlarda hükümlülerin ve tutukluların eğitim ve öğrenim işlerini düzenlemek,</span> <br>
+  k) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div> <span class="kim">
+  Adli Sicil ve İstatistik Genel Müdürlüğü</span><div>
+  MADDE 44 –(1) <span class="kim"> Adli Sicil ve İstatistik Genel Müdürlüğünün görev ve yetkileri şunlardır:</span>  <div>
+  a) <span class="ark"> Adli sicili tutmak,</span> <br>
+  b) <span class="ark"> Bakanlığın görev ve yetkisine giren konularla ilgili istatistiki bilgilerin belirlenmesi,</span>  <span class="mavi"> toplanması, sınıflandırılması ve değerlendirilmesi ile ilgili hizmetleri yürütmek</span>, <br>
+  c) <span class="ark"> Adli sicil ve adli istatistik hizmetlerinin yerine getirilmesi için</span> <span class="mavi"> bilgi işlem sistemini kurmak ve geliştirmek,</span>  <br>
+  ç) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div> <span class="kim">
+  Dış İlişkiler ve Avrupa Birliği Genel Müdürlüğü</span><div>
+  MADDE 45 –(1) <span class="kim"> Dış İlişkiler ve Avrupa Birliği Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+  a) <span class="ark"> Bakanlığın görev alanına giren konularda uluslararası antlaşmalar ve belgelerle ilgili</span> <span class="mavi"> olarak görüş bildirmek,</span> <span class="ark"> yapılan çalışmalara ve görüşmelere katılmak, bu antlaşma ve belgeleri</span> <span class="mavi"> Türkçeye çevirtmek, derlemek, arşivlemek, bunları ilgili kurum ve birimlere iletmek,</span> <br>
+  b) <span class="ark"> Yurtdışında işlenen ve Türk yargı yetkisine giren suçlar konusunda</span><span class="mavi"> adli makamlara bilgi ve belge sağlanmasına yardımcı olmak,</span> <br>
+  c) <span class="ark"> Hukuki  ve  cezai  konularda  uluslararası  adli  yardımlaşma;</span> <span class="mavi">  tebligat,  istinabe,  suçluların  iadesi, hükümlülerin transferi, kovuşturmaların aktarılması işlemlerini yapmak,</span> <br>
+
+  ç) <span class="ark"> Nafakalara dair uluslararası antlaşmalarla ilgili iş</span> <span class="mavi"> ve işlemleri yürütmek,</span> <br>
+  d) <span class="ark"> Bakanlığın uluslararası kuruluşlarla ilgili</span> <span class="mavi"> faaliyetlerini yürütmek,</span>  <br>
+  e)  <span class="ark"> Uluslararası  hukuk  konusundaki  gelişmeleri  izlemek,</span> <span class="mavi">  bu  konulardaki  çalışmalara  katılmak, gelişmelerin iç hukuka yansıtılması için ilgili kurum ve kuruluşları bilgilendirmek,</span> <br>
+  f) <span class="ark"> Görev alanına giren konularda</span> <span class="mavi"> personelin yurt içi ve yurtdışı eğitimi ile ilgili işlemleri yürütmek,</span> <br>
+  g) <span class="ark"> İştirak olunan yurtdışı faaliyetlere ilişkin olarak düzenlenecek raporları</span> <span class="mavi"> Bakanlığın ilgili birimlerine ve diğer ilgili kuruluşlara iletmek,</span>  <br>
+  ğ) <span class="ark"> Bakanlığın görev alanına giren Avrupa Birliği müktesebatına uyum ile ilgili konularda</span> <span class="mavi"> Bakanlık birimleri arasında koordinasyonu sağlamak, inceleme ve araştırmalar yapmak,</span> <span class="ark"> Dışişleri Bakanlığı ve diğer  kamu  kurum  ve  kuruluşlarının  koordinasyon  çalışmalarına  yardımcı  olmak,</span> <span class="mavi">   bu   alanda Cumhurbaşkanının  genel  politikasını  uygulamaya  yönelik  tedbirler  almak,  uyum  ve  uygulama çalışmaları ile ilgili işleri yürütmek,</span>  <br>
+   h) <span class="ark"> Bakanlığın görev alanına giren konularda</span> <span class="mavi"> Avrupa Birliği ile ilişkilerin ulusal program, kalkınma planları veyıllık programlarda öngörülen hedefler doğrultusunda yürütülmesini sağlamak,</span> <br>
+    ı) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+    <div>  <span class="kim">
+   Personel Genel Müdürlüğü</span> <div>
+   MADDE 46 –(1) <span class="kim"> Personel Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+    a) <span class="kim">Hâkim ve savcıların,</span> <span class="ark"> Bakanlık merkez, taşra ve yurtdışı teşkilatı ile bağlı ve ilgili kuruluşlarına, diğer kamu kurum ve kuruluşları ile uluslararası kuruluş ve mahkemelere</span> <span class="mavi"> atanma veya görevlendirilme işlemlerini yapmak.</span>  <br>
+    b) <span class="kim"> Bakanlık merkez ve taşra teşkilatında görev yapan hâkim ve savcıların</span> <span class="ark"> eğitim, çalışma ziyareti veya benzeri amaçlarla</span> <span class="mavi"> yurtiçinde görevlendirme işlemleri ile izin işlemlerini yerine getirmek.</span>  <br>
+    c) <span class="kim"> Hâkim ve savcıların,</span> <span class="ark"> eğitim, çalışma ziyareti veya benzeri amaçlarla</span> <span class="mavi"> yurtdışında görevlendirilmesi işlemlerini yapmak.</span> <br>
+    ç) <span class="kim"> Adlî  ve  idarî  yargı  hâkim  ve  savcı  adaylığına  ilişkin;</span> <span class="ark">  sınav,  mülâkat,  adaylığa  atama,  geçici görevlendirme, nakil, izin, göreve son verme gibi</span> <span class="mavi"> özlük işlemleri ile staj plan ve programlarına ilişkin işlemleri yapmak.</span>  <br>
+    d) <span class="kim"> Doğrudan veya adalet komisyonlarının teklifi üzerine</span> <span class="mavi"> Bakanlıkça ataması yapılan adli ve idari yargı personeli ile diğer personelin; atanması, başka kurumlara görevlendirilmesi, komisyonlar arası nakli veya görevlendirilmesi, görevde yükselme veya unvan değişikliği ile komisyonlarca yürütülenler dışındaki özlük işlemlerini yerine getirmek</span>  ve <span class="mavi"> Bakanlık onayına tabi komisyon kararlarına ilişkin görevleri yapmak.</span> <br>
+
+    e) <span class="ark"> Mahkemelerin  kurulmasına, <br> kaldırılmasına ve <br>yargı alanlarının değiştirilmesine</span> <br><span class="mavi"> ilişkin işlemleri yürütmek.</span> <br>
+    f) <span class="kim"> Bakanlığın personel politikası ve</span> <span class="ark"> planlaması ile personel sisteminin geliştirilmesi ve performans ölçütlerinin oluşturulması</span> <span class="mavi"> konusunda çalışmalar yapmak ve tekliflerdebulunmak,</span>
+    <br>
+    g) <span class="kim"> Bakanlık personelinin</span> <span class="ark"> atama, nakil, terfi, emeklilik ve benzeri</span> <span class="mavi"> özlük işlemlerini yürütmek,</span>  <br>
+     ı) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+
+     <div>  <span class="kim">
+    Hukuk Hizmetleri Genel Müdürlüğü</span><div>
+    MADDE 46/A-(1) <span class="kim"> Hukuk Hizmetleri Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+    a) 26/9/2011 tarihli ve <span class="mavi"> 659 sayılı Kanun Hükmünde Kararnamede hukuk birimlerine verilen görevleri yapmak,</span>  <br>
+    b) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+    <div>  <span class="kim">
+    Bilgi İşlem Genel Müdürlüğü</span> <div>
+    MADDE 46/B-(1) <span class="kim"> Bilgi İşlem Genel Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+    a) <span class="kim"> 44 üncü maddenin birinci fıkrasının  (c) bendinde belirtilen konular hariç olmak üzere,</span> <span class="mavi"> Bakanlık merkez ve taşra teşkilatı ile bağlı kuruluşların ilgili birimleriyle işbirliği yaparak bilgi işlem sistemini kurmak,  işletmek,  bakım  ve  onarımlarını  yapmak  veya  yaptırmak,  bunlara  ait  hizmetleri  ilgili birimlerle  birlikte  yürütmek;  bilgi  işlem  projeleri  ile  ilgili  olarak  Bakanlık  birimleri  arasında koordinasyonu ve işbirliğini sağlamak,</span>  <br>
+    b) <span class="kim"> İlgili birimlerle iş birliği yaparak bu birimlerin derlediği hukuki mevzuatı, yüksek mahkemelerin içtihatlarını,  bilimsel  yayınları, <strong> Ülkemizin  üyesi  olduğu  uluslararası  kuruluşlarca  yapılan düzenlemeleri</strong>,</span> <span class="mavi"> yargı yetkisi tanınan uluslararası mahkemelerin kararlarını ve gerekli görülen diğer konuları  değerlendirerek  bilgi  işlem  ortamına  aktarmak  ve  kullanıcıların  hizmetine  sunulmasını sağlamak,</span> <br>
+    c) <span class="kim"> Bilişim teknolojisindeki gelişmelere uygun olarak daha etkin ve verimli bilgi, belge ve iş akışı düzenini kurmak,</span> <span class="mavi"> buna yönelik yazılımları üretmek veya sağlamak,</span>  <br>
+    ç) <span class="kim"> Bakanlık görev alanına giren konularda <strong> ulusal ve uluslararası</strong> kapsamda,</span> <span class="mavi"> sistemlerarası çevrim içi ve çevrim dışı veri akışını ve koordinasyonu sağlamak,</span>  <br>
+    d) <span class="kim"> Eğitim Dairesi Başkanlığı ile iş birliği yaparak</span> <span class="mavi"> Bakanlığın merkez ve taşra teşkilatı ile bağlı kuruluşlarında bilgisayar kullanan personelin eğitimini sağlamak,</span>  <br>
+    e) <span class="kim"> Bilgi işlem müdürlükleri ile birlikte mahkemeler ve diğer ilgili kuruluşlarla</span> <span class="mavi"> iş birliği yaparak bilgi işlem sisteminin etkin ve verimli bir şekilde çalışmasını sağlamak,</span> <br>
+    f) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+    <div> <span class="kim">
+    Teftiş Kurulu Başkanlığı</span><div>
+    MADDE  47 –(1) <span class="kim"> Teftiş Kurulu Başkanlığı, <strong> Bakanın emri veya onayı üzerine </strong> aşağıdaki görevleri yapar.</span><div>
+    a) <span class="mavi"> Mevzuatta adalet müfettişlerince denetimi öngörülen yerleri denetlemek,</span>
+    b) <span class="mavi"> Araştırma, inceleme ve <strong> soruşturma</strong> yapmak,</span>
+    c) Mevzuatta gösterilen veya Bakan tarafından verilen diğer görevleri yerine getirmek.(2) <span class="mavi"> Teftiş Kurulu ve müfettişlerin görev, yetki ve sorumlulukları ile çalışma usulleri yönetmelikle düzenlenir.</span> </div></div>
+    </div><div><button  onclick="soruyuGoster(325)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button></div>
+    <div>  <span class="kim">
+    Strateji Geliştirme Başkanlığı</span><div>
+    MADDE 48 –(1) <span class="kim"> Strateji Geliştirme Başkanlığının görev ve yetkileri şunlardır:</span><div>
+    a) 10/12/2003 tarihli ve 5018 sayılı Kamu Malî Yönetimi ve Kontrol <span class="ark"> Kanunu,</span> 22/12/2005 tarihli ve 5436  sayılı  Kamu  Malî  Yönetimi  ve  Kontrol  <span class="ark"> Kanunu</span>  ile  Bazı Kanun  ve  Kanun  Hükmünde Kararnamelerde  Değişiklik  Yapılması  Hakkında  <span class="ark"> Kanununv   15  inci  maddesi,</span> <span class="ark"> Cumhurbaşkanlığı kararnameleri</span> <span class="mavi"> ve diğer mevzuatla strateji geliştirme ve mali hizmetler birimlerine verilen görevleri yapmak,</span> <br>
+    b) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+    <div>  <span class="kim">
+    İnsan Hakları Dairesi Başkanlığı</span><div>
+    MADDE 49 -(1) <span class="kim"> İnsan Hakları Dairesi Başkanlığının görev ve yetkileri şunlardır:</span> <div>
+    a) <span class="kim"> Dışişleri Bakanlığı ile iş birliği yapmak suretiyle </span> <span class="ark"> Türkiye Cumhuriyeti aleyhine </span> <span class="mavi"> Avrupa İnsan Hakları Mahkemesine yapılan başvuruları takip etmek, bu başvurulara ilişkin ilgili tüm kurum ve kuruluşlardan  her  türlü  bilgi,  belge  ve  görüş  istemek,  savunmaları  hazırlamak  ve  gerektiğinde oturumlara temsilci göndermek,</span> <br>
+    b) <span class="mavi"> Gerektiğinde dostane çözüm ve tek taraflı deklarasyon yöntemlerini kullanmak,</span>  <br>
+    c) <span class="kim"> Dışişleri Bakanlığı tarafından icrası takip edilen kararlar saklı kalmak kaydıyla,</span> <span class="ark"> Avrupa İnsan Hakları Mahkemesi tarafından </span> <span class="mavi"> Türkiye Cumhuriyeti hakkında verilen <strong> ihlal kararlarının icrası ile ilgili iş  ve  işlemleri yapmak</strong>,  kararları  ilgili  mercilere  iletmek,  ihlalin  ortadan  kaldırılmasına  yönelik süreçleri takip etmek ve gerekli önlemleri almak,</span> <br>
+    ç) <span class="kim"> Dışişleri Bakanlığı tarafından icrası takip edilen kararlar saklı kalmak kaydıyla,</span> <span class="ark"> Avrupa İnsan Hakları Mahkemesinin Türkiye Cumhuriyeti aleyhine hükmettiği tazminatlar ile</span> <span class="mavi"> dostane çözüm ve tek taraflı deklarasyon sonucu ödenmesine karar verilen ya da Avrupa İnsan Hakları Sözleşmesinin 41 inci maddesi uyarınca taraflarca uzlaşılan tazminat ve masrafların ödemesini yapmak</span>, <br>
+    d) 9/1/2013 tarihli ve <span class="kim"> 6384 sayılı Avrupa İnsan Hakları Mahkemesine Yapılmış Bazı Başvuruların</span> <span class="mavi"> Tazminat Ödenmek Suretiyle Çözümüne Dair Kanun uyarınca kurulan komisyon tarafından karar verilen tazminatların ödemesini yapmak,</span>  <br>
+    e) <span class="kim"> Rücu hususunun değerlendirilmesi amacıyla</span> <span class="mavi"> ilgili kurum ve kuruluşlara bildirimde bulunmak,</span> <br>
+
+  f) <span class="kim"> Anayasa Mahkemesi tarafından Bakanlığa gönderilen bireysel başvurular hakkında</span> <span class="mavi"> gerekli görülen hallerde Bakanlık görüşünü bildirmek,</span>  <br>
+  g) <span class="kim"> Görev alanına giren hususlarda</span> <span class="mavi"> insan hakları ihlallerinin ortadan kaldırılmasına yönelik çalışmalar yapmak,</span> <br>
+  ğ) <span class="kim"> İnsan hakları konusunda ilgili kurum ve kuruluşlar ile işbirliği halinde projeler hazırlamak,</span> <span class="mavi"> ulusal ve uluslararası sempozyum, seminer ve eğitim faaliyetleri düzenlemek,</span>  <br>
+  h) <span class="kim"> Avrupa İnsan Hakları Mahkemesinin Türkiye Cumhuriyeti hakkında verdiği kararlar ile diğer ülkeler aleyhine verdiği kararlardan</span> <span class="mavi"> gerekli görülenlerin Türkçeye çevrilmesini sağlamak, bu kararları <strong> derlemek ve arşivlemek</strong>,</span> <br>
+  ı) <span class="kim"> Avrupa İnsan Hakları Sözleşmesi ve uygulaması ile ilgili bilimsel çalışmaları</span> <span class="mavi"> takip etmek, kitap, makale, rapor, rehber ve içtihatların uygulayıcılara ulaştırılmasına yönelik faaliyetlerde bulunmak ve istatistik çalışmaları yapmak,</span> <br>
+  i) <span class="ark"> Uluslararası kurum ve kuruluşların</span> <span class="mavi"> insan hakları alanındaki faaliyetlerini, <strong> Dışişleri Bakanlığıyla iş birliği halinde</strong> takip etmek ve bu alandaki gelişmelerin iç hukuka yansıtılması için ilgili kurum ve kuruluşları bilgilendirmek,</span> <br>
+  j) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div>  <span class="kim">
+  Eğitim Dairesi Başkanlığı</span><div>
+  MADDE 50 –(1) <span class="kim">Eğitim DairesiBaşkanlığının görev ve yetkileri şunlardır:</span> <div>
+  a) <span> Ceza infaz kurumları ve tutukevleri personeli eğitim merkezlerinde eğitim gören personel <span class="kim"> hariç olmak üzere,</span>  Bakanlık merkez ve taşra teşkilatı personelinin eğitim planını hazırlamak, yayınlamak ve uygulanmasını takip etmek,</span> <span class="mavi"> bu personelin adaylık, hizmet öncesi ve hizmet içi eğitim programlarını düzenlemek ve uygulamak,</span> <br>
+  b) <span class="mavi"> Personel eğitim merkezleriyle ilgili işleri yürütmek,</span> <br>
+
+  c) <span> Bakanlığın görev alanına giren konularda</span> <span class="mavi"> her türlü yazılı, görsel ve işitsel dokümanın basım ve yayımını  yapmak  veya  yaptırmak,  bu  alandaki  çalışmaları  teşvik  etmek  ve  desteklemek,  arşiv, dokümantasyon ve kütüphane hizmetlerini yürütmek,</span>  <br>
+  ç) <span class="mavi"> Yazılı olmayan hukuk kuralları ile örf ve adetleri ve eski hukuk kaynaklarını araştırmak, toplamak ve yayımlamak,</span> <br>
+  d) <span class="mavi"> Yayın Danışma Kurulu oluşturmak,</span> <br>
+  e) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+
+  <div>  <span class="kim">
+  İcra İşleri Dairesi Başkanlığı</span><div>
+  MADDE 51-(1) <span class="kim"> İcra İşleri Dairesi Başkanlığının görev ve yetkileri şunlardır:</span>  <div>
+  a) <span class="ark"> İcra ve iflas sisteminin etkin ve verimli</span> bir şekilde yürütülmesini sağlamak, <br>
+  b) <span class="ark">  İcra  ve  iflas  dairelerinin  kurulması,  kaldırılması</span>  ve  aynı  veya  farklı  yerlerdeki  dairelerin birleştirilmesi ile yetki alanının belirlenmesi işlemlerini yürütmek, <br>
+  c) <span class="ark"> İcra ve iflas dairelerinin yönetim, denetim</span> ve gözetim işlemlerinin etkin bir şekilde yürütülmesi için gerekli önlemleri almak,<br>
+  ç) <span class="ark"> İcra ve iflas sistemiyle ilgili</span> tarifeleri çıkarmak,<br>
+  d) Doğrudan Bakanlıkça ataması yapılan <span class="ark"> icra ve iflas dairesi personelinin; atama, yer değiştirme, nakil, terfi,  görevlendirme,  görevden  uzaklaştırma,  görevde  yükselme</span>,  unvan  değişikliği  ve  emeklilik işlemleri ile diğer özlük işlemlerini yerine getirmek, yapılacak sınavların usul ve esaslarını belirlemek, buna ilişkin işlemleri yürütmek ve bu personel hakkında yapılacak ihbar ve şikâyetleri inceleyerek gerekli işlemleri yapmak veya yaptırmak,<br>
+  e) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div>  <span class="kim">
+  Destek Hizmetleri Dairesi Başkanlığı</span><div>
+  MADDE 52 –(1) <span class="kim"> Destek Hizmetleri Dairesi Başkanlığının görev ve yetkileri şunlardır:</span> <div>
+  a) Bakanlık için gerekli <span class="ark"> araç, gereç ve malzemenin temini</span> ile ilgili hizmetleri yürütmek,<br>
+  b) <span class="ark"> Temizlik, aydınlatma, ısıtma</span> ve taşıma hizmetlerini yapmak,<br>
+  c) <span class="ark"> Sosyal tesislerin kurulması ve yönetimi</span> ile ilgili hizmetleri yapmak,<br>
+  ç) Bakanlık için ihtiyaç duyulan <span class="ark"> bina ve arazinin, kiralama ve satın alma</span> işlerini yürütmek,<br>
+  d) Bakanlığa <span class="ark">ait bina ve tesislerin,</span>   ilgili birimlerle iş birliği <span class="ark"> yaparak tesis, yapım, onarım ve kira işlerine ilişkin</span> program ve projelerini hazırlamak, takip etmek, bunların bakım ve küçük onarımlarını yapmak veya yaptırmak,<br>
+  e) (d) bendinde yazılı işlerin yıllık icra programına alınabilmesi için, belirlenecek arsalara ait her türlü etüt, inceleme ve tespitleri yaparak veya yaptırarak bunlardan elverişli olanları seçmek, <br>
+  f) <span class="mavi"> Genel evrak ve <strong> arşiv faaliyetlerini</strong> düzenlemek ve yürütmek,</span><br>
+  g) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div>  <span class="kim">
+  Adli Destek ve Mağdur Hizmetleri Dairesi Başkanlığı</span><div>
+  MADDE 53-(1) <span class="kim"> Adli Destek ve Mağdur Hizmetleri Dairesi Başkanlığının görev ve yetkileri şunlardır:</span>
+  <div>
+  a)  <span> Kırılgan  gruba  yönelik</span>   hak  ve  hizmetlerin  geliştirilmesi  ve  uygulanmasına  ilişkin  faaliyetleri yürütmek,<br>
+  b)  <span> Mağdurların  kendilerine  tanınan  haklar</span>  ve  yardımlar  konusunda  bilgilendirilmesine  yönelik çalışmalar yürütmek,<br>
+  c) Adli desteğe ihtiyaç duyanlara uygun müdahale programları geliştirmek, tekrarlanan <span> mağduriyetleri önleyici  tedbirler  almak  ve  psiko-sosyal  destek  hizmetlerinin  geliştirilmesine  ve  uygulanmasına yönelik faaliyetleri</span> yürütmek, <br>
+  ç) <span> Mağdurların adalete erişimini</span> güçlendirmeye yönelik çalışmalar yapmak ve uygulamak, <br>
+  d) <span class="mavi"> Adli süreçte <strong> tanıklara yönelik</strong> hizmetlerin geliştirilmesine ve uygulanmasına ilişkin faaliyetleri yürütmek,</span> <br>
+  e) <span class="mavi"> Adliyelerde görev alan pedagog, psikolog ve sosyal çalışmacı gibi uzmanların çalışma usul ve esaslarını belirlemek,</span><br>
+  f) Adli yardımla ilgili mevzuatın Bakanlığa verdiği görevleri ilgili kurum ve kuruluşlarla iş birliği halinde yürütmek ve <span class="mavi"> adli yardım hizmetlerinin etkin ve verimli bir şekilde işleyişine yönelik tedbirleri almak,</span>  <br>
+  g) Görev alanına giren konularda kamu kurum ve kuruluşları veya <span class="mavi"> sivil toplum kuruluşları ile iş birliği yapmak,</span><br>
+  ğ)  <span> Mağdurların  her  alanda  desteklenmesini  sağlamak</span>  amacıyla  toplumsal  farkındalığı  artırıcı faaliyetlerde bulunmak,<br>
+  h) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div>  <span class="kim">
+  Basın ve Halkla İlişkiler Müşavirliği</span> <div>
+  MADDE  55 –(1)  <span class="mavi"> Bakanlıkta;  Basın  ve  halkla  ilgili  faaliyetleri  planlamak  ve  bu  faaliyetlerin Bakanlıkça belirlenecek usul ve esaslara göre yürütülmesini sağlamak üzere Basın ve Halkla İlişkiler Müşavirliği teşkil edilebilir.</span></div></div>
+  <div>  <span class="kim">
+  Özel Kalem Müdürlüğü</span> <div>
+  MADDE 56 –(1) <span class="kim"> Özel Kalem Müdürlüğünün görev ve yetkileri şunlardır:</span> <div>
+  a) <span class="mavi"> Bakanın</span> resmi ve özel yazışmalarını yürütmek, <br>
+  b) <span class="mavi"> Bakanın her</span> türlü protokol ve tören işlerini düzenlemek ve yürütmek, <br>
+  c) <span class="mavi"> Bakanın</span> ziyaret, davet, karşılama ve uğurlama, ağırlama, milli ve dini bayramlarla ilgili hizmetlerini düzenlemek, yürütmek ve diğer kuruluşlarla koordine etmek, <br>
+  ç) Bakan tarafından verilen diğer görevleri yapmak.</div></div></div>
+  <div>  <span class="kim">
+  Taşra Teşkilatı</span> <div>
+  MADDE 57 –(1) <span class="mavi"> Bakanlık taşra teşkilatı kurmaya yetkilidir</span>. <br>
+  (2) <span class="ark">   Bakanlıkça  uygun  görülen  il  Cumhuriyet  başsavcılıkları  nezdinde</span> <span class="mavi">  bilgi  işlem  müdürlüğü kurulabilir.</span> <span class="kim">  Müdürlük,</span> <span class="mavi">  bilgi  işlem  müdürü  ve  yeteri  kadar  personelden  oluşur.</span> <span class="kim">  Bilgi  işlem müdürlüklerindeki</span> <span class="ark"> bilgi işlem müdürü, <br> şef, <br> bilgisayar işletmeni ve <br> teknisyenler <br></span> <span class="mavi"> Bakanlıkça;</span> <span class="ark">diğer personel</span> <span class="mavi"> bağlı olduğu adalet komisyonunca atanır.</span> </div></div>
+  <div>  <span class="kim">
+  Yurtdışı teşkilatı</span>  <div>
+  MADDE 58 –(1) <span class="mavi"> Bakanlık yurtdışı teşkilatı kurmaya yetkilidir</span>.
+   <br>
+  (2) <span class="mavi"> Yurtdışı teşkilatında yer alan <span class="dik"> Adalet Müşavirliği kadrolarına,</span> hakimlik ve savcılık mesleğinde <span class="dik"> fiilen en az beş yıl görev yapmış</span> ve üstün başarısı ile yurtdışı hizmetlerinde yararlı olacağı anlaşılmış bulunanlar arasından atama yapılır.</span> <br>
+
+  (3) <span class="kim"> Adalet müşavirleri hakkındaki siciller,</span> 24/2/1983 tarihli ve 2802 sayılı Hakimler ve Savcılar Kanunu hükümleri uyarınca ilgili <span class="mavi"> Bakan Yardımcısı tarafından verilir.</span> <br>
+
+  (4) <span class="mavi"> Yurtdışı sürekli görev süresi <span class="dik"> üç yıldır</span>.</span> Bu süre hizmetin gerektirdiği hallerde <span class="mavi"> Bakanın onayıyla <span class="dik"> bir yıla</span> kadar uzatılabilir.</span> <span class="mavi"> Görev süresi sona erenler tekrar atanabilir.</span>  <br>
+
+  (5) Bakanlık yurtdışı kadrolarına atanan hakim ve savcılara 14/7/1965 tarihli ve 657 sayılı Devlet Memurları Kanunu kapsamında sürekli görevle yurtdışı kadrolarında bulunanlara yapılan ödemeler, aynı usul ve esaslar çerçevesinde ödenir.</div></div>
+
+
+   <div>
+  Kadrolar
+   <div>
+  MADDE 59 – (Değişik: RG-24/7/2018-30488 - CK-14/26 md.) <br>
+
+  (1)  Kadroların tespit, ihdas, kullanımı ve iptali ile kadrolara ilişkin diğer hususlar, Genel Kadro ve Usulü Hakkında Cumhurbaşkanlığı Kararnamesine göre düzenlenir.</div></div>
+
+
+   <div>
+  Hakim ve Savcı Eğitim Merkezi
+
+  MADDE 60 – (Mülga:RG-2/5/2019-30762-C.K.-34/16 md.)</div>
+
+
+  <div> <span class="kim">
+  Personel eğitim merkezleri</span>
+  <div>
+  MADDE 61 – (1) <span class="kim"> Ceza infaz kurumları ve tutukevleri personeli eğitim merkezlerinde eğitim gören personel hariç olmak üzere Adalet Bakanlığı merkez ve taşra teşkilatı personelinin</span> <span class="ark"> adaylık, hizmet öncesi ve hizmet içi eğitim programları ile eğitim ve öğretim hizmetlerinden faydalanılması uygun görülen kişilere yönelik eğitim programları,</span> <span class="mavi"> Eğitim Dairesi Başkanlığınca düzenlenir.</span> <span class="mavi">  Eğitim programlarının uygulanması amacıyla Bakanlıkça uygun görülecek yerlerde Eğitim Dairesi Başkanlığına bağlı personel eğitim merkezleri kurulur.</span>  <br>
+
+  (2) Bakanlık bu programların uygulanması için eğitim ve öğretimle ilgili her çeşit tedbiri alır ve ilgili kurum, kuruluş ve kurullarla işbirliği yapar. <br>
+
+  (3) <span class="kim"> Eğitime alınacak personelin</span> <span class="ark"> adaylık, <br> hizmet öncesi ve <br> hizmet içi eğitimleri ile<br> eğitim merkezlerinin sekretarya,<br> insan kaynakları, destek,<br> program geliştirme,<br> ölçme ve değerlendirme,<br> sağlık ve güvenlik,<br> bilgi işlem, istatistik,<br> arşiv ve dokümantasyon,<br> strateji geliştirme,<br> dış ilişkiler,<br> proje ve enformasyon gibi<br> hizmetleri</span>  <span class="mavi"> <span class="dik"> bir müdür ve iki müdür yardımcısının</span>  sorumluluğunda görev yapan yeteri kadar şube müdürlüğü ve idari personel eliyle yürütülür.</span> <br>
+
+  (4) <span class="kim"> Eğitim merkezleri şube müdürlüklerine</span> <span class="ark"> Bakanlık merkez ve taşra teşkilatında görev yapan şube müdürleri, <br> yazı işleri müdürleri, <br> idari işler müdürleri, <br> bilgi işlem müdürleri ile  <br> bunlarla aynı düzeydeki görevliler arasından</span>  <span class="mavi">Bakanlıkça atama yapılır.</span>  <br>
+
+  (5) <span class="kim"> Eğitim Dairesi Başkanının talebi üzerine yetkili kurul ve organlarınca uygun görülen yeteri kadar</span> <span class="ark"> Yargıtay ve Danıştay üyesi, <br> yükseköğretim kurumları öğretim elemanı, <br> adli ve idari yargı hakim ve savcıları, <br>  noterler, <br> meslekte <strong> fiilen on yılını</strong> tamamlamış avukatlar ile <br> psikolog, psikiyatr, pedagog, sosyal çalışmacılar ve  <br> ihtiyaç duyulan diğer alanlarda konusunda uzman kişiler </span>  <span class="mavi"> Bakanlık tarafından ders vermekle görevlendirilebilir.</span> <span class="kim"> Uygun görme kararı;</span> <span class="ark"> Yargıtay üye ve tetkik hakimleri hakkında</span> <span class="mavi"> Yargıtay Başkanlığı,</span> <span class="ark"> Danıştay üye ve tetkik hakimleri hakkında</span> <span class="mavi"> Danıştay Başkanlığı,</span> <span class="ark"> noterler hakkında</span> <span class="mavi"> Türkiye Noterler Birliği Yönetim Kurulu,</span> <span class="ark"> Bakanlıkta görevli hakim ve savcılar hakkında</span> <span class="mavi"> Adalet Bakanlığı,</span> <span class="ark"> adli ve idari yargı hakim ve savcıları hakkında</span> <span class="mavi"> Hakimler ve Savcılar Kurulu tarafından verilir.</span> <br>
+
+  (6) Eğitim merkezlerinde ders vermekle görevlendirilenlere, okuttukları ders sayısına göre <span class="mavi"> <span class="dik"> Adalet Bakanlığınca tespit edilen</span> esaslar ve Bütçe Kanunu hükümleri uyarınca, <span class="dik"> ders ve ek ders ücreti</span>  ödenir.</span>  <br>
+
+  (7) Adaylık, hizmet öncesi ve hizmet içi eğitime alınacak personel, <span class="mavi"> kapasite ve ihtiyaç durumuna göre Bakanlıkça belirlenir.</span>  <br>
+
+  (8) (Ek:RG-10/1/2019-30651-CK-27/20 md.) <span class="mavi"> Eğitim görenlerden konaklama ve yemek ücreti alınmaz.</span></div></div>
+
+
+  <div> <span class="kim">
+  Adalet uzman ve uzman yardımcısı</span>
+  <div>
+  MADDE 62 – (1) Bakanlıkta 657 sayılı Kanunun ek 41 inci maddesi uyarınca <span class="mavi"> Adalet Uzmanı ve Adalet Uzman Yardımcısı istihdam edilebilir.</span></div></div>
+
+
+
+   <div> <span class="kim">
+  Kontrolörler</span>
+  <div>
+  MADDE 63 – (1) <span class="kim"> Ceza infaz kurumları ve tutukevlerinin yönetimine dair tüm işlem ve uygulamalar ile işyurtlarının denetimiyle görevlendirilmek üzere</span>  Bakanlıkta 375 sayılı Kanun Hükmünde Kararnamenin ek 24 üncü maddesi uyarınca  <span class="mavi"> kontrolör istihdam edilebilir</span>.[15]</div></div>
+
+
+   <div> <span class="kim">
+  Sözleşmeli bilişim personeli</span>
+  <div>
+  MADDE 63/A- (Ek:RG-10/1/2019-30651-CK-27/21 md.)
+
+  (1) Bakanlıkta, 375 sayılı Kanun Hükmünde Kararnamenin ek 26 ncı maddesine göre <span class="mavi"> sözleşmeli bilişim personeli çalıştırılabilir.</span> (Mülga cümle:RG-26/12/2019-30990-CK-54/1 md.) (…)</div></div>
+
+
+  <div> <span class="kim">
+  Komisyon kurma yetkisi</span>
+  <div>
+  MADDE 64 – (1) <span class="mavi"> Bakanlık, <strong> mevzuat üzerinde çalışmalar yapmak üzere</strong> uzman personelden oluşan komisyonlar kurmaya yetkilidir.</span>  <br>
+
+  (2) <span class="kim"> Bu komisyonlarda görev alanlardan uhdesinde bir kamu görevi bulunanlara verilecek huzur ücreti</span>  375 sayılı Kanun Hükmünde Kararnamenin ek 29 uncu maddesi uyarınca <span class="mavi">fiilen görev yapılan günle orantılı olarak ayda en fazla 18.000 gösterge rakamının memur aylık katsayısı ile çarpımı sonucu bulunacak miktarı geçemez.</span> <span class="kim"> Uhdesinde bir kamu görevi bulunmayanlarda ise</span> <span class="mavi"> 36.000 gösterge rakamı uygulanır.</span> </div></div>
+  <div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+  </div>
+
+  <script>
+  var surukleniyor = false;
+  var offsetX, offsetY;
+
+  // Tüm soru göster butonlarını seç
+  const soruGosterButtons = document.querySelectorAll('.soru');
+
+  // Her bir buton için event listener ekle
+  soruGosterButtons.forEach(function (button, index) {
+  button.addEventListener('click', function() {
+  const soruContainer = document.querySelector('.soruContainer');
+
+  // Eğer gösteriliyorsa gizle, gizliyse göster
+    if (soruContainer.style.display === "none") {
+      soruContainer.style.display = "block";
+    } else {
+      soruContainer.style.display = "none";
+  }
+  });
+  });
+
+
+  soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+  document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+      soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+    document.addEventListener('mouseup', function() { surukleniyor = false;	});
+  </script>
+</body>
+</html>
+{% endblock%}

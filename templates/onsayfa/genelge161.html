@@ -1,0 +1,707 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; border-radius: 10px;}
+
+hr{margin-bottom: 25px;}
+
+.span{color: chocolate;}
+
+.arkpspanBLACK{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.yuvarla{border-radius: 10px; background-color: black;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+</style>
+<title>161 sayılı CİGM Genelgesi-Şüpheli-sanık karar takip formları ile gıyabî tutuklama kararları ve yakalama emirlerinin UYAP'ta düzenlenmesi, infaz ve güncelliklerinin takibi</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim()
+		 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+<div id="kal" class="kal">
+T.C. <br>
+ADALET BAKANLIĞI<br>
+Ceza İşleri Genel Müdürlüğü<br>
+Sayı : 19120602-010-06-02-0480-2014-325 20/02/2015<br>
+Konu : Şüpheli-sanık karar takip formları ile gıyabî tutuklama kararları ve yakalama emirlerinin
+UYAP'ta düzenlenmesi, infaz ve güncelliklerinin takibi. <br>
+GENELGE NO: 161 <br></div>
+
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+
+<div>
+Bilindiği üzere, 5271 sayılı Ceza Muhakemesi Kanununun 38/A maddesinin birinci fıkrasında;her türlü ceza muhakemesi işlemlerinde Ulusal Yargı Ağı Projesi Bilişim Sisteminin <span class="span"> (UYAP) kullanılacağı,</span>  bu işlemlere ilişkin her türlü veri, bilgi, belge ve kararın UYAP vasıtası ile  işleneceği, kaydedileceği ve saklanacağı, Aynı Kanunun 90 ıncı maddesinde yakalama ve yakalanan kişi hakkında yapılacak işlemler, 248 inci maddesinin beşinci fıkrasında ise <span class="span"> kaçak hakkında yokluğunda tutuklama kararı verilebileceği</span>,5275 sayılı Ceza ve Güvenlik Tedbirlerinin İnfazı Hakkında Kanunun 19 uncu maddesinde; hükümlü hakkındaki hapis cezası veya güvenlik tedbirlerinin infazı için şartları oluştuğu takdirde <span class="span"> Cumhuriyet savcısı tarafından yakalama emri çıkarılacağı,</span> </div>
+
+<div>
+5320 sayılı Ceza Muhakemesi Kanununun Yürürlük ve Uygulanma Şekli Hakkında Kanunun 16 ncı maddesinde; şüpheli ve sanıkla ilgili olarak verilen soruşturma ve kovuşturmayı <span class="span"> sona erdiren
+kesinleşmiş kararların soruşturmada görev alan kolluk birimlerine gönderilmesinin zorunlu olduğu</span>,
+Hususları düzenlenmiştir.</div>
+
+<div>
+Bu itibarla,
+<div>
+	<div>
+1- Genelge ekinde yer alan şüpheli-sanık karar takip formu, şüpheli veya sanık yakalama emri, hükümlü yakalama emri ve kaçaklar hakkındaki gıyabî tutuklama kararlarının <span class="span"> UYAP ortamında</span> usulüne uygun ve eksiksiz bir şekilde oluşturulması,</div>
+<div>
+2- 5320 sayılı Kanunun 16 ncı maddesinde şüpheli ve sanıkla ilgili olarak verilen soruşturma ve kovuşturmayı sona erdiren kesinleşmiş kararların, soruşturmada görev alan kolluk birimlerine      bildirilmesi zorunlu olduğundan, bu işlemin <span class="span"> “Şüpheli-Sanık Karar Takip Formu” nun ilgili kolluğa gönderilmesi </span> şeklinde yapılması, </div>
+<div>
+3- <span class="span"> 1/9/2008 öncesi gıyabî tutuklama kararları ve yakalama emirlerine </span> yönelik işlemler Kaçakçılık İstihbarat Harekat ve Bilgi Toplama Dairesi Başkanlığı Bilgi Sistemi <span class="span"> (KİHBİ) kullanılarak sürdürüleceğinden,</span>  bu döneme ilişkin olarak aranan bir şahsın, bizzat Cumhuriyet başsavcılığına veya mahkemeye başvurması ya da kolluk tarafından yakalanması durumunda evrakın; <span class="span"> mahkemenin kapatılması veya işletimde bulunmaması sebebiyle</span> UYAP’ta daha önce kayıt edilmemesi veya mahkemece bu kararın sistem üzerinden gönderilmesinin mümkün olmaması hâlinde sistem dışı kayıt
+yoluyla <span class="mavi"> UYAP’a giriş yapılmasını müteakiben derhal söz konusu kaydın KİHBİ'den silinmesi</span>  <span class="span"> ya da
+kaldırılması için ilgili adlî kolluk birimine bildirim</span>  yapılarak kişi özgürlüğü ve güvenliği hakkının ihlâline sebebiyet verilmemesi, bu <span class="mavi"> tür kayıtlar bakımından KİHBİ ile UYAP’ın paralel kullanılması</span>,</div>
+
+<div>
+4- Yakalama emri ve gıyabî tutuklama kararlarına ilişkin evrak ve dosyalarla ilgili işlemler yapılırken, bu belgelerin <span class="span"> geçerliliklerinin devam edip etmediğinin sürekli kontrol edilerek</span>, düzenlenen, geri alınan, kaldırılan veya infaz edilen emir ya da kararların ilgililerin mağduriyetlerine sebep olmamak için <span class="mavi"> derhal UYAP ekranlarına işlenmesi</span> , meydana gelebilecek <span class="dik"> sistem kesintilerinin makul olmayan bir süre devam etmesi hâlinde bu genelge kapsamındaki işlemlerin fizikî ortamda yapılması</span>, sistem çalışmaya başladığında zaman geçirilmeksizin yapılan işlemlerin <span class="span"> UYAP’a aktarılması</span>,</div>
+
+<div>
+
+5- <span class="mavi"> 1/9/2008 ilâ 1/1/2012 tarihleri arasında fizikî ortamda düzenlenen</span> tüm gıyabî tutuklama kararları ve yakalama emirlerinin adlî kolluk birimleri ile iletişim hâlinde gözden geçirilerek, bu tarihler arasında çıkarılan <span class="span"> ancak sistemde olmayan verilerin girişinin yapılması</span>, geri alınmış,
+kaldırılmış yahut infaz edilmiş olanların adlî kolluk birimlerine bildirilmesi ile arama kayıtlarının UYAP’ta güncelliğinin sağlanması, <span class="span"> <span class="mavi"> 1/9/2008 tarihi öncesine ait</span> kayıtların da KİHBİ aracılığıyla adlî kolluk birimlerinden aranan şahıslara ilişkin listelerin istenerek düzenli aralıklarla takip edilmesi</span>, anılan listede yer alan kişiler hakkında gıyabî tutuklama kararı veya yakalama emri bulunup bulunmadığının kontrol edilmesi; geri alınmış, kaldırılmış yahut infaz edilmiş olanların adlî kolluk birimlerine bildirilmesi,<span class="span"> hâlen aranan şahısların ise UYAP’a girişinin yapılarak</span> bu arama kayıtlarının da <span class="span"> güncelliğinin sağlanması</span>, </div>
+<div>
+6- UYAP’a işlenen gıyabî tutuklama kararları ile yakalama emirlerinin <span class="mavi"> “suçun işlendiği yer”</span>, <span class="mavi">“nüfusa kayıtlı olunan yer”</span> ve <span class="mavi">“ikâmet edilen yer” kriterlerine göre takibinin ve sistem üzerinden arananlar raporu alınmak suretiyle denetiminin yapılması,denetiminin yapılması</div> </div>
+
+<div>
+7- Diğer mahkemelerden yazılan talimatlar ikmal edildikten sonra  <span class="span"> serbest bırakılması gereken</span>
+şüpheli veya sanıklara ilişkin UYAP’ta bulunan gıyabî tutuklama müzekkereleri ile yakalama
+emirlerinin, talimatın ulaşmasını müteakiben <span class="span"> esas mahkemesince kaldırılacağı düşünülmeksizin</span> işlemi yapan adlî makam tarafından <span class="span"> derhal kaldırılarak</span> mağduriyetlere sebebiyet verilmemesi,</div>
+
+<div>
+
+8- Avrupa Konseyi ülkelerine yapılan iade taleplerinde, sanığa isnat edilen suç ile sanığın somut eylemleri arasındaki nedensellik bağının kurulmasına ilişkin olarak, tutuklama müzekkeresi, iddianame ya da geri verme talepnamesinde somut eylemlerin delilleri ile belirtilmesinin istenmesi, ayrıca terör suçlarına ilişkin iade taleplerinin <span class="dik"> “suçun vasıf ve mahiyeti ve mevcut delil durumu” </span> gibi ibarelerin yer aldığı tutuklama müzekkerelerinin Suçluların Geri Verilmesine Dair Avrupa Sözleşmesinin 12 nci maddesi kapsamında bir <span class="mavi"> tutuklama müzekkeresi olmadığı gerekçesiyle reddedilmesi sebebiyle</span> , suçluların iadesine ilişkin işlemlerin daha hızlı ve sağlıklı olarak yapılabilmesi amacıyla <span class="span"> Ek-4’te örneği bulunan gıyabî tutuklama müzekkeresindeki bölümlerin doldurulmasında ayrıca özen gösterilmesi</span>,</div>
+<div>
+
+9- <span class="span"> Ceza infaz kurumlarına alınan hükümlü veya tutuklular hakkında;</span>  “bilgi toplama” kayıtlarının güncelleştirilmesi için mahallî <span class="span"> kolluk birimleriyle işbirliği yapılması</span>, uzun süreli hükümlülerle ilgili bilgilerin de uygun zaman aralığında kontrol edilmesi ve <span class="dik"> tahliye edilmelerinden kısa bir süre önce bu kayıtlardan düşüm işlemlerinin yapılıp yapılmadığının araştırılması</span> ve bu suretle mağduriyetlere sebep olunmaması,</div>
+
+<div>
+10- <span class="mavi"> 1/1/2012 tarihinden önce çıkarılan yakalamalara ilişkin KİHBİ ve UYAP sistemlerinin ortak olarak incelenmesi</span>, <span class="mavi"> farklılık olması durumunda KİHBİ kayıtlarının esas alınarak,</span>  tespit edilen farklılıkların <span class="span"> KİHBİ tarafından gerekli inceleme yapıldıktan sonra <span class="mavi"> Adalet Bakanlığı Bilgi İşlem Dairesi Başkanlığına</span> bildirilmesi</span>, <br><br>
+<span class="mavi">
+bu tarihten sonra çıkarılan yakalamalar için ise sadece UYAP’ın esas alınacak olması sebebiyle;</span> söz konusu işlemlerin yapılmasında azamî hassasiyet gösterilerek gecikmeye mahal verilmemesi,<span class="span"> aksi durumun cezai, hukuki ve idari sorumluluk doğurabileceğinin hatırdan çıkartılmaması,</span> </div> </div> </div>
+ Konularında gereken dikkat ve özenin gösterilmesini rica ederim.
+ <br>
+									Bekir BOZDAĞ
+									Bakan<br><br> <br>
+									<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+									</div>
+
+									<script>
+									var surukleniyor = false;
+									var offsetX, offsetY;
+
+									// Tüm soru göster butonlarını seç
+									const soruGosterButtons = document.querySelectorAll('.soru');
+
+									// Her bir buton için event listener ekle
+									soruGosterButtons.forEach(function (button, index) {
+									button.addEventListener('click', function() {
+									const soruContainer = document.querySelector('.soruContainer');
+
+									// Eğer gösteriliyorsa gizle, gizliyse göster
+										if (soruContainer.style.display === "none") {
+										  soruContainer.style.display = "block";
+										} else {
+										  soruContainer.style.display = "none";
+									}
+									});
+									});
+
+
+									soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+									document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+											soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+										document.addEventListener('mouseup', function() { surukleniyor = false;	});
+									</script>
+
+									EKLER :<br>
+1- Şüpheli – Sanık Karar Takip Formu<br>
+2- Şüpheli – Sanık Yakalama Emri Formu<br>
+3- Hükümlü Yakalama Emri Formu<br>
+4- Gıyabi Tutuklama Müzekkeresi Formu <br>
+</body>
+</html>
+
+{% endblock%}

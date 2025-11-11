@@ -1,0 +1,694 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+	.renki{color: rgb(202, 150, 221);}
+
+	ul li {	float: left;margin-right: 20px;}
+	a{color: white;}
+
+	div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+	hr{margin-bottom: 15px;}
+
+	.span{color: chocolate;}
+
+	.ark{background-color:black;}
+
+	.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+	.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+	.dik{background-color: darkred; border-radius: 10px;}
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+	.but{
+		background-color: darkblue;
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+		}
+	.reset{
+		background-color: rgb(0, 123, 139);
+		color: white;
+		height: 20px;
+		width: 60px;
+		font-size: 10px;
+
+	}
+	.siyah{
+		background-color: black;
+		height: 25px;
+		width: 60px;
+		color: white;
+		font-size: 15px;
+		}
+	.edt{
+		background-color:rgb(1, 53, 37);
+		color:white;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.bey{background-color:white;
+		color:black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+		.uyp{
+		background-color: rgb(191, 234, 244);
+		color: black;
+		height: 25px;
+		width: 60px;
+		font-size: 15px;
+		}
+	.yen{
+		background-color: rgb(209, 231, 85);
+		color: black;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.dhyen{
+		background-color: rgb(236, 170, 188);
+		color: rgb(9, 9, 9);
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+	.yaz{
+		background-color: yellowgreen;
+		text-align: center;
+		height: 25px;
+		width: 60px	;
+		font-size: 15px;
+		}
+.ort{
+	text-align: center;
+	}
+</style>
+<title>genelge16/1 Kanun Yararına Bozma </title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+	<div id="kal" class="kal">
+		GENELGE NO:16/1 </div>
+
+<div> <div> T.C.ADALET BAKANLIĞI</div>
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+	<p>
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+
+	<script>
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+	  </script>
+
+
+
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+	  </div>
+	  <script src="static/js/script.js"></script>
+
+<div>
+Ceza İşleri Genel Müdürlüğü <br> Konu : <span class="span"> Kanun Yararına Bozma</span> Taleplerinde Uyulması Gereken Usul Ve Esaslar</div> <div>
+GENELGE NO:16/1 </div> <div> Kanun Yararına Bozma talepleri üzerine dosyaların UYAP üzerinden eksiksiz ve zamanında Genel Müdürlüğümüze gönderilmesi amacıyla 01/01/2006 tarih ve 16 sayılı Genelgenin güncellenerek bazı hususların yeniden teşkilâta duyurulmasında yarar görülmüştür.</div> </div> <br>
+
+
+<div>Kanun  yararına  bozma,   5271  sayılı  Ceza  Muhakemesi  Kanununun   309  ve  310   uncu  maddelerinde düzenlenmiş  olup,  hâkim  veya  mahkeme  tarafından  verilen  ve <span class="span"> istinaf  veya  temyiz </span> incelemesinden geçmeksizin  kesinleşen  karar  veya  hükümlere  karşı  başvurulan <span class="span"> olağanüstü  bir kanun  yoludur.</span>  </div>
+
+<div>Bu olağanüstü  kanun  yolu  ile  kanunların <span class="span"> eşit  biçimde </span> uygulanması,  Bölge  Adliye  Mahkemesi  ve Yargıtay   denetiminden  <span class="span"> geçmeden   kesinleşen</span>   kararlardaki   hukuka   <span class="span"> aykırılıkların   giderilmesi,</span>  Yargıtay'ın <span class="span"> içtihat birliğini</span> oluşturmak görevini yerine getirmesinin sağlanması <span class="span"> amaçlanmaktadır.</span></div>
+
+<div>  5271 sayılı Ceza Muhakemesi Kanununun  309 ve 310  uncu maddelerinde düzenlenen ve 1 numaralı Cumhurbaşkanlığı  Teşkilatı  Hakkındaki  Cumhurbaşkanlığı  Kararnamesinin  41  inci  maddesinin birinci  fıkrasının c bendi  uyarınca <span class="span"> Genel  Müdürlüğümüz tarafından</span>  yerine getirilen kanun yararına bozma işlemlerinin aşağıda belirtilen hususlar dahilinde yapılması gerekmektedir.</div>
+
+<div>
+<div>A) <span class="span"> Genel Müdürlüğümüze gönderilecek olan dosyalarda dikkat edilmesi gereken hususlar;</span>  <div> <div class="sadeceborder">
+1)  Bir  karar  veya  hükmün  ilgili  Yargıtay  dairesi  tarafından  kanun  yararına  bozma  açısından incelenebilmesi için <span class="span"> kesinleşmiş olmasının gerektiği,</span> bu cümleden olmak üzere; </div>
+<div>
+a)  Öncelikle  karar  ve  hükümlerde  <span class="ark"> kanun  yolu,</span>  <span class="ark"> süresi,</span> <span class="ark"> sürenin  başlangıç  zamanı,</span>  merciive  <span class="ark"> başvuru şekli</span> nin doğru ve tam olarak gösterilip gösterilmediğinin incelenmesi, </div> <div>
+b)  Karar  veya  hükmün  7201  sayılı  Tebligat  Kanununun  ilgili  maddelerine  göre  taraflara   <span class="span">   usulüne uygun  şekilde  tebliğ  edilerek  kesinleşip  kesinleşmediğinin,</span>  özellikle  anılan  Kanunun  <span class="mavi"> 21  ve  35</span>   inci maddeleri  uyarınca  yapılan  tebligatta  bu  maddelerde  aranan  şartlara  uyulup  uyulmadığının <span class="span"> kontrol edilmesi,</span> </div> <div>
+c)  Yargıtay  Ceza  Genel  Kurulunun  10/03/2009  tarihli  ve  2009/2-43  esas,  2009/56  sayılı  kararında belirtildiği  üzere,  kesin  nitelikteki  hükümlerin  <span class="span"> ancak  kesinlik  sınırını  aşacak  nitelikte  yaptırım içermek   koşuluyla </span>   suç   vasfına   yönelik   istinaf/temyiz   üzerine,   bu   hususla   sınırlı   biçimde <span class="span"> istinaf/temyiz   incelemesine  konu  olabilecekleri  cihetle,</span>  kanun  yollarına  başvurma  hakkı  olanlara <span class="span"> usulen tebliğ</span>  edilmesi,</div> <div class="sadeceborder">
+2) Kanun yararına bozma yolunun olağanüstü ve istisnaî bir kanun yolu olduğu hususu göz önünde tutularak, hâkim ve mahkeme kararlarında <span class="span"> hukuka aykırılık bulunması</span> durumunda öncelikle, <span class="span">  olağan kanun yolları </span> olan itiraz, istinaf ve temyiz kanun yollarına  <span class="span"> müracaat edilmesi,</span></div>
+<div class="sadeceborder">
+3) 5271 sayılı  Ceza Muhakemesi  Kanununun 310 uncu maddesinde, kanun yararına bozma yoluna başvurma  yetkisinin,  anılan  Kanunun  309  uncu  maddesinin  dördüncü  fıkrasının  (d)  bendindeki hükümlünün <span class="span"> cezasının  kaldırılması </span>  veya  daha <span class="span"> hafif  bir  cezanın</span>  verilmesini  gerektiren  hâllere  <span class="span"> özgü olmak  üzere; re’sen  Yargıtay  Cumhuriyet  Başsavcısı  tarafından  da</span>  kullanılabileceğinin  belirtilmiş olması  karşısında,  başvuru  sahiplerinin  309  uncu  maddenin  dördüncü  fıkrasının  (d)  bendi kapsamındaki    Yargıtay    Cumhuriyet    Başsavcılığına    yönelik    bu    taleplerinin    merciince değerlendirilmek   üzere   Genel   Müdürlüğümüz   aracı   kılınmaksızın   <span class="span"> Yargıtay   Cumhuriyet Başsavcılığına gönderilmesi,</span> </div>
+<div class="sadeceborder">
+4) Kanun yararına bozma yoluna başvuran ilgilinin dilekçesinde <span class="span"> talebinin tam olarak anlaşılmaması durumlarında,</span> dilekçe sahibinin beyanına başvurularak, <span class="span"> mahkeme adı ve numarası tespit edilip,</span>  ilgili dosyanın <span class="span"> gönderilmesi,</span> </div>
+
+<div class="sadeceborder">
+5)  Kanun  yararına  bozma  talebine  konu  kararı  kapsayan  dosyadaki <span class="span"> eksikliklerin </span> (nüfus  kaydı,  adli sicil  kaydı,  tebligat  parçaları  ve  benzeri  evrak) <span class="span"> giderilerek </span> dosya  içerisindeki  evrakın  <span class="span"> kronolojik sırala</span>maya  tabii  tutulup,  dosyanın  	<span class="span">	dizi  pusulasına</span>  bağlandıktan  sonra <span class="span"> UYAP  üzerinden</span>  ve  ayrıca dosya aslının <span class="span"> fiziki olarak da gönderilmesi,</span></div>
+<div class="sadeceborder">
+6)  Cumhuriyet  başsavcılığı  tarafından <span class="span"> “Hukuka  aykırılık  hâlinin  bulunup  bulunmadığına  ilişkin” olarak  düzenlenecek  gerekçeli  görüşün  dosyasına  eklenmesi</span>nin  UYAP  sisteminde  zorunlu  olduğu hususuna dikkat edilmesi, </div>
+<div class="sadeceborder">
+7) <div> a) Cezaların <span class="span"> infazı aşamasında </span> hükümlüler tarafından verilen kanun yararına bozma talebini içeren dilekçelerin,  <span class="span"> yargılamaya  konu  mahkûmiyet </span> kararına  ilişkin  olması  durumunda,  dilekçenin  <span class="span"> ilgili mahkemenin  bulunduğu  yer  Cumhuriyet  başsavcılığına  iletilerek,  o  yer  savcılığınca  fezleke hazırlanıp,  dosyası  ile  birlikte  Genel  Müdürlüğümüze  gönderilmesi</span>nin  sağlanması, </div>
+ <div>b)  Hukuka aykırılık  iddiasının <span class="span"> infaza  ilişkin  olması  durumunda </span> ise  infaz  yeri  Cumhuriyet  <span class="span"> basavcılığınca gerekçeli görüşün düzenlenmesi,</span></div></div>
+<div class="sadeceborder">
+8) Kanun yararına bozma talebinin <span class="span"> infaza yönelik bir karara</span> (mahsup, koşullu salıverme, denetimli serbestlik,  infazın  ertelenmesi,  disiplin  cezası  gibi) <span class="span"> ilişkin  olması  durumunda </span> <span class="span"> yargılama  dosyasının <span class="dik"> gönderilmemesi,</span></span> hükümlüye ait <span class="span"> infaz dosyasının</span> (hükümlünün infaz etmekte olduğu cezasına ilişkin <span class="span"> tüm kararların da eklenmek suretiyle) gönderilmesi, </span> </div> <div class="sadeceborder">
+9)  Kanun  yararına  bozma  talebinin  <span class="ark"> infaza </span> yönelik  işler,  <span class="ark">tutuklu  </span>  işler,  <span class="ark"> iddianamenin  iadesi</span> , <span class="ark"> itiraz ,</span>  <span class="ark"> yetki ve görev</span> uyuşmazlığına ilişkin bir karar veya hüküm <span class="span"> olması halinde</span> UYAP sisteminde bulunan <span class="span"> “Dosyanın  Aciliyet  Durumları”</span>  sekmesi  <span class="span"> işaretlenerek </span>  ve  <span class="span"> fiziki  dosyasının</span>  da  ivedi  bir  şekilde <span class="span"> gönderilmesi,</span> </div>
+<div class="sadeceborder">
+10) Kanun yararına bozma yönünden inceleme yapılabilmesi için <span class="span"> dosya aslının gönderilmesi,</span> diğer sanıklar yönünden veya aynı sanığın diğer suçları bakımından istinaf veya temyiz edilmesi  <span class="span"> sebebiyle gönderilememesi  halinde</span>  ise  bu  husus  açıklanmak  suretiyle  <span class="span"> UYAP  sisteminden</span>  dosyanın <span class="span"> tamamı temin edilerek onaylı bir suretinin gönderilmesi,</span></div>
+<div class="sadeceborder">
+11)  Kanun  yararına  bozma  yoluna  başvurulan  dosyalar <span class="span"> eksiklikler  sebebiyle  gönderilemiyorsa</span> <span class="mavi"> iki ayda  bir</span> ,istinaf  veya  temyiz  incelemesinde  bulunması  nedeniyle  gönderilemiyorsa  <span class="mavi"> dört  ayda  bir</span> <span class="span"> tekide mahal bırakmaksızın bilgi verilmesi,</span> </div>
+<div class="sadeceborder">
+12)  02/02/2015  tarihli  ve  29255  sayılı  Resmî  Gazete’de  yayımlanan  Resmî  Yazışmalarda Uygulanacak  Esas  ve  Usuller  Hakkında  Yönetmelik  ve  06/08/2015  tarihli  ve  29437  sayılı  Resmî Gazete’de  yayımlanan  Bölge  Adliye  ve  Adlî  Yargı  İlk  Derece  Mahkemeleri  ile  Cumhuriyet Başsavcılıkları  İdarî  ve  Yazı  İşleri  Hizmetlerinin  Yürütülmesine  Dair  Yönetmelik  hükümlerine uygun  olarak  dosyaların <span class="span"> UYAP  üzerinden  Ceza  İşleri  Genel  Müdürlüğü  Kanun  Yararına  Bozma Bürosu seçildikten sonra, </span> Bir üst  yazı  ekinde ağır ceza Cumhuriyet  başsavcılığı <span class="span"> bakanlık muhabere bürosu aracılığıyla gönderilmesi,</span></div>
+</div></div>
+<div>
+B) Dilekçe ve dosyalarla ilgili mahallinde <span class="span"> halli gereken hususlar;</span> 5271  sayılı  Ceza  Muhakemesi  Kanununun  309  ve  310  uncu  maddeleri  gereğince  hâkim  veya mahkeme  tarafından  verilen  ve  istinaf  veya  temyiz  incelemesinden  geçmeksizin  kesinleşen  karar veya hükümlere karşı kanun yararına bozma yoluna başvurulabileceği <span class="span"> nazara alındığında;</span> <div class="sadeceborder">
+1) İstinaf denetiminden geçmiş  karar veya hükümler ile bölge adliye mahkemesi  tarafından verilen kararlara  karşı  kanun  yararına  bozma  yoluna <span class="span">gidilemeyeceğinden,</span>   dilekçelerin   <span class="span"> ilgili  Cumhuriyet başsavcılığı</span>nca  değerlendirilerek <span class="span"> mahallinde sonuçlandırılması,</span>  ancak  istinaf  kararında  hukuka aykırılık olduğu iddiası ile talepte bulunulmuş ise 5271 sayılı Ceza Muhakemesi Kanununun 308/A maddesi  gereğince  bu  talebin <span class="span">  itiraz  mahiyetinde  olduğu  değerlendirilerek,</span>  dosyanın  ilgili <span class="span"> bölge adliye mahkemesi Cumhuriyet başsavcılığına gönderilmesi,</span></div>
+<div class="sadeceborder">
+2) Yargıtay tarafından <span class="span"> onanarak kesinleşmiş</span> karar veya hükümler ile Yargıtay onama kararına karşı kanun  yararına  bozma  yoluna <span class="span"> gidilemeyeceğinden,</span>  dilekçelerin   <span class="span"> ilgili  Cumhuriyet  başsavcılığınca değerlendirilerek  mahallinde  sonuçlandırılması,</span>  ancak  Yargıtay  <span class="span"> onama  kararında  hukuka  aykırılık </span>olduğu iddiası ile talepte bulunulmuş ise 5271 sayılı Ceza Muhakemesi Kanununun 308 inci maddesi gereğince  bu  talebin  <span class="span"> itiraz  mahiyetinde</span>  olduğu  değerlendirilerek,  dosyanın <span class="span"> YargıtayCumhuriyet Başsavcılığına gönderilmesi,</span> </div>
+<div class="sadeceborder">
+3)  İlgilisi  tarafından  açıkça  kanun  yararına  bozma  talep  edilmeyen  dilekçeler  üzerine,  dilekçe sahibine <span class="span"> iradesi açıklattırılarak mahallinde gereğine tevessül edilmesi,</span> </div>
+<div>
+4) Kesinleşmemiş karar veya hükümlere karşı verilen kanun yararına bozma dilekçeleri üzerine dilekçe ve dosyanın Genel Müdürlüğümüze gönderilmemesi, kararın kesinleştirilmesi işlemlerinin yapılması amacıyla mahkemesine gönderilmesi,</div>
+<div>
+5) Kanun yararına bozma talebinin infaza yönelik bir karara ilişkin olması durumunda, bu karar itiraz üzerine kesinleşmiş olsa bile kazanılmış hakka konu olamayacağından hukuka aykırılığın giderilmesi için mahkemesinden her zaman yeni bir karar istenebileceği,</div>
+<div>
+6) Yargıtay Ceza Genel Kurulunun 07/11/2006 tarihli ve 227-228 sayılı kararında belirtildiği üzere, esasen olağan bir dikkat ve özenin gösterilmesi halinde gerçekleşmeyecek olan isim, yaş ve hesap hataları gibi, ‘maddi yanılgı’ veya ‘yazım hatası’ diye isimlendirilen hataların bizzat bu hatayı yapan merci tarafından, kendiliğinden düzeltilebileceği cihetle, öncelikle mahkemesinden bir talepte bulunulması,</div></div>
+Konularında gereken dikkat ve özenin gösterilmesini rica ederim. <br>
+
+Abdulhamit GÜL Bakan <br>
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+</body>
+</html>
+{% endblock%}

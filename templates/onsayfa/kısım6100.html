@@ -1,0 +1,959 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px ; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate;}
+
+.ark{background-color:black;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; color: white;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>6100 sayılı Hukuk Muhakemeleri Kanununun (1. kısım, 1. bölüm, 4. bölüm 1. ayırım, 6. bölüm 1. ayırım)</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div> <br><br><br>
+	<div id="kal" class="kal">
+		HUKUK MUHAKEMELERİ KANUNU <br>
+
+
+
+		Kanun Numarası                    : 6100 <br>
+
+		Kabul Tarihi                           : 12/1/2011 <br>
+
+		Yayımlandığı Resmî Gazete   : Tarih  : 4/2/2011          Sayı  : 27836 <br>
+
+		Yayımlandığı Düstur              : Tertip : 5   <br>                   Cilt   : 50 <br>
+		</div>
+		<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+			<p>
+			  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+			  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+			  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+			  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+			  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+			  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+			  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+			  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+			  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+			</p></div>
+
+			<script>
+			  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+			  </script>
+
+
+
+			  <div id="soruContainer" class="soruContainer">
+				  <div id="soruDiv">
+					  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+				  </div>
+				  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+				  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+				  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+				  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+			  </div>
+			  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+
+		BİRİNCİ KISIM <br>
+		Genel Hükümler <br>
+
+
+
+		BİRİNCİ BÖLÜM <br>
+
+		Görev, Yetki ve Yargı Yeri Belirlenmesi <br> <br>
+
+
+
+		BİRİNCİ AYIRIM <br>
+
+		Görev <br>
+		<div>
+		Görevin belirlenmesi ve niteliği
+		<div>
+		MADDE 1-  (1) Mahkemelerin görevi, <span class="mavi"> ancak kanunla düzenlenir</span>. <span class="mavi"> Göreve ilişkin kurallar, kamu düzenindendir</span>.</div></div>
+
+
+		<div>
+		Asliye hukuk mahkemelerinin görevi
+		<div>
+		MADDE 2-<div>  (1) Dava konusunun değer ve miktarına bakılmaksızın <span class="kim"> malvarlığı</span> haklarına ilişkin davalarla,<span class="kim"> şahıs varlığına</span> ilişkin davalarda görevli mahkeme, aksine bir düzenleme bulunmadıkça <span class="mavi"> asliye hukuk mahkemesidir</span>. <br>
+
+		(2) Bu Kanunda ve diğer kanunlarda <span class="ark"> aksine düzenleme bulunmadıkça</span>, asliye hukuk mahkemesi <span class="mavi"> diğer dava ve işler bakımından da görevlidir</span>.
+		</div></div></div>
+
+
+		<div>
+		Ölüm veya vücut bütünlüğünün yitirilmesinden doğan zararların tazmini davalarında görev
+		<div>
+		MADDE 3- (İptal: Anayasa Mahkemesi’nin 16/2/2012 tarihli ve E.: 2011/35, K.: 2012/23 sayılı Kararı ile. )
+		</div></div>
+
+		<div>
+		Sulh hukuk mahkemelerinin görevi
+		<div>
+		MADDE 4- (1) Sulh hukuk mahkemeleri, dava konusunun değer veya tutarına bakılmaksızın;
+		<div>
+		a) <span class="span"> Kiralanan taşınmazların</span>, 9/6/1932 tarihli ve 2004 sayılı İcra ve İflas Kanununa göre ilamsız icra yoluyla tahliyesine ilişkin hükümler ayrık olmak üzere, <span class="span"> kira ilişkisinden doğan alacak</span> davaları da <span class="span"> dâhil</span> olmak üzere <span class="mavi"> tüm uyuşmazlıkları konu alan davalar ile bu davalara karşı açılan davaları,</span> <br>
+
+		b) <span class="ark"> Taşınır ve taşınmaz </span> <span class="dik">mal veya hakkın paylaştırılmasına</span> ve <span class="dik"> ortaklığın giderilmesine</span>  <span class="mavi">ilişkin davaları</span>, <br>
+
+		c) <span class="ark"> Taşınır ve taşınmaz mallarda</span>, <span class="dik">sadece zilyetliğin korunmasına yönelik</span> <span class="mavi"> olan davaları</span>, <br>
+
+		ç) Bu Kanun ile diğer kanunların, <span class="mavi"> sulh hukuk <span class="dik"> mahkemesi</span> veya sulh hukuk  <span class="dik"> hâkimini </span>görevlendirdiği davaları</span>, <br></div>
+
+		görürler.</div></div>
+
+
+
+		İKİNCİ AYIRIM <br>
+
+		Yetki <br>
+		<div>
+		Genel kural
+		<div>
+		MADDE 5- (1) Mahkemelerin yetkisi, diğer kanunlarda yer alan yetkiye ilişkin hükümler saklı kalmak üzere, bu Kanundaki hükümlere tabidir.</div></div>
+
+
+		<div>
+		Genel yetkili mahkeme
+		<div>
+		MADDE 6-<div>  (1) Genel yetkili mahkeme, <span class="ark"> davalı</span> gerçek veya tüzel kişinin <span class="ark"> davanın açıldığı tarihteki</span> <span class="mavi"> yerleşim yeri mahkemesidir</span>. <br>
+
+		(2) <span class="span"> Yerleşim yeri</span>, 22/11/2001 tarihli ve <span class="ark"> 4721</span> sayılı Türk Medenî Kanunu <span class="mavi"> hükümlerine göre belirlenir</span>.</div></div></div>
+
+
+		<div>
+		Davalının birden fazla olması hâlinde yetki
+		<div>
+		MADDE 7- <div> (1) Davalı birden fazla ise dava, bunlardan <span class="mavi"> birinin yerleşim yeri mahkemesinde açılabilir</span>. Ancak, dava sebebine göre kanunda, davalıların tamamı hakkında <span class="span"> ortak yetkiyi taşıyan bir mahkeme belirtilmişse</span>, davaya <span class="mavi"> o yer mahkemesinde bakılır</span>. <br>
+
+		(2) Birden fazla davalının bulunduğu hâllerde, davanın, davalılardan birini <span class="dik"> sırf</span> kendi yerleşim yeri mahkemesinden başka bir mahkemeye <span class="dik"> getirmek amacıyla</span> açıldığı, deliller veya belirtilerle <span class="span"> anlaşılırsa</span>, mahkeme, ilgili davalının itirazı üzerine, onun hakkındaki davayı  <span class="mavi">ayırarak yetkisizlik kararı verir</span>. </div></div></div>
+
+
+		<div>
+		Bir yerde geçici olarak oturanlara karşı açılacak davalarda yetki
+		<div>
+		MADDE 8- (1) <span class="ark"> Memur, işçi, öğrenci, asker</span> gibi, bir yerde geçici olarak oturanlara <span class="span"> karşı</span> açılacak <span class="dik"> alacak veya taşınır mal</span> davaları için, orada bulunmaları <span class="dik"> uzunca bir süre devam edebilecekse</span> ,<span class="mavi"> bulundukları yer mahkemesi de yetkilidir</span>.</div></div>
+
+
+		<div>
+		Türkiye’de yerleşim yerinin bulunmaması hâlinde yetki
+		<div>
+		MADDE 9- (1) Türkiye’de yerleşim yeri bulunmayanlar hakkında genel yetkili mahkeme, davalının <span class="mavi"> Türkiye’deki mutad meskeninin bulunduğu yer mahkemesidir</span>. <span class="span"> Ancak</span>, diğer özel yetki hâlleri saklı kalmak üzere, <span class="span"> malvarlığı haklarına ilişkin dava</span>, uyuşmazlık konusu  <span class="mavi">malvarlığı unsurunun bulunduğu yerde de açılabilir</span>.</div></div>
+
+
+		<div>
+		Sözleşmeden doğan davalarda yetki
+		<div>
+		MADDE 10- (1) Sözleşmeden doğan davalar, sözleşmenin <span class="mavi"> ifa edileceği yer mahkemesinde</span> de açılabilir.</div></div>
+
+
+		<div>
+		Mirastan doğan davalarda yetki
+		<div>
+		MADDE 11- <div> (1) <span class="mavi"> Aşağıdaki davalarda, ölen kimsenin son yerleşim yeri mahkemesi kesin yetkilidir</span>:
+			<div>
+		a) <span class="span"> Terekenin paylaşılmasına</span>, yapılan paylaşma sözleşmesinin <span class="span"> geçersizliğine</span>, ölüme bağlı tasarrufların <span class="span"> iptali ve tenkisine</span>, miras sebebiyle  <span class="span"> istihkaka</span> ilişkin davalar ile mirasçılar arasında   <span class="span"> terekenin  yönetiminden kaynaklanan davalar</span>. <br>
+
+		b) <span class="span"> Terekenin kesin paylaşımına kadar mirasçılara karşı açılacak tüm davalar</span>. <br></div>
+
+		(2) Terekede bulunan bir mal hakkında açılmak istenen istihkak davası, <span class="span"> terekenin <span class="dik"> yazımı ve tespiti</span> zamanında</span> <span class="mavi">  mal nerede bulunuyorsa, orada da açılabilir</span>.  <br>
+
+		(3)  <span class="ark">Mirasçılık belgesinin </span> <span class="span"> iptali</span> ve yeni mirasçılık belgesi <span class="span"> verilmesine</span> ilişkin davalarda, <span class="mavi"> mirasçıların her birinin oturduğu yer mahkemesi de yetkilidir</span>. </div></div></div>
+
+
+		<div>
+		Taşınmazın aynından doğan davalarda yetki
+		<div>
+		MADDE 12- <div> (1) Taşınmaz üzerindeki ayni hakka ilişkin veya ayni hak sahipliğinde değişikliğe yol açabilecek davalar ile taşınmazın zilyetliğine yahut alıkoyma hakkına ilişkin davalarda, <span class="mavi"> taşınmazın bulunduğu yer mahkemesi kesin yetkilidir</span>. <br>
+
+		(2) <span class="ark"> İrtifak haklarına</span> ilişkin davalar, <span class="mavi"> üzerinde irtifak hakkı kurulan taşınmazın bulunduğu yer mahkemesinde açılır</span>. <br>
+
+		(3) <span class="mavi"> Bu davalar, birden fazla taşınmaza ilişkinse, taşınmazlardan birinin bulunduğu yerde, diğerleri hakkında da açılabilir</span>. <br></div></div></div>
+
+
+		<div>
+		Karşı davada yetki
+		<div>
+		MADDE 13- (1) Kesin yetkinin söz konusu olmadığı hâllerde, asıl davaya bakan mahkeme,<span class="mavi"> karşı davaya bakmaya da yetkilidir</span>.</div></div>
+
+
+		<div>
+		Şubeler ve tüzel kişilerle ilgili davalarda yetki
+		<div>
+		MADDE 14-<div>  (1) Bir <span class="span"> şubenin işlemlerinden doğan</span> davalarda, <span class="mavi"> o şubenin bulunduğu yer mahkemesi de yetkilidir</span>. <br>
+
+		(2) Özel hukuk tüzel kişilerinin, ortaklık veya üyelik ilişkileriyle sınırlı olmak kaydıyla,<span class="span"> bir ortağına</span> veya <span class="span"> üyesine karşı</span> veya <span class="span"> bir ortağın</span> yahut üyenin bu sıfatla <span class="span"> diğerlerine karşı</span> açacakları davalar için, ilgili <span class="mavi"> tüzel kişinin <span class="dik"> merkezinin </span>bulunduğu yer mahkemesi kesin yetkilidir.</span> <br></div></div></div>
+
+
+		<div>
+		Sigorta sözleşmelerinden doğan davalarda yetki
+		<div>
+		MADDE 15-<div>  (1) Zarar sigortalarından doğan davalar, sigorta, bir <span class="span"> taşınmaza</span> veya niteliği gereği bir yerde <span class="span"> sabit bulunması gereken</span> yahut şart kılınan <span class="span"> taşınıra</span> ilişkinse, <span class="mavi"> malın bulunduğu yerde</span>; bir yerde sabit bulunması <span class="span"> gerekmeyen</span> veya şart kılınmayan bir taşınıra ilişkinse, <span class="mavi"> rizikonun gerçekleştiği yerde de açılabilir</span>. <br>
+
+		(2) <span class="span"> Can sigortalarında</span>, sigorta ettirenin, <span class="span"> sigortalının</span> veya lehtarın leh veya aleyhine açılacak davalarda <span class="mavi"> onların yerleşim yeri mahkemesi kesin yetkilidir</span>. <br>
+
+		(3) Bu hüküm <span class="mavi"> deniz sigortalarından doğan davalarda uygulanmaz</span>.</div></div></div>
+
+
+		<div>
+		Haksız fiilden doğan davalarda yetki
+		<div>
+		MADDE 16- (1) <span class="span"> Haksız fiilden doğan</span> davalarda, haksız fiilin işlendiği veya zararın meydana geldiği yahut <span class="span"> gelme ihtimalinin bulunduğu yer</span> ya da  <span class="mavi"> zarar görenin yerleşim yeri mahkemesi de yetkilidir</span>.</div></div>
+
+		<div>
+		Yetki sözleşmesi
+		<div>
+		MADDE 17- (1) <span class="span"> Tacirler veya kamu tüzel kişileri</span>, aralarında doğmuş veya doğabilecek bir uyuşmazlık hakkında, <span class="mavi"> bir veya birden fazla mahkemeyi sözleşmeyle yetkili kılabilirler</span>. Taraflarca aksi kararlaştırılmadıkça dava sadece sözleşmeyle belirlenen bu mahkemelerde açılır.</div></div>
+
+
+		<div>
+		Yetki sözleşmesinin geçerlilik şartları
+		<div>
+		MADDE 18- <div> (1) Tarafların üzerinde serbestçe <span class="dik"> tasarruf edemeyecekleri konular</span>  ile <span class="dik"> kesin yetki hâllerinde</span>, <span class="mavi"> yetki sözleşmesi yapılamaz</span>. <br>
+
+		(2) Yetki sözleşmesinin geçerli olabilmesi için <span class="ark"> yazılı olarak yapılması</span>, uyuşmazlığın kaynaklandığı hukuki ilişkinin <span class="span"> belirli</span> veya belirlenebilir <span class="span"> olması</span> ve yetkili kılınan mahkeme veya  <span class="mavi">mahkemelerin gösterilmesi şarttır</span>.</div></div></div>
+
+
+		<div>
+		Yetki itirazının ileri sürülmesi
+		<div>
+		MADDE 19- <div> (1) Yetkinin kesin olduğu davalarda, mahkeme yetkili olup olmadığını, davanın sonuna kadar <span class="mavi"> kendiliğinden araştırmak zorundadır</span>; taraflar da mahkemenin yetkisiz olduğunu <span class="mavi"> her zaman ileri sürebilir</span>. <br>
+
+		(2) Yetkinin kesin olmadığı davalarda, <span class="mavi"> yetki itirazının, cevap dilekçesinde ileri sürülmesi gerekir</span>. Yetki itirazında bulunan taraf, yetkili mahkemeyi; birden fazla yetkili mahkeme varsa <span class="mavi"> seçtiği mahkemeyi bildirir</span>. <span class="mavi"> Aksi takdirde yetki itirazı dikkate alınmaz</span>. <br>
+
+		(3) Mahkeme, yetkisizlik kararında <span class="mavi"> yetkili mahkemeyi de gösterir</span>. <br>
+
+		(4) Yetkinin kesin olmadığı davalarda, davalı, süresi içinde ve usulüne uygun olarak <span class="mavi"> yetki itirazında  bulunmazsa, davanın açıldığı mahkeme yetkili hâle gelir</span>.</div></div></div>
+
+
+
+		ÜÇÜNCÜ AYIRIM <br>
+
+		Görevsizlik veya Yetkisizlik Kararı Üzerine Yapılacak İşlemler ve
+
+		Yargı Yeri Belirlenmesi <br>
+		<div>
+		Görevsizlik veya yetkisizlik kararı üzerine yapılacak işlemler[1]
+		<div>
+		MADDE 20-<div>  (1) Görevsizlik veya yetkisizlik kararı verilmesi hâlinde, taraflardan birinin, bu karar verildiği anda kesin ise tebliğ tarihinden, (…)(1) süresi içinde kanun yoluna başvurulmayarak kesinleşmiş ise kararın kesinleştiği tarihten; kanun yoluna başvurulmuşsa bu başvurunun reddi kararının tebliğ tarihinden itibaren <span class="mavi"> iki hafta içinde kararı veren mahkemeye başvurarak, dava dosyasının görevli ya da yetkili mahkemeye gönderilmesini talep etmesi gerekir</span>. <span class="ark"> Aksi takdirde dava açılmamış sayılır</span> ve görevsizlik veya yetkisizlik kararı veren mahkemece bu konuda resen karar verilir.(1)[2] <br>
+
+		(2) Dosya kendisine <span class="mavi"> gönderilen mahkeme, kendiliğinden taraflara davetiye gönderir</span>.</div></div></div>
+
+		<div>
+		Yargı yeri belirlenmesini gerektiren sebepler
+		<div>
+		MADDE 21- (1) Aşağıdaki hâllerde, davaya bakacak mahkemenin tayini için yargı yeri belirlenmesi yoluna başvurulur:
+		<div>
+		a) Davaya bakmakla görevli ve yetkili mahkemenin davaya bakmasına herhangi bir <span class="span"> engel çıkarsa</span>. <br>
+
+		b) <span class="ark"> İki mahkeme</span> arasında <span class="span"> yargı çevrelerinin sınırlarının belirlenmesi</span> konusunda bir tereddüt ortaya çıkarsa. <br>
+
+		c) <span class="ark"> İki mahkeme</span> de <span class="span"> görevsizlik kararı verir</span> ve bu kararlar kanun yoluna başvurulmaksızın <span class="span"> kesinleşirse.</span> <br>
+
+		ç) Kesin yetki hâllerinde, <span class="ark"> iki mahkeme de <span class="span"> yetkisizlik kararı verir</span> ve bu kararlar kanun yoluna başvurulmaksızın <span class="span"> kesinleşirse</span>. <br></div></div></div>
+
+
+		<div>
+		İnceleme yeri
+		<div>
+		MADDE 22- <div> (1) Yetkili mahkemenin bir davaya bakmasına herhangi bir <span class="ark"> engel</span> bulunduğu yahut iki mahkeme arasında yargı çevrelerinin sınırlarının belirlenmesinde <span class="ark"> tereddüt</span> ortaya çıktığı takdirde, yetkili mahkemenin tayininde, <span class="mavi"> ilk derece mahkemeleri için bölge adliye mahkemelerine</span> ,  <span class="mavi">bölge adliye mahkemeleri için Yargıtaya başvurulur</span>. <br>
+
+		(2) İki mahkemenin aynı dava hakkında göreve veya yetkiye ilişkin olarak verdikleri kararlar kanun yoluna başvurulmaksızın <span class="ark"> kesinleştiği</span> takdirde, görevli veya yetkili mahkeme, <span class="mavi"> ilgisine göre bölge adliye mahkemesince veya Yargıtayca belirlenir</span>.</div></div></div>
+
+
+		<div>
+		İnceleme usulü ve sonucu
+		<div>
+		MADDE 23- <div> (1) Yargı yerinin belirlenmesine ilişkin inceleme <span class="mavi"> dosya üzerinden yapılabilir.</span> <br>
+
+		(2) Bölge adliye mahkemesince veya Yargıtayca verilen yargı yeri belirlenmesi ile kanun yolu incelemesi sonucunda kesinleşen göreve veya yetkiye ilişkin kararlar, davaya ondan sonra <span class="mavi"> bakacak mahkemeyi bağlar</span>.</div></div></div>
+
+
+		<hr>
+
+		DÖRDÜNCÜ BÖLÜM <br>
+
+		Taraflar ve Davaya Katılan Üçüncü Kişiler <br> <br>
+
+
+
+		BİRİNCİ AYIRIM   <br>
+
+		Tarafların Ehliyetleri
+		<div>
+		Taraf ehliyeti
+		<div>
+		MADDE 50- (1) <span class="ark"> Medenî haklardan yararlanma ehliyetine sahip olan</span>, davada taraf ehliyetine de <span class="mavi"> sahiptir</span>.</div></div>
+
+
+		<div>
+		Dava ehliyeti
+		<div>
+		MADDE 51- (1) Dava ehliyeti, <span class="mavi"> medenî hakları kullanma ehliyetine göre belirlenir</span>.</div></div>
+
+
+		<div>
+		Davada kanuni temsil
+		<div>
+		MADDE 52- (1) <span class="ark"> Medenî hakları kullanma ehliyetine sahip <span class="dik"> olmayanlar</span></span> davada <span class="mavi"> kanuni temsilcileri</span>, <span class="ark"> tüzel kişiler</span>  ise  <span class="mavi">yetkili organları tarafından temsil edilir</span>.</div></div>
+
+
+		<div>
+		Dava takip yetkisi
+		<div>
+		MADDE 53- (1) Dava takip yetkisi, talep sonucu hakkında <span class="mavi"> hüküm alabilme yetkisidir</span>. Bu yetki, kanunda belirtilen istisnai durumlar dışında,  <span class="ark"> maddi hukuktaki tasarruf yetkisine göre tayin edilir</span>.</div></div>
+
+
+		<div>
+		Temsil veya izin belgelerinin verilmesi
+		<div>
+		MADDE 54 -<div>  (1) Kanuni temsilciler, davanın açılıp yürütülmesinin belli bir makamın iznine bağlı olduğu hâllerde <span class="span"> izin belgelerini</span>, tüzel kişilerin organları ise <span class="span"> temsil belgelerini</span>, dava veya cevap dilekçesiyle <span class="mavi"> mahkemeye vermek zorundadırlar;</span> aksi takdirde dava açamaz ve yargılamayla ilgili hiçbir işlem yapamazlar. Şu kadar ki, gecikmesinde sakınca bulunan hâllerde mahkeme, kanuni temsilcilerin veya tüzel kişilerin organlarının, yukarıda belirtilen <span class="mavi"> eksikliği gidermeleri şartıyla dava açmalarına yahut davayla ilgili işlem yapmalarına izin verebilir</span>. <br>
+
+		(2) <span class="span"> İzin belgesinin alınması için</span> mahkemeye müracaat edilmesi gerekiyorsa ilgiliye, müracaatı için <span class="mavi"> kesin süre verilir</span>. Bu süre içinde mahkemeye başvurulması hâlinde bu konuda <span class="mavi"> karar verilinceye kadar beklenir</span>. <br>
+
+		(3) <span class="span"> Süresi içinde</span> belgelerin  <span class="span"> ibraz edilmemesi</span> veya mahkemeye başvurulmaması hâlinde, dava açılmamış veya gerçekleştirilen <span class="mavi"> işlemler yapılmamış sayılır</span>.</div></div></div>
+
+
+		<div>
+		Dava sırasında taraflardan birinin ölümü
+		<div>
+		MADDE 55- (1) Taraflardan birinin ölümü hâlinde, mirasçılar mirası kabul veya reddetmemişse, bu hususta kanunla belirlenen <span class="mavi"> süreler geçinceye kadar dava ertelenir.</span>  Bununla beraber hâkim, <span class="span"> gecikmesinde sakınca bulunan hâllerde</span>, talep üzerine davayı takip için <span class="mavi"> kayyım atanmasına karar verebilir</span>.</div></div>
+
+
+		<div>
+		Kanuni temsilci atanması sebebiyle yargılamanın ertelenmesi
+		<div>
+		MADDE 56- <div> (1) Taraflardan birinin vesayet altına alınması veya kendisine yasal danışman atanması talebi mahkemece uygun bulunur ya da mahkemece gerekli görülürse, <span class="mavi"> bu konuda kesin bir karar verilinceye kadar yargılama ertelenebilir.</span> <br>
+
+		(2) Taraflardan biri kanun gereğince tedavi, gözlem veya koruma altına alınmış yahut başkalarıyla görüşmekten yasaklanmış olup da kendisi veya vekilinin <span class="mavi">  mahkemede bulunması mümkün değilse, o kimse hakkında davayı takip için kayyım atanıncaya kadar yargılama ertelenebilir</span>.</div></div></div>
+<hr>
+ALTINCI BÖLÜM <br>
+
+Süreler, Eski Hâle Getirme ve Adli Tatil <br> <br>
+
+
+
+BİRİNCİ AYIRIM <br>
+
+Süreler
+<div>
+Sürelerin belirlenmesi<div> </span>
+MADDE 90- <div> (1) Süreler, kanunda belirtilir veya hâkim tarafından tespit edilir. Kanunda belirtilen istisnai durumlar dışında, <span class="mavi"> hâkim kanundaki süreleri artıramaz veya eksiltemez.</span> <br>
+
+(2) <span class="span"> Hâkim, kendisinin tespit ettiği süreleri</span>, <span class="mavi"> haklı sebeplerle artırabilir veya eksiltebilir</span>; gerekli gördüğü takdirde, bu konudaki kararından önce tarafları da dinler. </div></div></div>
+
+<div>
+Sürelerin başlaması<div>
+MADDE 91- (1) Süreler, taraflara <span class="ark"> tebliğ tarihinden</span> veya kanunda öngörülen hâllerde, <span class="ark"> tefhim tarihinden</span> <span class="mavi"> itibaren işlemeye başlar</span>.</div></div>
+
+<div>
+Sürelerin bitimi <div>
+MADDE 92- <div> (1) Süreler <span class="ark"> gün olarak belirlenmiş ise</span> tebliğ veya tefhim <span class="mavi"> edildiği gün hesaba katılmaz</span>  ve <span class="mavi"> süre son günün <span class="kim"> tatil saatinde</span> biter</span>. <br>
+
+(2) <span class="ark"> Süre; hafta, ay veya yıl</span> olarak belirlenmiş ise başladığı güne son hafta, ay veya yıl içindeki <span class="mavi"> karşılık gelen günün tatil saatinde biter</span>. Sürenin bittiği ayda, başladığı güne <span class="span"> karşılık gelen bir gün yoksa</span>, <span class="mavi"> süre bu ayın son günü <span class="kim"> tatil saatinde</span> biter</span>.</div></div></div>
+
+<div>
+Tatil günlerinin etkisi<div>
+MADDE 93- (1) Resmî tatil günleri, <span class="span">süreye dâhildir</span>. Sürenin son gününün resmî tatil gününe rastlaması hâlinde, <span class="mavi"> süre tatili takip eden ilk iş günü <span class="kim"> çalışma saati sonunda</span> biter</span>.</div></div>
+
+<div>
+Kesin süre<div>
+MADDE 94- <div> (1) <span class="mavi"> Kanunun belirlediği süreler kesindir</span>. <br>
+
+(2) (Değişik:22/7/2020-7251/6 md.) Hâkim, tayin ettiği sürenin kesin olduğuna karar verebilir. Bu takdirde hâkim, tayin ettiği kesin süreye konu olan işlemi hiçbir duraksamaya yer vermeyecek şekilde açıklar ve süreye uyulmamasının hukuki sonuçlarını açıkça tutanağa geçirerek ihtar eder. <span class="mavi"> Kesin olduğu belirtilmeyen süreyi geçirmiş olan taraf yeniden süre isteyebilir</span>; bu şekilde verilecek <span class="mavi"> ikinci süre kesindir ve yeniden süre verilemez</span>. <br>
+
+(3) Kesin süre içinde yapılması gereken işlemi,<span class="mavi">  süresinde yapmayan tarafın, o işlemi yapma hakkı ortadan kalkar</span>.</div></div></div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+</div>
+
+<script>
+var surukleniyor = false;
+var offsetX, offsetY;
+
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+	document.addEventListener('mouseup', function() { surukleniyor = false;	});
+</script>
+
+</body>
+</html>
+{% endblock%}

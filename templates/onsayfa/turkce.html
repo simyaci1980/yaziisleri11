@@ -1,0 +1,1137 @@
+
+
+
+{% extends  'layout.html'%}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	.navbar {
+		margin-left: 0 !important;
+	}
+
+
+	header{
+		display:run-in ;
+		width: 100%;
+		margin: 0;
+	top: 0;
+	position: fixed;
+	border-radius: 10px;
+
+		}
+
+		body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5 px;}
+
+		.renki{color: rgb(202, 150, 221);}
+
+		ul li {	float: left;margin-right: 20px;}
+		a{ color: white;
+		}
+
+		div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; background-color:darkgray; }
+		h1{ text-align: left;
+			margin: 60px ;
+		}
+		.pet{
+		 margin: 80px;
+
+		}
+		li{
+			margin: 100 px;
+		}
+		hr{margin-bottom: 15px;}
+
+		.span{color: chocolate; font-size: larger;}
+
+		.ark{background-color:black; font-size: larger;}
+
+		.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+		.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large;  }
+		.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+		.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url(  "static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed ;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	margin-bottom: 5px;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	position: solid;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+      }
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+
+
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+
+.ort{
+	text-align: center;
+	}
+</style>
+<title>Tükçe</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+
+<body id="bady"  onload="tarıh()">
+
+	<br>
+
+	<div id="beyaz" class="beyaz" id="byz" >  <button name="butt" value="butt" class="butt" > <a href="index"> ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+
+	<br><br><br>
+	<div class="kal"> 	TÜRKÇE  <br></div>
+
+
+
+
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+		<p>
+		  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+		  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+		  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+		</p></div>
+
+		<script>
+		  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+		  </script>
+
+
+
+		  <div id="soruContainer" class="soruContainer">
+			  <div id="soruDiv" background-color= "rgb(236, 170, 188)">
+				  <!-- Soru metni ve cevap seçenekleri burada yer al7acak -->
+			  </div>
+			  <div id="cevaplar" background-color= "rgb(236, 170, 188)"></div> <!-- Bu div'i ekledim -->
+			  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+		  </div>
+		  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br>
+
+
+
+      <div>
+<h1 >İSİM FİİL </h1>
+<p class="pet"><strong class="ark" >Fiillerin cümlede isim görevinde kullanılan hâli</strong></p>
+      <p class="pet"> <span class="dik"> Fiil Kök ve Gövdesi ------</span> + <span class="ark"> ------ ma, ış, mak    -------------------</span>          <ol>  <li>  <span class="mavi">      Örnek ===>  bak(fiil)  -  ış(ek)  bakış(isim fiil )</span></li>
+                            <li>  <span class="mavi">      Örnek ===>  yaz(fiil)  -  ma(ek)  yazma(isim fiil )</span></li>
+                            <li>  <span class="mavi">      Örnek ===>  tut(fiil)  -  mak(ek)  tutmak(isim fiil )</span></li></ol> </p>
+                        </div>
+
+   <div> <h1>EK EYLEM = EK FİİL </h1>
+     <p class="pet"> <strong class="dik">İsim soylu kelimelerin sonuna eklenerek onları yüklem haline getirirler</strong> </p>
+    <ol>  <li>  <span class="mavi">      Örnek ===>  Arkadaş(İsim)  -  dı(ek)  arkadaşımdı(yüklem )</span></li>
+        <li>  <span class="mavi">      Örnek ===>  Arkadaş(İsim)  -  mış(ek)  arkadaşımış(yüklem )</span></li>
+        <li>  <span class="mavi">      Örnek ===>  Arkadaş(İsim)  -  dır(ek)  arkadaşımdır(yüklem )</span></li>
+       <p class="pet"> <strong class="dik"> Ömer benim eskiden sınıf arkadaşımdı</strong></p>
+        </ol></div>
+
+        <div>
+
+            <h1>ZARF = BELİRTEÇ </h1>
+           <p class="pet"><span class="dik">  Fiile sorulan --Ne Zaman-- Nereye-- Ne Kadar -- Nasıl Sorularının cevabı </span></p>
+            <span class="kim" style="padding-right: 100px; padding-left: 100px;" >Çok hızlı koşuyor</span> <strong class="mavi">kim ==> O , Nasıl ==> Hızlı(durum zarfı) , Ne Kadar ==> Çok (Miktar zarfı )</strong>
+
+            <ol>  <li>  <span class="mavi">  ZAMAN ZARFI</li>
+                <li>  <span class="mavi">  DURUM ZARFI</li>
+                    <li>  <span class="mavi">  MİKTAR ZARFI</li>
+                        <li>  <span class="mavi">  YER-YÖN ZARFI</li>
+                            <li>  <span class="mavi">  SORU ZARFI</li>
+
+                </ol>
+
+        </div>
+
+
+        <div>
+            <h1>ZAMİR </h1>
+            <p class="pet"><span class="dik">  Öznenin yerini tutar  ( O , Ben  , Benim ..... vb  ) </span></p>
+
+            <h3>DÖNÜŞLÜLÜK ZAMİRİ</h3>
+            <p class="pet"><span class="dik">  Kendi Sözcüğü ve iyelik almış halidir.  </span></p>
+            <ol>  <li>  <span class="mavi">  Bütün Soruları <span class="kim"> Kendi</span> çözmüş </li>
+                <li>  <span class="mavi">  Ne söylediğinden <span class="kim"> kendinin</span> bile haberi yok  </li>
+
+
+                </ol>
+
+        </div>
+
+        <div>
+            <h1>FİİLİMSİLER</h1>
+            <p class="pet"><span class="dik">  Fiil soylu olup cümle içerisinde sıfat , zarf  ve isim olarak kullnılır </span> <span class="ark"> Yukarıda isim fiilde fiilin isim olarak kullanılışını görmüştük burada bunlara zarf ve sıfatıda ekleyeceğiz</span>  </p>
+            <ol>  <li>  <span class="span">  Sana <span class="kim"> saygı gösterenlere</span>  karşı sense aynı şekilde davran <span class="kim"> (Fiil isim olarak kullanılmış)</span> </li>
+                 <li>  <span class="span"> Meğer hayatımda beni <span class="kim"> önemseyen</span> ne çok insan varmış  </span> <span class="kim">(Fiil sıfat olarak kullanılmış)</span> </li>
+                 <li> <span class="span"> <span class="kim"> Gün doğmadan</span> neler doğar </span> <span class="kim">( Fiil zarf olarak kullanılmış )</span>  </li>
+                </ol>
+
+                <h3>Peki bunları nasıl anlayacağız?  CEVAP :  Eklere bakarark </h3>
+                 <ol><li>  <span class="mavi">İSİM OLMASI İÇİN </span> <span class="ark"> -ma, ış , mak </span>  Eklerini alması gerekiyor  </span> </li>
+                    <li>  <span class="mavi">SIFAT OLMASI İÇİN </span> <span class="ark"> an, ası , mez , ar , dik, ecek , miş  </span>  Eklerini alması gerekiyor  </span> </li>
+                    <li>  <span class="mavi">ZAMİR OLMASI İÇİN </span> <span class="ark"> esiye , ip ,  meden , ince , ken , eli , dıkçe , erek , -r.. maz , e , maksızın , casına  </span>  Eklerini alması gerekiyor  </span> </li>
+                </ol>
+				<span class="kim">Arkadaşlar kısa anlatmaya ve hatırlatmaya çalışıyorum anlamadıysanız bununla ilgili bir video izlemek faydalı olabilir </span> <br><br> <a href="https://youtu.be/mcXcAU8neEA" class="yaz" >Mesala burada beş dakikalık bir video var </a>
+        </div>
+
+		<div>
+			<h1>SIFAT </h1>
+
+			<p class="pet"> <span class="dik"> İsme sorulan Nasıl sorusunun cevabıdır</span></p>
+			<ol>
+				<li>
+					Kalın Kitap
+				</li>
+				<li>Eski Defter</li>
+				<li>Kırık Bardak</li>
+			</ol>
+              <span class="mavi">Yeşil Elbise sana çok yakıştı </span> <span class="kim">Yeşil Elbise Sıfat tamlaması Yeşil ise sıfattır</span>
+
+			  <ol><li>
+				Belgisiz
+			  </li>
+			<li>İşaret</li>
+		<li>Sayı</li>
+	<li>Soru</li></ol> <span class="mavi"> olmak üzere dört çeşiti vardır</span>
+
+		</div>
+
+
+		<div>
+			<h1>İSİM TAMLAMASI </h1>
+			<ol>
+				<li>
+					<span class="mavi">Kapının Kolu </span> <span class="kim">Kapı tamlayan Kolu ise tamlanandır(BELİRTİLİ İSİM TAMLAMASIDIR) </span>
+
+				</li>
+				<li>
+					<span class="mavi">Portakal Suyu </span> <span class="kim">Portakal tamlayan suyu Tamalandır (BELİRTİSİZ İSİM TAMLAMASIDIR)</span>
+				</li>
+			</ol>
+			<span class="ark">Tamlanana Ne, Neyin , Kim , Kimin soruları sorulur </span>
+			<button  onclick="soruyuGoster(194)" class="soru" >2016 yılı çıkmış soru</button>
+		</div>
+
+		<div>
+			<h1>EDAT = İLGEÇ </h1>
+			<p class="pet"><span class="kim">Her hangi bir fiil her hangi bir nesneyi karşılamazlar ve yardımcı olarak kullanılan kelimelerdir.</span></p>
+			<span class="mavi">İle , Gibi , İçin , Diye , Üzere , kadar , Yalnız ...... vb</span>
+			<ol>
+				<li>
+				 <span class="kim">	GİBİ :</span>  Kurt gibi açıkmış
+				</li>
+				<li>
+					<span class="kim">ÜZERE </span> Konuşmak üzere ayağa kalktı
+				</li>
+			</ol>
+		</div>
+	<button  onclick="soruyuGoster(315)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button>
+
+		<div>
+			<h1>CÜMLENİN ÖĞELERİ
+			</h1>
+         <ol>
+			<li>
+				<span class="kim">YÜKLEM : </span> Ben her akşam içerim (içerim )
+			</li>
+			<li>
+				<span class="kim">ÖZNE : </span> <span class="mavi">Kim , NE  soruları </span>
+			</li>
+			<li>
+				<span class="kim">NESNE : </span> <span class="mavi">NEYİ , Ne sorularının cevabıdır () Neyi sorusunun cevabı  Belirtili , Ne sorusunun cevabı Belirtisiz nesnedir  </span>
+			</li>
+			<li>
+				<span class="kim">DOLAYLI TÜMLEÇ :  </span> <span class="mavi"> e , de , den eklerini almış olurlar yüklem sorulan <br> "nereye, nerede, nereden, <br> kime, kimde, kimden,<br> neye, neyde, neyden" sorularının cevabıdır </span>
+			</li>
+			<li>
+				<span class="kim">ZARF TÜMLECİ:  </span> <span class="mavi">Ne Zaman , Nasıl , Niçin , Niye, Neden , Ne kadar sorularının cevabıdır </span>
+			</li>
+			<li>
+				<span class="kim">EDAT(İLGEÇ) : </span> <span class="mavi">Neyle , Kiminle  ve Hangi Amaç ile sorularının cevabıdır </span>
+			</li>
+			<li>
+				<span class="kim">CÜMLE DIŞI UNSUR :</span> <span class="mavi">Cümlenin kuruluşuna katılmayan; ancak, dolaylı olarak cümlenin anlamına katkıda bulunan bağlaç, ünlem, ünlem grubu, seslenme, ara söz gibi unsurlardır </span>
+			</li>
+					 </ol>
+
+			<span class="mavi">Yaz gelince Antalyaya gideceğim</span>
+			<ol>
+				<li><span class="ark"> Önce yüklemi bul</span>  </li>
+				<li><span class="ark">Sonra özneyi bul cümlede nesne varsa karışabilir yüklemden sonra özne bulunur (Kim gidecek Cevap: Ben gizli öze ) </span></li>
+				<li><span class="ark">Sonra diğer öğeleri bulmaya çalış Nereye gideceğim Antalyaya Dolaylı Tümleç </span></li>
+				<li><span class="ark">Ne zaman gideceğim Yaz gelince Zarf Tümleci </span></li>
+			</ol>
+			<button  onclick="soruyuGoster(30)" class="soru" >2023 yılı çıkmış soru</button>
+		</div>
+
+
+		<div>
+			<h1>KÖK </h1>
+			<p class="pet"><span class="kim">Bir sözcükte her türlü ek çıkartıldıktan sonra kalan anlamlı en küçük parçaya kök denir</span></p>
+
+			<span class="mavi">CAN -- LI - LIK  ( Kök=Can)</span> <br><br>
+
+			<span class="kim">Sözcüğün bütünü ile kökü arasında bir anlam bağı olmalı </span> <br>
+			<span class="mavi">ELMALAR EL-MA-LAR  (EL olmaz el ile elma arasında anlam ilişkisi yok ) </span>
+
+			<h3>KÖK ÇEŞİTLERİ </h3><br><br>
+			<h6>İSİM KÖKÜ </h6>
+			<span class="mavi">Su -suz </span><br>
+			<span class="mavi">Zeytin - lik </span><br>
+			<span class="mavi">Kucak-la-dı</span> <br><br>
+			<h6>FİİL KÖKÜ </h6>
+			<span class="mavi">Süpür - ge </span> <br>
+			<span class="mavi">Dol-muş </span> <br>
+			<span class="mavi">Boz - gun </span>
+		</div>
+
+		<div>
+			<h1>EKLER </h1>
+
+			<p class="pet"> <span class="kim">Bir sözbükten başka bir sözcük türeten veya sözcüğe farklı anlam ilgileri katan harf yada harf gruplarına ek denir </span> </p> <br>
+
+			<span class="mavi">BALON-CU</span> <br>
+			<span class="mavi">BALON-LAR</span> <br><br>
+
+			<span class="kim">Ekleri ayıra bilmek için önce kök bulunmalı </span>
+
+			<h4>YAPIM EKLERİ </h4>
+
+			<span class="kim">LIKLICISIZGI </span> <span class="mavi">DİYE KODLAYABİLRİSİNİZ </span> <br>
+			<span class="ark">Kömür- lük </span> <br>
+			<span class="ark">Üzüm-lü</span> <br>
+			<span class="ark">Av - cı </span> <br>
+			<span class="ark">Tuz-suz</span> <br>
+			<span class="ark">Bil-gi</span> <br>
+
+
+			<h4>GÖVDE : </h4>
+
+			<span class="kim">Sözcüğün yapım eki almış haline gövde deniz </span> <br>
+			<span class="mavi">Kalem-lik </span> <br>
+			<span class="mavi">Sil-gi</span> <br>
+
+			<button  onclick="soruyuGoster(32)" class="soru" >2023 yılı çıkmış soru</button>
+
+
+		</div>
+
+		<div>
+			<h1>ÜNSÜZ YUMUŞAMASI </h1>
+			<p class="pet"><span class="kim">P,Ç,T,K sert ünsüzlerinin biriyle biten sözcüğe ünlü ile başlayan bir ek geldiğinde p ,ç, t, k sert ünsüzlerinin yumuşayarak  B, C, D, G, Ğ ye dönüşmesine ÜNSÜZ YUMUŞMASI denir </span></p> <br>
+
+			<span class="mavi">Kitap - ı ==> Kitabı</span> <br>
+			<span class="mavi">Çekiç-i ==> Çekici</span> <br>
+			<span class="mavi">Kilit-i ===> Kilidi</span> <br><br>
+
+			<span class="kim">İstisnalar kaideyi bozmaz süt-ü ==> sütü</span>
+
+
+		</div>
+
+		<div>
+			<h1>
+				ÜNSÜZ BENZEŞMESİ
+			</h1>
+			<p class="pet"><span class="kim">F,S,T,K,Ç,S,H,P  kodlarsak Fıstıkçı Şahap ünsüzleri ile biten bir kelimenin C , D, G yumuşak ünsüzleri ile başlayan bir ek gelirse  c, d, g serteleşerek Ç , T , K ye dönüşür buna ÜNSÜZ BENZEŞMESİ(SERTLEŞMESİ) denir </span></p> <br>
+			<span class="mavi">Hafif-ce ==> Hafifçe</span> <br>
+			<span class="mavi">Bas-gı ==> Baskı</span> <br>
+			<span class="mavi">Simit-ci ==> Simitçi</span>
+		</div>
+
+		<div>
+			<h1>ÜNLÜ DÜŞMESİ </h1>
+			<p class="pet"><span class="kim">Son hecesinde dar ünlü bulunan sözcükler ( I ,İ , U, Ü ) ünlü ile başlayann bir ek aldıkalrında son hecelerindeki dar ünlü (ı, i , u, ü ) düşer bu olaya ünlü düşmesi denir </span></p> <br>
+			<span class="mavi">Boyun ==> Boynu (y ile n arasındaki u gitti)</span> <br>
+			<span class="mavi">Ömür ==>  Ömrü</span> <br>
+			<span class="mavi">Akıl ==> Aklı</span> <br>
+			<span class="mavi">Fikir==> Fikri</span> <br><br>
+
+			<p class="pet"><span class="kim">Bazen kelimeler birleştiğinde de ünlü düşmesi olur </span></p> <br>
+			<span class="mavi">Sabır- Etmek == > Sabretmek (b ve re arasındaki ı gitti)</span><br>
+			<span class="mavi">Pazar - ertesi ==> Pazartesi (e gitti )</span>
+		</div>
+
+		<div>
+			<h1>ÜNLÜ DARALMASI </h1>
+			<p class="pet"><span class="kim">Tükçe de a, e geniş ünlüleri ile biten fiilere - yor eki getirildiğinde fiilin sonundaki geniş ünlü daralarak dar (ı , i , u ) ünlülerine dönüşür bu olaya ÜNLÜ DARALMASI denir </span></p> <br>
+
+			<span class="mavi">Bekle-yor ==> Bekliyor ( e gitti i geldi )</span> <br>
+			<span class="mavi">Özle - yor ==> Özlüyor </span> <br>
+			<span class="mavi">Ye-yor ==> Yiyor</span> <br>
+			<span class="mavi">De- yor ==> Diyor </span>
+		</div>
+
+		<div>
+			<h1>ÜNSÜZ TÜREMESİ </h1>
+			<p class="pet"><span class="kim">Bazı sözcükler ünlü ile başlayan bir ek aldıklarında yada başka bir kelime ile birleştirklerinde sözcüğün sonundaki harf türeyerek ikizleşir buna ÜNSÜZ TÜREMESİ denir </span></p> <br>
+
+			<span class="mavi">Af  -- Etmek ==> Affetmek (bir f daha türedi)</span> <br>
+			<span class="mavi"> His -- etmek == > Hissetmek </span> <br>
+			<span class="mavi">Şık - ı ===> Şıkkı </span> <br>
+			<span class="mavi">Zam-ı  ===> Zammı </span>
+		</div>
+		<button  onclick="soruyuGoster(29)" class="soru" >2023 yılı çıkmış soru</button><button  onclick="soruyuGoster(192)" class="soru" >2016 yılı çıkmış soru</button>
+		<div>
+			<h1>YAZIM KURALLARI </h1>
+			<div>
+			<h3>BÜYÜK HARFLERİN KULLANIMI </h3>
+			<span class="kim">Unvan , Saygı , Rütbe , büyük harf ile başlar </span>
+			<span class="mavi">Ömer Bey , Aslı Hanım ==> saygı bildiriyor  </span> <br><br>
+			<span class="kim">Hayvanlara verilen adlar büyük harf ile başlar </span>
+			<span class="mavi">Çomar , Maviş </span> <br><br>
+			<span class="kim">Din mezhep adları büyük harf ile başlar </span>
+			<span class="mavi">Müslümanlık  , Hanefi </span> <br><br>
+			<span class="kim">Yer adlarından sonra gelen deniz , nehir , göl , dağ , boğaz vb. isimleri büyük harf ile başlar </span>
+			<span class="mavi">Van Gölü , Ağrı Dağı </span> <br><br>
+			<span class="kim">Mahalle Meydan Bulvar Cadde Sokak Adları büyük harf ile başlar </span>
+			<span class="mavi">Çınar Mahallesi </span><br><br>
+			<span class="kim">Saray , Köşk , Han , Kale , Köprü , Kule , Anıt vb. yapıları büyük harf ile başlar </span>
+			<span class="mavi">Dolmabahçe Sarayı </span><br><br>
+			<span class="kim">Kurum , Kuruluş , Kurul adları büyük harf ile başlar </span>
+			<span class="mavi">Türk Dil Kurumu </span> <br><br>
+			<span class="kim">Ulusal , Resmi ve Dini bayaramlar Anma ve kutlama günlerinin adları büyük harf ile başlar </span>
+			<span class="mavi">Cumhuriyet Bayramı , Ramazan Bayramı </span> <br><br>
+			<span class="kim">Kitap , Dergi  , Gazete ve Sanat eserleri (Tablo , Heykel vb.) büyük harf ile başlar </span>
+			<span class="mavi">Küçük Prens </span><br><br>
+			<span class="kim">Tabela ve Levhalardaki yazılar büyük harf ile başlar </span>
+			<span class="mavi">Giriş , Eczane </span> <br><br>
+			<span class="kim">Gezegen isimleri büyük harf ile başlar </span>
+			<span class="mavi">Dünya  , Güneş , Ay </span><br><br>
+			<span class="kim">Dil isimleri büyük harf ile başlar </span>
+			<span class="mavi">Türkçe , İngilizce </span> <br><br>
+			<span class="kim">Yer , Yön bildiren sözcükler <strong> özel isimden önce kullanıldığında</strong> büyük harf ile başlar </span>
+			<span class="mavi">Doğu Anadolu , Anadolunun doğusu </span> <br><br>
+			<span class="kim">Belirli Tarih belirten Gün , Ay  adları büyük harf ile başlar </span>
+			<span class="mavi">20 Haziran Salı </span></div>
+			<div>
+				<h3>KÜÇÜK HARFLE BAŞLAYANLAR </h3>
+				<span class="kim">Akrabalık belirten kelimeler küçük harf ile başlar </span>
+				<span class="mavi">teyze , hala , dayı, amca </span> <br><br>
+				<span class="kim">Yer isimlerinden sonra gelen ilçe köy belde kıta gibi tür isimleri küçük harf ile başlar </span>
+				<span class="mavi">Sarıyer ilçesi</span><br><br>
+				<span class="kim">Para isimleri küçük harf ile başlar </span>
+				<span class="mavi">lira  , dolar </span> <br><br>
+
+			</div>
+
+			<div>
+				<h3>SAYILARIN YAZIMI </h3>
+				<span class="kim">Bu sabah beş yüz metre koştum  </span>
+				<span class="mavi"> (beş yüz) gibi  ayrı yazılır</span> <br><br>
+
+				<span class="kim">Sıra sayıları </span>
+				<span class="mavi"> 1. şeklinde yada 1'inci şeklinde yazılabilri </span><br><br>
+
+				<span class="kim">Üleştirme sayı ile değil yazı ile yapılır</span>
+				<span class="mavi"> 5'er değil  <strong> beşer </strong> şeklinde yazılır </span><br><br>
+
+				<span class="kim">Kesirler virgül ile ayrılır </span>
+				<span class="mavi">5,6</span><br><br>
+
+			</div>
+
+			<div>
+				<h3>DE , Kİ , Mİ NİN YAZILIŞI </h3>
+				 <div>
+					<h5>Mİ NİN YAZILIŞI </h5>
+					<span class="kim">Kendinden önceki ve sonraki sözcükten ayrı ama eklere bitişik yazılır </span> <br>
+					<span class="mavi">Derslerini yaptın mı ? </span><br>
+					<span class="mavi">Pikniğe sende geliryor musun? </span><br><br>
+					<span class="kim">Soru anlamı katmasada ayrı yazılır </span> <br>
+					<span class="mavi">Bahar geldi mi her yer yeşil olur </span>
+				 </div>
+				 <div>
+					<h5>Kİ NİN YAZILIŞI </h5>
+					<span class="kim">Bağlaç ise AYRI Ek ise BİTİŞİK yazılır</span> <br>
+					<span class="mavi">Sessiz ol ki bebek uyanmasın (ler eki getiremediğimiz için bağlaç  olkiler olmuyor) </span> <br>
+					<span class="mavi">Manavdaki meyveler çok tazeydi ( ler eki getirebiliyoruz manavdakiler o zaman ek ek olursada bitişik)</span> <br><br>
+
+				 </div>
+
+				 <div>
+					<h5>DE NİN YAZILIŞI </h5>
+					<span class="kim">Bağlaç ise AYRI Ek ise BİTİŞİK yazılır</span> <br>
+					<span class="mavi">Maçta ben de gol attım (de çıkınca anlam değişmiyor değişmiyorsa bağlaç bağlaçsa ayrı yazılıyor)</span><br>
+					<span class="mavi">Elinde bir kova balık vardı (de çıkınca anlam bozuluyor o zaman ek ek olunca bitişik )</span> <br>
+					<span class="kim">Ayrıca de , da eki bağlaç ise asla te, ta ya dönüşmez </span>
+				 </div><button  onclick="soruyuGoster(193)" class="soru" >2016 yılı çıkmış soru</button>
+			</div>
+			<button  onclick="soruyuGoster(230)" class="soru" >2017 yılı çıkmış soru</button>
+
+		</div>
+
+		<div>
+		<h1>	NOKTALAMA İŞARETLERİ </h1>
+
+		<div>
+			<h3>NOKTA </h3>
+			<span class="kim">Cümlenin sonuna konur </span> <br>
+			<span class="kim">Bazı kısaltmaların sonuna konur </span> <span class="mavi">Dr. Hande </span> <br>
+			<span class="kim">Sayılardan sonra sıra bildirmek için konur </span> <span class="mavi">Kiraz festivali 7. si </span><br>
+			<span class="kim">Saat dakika gösteren sayıların arasına </span><span class="mavi">12.30</span><br>
+			<span class="kim">Genel ağ adreslerinde </span> <span class="mavi">www.eba.gov.tr</span><br>
+			<span class="kim">Tarih yazılrı iken </span> <span class="mavi">07.07.2017</span>
+		</div>
+		<div>
+			<h3>VİRGÜL </h3>
+			<span class="kim">Eş görevli kelime ve Kelime gruplarının arasına </span> <span class="mavi">Pırasa , maydonoz , havuç </span><br>
+			<span class="kim">Sıralı cümleleri bir birinden ayırmak için </span><span class="mavi">Hava çok soğuktu , insanlar üşüyordu</span><br>
+			<span class="kim">Cümle içinde ara sözcük ara cümlenin başına ve sonuna </span><span class="mavi">Bu şehirde , Ankarada, yedi yıl yaşadım </span><br>
+			<span class="kim">Tırnak içinde olmayan alıntı cümlelerinin sonuna konur </span> <span class="mavi">Annemi ve Babamı çok seviyorum , dedi. </span> <br>
+			<span class="kim">Hitap için kullanılan kelimlerden sonra konur </span> <span class="mavi">Çocuklar , lütfen biraz sessiz olalım</span><button  onclick="soruyuGoster(33)" class="soru" >2023 yılı çıkmış soru</button>
+		</div>
+		<div>
+			<h3>SORU İŞARETİ</h3>
+			<span class="kim">Soru anlamı taşıyan cümlelerin sonuna konur </span> <span class="mavi">Sergiye ne zaman geleceksiniz? </span><br>
+			<span class="kim">Bilinmeyen kesin olamayan ve şüpheyle karşılaşılan yer , tarih ve benzeri </span> <span class="mavi">Ünlü ressam 1610(?) yılında bu resmi yapmış </span> <br>
+
+		</div>
+		<div>
+			<h3>ÜNLEM İŞARETİ </h3>
+			<span class="kim">Sevinç , acı  , korku , şaşırma gibi duygu anlatan cümle veya ibarelerin sonuna konur </span>
+			<span class="mavi">Yaşasın! Yaz kampına katılmaya hak kazandım. </span> <br>
+			<span class="kim">Alay , küçümseme anlamı katmak için </span> <span class="mavi">Çok zeki! olduğundan soruların hiç birini çözememiş </span> <br>
+			<span class="kim">Seslenme hitap uyarı sözlerinden sonra </span> <span class="mavi">Hey ! İnşaata izinsiz giremezsiniz </span>
+		</div>
+		<button  onclick="soruyuGoster(229)" class="soru" >2017 yılı çıkmış soru</button>
+		<div>
+			<h3>NOKTALI VİRGÜL </h3>
+			<span class="kim">Cümle içinde virgül ile ayrılmış tür takımları bir birinden ayırmak için kullanılır </span> <span class="mavi">
+				Ahemet , Yusuf , İbrahim ; arka sıralarda ; Ali , Cem ve Bora ön sıralarda oturuyordu
+			</span> <br>
+
+		</div>
+
+		<div>
+			<h3>KESME İŞARETİ </h3>
+			<span class="kim">
+				Özel adlara getirilen iyelik ,  durum  ve bildirme ekleri kesme işareti ile ayrılır
+			</span> <span class="mavi">Funda'nın Sırt çantası çok güzelmiş </span><br>
+			<span class="kim">Sayılara , Kısaltmalara gelen ekleri ayırmada </span> <span class="mavi">1993'te TBMM'ye</span> <br>
+			<span class="kim"> Şiirde seslerin ölçü gerektiğinde düştüğünü göstermek için </span> <span class="mavi">Ela gözlü nazlı dilber sen d'olasın benim gibi </span><br><br>
+
+			<span class="ark">UYARI : ler , lar ekleri kesme ile ayrılmaz Hakanlar (doğru)</span> <br>
+			<span class="ark">UYARI : Kurum , Kuruluş isimlerine getirilen çekim ekleri kesme işareti ile ayrılmaz Türk Dil Kurumunun (doğru)</span>
+		</div>
+		<div>
+			<h3>KISA ÇİZGİ </h3>
+
+			<span class="kim">Satıra sığmayan kelimleri bölerken satır sonunda kullanılır </span> <span class="mavi">Günlüğüne yazdığı cüm- <br> leleri bizlere okudu </span> <br>
+			<span class="kim">Cümle içinde ara sözleri veya  ara cümleleri ayırmak için ara sözlerin veya ara cümlelerin başına ve sonuna konur bitişik yazılır </span> <span class="mavi">Sınıf arkadaşım -Erhan- bugün çok neşeli </span><br>
+			<span class="kim">Kelimelerin kökleri gövdeleri ve eklerini bir birinden ayırmak için kullanılır </span> <span class="mavi">Temiz-le-mek</span> <br>
+			<span class="kim">Heceleri göstermek için kullanılır </span> <span class="mavi">Bah-çe-miz-de  </span> <br>
+			<span class="kim">Arasında ve ile , ila .... den  .... e anlamı vermek için kelimeler ve sayılar arasıdna kullanılır </span> <span class="mavi">İstanbul - Ankara arası uçaklar bir saat sürüyor </span> <br>
+			<span class="kim">Matematikte çıkartma işlemi olarak kullanılır </span> <span class="mavi">49-17=?</span> <br>
+			<span class="kim">Sıfırdan küçük değerleri göstermek için kullanılır </span> <span class="mavi">Bugün hava -4 dereceymiş </span>
+		</div>
+		<div>
+			<h3>
+				İKİ NOKTA
+			</h3>
+			<span class="kim">Kendileri ile örnek verilecek cümlelerin sonuna konur </span> <span class="mavi">Kış meyveleri şunlardır: Ayva , Mandalina , Nar </span> <br>
+			<span class="kim">Kendisi ile ilgili açıklama yapılacak cümlelerin sonuna konur </span> <span class="mavi">Size arkadaşımı tanıtayım : Yüksek Mimar Emir ÇAKIROĞLU</span> <br>
+			<span class="kim">Kaşrılıklı konuşmalarda konuşan kişiyi belirten sözlerin sonuna konur </span> <span class="mavi">Cenk : Bana hayat hikayeni anlatır mısın? </span> <br> <span class="mavi">Ezgi: Anlarım ama tamamını dinleyeceksin </span> <br>
+			<span class="kim"> Matematikte bölme işareti olarak kullanılır </span> <span class="mavi">144:12=?</span> <br>
+			<span class="kim">Genel ağ adreslerinde kullanılır </span> <span class="mavi">http://tdk.org.tr</span>
+		</div>
+
+		<div>
+			<h3>ÜÇ NOKTA </h3>
+			<span class="kim">Anlatım olarak tamamlanmamış cümlelerin sonuna konur </span> <span class="mavi">Bir yanımızda akıp giden bir dere diğer yanımızda yemyeşil ormanlar...</span> <br>
+			<span class="mavi">Annemin o lezzetli yemekleri...</span> <br>
+			<span class="kim">Kaba sayıldığı için veya bir başka sebepten dolayı açık yazılmak istenmeyen kelime ve bölümlerin yerine konur </span> <span class="mavi">Hakim ...'ye bir kaç soru yöneltti</span> <br>
+			<span class="mavi">Hafta sou ...'ne gittiğini herkesten saklamış </span><br>
+			<span class="kim">Anlatılarda başta ortada ve sonda alınmayan kelime veya bölümlerin yerine konur </span> <span class="mavi">... derken vapur beş on dakika içinde limandan ayrıldı </span>
+ 		</div>
+
+		<div>
+			<h3>EĞİK ÇİZGİ</h3>
+			<span class="kim"> Dizeler yan yan yazıldığında kullanılır </span><br>
+			<span class="kim">Adres yazarken aprtman numarası ile daire numarası arasına ve semt ile şehir arasına konur </span> <span class="mavi">Mehteran Caddesi , Huzur Sokak No: 27/4 Kavaklıdere / Ankara</span> <br>
+			<span class="kim">Tarihlerin yazılışında gün , ay  ve yıl gösteren sayıları birbirinden ayırmak için konur </span> <span class="mavi">10/03/1991 tarihinde (Not : 10.03.1991 buda olur )</span> <br>
+			<span class="kim">Dil bilgisi eklerinin farklı biçimlerini göstermek için kullanılır </span> <span class="mavi">-mış / -miş / - muş </span> <br>
+			<span class="kim">Genel ağ adreslerinde </span> <span class="mavi">https://www.tdk.gov.tr</span>
+
+		</div>
+		<div>
+			<h3>UZUN ÇİZGİ </h3>
+			<span class="kim">Yazıda satır başına alınan konuşmaları göstermek için kullanılır buna konuşma çizgiside denir </span> <span class="mavi">-Tezgahtaki balıklar taze mi ?</span> <br>
+			<span class="mavi">- Evet balıklar çok taze </span>
+		</div>
+
+		<div>
+			<h3>TIRNAK İŞARETİ </h3>
+			<span class="kim">
+				Başka bir kimseden veya yazıdan olduğu gibi aktarılan sözler tırnak içinde alınır
+			</span> <span class="mavi">Atatürk : "Beni Türk hekimlerine emanet ediniz" demiştir. </span><br>
+			<span class="kim">Özet olarak vurgulanmak istenen sözler tırnak içine alınır </span> <span class="mavi">Bu tatlı Osmanlı zamanında "saray helvası" olarak bilinirmiş</span> <br>
+			<span class="kim">Cümle içindeki eserlerin ve yazıların adları
+			ile bölüm başlıkları tırnak içine alınır
+			</span><span class="mavi">Okuduğum ilk hikaye kitabı " Mine'nin Ankarada"sıydı</span>
+		</div>
+		<div>
+			<h3>YAY AYRAÇ </h3>
+			<span class="kim">Tiyatro eselerinde hareketleri açıklamak ve göstermek için kullanılır </span> <span class="mavi">Liman gövdesi -(sağ tarafı göstererek) vapur az önce bu yana doğru gitti</span> <br>
+			<span class="kim">Anlatının aktarıldığı eseri yazarı göstermek için kullanılır </span> <span class="mavi">Çalışıp kazan kalma aç ; Hiç kimseye olma muhtaç. (Hasan Ali Yücel )</span> <br>
+			<span class="kim">Anlatılarda alınmayan kelime veya bölümlerin yerine konulan üç nokta yay ayraç içinde alınabilir </span> <span class="mavi">(...) Her taraftan kuş sesleri duyuluyordu</span> <br>
+			<span class="kim">Bir söze küçümseme anlamı katmak için kullanılan ünlem işareti yay ayraç içine alınır </span> <span class="mavi">Bu lezzetli (!) yemekleri kimse yiyemedi </span> <br>
+			<span class="kim">Bir bilginin kesin olmadığını göstermek için kullanılan soru işareti yay ayraç içine alınır </span> <span class="mavi">Yarışmada beşer (?) soru sorulacakmış </span> <br>
+
+		</div>
+
+		<div>
+			<h3>KÖŞELİ AYRAÇ </h3>
+			<span class="kim">Ayraç içinde ayraç kullanılması gereken durumlarda yay ayraçtan önce köşeli ayraç kullanılır </span>
+		</div>
+
+		</div>
+		<button  onclick="soruyuGoster(31)" class="soru" >2016 yılı çıkmış soru</button><button  onclick="soruyuGoster(195)" class="soru" >2016 yılı çıkmış soru</button><button  onclick="soruyuGoster(196)" class="soru" >2016 yılı çıkmış soru</button><button  onclick="soruyuGoster(197)" class="soru" >2016 yılı çıkmış soru</button> <button  onclick="soruyuGoster(227)" class="soru" >2017 yılı çıkmış soru</button><button  onclick="soruyuGoster(228)" class="soru" >2017 yılı çıkmış soru</button><button  onclick="soruyuGoster(231)" class="soru" >2017 yılı çıkmış soru</button>
+			<button  onclick="soruyuGoster(312)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button>	<button  onclick="soruyuGoster(313)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button>	<button  onclick="soruyuGoster(314)" class="soru" >2020 yılı Aralık ayı çıkmış soru</button>
+
+		<script>
+			var surukleniyor = false;
+			var offsetX, offsetY;
+
+			// Tüm soru göster butonlarını seç
+			const soruGosterButtons = document.querySelectorAll('.soru');
+
+			// Her bir buton için event listener ekle
+			soruGosterButtons.forEach(function (button, index) {
+			button.addEventListener('click', function() {
+			const soruContainer = document.querySelector('.soruContainer');
+
+			// Eğer gösteriliyorsa gizle, gizliyse göster
+				if (soruContainer.style.display === "none") {
+				  soruContainer.style.display = "block";
+				} else {
+				  soruContainer.style.display = "none";
+			}
+			});
+			});
+
+
+			soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+			document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+					soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+				document.addEventListener('mouseup', function() { surukleniyor = false;	});
+			</script>
+</body></html>
+
+	  {% endblock%}
+

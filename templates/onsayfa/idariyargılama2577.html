@@ -1,0 +1,1504 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ; 
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+body{background-color: rgb(0, 10, 7); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; }
+
+hr{margin-bottom: 15px;}	
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+.soruContainer {
+			display: none;
+            background-color: rgb(174, 172, 172);
+            color:black;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 30%;
+            top: 30%;
+            max-width: 800px;
+			max-height: 800px;
+            text-align: justify;
+			font-size: small;
+			position: fixed;
+	  }	
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;           
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}	  
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }	
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+	
+	}	
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;  
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}	
+	
+	
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1); 
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+		
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;	
+	top: 5;
+	width: 100%;
+	position: fixed; 
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{	
+	background-color: rgb(173, 24, 44);
+	background-position: center;	
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}		
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;	
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}	
+.soru{
+	cursor: pointer;	
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}	
+
+
+.cevapp{ color: darkred;
+	}
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}	
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}	
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}	
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;		
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }	
+.ort{
+	text-align: center;
+	}	
+	
+</style>
+<title>İDARİ YARGILAMA USULÜ KANUNU</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ; 
+		} }
+	     
+	
+	
+	
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon 
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için 		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için 
+		
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ() 
+		metınKim() 	}
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function kimmorlasss(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }  
+		
+	function kimuyp(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function kimdahe(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} } 
+		
+	function kimyes(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} } 	
+		
+	function metınArk(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){		
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function metınDık(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınEDİ(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }	
+		
+	function metınYes(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function metındmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }	
+	
+	function metınkır(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }	
+
+	function morlas(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikcho(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }	
+
+	function dikuyp(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }		
+
+	function dikkırmızı(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }			
+	
+	function morlasss(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }				
+	
+	function arkuyp(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }	
+		
+	function arkdahe(){		
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }	
+
+	function metınmavi(){		
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }	
+	
+	function dikles(){		
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }			
+		
+	function chola(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }			
+	
+	function dahadayeni(){		
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }	
+	 
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor 
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))	
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')		 
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık 
+			} 
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+	
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+	
+	
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+	
+	}	
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor 
+		element.style.color="red";
+		element.style.fontWeight="bold"}	 
+	 
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative" 	
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+	
+	   function DivResetle(){
+		
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ; 
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  } 
+	
+</script>
+</head>
+<body id="bady" onload="tarıh()">	
+	<br>	
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button> 
+	</div> 
+
+<br><br><br>
+<div id="kal" class="kal"> 	İDARİ YARGILAMA USULÜ KANUNU (1)(2)  <br>
+
+Kanun Numarası                       : 2577 <br>
+
+Kabul Tarihi                              : 6/1/1982 <br>
+
+Yayımlandığı Resmî Gazete  : Tarih : 20/1/1982            Sayı : 17580 <br>
+
+Yayımlandığı Düstur               : Tertip : 5     Cilt : 21        Sayfa : 147 </div>
+
+ 
+<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+		
+	<p> 
+	  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>	
+	  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+	  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+	  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+	  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+	  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+	  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+	  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+	  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+	</p></div>
+	  
+	<script>			
+	  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};}); 		
+	  </script> 
+	  
+  
+	  
+	  <div id="soruContainer" class="soruContainer">
+		  <div id="soruDiv">
+			  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+		  </div>
+		  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+		  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+		  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+		  <p id="dogruCevap" style="display: none;"></p>
+	  </div>	
+	  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><br><br><br><br> <hr>
+	   
+ 
+
+BİRİNCİ BÖLÜM
+
+Genel Esaslar
+
+ 
+<div> 
+Kapsam ve nitelik:
+<div> 
+Madde 1 –<div>  1. <span class="ark"> Danıştay</span>, <span class="ark"> bölge idare mahkemeleri</span>, <span class="ark"> idare mahkemeleri </span> ve  <span class="ark"> vergi mahkemelerinin </span> <span class="mavi"> görevine giren uyuşmazlıkların çözümü, bu Kanunda gösterilen usullere tabidir</span>. <br>
+
+2. Danıştay, bölge idare mahkemeleri, idare mahkemeleri ve vergi mahkemelerinde <span class="mavi"> <span class="dik"> yazılı yargılama</span> usulü uygulanır ve inceleme <span class="dik"> evrak üzerinde</span> yapılır</span>.</div></div></div>
+<div> 
+İdari dava türleri ve idari yargı yetkisinin sınırı:
+<div> 
+Madde 2 –<div>  1. (Değişik: 10/6/1994-4001/1 md.) İdari dava türleri şunlardır:
+	<div> 
+a) (İptal: Anayasa Mahkemesinin 21/9/1995 tarihli ve E:1995/27, K:1995/47 sayılı kararı ile; Yeniden Düzenleme: 8/6/2000-4577/5 md.) İdarî işlemler hakkında <span class="ark"> yetki, şekil, sebep, konu ve maksat yönlerinden</span>  biri ile hukuka aykırı olduklarından dolayı <span class="ark"> iptalleri için</span>  menfaatleri ihlâl edilenler tarafından <span class="ark"> açılan</span> <span class="mavi"> iptal davaları</span>, <br>
+
+b) İdari eylem ve işlemlerden dolayı <span class="ark"> kişisel hakları doğrudan muhtel olanlar tarafından</span>  açılan <span class="mavi"> tam yargı davaları</span>, <br>
+
+c) (Değişik: 18/12/1999-4492/6 md.) <span class="ark"> Tahkim yolu öngörülen imtiyaz şartlaşma ve sözleşmelerinden doğan uyuşmazlıklar</span> <span class="kim"> hariç,</span>  <span class="span"> kamu hizmetlerinden birinin yürütülmesi için</span>  yapılan <span class="mavi"> her türlü idari sözleşmelerden dolayı taraflar arasında çıkan uyuşmazlıklara ilişkin davalar</span>.</div>
+
+2. İdari yargı yetkisi, idari eylem ve işlemlerin <span class="mavi"> <span class="dik"> hukuka uygunluğunun denetimi</span> ile sınırlıdır</span>. İdari mahkemeler; <span class="mavi"> <span class="dik"> yerindelik </span> denetimi yapamazlar</span>, yürütme görevinin kanunlarda ve Cumhurbaşkanlığı kararnamelerinde gösterilen şekil ve esaslara uygun olarak yerine getirilmesini kısıtlayacak, idari eylem ve işlem niteliğinde veya <span class="mavi">  <span class="dik"> idarenin takdir yetkisini</span> kaldıracak biçimde yargı kararı veremezler</span>.(3) <br>
+
+3. (Mülga: 2/7/2018 - KHK-703/185 md.)</div></div></div>
+
+
+
+ 
+<div> 
+İdari davaların açılması:
+<div> 
+Madde 3 – <div> 1. (Değişik: 10/6/1994-4001/2 md.) İdari davalar, <span class="ark"> Danıştay</span>, <span class="ark"> idare</span> mahkemesi ve <span class="ark"> vergi</span> mahkemesi başkanlıklarına hitaben yazılmış <span class="mavi"> imzalı dilekçelerle açılır</span>.
+<br>
+2. <span class="mavi"> Dilekçelerde;</span>
+<div>  <br>
+a) <span class="ark"> Tarafların</span> ve varsa <span class="ark"> vekillerinin</span>  veya <span class="ark"> temsilcilerinin</span> <span class="span"> ad ve soyadları veya unvanları ve adresleri</span>  ile gerçek kişilere ait Türkiye Cumhuriyeti <span class="span"> kimlik numarası</span>,(1) <br>
+
+b) Davanın konu ve sebepleri ile dayandığı <span class="span"> deliller</span>, <br>
+
+c) Davaya konu olan <span class="span"> idari işlemin <span class="dik"> yazılı</span> bildirim tarihi</span>, <br>
+
+d) <span class="ark"> Vergi, resim, harç, benzeri</span> mali yükümler ve bunların zam ve cezalarına ilişkin davalarla <span class="ark"> tam yargı</span> davalarında <span class="span"> uyuşmazlık konusu miktar</span>, <br>
+
+e) <span class="kim"> Vergi davalarında</span>  davanın ilgili bulunduğu verginin veya vergi <span class="ark"> cezasının nevi ve yılı</span> , tebliğ edilen <span class="ark"> ihbarnamenin tarihi ve numarası</span> ve <span class="ark"> varsa mükellef hesap numarası</span>,</div> <br>
+
+<span class="mavi">Gösterilir</span>. <br>
+<div> <button  onclick="soruyuGoster(277)" class="soru" >2017 yılı çıkmış soru</button> </div>
+3. Dava konusu kararın ve belgelerin asılları veya örnekleri dava dilekçesine eklenir. <span class="mavi">  Dilekçeler ile bunlara ekli evrakın örnekleri karşı taraf sayısından <span class="dik"> bir fazla </span>olur</span>.</div></div></div>
+<div> 
+Dilekçelerin verileceği yerler:
+<div> 
+Madde 4 – Dilekçeler ve savunmalar ile davalara ilişkin her türlü evrak, <span class="ark"> Danıştay</span> veya  <span class="ark"> ait olduğu mahkeme başkanlıklarına</span>  veya bunlara <span class="ark"> gönderilmek üzere <span class="dik"> idare</span> veya <span class="dik"> vergi</span> mahkemesi başkanlıklarına</span>, idare veya vergi mahkemesi <span class="span"> bulunmayan yerlerde  büyükşehir belediyesi sınırları içerisinde <span class="dik"> kalıp kalmadığına bakılmaksızın</span></span> <span class="mavi"> <span class="dik"> asliye hukuk hakimliklerine</span> veya yabancı memleketlerde <span class="dik"> Türk konsolosluklarına </span>verilebilir</span>.(2)</div></div>
+<div> 
+Aynı dilekçe ile dava açılabilecek haller:
+<div> 
+Madde 5 – (Değişik: 10/6/1994-4001/3 md.)<div>  1. Her idari işlem aleyhine ayrı ayrı dava açılır. Ancak, aralarında <span class="ark"> maddi veya hukuki yönden bağlılık</span>  yada <span class="ark"> sebep-sonuç ilişkisi</span> bulunan birden fazla işleme karşı <span class="mavi"> bir dilekçe ile de dava açılabilir</span>. <br>
+
+2. <span class="kim"> Birden fazla şahsın müşterek dilekçe ile dava açabilmesi için</span>  davacıların hak veya menfaatlerinde <span class="ark"> iştirak bulunması</span> ve davaya yol açan <span class="ark"> maddi olay veya hukuki sebeplerin aynı olması</span> <span class="mavi"> gerekir</span>.</div></div></div>
+<div> 
+Dilekçe üzerine uygulanacak işlem:
+<div> 
+Madde 6 –<div>  1. Danıştay, idare mahkemesi ve vergi mahkemesi başkanlıklarına veya 4 ncü maddede yazılı yerlere verilen dilekçelerin <span class="ark"> harç ve posta ücretleri alındıktan sonra</span> <span class="span"> deftere derhal kayıtları yapılarak</span> <span class="mavi"> kayıt tarih ve sayısı dilekçenin üzerine yazılır</span>. <span class="mavi"> Dava bu kaydın yapıldığı tarihte açılmış sayılır</span>. <br>
+
+2. Davacılara, kayıt tarih ve sayısını gösteren <span class="mavi"> imzalı ve mühürlü, <span class="dik"> pulsuz</span> bir alındı kağıdı verilir</span>. <br>
+
+ 
+
+3. 4 ncü maddede yazılı diğer yerlere verilen dilekçeler, <span class="mavi"> en geç üç gün içinde</span> Danıştay veya ait olduğu mahkeme başkanlığına <span class="mavi"> taahhütlü olarak gönderilir</span>. Bu yerlerde harç pulları bulunmadığı takdirde bunlara <span class="ark"> karşılık alınan paraların miktarı</span>  ve <span class="mavi">alındı kağıdının tarih ve sayısı dilekçelere yazılır</span> . <br>
+
+4. (Değişik: 10/6/1994-4001/4 md.) Herhangi bir sebeple harcı veya posta ücreti verilmeden veya <span class="kim"> eksik harç veya posta ücreti ile dava açılmış olması halinde</span>,<span class="mavi"> otuz gün içinde</span>  harcın ve posta ücretinin verilmesi ve <span class="ark"> tamamlanması hususu</span> daire <span class="span"> başkanı</span> veya <span class="span">görevlendireceği tetkik hakimi</span> , mahkeme başkanı veya hakim <span class="mavi"> tarafından ilgiliye tebliğ olunur</span>. Tebligata rağmen gereği yerine <span class="ark"> getirilmediği takdirde bildirim aynı şekilde  <span class="mavi">bir daha</span> tekrarlanır</span>. Harç veya posta ücreti süresi içinde verilmez veya tamamlanmazsa <span class="mavi"> <span class="dik"> davanın açılmamış sayılmasına</span> karar verilir ve davacıya tebliğ olunur</span>. <br>
+
+5. (Değişik: 10/6/1994-4001/4 md.) Dava açıldıktan sonra posta ücretinde tebliğ <span class="kim"> işlemlerinin yapılmasını engelleyecek şekilde azalma olması halinde</span> , <span class="mavi"> otuz gün içinde</span> posta ücretinin tamamlanması daire başkanı veya görevlendireceği tetkik hakimi, mahkeme başkanı veya hakim <span class="mavi"> tarafından ilgiliye tebliğ olunur</span>. Tebligata rağmen gereği yerine <span class="ark"> getirilmediği takdirde bildirim aynı şekilde <span class="mavi"> bir daha</span> tekrarlanır</span>. <span class="mavi"> Posta ücreti süresi içinde tamamlanmazsa <span class="dik"> dosyanın işlemden kaldırılmasına</span> karar verilir</span>. Bu kararın tebliği tarihinden başlayarak <span class="mavi"> üç ay içinde</span>, noksanı tamamlanmak suretiyle yeniden <span class="ark"> işleme konulması istenmediği takdirde</span> <span class="mavi">  <span class="dik"> davanın açılmamış sayılmasına</span> karar verilir ve davacıya tebliğ olunur</span>. <br>
+
+6. (Değişik: 10/6/1994-4001/4 md.) <span class="mavi"> 4 ve 5 inci fıkralardaki tebligat re'sen genel bütçeden yapılır</span>.</div></div></div>
+<div> 
+Dava açma süresi:
+<div> 
+Madde 7 –<div> 1. Dava açma süresi, özel kanunlarında ayrı süre gösterilmeyen hallerde <span class="kim"> Danıştayda</span> ve <span class="kim"> idare mahkemelerinde</span> <span class="mavi"> altmış</span> ve <span class="kim"> vergi mahkemelerinde</span> <span class="mavi"> otuz gündür</span>.
+<br>
+2. <span class="mavi"> Bu süreler;</span>
+<div> 
+a) <span class="kim"> İdari uyuşmazlıklarda</span>; <span class="ark"> yazılı bildirimin yapıldığı</span>, <br>
+
+b) <span class="kim"> Vergi, resim ve harçlar ile benzeri mali yükümler ve bunların zam ve cezalarından doğan uyuşmazlıklarda</span> :  <span class="span"> Tahakkuku tahsile bağlı olan vergilerde</span> <span class="ark"> tahsilatın</span>; <span class="span"> tebliğ yapılan hallerde veya tebliğ yerine geçen işlemlerde</span> <span class="ark"> tebliğin</span>; <span class="span"> tevkif yoluyla alınan vergilerde istihkak sahiplerine</span> <span class="ark"> ödemenin</span>; <span class="span"> tescile bağlı vergilerde </span> <span class="ark">tescilin yapıldığı</span> ve <span class="span"> idarenin dava açması gereken konularda</span> ise <span class="ark"> ilgili merci veya komisyon kararının idareye geldiği</span>;</div>
+
+<span class="mavi"> Tarihi izleyen günden başlar</span>. <br>
+
+3. Adresleri belli olmayanlara özel kanunlarındaki hükümlere göre ilan yoluyla bildirim yapılan hallerde, özel kanununda aksine bir hüküm bulunmadıkça <span class="mavi"> <span class="kim"> süre,</span> son ilan tarihini izleyen günden itibaren <span class="dik"> onbeş gün</span> sonra işlemeye başlar</span>. <br>
+
+4. <span class="kim"> İlanı gereken düzenleyici işlemlerde dava süresi</span>, <span class="mavi"> ilan tarihini izleyen günden itibaren başlar</span>. <span class="span"> Ancak</span>  bu işlemlerin uygulanması üzerine <span class="ark"> ilgililer</span>, düzenleyici işlem veya uygulanan işlem yahut her ikisi aleyhine birden <span class="mavi"> dava açabilirler</span>. <span class="mavi"> Düzenleyici işlemin iptal edilmemiş olması bu düzenlemeye dayalı işlemin iptaline engel olmaz</span>.</div></div></div>
+
+
+
+
+
+ 
+<div> 
+Sürelerle ilgili genel esaslar
+<div> 
+Madde 8 – <div> 1. <span class="kim"> Süreler</span>, <span class="ark"> tebliğ</span>, <span class="ark"> yayın</span> veya <span class="ark"> ilan</span> <span class="mavi"> tarihini izleyen günden itibaren işlemeye başlar</span>. <br>
+
+2. <span class="mavi"> Tatil günleri sürelere dahildir.</span> Şu kadarki, <span class="mavi"> sürenin son günü tatil gününe rastlarsa, süre <span class="dik"> tatil gününü izleyen çalışma gününün bitimine kadar</span> uzar</span>. <br>
+
+3. Bu Kanunda yazılı sürelerin bitmesi çalışmaya ara verme zamanına rastlarsa bu süreler, <span class="mavi"> ara vermenin sona erdiği günü izleyen tarihten itibaren <span class="dik"> yedi gün</span> uzamış sayılır</span>.</div></div></div>
+<div> 
+Görevli olmayan yerlere başvurma:(1)
+<div> 
+Madde 9 – 1. (Değişik: 5/4/1990-3622/2 md.) Çözümlenmesi Danıştayın, idare ve vergi mahkemelerinin görevlerine girdiği halde, adli (…)(1) yargı yerlerine açılmış bulunan davaların görev noktasından reddi halinde, <span class="kim">  bu husustaki kararların kesinleşmesini izleyen günden itibaren</span> <span class="mavi"> <span class="dik"> otuz gün</span> içinde görevli mahkemede dava açılabilir</span>. <span class="ark"> Görevsiz yargı merciine başvurma tarihi</span> , Danıştaya, idare ve vergi mahkemelerine <span class="mavi"> başvurma tarihi olarak kabul edilir</span>.(1)
+
+2. Adli (…)(1) yargı yerlerine açılan ve görevsizlik sebebiyle reddedilen davalarda, görevsizlik kararının kesinleşmesinden sonra birinci fıkrada yazılı otuz günlük <span class="dik"> süre geçirilmiş olsa dahi</span>, <span class="kim"> idari dava açılması için öngörülen süre</span> <span class="mavi"> henüz dolmamış ise bu süre içinde idari dava açılabilir</span>.(1)</div></div>
+<div> 
+İdari makamların sükutu:
+<div> 
+Madde 10 –<div>  1. İlgililer, haklarında idari davaya konu olabilecek bir işlem veya eylemin yapılması için idari makamlara başvurabilirler. <br>
+
+2. (Değişik: 10/6/1994-4001/5 md.) <span class="mavi"> <span class="dik"> Otuz gün içinde</span> bir cevap verilmezse istek reddedilmiş sayılır</span>. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine <span class="mavi"> dava açabilirler</span>. <span class="kim"> Otuz günlük süre içinde</span>  idarece verilen <span class="ark"> cevap  kesin değilse </span> ilgili bu cevabı, isteminin reddi sayarak <span class="mavi"> dava açabileceği gibi, kesin cevabı da bekleyebilir.</span>  Bu takdirde dava açma süresi işlemez. Ancak, <span class="ark"> bekleme süresi</span> <span class="mavi"> başvuru tarihinden itibaren <span class="dik"> dört ayı</span> geçemez.</span> Dava açılmaması veya davanın süreden reddi hallerinde, otuz günlük sürenin bitmesinden sonra yetkili idari <span class="kim"> makamlarca cevap verilirse</span>, <span class="mavi"> cevabın tebliğinden itibaren <span class="dik"> altmış gün</span> içinde dava açabilirler.</span> (2)
+
+3. (Mülga: 10/6/1994-4001/5 md.)</div></div></div>
+<div> 
+Üst makamlara başvurma:
+<div> 
+Madde 11 – <div> 1. İlgililer tarafından idari dava açılmadan önce, idari işlemin <span class="kim"> kaldırılması, geri alınması</span> , değiştirilmesi veya yeni bir işlem yapılması <span class="ark"> üst makamdan</span>, <span class="ark"> üst makam yoksa işlemi yapmış olan makamdan</span>, <span class="mavi"> idari dava açma süresi içinde istenebilir</span>. <span class="mavi"> Bu başvurma, işlemeye başlamış olan idari dava açma süresini <span class="dik"> durdurur</span></span>. <br>
+
+2. <span class="mavi"> <span class="dik"> Otuz gün içinde</span> bir cevap verilmezse istek <span class="dik"> reddedilmiş </span> sayılır</span>. (3)  <br>
+
+3. İsteğin reddedilmesi veya reddedilmiş sayılması halinde dava açma süresi <span class="mavi"> yeniden işlemeye başlar ve <span class="dik"> başvurma tarihine kadar geçmiş süre de</span>  hesaba katılır</span>. <br>
+
+4. (Mülga : 10/6/1994-4001/6 md.)</div></div></div>
+<div> 
+İptal ve tam yargı davaları:
+<div> 
+Madde 12 – İlgililer haklarını ihlal eden bir idari işlem dolayısıyla Danıştaya ve idare ve vergi mahkemelerine doğrudan doğruya tam yargı davası veya iptal ve tam yargı davalarını<span class="ark"> birlikte  açabilecekleri gibi</span> <span class="span"> ilk önce iptal davası açarak bu davanın karara bağlanması üzerine</span>, bu husustaki kararın veya kanun yollarına başvurulması halinde verilecek kararın tebliği veya bir işlemin icrası sebebiyle doğan zararlardan dolayı icra tarihinden itibaren dava süresi içinde <span class="mavi"> tam  yargı davası açabilirler</span>. Bu halde de ilgililerin 11 nci madde uyarınca idareye başvurma hakları saklıdır.</div></div>
+<div> 
+Doğrudan doğruya tam yargı davası açılması:
+<div> 
+Madde 13 – 1. İdari eylemlerden hakları ihlal edilmiş olanların idari dava açmadan önce, bu eylemleri yazılı bildirim üzerine veya başka süretle <span class="mavi"> <span class="ark"> öğrendikleri</span> tarihten itibaren <span class="dik"> bir yıl</span> ve  her halde <span class="ark"> eylem tarihinden</span> itibaren <span class="dik"> beş yıl </span> içinde ilgili idareye başvurarak haklarının yerine getirilmesini istemeleri gereklidir</span>. Bu isteklerin kısmen veya tamamen reddi halinde, bu konudaki işlemin tebliğini izleyen günden itibaren veya istek hakkında otuz gün içinde cevap verilmediği takdirde bu sürenin bittiği tarihten itibaren, <span class="mavi"> dava süresi içinde dava açılabilir</span>. (2) <br>
+
+2. Görevli olmayan adli (…)(1) yargı mercilerine açılan tam yargı davasının görev yönünden reddi halinde sonradan idari yargı mercilerine açılacak davalarda, birinci fıkrada öngörülen idareye başvurma şartı aranmaz.(1)</div></div>
+<div> 
+Dilekçeler üzerine ilk inceleme:
+<div> 
+Madde 14 –<div>  1. <span class="kim"> Dilekçeler</span> <span class="mavi"> Danıştayda Evrak Müdürlüğünce kaydedilir</span> ve <span class="mavi"> Genel Sekreterlikçe görevli dairelere havale olunur</span>. <br>
+
+2. (Değişik: 2/7/2012-6352/53 md.) <span class="ark"> Bölge idare, idare ve vergi mahkemelerinde</span> dilekçeler, <span class="mavi"> evrak bürosunca kaydedilerek ilgili mahkemelere havale olunur</span>. Dilekçe sahibine evrakın tarih ve sayısını gösterir ücretsiz <span class="mavi"> bir alındı kâğıdı verilir</span>. <br>
+
+3. (Değişik: 5/4/1990-3622/5 md.) <span class="kim"> Dilekçeler</span>, <span class="span"> Danıştayda daire başkanının görevlendireceği </span> <span class="ark"> bir tetkik hakimi</span>, <span class="span"> idare ve vergi mahkemelerinde ise mahkeme başkanı veya görevlendireceği</span> <span class="ark"> bir üye</span> tarafından:
+<div> 
+a) <span class="span"> Görev ve yetki</span>, <br>
+
+b) <span class="span"> İdari merci tecavüzü</span>, <br>
+
+c) <span class="span"> Ehliyet,</span> <br>
+
+d) <span class="span"> İdari davaya konu olacak kesin ve yürütülmesi gereken</span> bir işlem olup olmadığı, <br>
+
+e) <span class="span"> Süre aşımı</span>, <br>
+
+f) <span class="span"> Husumet</span>, <br>
+
+g) <span class="span"> 3 ve 5 inci maddelere uygun olup olmadıkları</span>,</div>
+ <span class="mavi">
+Yönlerinden sırasıyla incelenir</span>.  <br>
+
+4. (Değişik: 5/4/1990-3622/5 md.) Dilekçeler bu yönlerden kanuna aykırı görülürse durum; görevli daire veya mahkemeye bir rapor ile bildirilir. <span class="mavi"> Tek hakimle çözümlenecek dava dilekçeleri için rapor düzenlenmez ve 15 inci madde hükümleri ilgili hakim tarafından uygulanır</span>. <span class="ark"> 3 üncü fıkraya göre</span> yapılacak inceleme ve bu fıkra ile <span class="ark"> 5 inci fıkraya göre</span> yapılacak işlemler <span class="mavi"> dilekçenin alındığı tarihten itibaren en geç <span class="dik"> onbeş gün</span> içinde sonuçlandırılır</span>. <br>
+
+5. İlk incelemeyi yapanlar, bu noktalardan kanuna aykırılık görmezler veya daire veya mahkeme tarafından ilk inceleme raporu yerinde görülmezse, <span class="mavi">  tebligat işlemi yapılır</span>. <br>
+
+6. Yukarıdaki hususların <span class="mavi"> ilk incelemeden sonra tespit edilmesi halinde de davanın her safhasında 15 nci madde hükmü uygulanır.</span></div></div></div>
+<div> 
+İlk inceleme üzerine verilecek karar:
+<div> 
+Madde 15 –<div>  1. (Değişik: 5/4/1990-3622/6 md.) Danıştay veya idare ve vergi mahkemelerince <span class="mavi"> yukarıdaki maddenin <span class="dik"> 3 üncü fıkrasında</span> yazılı hususlarda kanuna aykırılık görülürse, <span class="dik"> 14 üncü maddenin</span>;</span>
+	<div> 
+a) 3/a bendine göre <span class="kim"> adli  yargının görevli olduğu konularda</span> açılan  <span class="ark">davaların reddine</span>; <span class="kim"> idari yargının görevli olduğu</span> konularda ise görevli veya yetkili olmayan mahkemeye açılan davanın <span class="ark"> görev veya yetki yönünden reddedilerek</span> <span class="mavi"> dava dosyasının görevli veya yetkili mahkemeye gönderilmesine</span>,(1) <br>
+
+b) <span class="ark"> 3/c, 3/d ve 3/e (süre, ehliyet. işlem vb.) bentlerinde yazılı hallerde</span> <span class="mavi"> davanın reddine</span>, <br>
+
+c) 3/f bendine göre, davanın <span class="ark"> hasım gösterilmeden veya yanlış hasım gösterilerek</span> açılması halinde, dava dilekçesinin <span class="mavi"> tespit edilecek gerçek hasma tebliğine</span>, <br>
+
+d) 3/g bendinde yazılı halde <span class="ark"> <span class="dik"> otuzgün içinde</span> 3 (dilkçede bulunacak hususlar) ve 5 (birlikte dava açılması veya açılmaması gerekli durumlar) inci maddelere uygun şekilde yeniden düzenlenmek veya noksanları tamamlanmak</span>  yahut (c) bendinde yazılı hallerde, ehliyetli olan şahsın <span class="ark"> avukat olmayan vekili tarafından dava açılmış ise <span class="dik"> otuzgün içinde</span>  bizzat veya bir avukat vasıtasıyla</span> <span class="mavi"> dava açılmak üzere dilekçelerin reddine</span>, <br>
+
+e) <span class="mavi"> 3/b (idari merci tecavüzü) bendinde yazılı halde dilekçelerin görevli idare merciine tevdiine</span>,</div>
+
+Karar verilir. <br>
+
+2. Dilekçelerin görevli mercie tevdii halinde, Danıştaya veya <span class="mavi"> <span class="dik"> ilgili mahkemeye başvurma tarihi</span>, merciine başvurma tarihi olarak kabul edilir</span>. <br>
+
+3. Dilekçelerin <span class="ark"> 3 ncü maddeye uygun olmamaları dolayısıyla reddi halinde</span> yeni dilekçeler için <span class="mavi"> ayrıca harç alınmaz</span>. <br>
+
+4. (Değişik: 10/6/1994-4001/7 md.) İlk inceleme üzerine Danıştay veya mahkemelerce verilen; bu maddenin 1/a bendinde belirtilen idari yargının görevli olduğu konularda davanın <span class="ark"> görev ve yetki yönünden reddine ilişkin</span> kararlarla, 1/c bendinde yazılı gerçek <span class="ark"> hasma tebliğ</span> ve 1/d bendindeki <span class="ark"> dilekçe red kararları</span> <span class="kim"> dışında</span>, <span class="mavi"> ilgisine göre istinaf ya da temyiz yoluna başvurulabilir</span>.(2)  <br>
+
+5. (Ek: 5/4/1990-3622/6 md.) 1 inci fıkranın (d) bendine göre dilekçenin reddedilmesi üzerine, <span class="mavi"> yeniden verilen dilekçelerde aynı yanlışlıklar yapıldığı takdirde dava reddedilir.</span> </div></div></div>
+<div> 
+Tebligat ve cevap verme:
+<div> 
+Madde 16 –<div>  1. <span class="mavi"> Dava dilekçelerinin ve eklerinin birer örneği <span class="ark"> davalıya</span></span>, davalının vereceği savunma <span class="ark"> davacıya</span> tebliğ olunur. <br>
+
+2. <span class="mavi"> <span class="dik"> Davacının ikinci dilekçesi</span> davalıya, <span class="dik"> davalının vereceği ikinci</span> savunma da davacıya tebliğ edilir</span>. <span class="span"> Buna karşı davacı cevap veremez</span>. Ancak, davalının ikinci savunmasında, davacının <span class="ark"> cevaplandırmasını gerektiren hususlar </span> bulunduğu, davanın görülmesi sırasında <span class="ark"> anlaşılırsa</span> , <span class="mavi"> davacıya cevap vermesi için bir süre verilir</span>. <br>
+
+3. <span class="kim"> Taraflar</span>, yapılacak tebliğlere karşı, tebliğ tarihinden  itibaren <span class="mavi"> otuz gün içinde cevap verebilirler</span>. Bu süre, ancak haklı sebeplerin bulunması halinde, taraflardan birinin isteği üzerine görevli mahkeme kararı ile <span class="mavi"> otuz günü geçmemek ve bir defaya mahsus olmak üzere uzatılabilir</span> . <span class="mavi"> Sürenin geçmesinden sonra yapılan uzatma talepleri kabul edilmez</span>. <br>
+
+4. <span class="kim"> Taraflar,</span>  <span class="ark"> sürenin geçmesinden sonra </span> verecekleri savunmalara veya ikinci dilekçelere dayanarak <span class="mavi"> hak iddia edemezler</span>. (Ek cümle: 11/4/2013-6459/4 md.) <span class="kim"> Ancak, tam yargı davalarında dava</span> dilekçesinde belirtilen miktar, süre veya diğer usul kuralları gözetilmeksizin nihai karar verilinceye kadar, <span class="mavi"> harcı ödenmek suretiyle bir defaya mahsus olmak üzere artırılabilir</span>  ve miktarın artırılmasına ilişkin <span class="mavi"> dilekçe otuz gün içinde cevap verilmek üzere karşı tarafa tebliğ edilir</span>. <br>
+
+5. (Değişik: 10/6/1994-4001/8 md.) Davalara ilişkin işlem dosyalarının aslı veya onaylı örneği idarenin savunması ile birlikte, Danıştay veya ilgili mahkeme başkanlığına gönderilir. <br>
+
+6. (Ek: 2/7/2012-6352/54 md.) <span class="mavi"> <span class="dik"> Danıştayda ilk derece mahkemesi</span>  sıfatıyla görülen davalarda <span class="dik"> savcının esas hakkındaki yazılı düşüncesi</span>  taraflara tebliğ edilir</span>. Taraflar, tebliğden itibaren <span class="mavi"> <span class="dik"> on gün</span> içinde görüşlerini yazılı olarak bildirebilirler</span>.</div></div></div>
+<div> <div> <button  onclick="soruyuGoster(136)" class="soru" >2016 yılı çıkmış soru</button> </div>
+Duruşma:
+<div> 
+Madde 17 – <div> 1. (Değişik: 5/4/1990-3622/7 md.) Danıştay ile idare ve vergi mahkemelerinde açılan <span class="ark"> iptal</span>  ve <span class="ark"> yirmibeşbin Türk Lirasını aşan tam yargı davaları</span>  ile tarh edilen vergi, resim ve harçlarla benzeri <span class="ark"> mali yükümler ve bunların zam ve cezaları toplamı yirmibeşbin Türk Lirasını aşan vergi davalarında</span> , <span class="mavi"> taraflardan birinin isteği üzerine duruşma yapılır</span>.(1) (2) <br>
+
+2. <span class="mavi"> Temyiz ve istinaflarda duruşma yapılması <span class="dik"> tarafların istemine</span> ve Danıştay veya ilgili bölge idare <span class="dik"> mahkemesi kararına</span> bağlıdır</span>.(3) <br>
+
+3. <span class="kim"> Duruşma talebi</span>, <span class="ark"> dava dilekçesi</span> ile <span class="ark"> cevap</span> ve <span class="ark"> savunmalarda</span> <span class="mavi">yapılabilir</span>. <br>
+
+4. (Değişik: 5/4/1990-3622/7 md.) 1 ve 2 nci fıkralarda yer alan kayıtlara bağlı olmaksızın Danıştay, mahkeme ve hakim <span class="mavi"> kendiliğinden duruşma yapılmasına karar verebilir</span>. <br>
+
+5. <span class="mavi"> Duruşma davetiyeleri duruşma gününden <span class="dik"> en az otuz gün önce</span> taraflara gönderilir.</span></div></div></div>
+
+ 
+
+ 
+
+
+
+ 
+<div> 
+Duruşmalara ilişkin esaslar:
+<div> 
+Madde 18 – <div> 1. Duruşmalar <span class="ark"> açık olarak yapılır</span>. <span class="ark"> Genel ahlakın</span> veya <span class="ark"> kamu güvenliğinin</span> gerekli kıldığı hallerde, görevli daire veya mahkemenin kararı ile, duruşmanın bir kısmı veya tamamı <span class="mavi"> gizli olarak yapılır</span>. <br>
+
+2. Duruşmaları <span class="span"> başkan yönetir</span>. <br>
+
+3. Duruşmalarda <span class="mavi"> taraflara <span class="dik"> ikişer defa</span> söz verilir</span>. Taraflardan yalnız <span class="ark"> biri gelirse</span> onun açıklamaları <span class="mavi"> dinlenir</span> ; <sapn class="ark"> hiç biri gelmezse </sapn> <span class="mavi"> duruşma açılmaz, inceleme evrak üzerinde yapılır</span>. <br>
+
+4. <span class="kim"> Danıştayda görülen</span> davaların duruşmalarında <span class="mavi"> savcının bulunması şarttır</span>. Taraflar dinlendikten sonra savcı yazılı <span class="ark"> düşüncesini açıklar</span> . Bundan sonra <span class="mavi"> taraflara son olarak ne diyecekleri sorulur ve duruşmaya son verilir</span>. <br>
+
+5. Duruşmalı işlerde <span class="kim"> savcılar</span>, keşif, bilirkişi incelemesi veya delil tespiti yapılmasını yahut işlem dosyasının getirtilmesini <span class="ark"> istedikleri takdirde</span>, bu istekleri görevli daire veya kurul tarafından <span class="ark"> kabul edilmezse</span> , <span class="mavi">  işin esası hakkında ayrıca yazılı olarak düşünce bildirirler</span>.</div></div></div>
+
+<div> 
+Duruşmalı işlerde karar verilmesi:
+<div> 
+Madde 19 – (Değişik birinci cümle: 10/6/1994-4001/9 md.) Duruşma yapıldıktan sonra <span class="mavi"> en geç onbeş gün içinde karar verilir</span>. <span class="kim"> Ara kararı</span> verilen hallerde, bu kararın <span class="ark"> yerine getirilmesi üzerine</span>, <span class="mavi"> dosyalar öncelikle incelenir</span>.</div></div>
+<div> 
+Dosyaların incelenmesi:
+<div> 
+Madde 20 –<div>  1. (Değişik birinci cümle: 18/6/2014-6545/17 md.) Danıştay, bölge idare mahkemeleri ile idare ve vergi mahkemeleri, bakmakta oldukları davalara ait her türlü incelemeyi <span class="mavi"> kendiliğinden yapar</span>. Mahkemeler belirlenen süre içinde lüzum gördükleri evrakın gönderilmesini ve her türlü bilgilerin verilmesini taraflardan ve ilgili diğer yerlerden isteyebilirler. Bu husustaki kararların, <span class="mavi"> ilgililerce,  süresi içinde yerine getirilmesi mecburidir. Haklı sebeplerin bulunması halinde <span class="dik"> bu süre, bir defaya mahsus</span> olmak üzere uzatılabilir. </span><br>
+
+2. Taraflardan biri ara kararının icaplarını <span class="kim"> yerine getirmediği takdirde,</span>  bu durumun verilecek karar üzerindeki <span class="mavi"> etkisi mahkemece önceden takdir edilir</span>  ve arakararında bu husus ayrıca belirtilir. <br>
+
+3. Ancak, istenen bilgi ve belgeler <span class="ark"> Devletin güvenliğine</span> veya yüksek menfaatlerine veya Devletin güvenliği ve yüksek menfaatleriyle birlikte <span class="ark"> yabancı devletlere de ilişkin ise</span> , <span class="span"> Cumhurbaşkanı </span> ya da ilgili Cumhurbaşkanı <span class="span"> yardımcısı</span> veya <span class="span"> bakan</span>, gerekçesini bildirmek suretiyle, söz konusu bilgi ve <span class="mavi"> belgeleri vermeyebilir.</span> (Ek Cümle: 10/6/1994-4001/10 md.) <span class="mavi"> Verilmeyen bilgi ve belgelere dayanılarak ileri sürülen savunmaya göre karar verilemez</span>.(1) <br>
+
+4. (Mülga: 10/6/1994-4001/10 md.)  <br>
+
+5. (Değişik: 5/4/1990-3622/8 md.) Danıştay, bölge idare, idare ve vergi mahkemelerinde dosyalar, bu Kanun ve diğer kanunlarda belirtilen öncelik veya ivedilik durumları ile <span class="ark"> Danıştay için </span> <span class="mavi"> Başkanlar Kurulunca</span>; <span class="ark"> diğer mahkemeler için</span>  <span class="kim"> Hakimler ve Savcılar Yüksek Kurulunca konu itibariyle tespit edilip</span> Resmi Gazete'de ilan edilecek <span class="ark"> öncelikli işler gözönünde bulundurulmak suretiyle </span> <span class="mavi">geliş tarihlerine göre incelenir</span>  ve <span class="ark"> tekemmül ettikleri sıra dahilinde</span> <span class="mavi"> bir karara bağlanır.</span>  <span class="kim"> Bunların dışında kalan dosyalar ise</span> <span class="mavi"> <span class="dik"> tekemmül ettikleri sıraya göre</span>  ve tekemmül tarihinden itibaren <span class="dik"> en geç altı ay</span> içinde sonuçlandırılır</span>.(1) <br>
+
+6. (Ek: 2/7/2012-6352/56 md.) Bölge idare mahkemelerindeki istinaf kanun yolu incelemeleri ile idare ve vergi mahkemelerinde heyet halinde görülen davalarda, birinci fıkrada belirtilen bilgi ve belgelerin istenmesine ve ek süre verilmesine ilişkin ara kararları daire başkanı, mahkeme başkanı veya dosyanın havale edildiği üye tarafından da verilebilir.(2)</div></div></div>
+<div> 
+İvedi yargılama usulü:
+<div> 
+Madde 20/A – (Ek: 18/6/2014-6545/18 md.)
+<div> 
+1. İvedi yargılama usulü aşağıda sayılan işlemlerden doğan uyuşmazlıklar hakkında uygulanır:
+<div> 
+a) İhaleden yasaklama kararları <span class="kim"> hariç</span> <span class="mavi"> ihale işlemleri.</span> <br>
+
+b) <span class="span"> Acele kamulaştırma işlemleri</span>. <br>
+
+c) <span class="span"> Özelleştirme Yüksek Kurulu kararları</span>. <br>
+
+d) 12/3/1982 tarihli ve 2634 sayılı <span class="span"> Turizmi Teşvik Kanunu uyarınca yapılan satış, tahsis ve kiralama işlemleri. </span><br>
+
+e) 9/8/1983 tarihli ve 2872 sayılı Çevre Kanunu uyarınca, idari yaptırım kararları hariç <span class="span"> çevresel etki değerlendirmesi sonucu alınan kararlar</span>. <br>
+
+f) 16/5/2012 tarihli ve <span class="span"> 6306 sayılı Afet Riski Altındaki Alanların Dönüştürülmesi</span>  Hakkında Kanun <span class="span"> uyarınca alınan Cumhurbaşkanı kararları</span>.(3)</div>
+
+2. İvedi yargılama usulünde:
+<div> 
+a) <span class="mavi"> Dava açma süresi <span class="dik"> otuz</span> gündür</span>. <br>
+
+b) Bu Kanunun 11 inci maddesi hükümleri uygulanmaz. <br>
+
+c) <span class="mavi"> <span class="dik"> Yedi gün</span> içinde ilk inceleme yapılır</span> ve dava dilekçesi ile ekleri tebliğe çıkarılır. <br>
+
+d) <span class="mavi"> Savunma süresi dava dilekçesinin tebliğinden itibaren <span class="dik"> on beş</span> gün olup</span>, bu süre <span class="ark"> bir defaya mahsus</span>  olmak üzere en fazla <span class="mavi"> <span class="dik"> on beş</span> gün uzatılabilir</span>. Savunmanın <span class="ark"> verilmesi</span> veya savunma verme <span class="ark"> süresinin geçmesiyle</span> dosya <span class="mavi"> tekemmül etmiş sayılır</span>. <br>
+
+e) <span class="mavi"> <span class="ark"> Yürütmenin durdurulması talebine ilişkin olarak</span> verilecek kararlara itiraz edilemez</span>.  <br>
+
+f) Bu davalar dosyanın tekemmülünden itibaren <span class="mavi"> en geç <span class="dik"> bir ay</span> içinde karara bağlanır</span>. Ara kararı verilmesi, keşif, bilirkişi incelemesi ya da duruşma yapılması gibi işlemler ivedilikle sonuçlandırılır. <br>
+
+g) Verilen nihai kararlara karşı tebliğ tarihinden itibaren <span class="mavi"> <span class="dik"> on beş gün içinde</span> temyiz yoluna başvurulabilir</span>. <br>
+<div> <button  onclick="soruyuGoster(82)" class="soru" >2023 yılı çıkmış soru</button> </div>
+h) <span class="mavi"> Temyiz dilekçeleri <span class="dik"> üç gün</span> içinde incelenir</span> ve tebliğe çıkarılır. Bu Kanunun 48 inci maddesinin bu maddeye aykırı olmayan hükümleri kıyasen uygulanır. <br>
+
+ı) <span class="mavi"> Temyiz dilekçelerine <span class="dik"> cevap verme</span> süresi <span class="dik"> on beş</span> gündür</span>. <br>
+
+i) Danıştay evrak üzerinde yaptığı inceleme sonunda, maddi vakıalar hakkında edinilen bilgiyi yeterli görürse veya temyiz sadece hukuki noktalara ilişkin ise yahut temyiz olunan karardaki maddi yanlışlıkların düzeltilmesi <span class="mavi"> mümkün ise işin esası hakkında karar verir</span>. <span class="kim"> Aksi hâlde</span> gerekli inceleme ve tahkikatı  <span class="mavi"> kendisi yaparak esas hakkında yeniden karar verir</span>. <span class="kim"> Ancak</span>, <span class="ark"> ilk inceleme üzerine</span> verilen kararlara karşı yapılan <span class="ark"> temyizi haklı bulduğu hâllerde</span> <span class="mavi"> kararı bozmakla birlikte dosyayı geri gönderir</span>. <span class="mavi"> Temyiz üzerine verilen kararlar kesindir</span>. <br>
+
+j) <span class="mavi"> Temyiz istemi <span class="dik"> en geç iki ay içinde</span> karara bağlanır</span>. <span class="mavi">  Karar en geç bir ay içinde tebliğe çıkarılır</span>.</div></div></div></div>
+<div> 
+Merkezî ve ortak sınavlara ilişkin yargılama usulü:
+<div> 
+Madde 20/B – (Ek: 10/9/2014-6552/96 md.)
+<div> 
+1. Millî Eğitim Bakanlığı ile Ölçme, Seçme ve Yerleştirme Merkezi tarafından yapılan merkezî ve ortak sınavlar, bu sınavlara ilişkin iş ve işlemler ile sınav sonuçları hakkında açılan davalara ilişkin yargılama usulünde:
+<div> 
+a) <span class="mavi"> Dava açma süresi  on gündür</span>. <br>
+
+b) Bu Kanunun 11 inci maddesi hükümleri uygulanmaz. <br>
+
+c) <span class="mavi"> <span class="dik"> Yedi gün</span> içinde ilk inceleme yapılır</span> ve dava dilekçesi ile ekleri tebliğe çıkarılır. <br>
+
+ç) <span class="mavi"> Savunma süresi dava dilekçesinin tebliğinden itibaren <span class="dik"> üç gün</span> olup</span>, bu süre <span class="ark"> bir defaya mahsus olmak üzere</span> <span class="mavi"> en fazla <span class="dik"> üç gün</span> uzatılabilir</span>. Savunmanın verilmesi veya savunma verme süresinin geçmesiyle dosya <span class="mavi"> tekemmül etmiş sayılır</span>. <br>
+
+d) <span class="mavi"> <span class="dik"> Yürütmenin durdurulması talebine ilişkin</span> olarak verilecek kararlara <span class="dik"> itiraz edilemez</span></span>. <br>
+
+e) <span class="mavi"> Bu davalar dosyanın tekemmülünden itibaren en geç <span class="dik"> on beş gün</span> içinde karara bağlanır</span>. Ara kararı verilmesi, keşif, bilirkişi incelemesi ya da duruşma yapılması gibi işlemler ivedilikle sonuçlandırılır. <br>
+
+f)  Verilen nihai kararlara karşı tebliğ tarihinden itibaren <span class="mavi"> <span class="dik">beş gün</span> içinde temyiz yoluna başvurulabilir.</span> <br>
+
+g) <span class="mavi"> Temyiz dilekçeleri <span class="dik"> üç gün</span> içinde incelenir</span> ve tebliğe çıkarılır. Bu Kanunun 48 inci maddesinin bu maddeye aykırı olmayan hükümleri kıyasen uygulanır. <br>
+
+ğ) <span class="mavi"> Temyiz dilekçelerine cevap verme süresi <span class="dik"> beş</span> gündür</span>. <br>
+
+h) Danıştay evrak üzerinde yaptığı inceleme sonunda, maddi vakalar hakkında edinilen bilgiyi yeterli görürse veya temyiz sadece hukuki noktalara ilişkin ise yahut temyiz olunan karardaki maddi yanlışlıkların düzeltilmesi <span class="mavi"> mümkün ise işin esası hakkında karar verir</span>. <span class="kim"> Aksi hâlde</span> gerekli inceleme ve tahkikatı kendisi yaparak <span class="mavi"> esas hakkında yeniden karar verir</span>. <span class="kim"> Ancak</span>, <span class="ark"> ilk inceleme üzerine</span> verilen kararlara karşı yapılan <span class="ark"> temyizi haklı bulduğu hâllerde</span> <span class="mavi"> kararı bozmakla birlikte dosyayı geri gönderir.</span>  <span class="mavi">Temyiz üzerine verilen kararlar kesindir</span>.  <br>
+
+ı) <span class="mavi"> Temyiz istemi <span class="dik"> en geç on beş gün</span> içinde karara bağlanır. Karar <span class="dik"> en geç yedi gün </span>içinde tebliğe çıkarılır</span>.</div>
+
+2. Millî Eğitim Bakanlığı ile Ölçme, Seçme ve Yerleştirme Merkezi tarafından yapılan merkezî ve ortak sınavlar, bu sınavlara ilişkin iş ve işlemler ile sınav sonuçları hakkında açılan davalarda verilen <span class="mavi">yürütmenin durdurulması ve iptal kararları, söz konusu <span class="ark"> sınava katılan kişilerin lehine</span> sonuç doğuracak şekilde uygulanır</span> .</div></div></div>
+<div> 
+Askerî hizmete ilişkin idari işlem ve eylemlerden doğan uyuşmazlıklara dair hükümler:
+<div> 
+Madde 20/C- (Ek:24/6/2021-7329/16 md.)
+<div> 
+1. Bu madde; Millî Savunma Bakanlığı kadrolarında çalışan kamu görevlileri ile 25/6/2019 tarihli ve 7179 sayılı Askeralma Kanunu kapsamında askerlik hizmetini yerine getiren <span class="ark"> yedek subaylar</span> ve <span class="ark"> yedek astsubaylar</span> ile <span class="ark"> erbaş ve erleri</span> ilgilendiren ve <span class="mavi"> askerî hizmete ilişkin idari işlem ve eylemlerden doğan uyuşmazlıklar hakkında uygulanır</span>. (Ek cümle:30/6/2022-7415/8 md.) Bu uyuşmazlıkların çözümünde ilgilinin <span class="ark"> görev yaptığı yerin</span>  idari yargı yetkisi yönünden bağlı olduğu <span class="mavi"> bölge idare mahkemesinin bulunduğu <span class="ark"> yerdeki  idare mahkemesi</span> yetkilidir</span>. <br>
+
+2. Dava dilekçelerinde, 3 üncü maddenin ikinci fıkrasında sayılanlara ilaveten bu madde kapsamındakilerin <span class="span"> sicili, varsa sınıfı ve rütbesi de gösterilir</span>. <br>
+
+3. Dilekçeler ile davalara ilişkin her türlü evrak, 4 üncü maddede belirtilen yerlere ilaveten ilgili idari <span class="mavi"> yargı merciine gönderilmek üzere <span class="dik"> en yakın amirlere</span> verilebilir. </span><br>
+
+4. <span class="mavi"> <span class="ark"> Savaş hâlinde</span> yürütmenin durdurulmasına karar verilemez</span>. <br>
+
+5. <span class="ark"> Olağanüstü hâller sebebiyle alınan tedbirlerin uygulanmasında</span> görevlendirilenlerin naklen <span class="span"> atanmalarına ilişkin iptal</span> davalarında, <span class="mavi"> yürütmenin durdurulmasına karar verilemez</span>. <br>
+
+6. Yüksek Askerî <span class="ark"> Şûranın terfi</span> işlemleri ile kadrosuzluk nedeniyle emekliye <span class="ark"> ayırma işlemleri</span> <span class="kim"> hariç</span> <span class="mavi"> her türlü ilişik kesme kararlarına karşı yargı yolu açıktır</span>.</div></div></div>
+<div> 
+Sonradan ibraz olunan belgeler:
+<div> 
+Madde 21 – Dilekçeler ve savunmalarla birlikte verilmeyen belgeler, bunların vaktinde ibraz edilmelerine imkan bulunmadığına mahkemece kanaat getirilirse, kabul ve diğer tarafa tebliğ edilir. Bu belgeler duruşmada ibraz edilir ve diğer taraf cevabını hemen verebileceğini beyan eder veya cevap vermeye lüzum görmezse, ayrıca tebliğ edilmez.</div></div>
+<div> 
+Davaların karara bağlanması:
+<div> 
+Madde 22 –<div>  1. Konular aydınlandığında <span class="mavi"> meseleler sırasıyla oya konulur ve karara bağlanır.</span> <br>
+
+2. 15 nci maddede sayılan sebeplerden biri ile veya yargılama usullerine ilişkin meselelerde <span class="mavi"> azınlıkta kalanlar işin esası hakkında da oylarını kullanırlar</span>. <span class="mavi"> Azınlıkta kalanların görüşleri, kararların altına yazılır</span>.</div></div></div>
+<div> 
+Tutanaklar:
+<div> 
+Madde 23 – Her dava dosyası için görüşmelere katılan başkan ve üyelerin, Danıştayda düşünce veren savcının, tetkik hakiminin ve tarafların ad ve soyadlarını, incelenen dosya numarasını, kısaca dava konusunu ve verilen kararın neticesini, çoğunlukta ve azınlıkta bulunanları gösteren bir tutanak düzenlenir. Bu tutanaklar görüşmelere katılanlar tarafından aynı toplantıda imzalanır ve dosyalarında saklanır.</div></div>
+<div> 
+Kararlarda bulunacak hususlar:
+<div> 
+Madde 24 – Kararlarda:
+<div> 
+a) <span class="ark"> Tarafların </span>ve varsa <span class="ark"> vekillerinin </span>veya <span class="ark"> temsilcilerinin </span>  <span class="span"> ad ve soyadları yahut unvanları ve adresleri</span>, <br>
+
+b) Davacının ileri sürdüğü olayların ve dayandığı hukuki <span class="span"> sebeplerin özeti</span> istem sonucu ile davalının <span class="span"> savunmasının özeti</span>, <br>
+
+c) (Değişik: 10/6/1994-4001/11 md.) <span class="kim"> Danıştayda görülen davalarda</span> <span class="ark"> tetkik hakimi</span> ve <span class="ark"> savcının</span> ad ve soyadları <span class="span"> ile düşünceleri,</span> <br>
+
+d) Duruşmalı davalarda duruşma yapılıp yapılmadığı, yapılmış ise hazır bulunan taraflar ve vekil veya temsilcilerinin ad ve soyadları, <br>
+
+e) Kararın dayandığı hukuki sebepler ile gerekçesi ve hüküm:tazminat davalarında hükmedilen tazminatın miktarı, <br>
+
+f) <span class="span"> Yargılama giderleri ve hangi tarafa yükletildiği</span>, <br>
+
+g) Kararın tarihi ve <span class="span"> oybirliği ile mi, oyçokluğu ile mi</span> verildiği, <br>
+
+h) Kararı veren mahkeme başkan ve üyelerinin veya hakiminin ad ve soyadları ve imzaları ve varsa karşı oyları, <br>
+
+ı) Kararı veren dairenin veya mahkemenin adı ve dosyanın esas ve karar numarası,</div>
+
+Belirtilir.  (Ek cümle:8/7/2021-7331/4 md.) <span class="mavi"> Kararlar, verildiği tarihten itibaren otuz gün içinde yazılır ve imzalanır</span>.</div></div>
+
+
+
+
+ 
+<div> 
+Kararların saklanması ve tebliği:
+<div> 
+Madde 25 – Kararın mahkeme başkanı ve üyeleri veya hakimi tarafından imzalı asıllarından biri, <span class="ark"> karar dosyasına</span>, diğeri de dava <span class="ark"> dosyasına konur</span>; mahkeme mührü ve başkan yahut hakim, Danıştayda daire veya kurul başkanı veya görevlendireceği bir üye imzasıyla <span class="mavi"> tasdikli birer örneği de taraflara tebliğ edilir</span>.</div></div>
+<div> 
+Tarafların kişilik veya niteliğinde değişiklik:
+<div> 
+Madde 26 – <div> 1. Dava esnasında ölüm veya herhangi bir sebeple tarafların kişilik veya niteliğinde değişiklik olursa, davayı takip hakkı kendisine geçenin <span class="ark"> başvurmasına kadar</span>; gerçek kişilerden olan tarafın ölümü halinde, <span class="ark"> idarenin mirasçılar aleyhine takibi yenilemesine kadar</span> <span class="mavi"> dosyanın işlemden kaldırılmasına ilgili mahkemece karar verilir</span>. <span class="kim"> <span class="dik"> Dört ay</span> içinde yenileme dilekçesi verilmemiş ise</span>, <span class="mavi"> varsa yürütmenin durdurulması kararı kendiliğinden hükümsüz kalır.</span> <br>
+
+2 <span class="mavi"> <span class="ark"> Yalnız öleni ilgilendiren davalara ait dilekçeler</span> iptal edilir</span>. <br>
+
+3. (Değişik: 5/4/1990-3622/9 md.) <span class="kim"> Davacının gösterdiği adrese tebligat yapılamaması halinde</span>, yeni adresin bildirilmesine <span class="mavi"> kadar dava dosyası işlemden kaldırılır</span>  ve <span class="mavi"> varsa yürütmenin durdurulması kararı kendiliğinden hükümsüz kalır</span>. Dosyanın işlemden kaldırıldığı tarihten başlayarak <span class="mavi"> <span class="dik"> bir yıl</span> içinde yeni adres bildirilmek suretiyle yeniden işleme konulması istenmediği takdirde, <span class="dik"> davanın açılmamış sayılmasına</span> karar verilir</span>. <br>
+
+4. (Değişik: 5/4/1990-3622/9 md.) Dosyaların işlemden kaldırılmasına ve davanın açılmamış sayılmasına dair <span class="mavi"> kararlar diğer tarafa tebliğ edilir</span>.</div></div></div>
+<div> 
+Yürütmenin durdurulması
+<div> 
+Madde 27 – (Değişik: 10/6/1994-4001/12 md.)
+<div> 
+1. Danıştayda veya idari mahkemelerde <span class="mavi"> dava açılması dava edilen idari işlemin yürütülmesini durdurmaz</span>. <br>
+
+2. (Değişik: 2/7/2012-6352/57 md.)  Danıştay veya idari mahkemeler, idari işlemin uygulanması halinde telafisi güç veya imkânsız zararların doğması ve idari işlemin açıkça hukuka aykırı olması şartlarının birlikte gerçekleşmesi durumunda, davalı idarenin savunması alındıktan veya savunma süresi geçtikten sonra gerekçe göstererek yürütmenin durdurulmasına karar verebilirler. <span class="ark"> Uygulanmakla etkisi tükenecek olan</span> idari işlemlerin yürütülmesi, savunma alındıktan sonra yeniden karar verilmek üzere, <span class="mavi"> idarenin savunması alınmaksızın da durdurulabilir.</span> (Ek cümle: 21/2/2014-6526/17 md.) Ancak, kamu görevlileri hakkında tesis edilen <spa class="ark"> atama</spa>, <span class="ark"> naklen atama</span>, <span class="ark"> görev ve unvan değişikliği</span>, geçici veya sürekli görevlendirmelere ilişkin <span class="ark"> idari işlemler</span>, <span class="mavi"> uygulanmakla etkisi tükenecek olan idari işlemlerden sayılmaz</span>. Yürütmenin durdurulması kararlarında idari işlemin hangi gerekçelerle hukuka açıkça aykırı olduğu ve işlemin uygulanması halinde doğacak telafisi güç veya imkânsız zararların neler olduğunun belirtilmesi zorunludur. <span class="mavi"> Sadece ilgili kanun veya Cumhurbaşkanlığı kararnamesi hükmünün iptali istemiyle <span class="dik"> Anayasa Mahkemesine başvurulduğu gerekçesiyle </span>yürütmenin durdurulması kararı verilemez</span>.(1) <br>
+ 
+
+3. (Ek: 2/7/2012-6352/57 md.)  Dava dilekçesi ve eklerinden yürütmenin durdurulması <span class="ark"> isteminin yerinde olmadığı anlaşılırsa</span>, <span class="mavi"> <span class="dik"> davalı idarenin savunması</span> alınmaksızın istem reddedilebilir</span>.(1) <br>
+
+4. Vergi mahkemelerinde, vergi uyuşmazlıklarından doğan davaların açılması, tarh edilen <span class="ark"> vergi, resim ve harçlar</span> ile benzeri mali yükümlerin ve bunların zam ve cezalarının <span class="mavi"> dava  konusu edilen bölümünün tahsil işlemlerini durdurur</span> . Ancak, 26 ncı maddenin 3 üncü fıkrasına göre işlemden kaldırılan vergi davası dosyalarında tahsil işlemi devam eder. Bu şekilde işlemden kaldırılan dosyanın yeniden işleme konulması ile ihtirazi kayıtla verilen beyannameler üzerine yapılan işlemlerle tahsilat işlemlerinden dolayı açılan davalar,tahsil işlemini durdurmaz. Bunlar hakkında yürütmenin durdurulması istenebilir.(1) (Ek cümle: 19/1/2022-7351/2 md.)  (İptal cümle:Anayasa Mahkemesi’nin 1/6/2022 tarihli ve E.: 2022/14, K.: 2022/70 sayılı Kararı ile.) <br>
+
+5. <span class="mavi"> Yürütmenin durdurulması istemli davalarda 16 ncı maddede yazılı <span class="ark"> süreler kısaltılabileceği gibi</span>, tebliğin <span class="ark"> memur eliyle yapılmasına da</span> karar verilebilir</span>.(1)  <br> 
+
+6. <span class="mavi"> Yürütmenin durdurulması kararları <span class="dik"> teminat karşılığında</span> verilir</span>; ancak, durumun gereklerine göre teminat aranmayabilir. Taraflar arasında <span class="ark"> teminata ilişkin olarak çıkan anlaşmazlıklar</span>,  <span class="mavi"> yürütmenin durdurulması hakkında karar veren daire, mahkeme veya hakim tarafından çözümlenir</span>. <span class="ark"> İdareden</span> ve <span class="ark"> adli yardımdan faydalanan</span>  kimselerden <span class="mavi"> teminat alınmaz</span>.(1)   <br>
+
+7. <span class="kim"> Yürütmenin  durdurulması istemleri hakkında verilen kararlar</span>; <span class="ark"> Danıştay dava dairelerince verilmişse</span>  konusuna göre <span class="span"> İdari veya Vergi Dava Daireleri  Kurullarına,</span>  <span class="ark"> bölge  idare  mahkemesi   kararlarına  karşı</span> <span class="span">  en  yakın  bölge  idare  mahkemesine</span> ,  <span class="ark"> idare  ve  vergi  mahkemeleri   ile    tek  hakim   tarafından  verilen   kararlara   karşı</span> <span class="span">  bölge  idare  mahkemesine</span>  (…)(2) <span class="mavi"> kararın tebliğini izleyen günden itibaren <span class="dik"> yedi gün</span> içinde bir defaya mahsus olmak üzere <span class="dik"> itiraz</span> edilebilir. </span>İtiraz edilen merciler, <span class="mavi"> dosyanın kendisine gelişinden itibaren <span class="dik"> yedi gün</span> içinde karar vermek zorundadır</span>. <span class="mavi"> İtiraz üzerine verilen kararlar kesindir</span>.(1)(2) <br>
+
+8. <span class="mavi"> <span class="dik"> Yürütmenin durdurulması kararı verilen</span> dava dosyaları öncelikle incelenir ve karara bağlanır</span>.(1) <br>
+
+9. (Ek: 2/7/2012-6352/57 md.)  <span class="mavi"> <span class="dik"> Yürütmenin durdurulmasına dair verilen</span> kararlar <span class="dik"> onbeş gün</span> içinde yazılır ve imzalanır.</span> <br>
+
+10. (Ek: 2/7/2012-6352/57 md.)  <span class="mavi"> <span class="dik"> Aynı sebeplere dayanılarak ikinci kez</span> yürütmenin durdurulması isteminde bulunulamaz</span>.</div></div></div>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+<div> 
+Kararların sonuçları:(1)(2)
+<div> 
+Madde 28 – <div> 1.(Değişik:10/6/1994-4001/13 md.) Danıştay, bölge idare mahkemeleri, idare ve vergi mahkemelerinin esasa ve yürütmenin durdurulmasına ilişkin kararlarının icaplarına göre <span class="mavi"> idare, gecikmeksizin işlem tesis etmeye veya eylemde bulunmaya mecburdur</span>. Bu süre hiçbir şekilde kararın idareye tebliğinden başlayarak <span class="mavi"> otuz günü geçemez</span>. (İptal cümle: Anayasa Mahkemesi’nin 10/7/2013 tarihli ve E.: 2012/107 K.: 2013/90 sayılı Kararı ile.) (…) (Ek cümleler: 21/2/2014-6526/18 md.; Değişik üçüncü ve dördüncü cümleler: 10/9/2014-6552/97 md.; İptal üçüncü cümle: Anayasa Mahkemesi’nin 25/11/2015 tarihli ve E.: 2014/86, K.: 2015/109 sayılı Kararı ile.) (…)(1) (İptal dördüncü cümle: Anayasa Mahkemesi’nin 2/10/2014 tarihli ve E.: 2014/149, K.: 2014/151 sayılı Kararı ile.)(2) (Ek cümle: 10/9/2014-6552/97 md.) (…)(1) ancak disiplin hükümleri saklıdır.(1) <br>
+
+2. (Değişik: 2/7/2012-6352/58 md.)  Konusu belli bir miktar paranın ödenmesini gerektiren davalarda hükmedilen miktar ile her türlü davalarda hükmedilen vekalet ücreti ve yargılama giderleri, davacının veya vekilinin davalı idareye yazılı şekilde bildireceği banka hesap numarasına, bu bildirim tarihinden itibaren, birinci fıkrada belirtilen usul ve esaslar çerçevesinde yatırılır. <span class="mavi"> Birinci fıkrada belirtilen süreler içinde ödeme yapılmaması halinde, genel hükümler dairesinde infaz ve icra olunur.</span> <br>
+
+3. Danıştay, bölge idare mahkemeleri, idare ve vergi mahkemeleri kararlarına göre <span class="ark"> işlem tesis edilmeyen veya eylemde bulunulmayan hallerde</span> <span class="mavi"> idare aleyhine Danıştay ve ilgili idari mahkemede maddi ve manevi tazminat davası açılabilir</span>. <br>
+
+4. (Değişik: 21/2/2014-6526/18 md.) Mahkeme kararlarının süresi içinde <span class="ark"> kamu görevlilerince yerine getirilmemesi hâlinde</span> <span class="mavi"> tazminat davası ancak ilgili idare aleyhine açılabilir.</span> <br>
+ 
+
+5. Vergi uyuşmazlıklarına ilişkin mahkeme kararlarının idareye tebliğinden <span class="ark"> sonra bu kararlara göre tespit edilecek</span> <span class="span"> vergi, resim, harçlar ve benzeri</span> mali yükümler ile  zam ve  cezaların <span class="mavi"> miktarı <span class="dik"> ilgili idarece mükellefe</span> bildirilir</span>. <br>
+
+6. (Değişik: 2/7/2012-6352/58 md.)  Tazminat ve vergi davalarında idarece, <span class="ark"> mahkeme kararının tebliğ tarihi ile</span>  <span class="ark">ödeme tarihi arasındaki süreye</span> 21/7/1953 tarihli ve 6183 sayılı Amme Alacaklarının Tahsil Usulü Hakkında Kanunun 48 inci maddesine göre belirlenen tecil faizi oranında hesaplanacak <span class="mavi"> faiz ödenir</span> . <span class="kim"> Ancak</span> mahkeme kararının davacıya <span class="ark"> tebliği</span> ile <span class="ark"> banka hesap numarasının idareye bildirildiği tarih arasında</span> <span class="mavi"> geçecek süre için faiz işlemez</span>.</div></div></div>
+<div> 
+Açıklama:
+<div> 
+Madde 29 – <div> 1. Danıştay, bölge idare mahkemeleri, idare ve vergi mahkemelerince verilen kararlar yeterince <span class="ark"> açık değilse</span>, yahut <span class="ark"> birbirine aykırı hüküm fıkralarını taşıyorsa</span>, taraflardan her biri kararın <span class="mavi"> açıklanmasını veya aykırılığın giderilmesini isteyebilir.</span> <br>
+
+2. <span class="mavi"> Açıklama dilekçeleri karşı taraf sayısından <span class="dik"> bir nüsha</span> fazla verilir</span>. <br>
+
+3. Kararı vermiş olan daire veya mahkeme işi inceler ve gerek görürse dilekçenin bir örneğini, belirleyeceği süre içinde cevap vermek üzere, karşı tarafa tebliğ eder, <span class="mavi"> cevap iki nüsha olarak verilir</span>. <span class="mavi"> Bunlardan biri, açıklama veya aykırılığın kaldırılmasını isteyen tarafa gönderilir</span>. <br>
+
+4. Görevli daire veya mahkemenin bu husustaki <span class="mavi"> kararı, taraflara tebliğ olunur</span>. <br>
+
+5. <span class="kim"> Açıklama veya aykırılığın kaldırılması,</span> <span class="mavi">kararın yerine getirilmesine kadar istenebilir</span> .</div></div></div>
+<div> 
+Yanlışlıkların düzeltilmesi:
+<div> 
+Madde 30 – <div> 1. İki tarafın <span class="span"> adı ve soyadı ile sıfatı</span> ve iddiaları sonucuna ilişkin yanlışlıklar ile hüküm fıkrasındaki <span class="span"> hesap yanlışlıklarının</span> düzeltilmesi de istenebilir. <br>
+
+2. 29 uncu maddenin son fıkrası dışında kalan hükümleri, bu istekler hakkında da uygulanır. <br>
+
+3. <span class="mavi"> Yanlışlıkların düzeltilmesine karar verilirse, düzeltme <span class="dik"> ilamın altına</span> yazılır</span>.</div></div></div>
+<div> 
+Hukuk Usulü Muhakemeleri Kanunu ile Vergi Usul Kanununun uygulanacağı haller:
+<div> 
+Madde 31 –<div>  1. Bu Kanunda hüküm bulunmayan hususlarda; hakimin davaya bakmaktan memnuiyeti ve reddi, ehliyet, üçüncü şahısların davaya katılması, davanın ihbarı, tarafların vekilleri, dosyanın taraflar ve ilgililerce incelenmesi, feragat ve kabul, teminat, mukabil dava, bilirkişi, keşif, delillerin tespiti, yargılama giderleri, adli yardım hallerinde ve duruşma sırasında tarafların mahkemenin sukünunu ve inzibatını bozacak hareketlerine karşı yapılacak işlemler, elektronik işlemler ile ses ve görüntü nakledilmesi yoluyla duruşma icrasında <span class="mavi"> Hukuk Usulü Muhakemeleri Kanunu hükümleri uygunlanır</span>. (Ek cümle: 5/4/1990-3622/11 md.; Değişik:10/6/1994-4001/14 md.) <span class="kim"> Ancak</span>, <span class="mavi"> <span class="kim"> davanın ihbarı</span> Danıştay, mahkeme veya hakim tarafından re'sen yapılır</span>. (Ek cümle: 3/11/2016-6754/22 md.) <span class="kim"> Bilirkişiler,</span>  <sapn class="mavi"> bilirkişilik  bölge kurulları tarafından hazırlanan listelerden seçilir</sapn> ve bilirkişiler hakkında Bilirkişilik Kanunu ve 12/1/2011 tarihli ve 6100 sayılı Hukuk Muhakemeleri Kanununun ilgili hükümleri uygulanır.(1)(2)(3)(4) <br>
+ 
+
+2. Bu Kanun ve yukarıdaki fıkra uyarınca Hukuk Usulü Muhakemeleri Kanununa atıfta bulunulan haller saklı kalmak üzere, <span class="mavi"> vergi uyuşmazlıklarının çözümünde <span class="dik"> Vergi Usul Kanununun ilgili hükümleri</span> uygulanır</span>.</div></div></div>
+
+İKİNCİ BÖLÜM <br>
+
+ 
+
+İdari Davalarda Yetki ve Bağlantı ile
+<br>
+Görevsizlik ve Yetkisizlik Hallerinde Yapılacak İşlemler
+<br>
+
+<div>
+İdari davalarda genel yetki:
+<div>
+Madde 32 – 1. Göreve ilişkin hükümler saklı kalmak şartıyla bu Kanunda veya özel kanunlarda yetkili idare mahkemesinin gösterilmemiş olması halinde, yetkili idare mahkemesi, dava konusu olan idari işlemi veya idari sözleşmeyi yapan idari merciin bulunduğu yerdeki idare mahkemesidir.
+<br>
+2. Bu Kanunun uygulanmasında yetki kamu düzenindendir. (Mülga ikinci cümle: 10/6/1994-4001/15 md.) (…)
+</div></div>
+ 
+<div>
+Kamu görevlileri ile ilgili davalarda yetki:
+<div>
+Madde 33 – 1. (Değişik: 5/4/1990-3622/12 md.) Kamu görevlilerinin atanması ve nakilleri ile ilgili davalarda yetkili mahkeme, kamu görevlilerinin yeni veya eski görev yeri idare mahkemesidir.
+<br>
+2. Kamu görevlilerinin görevlerine son verilmesi, emekli edilmeleri veya görevden uzaklaştırılmaları ile ilgili davalarda yetkili mahkeme, kamu görevlisinin son görev yaptığı yer idare mahkemesidir.
+<br>
+3. (Değişik: 5/4/1990-3622/12 md.) Kamu görevlilerinin görevle ilişkisinin kesilmesi sonucunu doğurmayan disiplin cezaları ile ilerleme, yükselme, sicil, intibak ve diğer özlük ve parasal hakları ve mahalli idarelerin organları ile bu organların üyelerinin geçici bir tedbir olarak görevden uzaklaştırılmalarıyla ilgili davalarda yetkili mahkeme ilgilinin görevli bulunduğu yer idare mahkemesidir.
+<br>
+4. (Ek: 2/7/2012-6352/60 md.) Özel kanunlardaki hükümler saklı kalmak kaydıyla, hâkim ve savcıların mali ve sosyal haklarına ve sicillerine ilişkin konularla, müfettiş hal kâğıtlarına karşı açacakları ve idare mahkemelerinin görevine giren davalarda yetkili mahkeme, hâkim veya savcının görev yaptığı yerin idari yargı yetkisi yönünden bağlı olduğu bölge idare mahkemesine en yakın bölge idare mahkemesinin bulunduğu yer idare mahkemesidir.
+</div></div>
+ 
+<div>
+Taşınmaz mallara ilişkin davalarda yetki:[27]
+<div>
+Madde 34 – (Değişik: 10/6/1994-4001/16 md.)
+<br>
+1. İmar, kamulaştırma, yıkım, işgal, tahsis, ruhsat ve iskan gibi taşınmaz mallarla ilgili mevzuatın uygulanmasında veya bunlara bağlı her türlü haklara veya kamu mallarına ilişkin idari davalarda yetkili mahkeme taşınmaz malların bulunduğu yer idare mahkemesidir.
+<br>
+2. Köy, belediye ve özel idareleri ilgilendiren mevzuatın uygulanmasına ilişkin davalarla sınır uyuşmazlıklarında yetkili mahkeme, mülki idari birimin, köy, belediye veya mahallenin bulunduğu yahut yeni bağlandığı yer idare mahkemesidir.
+</div></div>
+
+<div>
+Taşınır mallara ilişkin davalarda yetki:
+<div>
+Madde 35 – (Değişik: 5/4/1990-3622/13 md.)
+
+Taşınır mallara ilişkin davalarda yetkili mahkeme, taşınır malın bulunduğu yer idare mahkemesidir.
+</div></div>
+ 
+<div>
+Tam yargı davalarında yetki:
+<div>
+Madde 36 – İdari sözleşmelerden doğanlar dışında kalan tam yargı davalarında yetkili mahkeme, sırasıyla:
+<div>
+a) Zararı doğuran idari uyuşmazlığı çözümlemeye yetkili,
+<br>
+b) Zarar, bayındırlık ve ulaştırma gibi bir hizmetten veya idarenin herhangi bir eyleminden doğmuş ise, hizmetin görüldüğü veya eylemin yapıldığı yer,
+<br>
+c) Diğer hallerde davacının ikametgahının bulunduğu yer.
+</div>
+İdari mahkemesidir.
+</div></div>
+
+
+ 
+<div>
+Vergi uyuşmazlıklarında yetki:[28]
+<div>
+Madde 37 – Bu Kanununa göre vergi uyuşmazlıklarında yetkili mahkeme:
+<div>
+a) Uyuşmazlık konusu vergi, resim, harç ve benzeri mali yükümleri tarh ve tahakkuk ettiren, zam ve cezaları kesen,
+<br>
+b) (Ek: 10/6/1994-4001/17 md.) Gümrük Kanununa göre alınması gereken vergilerle Vergi Usul Kanunu gereğince şikayet yoluyla vergi düzeltme taleplerinin reddine ilişkin işlemlerde; vergi, resim, harç ve benzeri mali yükümleri tarh ve tahakkuk ettiren,
+<br>
+c) Amme Alacaklarının Tahsil Usulu Kanunun uygulanmasında, ödeme emrini düzenleyen,
+<br>
+d) Diğer uyuşmazlıklarda dava konusu işlemi yapan,
+</div>
+Dairenin bulunduğu yerdeki vergi mahkemesidir.
+</div></div>
+ 
+<div>
+Bağlantılı davalar:[29]
+<div>
+Madde 38 – 1. (Ek: 10/6/1994-4001/18 md.) Aynı maddi veya hukuki sebepten doğan ya da biri hakkında verilecek hüküm, diğerini etkileyecek nitelikte olan davalar bağlantılı davalardır.
+<br>
+2. İdare mahkemesi, vergi mahkemesi veya Danıştaya veya birden fazla idare veya vergi mahkemelerine açılmış bulunan davalarda bağlantının varlığına taraflardan birinin isteği üzerine veya doğrudan doğruya mahkemece karar verilir.
+<br>
+3. Bağlantılı davalardan birinin Danıştayda bulunması halinde dava dosyası Danıştaya gönderilir.
+<br>
+4. Bağlantılı davalar, değişik bölge idare mahkemesinin yargı çevrelerindeki mahkemelerde bulunduğu takdirde dosyalar Danıştaya gönderilir.
+<br>
+5. Bağlantılı davalar aynı bölge idare mahkemesinin yargı çerçevesindeki mahkemelerde bulunduğu takdirde dosyalar o yer bölge idare mahkemesine gönderilir.
+</div></div>
+
+<div>
+Bağlantının Danıştayca incelenmesi:
+<div>
+Madde 39 – 1. Danıştayın dava konusu uyuşmazlığı incelemeye yetkili dairesi, bağlantılı dava dosyalarını öncelikle ve ivedilikle inceler ve karar verir.
+<br>
+2. Danıştay bağlantının bulunduğuna karar verdiği takdirde:
+<div>
+a) (Değişik: 5/4/1990-3622/14 md.) Davalardan biri Danıştayda açılmış ve çözümlenmesi Danıştayın görevine dahil bir uyuşmazlıkla ilgili ise, davaların tümü Danıştayda görülür ve durum ilgili mahkemelere ve taraflara bildirilir.
+<br>
+b) Davaların çözümlenmesi, ayrı bölge idare mahkemesinin yargı çevresindeki idare veya vergi mahkemelerinin görevlerine giren uyuşmazlıklarla ilgili ise Danıştayın ilgili dairesi yetkili mahkemeyi kararında belirtir ve dosyaları bu mahkemeye göndererek diğer mahkemeye veya mahkemelere durumu bildirir. Yetkili mahkeme de durumu ilgililere duyurur.
+<br>
+c) (Değişik: 10/6/1994-4001/19 md.) Danıştayca verilen karar bağlantı bulunmadığı yolunda ise, dosyalar İlgili mahkemelere geri gönderilir.
+</div> </div></div> 
+ 
+<div>
+Bağlantının Bölge İdare Mahkemesince incelenmesi:
+<div>
+Madde 40 – 1.Bölge idare mahkemesi bağlantılı dava dosyalarını öncelikle ve ivedilikle inceler ve kararını verir. Bölge idare mahkemesince verilen karar, bağlantının bulunduğu yolunda ise, yetkili mahkeme kararda belirtilmek suretiyle dosyalar yetkili mahkemeye gönderilir. Durum ayrıca diğer mahkemeye de duyurulur. Yetkili kılınan mahkeme durumu ilgililere bildirir.
+<br>
+2. Bölge idare mahkemesince verilen karar bağlantı olmadığı yolunda ise, dosyalar ilgili mahkemelere geri gönderilir.
+</div></div>
+ 
+<div>
+Bağlantının mahkemelerce kabul edilmemesi:
+<div>
+Madde 41 – Bağlantı iddiaları mahkemelerce kabul edilmediği takdirde, bu hususta verilen ara kararı taraflara tebliğ edilir. Taraflar, tebliğ tarihini izleyen onbeş gün içerisinde, aynı yargı çevresindeki mahkemeler için o yer bölge idare mahkemesine, 38 nci maddenin 2 ve 3 ncü fıkrasındaki durumlarla ilgili davalar için Danıştaya başvuruda bulunabilirler. Başvuru üzerine bölge idare mahkemesi veya Danıştay görevli dairesince durum, yukarıdaki maddelerde yazılı usullere göre incelenerek karara bağlanır.
+</div></div>
+ 
+<div>
+Bağlantılı davalarla ilgili diğer esaslar:
+<div>
+Madde 42 – 1. Bağlantının varlığı yolunda idare ve vergi mahkemelerince veya bu konuda yapılacak itiraz üzerine bölge idare mahkemesi veya Danıştayca bağlantı hakkında karar verilinceye kadar usuli işlemler durur.
+<br>
+2. Bağlantıya ilişkin işlemler sonuçlandırıldıktan sonra bu davalara bakmakla yetkili kılınan mahkeme veya Danıştay, davalara bırakıldığı yerden devam eder.
+<br>
+3. Bağlantının bulunup bulunmadığı yolundaki bölge idare mahkemesi ve Danıştay kararları kesindir.
+</div></div>
+ 
+<div>
+Görevsizlik ve yetkisizlik hallerinde yapılacak işlem:
+<div>
+Madde 43 – 1. İdare ve vergi mahkemeleri, idari yargının görev alanına giren bir davada görevsizlik veya yetkisizlik sebebiyle davanın reddine karar verirlerse dosyayı Danıştaya veya görevli ve yetkili idare veya vergi mahkemesine gönderirler.
+<div>
+a) Görevsizlik sebebiyle gönderilen dosyalarda Danıştay, davayı görevi içinde görmezse dosyanın yetkili ve görevli mahkemeye gönderilmesine karar verir.
+<br>
+b) Görevsizlik veya yetkisizlik sebebiyle dosyanın gönderildiği mahkeme kendisini görevsiz veya yetkisiz gördüğü takdirde, söz konusu mahkeme ile ilk görevsizlik veya yetkisizlik kararını veren mahkeme aynı bölge idare mahkemesinin yargı çevresinde ise, uyuşmazlık bölge idare mahkemesince, aksi halde Danıştayca çözümlenir.
+</div>
+
+2. Görev ve yetki uyuşmazlıklarında Danıştay ve bölge idare mahkemesince verilen kararlar ilgili mahkemelere bildirilir ve bu husus taraflara tebliğ olunur.
+<br>
+3. Danıştay ve bölge idare mahkemesince görev ve yetki uyuşmazlıkları ile ilgili olarak verilen kararlar kesindir.
+<br>
+4. Bu madde hükümleri gereğince verilen kararlar ile görevli ve yetkili kılınan mahkemeye yeniden dava açılması halinde harç alınmaz.
+<br>
+5. (Mülga: 5/4/1990-3622/27 md.)
+</div></div>  
+ 
+
+<div>
+Merci tayini:
+<div>
+Madde 44 – 1. Yetkili mahkemenin bir davaya bakmasına fiili veya hukuki bir engel çıktığı veya iki mahkemenin yargı çevresi sınırlarında tereddüt edildiği veya iki mahkemenin de aynı davaya bakmaya yetkili olduklarına karar verdikleri hallerde dava dosyaları, tarafların veya mahkemelerin istemi üzerine merci tayini için:
+<div>
+a) Uyuşmazlığın aynı yargı çevresindeki mahkeme veya mahkemeler arasında çıkması halinde, o yargı çevresindeki bölge idare mahkemesine,
+<br>
+b) Sair hallerde Danıştaya,
+</div>
+Gönderilir.
+<br>
+2. Danıştay ve bölge idare mahkemesi görevli ve yetkili mahkemeyi kararlaştırır.
+<br>
+3. Danıştay ve bölge idare mahkemesinin bu konuda vereceği kararlar kesindir.
+</div></div>
+ 
+
+ÜÇÜNCÜ BÖLÜM
+<br>
+Kararlara Karşı Başvuru Yolları
+<br>
+<div>
+İstinaf:[30]
+<div>
+Madde 45 – (Değişik: 18/6/2014-6545/19 md.)
+<br>
+1. İdare ve vergi mahkemelerinin kararlarına karşı, başka kanunlarda farklı bir kanun yolu öngörülmüş olsa dahi, mahkemenin bulunduğu yargı çevresindeki bölge idare mahkemesine, kararın tebliğinden itibaren otuz gün içinde istinaf yoluna başvurulabilir. (Değişik cümle:28/7/2024-7524/52 md.) Ancak, konusu otuz bir bin Türk lirasını geçmeyen; vergi davaları, tam yargı davaları ve idari işlemlere karşı açılan iptal davaları hakkında idare ve vergi mahkemelerince verilen kararlar kesin olup, bunlara karşı istinaf yoluna başvurulamaz. [31]
+<br>
+2. İstinaf, temyizin şekil ve usullerine tabidir. İstinaf başvurusuna konu olacak kararlara karşı yapılan kanun yolu başvurularında dilekçelerdeki hitap ve istekle bağlı kalınmaksızın dosyalar bölge idare mahkemesine gönderilir. (Ek cümle:28/7/2024-7524/52 md.) Bölge idare mahkemesinin 48 inci maddenin yedinci fıkrası uyarınca verdiği kararlara karşı tebliğ tarihini izleyen günden itibaren yedi gün içinde temyiz yoluna başvurulabilir. [32]
+<br>
+3. Bölge idare mahkemesi, yaptığı inceleme sonunda ilk derece mahkemesi kararını hukuka uygun bulursa istinaf başvurusunun reddine karar verir. Karardaki maddi yanlışlıkların düzeltilmesi mümkün ise gerekli düzeltmeyi yaparak aynı kararı verir.
+<br>
+4. Bölge idare mahkemesi, ilk derece mahkemesi kararını hukuka uygun bulmadığı takdirde istinaf başvurusunun kabulü ile ilk derece mahkemesi kararının kaldırılmasına karar verir. Bu hâlde bölge idare mahkemesi işin esası hakkında yeniden bir karar verir. İnceleme sırasında ihtiyaç duyulması hâlinde kararı veren mahkeme veya başka bir yer idare ya da vergi mahkemesi istinabe olunabilir. İstinabe olunan mahkeme gerekli işlemleri öncelikle ve ivedilikle yerine getirir.
+<br>
+5. Bölge idare mahkemesi, ilk inceleme üzerine verilen kararlara karşı yapılan istinaf başvurusunu haklı bulduğu, davaya görevsiz veya yetkisiz mahkeme yahut reddedilmiş veya yasaklanmış hâkim tarafından bakılmış olması hâllerinde, istinaf başvurusunun kabulü ile ilk derece mahkemesi kararının kaldırılmasına karar vererek dosyayı ilgili mahkemeye gönderir. Bölge idare mahkemesinin bu fıkra uyarınca verilen kararları kesindir.
+<br>
+6. Bölge idare mahkemelerinin 46 ncı maddeye göre temyize açık olmayan kararları kesindir. (Ek cümle: 20/7/2017-7035/6 md.) Bu kararlar, dosyayla birlikte kararı veren ilk derece mahkemesine gönderilir ve bu mahkemelerce yedi gün içinde tebliğe çıkarılır.[33]
+<br>
+7. İstinaf başvurusuna konu edilen kararı veren ya da karara katılan hâkim, aynı davanın istinaf yoluyla bölge idare mahkemesince incelenmesinde bulunamaz.
+<br>
+8. İvedi yargılama usulüne tabi olan davalarda istinaf yoluna başvurulamaz.
+</div></div>
+ 
+<div>
+Temyiz:
+<div>
+Madde 46 – (Değişik: 18/6/2014-6545/20 md.)
+<br>
+Danıştay dava dairelerinin nihai kararları ile bölge idare mahkemelerinin aşağıda sayılan davalar hakkında verdikleri kararlar, başka kanunlarda aksine hüküm bulunsa dahi Danıştayda, kararın tebliğinden itibaren otuz gün içinde temyiz edilebilir:[34]
+<div>
+a) Düzenleyici işlemlere karşı açılan iptal davaları.
+<br>
+b) (İptal bent: Anayasa Mahkemesinin 26/7/2023 tarihli ve E.:2023/36 K.:2023/142 sayılı Kararı ile) (Yeniden Düzenleme:28/7/2024-7524/53 md.) Konusu dokuz yüz yirmi bin Türk lirasını aşan; vergi davaları, tam yargı davaları ve idari işlemler hakkında açılan davalar.
+<br>
+c) (Ek:28/7/2024-7524/53 md.) Konusu iki yüz yetmiş bin Türk lirasını aşıp dokuz yüz yirmi bin Türk lirasını aşmayan; vergi davaları, tam yargı davaları ve idari işlemler hakkında açılan ve istinaf kanun yolu incelemesinde kaldırma kararı üzerine yeniden karar verilen davalar.
+<br>
+d) Belli bir meslekten, kamu görevinden veya öğrencilik statüsünden çıkarılma sonucunu doğuran işlemlere karşı açılan iptal davaları.
+<br>
+e) Belli bir ticari faaliyetin icrasını süresiz veya otuz gün yahut daha uzun süreyle engelleyen işlemlere karşı açılan iptal davaları.
+<br>
+f) Müşterek kararnameyle yapılan atama, naklen atama ve görevden alma işlemleri ile daire başkanı ve daha üst düzey kamu görevlilerinin atama, naklen atama ve görevden alma işlemleri hakkında açılan iptal davaları.
+<br>
+g) İmar planları, parselasyon işlemlerinden kaynaklanan davalar.
+<br>
+h) Tabiat Varlıklarını Koruma Merkez Komisyonu ve Kültür Varlıklarını Koruma Yüksek Kurulunca itiraz üzerine verilen kararlar ile 18/11/1983 tarihli ve 2960 sayılı Boğaziçi Kanununun uygulanmasından doğan davalar.
+<br>
+ı) Maden, taşocakları, orman, jeotermal kaynaklar ve doğal mineralli sular ile ilgili mevzuatın uygulanmasına ilişkin işlemlere karşı açılan davalar.
+<br>
+i) Ülke çapında uygulanan öğrenim ya da bir meslek veya sanatın icrası veyahut kamu hizmetine giriş amacıyla yapılan sınavlar hakkında açılan davalar.
+<br>
+j) Liman, kruvaziyer limanı, yat limanı, marina, iskele, rıhtım, akaryakıt ve sıvılaştırılmış petrol gazı boru hattı gibi kıyı tesislerine işletme izni verilmesine ilişkin mevzuatın uygulanmasından doğan davalar.
+<br>
+k) 8/6/1994 tarihli ve 3996 sayılı Bazı Yatırım ve Hizmetlerin Yap-İşlet-Devret Modeli Çerçevesinde Yaptırılması Hakkında Kanunun uygulanmasından ve 16/7/1997 tarihli ve 4283 sayılı Yap-İşlet Modeli ile Elektrik Enerjisi Üretim Tesislerinin Kurulması ve İşletilmesi ile Enerji Satışının Düzenlenmesi Hakkında Kanunun uygulanmasından doğan davalar.
+<br>
+l) 6/6/1985 tarihli ve 3218 sayılı Serbest Bölgeler Kanununun uygulanmasından doğan davalar.
+<br>
+m) 3/7/2005 tarihli ve 5403 sayılı Toprak Koruma ve Arazi Kullanımı Kanununun uygulanmasından doğan davalar.
+<br>
+n) Düzenleyici ve denetleyici kurullar tarafından görevli oldukları piyasa veya sektörle ilgili olarak alınan kararlara karşı açılan davalar.
+</div></div></div> 
+ 
+<div>
+Temyiz edilemeyecek kararlar:
+<div>
+Madde 47 – (Mülga: 18/6/2014-6545/103 md.)
+</div></div>
+ 
+<div>
+Temyiz dilekçesi:
+<div>
+Madde 48 – (Değişik: 5/4/1990-3622/17 md.)
+<br>
+1. Temyiz istemleri Danıştay Başkanlığına hitaben yazılmış dilekçeler ile yapılır.
+<br>
+2. Temyiz dilekçelerinin 3 üncü madde esaslarına göre düzenlenmesi gereklidir, düzenlenmemiş ise eksikliklerin onbeş gün içinde tamamlatılması hususu, kararı veren Danıştay veya bölge idare mahkemesince ilgiliye tebliğ olunur. Bu sürede eksiklikler tamamlanmazsa temyiz isteminde bulunulmamış sayılmasına Danıştay veya bölge idare mahkemesince karar verilir.[35]
+<br>
+3. Temyiz dilekçeleri, ilgisine göre kararı veren bölge idare mahkemesine, Danıştaya veya 4 üncü maddede belirtilen mercilere verilir ve kararı veren bölge idare mahkemesi veya Danıştayca karşı tarafa tebliğ edilir. Karşı taraf tebliğ tarihini izleyen otuz gün içinde cevap verebilir. Cevap veren, kararı süresinde temyiz etmemiş olsa bile düzenleyeceği dilekçesinde, temyiz isteminde bulunabilir. Bu takdirde bu dilekçeler temyiz dilekçesi yerine geçer.[36]
+<br>
+4. (Değişik:10/6/1994-4001/21 md.) Kararı veren Danıştay veya bölge idare mahkemesi, cevap dilekçesi verildikten veya cevap süresi geçtikten sonra dosyayı dizi listesine bağlı olarak, Danıştaya veya Kurula gönderir.[37]
+<br>
+5. Yürütmenin durdurulması isteği bulunan temyiz dilekçeleri, karşı tarafa tebliğ edilmeden dosya ile birlikte, yürütmenin durdurulması istemi hakkında karar verilmek üzere kararı veren bölge idare mahkemesince Danıştay Başkanlığına, Danıştayın ilk derece mahkemesi olarak baktığı davalarda, görevli dairece konusuna göre İdari veya Vergi Dava Daireleri Kuruluna gönderilir. Danıştayda görevli daire veya kurul tarafından yürütmenin durdurulması istemi hakkında karar verildikten sonra tebligat bu daire veya kurulca yapılarak dosya tekemmül ettirilir.[38]
+<br>
+6. Temyiz dilekçesi verilirken gerekli harç ve giderlerin tamamının ödenmemiş olması halinde kararı veren; merci tarafından verilecek yedi günlük süre içerisinde tamamlanması, aksi halde temyizden vazgeçilmiş sayılacağı hususu temyiz edene yazılı olarak bildirilir. Verilen süre içinde harç ve giderler tamamlanmadığı takdirde, ilgili merci, kararın temyiz edilmemiş sayılmasına karar verir. Temyizin kanuni süre geçtikten sonra yapılması veya kesin bir karar hakkında olması halinde de kararı veren merci, temyiz isteminin reddine karar verir. İlgili merciin bu kararları ile bu maddenin 2 nci fıkrasında belirtilen temyiz isteminde bulunulmamış sayılmasına ilişkin kararlarına karşı, tebliğ tarihini izleyen günden itibaren yedi gün içinde temyiz yoluna başvurulabilir.[39]
+<br>
+7. (Ek: 10/6/1994-4001/21md.; Değişik: 18/6/2014-6545/21 md.) Temyiz dilekçesi verilirken gerekli harç ve giderlerin ödenmemiş olduğu, dilekçenin 3 üncü madde esaslarına göre düzenlenmediği, temyizin kanuni süre içinde yapılmadığı veya kesin bir karar hakkında olduğunun anlaşıldığı hâllerde, 2 ve 6 ncı fıkralarda sözü edilen kararlar, dosyanın gönderildiği Danıştayın ilgili dairesi ve kurulunca, kesin olarak verilir.[40]
+</div></div>
+ 
+<div>
+Temyiz incelemesi üzerine verilecek kararlar:[41]
+<div>
+Madde 49 – (Değişik: 18/6/2014-6545/22 md.)
+<br>
+1. Temyiz incelemesi sonunda Danıştay;
+<div>
+a) Kararı hukuka uygun bulursa onar. Kararın sonucu hukuka uygun olmakla birlikte gösterilen gerekçeyi doğru bulmaz veya eksik bulursa, kararı, gerekçesini değiştirerek onar.
+<br>
+b) Kararda yeniden yargılama yapılmasına ihtiyaç duyulmayan maddi hatalar ile düzeltilmesi mümkün eksiklik veya yanlışlıklar varsa kararı düzelterek onar.
+</div>
+2. Temyiz incelemesi sonunda Danıştay;
+<div>
+a) Görev ve yetki dışında bir işe bakılmış olması,
+<br>
+b) Hukuka aykırı karar verilmesi,
+<br>
+c) Usul hükümlerinin uygulanmasında kararı etkileyebilecek nitelikte hata veya eksikliklerin bulunması,
+</div>
+sebeplerinden dolayı incelenen kararı bozar.
+<br>
+3. Kararların kısmen onanması ve kısmen bozulması hâllerinde kesinleşen kısım Danıştay kararında belirtilir.
+<br>
+4. Danıştayın ilk derece mahkemesi olarak baktığı davaların temyizen incelenmesinde bu madde ile ısrar hariç 50 nci madde hükümleri kıyasen uygulanır.
+<br>
+5. Temyize konu edilen kararı veren ya da karara katılan hâkim aynı davanın temyiz incelemesinde görev alamaz.
+</div></div>
+ 
+<div>
+Temyizen verilen karar üzerine yapılacak işlem:
+<div>
+Madde 50 – (Değişik: 18/6/2014-6545/23 md.)
+<br>
+1. Temyiz incelemesi sonucunda verilen karar, dosyayla birlikte kararı veren mercie gönderilir. (Ek cümle: 20/7/2017-7035/7 md.) Ancak Danıştay ilgili dairesinin onamaya ilişkin kararları, dosyayla birlikte kararı veren ilk derece mahkemesine, kararın bir örneği de bölge idare mahkemesine gönderilir. Bu kararlar, dosyanın geldiği tarihten itibaren yedi gün içinde taraflara tebliğe çıkarılır.[42]
+<br>
+2. Temyiz incelemesi sonucunda verilen bozma kararı üzerine ilgili merci, dosyayı öncelikle inceler ve varsa gerekli tahkik işlemlerini tamamlayarak yeniden karar verir.
+<br>
+3. Bölge idare mahkemesi, Danıştayca verilen bozma kararına uyabileceği gibi kararında ısrar da edebilir.
+<br>
+4. Danıştayın bozma kararına uyulduğu takdirde, bu kararın temyiz incelemesi, bozma kararına uygunlukla sınırlı olarak yapılır.
+<br>
+5. Bölge idare mahkemesi, bozmaya uymayarak kararında ısrar ederse, ısrar kararının temyizi hâlinde, talep, konusuna göre Danıştay İdari veya Vergi Dava Daireleri Kurulunca incelenir ve karara bağlanır. Danıştay İdari ve Vergi Dava Daireleri Kurulları kararlarına uyulması zorunludur.
+</div></div>
+ 
+<div>
+Kanun yararına temyiz:[43][44]
+<div>
+Madde 51 – 1. (Değişik: 5/4/1990-3622/20 md.) İdare ve vergi mahkemeleri ile bölge idare mahkemelerinin kesin olarak verdiği kararlar ile istinaf veya temyiz incelemesinden geçmeden kesinleşmiş bulunan kararlardan niteliği bakımından yürürlükteki hukuka aykırı bir sonucu ifade edenler, ilgili bakanlıkların göstereceği lüzum üzerine veya kendiliğinden Başsavcı tarafından kanun yararına temyiz olunabilir.
+<br>
+2. (Değişik: 5/4/1990-3622/20 md.) Temyiz isteği yerinde görüldüğü takdirde karar, kanun yararına bozulur. Bu bozma kararı, daha önce kesinleşmiş olan merci kararının hukuki sonuçlarını kaldırmaz.
+<br>
+3. Bozma kararının bir örneği ilgili bakanlığa gönderilir ve Resmi Gazete'de yayımlanır.
+</div></div>
+ 
+<div>
+Temyiz veya istinaf istemlerinde yürütmenin durdurulması:[45][46]
+<div>
+Madde 52 – 1. (Değişik: 5/4/1990-3622/21 md.) Temyiz veya istinaf yoluna başvurulmuş olması, hakim, mahkeme veya Danıştay kararlarının yürütülmesini durdurmaz. Ancak, bu kararların teminat karşılığında yürütülmesinin durdurulmasına temyiz istemini incelemeye yetkili Danıştay dava dairesi, kurulu veya istinaf başvurusunu incelemeye yetkili bölge idare mahkemesince karar verilebilir. (Ek Cümle: 10/6/1994-4001/22 md.) Davanın reddine ilişkin kararlara karşı temyiz ya da istinaf yoluna başvurulması halinde, dava konusu işlem hakkında yürütmenin durdurulması kararı verilebilmesi 27 nci maddede öngörülen koşulun varlığına bağlıdır.
+<br>
+2. İptal davalarında teminat istenmeyebilir.
+<br>
+3. İdareden ve adli yardımdan yararlananlardan teminat alınmaz.
+<br>
+4. (Ek: 20/7/2017-7035/8 md.) Temyiz ve istinaf incelemesi sırasında yürütmenin durdurulması istemleri hakkında verilen kararlar kesindir.
+<br>
+5. Kararın bozulması, kararın yürütülmesini kendiliğinden durdurur.
+</div></div>
+ 
+<div>
+Yargılamanın yenilenmesi:
+<div>
+Madde 53 – 1. (Değişik birinci cümle: 5/4/1990-3622/22 md.) Danıştay ile bölge idare, idare ve vergi mahkemelerinden verilen kararlar hakkında, aşağıda yazılı sebepler dolayısıyla yargılamanın yenilenmesi istenebilir.
+<div>
+a) Zorlayıcı sebepler dolayısıyla veya lehine karar verilen tarafın eyleminden doğan bir sebeple elde edilemeyen bir belgenin kararın verilmesinden sonra ele geçirilmiş olması,
+<br>
+b) Karara esas olarak alınan belgenin, sahteliğine hükmedilmiş veya sahte olduğu mahkeme veya resmi bir makam huzurunda ikrar olunmuş veya sahtelik hakkındaki hüküm karardan evvel verilmiş olup da, yargılamanın yenilenmesini isteyen kimsenin karar zamanında bundan haberi bulunmamış olması,
+<br>
+c) Karara esas olarak alınan bir ilam hükmünün, kesinleşen bir mahkeme kararıyla bozularak ortadan kalkması,
+<br>
+d) Bilirkişinin kasıtla gerçeğe aykırı beyanda bulunduğunun mahkeme kararıyla belirlenmesi,
+<br>
+e) Lehine karar verilen tarafın, karara etkisi olan bir hile kullanmış olması,
+<br>
+f) Vekil veya kanuni temsilci olmayan kimseler ile davanın görülüp karara bağlanmış bulunması,
+<br>
+g) Çekinmeye mecbur olan başkan, üye veya hakimin katılmasıyla karar verilmiş olması,
+<br>
+h) (Değişik: 10/6/1994-4001/23 md.) Tarafları, konusu ve sebebi aynı olan bir dava hakkında verilen karara aykırı yeni bir kararın verilmesine neden olabilecek kanuni bir dayanak yokken, aynı mahkeme yahut başka bir mahkeme tarafından önceki ilamın hükmüne aykırı bir karar verilmiş bulunması.
+</div>
+ı) (Ek: 15/7/2003-4928/6 md.) Hükmün, İnsan Haklarını ve Ana Hürriyetleri Korumaya Dair Sözleşmenin veya eki protokollerin ihlâli suretiyle verildiğinin, Avrupa İnsan Hakları Mahkemesinin kesinleşmiş kararıyla tespit edilmiş olması (Ek ibare: 25/7/2018 – 7145/4 md.) veya hüküm aleyhine Avrupa İnsan Hakları Mahkemesine yapılan başvuru hakkında dostane çözüm ya da tek taraflı deklarasyon sonucunda düşme kararı verilmesi.
+<br>
+2. Yargılamanın yenilenmesi istekleri esas kararı vermiş olan mahkemece karara bağlanır.
+<br>
+3. (Değişik birinci cümle: 15/7/2003-4928/6 md.) Yargılamanın yenilenmesi süresi, (1) numaralı fıkranın (h) bendinde yazılı sebep için on yıl, (1) numaralı fıkranın (ı) bendinde yazılı sebep için Avrupa İnsan Hakları Mahkemesi kararının kesinleştiği tarihten itibaren bir yıl ve diğer sebepler için altmış gündür. Bu süreler, dayanılan sebebin istemde bulunan yönünden gerçekleştiği tarihi izleyen günden başlatılarak hesaplanır.[47]
+</div></div>
+ 
+
+<div>
+Kararın düzeltilmesi:
+<div>
+Madde 54 – (Mülga: 18/6/2014-6545/103 md.)
+</div></div>
+ 
+<div>
+Yargılamanın yenilenmesi usulü:[48]
+<div>
+Madde 55 – 1. İsteğin ilişkin olduğu konu, diğer bir daire veya mahkemenin görevine girmiş ise karar bu daire veya mahkemece verilir.
+<br>
+2. Karşı tarafın savunması alındıktan sonra istekler incelenir ve kanunda yazılı sebepler varsa davaya yeniden bakılarak karar verilir.
+<br>
+3. (Değişik: 10/6/1994-4001/25 md.) Yargılamanın yenilenmesi (…)48 istemleri, kanunda yazılı sebeplere dayanmıyor ise, istemin reddine karar verilir.
+<br>
+4. Yargılamanın yenilenmesi (…)48 istemlerinde duruşma yapılması, görevli daire veya mahkemenin kararına bağlıdır.
+<br>
+5. Bu madde ile 53 üncü madde hükümleri saklı kalmak kaydıyla, yargılamanın yenilenmesinde (…)48 bu Kanunun diğer hükümleri uygulanır.
+</div></div>
+
+<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button> 
+</div>
+
+<script>				
+var surukleniyor = false;
+var offsetX, offsetY;
+	
+// Tüm soru göster butonlarını seç
+const soruGosterButtons = document.querySelectorAll('.soru');
+
+// Her bir buton için event listener ekle
+soruGosterButtons.forEach(function (button, index) {
+button.addEventListener('click', function() {
+const soruContainer = document.querySelector('.soruContainer');
+
+// Eğer gösteriliyorsa gizle, gizliyse göster
+	if (soruContainer.style.display === "none") {
+	  soruContainer.style.display = "block";
+	} else {
+	  soruContainer.style.display = "none";
+}
+});
+});
+
+	
+soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+	
+document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+		soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+	
+	document.addEventListener('mouseup', function() { surukleniyor = false;	}); 
+</script>
+</body>
+</html>
+{% endblock%}	

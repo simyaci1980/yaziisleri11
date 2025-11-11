@@ -1,0 +1,1014 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify; }
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger;}
+
+.ark{background-color:black; font-size: larger;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+</style>
+<title>5271 sayılı Ceza Muhakemesi Kanununun (1. kitap, 1. kısım, 1. bölüm, 2. bölüm, 3. bölüm, 4. bölüm; 2. kısım, 1. bölüm, 2. bölüm)</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim() 	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+	function YAZDIR(){
+	  document.getElementById("kal").style.position="relative"
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" id="byz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+<br><br><br>
+	<div id="kal" class="kal">
+		CEZA MUHAKEMESİ KANUNU <br>
+
+
+
+	Kanun Numarası                    : 5271 <br>
+
+	Kabul Tarihi                           : 4/12/2004 <br>
+
+	Yayımlandığı Resmî Gazete  : Tarih  : 17/12/2004      Sayı  : 25673 <br>
+
+	Yayımlandığı Düstur              :Tertip : 5                       Cilt   : 44</div>
+
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+		<p>
+		  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+		  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+		  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+		</p></div>
+
+		<script>
+		  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+		  </script>
+
+
+
+		  <div id="soruContainer" class="soruContainer">
+			  <div id="soruDiv">
+				  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+			  </div>
+			  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+			  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+		  </div>
+		  <script src="static/js/script.js"></script> <br> <br><br><br><br><br><hr>
+
+
+	BİRİNCİ KİTAP <br>
+
+	Genel Hükümler <br>
+
+
+
+	BİRİNCİ KISIM <br>
+
+	Kapsam, Tanımlar, Görev ve Yetki <br>
+
+
+
+	BİRİNCİ BÖLÜM <br>
+
+	Kapsam ve Tanımlar <br>
+	<div>
+	Kanunun kapsamı
+	<div>
+	Madde 1 – (1) Bu Kanun, ceza muhakemesinin <span class="span"> nasıl yapılacağı </span> hususundaki kurallar ile bu sürece katılan <span class="span"> kişilerin hak, yetki ve yükümlülüklerini</span> düzenler.</div></div>
+
+
+	<div>
+	Tanımlar
+	<div>
+	Madde 2 – (1) Bu Kanunun uygulanmasında;
+	<div>
+	a) Şüpheli: Soruşturma evresinde, <span class="span"> suç şüphesi altında bulunan kişiyi</span>, <br>
+
+	b) Sanık: Kovuşturmanın başlamasından <span class="span"> itibaren hükmün kesinleşmesine kadar</span>, suç şüphesi altında bulunan kişiyi, <br>
+
+	c) Müdafi: <span class="span"> Şüpheli veya sanığın</span> ceza muhakemesinde savunmasını yapan avukatı, <br>
+
+	d) Vekil: <span class="span"> Katılan, suçtan zarar gören veya malen sorumlu</span> kişiyi ceza muhakemesinde temsil eden avukatı, <br>
+
+	e) Soruşturma: Kanuna göre yetkili mercilerce <span class="span"> suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar</span> geçen evreyi, <br>
+
+	f) Kovuşturma: <span class="span"> İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar</span> geçen evreyi, <br>
+
+	g) İfade alma: <span class="span"> Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından</span> soruşturma konusu suçla ilgili olarak dinlenmesini, <br>
+
+	h) Sorgu: <span class="span"> Şüpheli veya sanığın hâkim veya mahkeme tarafından</span> soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini, <br>
+
+	i) Malen sorumlu: Yargılama konusu işin <span class="span"> hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi</span>, <br>
+
+	j) Suçüstü:
+	<div>
+	1. <span class="span"> İşlenmekte olan suçu</span>,  <br>
+
+	2. Henüz işlenmiş olan fiil ile fiilin işlenmesinden <span class="span"> hemen sonra kolluk, suçtan zarar gören veya başkaları</span> tarafından takip edilerek yakalanan kişinin işlediği suçu, <br>
+
+	3. Fiilin <span class="span"> pek az önce işlendiğini gösteren eşya veya delille yakalanan</span> kimsenin işlediği suçu,</div>
+
+	k) Toplu suç: Aralarında <span class="span"> iştirak iradesi bulunmasa da</span> <span class="ark"> üç veya daha fazla kişi tarafından işlenen suçu</span>, <br>
+
+	l) Disiplin hapsi: <span class="span"> Kısmî bir düzeni korumak amacıyla </span>yaptırım altına alınmış olan fiil dolayısıyla verilen, seçenek yaptırımlara <span class="span"> çevrilemeyen,</span> <span class="dik"> önödeme uygulanamayan,</span> <span class="ark"> tekerrüre esas olmayan</span>, <span class="span"> şartla salıverilme hükümleri uygulanamayan,</span> <span class="dik"> ertelenemeyen ve adlî sicil kayıtlarına geçirilmeyen</span> hapsi,</div>
+
+	İfade eder.</div></div>
+
+
+
+	İKİNCİ BÖLÜM <br>
+
+	Görev <br>
+	<div>
+	Görev
+	<div>
+	Madde 3 – (1) Mahkemelerin görevleri <span class="mavi"> kanunla belirlenir.</span> <br>
+
+	(2) (Ek: 26/6/2009 – 5918/6 md.;Mülga:2/7/2018-KHK/700/159 md.)</div></div>
+
+	<div>
+
+	Re'sen görev kararı ve görevde uyuşmazlık
+	<div>
+	Madde 4 –<div>  (1) Davaya bakan mahkeme, görevli olup olmadığına <span class="mavi"> kovuşturma evresinin her aşamasında re'sen karar verebilir</span>. 6 ncı madde hükmü saklıdır. <br>
+
+	(2) Görev konusunda mahkemeler arasında uyuşmazlık çıktığında, görevli mahkemeyi <span class="mavi"> ortak yüksek görevli mahkeme belirler</span>.</div></div></div>
+
+
+	<div>
+	Görevsizlik kararı verilmesi gereken hâl ve sonucu
+	<div>
+	Madde 5 – <div> (1) İddianamenin kabulünden sonra; işin, davayı gören mahkemenin görevini aştığı veya dışında kaldığı <span class="mavi"> anlaşılırsa, mahkeme bir kararla işi görevli mahkemeye gönderir</span>. <br>
+
+	(2) Adlî yargı içerisindeki mahkemeler bakımından verilen görevsizlik kararlarına karşı <span class="span"> itiraz yoluna gidilebilir</span>.</div></div></div>
+
+
+	<div>
+	Görevsizlik kararı verilemeyecek hâl
+	<div>
+	Madde 6 – (Değişik: 6/12/2006 – 5560/16 md.) <br>
+
+	(1) <span class="mavi"> Duruşmada suçun hukukî niteliğinin değiştiğinden bahisle görevsizlik kararı verilerek dosya alt dereceli mahkemeye gönderilemez</span>.</div></div>
+
+
+	<div>
+	Görevli olmayan hâkim veya mahkemenin işlemleri
+	<div>
+	Madde 7 – (1) <span class="span"> Yenilenmesi mümkün olmayanlar dışında</span>, <span class="mavi"> görevli olmayan hâkim veya mahkemece yapılan işlemler hükümsüzdür</span>.</div></div>
+
+
+
+	ÜÇÜNCÜ BÖLÜM <br>
+
+	Bağlantılı Davalar <br>
+	<div>
+	Bağlantı kavramı
+	<div>
+	Madde 8 – <div> (1) Bir kişi, birden <span class="ark"> fazla suçtan sanık olur</span> veya bir suçta her ne sıfatla olursa olsun <span class="ark"> birden fazla sanık bulunursa</span> <span class="mavi"> bağlantı var sayılır</span>. <br>
+
+	(2) Suçun işlenmesinden sonra suçluyu <span class="ark"> kayırma</span>, suç delillerini <span class="ark"> yok etme</span>, <span class="ark"> gizleme veya değiştirme</span> <span class="mavi"> fiilleri de bağlantılı suç sayılır</span>.</div></div></div>
+
+
+	<div>
+	Davaların birleştirilerek açılması
+	<div>
+	Madde 9 – (1) Bağlantılı suçlardan <span class="span"> her biri değişik mahkemelerin görevine giriyorsa</span>, bunlar hakkında birleştirilmek suretiyle <span class="mavi"> yüksek görevli mahkemede dava açılabilir</span>.</div></div>
+
+
+	<div>
+	Görülmekte olan davaların birleştirilmesi ve ayrılması
+	<div>
+	Madde 10 – <div> (1) Kovuşturma evresinin <span class="ark"> her aşamasında</span>, bağlantılı ceza davalarının <span class="ark"> birleştirilmesine veya ayrılmasına</span>  <span class="mavi"> yüksek görevli mahkemece karar verilebilir</span>. <br>
+
+	(2) Birleştirilen davalarda,<span class="span"> bu davaları gören</span> mahkemenin <span class="mavi"> tâbi olduğu yargılama usulü uygulanır</span>. <br>
+
+	(3) <span class="mavi"> İşin esasına girdikten sonra ayrılan davalara aynı mahkemede devam olunur</span>.</div></div></div>
+
+
+	<div>
+	Geniş bağlantı sebebiyle birleştirme
+	<div>
+	Madde 11 – (1) Mahkeme, bakmakta olduğu birden çok dava arasında <span class="ark"> bağlantı görürse</span>, bu bağlantı 8 inci maddede gösterilen <span class="ark"> türden olmasa bile</span>, birlikte bakmak ve hükme bağlamak üzere bu davaların  <span class="mavi"> birleştirilmesine karar verebilir.</span> </div></div>
+
+
+
+	DÖRDÜNCÜ BÖLÜM <br>
+
+	Yetki <br>
+	<div>
+	Yetkili mahkeme
+	<div>
+	Madde 12 –<div>  (1) Davaya bakmak yetkisi, <span class="mavi"> suçun işlendiği yer</span> mahkemesine aittir. <br>
+
+	(2) <span class="mavi"> Teşebbüste son icra hareketinin yapıldığı</span>, <span class="mavi"> kesintisiz suçlarda kesintinin gerçekleştiği</span> ve <span class="mavi"> zincirleme suçlarda son suçun işlendiği</span>  yer mahkemesi yetkilidir. <br>
+
+	(3) Suç, ülkede yayımlanan bir <span class="ark"> basılı eserle işlenmişse</span> yetki, eserin <span class="mavi"> yayım merkezi olan</span> yer mahkemesine aittir. Ancak, aynı eserin <span class="ark"> birden çok yerde basılması durumunda</span> suç, <span class="dik">eserin yayım merkezi dışındaki baskısında meydana gelmişse</span>, bu suç için <span class="mavi"> eserin basıldığı yer mahkemesi de yetkilidir</span>. <br>
+
+	(4) Soruşturulması ve kovuşturulması <span class="ark"> şikâyete bağlı olan hakaret suçunda</span> eser, <span class="dik"> mağdurun yerleşim yerinde veya oturduğu yerde dağıtılmışsa</span>, <span class="mavi"> o yer mahkemesi de yetkilidir.</span>  <span class="mavi"> Mağdur, suçun işlendiği yer dışında tutuklu veya hükümlü bulunuyorsa, o yer mahkemesi de yetkilidir</span>. <br>
+
+	(5) Görsel veya işitsel yayınlarda da bu maddenin üçüncü fıkrası hükmü uygulanır. Görsel ve işitsel <span class="mavi"> yayın, mağdurun yerleşim yerinde ve oturduğu yerde işitilmiş veya görülmüşse o yer mahkemesi de yetkilidir</span>. <br>
+
+	(6) (Ek:8/7/2021-7331/10 md.) <span class="mavi"> Bilişim sistemlerinin, banka veya kredi kurumlarının ya da banka veya kredi kartlarının araç olarak kullanılması suretiyle işlenen suçlarda mağdurun yerleşim yeri mahkemeleri de yetkilidir</span>.</div></div></div>
+
+
+	<div>
+	Özel yetki
+	<div>
+	Madde 13 – <div> (1) Suçun işlendiği <span class="ark"> yer belli değilse</span>,<span class="mavi"> şüpheli veya sanığın yakalandığı yer</span>, <span class="ark"> yakalanmamışsa</span> <span class="mavi"> yerleşim yeri mahkemesi yetkilidir</span>. <br>
+
+	(2) Şüpheli veya sanığın Türkiye'de <span class="ark"> yerleşim yeri yoksa</span> <span class="mavi"> Türkiye'de en son adresinin bulunduğu yer mahkemesi yetkilidir</span>. <br>
+
+	(3) Mahkemenin bu suretle de <span class="ark"> belirlenmesi olanağı yoksa</span>, <span class="mavi"> ilk usul işleminin yapıldığı yer mahkemesi yetkilidir</span>.</div></div></div>
+
+
+	<div>
+	Yabancı ülkede işlenen suçlarda yetki
+	<div>
+	Madde 14 – <div> (1) Yabancı ülkede işlenen ve kanun hükümleri uyarınca Türkiye'de soruşturulması ve kovuşturulması gereken suçlarda yetki, <span class="span"> 13 üncü maddenin birinci ve ikinci fıkralarına göre belirlenir</span>. <br>
+
+	(2) Bununla birlikte Cumhuriyet savcısının, şüphelinin veya sanığın <span class="ark"> istemi üzerine</span> <span class="mavi"> Yargıtay, suçun işlendiği yere daha yakın olan yer mahkemesine yetki verebilir.</span> <br>
+
+	(3) Bu gibi suçlarda şüpheli veya sanık Türkiye'de <span class="ark"> yakalanmamış,</span> <span class="ark"> yerleşmemiş</span> veya <span class="ark"> adresi yoksa</span>; yetkili mahkeme, <span class="mavi"> Adalet Bakanının istemi ve Yargıtay Cumhuriyet Başsavcısının başvurusu üzerine Yargıtay tarafından belirlenir</span>. <br>
+
+	(4) Yabancı ülkelerde bulunup da <span class="ark"> diplomatik bağışıklıktan yararlanan</span> Türk kamu görevlilerinin işledikleri suçlardan dolayı <span class="mavi"> yetkili mahkeme Ankara mahkemesidir</span>.</div></div></div>
+
+
+	<div>
+	Deniz, hava ve demiryolu taşıtlarında veya bu taşıtlarla işlenen suçlarda yetki
+	<div>
+	Madde 15 – <div> (1) Suç, <span class="ark"> Türk bayrağını taşıma yetkisine sahip olan bir gemide veya</span> böyle bir taşıt Türkiye dışında iken işlenmişse, <span class="mavi"> geminin ilk uğradığı Türk limanında veya bağlama limanında bulunan mahkeme yetkilidir</span>. <br>
+
+	(2) Türk bayrağını taşıma hakkına <span class="dik"> sahip olan</span> <span class="ark"> hava taşıtları ile demiryolu taşıtları</span> hakkında <span class="mavi"> da yukarıdaki fıkra hükümleri uygulanır</span>. <br>
+
+	(3) <span class="span"> Ülke içerisinde</span> deniz, hava veya demiryolu taşıtlarında ya da bu taşıtlarla işlenen suçlarda, bunların <span class="mavi"> ilk ulaştığı yer mahkemesi de yetkilidir</span>. <br>
+
+	(4) <span class="dik"> Çevreyi kirletme suçu, yabancı bayrağı taşıyan bir gemi tarafından Türk kara suları dışında işlendiği takdirde</span>, suçun işlendiği <span class="mavi"> yere en yakın veya geminin Türkiye'de ilk uğradığı limanın bulunduğu yer mahkemesi yetkilidir</span>.</div></div></div>
+
+	<div>
+	Bağlantılı suçlarda yetki
+	<div>
+	Madde 16 – <div> (1) Yukarıdaki maddelere göre her biri değişik mahkemelerin yetkisi içinde bulunan bağlantılı ceza davaları, <span class="mavi"> yetkili mahkemelerden herhangi birisinde birleştirilerek görülebilir</span>. <br>
+
+	(2) Bağlantılı ceza davalarının değişik mahkemelerde bakılmasına <span class="ark"> başlanmış olursa</span>, Cumhuriyet savcılarının istemlerine uygun olmak koşuluyla, mahkemeler arasında oluşacak <span class="ark"> uyuşma üzerine</span>, bu davaların hepsi veya bir kısmı bu <span class="mavi"> mahkemelerin birinde birleştirilebilir.</span> <br>
+
+	(3) <span class="ark"> Uyuşulmazsa,</span> Cumhuriyet savcısı veya sanığın istemi üzerine <span class="mavi"> ortak yüksek görevli mahkeme birleştirmeye gerek olup olmadığına</span> ve gerek varsa hangi mahkemede birleştirileceğine karar verir. <br>
+
+	(4) Birleştirilmiş olan davaların <span class="mavi"> ayrılması da bu suretle olur</span>.</div></div></div>
+
+
+	<div>
+	Yetkide olumlu veya olumsuz uyuşmazlık
+	<div>
+	Madde 17 – (1) Birkaç hâkim veya mahkeme arasında olumlu veya olumsuz yetki uyuşmazlığı çıkarsa, <span class="mavi"> ortak yüksek görevli mahkeme, yetkili hâkim veya mahkemeyi belirler</span>.</div></div>
+
+
+	<div>
+	Yetkisizlik iddiası
+	<div>
+	Madde 18 –<div>  (1) Sanık, yetkisizlik iddiasını, <span class="ark">  ilk derece mahkemelerinde duruşmada sorgusundan</span>, <span class="ark"> bölge adliye mahkemelerinde incelemenin başlamasından ve duruşmalı işlerde inceleme raporunun okunmasından önce</span> bildirir. <br>
+
+	(2) Yetkisizlik iddiasına ilişkin karar, <span class="ark"> ilk derece mahkemelerinde sanığın sorgusundan önce</span>, <span class="ark"> bölge adliye mahkemelerinde duruşmasız işlerde incelemenin hemen başlangıcında, duruşmalı işlerde inceleme raporu okunmadan önce verilir</span>. <span class="mavi"> Bu aşamalardan sonra yetkisizlik iddiasında bulunulamayacağı gibi mahkemeler de bu hususta re'sen karar veremez.</span> <br>
+
+	(3) Yetkisizlik kararlarına karşı <span class="mavi"> itiraz yoluna gidilebilir</span>.</div></div></div>
+
+
+	<div>
+	Davanın nakli ve duruşmanın başka yerde yapılması[1]
+	<div>
+	Madde 19 – <div> (1) Yetkili hâkim veya mahkeme, hukukî veya fiilî sebeplerle görevini yerine getiremeyecek hâlde bulunursa; <span class="mavi"> yüksek görevli mahkeme, davanın başka yerde bulunan aynı derecede bir mahkemeye nakline karar verir</span>. <br>
+
+	(2) Kovuşturmanın görevli ve yetkili olan mahkemenin bulunduğu yerde yapılması kamu <span class="ark"> güvenliği için tehlikeli olursa</span>, <span class="mavi"> davanın naklini Adalet Bakanı Yargıtaydan ister</span>. <br>
+
+	(3) (Ek: 24/11/2016-6763/21 md.) Mahkeme, fiili sebepler veya güvenlik gerekçesiyle duruşmanın <span class="mavi">  il sınırları içinde başka bir yerde yapılmasına karar verebilir. Bu karara karşı itiraz yolu açıktır</span>.</div></div></div>
+
+
+	<div>
+	Yetkili olmayan hâkim veya mahkemenin işlemleri
+	<div>
+	Madde 20 – (1) Yetkili olmayan hâkim veya mahkemece yapılan işlemler, <span class="mavi"> sadece yetkisizlik nedeniyle hükümsüz sayılmaz</span>.</div></div>
+
+
+	<div>
+	Gecikmesinde sakınca bulunan hâllerde yapılan işlemler
+	<div>
+	Madde 21 – (1) Bir hâkim veya mahkeme, yetkili olmasa bile, gecikmesinde sakınca bulunan hâllerde, <span class="mavi"> yargı çevresi içerisinde gerekli işlemleri yapar</span>.</div></div>
+
+
+	<hr>
+
+
+	İKİNCİ KISIM <br>
+
+	Kararlar, Açıklanması ve Tebliği, Süreler ve Eski Hâle Getirme <br> <br>
+
+
+
+	BİRİNCİ BÖLÜM <br>
+
+	Kararlar, Açıklanması ve Tebliği <br>
+	<div>
+	Kararların verilmesi usulü
+	<div>
+	Madde 33 – (1) <span class="ark"> Duruşmada verilecek kararlar</span>, Cumhuriyet savcısı, duruşmada hazır bulunan müdafi, vekil ve diğer ilgililer <span class="dik"> dinlendikten</span>; <span class="ark"> duruşma dışındaki kararlar</span>, <span class="dik"> Cumhuriyet savcısının yazılı veya sözlü görüşü alındıktan sonra</span> verilir.</div></div>
+
+
+	<div>
+	Kararların gerekçeli olması
+	<div>
+	Madde 34 – <div> (1) Hâkim ve mahkemelerin her türlü kararı, <span class="mavi"> karşı oy dahil, gerekçeli olarak yazılır</span>. Gerekçenin yazımında 230 uncu madde göz önünde bulundurulur. Kararların örneklerinde karşı oylar da gösterilir. <br>
+
+	(2) Kararlarda, başvurulabilecek <span class="span"> kanun yolu, süresi, mercii ve şekilleri</span> belirtilir.</div></div></div>
+
+
+	<div>
+	Kararların açıklanması ve tebliği
+	<div>
+	Madde 35 – <div> (1) İlgili tarafın <span class="span"> yüzüne karşı verilen karar kendisine açıklanır</span> ve <span class="span"> isterse kararın bir örneği de verilir</span>. <br>
+
+	(2) <span class="ark"> Koruma tedbirlerine ilişkin olanlar hariç</span>, aleyhine kanun yoluna başvurulabilecek hâkim veya mahkeme kararları, (…)[2] <span class="mavi"> hazır bulunamayan ilgilisine tebliğ olunur</span>.(2) <br>
+
+	(3) <span class="mavi"> İlgili taraf serbest olmayan bir kişi veya tutuklu ise tebliğ edilen karar, kendisine okunup anlatılır</span>.</div></div></div>
+
+
+	<div>
+	Tebligat ve yazışma usulü
+	<div>
+	Madde 36 –<div>  (1) Mahkeme başkanı veya hâkim, her türlü tebligatı, tüm gerçek veya özel hukuk tüzel kişileri veya kamu kurum ve kuruluşları ile ilgili <span class="span"> yazışmaları yapar</span>. <br>
+
+	(2) <span class="mavi"> İnfaz edilecek kararlar, Cumhuriyet Başsavcılığına verilir</span>.</div></div></div>
+
+
+	<div>
+	Tebligat usulleri
+	<div>
+	Madde 37 – <div> (1) Tebligat, bu Kanunda belirtilen özel hükümler saklı kalmak koşuluyla, ilgili kanunda belirtilen hükümlere göre yapılır. <br>
+
+	(2) Uluslararası andlaşmalar, yazılı belgelerin doğrudan doğruya postayla veya diğer iletişim araçlarıyla gönderilmesini kabul ettiğinde; <span class="mavi"> yurt dışına yapılan tebligat, iadeli taahhütlü posta veya diğer iletişim araçları ile gerçekleştirilir.</span></div></div></div>
+
+
+	<div>
+	Cumhuriyet Başsavcılığına yapılan tebligat
+	<div>
+	Madde 38 – (1) Cumhuriyet Başsavcılığına yapılan tebligat, <span class="mavi"> tebliği gereken evrakın aslının verilmesi suretiyle olur. </span>Tebliğ ile <span class="mavi"> bir süre işlemeye başlıyorsa verildiği gün, Cumhuriyet Başsavcılığı tarafından evrakın aslına yazılır</span>.</div></div>
+
+
+	<div>
+	Elektronik işlemler
+	<div>
+	Madde 38/A – (Ek: 2/7/2012-6352/95 md.)
+	<div>
+	(1) Her türlü ceza muhakemesi işlemlerinde Ulusal Yargı Ağı Bilişim Sistemi (UYAP) kullanılır. Bu işlemlere ilişkin her türlü veri, bilgi, belge ve karar, <span class="mavi">  UYAP vasıtasıyla işlenir, kaydedilir ve saklanır</span>. <br>
+
+	(2) Kanunlarda gösterilen istisnalar hariç olmak üzere, dosyalar güvenli elektronik imza kullanılarak <span class="mavi"> UYAP’tan incelenebilir ve her türlü ceza muhakemesi işlemi yapılabilir. </span><br>
+
+	(3) Bu Kanun kapsamında fiziki olarak hazırlanması öngörülen <span class="span"> her türlü belge ve karar elektronik ortamda düzenlenebilir</span>, işlenebilir, saklanabilir ve güvenli elektronik imza ile imzalanabilir. <br>
+
+	(4) Güvenli elektronik imza ile imzalanan belge ve kararlar diğer kişi veya kurumlara elektronik ortamda gönderilir. Güvenli elektronik imza ile imzalanarak gönderilen belge veya kararlar, <span > gerekmedikçe fiziki olarak ayrıca düzenlenmez ve ilgili kurum ve kişilere gönderilmez</span>. <br>
+
+	(5) Elektronik imzalı belgenin elle atılan imzalı belgeyle çelişmesi halinde <span class="mavi"> UYAP’ta kayıtlı olan güvenli elektronik imzalı belge geçerli kabul edilir. </span><br>
+
+	(6) Güvenli elektronik imza ile imzalanan belge ve kararlarda, <span class="ark"> mühürleme</span> işlemi ile kanunlarda <span class="ark"> birden fazla nüshanın</span> düzenlenmesini öngören <span class="mavi"> hükümler uygulanmaz</span>. <br>
+
+	(7) <span class="span"> Zorunlu nedenlerle fiziki</span> olarak düzenlenmiş belge veya kararlar, yetkili kişilerce taranarak <span class="span"> UYAP’a aktarılır</span> ve gerektiğinde ilgili birimlere elektronik ortamda gönderilir. <br>
+
+	(8) Elektronik ortamdan fiziki örnek çıkartılması gereken hallerde tutanak veya <span class="ark"> belgenin aslının aynı olduğu belirtilerek</span> hâkim, Cumhuriyet savcısı veya görevlendirilen yetkili kişi tarafından <span class="span"> imzalanır ve mühürlenir</span>. <br>
+
+	(9) Elektronik ortamda yapılan işlemlerde <span class="mavi"> süre gün sonunda biter</span>. <br>
+
+	(10) Yargı birimlerinin ihtiyaç duyduğu nüfus, tapu, adlî sicil kaydı gibi dış bilişim sistemlerinden UYAP vasıtasıyla temin edilen bilgi, belge ve kayıtlar, <span class="span"> zorunlu olmadıkça ayrıca fiziki olarak istenilmez</span>. UYAP’tan dış bilişim sistemlerine gönderilen bilgi ve belgeler ayrıca <span class="span"> zorunlu olmadıkça fiziki ortamda gönderilmez</span>. <br>
+
+	(11) Ceza muhakemesi işlemlerinin <span class="mavi"> UYAP’ta yapılmasına dair usul ve esaslar, Adalet Bakanlığı tarafından çıkarılacak yönetmelikle düzenlenir</span>.</div></div></div>
+
+
+
+	İKİNCİ BÖLÜM <br>
+
+	Süreler ve Eski Hâle Getirme <br><br>
+	<div>
+	Sürelerin hesaplanması
+	<div>
+	Madde 39 –<div> (1) <span class="ark"> Gün ile belirlenen süreler</span>, tebligatın yapıldığının <span class="mavi"> ertesi günü işlemeye başlar</span>. <br>
+
+	(2) <span class="ark"> Süre, hafta olarak belirlenmiş ise</span>, tebligatın <span class="dik"> yapıldığı günün</span>, <span class="mavi"> son haftada isim itibarıyla karşılığı olan günün mesai saati bitiminde sonaerer</span>. <br>
+
+	(3) <span class="ark"> Süre, ay olarak belirlenmiş ise</span>  tebligatın <span class="dik"> yapıldığı günün</span>, <span class="mavi"> son ayda sayı itibarıyla karşılığı olan günün mesai saati bitiminde sona erer</span>. <span class="dik"> Son bulduğu ayda sayı itibarıyla karşılığı olan gün yoksa</span>; <span class="mavi"> süre, ayın son günü mesai saati bitiminde sona erer</span>. <br>
+
+	(4) Son gün bir tatile rastlarsa süre, <span class="mavi"> tatilin ertesi günü biter</span>.</div></div></div>
+
+
+	<div>
+	Eski hâle getirme
+	<div>
+	Madde 40 –<div>  (1) <span class="kim"> Kusuru olmaksızın </span>bir süreyi geçirmiş olan kişi, eski hale getirme <span class="mavi"> isteminde bulunabilir.</span> <br>
+
+	(2) <span class="mavi"> Kanun yoluna başvuru hakkı kendisine bildirilmemesi halinde de, kişi kusursuz sayılır</span>.</div></div></div>
+
+
+	<div>
+	Eski hâle getirme dilekçesi
+	<div>
+	Madde 41 – <div> (1) Eski hâle getirme dilekçesi, <span class="mavi"> engelin kalkmasından itibaren yedi gün içinde</span>, <span class="ark"> süreye uyulduğunda usule ilişkin işlemleri yapacak olan mahkemeye verilir</span>. <br>
+
+	(2) Dilekçe sahibi, sürenin geçmesinde kusuru olmadığına ilişkin olguları, varsa belgelerini de ekleyerek açıklar. <span class="mavi"> Dilekçe verildiği anda usule ilişkin yapılamayan işlemler de yerine getirilir</span>.</div></div></div>
+
+
+	<div>
+	Eski hâle getirme dilekçesi üzerine verilecek karar
+	<div>
+	Madde 42 – <div> (1) <span class="ark"> Süresi içinde usul işlemi yapılsaydı</span>,<span class="dik"> esasa hangi mahkeme hükmedecek idiyse</span>, <span class="mavi"> eski hâle getirme dilekçesi hakkında da o mahkeme karar verir</span>. <br>
+
+	(2) Eski hâle getirme isteminin <span class="mavi"> kabulüne ilişkin karar kesindir</span>; <span class="mavi"> reddine ilişkin karara karşı itiraz yoluna gidilebilir</span>. <br>
+
+	(3) Eski hâle getirme dilekçesi, <span class="mavi"> kararın yerine getirilmesini durdurmaz; ancak, mahkeme yerine getirmeyi erteleyebilir</span>.</div>
+	</div></div>
+	<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+	</div>
+
+	<script>
+	var surukleniyor = false;
+	var offsetX, offsetY;
+
+	// Tüm soru göster butonlarını seç
+	const soruGosterButtons = document.querySelectorAll('.soru');
+
+	// Her bir buton için event listener ekle
+	soruGosterButtons.forEach(function (button, index) {
+	button.addEventListener('click', function() {
+	const soruContainer = document.querySelector('.soruContainer');
+
+	// Eğer gösteriliyorsa gizle, gizliyse göster
+		if (soruContainer.style.display === "none") {
+		  soruContainer.style.display = "block";
+		} else {
+		  soruContainer.style.display = "none";
+	}
+	});
+	});
+
+
+	soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+	document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+			soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+		document.addEventListener('mouseup', function() { surukleniyor = false;	});
+	</script>
+
+</body>
+</html>
+{% endblock%}

@@ -1,0 +1,943 @@
+{% extends  'layout.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.navbar {
+    margin-left: 0 !important;
+}
+
+
+header{
+    display:run-in ;
+    width: 100%;
+    margin: 0;
+top: 0;
+position: fixed;
+border-radius: 10px;
+
+    }
+	body{background-color: rgb(1, 53, 37); color: whitesmoke; font-size: large; padding: 5px;}
+
+.renki{color: rgb(202, 150, 221);}
+
+ul li {	float: left;margin-right: 20px;}
+a{color: white;}
+
+div {padding-left: 10px; padding-right: 3px; border-style: groove; border-color: black; padding-left: 10px;  overflow: hidden; margin-left: 20px; margin-bottom: 10px; text-align: justify;}
+
+hr{margin-bottom: 15px;}
+
+.span{color: chocolate; font-size: larger; }
+
+.ark{background-color:black; font-size: larger; border-radius: 20px;}
+
+.sadeceborder{border-style: dashed; margin: 0; margin-bottom: 10px; margin-top: 10px;}
+.mavi{background-color : darkcyan; border-radius: 20px; color: darkred ; font-size: x-large; }
+.dik{background-color: darkred; border-radius: 10px; font-size: larger; color: white; }
+.kim{color: aqua; background-color: brown; font-size: larger; }
+strong{font-size: larger; }
+.yes{background-color: green; color:black; font-size: larger;}
+input[type="radio"] {
+            transform: scale(1.5); /* Radio buton boyutunu 1.5 kat büyüt */
+}
+
+.cevapp{ background-color: darkcyan;
+		color: white;
+		font-size: x-large;
+   }
+
+
+.soruContainer {
+    display: none;
+    background-color: rgb(236, 170, 188);
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 90%; /* En fazla ekran genişliğinin %90'ı kadar olabilir */
+    max-height: 90%; /* Ekranın %90 yüksekliği kadar olabilir */
+    text-align: justify;
+    font-size: large;
+    position: fixed;
+    top: 50%; /* Sayfanın yarısında dikey olarak konumlandırma */
+    left: 35%; /* Sayfanın yarısında yatay olarak konumlandırma */
+    transform: translate(-50%, -50%); /* Merkezlemek için */
+    overflow: auto
+}
+.balon1{
+			position: absolute;
+            display: none;
+            background-color: #076423;
+            color: #e6dede;
+            padding: 10px;
+            border-radius: 20px;
+            left: 70%;
+            top: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            text-align: justify;
+			position:fixed;
+
+}
+.balonnöyap {
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+.balonnnsap {
+		background-color:rgb(1, 53, 37);
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 250px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	  }
+ .metinArk{
+	    position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;
+
+	}
+.metinDik{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+.metinMavi{
+		position: absolute;
+		background-color:white;
+		border: 1px dotted black;
+		text-align: right;
+		border-radius: 20px;
+		height: 200px;
+		width: 63;
+		color: black;
+		padding: 0px;
+		left: 0%;
+        top: 10%;
+		position: fixed;}
+
+
+
+
+
+.asi{
+		background-color: rgba(1, 53, 37,0.1);
+		color:white;
+		float: right;
+		height: 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		border-color: black;
+
+	}
+.beyaz{
+	background-image: url("static/img/bayrak2.jpg");
+	background-position: center;
+	top: 5;
+	width: 100%;
+	position: fixed;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;
+	}
+.kal{
+	background-color: rgb(173, 24, 44);
+	background-position: center;
+	color: white;
+	width: 100%;
+	float: left;
+	margin-left: 0;
+	padding: 5px;
+	border-radius: 10px;
+	border-bottom: 10px;
+	border-style: groove;
+	border-color: white;}
+.butt{
+	color:white;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	right: 1px;
+	background-color:rgba(7, 7, 7, 0.1)
+	}
+.soru{
+	cursor: pointer;
+	color: rgb(24, 22, 22);
+	border-radius: 10px;
+	background-color:rgba(120, 219, 166, 0.893)	}
+
+
+
+
+
+
+.demo{
+	background-color: rgb(206, 237, 244);
+	float: right;
+	border-style:double;
+	border-radius: 15px;
+	border-color: brown;
+	border-width: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	}
+
+
+
+
+
+	.but{
+	background-color: darkblue;
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+	}
+.reset{
+	background-color: rgb(0, 123, 139);
+	color: white;
+	height: 20px;
+	width: 60px;
+	font-size: 10px;
+
+}
+.siyah{
+	background-color: black;
+	height: 25px;
+	width: 60px;
+	color: white;
+	font-size: 15px;
+	}
+.edt{
+	background-color:rgb(1, 53, 37);
+	color:white;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.bey{background-color:white;
+	color:black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+	.uyp{
+	background-color: rgb(191, 234, 244);
+	color: black;
+	height: 25px;
+	width: 60px;
+	font-size: 15px;
+	}
+.yen{
+	background-color: rgb(209, 231, 85);
+	color: black;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.dhyen{
+	background-color: rgb(236, 170, 188);
+	color: rgb(9, 9, 9);
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+	}
+.yaz{
+	background-color: yellowgreen;
+	text-align: center;
+	height: 25px;
+	width: 60px	;
+	font-size: 15px;
+    }
+.ort{
+	text-align: center;
+	}
+
+</style>
+<title>Türk Yargı Sistemi (Yargı Kolları) (T.C. Anayasası Yargı Bölümü</title>
+<script>
+	function kapat() {
+		if (balon.style.display === "block") {
+			balon.style.display = "none"; cevaps.style.display="none" ;
+		} }
+
+
+
+
+	function sınıf()	{ // bütü spanları seçip tek tek rengini değiştiren fonksiyon
+	    var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="red"}}
+
+	function metinSifirla(){ // editör görünümü için
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metinSıfırla(){  // spanlar için
+
+		document.getElementById("bady").style.backgroundColor = "rgb(1, 53, 37)"
+		document.getElementById("bady").style.color="white"
+		metinSifirla()
+		metınArk()
+		metınDık()
+		metınEDİ()
+		metınKim()
+		metınYesi()	}
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimmorlasss(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function kimuyp(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function kimdahe(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function kimyes(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="white"} }
+
+	function metınArk(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınKim(){
+		var panDivs= document.querySelectorAll(".kim");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınDık(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınEDİ(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYes(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="green";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metınYesi(){
+		var panDivs= document.querySelectorAll(".yes");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(1, 53, 37)";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function metındmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkblue";
+		panDivs[i].style.color="white"} }
+
+	function metınkır(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlas(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikcho(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="chocolate";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikuyp(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function dikkırmızı(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="red";
+		panDivs[i].style.color="white"} }
+
+	function morlasss(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function arkuyp(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(191, 234, 244";
+		panDivs[i].style.color="black"} }
+
+	function arkdahe(){
+		var panDivs= document.querySelectorAll(".ark");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="rgb(212, 12, 126";
+		panDivs[i].style.color="white"} }
+
+	function metınmavi(){
+		var panDivs= document.querySelectorAll(".mavi");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkcyan";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function dikles(){
+		var panDivs= document.querySelectorAll(".dik");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		panDivs[i].style.backgroundColor="darkred";
+		panDivs[i].style.color="whitesmoke"} }
+
+	function chola(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="chocolate"} }
+
+	function dahadayeni(){
+		var panDivs= document.querySelectorAll(".span");
+	    for(var i =0 ; i<panDivs.length; i++) {
+		//panDivs[i].style.backgroundColor="purple";
+		panDivs[i].style.color="rgb(212, 12, 126"} }
+
+	setInterval(tarıh, 1000);
+	function tarıh(){
+			 var an = new Date()
+			 var yıl= Number( an.getFullYear() )
+			 var ay = Number( an.getMonth().toString(). padStart(2,'0')) + 1 // sadece ay da bir artırmak gerekiyor
+			 var gün= Number( an.getDate()).toString(). padStart(2,'0') // day değil date !!!!!
+			 var saat= Number( an. getHours().toString(). padStart(2,'0'))
+			 var dk=  an.getMinutes().toString(). padStart(2,'0')
+			document.getElementById("demo").innerHTML=" TARİH : " + gün + "/"+ ay+ "/"+ yıl + "<br>" + "SAAT  "+ saat + ":" + dk // ekitekin içini değiştirmeyi sağladık
+			}
+    function badyMavi(){
+		document.getElementById("bady").style.backgroundColor = "darkblue"
+		document.getElementById("bady").style.color = "white"
+		sınıf()
+		arkuyp()
+		dikcho()
+		metınkır()
+		kimdahe()	}
+	function badyEditör(){
+		document.getElementById("bady").style.backgroundColor = " rgb(1, 53, 37)"
+		document.getElementById("bady").style.color = "white"
+		chola()
+		arkuyp()
+		dikkırmızı()
+		morlas()
+		kimuyp()}
+
+	function badysiyah(){
+		document.getElementById("bady").style.backgroundColor = "black"
+		document.getElementById("bady").style.color = "whitesmoke";
+		chola()
+		arkdahe()
+		dikuyp()
+		metınYes()
+		kimmorlasss()	}
+
+	function beyaz(){
+		document.getElementById("bady").style.backgroundColor = " white"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metındmavi()
+		kimyes()	}
+
+
+	function uyap(){
+		document.getElementById("bady").style.backgroundColor = " rgb(191, 234, 244"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		morlasss()
+		metınDık()
+		metınmavi()
+		kimdahe()	}
+
+	function yeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(209, 231, 85)"
+		document.getElementById("bady").style.color = "black"
+		sınıf()
+		arkdahe()
+		metınDık()
+		metınmavi()
+		kimyes()	}
+
+	function dahayeni(){
+		document.getElementById("bady").style.backgroundColor =" rgb(236, 170, 188)"
+		document.getElementById("bady").style.color = "black"
+		dahadayeni()
+		morlasss()
+		dikles()
+		metınEDİ()
+		kimyes()}
+
+	function soruGetır(){
+
+	}
+
+	function calıs(element){ //  element yazmayınca çalışmıyor onmouseover den geldiğinden  orada da this yazmak gerekiyor
+		element.style.color="red";
+		element.style.fontWeight="bold"}
+
+		function YAZDIR(){
+
+	  document.getElementById("beyaz").style.position="relative"
+	   window.print()
+	       }
+
+	   function DivResetle(){
+
+		const allDivs=document.querySelectorAll('div')
+		allDivs.forEach(function(div){ const currentBordersStyle= div.style.borderStyle || "grove" ;
+		div.style.borderStyle=currentBordersStyle==="none"?"groove" : "none";
+		//div.style.borderStyle="none"
+		})  }
+
+</script>
+</head>
+<body id="bady" onload="tarıh()">
+	<br>
+	<div id="beyaz" class="beyaz" > <button name="butt" value="butt" class="butt" > <a href="index" > ANASAYFA </a>
+	</button>  	<button  id="acButtonnSAP" name="butt" value="butt" class="butt" > SAYFA ARKA PLAN</button>
+	<button id="demo" class="demo" ></button>
+	<button id="eag" class="asi" onclick="location.reload()" title="Bu Butona basarak editör görünümüne dönebilirsiniz">EDİTÖR ANA GÖRÜNÜM </button>
+	</div>
+	<div id="kal" class="kal"></div>
+	<div id="balonnnsap"  class="balonnnsap" style="display: none;" >
+
+		<p>
+		  <button class="but" onclick= "badyMavi()" >Mavi</button> <br>
+		  <button class="siyah" onclick='badysiyah()'> Siyah </button> <br>
+		  <button class="edt" onclick='badyEditör()'> Editör </button>  <br>
+		  <button class="bey" onclick="beyaz()"> Beyaz </button>  <br>
+		  <button class="uyp" onclick="uyap()"> Uyap </button> <br>
+		  <button class="yen" onclick="yeni()"> Yeni </button> <br>
+		  <button class="dhyen" onclick="dahayeni()"> Daha </button> <br>
+		  <button onclick="metinSıfırla()" class="yaz" title=" TAMAMEN SIFIRLAMAK İÇİN EDİTÖR ANA GÖRÜNÜMDEN SONRA YAPMANIZ GEREKİYOR " >Sıfırla</button> <br>
+		  <button id="borderreset" class="reset" onclick="DivResetle()" >Çerçeveler</button>
+		</p></div>
+
+		<script>
+		  acButtonnSAP.addEventListener('click', function() {if (balonnnsap.style.display === "none") {balonnnsap.style.display = "block";	} else {balonnnsap.style.display = "none";};});
+		  </script>
+
+
+
+		  <div id="soruContainer" class="soruContainer">
+			  <div id="soruDiv">
+				  <!-- Soru metni ve cevap seçenekleri burada yer alacak -->
+			  </div>
+			  <div id="cevaplar"></div> <!-- Bu div'i ekledim -->
+			  <button id="cevaplaButton" style="display: none;" onclick="cevapla()">Cevapla</button>
+			  <button id="kapatButton" style="display: none;" onclick="kapat()">Kapat</button>
+			  <p id="dogruCevap" class="cevapp" style="display: none;"></p>
+		  </div>
+		  <script src="static/js/script.js"></script> <br> <br><br><br> <hr>
+
+	<div >
+
+		ÜÇÜNCÜ BÖLÜM <br>
+
+		Yargı
+		<div>
+		I. Genel hükümler
+		<div>
+		 <span class="yes">	A. Mahkemelerin bağımsızlığı</span>
+			<div>
+		MADDE 138- Hâkimler, görevlerinde bağımsızdırlar; Anayasaya, kanuna ve hukuka uygun olarak vicdanî kanaatlerine göre hüküm verirler.</div>
+		<div>
+		Hiçbir organ, makam, merci veya kişi, yargı yetkisinin kullanılmasında mahkemelere ve hâkimlere emir ve talimat veremez; genelge gönderemez; tavsiye ve telkinde bulunamaz.</div>
+		<div>
+		Görülmekte olan bir dava hakkında Yasama Meclisinde yargı yetkisinin kullanılması ile ilgili soru sorulamaz, görüşme yapılamaz veya herhangi bir beyanda bulunulamaz.</div>
+		<div>
+		Yasama ve yürütme organları ile idare, mahkeme kararlarına uymak zorundadır; bu organlar ve idare, mahkeme kararlarını hiçbir suretle değiştiremez ve bunların yerine getirilmesini geciktiremez.</div></div>
+		<div>
+			<span class="yes">	B. Hâkimlik ve savcılık teminatı</span>
+			<div>
+		MADDE 139- Hâkimler ve savcılar azlolunamaz, kendileri istemedikçe Anayasada gösterilen yaştan önce emekliye ayrılamaz; bir mahkemenin veya kadronun kaldırılması sebebiyle de olsa, aylık, ödenek ve diğer özlük haklarından yoksun kılınamaz.</div>
+		<div>
+		Meslekten çıkarılmayı gerektiren bir suçtan dolayı hüküm giymiş olanlar, görevini sağlık bakımından yerine getiremeyeceği kesin olarak anlaşılanlar veya meslekte kalmalarının uygun olmadığına karar verilenler hakkında kanundaki istisnalar saklıdır.</div></div>
+		<div>
+			<span class="yes">	C. Hâkimlik ve savcılık mesleği</span>
+			<div>
+		MADDE 140- Hâkimler ve savcılar adlî ve idarî yargı hâkim ve savcıları olarak görev yaparlar. Bu görevler meslekten hâkim ve savcılar eliyle yürütülür.</div>
+		<div>
+		Hâkimler, mahkemelerin bağımsızlığı ve hâkimlik teminatı esaslarına göre görev ifa ederler.</div>
+		<div>
+		Hâkim ve savcıların nitelikleri, atanmaları, hakları ve ödevleri, aylık ve ödenekleri, meslekte ilerlemeleri, görevlerinin ve görev yerlerinin geçici veya sürekli olarak değiştirilmesi, haklarında disiplin kovuşturması açılması ve disiplin cezası verilmesi, görevleriyle ilgili veya görevleri sırasında işledikleri suçlarından dolayı soruşturma yapılması ve yargılanmalarına karar verilmesi, meslekten çıkarmayı gerektiren suçluluk veya yetersizlik halleri ve meslek içi eğitimleri ile diğer özlük işleri mahkemelerin bağımsızlığı ve hâkimlik teminatı esaslarına göre kanunla düzenlenir.</div>
+		<div>
+		Hâkimler ve savcılar altmışbeş yaşını bitirinceye kadar hizmet görürler; askerî hâkimlerin yaş haddi, yükselme ve emeklilikleri kanunda gösterilir.</div>
+		<div>
+		Hâkimler ve savcılar, kanunda belirtilenlerden başka, resmî ve özel hiçbir görev alamazlar.</div>
+		<div>
+		Hâkimler ve savcılar idarî görevleri yönünden Adalet Bakanlığına bağlıdırlar.</div>
+		<div>
+		Hâkim ve savcı olup da adalet hizmetindeki idarî görevlerde çalışanlar, hâkimler ve savcılar hakkındaki hükümlere tâbidirler. Bunlar, hâkimler ve savcılara ait esaslar dairesinde sınıflandırılır ve derecelendirilirler, hâkimlere ve savcılara tanınan her türlü haklardan yararlanırlar.</div></div>
+		<div>
+			<span class="yes">	D. Duruşmaların açık ve kararların gerekçeli olması</span>
+			<div>
+		MADDE 141- Mahkemelerde duruşmalar herkese açıktır. Duruşmaların bir kısmının veya tamamının kapalı yapılmasına <span class="kim"> ancak genel ahlâkın veya kamu güvenliğinin kesin olarak gerekli kıldığı hallerde karar verilebilir.</span></div>
+		<div>
+		Küçüklerin yargılanması hakkında kanunla özel hükümler konulur.</div>
+		<div>
+		Bütün mahkemelerin her türlü kararları gerekçeli olarak yazılır.</div>
+		<div>
+		Davaların en az giderle ve mümkün olan süratle sonuçlandırılması, yargının görevidir.</div></div>
+		<div>
+			<span class="yes">	E. Mahkemelerin kuruluşu</span>
+			<div>
+		MADDE 142- Mahkemelerin kuruluşu, görev ve yetkileri, işleyişi ve yargılama usulleri kanunla düzenlenir.</div>
+		<div>
+		(Ek fıkra: 21/1/2017-6771/13 md.) <span class="kim"> Disiplin mahkemeleri dışında</span> <span class="mavi"> askerî mahkemeler kurulamaz.</span> <span class="kim"> Ancak</span> <span class="mavi"> savaş halinde, asker kişilerin görevleriyle ilgili olarak işledikleri suçlara ait davalara bakmakla görevli askerî mahkemeler kurulabilir.</span></div></div>
+		<div>
+			<span class="yes">	F. Devlet Güvenlik Mahkemeleri </span><br>
+
+		MADDE 143- (Mülga: 7/5/2004-5170/9 md.)</div>
+		<div>
+			<span class="yes">		G. Adalet hizmetlerinin denetimi(1) </span>
+			<div>
+		MADDE 144 – (Değişik: 7/5/2010-5982/14 md.) <br>
+
+		Adalet hizmetleri ile savcıların <span class="kim"> idarî görevleri yönünden </span> <span class="ark">Adalet Bakanlığınca denetimi,</span> <span class="mavi"> adalet müfettişleri ile hâkim ve savcı mesleğinden olan iç denetçiler;</span> <span class="kim"> araştırma, inceleme ve soruşturma işlemleri ise</span> <span class="mavi"> adalet müfettişleri eliyle yapılır.</span>  Buna ilişkin usul ve esaslar kanunla düzenlenir.</div>
+		</div>
+
+
+		<div>
+			<span class="yes">		H. Askerî yargı</span>
+			<div>
+		MADDE 145 – (Mülga: 21/1/2017-6771/16 md.)</div></div>
+
+		II. Yüksek mahkemeler
+		<div>
+			<span class="yes">		A. Anayasa Mahkemesi</span>
+			<div>
+		Kuruluşu
+		<div>
+		MADDE 146- (Değişik: 7/5/2010-5982/16 md.) <br>
+
+		Anayasa Mahkemesi <span class="mavi"> onbeş üyeden kurulur.</span>(1)</div>
+		<div>
+			<span class="kim">
+		Türkiye Büyük Millet Meclisi;</span>  <span class="ark"> iki üyeyi</span> <span class="mavi"> Sayıştay </span> Genel Kurulunun kendi başkan ve üyeleri arasından, her boş yer için gösterecekleri üçer aday içinden, <span class="ark"> bir üyeyi ise</span> <span class="mavi"> baro başkanlarının serbest avukatlar arasından gösterecekleri</span>  üç aday içinden yapacağı gizli oylamayla seçer. Türkiye Büyük Millet Meclisinde yapılacak bu seçimde, her boş üyelik için <span class="kim"> ilk oylamada</span> üye tam sayısının  <span class="mavi"> üçte iki</span>  ve <span class="kim"> ikinci oylamada</span> üye tam sayısının <span class="mavi"> salt çoğunluğu aranır.</span>  İkinci oylamada salt çoğunluk sağlanamazsa, bu oylamada <span class="kim"> en çok oy alan iki aday için üçüncü oylama yapılır;</span> üçüncü oylamada <span class="mavi"> en fazla oy alan aday üye seçilmiş olur</span>.</div>
+		<div> <span class="kim">
+		Cumhurbaşkanı; </span> <span class="ark"> üç üyeyi</span> <span class="mavi"> Yargıtay,</span> <span class="ark"> iki üyeyi</span> <span class="mavi"> Danıştay </span> (…)(2) genel kurullarınca kendi başkan ve üyeleri arasından her boş yer için gösterecekleri üçer aday içinden; <span class="span"> <strong> en az ikisi hukukçu olmak üzere</strong></span> <span class="ark"> üç üyeyi</span> <span class="mavi"> Yükseköğretim Kurulunun </span> kendi üyesi olmayan yükseköğretim kurumlarının hukuk, iktisat ve siyasal bilimler dallarında görev yapan öğretim üyeleri arasından göstereceği üçer aday içinden; <span class="ark"> dört üyeyi </span> <span class="mavi"> üst kademe yöneticileri, serbest avukatlar, birinci sınıf hâkim ve savcılar ile en az beş yıl raportörlük yapmış Anayasa Mahkemesi raportörleri arasından seçer.</span> (2)</div>
+		<div>
+		Yargıtay, Danıştay (…)(3) ve Sayıştay genel kurulları ile Yükseköğretim Kurulundan Anayasa Mahkemesi üyeliğine aday göstermek için yapılacak seçimlerde, her boş üyelik için, (…)(4) en fazla oy alan üç kişi aday gösterilmiş sayılır. Baro başkanlarının serbest avukatlar arasından gösterecekleri üç aday için yapılacak seçimde (…)(4) en fazla oy alan üç kişi aday gösterilmiş sayılır.(3)(4)</div>
+		<div> <span class="kim">
+		Anayasa Mahkemesine üye seçilebilmek için,</span> <span class="mavi"> kırkbeş yaşın doldurulmuş olması kaydıyla;</span>  yükseköğretim kurumları öğretim üyelerinin profesör veya doçent unvanını kazanmış, avukatların <span class="mavi"> en az yirmi yıl</span> fiilen avukatlık yapmış, üst kademe yöneticilerinin yükseköğrenim görmüş ve <span class="mavi"> en az yirmi yıl</span> kamu hizmetinde fiilen çalışmış, birinci sınıf hâkim ve savcıların adaylık dahil <span class="mavi"> en az yirmi yıl</span> çalışmış olması şarttır.</div>
+		<div>
+		Anayasa Mahkemesi üyeleri arasından gizli oyla ve üye tam sayısının salt çoğunluğu ile <span class="kim"> dört yıl için</span> <span class="mavi"> bir Başkan ve iki başkanvekili seçilir.</span> Süresi bitenler yeniden seçilebilirler.</div>
+		<div>
+		Anayasa Mahkemesi üyeleri aslî görevleri dışında resmî veya özel hiçbir görev alamazlar.</div>
+
+
+
+		<div>
+		(4) Bu fıkranın birinci cümlesinde yer alan “… bir üye ancak bir aday için oy kullanabilir; …” ibaresi ile ikinci cümlesinde yer alan “… de her bir baro başkanı ancak bir aday için oy kullanabilir ve …” ibaresi, 1/8/2010 tarihli ve 27659 Mükerrer sayılı Resmî Gazete’de yayımlanan Anayasa Mahkemesinin 7/7/2010 tarihli ve E.: 2010/49, K.: 2010/87 sayılı Kararı ile iptal edilmiştir.</div></div>
+
+
+		<div>
+		Üyelerin görev süresi ve üyeliğin sona ermesi(1)
+		<div>
+		MADDE 147- (Değişik birinci fıkra: 7/5/2010-5982/17 md.) Anayasa Mahkemesi üyeleri <span class="mavi"> oniki yıl için seçilirler.</span>  Bir kimse iki defa Anayasa Mahkemesi üyesi seçilemez. Anayasa Mahkemesi üyeleri <span class="mavi"> altmışbeş yaşını doldurunca emekliye ayrılırlar.</span>  Zorunlu emeklilik yaşından önce görev süresi dolan üyelerin başka bir görevde çalışmaları ve özlük işleri kanunla düzenlenir.</div>
+		<div>
+		Anayasa Mahkemesi üyeliği, bir üyenin hâkimlik mesleğinden çıkarılmayı gerektiren bir suçtan dolayı <span class="kim"> hüküm giymesi halinde <span class="mavi"> kendiliğinden;</span></span> <span class="kim"> görevini sağlık bakımından yerine getiremeyeceğinin kesin olarak anlaşılması halinde de,</span> <span class="mavi"> Anayasa Mahkemesi üye tamsayısının salt çoğunluğunun kararı ile sona erer.</span> </div>
+		</div>
+			<div>
+		 3. Görev ve yetkileri (1)
+		 <div>
+		MADDE 148- Anayasa Mahkemesi, <span class="kim"> kanunların, Cumhurbaşkanlığı kararnamelerinin ve Türkiye Büyük Millet Meclisi İçtüzüğünün </span> <span class="mavi"> Anayasaya şekil ve esas bakımlarından uygunluğunu denetler ve bireysel başvuruları karara bağlar.</span> <span class="kim"> Anayasa değişikliklerini ise</span> <span class="mavi"> sadece şekil bakımından inceler ve denetler.</span> <span class="kim"> Ancak, olağanüstü hallerde (…)(2) ve savaş hallerinde çıkarılan Cumhurbaşkanlığı kararnamelerinin</span> <span class="mavi"> şekil ve esas bakımından Anayasaya aykırılığı iddiasıyla, Anayasa Mahkemesinde dava açılamaz.</span>(2)</div>
+		<div>  <span class="kim">
+		Kanunların şekil bakımından denetlenmesi</span>, <span class="mavi"> son oylamanın, öngörülen çoğunlukla yapılıp yapılmadığı;</span>  <span class="kim"> Anayasa değişikliklerinde ise,</span> <span class="mavi"> teklif ve oylama çoğunluğuna ve ivedilikle görüşülemeyeceği şartına uyulup uyulmadığı hususları ile sınırlıdır.</span>  Şekil bakımından denetleme, Cumhurbaşkanınca veya Türkiye Büyük Millet Meclisi üyelerinin beşte biri tarafından istenebilir. Kanunun yayımlandığı tarihten itibaren <span class="mavi"> on gün geçtikten sonra, şekil bozukluğuna dayalı iptal davası açılamaz;</span>  def’i yoluyla da ileri sürülemez.</div>
+		<div>
+		(Ek fıkra: 7/5/2010-5982/18 md.) Herkes, Anayasada güvence altına alınmış temel hak ve özgürlüklerinden, Avrupa İnsan Hakları Sözleşmesi kapsamındaki herhangi birinin kamu gücü tarafından, ihlal edildiği iddiasıyla Anayasa Mahkemesine başvurabilir. Başvuruda bulunabilmek için olağan kanun yollarının tüketilmiş olması şarttır.</div>
+		<div>
+		(Ek fıkra: 7/5/2010-5982/18 md.) Bireysel başvuruda, kanun yolunda gözetilmesi gereken hususlarda inceleme yapılamaz.</div>
+		<div>
+		(Ek fıkra: 7/5/2010-5982/18 md.) Bireysel başvuruya ilişkin usul ve esaslar kanunla düzenlenir.</div>
+		<div>
+		Anayasa Mahkemesi Cumhurbaşkanını, Türkiye Büyük Millet Meclisi Başkanını, Cumhurbaşkanı yardımcılarını, bakanları, Anayasa Mahkemesi, Yargıtay, Danıştay (…)(5) Başkan ve üyelerini, Başsavcılarını, Cumhuriyet Başsavcıvekilini, Hakimler ve Savcılar (…)(6) Kurulu ve Sayıştay Başkan ve üyelerini görevleriyle ilgili suçlardan dolayı Yüce Divan sıfatıyla yargılar.(3)(4)(5)(6)</div>
+		<div>
+		(Ek fıkra: 7/5/2010-5982/18 md.) Genelkurmay Başkanı, Kara, Deniz ve Hava Kuvvetleri Komutanları (…)(7) da görevleriyle ilgili suçlardan dolayı Yüce Divanda yargılanırlar. (7)</div>
+		<div>
+		Yüce Divanda, savcılık görevini Cumhuriyet Başsavcısı veya Cumhuriyet Başsavcıvekili yapar.</div>
+		<div>
+		(Değişik beşinci fıkra: 7/5/2010-5982/18 md.) <span class="kim"> Yüce Divan kararlarına karşı yeniden inceleme başvurusu yapılabilir.</span> <span class="mavi"> Genel Kurulun yeniden inceleme sonucunda verdiği kararlar kesindir.</span></div>
+		<div>
+		Anayasa Mahkemesi, Anayasa ile verilen diğer görevleri de yerine getirir.</div>
+		</div>
+
+
+		<div>
+		Çalışma ve yargılama usulü
+		<div>
+		MADDE 149- (Değişik: 7/5/2010-5982/19 md.) <br>
+
+		Anayasa Mahkemesi, <span class="mavi"> iki bölüm ve Genel Kurul halinde çalışır.</span> <span class="kim"> Bölümler,</span> <span class="mavi"> başkanvekili başkanlığında dört üyenin katılımıyla toplanır.</span> <span class="kim"> Genel Kurul,</span>  Mahkeme Başkanının veya Başkanın belirleyeceği başkanvekilinin başkanlığında  <span class="mavi"> en az on üye ile toplanır.</span>  <span class="kim"> Bölümler ve Genel Kurul,</span> <span class="mavi"> kararlarını  salt çoğunlukla alır.</span> <span class="kim"> Bireysel başvuruların kabul edilebilirlik incelemesi için </span> <span class="mavi">komisyonlar oluşturulabilir.</span> (1)</div>
+		<div>
+		Siyasî partilere ilişkin dava ve başvurulara, iptal ve itiraz davaları ile Yüce Divan sıfatıyla yürütülecek yargılamalara Genel Kurulca bakılır, bireysel başvurular ise bölümlerce karara bağlanır.</div>
+		<div>
+		Anayasa değişikliğinde iptale, siyasî partilerin kapatılmasına ya da Devlet yardımından yoksun bırakılmasına karar verilebilmesi için <span class="kim"> toplantıya katılan üyelerin</span> <span class="mavi"> üçte iki oy çokluğu şarttır.</span></div>
+		<div> <span class="kim">
+		Şekil bozukluğuna dayalı iptal davaları</span> <span class="mavi"> Anayasa Mahkemesince öncelikle incelenip karara bağlanır.</span> </div>
+		<div>
+		Anayasa Mahkemesinin kuruluşu, Genel Kurul ve bölümlerin yargılama usulleri, <span class="mavi"> Başkan, başkanvekilleri ve üyelerin disiplin işleri kanunla;</span> <span class="kim"> Mahkemenin çalışma esasları, bölüm ve komisyonların oluşumu ve işbölümü </span> <span class="mavi"> kendi yapacağı İçtüzükle düzenlenir.</span></div>
+		<div>
+		Anayasa Mahkemesi Yüce Divan sıfatıyla baktığı davalar dışında kalan işleri dosya üzerinde inceler. Ancak, bireysel başvurularda duruşma yapılmasına karar verilebilir. Mahkeme ayrıca, gerekli gördüğü hallerde sözlü açıklamalarını dinlemek üzere ilgilileri ve konu üzerinde bilgisi olanları çağırabilir ve siyasî partilerin kapatılmasına ilişkin davalarda, Yargıtay Cumhuriyet Başsavcısından sonra kapatılması istenen siyasî partinin genel başkanlığının veya tayin edeceği bir vekilin savunmasını dinler.</div>
+		</div>
+
+
+		<div>
+		İptal davası
+		<div>
+		MADDE 150- Kanunların, Cumhurbaşkanlığı kararnamelerinin, Türkiye Büyük Millet Meclisi İçtüzüğünün veya bunların belirli madde ve hükümlerinin şekil ve esas bakımından Anayasaya aykırılığı iddiasıyla Anayasa Mahkemesinde doğrudan doğruya iptal davası açabilme hakkı, <span class="mavi"> Cumhurbaşkanına, Türkiye Büyük Millet Meclisinde en fazla üyeye sahip iki siyasi parti grubuna ve üye tamsayısının en az beşte biri (%20) tutarındaki üyelere aittir.</span> (Mülga son cümle: 21/1/2017-6771/16 md.) (…) (1)</div>
+		</div>
+
+
+		<div>
+		Dava açma süresi
+		<div>
+		MADDE 151- Anayasa Mahkemesinde doğrudan doğruya iptal davası açma hakkı, iptali istenen kanun, Cumhurbaşkanlığı kararnamesi veya içtüzüğün <span class="kim"> Resmî Gazetede yayımlanmasından başlayarak</span> <span class="mavi"> altmış gün sonra düşer.</span> (1)</div>
+		</div>
+
+
+			<div>
+		Anayasaya aykırılığın diğer mahkemelerde ileri sürülmesi
+		<div>
+		MADDE 152- Bir davaya bakmakta olan mahkeme, uygulanacak bir kanun veya Cumhurbaşkanlığı kararnamesinin hükümlerini Anayasaya aykırı görürse veya taraflardan birinin ileri sürdüğü aykırılık iddiasının ciddi olduğu kanısına varırsa, Anayasa Mahkemesinin bu konuda vereceği karara kadar davayı geri bırakır. (1)</div>
+		<div>
+		Mahkeme, Anayasaya aykırılık iddiasını ciddî görmezse bu iddia, temyiz merciince esas hükümle birlikte karara bağlanır.</div>
+		<div>
+		Anayasa Mahkemesi, işin kendisine gelişinden başlamak üzere <span class="mavi"> beş ay içinde kararını verir ve açıklar.</span>  Bu süre içinde  <span class="kim"> karar verilmezse</span> <span class="mavi"> mahkeme davayı yürürlükteki kanun hükümlerine göre sonuçlandırır.</span> <span class="kim"> Ancak, Anayasa Mahkemesinin kararı, esas hakkındaki karar kesinleşinceye kadar gelirse,</span> <span class="mavi"> mahkeme buna uymak zorundadır.</span> </div>
+		<div>
+			<span class="kim">
+		Anayasa Mahkemesinin işin esasına girerek verdiği red kararının Resmî Gazetede yayımlanmasından sonra</span> <span class="mavi"> on yıl geçmedikçe aynı kanun hükmünün Anayasaya aykırılığı iddiasıyla tekrar başvuruda bulunulamaz.</span></div>
+		</div>
+
+
+		<div>
+		Anayasa Mahkemesinin kararları
+		<div>
+		MADDE 153- <span class="mavi"> Anayasa Mahkemesinin kararları kesindir.</span> <span class="mavi"> İptal kararları gerekçesi yazılmadan açıklanamaz.</span> </div>
+		<div>
+		Anayasa Mahkemesi bir kanun veya Cumhurbaşkanlığı kararnamesinin tamamını veya bir hükmünü iptal ederken, kanun koyucu gibi hareketle, yeni bir uygulamaya yol açacak biçimde hüküm tesis edemez.(1)</div>
+		<div>
+		Kanun, Cumhurbaşkanlığı kararnamesi veya Türkiye Büyük Millet Meclisi İçtüzüğü ya da bunların hükümleri, iptal kararlarının <span class="mavi"> Resmî Gazetede yayımlandığı tarihte yürürlükten kalkar.</span>  Gereken hallerde Anayasa Mahkemesi iptal hükmünün yürürlüğe gireceği tarihi ayrıca kararlaştırabilir. <span class="mavi"> Bu tarih, kararın Resmî Gazetede yayımlandığı günden başlayarak bir yılı geçemez.</span> (2)</div>
+		<div>
+		İptal kararının yürürlüğe girişinin ertelendiği durumlarda, Türkiye Büyük Millet Meclisi, iptal kararının ortaya çıkardığı hukuki boşluğu dolduracak kanun (…)(3) teklifini öncelikle görüşüp karara bağlar.(3)</div>
+		<div> <span class="mavi">
+		İptal kararları geriye yürümez.</span></div>
+		<div>
+		Anayasa Mahkemesi kararları Resmî Gazetede hemen yayımlanır ve yasama, yürütme ve yargı organlarını, idare makamlarını, gerçek ve tüzelkişileri bağlar.</div>
+
+
+		</div>
+
+
+
+		<span class="yes">		B. Yargıtay</span>
+			<div>
+
+		MADDE 154- Yargıtay, adliye mahkemelerince verilen ve kanunun başka bir adlî yargı merciine bırakmadığı karar ve hükümlerin son inceleme merciidir. Kanunla gösterilen belli davalara da ilk ve son derece mahkemesi olarak bakar.</div>
+		<div> <span class="kim">
+		Yargıtay üyeleri, </span> birinci sınıfa ayrılmış adli yargı hakim ve Cumhuriyet savcıları ile bu meslekten sayılanlar arasından <span class="kim"> Hakimler ve Savcılar Kurulunca </span><span class="mavi"> üye tamsayısının salt çoğunluğu ile ve gizli oyla seçilir.</span> </div>
+		<div>
+		Yargıtay Birinci Başkanı, birinci başkanvekilleri ve daire başkanları <span class="mavi"> kendi üyeleri arasından Yargıtay Genel Kurulunca üye tamsayısının salt çoğunluğu ve gizli oyla dört yıl için seçilirler;</span>  süresi bitenler yeniden seçilebilirler.</div>
+		<div>  <span class="kim">
+		Yargıtay Cumhuriyet Başsavcısı ve Cumhuriyet Başsavcıvekili,</span>  Yargıtay Genel Kurulunun kendi üyeleri arasından gizli oyla belirleyeceği <span class="kim"> beşer aday arasından</span> <span class="mavi"> Cumhurbaşkanı tarafından dört yıl için seçilirler.</span>  Süresi bitenler yeniden seçilebilirler.</div>
+		<div>
+		Yargıtayın kuruluşu, işleyişi, Başkan, başkanvekilleri, daire başkanları ve üyeleri ile Cumhuriyet Başsavcısı ve Cumhuriyet Başsavcıvekilinin nitelikleri ve seçim usulleri, mahkemelerin bağımsızlığı ve hâkimlik teminatı esaslarına göre kanunla düzenlenir.</div>
+
+
+
+
+		<span class="yes">		C. Danıştay</span>
+			<div>
+		MADDE 155- Danıştay, idarî mahkemelerce verilen ve kanunun başka bir idarî yargı merciine bırakmadığı karar ve hükümlerin son inceleme merciidir. Kanunla gösterilen belli davalara da ilk ve son derece mahkemesi olarak bakar.</div>
+		<div>
+		(Değişik ikinci fıkra: 13/8/1999-4446/3 md.) <span class="mavi"> Danıştay, davaları görmek, kamu hizmetleri ile ilgili imtiyaz şartlaşma ve sözleşmeleri hakkında <span class="dik"> iki ay</span> içinde düşüncesini bildirmek,</span>  idari uyuşmazlıkları çözmek ve kanunla gösterilen diğer işleri yapmakla görevlidir.(1)</div>
+		<div>
+		Danıştay üyelerinin <span class="kim"> dörtte üçü,</span> birinci sınıf idari yargı hakim ve savcıları ile bu meslekten sayılanlar arasından <span class="mavi"> Hakimler ve Savcılar  Kurulu;</span> <span class="kim"> dörtte biri,</span>  nitelikleri kanunda belirtilen görevliler arasından <span class="mavi">Cumhurbaşkanı; tarafından seçilir.</span></div>
+		<div>
+		Danıştay Başkanı, Başsavcı, başkanvekilleri ve daire başkanları, kendi üyeleri arasından Danıştay Genel Kurulunca üye tamsayısının salt çoğunluğu ve gizli oyla dört yıl için seçilirler. Süresi bitenler yeniden seçilebilirler.</div>
+		<div>
+		Danıştayın, kuruluşu, işleyişi, Başkan, Başsavcı, başkanvekilleri, daire başkanları ile üyelerinin nitelikleri ve seçim usulleri, idarî yargının özelliği, mahkemelerin bağımsızlığı ve hâkimlik teminatı esaslarına göre kanunla düzenlenir.</div>
+
+
+
+
+		<span class="yes">		D. Askerî Yargıtay</span>
+			<div>
+
+		MADDE 156- (Mülga: 21/1/2017-6771/16 md.)</div>
+
+		<span class="yes">		E. Askerî Yüksek İdare Mahkemesi</span>
+			<div>
+		MADDE 157- (Mülga: 21/1/2017-6771/16 md.)</div>
+
+		<span class="yes">		F. Uyuşmazlık Mahkemesi</span>
+			<div>
+		MADDE 158- Uyuşmazlık Mahkemesi adli ve idari yargı mercileri arasındaki görev ve hüküm uyuşmazlıklarını kesin olarak çözümlemeye yetkilidir.(1)</div>
+		<div>
+		Uyuşmazlık Mahkemesinin kuruluşu, üyelerinin nitelikleri ve seçimleri ile işleyişi kanunla düzenlenir. <span class="mavi"> Bu mahkemenin <span class="dik"> Başkanlığını Anayasa Mahkemesince,</span> kendi üyeleri arasından görevlendirilen üye yapar.</span></div>
+		<div>  <span class="kim">
+		Diğer mahkemelerle, Anayasa Mahkemesi arasındaki görev uyuşmazlıklarında,</span> <span class="mavi"> Anayasa Mahkemesinin kararı esas alınır.</span></div>
+
+		</div>
+
+
+		<span class="yes">	III. Hakimler ve Savcılar  Kurulu (1)</span>
+		<div>
+		MADDE 159- (Değişik: 7/5/2010-5982/22 md.) <br>
+
+		Hâkimler ve Savcılar  Kurulu, mahkemelerin bağımsızlığı ve hâkimlik teminatı esaslarına göre kurulur ve görev yapar. (1)</div>
+		<div>
+		(Değişik fıkra: 21/1/2017-6771/14 md.) <span class="mavi"> Hâkimler ve Savcılar Kurulu onüç üyeden oluşur; iki daire halinde çalışır.</span> </div>
+		<div>
+		(Değişik fıkra: 21/1/2017-6771/14 md.) Kurulun Başkanı Adalet Bakanıdır. Adalet Bakanlığı Müsteşarı Kurulun tabiî üyesidir. Kurulun, <span class="kim"> üç üyesi</span> birinci sınıf olup, birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş <span class="mavi"> adlî yargı hâkim ve savcıları arasından</span>, <span class="kim"> bir üyesi</span>  birinci sınıf olup, birinci sınıfa ayrılmayı gerektiren nitelikleri yitirmemiş <span class="mavi"> idarî yargı hâkim ve savcıları arasından</span> <span class="mavi"> Cumhurbaşkanınca;</span> <span class="kim"> üç üyesi</span> <span class="mavi"> Yargıtay üyeleri,</span> <span class="kim"> bir üyesi</span> <span class="mavi"> Danıştay üyeleri</span>, <span class="kim"> üç üyesi</span>  nitelikleri kanunda belirtilen yükseköğretim kurumlarının hukuk dallarında görev yapan <span class="mavi"> öğretim üyeleri ile avukatlar arasından</span> <span class="mavi"> Türkiye Büyük Millet Meclisi tarafından seçilir.</span> Öğretim üyeleri ile avukatlar arasından seçilen üyelerden, <span class="mavi"> en az birinin öğretim üyesi ve en az birinin de avukat olması zorunludur.</span>  Kurulun Türkiye Büyük Millet Meclisi tarafından seçilecek üyeliklerine ilişkin başvurular, Meclis Başkanlığına yapılır. Başkanlık, başvuruları Anayasa ve Adalet Komisyonları Üyelerinden Kurulu Karma Komisyona gönderir. Komisyon her bir üyelik için üç adayı, üye tamsayısının <span class="mavi"> üçte iki</span> çoğunluğuyla belirler. Birinci oylamada aday belirleme işleminin sonuçlandırılamaması halinde ikinci oylamada üye tamsayısının <span class="mavi"> beşte üç</span> çoğunluğu aranır. Bu oylamada da aday belirlenemediği takdirde, her bir üyelik için en çok oyu alan iki aday arasında <span class="mavi"> ad çekme usulü ile aday belirleme işlemi tamamlanır.</span>  Türkiye Büyük Millet Meclisi, Komisyon tarafından belirlenen adaylar arasından, her bir üye için ayrı ayrı <span class="mavi"> gizli oyla seçim yapar.</span>  Birinci oylamada üye tamsayısının <span class="mavi"> üçte iki</span> çoğunluğu; bu oylamada seçimin sonuçlandırılamaması halinde, ikinci oylamada üye tamsayısının <span class="mavi"> beşte üç</span> çoğunluğu aranır. İkinci oylamada da üye seçilemediği takdirde en çok oyu alan iki aday arasında <span class="mavi"> ad çekme usulü ile üye seçimi tamamlanır.</span></div>
+		<div>
+		(Değişik fıkra: 21/1/2017-6771/14 md.) <span class="mavi"> Üyeler dört yıl için seçilir. Süresi biten üyeler bir kez daha seçilebilir</span>.</div>
+		<div>
+		(Değişik fıkra: 21/1/2017-6771/14 md.) Kurul üyeliği seçimi, üyelerin görev süresinin <span class="mavi"> dolmasından önceki otuz gün içinde yapılır.</span>  Seçilen üyelerin görev süreleri dolmadan Kurul üyeliğinin boşalması durumunda, <span class="mavi"> boşalmayı takip eden otuz gün içinde, yeni üyelerin seçimi yapılır</span>.</div>
+		<div>
+		Kurulun, Adalet Bakanı ile Adalet Bakanlığı Müsteşarı dışındaki (…)(2) üyeleri, görevlerinin devamı süresince; kanunda belirlenenler dışında başka bir görev alamazlar veya Kurul tarafından başka bir göreve atanamaz ve seçilemezler. (2)</div>
+		<div>
+		Kurulun yönetimi ve temsili Kurul Başkanına aittir. Kurul Başkanı dairelerin çalışmalarına katılamaz. Kurul, kendi üyeleri arasından daire başkanlarını ve daire başkanlarından birini de başkanvekili olarak seçer. Başkan, yetkilerinden bir kısmını başkanvekiline devredebilir.</div>
+		<div>
+		Kurul, adlî ve idarî yargı hâkim ve savcılarını mesleğe kabul etme, atama ve nakletme, geçici yetki verme, yükselme ve birinci sınıfa ayırma, kadro dağıtma, meslekte kalmaları uygun görülmeyenler hakkında karar verme, disiplin cezası verme, görevden uzaklaştırma işlemlerini yapar; Adalet Bakanlığının, bir mahkemenin kaldırılması veya yargı çevresinin değiştirilmesi konusundaki tekliflerini karara bağlar; ayrıca, Anayasa ve kanunlarla verilen diğer görevleri yerine getirir.</div>
+		<div>
+		Hâkim ve savcıların görevlerini; kanun ve diğer mevzuata (hâkimler için idarî nitelikteki genelgelere) uygun olarak yapıp yapmadıklarını denetleme; görevlerinden dolayı veya görevleri sırasında suç işleyip işlemediklerini, hal ve eylemlerinin sıfat ve görevleri icaplarına uyup uymadığını araştırma ve gerektiğinde haklarında inceleme ve soruşturma işlemleri, ilgili dairenin teklifi ve Hâkimler ve Savcılar (…)(3) Kurulu Başkanının oluru ile Kurul müfettişlerine yaptırılır. Soruşturma ve inceleme işlemleri, hakkında soruşturma ve inceleme yapılacak olandan daha kıdemli hâkim veya savcı eliyle de yaptırılabilir. (3)</div>
+		<div>  <span class="kim">
+		Kurulun meslekten çıkarma cezasına ilişkin olanlar dışındaki kararlarına karşı</span> <span class="mavi"> yargı mercilerine başvurulamaz.</span></div>
+		<div>
+		Kurula bağlı <span class="kim"> Genel Sekreterlik kurulur.</span>  Genel <span class="kim"> Sekreter,</span> birinci sınıf hâkim ve savcılardan Kurulun teklif ettiği <span class="mavi"> üç aday arasından Kurul Başkanı tarafından atanır.</span> Kurul müfettişleri ile Kurulda geçici veya sürekli olarak çalıştırılacak hâkim ve savcıları, muvafakatlerini alarak atama yetkisi Kurula aittir.</div>
+		<div>
+		Adalet Bakanlığının merkez, bağlı ve ilgili kuruluşlarında geçici veya sürekli olarak çalıştırılacak hâkim ve savcılar ile adalet müfettişlerini ve hâkim ve savcı mesleğinden olan iç denetçileri, muvafakatlerini alarak atama yetkisi Adalet Bakanına aittir.</div>
+		<div>
+		Kurul üyelerinin seçimi, dairelerin oluşumu ve işbölümü, Kurulun ve dairelerin görevleri, toplantı ve karar yeter sayıları, çalışma usul ve esasları, dairelerin karar ve işlemlerine karşı yapılacak itirazlar ve bunların incelenmesi usulü ile Genel Sekreterliğin kuruluş ve görevleri kanunla düzenlenir.</div>
+
+
+
+
+
+
+		<span class="yes">	IV. Sayıştay</span>
+		<div>
+		MADDE 160- Sayıştay, merkezî yönetim bütçesi kapsamındaki kamu idareleri ile sosyal güvenlik kurumlarının bütün gelir ve giderleri ile mallarını <span class="mavi"> Türkiye Büyük Millet Meclisi adına denetlemek ve sorumluların hesap ve işlemlerini kesin hükme bağlamak ve kanunlarla verilen inceleme, denetleme ve hükme bağlama işlerini yapmakla görevlidir.</span>  Sayıştayın kesin hükümleri hakkında ilgililer yazılı bildirim tarihinden itibaren <span class="mavi"> onbeş gün içinde bir kereye mahsus olmak üzere karar düzeltilmesi isteminde bulunabilirler.</span>  Bu kararlar dolayısıyla idari yargı yoluna başvurulamaz.(1)</div>
+		<div>  <span class="mavi">
+		Vergi, benzeri malî yükümlülükler ve ödevler hakkında Danıştay ile Sayıştay kararları arasındaki uyuşmazlıklarda Danıştay kararları esas alınır.</span></div>
+		<div>
+		(Ek üçüncü fıkra: 29/10/2005-5428/2 md.) Mahallî idarelerin hesap ve işlemlerinin denetimi ve kesin hükme bağlanması Sayıştay tarafından yapılır.</div>
+		<div>
+		Sayıştayın kuruluşu, işleyişi, denetim usulleri, mensuplarının nitelikleri, atanmaları, ödev ve yetkileri, hakları ve yükümlülükleri ve diğer özlük işleri, Başkan ve üyelerinin teminatı kanunla düzenlenir.</div>
+		<div class="ort" >	<button onclick="YAZDIR()" class="yaz" >YAZDIR</button>
+		</div>
+
+		<script>
+		var surukleniyor = false;
+		var offsetX, offsetY;
+
+		// Tüm soru göster butonlarını seç
+		const soruGosterButtons = document.querySelectorAll('.soru');
+
+		// Her bir buton için event listener ekle
+		soruGosterButtons.forEach(function (button, index) {
+		button.addEventListener('click', function() {
+		const soruContainer = document.querySelector('.soruContainer');
+
+		// Eğer gösteriliyorsa gizle, gizliyse göster
+			if (soruContainer.style.display === "none") {
+			  soruContainer.style.display = "block";
+			} else {
+			  soruContainer.style.display = "none";
+		}
+		});
+		});
+
+
+		soruContainer.addEventListener('mousedown', function(e) {  surukleniyor = true;	  offsetX = e.clientX - soruContainer.getBoundingClientRect().left;	  offsetY = e.clientY - soruContainer.getBoundingClientRect().top;});
+
+		document.addEventListener('mousemove', function(e) {  if (surukleniyor) {soruContainer.style.left = (e.clientX - offsetX) + 'px';
+				soruContainer.style.top = (e.clientY - offsetY) + 'px'; }});
+
+			document.addEventListener('mouseup', function() { surukleniyor = false;	});
+		</script>
+</body>
+</html>
+{% endblock%}
